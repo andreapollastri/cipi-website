@@ -7,6 +7,56 @@
     <title>Cipi — Documentation</title>
     <meta name="description"
         content="Full technical documentation for Cipi — the open-source deploy CLI exclusively for Laravel.">
+    <meta name="keywords"
+        content="Cipi documentation, Laravel deploy docs, cipi CLI reference, Laravel VPS setup, PHP server configuration, Ubuntu Laravel stack">
+    <meta name="author" content="Andrea Pollastri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cipi.sh/docs.html">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cipi">
+    <meta property="og:url" content="https://cipi.sh/docs.html">
+    <meta property="og:title" content="Cipi — Documentation">
+    <meta property="og:description"
+        content="Full technical documentation for Cipi — the open-source deploy CLI exclusively for Laravel.">
+    <meta property="og:image" content="https://cipi.sh/og.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@cipi_sh">
+    <meta name="twitter:title" content="Cipi — Documentation">
+    <meta name="twitter:description"
+        content="Full technical documentation for Cipi — the open-source deploy CLI exclusively for Laravel.">
+    <meta name="twitter:image" content="https://cipi.sh/og.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "name": "Cipi Documentation",
+      "url": "https://cipi.sh/docs.html",
+      "description": "Full technical documentation for Cipi — the open-source deploy CLI exclusively for Laravel.",
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Cipi",
+        "url": "https://cipi.sh/"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Andrea Pollastri",
+        "url": "https://github.com/andreapollastri"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Cipi",
+        "url": "https://cipi.sh/"
+      }
+    }
+    </script>
+
     <link rel="icon" id="favicon"
         href="data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M16.22,35.9c-3.14,0-6.9,1.5-7.3,5.68a.92.92,0,0,0,.91,1h11.97a.9.9,0,0,0,.9-.94C22.62,39.8,21.79,35.9,16.22,35.9Z'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M18.05,20.56c-1.35,1.04-7.37,7.51-4.36,15.67'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M31.78,35.9c3.14,0,6.9,1.5,7.3,5.68a.92.92,0,0,1-.91,1h-11.97a.9.9,0,0,1-.9-.94C25.38,39.8,26.21,35.9,31.78,35.9Z'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M35.01,36.46c3.18-2.84,2.75-7.52,2.75-8.78,2.89.82,5.03,2.97,5.59,2.17,1.37-1.95-7.52-7.55-7.69-10.9C35.5,15.67,35.17,5.42,24,5.42S12.5,15.67,12.34,18.95c-.17,3.35-9.07,8.95-7.69,10.9.56.8,2.7-1.35,5.59-2.17,0,1.25-.44,5.93,2.75,8.78'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M29.28,19.83c1.93,1.5,8.04,8.24,5.03,16.4'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M24,24.84l3.95-4.28c-.39-1.01-1.71-1.93-3.95-1.93s-3.56.92-3.95,1.93Z'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M20.05,20.56c-3.42.51-3.91-2.72-3.91-4.7,0-2.7,1.45-4.44,3.91-4.44s3.74,2.33,3.74,3.92a3.85,3.85,0,0,1-.61,2.34'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M27.72,20.13c.68.05,3.95-.39,3.95-3.33s-1.76-3.76-4.12-3.76a3.79,3.79,0,0,0-3.82,2.67'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M22.7,41.48a6.84,6.84,0,0,0,2.61,0'/%3E%3Ccircle cx='22.16' cy='16.59' r='0.75' fill='%23000'/%3E%3Ccircle cx='25.55' cy='16.59' r='0.75' fill='%23000'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1014,6 +1064,7 @@
                 <a href="#installation" class="sidebar-link">installation</a>
                 <a href="#requirements" class="sidebar-link">requirements</a>
                 <a href="#quickstart" class="sidebar-link">quick start</a>
+                <a href="#tech-stack" class="sidebar-link">tech stack</a>
                 <a href="#app-structure" class="sidebar-link">app structure</a>
             </div>
 
@@ -1022,6 +1073,7 @@
                 <a href="#agent-install" class="sidebar-link">installation</a>
                 <a href="#agent-webhook" class="sidebar-link">webhook</a>
                 <a href="#agent-health" class="sidebar-link">health check</a>
+                <a href="#agent-mcp" class="sidebar-link">MCP server</a>
                 <a href="#agent-env" class="sidebar-link">ENV variables</a>
             </div>
 
@@ -1038,6 +1090,8 @@
             <div class="sidebar-group">
                 <span class="sidebar-group-label">deploy & CI/CD</span>
                 <a href="#cli-deploy" class="sidebar-link"><code>deploy</code></a>
+                <a href="#cli-auth" class="sidebar-link"><code>auth.json</code></a>
+                <a href="#git-providers" class="sidebar-link">Git providers</a>
                 <a href="#cli-deploy-script" class="sidebar-link">deploy script</a>
                 <a href="#ci-pipelines" class="sidebar-link">CI/CD pipelines</a>
                 <a href="#deploy-notifications" class="sidebar-link">deploy notifications</a>
@@ -1062,6 +1116,7 @@
             <div class="sidebar-group">
                 <span class="sidebar-group-label">advanced</span>
                 <a href="#cipi-and-ai" class="sidebar-link">Cipi &amp; AI agents</a>
+                <a href="#redis" class="sidebar-link">redis</a>
                 <a href="#self-update" class="sidebar-link">self-update</a>
                 <a href="#wildcard-domains" class="sidebar-link">wildcard domains</a>
             </div>
@@ -1087,7 +1142,7 @@
                 <p class="doc-section-label">Getting Started</p>
                 <h2>Installation</h2>
                 <p>Cipi installs a complete Laravel-ready production stack on any Ubuntu 24.04+ VPS with a single
-                    command. The installer takes roughly 10 minutes and sets up Nginx, MariaDB, PHP, Supervisor,
+                    command. The installer takes roughly 10 minutes and sets up Nginx, MariaDB, PHP, Redis, Supervisor,
                     Fail2ban, UFW, Certbot, Deployer, and the <code>cipi</code> CLI itself.</p>
 
                 <h3>Standard installation</h3>
@@ -1096,7 +1151,7 @@
                         <span class="code-block-lang">bash</span>
                         <button class="code-copy-btn" onclick="copyCode(this)">Copy</button>
                     </div>
-                    <pre><span class="p">$</span> wget -O - https://raw.githubusercontent.com/andreapollastri/cipi/refs/heads/latest/install.sh | bash</pre>
+                    <pre><span class="p">$</span> wget -O - https://cipi.sh/setup.sh | bash</pre>
                 </div>
 
                 <h3>AWS (root login disabled by default)</h3>
@@ -1107,7 +1162,7 @@
                     </div>
                     <pre><span class="p">$</span> ssh ubuntu@your-server-ip
 <span class="p">$</span> sudo -s
-<span class="p">$</span> wget -O - https://raw.githubusercontent.com/andreapollastri/cipi/refs/heads/latest/install.sh | bash</pre>
+<span class="p">$</span> wget -O - https://cipi.sh/setup.sh | bash</pre>
                 </div>
 
                 <p>At the end of the installation you will see a summary screen with the MariaDB root password.
@@ -1226,47 +1281,105 @@
                 </p>
             </div>
 
-
+            <div class="doc-section" id="tech-stack">
+                <h2>Tech Stack</h2>
+                <p>Cipi brings a complete, production-ready stack to your Ubuntu server. Here is everything that gets installed and configured:</p>
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ubuntu</strong></td>
+                            <td>Base OS (24.04 LTS or higher)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nginx</strong></td>
+                            <td>Web server, reverse proxy, SSL termination</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PHP-FPM</strong></td>
+                            <td>PHP runtime (multiple versions via ondrej/php PPA)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MariaDB</strong></td>
+                            <td>Relational database (drop-in MySQL replacement)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Redis</strong></td>
+                            <td>In-memory store for cache, sessions, queues, broadcast</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Supervisor</strong></td>
+                            <td>Process manager for Laravel queue workers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deployer</strong></td>
+                            <td>Zero-downtime deployment tool</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Certbot</strong></td>
+                            <td>Let's Encrypt SSL certificates</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UFW</strong></td>
+                            <td>Firewall (ports 22, 80, 443)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fail2ban</strong></td>
+                            <td>SSH brute-force protection</td>
+                        </tr>
+                        <tr>
+                            <td><strong>unattended-upgrades</strong></td>
+                            <td>Automatic security patches</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Composer</strong></td>
+                            <td>PHP dependency manager</td>
+                        </tr>
+                        <tr>
+                            <td><strong>cipi CLI</strong></td>
+                            <td>Server management and orchestration</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <div class="doc-section" id="app-structure">
                 <h2>App Structure</h2>
                 <p>When you run <code>cipi app create</code>, Cipi creates a fully isolated environment for the app.
                     Here is everything that gets set up:</p>
 
-                <div class="tree-block">
-                    <span class="tree-accent">/home/myapp/</span> <span class="tree-comment">← isolated Linux user
-                        (chmod 750)</span>
-                    ├── .ssh/
-                    │ ├── id_ed25519 <span class="tree-comment">← deploy key (private)</span>
-                    │ └── id_ed25519.pub <span class="tree-comment">← deploy key (public — add to Git)</span>
-                    ├── .deployer/
-                    │ └── deploy.php <span class="tree-comment">← Deployer config (auto-generated)</span>
-                    ├── <span class="tree-accent">current</span> -> releases/3/ <span class="tree-comment">← symlink to
-                        active release</span>
-                    ├── releases/
-                    │ ├── 1/
-                    │ ├── 2/
-                    │ └── 3/ <span class="tree-comment">← latest release (last 5 kept)</span>
-                    ├── shared/
-                    │ ├── .env <span class="tree-comment">← auto-compiled by Cipi</span>
-                    │ └── storage/ <span class="tree-comment">← persistent storage</span>
-                    └── logs/
-                    ├── nginx-access.log
-                    ├── nginx-error.log
-                    ├── php-fpm-error.log
-                    ├── worker-default.log
-                    └── deploy.log
-                </div>
+                <div class="tree-block"><span class="tree-accent">/home/myapp/</span> <span class="tree-comment">← isolated Linux user (chmod 750)</span>
+├── .ssh/
+│   ├── id_ed25519 <span class="tree-comment">← deploy key (private)</span>
+│   └── id_ed25519.pub <span class="tree-comment">← deploy key (public — add to Git)</span>
+├── .deployer/
+│   └── deploy.php <span class="tree-comment">← Deployer config (auto-generated)</span>
+├── <span class="tree-accent">current</span> -> releases/3/ <span class="tree-comment">← symlink to active release</span>
+├── releases/
+│   ├── 1/
+│   ├── 2/
+│   └── 3/ <span class="tree-comment">← latest release (last 5 kept)</span>
+├── shared/
+│   ├── .env <span class="tree-comment">← auto-compiled by Cipi</span>
+│   └── storage/ <span class="tree-comment">← persistent storage</span>
+└── logs/
+    ├── nginx-access.log
+    ├── nginx-error.log
+    ├── php-fpm-error.log
+    ├── worker-default.log
+    └── deploy.log</div>
 
                 <p>In addition to the home directory, Cipi creates these system files:</p>
-                <div class="tree-block">
-                    PHP-FPM pool: /etc/php/8.4/fpm/pool.d/<span class="tree-accent">myapp</span>.conf <span
-                        class="tree-comment">(user=myapp)</span>
-                    Nginx vhost: /etc/nginx/sites-available/<span class="tree-accent">myapp</span>
-                    Supervisor: /etc/supervisor/conf.d/<span class="tree-accent">myapp</span>.conf
-                    Crontab: * * * * * php artisan schedule:run
-                    MariaDB: database '<span class="tree-accent">myapp</span>', user '<span
-                        class="tree-accent">myapp</span>'@'localhost'</div>
+                <div class="tree-block">  PHP-FPM pool:  /etc/php/8.4/fpm/pool.d/<span class="tree-accent">myapp</span>.conf <span class="tree-comment">(user=myapp)</span>
+  Nginx vhost:   /etc/nginx/sites-available/<span class="tree-accent">myapp</span>
+  Supervisor:    /etc/supervisor/conf.d/<span class="tree-accent">myapp</span>.conf
+  Crontab:       * * * * * php artisan schedule:run
+  MariaDB:       database '<span class="tree-accent">myapp</span>', user '<span class="tree-accent">myapp</span>'@'localhost'</div>
 
                 <p>The <code>.env</code> is auto-compiled with all credentials — database name, password, webhook token,
                     and <code>APP_KEY</code>. You never have to touch it manually, but you can always edit it with
@@ -1320,6 +1433,10 @@
                         <tr>
                             <td>php artisan cipi:deploy-key</td>
                             <td>Print the SSH deploy key for this app</td>
+                        </tr>
+                        <tr>
+                            <td>php artisan cipi:mcp</td>
+                            <td>Show the MCP endpoint URL and setup snippets for Cursor, VS Code, and Claude Desktop</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1413,6 +1530,228 @@
 
 
 
+            <div class="doc-section" id="agent-mcp">
+                <h2>MCP Server</h2>
+                <p><strong>cipi-agent</strong> includes a built-in <strong>MCP server</strong> (Model Context Protocol)
+                    that exposes your application to AI assistants such as <strong>Cursor</strong>,
+                    <strong>VS Code</strong> (with GitHub Copilot), and <strong>Claude Desktop</strong>. The endpoint implements MCP 2024-11-05 over HTTP using JSON-RPC 2.0
+                    and is protected by the same <code>CIPI_WEBHOOK_TOKEN</code> Bearer token already present in your
+                    <code>.env</code>.
+                </p>
+
+                <p>The MCP endpoint is available at <code>POST /cipi/mcp</code> and is enabled by default. To disable
+                    it, set <code>CIPI_MCP_ENABLED=false</code> in your <code>.env</code>.</p>
+
+                <h3>Available tools</h3>
+                <p>The MCP server exposes six tools that an AI assistant can invoke by name:</p>
+
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>health</td>
+                            <td>App, database, cache, and queue status — same data as the
+                                <code>/cipi/health</code> endpoint</td>
+                        </tr>
+                        <tr>
+                            <td>app_info</td>
+                            <td>Full application configuration: app user, PHP version, Laravel version, environment,
+                                queue/cache/session drivers, deploy branch, and all Cipi URLs</td>
+                        </tr>
+                        <tr>
+                            <td>deploy</td>
+                            <td>Trigger a new zero-downtime deployment — writes the
+                                <code>.deploy-trigger</code> file; Deployer picks it up within 1 minute</td>
+                        </tr>
+                        <tr>
+                            <td>logs</td>
+                            <td>Read the last N lines (default 50, max 500) from application logs. Supports
+                                <code>type</code> (<code>laravel</code>, <code>nginx</code>, <code>php</code>,
+                                <code>worker</code>, <code>deploy</code>), <code>level</code> for Laravel severity
+                                filtering (e.g. <code>error</code>), and <code>search</code> for keyword filtering.
+                                Laravel daily rotation (<code>laravel-YYYY-MM-DD.log</code>) is auto-detected.</td>
+                        </tr>
+                        <tr>
+                            <td>db_query</td>
+                            <td>Execute SQL queries against the application database — equivalent to
+                                <code>cipi app tinker</code>. Supports SELECT, SHOW, DESCRIBE, EXPLAIN (read) and
+                                INSERT, UPDATE, DELETE (write). Results formatted as ASCII table, capped at 100 rows.
+                                Destructive DDL (DROP TABLE/DATABASE, TRUNCATE, GRANT/REVOKE, file I/O) is blocked.</td>
+                        </tr>
+                        <tr>
+                            <td>artisan</td>
+                            <td>Run any Artisan command (e.g. <code>migrate:status</code>,
+                                <code>queue:size</code>, <code>cache:clear</code>). Long-running and interactive
+                                commands like <code>serve</code>, <code>queue:work</code>, and
+                                <code>tinker</code> are blocked</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Setup instructions</h3>
+                <p>Run the <code>cipi:mcp</code> Artisan command to get the endpoint URL and ready-to-paste
+                    configuration snippets for your AI client:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> php artisan cipi:mcp</pre>
+                </div>
+
+                <p>The command prints the available tools and the JSON configuration for Cursor, VS Code, and Claude Desktop.</p>
+
+                <h4>Cursor</h4>
+                <p>Add the following to <code>~/.cursor/mcp.json</code> (or go to Cursor &rarr; Settings &rarr; MCP):</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">json</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre>{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"cipi-myapp"</span>: {
+      <span class="s">"type"</span>: <span class="s">"http"</span>,
+      <span class="s">"url"</span>: <span class="s">"https://yourdomain.com/cipi/mcp"</span>,
+      <span class="s">"headers"</span>: {
+        <span class="s">"Authorization"</span>: <span class="s">"Bearer YOUR_CIPI_WEBHOOK_TOKEN"</span>
+      }
+    }
+  }
+}</pre>
+                </div>
+
+                <p>Replace <code>cipi-myapp</code> with your app user name, <code>yourdomain.com</code> with your
+                    actual domain, and <code>YOUR_CIPI_WEBHOOK_TOKEN</code> with the token from your
+                    <code>.env</code>. Cursor connects natively over HTTP — no bridge needed.
+                </p>
+
+                <h4>VS Code</h4>
+                <p>VS Code (with GitHub Copilot) supports MCP natively since version 1.102. Add the following to
+                    <code>.vscode/mcp.json</code> in your project (or run <strong>MCP: Open User Configuration</strong>
+                    for a global setup):
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">json</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre>{
+  <span class="s">"servers"</span>: {
+    <span class="s">"cipi-myapp"</span>: {
+      <span class="s">"type"</span>: <span class="s">"http"</span>,
+      <span class="s">"url"</span>: <span class="s">"https://yourdomain.com/cipi/mcp"</span>,
+      <span class="s">"headers"</span>: {
+        <span class="s">"Authorization"</span>: <span class="s">"Bearer YOUR_CIPI_WEBHOOK_TOKEN"</span>
+      }
+    }
+  }
+}</pre>
+                </div>
+
+                <p>Replace <code>cipi-myapp</code>, <code>yourdomain.com</code>, and <code>YOUR_CIPI_WEBHOOK_TOKEN</code>
+                    as above. Use <strong>MCP: Add Server</strong> from the Command Palette for a guided setup. VS Code
+                    connects over HTTP — no bridge needed.
+                </p>
+
+                <h4>Claude Desktop</h4>
+                <p>Claude Desktop requires the <strong>mcp-remote</strong> bridge to convert stdio to HTTP. Add the
+                    following to <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">json</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre>{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"cipi-myapp"</span>: {
+      <span class="s">"command"</span>: <span class="s">"npx"</span>,
+      <span class="s">"args"</span>: [
+        <span class="s">"-y"</span>,
+        <span class="s">"mcp-remote"</span>,
+        <span class="s">"https://yourdomain.com/cipi/mcp"</span>,
+        <span class="s">"--header"</span>,
+        <span class="s">"Authorization: Bearer YOUR_CIPI_WEBHOOK_TOKEN"</span>
+      ]
+    }
+  }
+}</pre>
+                </div>
+
+                <p>Install <code>mcp-remote</code> globally once with:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> npm install -g mcp-remote</pre>
+                </div>
+
+                <h3>What you can do with it</h3>
+                <p>Once connected, your AI assistant can interact with the Cipi-managed application in natural
+                    language. For example:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">conversation</span></div>
+                    <pre><span class="c">User:</span>  Is the app healthy? Any pending jobs in the queue?
+
+<span class="c">Claude:</span> Calling health tool...
+         Status: healthy — database, cache, and queue all OK.
+         Queue: 0 pending jobs.
+
+<span class="c">User:</span>  Show me the last errors from the log.
+
+<span class="c">Claude:</span> Calling logs tool (lines: 100)...
+         Found 2 errors in the last 100 lines:
+         [2026-03-04 14:22:01] production.ERROR: Connection refused [...]
+         [2026-03-04 14:23:15] production.ERROR: Redis timeout [...]
+
+<span class="c">User:</span>  Clear the cache and deploy the latest version.
+
+<span class="c">Claude:</span> Calling artisan tool (cache:clear)...
+         Cache cleared successfully.
+         Calling deploy tool...
+         Deploy queued — Deployer will run within 1 minute.
+
+<span class="c">User:</span>  What's the current migration status?
+
+<span class="c">Claude:</span> Calling artisan tool (migrate:status)...
+         All 47 migrations have been run.
+
+<span class="c">User:</span>  How many users signed up in the last 7 days?
+
+<span class="c">Claude:</span> Calling db_query tool (SELECT COUNT(*) FROM users WHERE created_at >= ...)...
+         | count |
+         |-------|
+         | 23    |</pre>
+                </div>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>The MCP server does not require SSH access to the VPS. It works entirely over HTTPS using
+                        the same Bearer token used by the webhook and health check endpoints. This makes it ideal for
+                        teams where developers should be able to monitor and deploy without root access.</div>
+                </div>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>Keep your <code>CIPI_WEBHOOK_TOKEN</code> secret. Anyone with the token can trigger deploys,
+                        read logs, run database queries, and run Artisan commands through the MCP endpoint. If you suspect a leak, regenerate
+                        the token in your <code>.env</code> and restart the application.</div>
+                </div>
+            </div>
+
+
+
             <div class="doc-section" id="agent-env">
                 <h2>ENV Variables</h2>
                 <p>These variables are automatically injected by Cipi into the app's <code>.env</code> during
@@ -1441,6 +1780,11 @@
                             <td>CIPI_APP_USER</td>
                             <td>Linux user owning this app</td>
                             <td>auto-set</td>
+                        </tr>
+                        <tr>
+                            <td>CIPI_MCP_ENABLED</td>
+                            <td>Enable or disable the MCP server endpoint at <code>/cipi/mcp</code></td>
+                            <td><code>true</code></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1629,6 +1973,11 @@
                             <td>Linux username owning this app</td>
                             <td>Cipi</td>
                         </tr>
+                        <tr>
+                            <td>CIPI_MCP_ENABLED</td>
+                            <td>Enable or disable the built-in MCP server at <code>/cipi/mcp</code></td>
+                            <td>User (<code>true</code> by default)</td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -1663,16 +2012,19 @@ MAIL_HOST=smtp.mailgun.org</pre>
 
             <div class="doc-section" id="cli-app-logs">
                 <h2><code>cipi app logs</code></h2>
-                <p>Tail application logs in real-time. Logs are rotated daily and kept for 14 days.</p>
+                <p>Tail application logs in real-time. Logs are rotated daily and kept for 14 days. By
+                    default, all logs are shown including Laravel daily logs
+                    (<code>laravel-YYYY-MM-DD.log</code>) from <code>shared/storage/logs/</code>.</p>
 
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">bash</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
-                    <pre><span class="p">$</span> cipi app logs myapp                  <span class="c"># all logs</span>
+                    <pre><span class="p">$</span> cipi app logs myapp                  <span class="c"># all logs (incl. Laravel daily logs)</span>
 <span class="p">$</span> cipi app logs myapp --type=nginx     <span class="c"># Nginx access + error</span>
 <span class="p">$</span> cipi app logs myapp --type=php       <span class="c"># PHP-FPM errors</span>
 <span class="p">$</span> cipi app logs myapp --type=worker    <span class="c"># queue worker output</span>
-<span class="p">$</span> cipi app logs myapp --type=deploy    <span class="c"># deploy history</span></pre>
+<span class="p">$</span> cipi app logs myapp --type=deploy    <span class="c"># deploy history</span>
+<span class="p">$</span> cipi app logs myapp --type=laravel   <span class="c"># Laravel application logs</span></pre>
                 </div>
 
                 <div class="options-list">
@@ -1682,6 +2034,8 @@ MAIL_HOST=smtp.mailgun.org</pre>
                     </div>
                     <div class="option-item"><code>--type=deploy</code><span>Deployer output — full deploy history with
                             timestamps</span></div>
+                    <div class="option-item"><code>--type=laravel</code><span>Laravel application logs from
+                            <code>shared/storage/logs/</code> (daily rotating <code>laravel-YYYY-MM-DD.log</code>)</span></div>
                 </div>
             </div>
 
@@ -1815,7 +2169,9 @@ myapp@server:~$ ls -lt ~/releases/</pre>
 <span class="p">$</span> cipi deploy myapp --releases   <span class="c"># list all releases with timestamps</span>
 <span class="p">$</span> cipi deploy myapp --key        <span class="c"># show the SSH deploy key</span>
 <span class="p">$</span> cipi deploy myapp --webhook    <span class="c"># show webhook URL and token</span>
-<span class="p">$</span> cipi deploy myapp --unlock     <span class="c"># remove a stuck deploy lock</span></pre>
+<span class="p">$</span> cipi deploy myapp --unlock     <span class="c"># remove a stuck deploy lock</span>
+<span class="p">$</span> cipi deploy myapp --trust-host=git.mycompany.com       <span class="c"># trust a custom Git server fingerprint</span>
+<span class="p">$</span> cipi deploy myapp --trust-host=git.mycompany.com:2222  <span class="c"># trust on non-standard port (also writes ~/.ssh/config)</span></pre>
                 </div>
 
                 <div class="callout warning">
@@ -1827,6 +2183,126 @@ myapp@server:~$ ls -lt ~/releases/</pre>
                     </svg>
                     <div>If a deploy is interrupted (e.g. by a network error), Deployer may leave a lock file behind.
                         Use <code>cipi deploy myapp --unlock</code> to remove it before re-deploying.</div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="cli-auth">
+                <h2><code>auth.json</code></h2>
+                <p>Manage the <code>auth.json</code> file for an app. This file lives at
+                    <code>/home/&lt;app&gt;/shared/auth.json</code> and is automatically symlinked into every release by
+                    Deployer — exactly like <code>.env</code>. Use it to store structured credential data (e.g. API
+                    keys, feature flags, or any JSON payload) that your Laravel app can read at runtime.
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi auth create myapp   <span class="c"># create auth.json with initial { "users": [] } structure</span>
+<span class="p">$</span> cipi auth edit myapp     <span class="c"># open in $EDITOR (fallback: nano), validate JSON on close</span>
+<span class="p">$</span> cipi auth show myapp     <span class="c"># print contents formatted with jq</span>
+<span class="p">$</span> cipi auth delete myapp   <span class="c"># delete file (asks for confirmation)</span></pre>
+                </div>
+
+                <h3>Command details</h3>
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>cipi auth create &lt;app&gt;</code></td>
+                            <td>Creates <code>shared/auth.json</code> with the initial structure
+                                <code>{"users":[]}</code>, sets permissions to <code>640</code> (owner
+                                <code>app:app</code>), and adds <code>auth.json</code> to
+                                <code>shared_files</code> in the app's Deployer config so it is symlinked on every
+                                deploy.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi auth edit &lt;app&gt;</code></td>
+                            <td>Opens <code>shared/auth.json</code> in <code>$EDITOR</code> (falls back to
+                                <code>nano</code>). After the editor closes, validates the JSON with
+                                <code>jq</code> and warns if the file is malformed.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi auth show &lt;app&gt;</code></td>
+                            <td>Prints the contents of <code>shared/auth.json</code> formatted with
+                                <code>jq</code>.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi auth delete &lt;app&gt;</code></td>
+                            <td>Asks for confirmation, then deletes <code>shared/auth.json</code> and removes the
+                                <code>auth.json</code> entry from <code>shared_files</code> in the app's Deployer
+                                config.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Deployer integration</h3>
+                <p><code>cipi auth create</code> automatically appends <code>auth.json</code> to the
+                    <code>shared_files</code> list in <code>/home/&lt;app&gt;/.deployer/deploy.php</code>, and
+                    <code>cipi auth delete</code> removes it. This means the file is treated exactly like
+                    <code>.env</code>: it persists across releases and is never overwritten by a deploy.
+                </p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>Every <code>cipi auth</code> operation is logged via <code>log_action</code> for
+                        auditability. The <code>AUTH</code> section is also listed in the output of
+                        <code>cipi help</code>.
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="git-providers">
+                <h2>Git providers</h2>
+                <p>Cipi is ready to work with <strong>GitHub</strong> and <strong>GitLab</strong> but it supports any
+                    other Git provider that supports SSH deploy keys — no vendor lock-in.</p>
+
+                <p>For self-hosted or custom Git servers, you need to trust the server's host fingerprint before
+                    Deployer can clone over SSH. Use the <code>--trust-host</code> flag to add the fingerprint to the
+                    app user's <code>~/.ssh/known_hosts</code> automatically:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># show the deploy key and add it to your Git provider</span>
+<span class="p">$</span> cipi deploy myapp --key
+
+<span class="c"># trust a custom Git server fingerprint (standard port)</span>
+<span class="p">$</span> cipi deploy myapp --trust-host=git.mycompany.com
+
+<span class="c"># trust a custom Git server on a non-standard port</span>
+<span class="c"># (also writes ~/.ssh/config automatically)</span>
+<span class="p">$</span> cipi deploy myapp --trust-host=git.mycompany.com:2222</pre>
+                </div>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>When a non-standard port is specified, Cipi also writes the
+                        <code>Host</code> / <code>Port</code> entry to the app user's <code>~/.ssh/config</code> so
+                        that Deployer can reach the server without any extra configuration.
+                    </div>
                 </div>
             </div>
 
@@ -3012,10 +3488,12 @@ cleanup-preview:
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">bash</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
-                    <pre><span class="p">$</span> cipi backup run            <span class="c"># backup all apps</span>
-<span class="p">$</span> cipi backup run myapp     <span class="c"># backup a single app</span>
-<span class="p">$</span> cipi backup list          <span class="c"># list all backups</span>
-<span class="p">$</span> cipi backup list myapp   <span class="c"># list backups for one app</span></pre>
+                    <pre><span class="p">$</span> cipi backup configure              <span class="c"># configure S3 credentials</span>
+<span class="p">$</span> cipi backup run                    <span class="c"># backup all apps</span>
+<span class="p">$</span> cipi backup run myapp              <span class="c"># backup a single app</span>
+<span class="p">$</span> cipi backup list                   <span class="c"># list all backups</span>
+<span class="p">$</span> cipi backup list myapp             <span class="c"># list backups for one app</span>
+<span class="p">$</span> cipi backup prune myapp --weeks=4  <span class="c"># delete backups older than 4 weeks</span></pre>
                 </div>
 
                 <p>Each backup uploads to <code>s3://your-bucket/cipi/appname/YYYY-MM-DD_HHMMSS/</code> and contains:
@@ -3033,6 +3511,40 @@ cleanup-preview:
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
                     <pre><span class="c"># Add to root crontab (crontab -e)</span>
 0 2 * * * /usr/local/bin/cipi backup run >> /var/log/cipi/backup.log 2>&1</pre>
+                </div>
+
+                <h3>Pruning old backups from S3</h3>
+                <p>Backups accumulate over time. Use <code>cipi backup prune</code> to delete backup folders older than
+                    <strong>N weeks</strong> from S3. Run it as a cron job alongside the backup itself.
+                </p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi backup prune myapp --weeks=4   <span class="c"># delete backups older than 4 weeks</span>
+<span class="p">$</span> cipi backup prune myapp --weeks=2   <span class="c"># keep only the last 2 weeks</span></pre>
+                </div>
+
+                <p>Add both commands to the root crontab to run automatically:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># root crontab — backup at 02:00, prune at 03:00 (keep 4 weeks)</span>
+0 2 * * * /usr/local/bin/cipi backup run myapp >> /var/log/cipi/backup.log 2>&1
+0 3 * * * /usr/local/bin/cipi backup prune myapp --weeks=4 >> /var/log/cipi/backup-prune.log 2>&1</pre>
+                </div>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div><code>cipi backup prune</code> reads S3 credentials from <code>/etc/cipi/backup.conf</code>,
+                        written by <code>cipi backup configure</code>. It works with any S3-compatible provider.
+                        Adjust <code>--weeks</code> to match your retention policy (e.g. <code>--weeks=2</code> for two
+                        weeks, <code>--weeks=8</code> for two months).
+                    </div>
                 </div>
             </div>
 
@@ -3211,9 +3723,14 @@ myapp@server:~$ crontab -e</pre>
 <span class="p">$</span> cipi service stop supervisor         <span class="c"># asks for confirmation</span></pre>
                 </div>
 
-                <p>Supported service names: <code>nginx</code>, <code>mariadb</code>, <code>supervisor</code>,
-                    <code>fail2ban</code>, <code>php&lt;ver&gt;-fpm</code> (e.g. <code>php8.4-fpm</code>). The keyword
+                <p>Supported service names: <code>nginx</code>, <code>mariadb</code>, <code>redis-server</code>,
+                    <code>supervisor</code>, <code>fail2ban</code>, <code>php&lt;ver&gt;-fpm</code> (e.g. <code>php8.4-fpm</code>). The keyword
                     <code>php</code> targets all installed PHP-FPM versions at once.
+                </p>
+                <p>Redis is included in the default stack (from Cipi 4.0.4). It is installed with a password, bound to
+                    <code>localhost</code> only, and its credentials (user, password) are saved in
+                    <code>/etc/cipi/server.json</code> and shown at the end of installation. <code>redis-server</code> is
+                    added to the unattended-upgrades blacklist — Cipi manages it, so it is not auto-upgraded automatically.
                 </p>
             </div>
 
@@ -3258,37 +3775,56 @@ myapp@server:~$ crontab -e</pre>
                         interact with Cipi without a dedicated API client.</li>
                 </ul>
 
-                <h3>Claude — via Cursor or Claude Desktop</h3>
-                <p>In <strong>Cursor</strong> (the IDE this documentation was written in), Claude has access to a bash
-                    tool and can run Cipi commands directly in the terminal. Example session:</p>
+                <h3>Claude — via Cursor, VS Code, or Claude Desktop</h3>
+                <p>The recommended way to connect an AI assistant to a Cipi-managed app is through the
+                    <strong>built-in MCP server</strong> included in <code>cipi-agent</code> (v1.0.2+). It exposes six
+                    typed tools — <code>health</code>, <code>app_info</code>, <code>deploy</code>,
+                    <code>logs</code>, <code>db_query</code>, and <code>artisan</code> — over HTTPS, with no SSH access required. See the
+                    <a href="#agent-mcp" style="color:var(--accent)">MCP Server</a> section for full setup details.
+                </p>
+
+                <p>In <strong>Cursor</strong> and <strong>VS Code</strong> (with GitHub Copilot), Claude can use both approaches simultaneously: the MCP tools for
+                    application-level operations (deploy, logs, health, artisan) and the bash terminal for
+                    server-level Cipi CLI commands when SSH access is available:</p>
 
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">conversation</span></div>
-                    <pre><span class="c">User:</span>  Deploy the latest main branch to production and show me the release list.
+                    <pre><span class="c">User:</span>  Is the app healthy? Any errors in the log?
 
-<span class="c">Claude:</span> Running deploy and listing releases...
+<span class="c">Claude:</span> <span class="c">[calls MCP health tool]</span> Status: healthy — all checks OK.
+         <span class="c">[calls MCP logs tool]</span> No errors in the last 50 lines.
 
-<span class="p">$</span> cipi deploy myapp
-<span class="c"># → Deployer runs, zero-downtime release created</span>
+<span class="c">User:</span>  Deploy the latest main branch to production.
 
-<span class="p">$</span> cipi deploy myapp --releases
-<span class="c"># → lists last 5 releases with timestamps
+<span class="c">Claude:</span> <span class="c">[calls MCP deploy tool]</span> Deploy queued — Deployer will run within 1 minute.
 
-User:</span>  The last deploy broke the login page. Roll back.
+<span class="c">User:</span>  The last deploy broke the login page. Roll back.
 
-<span class="c">Claude:</span>
+<span class="c">Claude:</span> Rolling back via SSH...
 <span class="p">$</span> cipi deploy myapp --rollback
 <span class="c"># → previous release restored in seconds</span></pre>
                 </div>
 
-                <p>For <strong>Claude Desktop</strong>, the cleanest integration is through an <strong>MCP
-                        server</strong> (Model Context Protocol) that exposes Cipi operations as typed tools. Claude can
-                    then invoke them by name without composing raw shell strings.</p>
+                <p>In <strong>VS Code</strong>, add the Cipi MCP server to <code>.vscode/mcp.json</code> (or your user
+                    profile) and use GitHub Copilot in agent mode. The tools are available in Chat — no bridge needed.
+                </p>
+
+                <p>For <strong>Claude Desktop</strong>, the built-in MCP endpoint works through the
+                    <code>mcp-remote</code> bridge. Run <code>php artisan cipi:mcp</code> on the server to get the
+                    ready-to-paste configuration snippet. Claude Desktop can then answer questions like "What's the
+                    migration status?" or "Clear the cache and deploy" as natural conversation, calling the typed tools
+                    automatically.
+                </p>
+
+                <p>If you need <strong>server-level</strong> operations beyond what the MCP tools expose (e.g.
+                    <code>cipi app list</code>, <code>cipi db backup</code>, <code>cipi status</code>), you can still
+                    build a custom MCP server over SSH. Here is a minimal example:
+                </p>
 
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">typescript</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
-                    <pre><span class="c">// cipi-mcp-server.ts — minimal MCP server wrapping Cipi over SSH</span>
+                    <pre><span class="c">// cipi-mcp-server.ts — custom MCP server wrapping Cipi CLI over SSH</span>
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { NodeSSH } from "node-ssh";
@@ -3349,9 +3885,6 @@ await server.connect(new StdioServerTransport());</pre>
   }
 }</pre>
                 </div>
-
-                <p>Claude Desktop can now answer "What apps are running on my server?" or "Deploy acmeco and back up the
-                    database first" as natural conversation, calling the typed tools automatically.</p>
 
                 <h3>OpenAI — function calling</h3>
                 <p>The OpenAI API's tool/function calling maps directly onto Cipi commands. Define each operation as a
@@ -3616,12 +4149,38 @@ Rules:
                         <line x1="12" y1="8" x2="12" y2="12" />
                         <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
-                    <div>The MCP and OpenAI examples above are starting points. The same pattern applies to any AI
-                        framework with tool/function support: LangChain, LlamaIndex, CrewAI, AutoGen, Google Gemini
-                        function calling, Mistral tool use, or local models via Ollama with tool support. As long as the
-                        agent can invoke a shell command or an SSH call, it can fully automate a Cipi-managed server.
+                    <div>For most use cases, the <strong>built-in MCP server</strong> in
+                        <code>cipi-agent</code> is the fastest path: install the package, configure the Bearer token in
+                        your AI client, and you are done — no SSH keys, no custom code. The SSH-based MCP server and
+                        OpenAI examples above are useful when you need server-level CLI operations or want to integrate
+                        with other AI frameworks (LangChain, LlamaIndex, CrewAI, AutoGen, Google Gemini function
+                        calling, Mistral tool use, local models via Ollama).
                     </div>
                 </div>
+            </div>
+
+            <div class="doc-section" id="redis">
+                <h2>Redis</h2>
+                <p><strong>Redis</strong> is an in-memory data store that Cipi installs as part of the default stack (from version 4.0.4). It excels at caching, session storage, message queues, real-time broadcasting, and rate limiting.</p>
+                <h3>System configuration</h3>
+                <p>Redis binds to <code>localhost</code> only, uses a password, and runs as a system service. Credentials (user, password) are in <code>/etc/cipi/server.json</code>. Host: 127.0.0.1, Port: 6379.</p>
+                <h3>Laravel integration</h3>
+                <p>Add these variables to your <code>.env</code> via <code>cipi app env myapp</code>:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">env</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="n">REDIS_HOST</span><span class="o">=</span><span class="s">127.0.0.1</span>
+<span class="n">REDIS_PASSWORD</span><span class="o">=</span><span class="s">your-password-from-server-json</span>
+<span class="n">REDIS_PORT</span><span class="o">=</span><span class="s">6379</span></pre>
+                </div>
+                <p>Then set the drivers for each use case:</p>
+                <ul>
+                    <li><strong>Cache</strong> — <code>CACHE_STORE=redis</code></li>
+                    <li><strong>Session</strong> — <code>SESSION_DRIVER=redis</code></li>
+                    <li><strong>Queue</strong> — <code>QUEUE_CONNECTION=redis</code> (then <code>cipi worker restart myapp</code>)</li>
+                    <li><strong>Broadcasting</strong> — <code>BROADCAST_CONNECTION=redis</code></li>
+                </ul>
+                <p>Install the <code>phpredis</code> PHP extension for best performance, or use <code>predis/predis</code> as a pure-PHP fallback.</p>
             </div>
 
             <div class="doc-section" id="self-update">
@@ -4087,7 +4646,7 @@ Rules:
                 <h2>Cipi vs alternatives</h2>
                 <p>There are many tools for provisioning and managing web servers. This page explains where Cipi sits in
                     that landscape and why you might — or might not — choose it over each category. The comparison is
-                    focused on three axes: <strong>Laravel-native tooling</strong>, <strong>CLI-first
+                    focused on three axes: <strong>AI integration (MCP server)</strong>, <strong>CLI-first
                         automation</strong>, and <strong>total cost of ownership</strong>.</p>
 
                 <div class="callout info">
@@ -4098,8 +4657,8 @@ Rules:
                         <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
                     <div>Cipi's core proposition: <strong>free forever, MIT open source, Laravel-only, CLI-first,
-                            self-contained on your VPS</strong>. It does one thing and does it well — it does not try to
-                        be a generic hosting panel, a SaaS platform, or a multi-stack tool.</div>
+                            AI-ready with built-in MCP server, self-contained on your VPS</strong>. It does one thing and does it well — it does not try to
+                        be a generic hosting panel, a SaaS platform, or a multi-stack tool. Cipi is the only server panel with native AI integration via its MCP server, enabling seamless management from any AI-powered IDE or agent.</div>
                 </div>
 
                 <!-- Quick overview table -->
@@ -4112,7 +4671,7 @@ Rules:
                                     Tool</th>
                                 <th
                                     style="text-align:center;padding:0.6rem 0.5rem;color:var(--text-muted);font-weight:600;">
-                                    Laravel native</th>
+                                    AI ready (MCP)</th>
                                 <th
                                     style="text-align:center;padding:0.6rem 0.5rem;color:var(--text-muted);font-weight:600;">
                                     CLI / automation</th>
@@ -4160,10 +4719,11 @@ Rules:
                             <tr style="border-bottom:1px solid var(--border);">
                                 <td style="padding:0.55rem 1rem;">Laravel Forge</td>
                                 <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
-                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
                                         <circle cx="8" cy="8" r="6.25" />
-                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
                                     </svg></td>
                                 <td style="text-align:center;padding:0.55rem 0.5rem;"><span
                                         style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="16"
@@ -4194,10 +4754,11 @@ Rules:
                             <tr style="border-bottom:1px solid var(--border);">
                                 <td style="padding:0.55rem 1rem;">Ploi</td>
                                 <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
-                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
                                         <circle cx="8" cy="8" r="6.25" />
-                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
                                     </svg></td>
                                 <td style="text-align:center;padding:0.55rem 0.5rem;"><span
                                         style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="16"
@@ -4227,14 +4788,13 @@ Rules:
                             </tr>
                             <tr style="border-bottom:1px solid var(--border);">
                                 <td style="padding:0.55rem 1rem;">moss.sh</td>
-                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
-                                        style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="16"
-                                            height="16" viewBox="0 0 16 16" fill="none" stroke="#f59e0b"
-                                            stroke-width="1.5" stroke-linecap="round">
-                                            <circle cx="8" cy="8" r="6.25" />
-                                            <line x1="5.5" y1="8" x2="10.5" y2="8" />
-                                        </svg><span style="font-size:0.8rem;color:var(--text-muted);">generic
-                                            PHP</span></span></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
                                 <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
                                         viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
                                         stroke-linecap="round">
@@ -4260,14 +4820,13 @@ Rules:
                             </tr>
                             <tr style="border-bottom:1px solid var(--border);">
                                 <td style="padding:0.55rem 1rem;">RunCloud</td>
-                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
-                                        style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="16"
-                                            height="16" viewBox="0 0 16 16" fill="none" stroke="#f59e0b"
-                                            stroke-width="1.5" stroke-linecap="round">
-                                            <circle cx="8" cy="8" r="6.25" />
-                                            <line x1="5.5" y1="8" x2="10.5" y2="8" />
-                                        </svg><span style="font-size:0.8rem;color:var(--text-muted);">generic
-                                            PHP</span></span></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
                                 <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
                                         viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
                                         stroke-linecap="round">
@@ -4295,14 +4854,13 @@ Rules:
                             </tr>
                             <tr style="border-bottom:1px solid var(--border);">
                                 <td style="padding:0.55rem 1rem;">CloudPanel</td>
-                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
-                                        style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="16"
-                                            height="16" viewBox="0 0 16 16" fill="none" stroke="#f59e0b"
-                                            stroke-width="1.5" stroke-linecap="round">
-                                            <circle cx="8" cy="8" r="6.25" />
-                                            <line x1="5.5" y1="8" x2="10.5" y2="8" />
-                                        </svg><span style="font-size:0.8rem;color:var(--text-muted);">generic
-                                            PHP</span></span></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
                                 <td style="text-align:center;padding:0.55rem 0.5rem;"><span
                                         style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="16"
                                             height="16" viewBox="0 0 16 16" fill="none" stroke="#f59e0b"
@@ -4450,16 +5008,13 @@ Rules:
                             </tr>
                             <tr>
                                 <td style="padding:0.55rem 1rem;">GridPane / xCloud / ServerAvatar</td>
-                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
-                                        style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="16"
-                                            height="16" viewBox="0 0 16 16" fill="none" stroke="#94a3b8"
-                                            stroke-width="1.5" stroke-linecap="round">
-                                            <circle cx="8" cy="8" r="6.25" />
-                                            <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
-                                            <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
-                                        </svg><span
-                                            style="font-size:0.8rem;color:var(--text-muted);">WP-focused</span></span>
-                                </td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
                                 <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
                                         viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
                                         stroke-linecap="round">
@@ -4749,7 +5304,7 @@ Rules:
             <span>Made with ❤️ by <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> — Open source, MIT
                 Licensed</span>
             <ul class="footer-links">
-                <li><a href="https://github.com/andreapollastri/ssh-connection-manager" target="_blank">Try SSH
+                <li><a href="https://conn.web.ap.it" target="_blank">Try SSH
                         Connection Manager with Cipi</a></li>
             </ul>
         </div>
@@ -4824,6 +5379,10 @@ Rules:
         }
     </script>
 
+    <!-- 100% privacy-first analytics -->
+    <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt=""
+            referrerpolicy="no-referrer-when-downgrade" /></noscript>
 </body>
 
 </html>

@@ -7,6 +7,60 @@
     <title>Cipi — Easy Laravel Deployments</title>
     <meta name="description"
         content="The open-source deploy CLI exclusively for Laravel. One command installs a complete production stack on any Ubuntu VPS.">
+    <meta name="keywords"
+        content="Laravel deployment, deploy CLI, Laravel VPS, open source deploy tool, Ubuntu server Laravel, Laravel DevOps, cipi, PHP deployment">
+    <meta name="author" content="Andrea Pollastri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cipi.sh/">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cipi">
+    <meta property="og:url" content="https://cipi.sh/">
+    <meta property="og:title" content="Cipi — Easy Laravel Deployments">
+    <meta property="og:description"
+        content="The open-source deploy CLI exclusively for Laravel. One command installs a complete production stack on any Ubuntu VPS.">
+    <meta property="og:image" content="https://cipi.sh/og.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@cipi_sh">
+    <meta name="twitter:title" content="Cipi — Easy Laravel Deployments">
+    <meta name="twitter:description"
+        content="The open-source deploy CLI exclusively for Laravel. One command installs a complete production stack on any Ubuntu VPS.">
+    <meta name="twitter:image" content="https://cipi.sh/og.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Cipi",
+      "url": "https://cipi.sh/",
+      "description": "The open-source deploy CLI exclusively for Laravel. One command installs a complete production stack on any Ubuntu VPS.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Ubuntu",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Andrea Pollastri",
+        "url": "https://github.com/andreapollastri"
+      },
+      "codeRepository": "https://github.com/andreapollastri/cipi",
+      "license": "https://opensource.org/licenses/MIT",
+      "sameAs": [
+        "https://github.com/andreapollastri/cipi"
+      ]
+    }
+    </script>
+
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
     <link rel="icon" id="favicon"
         href="data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M16.22,35.9c-3.14,0-6.9,1.5-7.3,5.68a.92.92,0,0,0,.91,1h11.97a.9.9,0,0,0,.9-.94C22.62,39.8,21.79,35.9,16.22,35.9Z'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M18.05,20.56c-1.35,1.04-7.37,7.51-4.36,15.67'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M31.78,35.9c3.14,0,6.9,1.5,7.3,5.68a.92.92,0,0,1-.91,1h-11.97a.9.9,0,0,1-.9-.94C25.38,39.8,26.21,35.9,31.78,35.9Z'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M35.01,36.46c3.18-2.84,2.75-7.52,2.75-8.78,2.89.82,5.03,2.97,5.59,2.17,1.37-1.95-7.52-7.55-7.69-10.9C35.5,15.67,35.17,5.42,24,5.42S12.5,15.67,12.34,18.95c-.17,3.35-9.07,8.95-7.69,10.9.56.8,2.7-1.35,5.59-2.17,0,1.25-.44,5.93,2.75,8.78'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M29.28,19.83c1.93,1.5,8.04,8.24,5.03,16.4'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M24,24.84l3.95-4.28c-.39-1.01-1.71-1.93-3.95-1.93s-3.56.92-3.95,1.93Z'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M20.05,20.56c-3.42.51-3.91-2.72-3.91-4.7,0-2.7,1.45-4.44,3.91-4.44s3.74,2.33,3.74,3.92a3.85,3.85,0,0,1-.61,2.34'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M27.72,20.13c.68.05,3.95-.39,3.95-3.33s-1.76-3.76-4.12-3.76a3.79,3.79,0,0,0-3.82,2.67'/%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M22.7,41.48a6.84,6.84,0,0,0,2.61,0'/%3E%3Ccircle cx='22.16' cy='16.59' r='0.75' fill='%23000'/%3E%3Ccircle cx='25.55' cy='16.59' r='0.75' fill='%23000'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -838,8 +892,8 @@
         /* ── AI / MCP Section ── */
         .ai-section {
             background: var(--code-bg);
-            border-top: 1px solid rgba(255,255,255,0.04);
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             overflow: hidden;
             position: relative;
         }
@@ -848,7 +902,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 60% 60% at 80% 50%, rgba(151,188,98,0.07) 0%, transparent 70%);
+            background: radial-gradient(ellipse 60% 60% at 80% 50%, rgba(151, 188, 98, 0.07) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -887,7 +941,7 @@
 
         .ai-desc {
             font-size: 1rem;
-            color: rgba(228,228,231,0.65);
+            color: rgba(228, 228, 231, 0.65);
             line-height: 1.8;
             margin-bottom: 36px;
         }
@@ -905,7 +959,7 @@
             align-items: center;
             gap: 10px;
             font-size: 0.9rem;
-            color: rgba(228,228,231,0.8);
+            color: rgba(228, 228, 231, 0.8);
         }
 
         .ai-capabilities li svg {
@@ -926,9 +980,9 @@
             gap: 6px;
             font-size: 0.75rem;
             font-family: var(--font-mono);
-            color: rgba(228,228,231,0.6);
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
+            color: rgba(228, 228, 231, 0.6);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 5px 12px;
             letter-spacing: 0.02em;
@@ -937,8 +991,8 @@
 
         .ai-pill:hover {
             color: var(--code-accent);
-            border-color: rgba(151,188,98,0.3);
-            background: rgba(151,188,98,0.06);
+            border-color: rgba(151, 188, 98, 0.3);
+            background: rgba(151, 188, 98, 0.06);
         }
 
         .ai-cta {
@@ -949,26 +1003,98 @@
             font-weight: 500;
             color: var(--code-accent);
             text-decoration: none;
-            border: 1px solid rgba(151,188,98,0.35);
+            border: 1px solid rgba(151, 188, 98, 0.35);
             border-radius: 8px;
             padding: 12px 24px;
             transition: all 0.25s;
-            background: rgba(151,188,98,0.06);
+            background: rgba(151, 188, 98, 0.06);
         }
 
         .ai-cta:hover {
-            background: rgba(151,188,98,0.12);
-            border-color: rgba(151,188,98,0.6);
+            background: rgba(151, 188, 98, 0.12);
+            border-color: rgba(151, 188, 98, 0.6);
             transform: translateY(-1px);
+        }
+
+        .ai-mcp-box {
+            background: linear-gradient(135deg, rgba(151, 188, 98, 0.06) 0%, rgba(151, 188, 98, 0.02) 100%);
+            border: 1px solid rgba(151, 188, 98, 0.2);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin-bottom: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-mcp-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--code-accent), transparent);
+        }
+
+        .ai-mcp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--code-accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .ai-mcp-badge svg {
+            flex-shrink: 0;
+        }
+
+        .ai-mcp-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: rgba(228, 228, 231, 0.92);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .ai-mcp-subtitle {
+            font-size: 0.82rem;
+            color: rgba(228, 228, 231, 0.5);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .ai-mcp-install {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: rgba(228, 228, 231, 0.8);
+            overflow-x: auto;
+        }
+
+        .ai-mcp-install .prompt {
+            color: var(--code-accent);
+            user-select: none;
         }
 
         /* Chat panel */
         .ai-chat-panel {
             background: #0C0C0F;
-            border: 1px solid rgba(255,255,255,0.07);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
         }
 
         .ai-chat-bar {
@@ -976,8 +1102,8 @@
             align-items: center;
             gap: 8px;
             padding: 14px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .ai-chat-dot {
@@ -990,7 +1116,7 @@
             margin-left: 6px;
             font-family: var(--font-mono);
             font-size: 0.7rem;
-            color: rgba(228,228,231,0.35);
+            color: rgba(228, 228, 231, 0.35);
             letter-spacing: 0.05em;
         }
 
@@ -1024,36 +1150,36 @@
         }
 
         .ai-msg-avatar.user {
-            background: rgba(151,188,98,0.15);
+            background: rgba(151, 188, 98, 0.15);
             color: var(--code-accent);
-            border: 1px solid rgba(151,188,98,0.25);
+            border: 1px solid rgba(151, 188, 98, 0.25);
         }
 
         .ai-msg-avatar.claude {
-            background: rgba(210,120,80,0.15);
+            background: rgba(210, 120, 80, 0.15);
             color: #D2784A;
-            border: 1px solid rgba(210,120,80,0.25);
+            border: 1px solid rgba(210, 120, 80, 0.25);
         }
 
         .ai-msg-avatar.tool {
-            background: rgba(100,140,230,0.12);
+            background: rgba(100, 140, 230, 0.12);
             color: #7DA4F0;
-            border: 1px solid rgba(100,140,230,0.22);
+            border: 1px solid rgba(100, 140, 230, 0.22);
         }
 
         .ai-msg-text {
-            color: rgba(228,228,231,0.75);
+            color: rgba(228, 228, 231, 0.75);
             flex: 1;
         }
 
         .ai-msg-text strong {
-            color: rgba(228,228,231,0.95);
+            color: rgba(228, 228, 231, 0.95);
             font-weight: 500;
         }
 
         .ai-msg-text code {
             color: var(--code-accent);
-            background: rgba(151,188,98,0.08);
+            background: rgba(151, 188, 98, 0.08);
             padding: 1px 5px;
             border-radius: 3px;
             font-size: 0.75rem;
@@ -1063,8 +1189,8 @@
             display: block;
             margin-top: 6px;
             padding: 8px 12px;
-            background: rgba(100,140,230,0.07);
-            border-left: 2px solid rgba(100,140,230,0.35);
+            background: rgba(100, 140, 230, 0.07);
+            border-left: 2px solid rgba(100, 140, 230, 0.35);
             border-radius: 0 4px 4px 0;
             color: #7DA4F0;
             font-size: 0.73rem;
@@ -1074,11 +1200,111 @@
             display: block;
             margin-top: 6px;
             padding: 8px 12px;
-            background: rgba(151,188,98,0.06);
-            border-left: 2px solid rgba(151,188,98,0.3);
+            background: rgba(151, 188, 98, 0.06);
+            border-left: 2px solid rgba(151, 188, 98, 0.3);
             border-radius: 0 4px 4px 0;
             color: var(--code-accent);
             font-size: 0.73rem;
+        }
+
+        .ai-msg-text .tool-log {
+            display: block;
+            margin-top: 6px;
+            padding: 8px 12px;
+            background: rgba(255, 95, 87, 0.06);
+            border-left: 2px solid rgba(255, 95, 87, 0.35);
+            border-radius: 0 4px 4px 0;
+            color: #FF6B6B;
+            font-size: 0.73rem;
+        }
+
+        .ai-chat-tabs {
+            display: flex;
+            gap: 6px;
+            padding: 14px 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .ai-chat-tab {
+            padding: 5px 12px;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: rgba(228, 228, 231, 0.4);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            letter-spacing: 0.03em;
+        }
+
+        .ai-chat-tab:hover {
+            color: rgba(228, 228, 231, 0.7);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .ai-chat-tab.active {
+            color: var(--code-accent);
+            background: rgba(151, 188, 98, 0.1);
+            border-color: rgba(151, 188, 98, 0.3);
+        }
+
+        #aiChatBody {
+            min-height: 280px;
+        }
+
+        #aiChatBody .ai-msg {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        #aiChatBody .ai-msg.visible {
+            animation: aiMsgIn 0.4s ease forwards;
+        }
+
+        @keyframes aiMsgIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ai-typing-indicator {
+            display: inline-flex;
+            gap: 4px;
+            padding: 4px 0;
+        }
+
+        .ai-typing-indicator span {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(210, 120, 80, 0.5);
+            animation: typingBounce 1.2s infinite;
+        }
+
+        .ai-typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .ai-typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingBounce {
+
+            0%,
+            60%,
+            100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+
+            30% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         @media (max-width: 900px) {
@@ -1699,10 +1925,11 @@
             <div class="hero-content fade-in">
                 <div class="hero-badge">
                     <span class="dot"></span>
-                    v4.0.0 — MIT Licensed — 1.1k Stars
+                    v4.0.4 — MIT Licensed — 1.1k Stars
                 </div>
                 <h1>Easy Laravel <em>Deployments</em></h1>
-                <p>The open-source CLI built exclusively for Laravel. One command installs a complete production stack.
+                <p>The open-source CLI built exclusively for Laravel, with AI and MCP integration. One command installs
+                    a complete production stack.
                     One command creates an isolated app with its own database, workers, SSL, and zero-downtime deploys.
                 </p>
                 <div class="hero-actions">
@@ -1725,7 +1952,7 @@
                 <div class="install-block">
                     <div class="install-label">Install on any Ubuntu 24.04+ VPS</div>
                     <div class="install-cmd">
-                        <code><span class="prompt">$</span> wget -O - https://raw.githubusercontent.com/andreapollastri/cipi/refs/heads/latest/install.sh | bash</code>
+                        <code><span class="prompt">$</span> wget -O - https://cipi.sh/setup.sh | bash</code>
                         <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
                     </div>
                 </div>
@@ -1770,8 +1997,16 @@
                     <p>Auto-tuned to your server's RAM. Dedicated database per app with isolated users.</p>
                 </div>
                 <div class="stack-item">
-                    <svg class="stack-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/>
+                    <svg class="stack-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v4" />
+                        <path d="m16.2 7.8 2.9-2.9" />
+                        <path d="M18 12h4" />
+                        <path d="m16.2 16.2 2.9 2.9" />
+                        <path d="M12 18v4" />
+                        <path d="m4.9 19.1 2.9-2.9" />
+                        <path d="M2 12h4" />
+                        <path d="m4.9 4.9 2.9 2.9" />
                     </svg>
                     <h3>Supervisor Workers</h3>
                     <p>Per-app queue workers with CLI management. Add, scale, and monitor queues.</p>
@@ -1950,7 +2185,9 @@
                 <div class="feature-card">
                     <span class="feature-tag">Talks with agents</span>
                     <h3>AI Agent Ready</h3>
-                    <p>Because Cipi is CLI-first, any AI agent with SSH access can deploy, roll back, back up, and manage your server with natural language. Works with Claude, OpenAI, OpenClaw, and any framework that supports tool use.</p>
+                    <p>Cipi includes a built-in MCP server. AI agents can deploy, roll back,
+                        back up, and manage your server through natural language — no SSH required. Works with Claude,
+                        VS Code, Cursor, and more...</p>
                 </div>
                 <div class="feature-card">
                     <span class="feature-tag">Secure by design</span>
@@ -2033,45 +2270,80 @@
                 <!-- Left: copy -->
                 <div>
                     <span class="ai-label">AI-native</span>
-                    <h2 class="ai-headline">Your CLI,<br>your agent's<br><em>superpower.</em></h2>
-                    <p class="ai-desc">Cipi is CLI-first by design. That means any AI agent with SSH access can operate your entire Laravel infrastructure — deploy, rollback, backup, manage databases and queues — without any GUI, API key, or custom integration.</p>
+                    <h2 class="ai-headline">From prompt<br>to <em>production.</em></h2>
+                    <p class="ai-desc">Cipi ships with a built-in <strong style="color:rgba(228,228,231,0.9)">MCP
+                            server</strong> ready to use.
+                        Install the <code style="color:var(--code-accent)">cipi-agent</code> package, point your AI
+                        client to the endpoint,
+                        and your assistant can deploy, rollback, read logs, and run Artisan commands — all over HTTPS,
+                        no SSH required.</p>
+
+                    <div class="ai-mcp-box">
+                        <div class="ai-mcp-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="4" />
+                                <path d="M9 12l2 2 4-4" />
+                            </svg>
+                            MCP Server included
+                        </div>
+                        <div class="ai-mcp-title">One package. Six typed tools. Zero config.</div>
+                        <div class="ai-mcp-subtitle">
+                            <code>cipi-agent</code> exposes <strong>health</strong>, <strong>app_info</strong>,
+                            <strong>deploy</strong>,
+                            <strong>logs</strong>, <strong>db_query</strong> and <strong>artisan</strong> as MCP tools —
+                            ready for Cursor,
+                            VS Code, and Claude Desktop.
+                        </div>
+                        <div class="ai-mcp-install">
+                            <span class="prompt">$</span> composer require andreapollastri/cipi-agent
+                        </div>
+                    </div>
 
                     <ul class="ai-capabilities">
                         <li>
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6.25"/><polyline points="4.75,8 6.5,9.75 11.25,5.5"/></svg>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="8" cy="8" r="6.25" />
+                                <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                            </svg>
+                            Works over HTTPS with Bearer token — no SSH keys needed
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="8" cy="8" r="6.25" />
+                                <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                            </svg>
                             Deploy, rollback, and run migrations via natural language
                         </li>
                         <li>
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6.25"/><polyline points="4.75,8 6.5,9.75 11.25,5.5"/></svg>
-                            Expose every Cipi command as a typed MCP tool in seconds
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="8" cy="8" r="6.25" />
+                                <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                            </svg>
+                            Debug production issues from the comfort of your AI assistant
                         </li>
                         <li>
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6.25"/><polyline points="4.75,8 6.5,9.75 11.25,5.5"/></svg>
-                            Autonomous deploy loops: backup → release → health check → rollback
-                        </li>
-                        <li>
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6.25"/><polyline points="4.75,8 6.5,9.75 11.25,5.5"/></svg>
-                            Works with any framework that supports SSH or tool use
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="8" cy="8" r="6.25" />
+                                <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                            </svg>
+                            Integrate all your servers with your AI automation pipeline
                         </li>
                     </ul>
 
                     <div class="ai-frameworks">
-                        <span class="ai-pill">Claude / MCP</span>
-                        <span class="ai-pill">OpenAI functions</span>
+                        <span class="ai-pill">Cursor</span>
+                        <span class="ai-pill">VS Code</span>
+                        <span class="ai-pill">Claude</span>
+                        <span class="ai-pill">OpenAI</span>
                         <span class="ai-pill">OpenClaw</span>
-                        <span class="ai-pill">LangChain</span>
-                        <span class="ai-pill">LlamaIndex</span>
-                        <span class="ai-pill">CrewAI</span>
-                        <span class="ai-pill">AutoGen</span>
                         <span class="ai-pill">Gemini</span>
-                        <span class="ai-pill">Mistral</span>
-                        <span class="ai-pill">Ollama</span>
+                        <span class="ai-pill">And more...</span>
                     </div>
-
-                    <a href="docs.html#cipi-and-ai" class="ai-cta">
-                        Read the AI integration guide
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
                 </div>
 
                 <!-- Right: simulated Claude + MCP conversation -->
@@ -2082,50 +2354,15 @@
                         <div class="ai-chat-dot" style="background:#28C840;"></div>
                         <span class="ai-chat-bar-title">Claude — cipi MCP server</span>
                     </div>
-                    <div class="ai-chat-body">
-
-                        <div class="ai-msg">
-                            <div class="ai-msg-avatar user">you</div>
-                            <div class="ai-msg-text">
-                                <strong>Deploy myapp to production. Make sure migrations ran and roll back if the health check fails.</strong>
-                            </div>
-                        </div>
-
-                        <div class="ai-msg">
-                            <div class="ai-msg-avatar claude">AI</div>
-                            <div class="ai-msg-text">
-                                Taking a local DB snapshot before releasing.
-                                <span class="tool-call">→ cipi_db_backup({ app: "myapp" })</span>
-                                <span class="tool-result">✓ Snapshot saved — myapp_20260303_091201.sql.gz</span>
-                            </div>
-                        </div>
-
-                        <div class="ai-msg">
-                            <div class="ai-msg-avatar claude">AI</div>
-                            <div class="ai-msg-text">
-                                Deploying.
-                                <span class="tool-call">→ cipi_deploy({ app: "myapp" })</span>
-                                <span class="tool-result">✓ Release 14 live — symlink swapped, workers restarted</span>
-                            </div>
-                        </div>
-
-                        <div class="ai-msg">
-                            <div class="ai-msg-avatar claude">AI</div>
-                            <div class="ai-msg-text">
-                                Checking migration status.
-                                <span class="tool-call">→ cipi_artisan({ app: "myapp", cmd: "migrate:status" })</span>
-                                <span class="tool-result">✓ All migrations up-to-date</span>
-                            </div>
-                        </div>
-
-                        <div class="ai-msg">
-                            <div class="ai-msg-avatar claude">AI</div>
-                            <div class="ai-msg-text" style="color:rgba(228,228,231,0.55); font-size:0.72rem;">
-                                All good. Release 14 is live at <code>myapp.example.com</code>. Snapshot is available for instant restore if needed.
-                            </div>
-                        </div>
-
+                    <div class="ai-chat-tabs" id="aiChatTabs">
+                        <button class="ai-chat-tab active" data-scene="0">Deploy</button>
+                        <button class="ai-chat-tab" data-scene="1">Debug</button>
+                        <button class="ai-chat-tab" data-scene="2">Backup</button>
+                        <button class="ai-chat-tab" data-scene="3">Status</button>
+                        <button class="ai-chat-tab" data-scene="4">Queue</button>
+                        <button class="ai-chat-tab" data-scene="5">And more...</button>
                     </div>
+                    <div class="ai-chat-body" id="aiChatBody"></div>
                 </div>
 
             </div>
@@ -2148,6 +2385,7 @@
                         <button class="commands-tab" onclick="switchTab(event, 'tab-deploy')">Deploy</button>
                         <button class="commands-tab" onclick="switchTab(event, 'tab-workers')">Workers</button>
                         <button class="commands-tab" onclick="switchTab(event, 'tab-db')">Database</button>
+                        <button class="commands-tab" onclick="switchTab(event, 'tab-auth')">Auth</button>
                         <button class="commands-tab" onclick="switchTab(event, 'tab-backup')">Backup</button>
                         <button class="commands-tab" onclick="switchTab(event, 'tab-ssl')">SSL</button>
                         <button class="commands-tab" onclick="switchTab(event, 'tab-php')">PHP</button>
@@ -2190,6 +2428,12 @@
                             token</span></div>
                     <div class="cmd-row"><code>cipi deploy &lt;app&gt; --unlock</code><span>Remove a stuck deploy
                             lock</span></div>
+                    <div class="cmd-row"><code>cipi deploy &lt;app&gt; --trust-host=git.example.com</code><span>Trust
+                            custom Git server fingerprint</span></div>
+                    <div class="cmd-row">
+                        <code>cipi deploy &lt;app&gt; --trust-host=git.example.com:2222</code><span>Trust custom Git
+                            server on non-standard port</span>
+                    </div>
                 </div>
                 <div class="commands-content" id="tab-workers">
                     <div class="cmd-row"><code>cipi worker add &lt;app&gt; --queue=Q --processes=N</code><span>Add
@@ -2211,10 +2455,22 @@
                     <div class="cmd-row"><code>cipi db password &lt;n&gt;</code><span>Regenerate password</span></div>
                     <div class="cmd-row"><code>cipi db delete &lt;n&gt;</code><span>Delete database</span></div>
                 </div>
+                <div class="commands-content" id="tab-auth">
+                    <div class="cmd-row"><code>cipi auth create &lt;app&gt;</code><span>Create auth.json in shared/ and
+                            register in Deployer</span></div>
+                    <div class="cmd-row"><code>cipi auth edit &lt;app&gt;</code><span>Edit auth.json in $EDITOR,
+                            validate JSON on close</span></div>
+                    <div class="cmd-row"><code>cipi auth show &lt;app&gt;</code><span>Print auth.json formatted with
+                            jq</span></div>
+                    <div class="cmd-row"><code>cipi auth delete &lt;app&gt;</code><span>Delete auth.json and remove from
+                            Deployer</span></div>
+                </div>
                 <div class="commands-content" id="tab-backup">
                     <div class="cmd-row"><code>cipi backup configure</code><span>Configure S3 credentials</span></div>
-                    <div class="cmd-row"><code>cipi backup run [app]</code><span>Backup all or single app</span></div>
-                    <div class="cmd-row"><code>cipi backup list [app]</code><span>List backups</span></div>
+                    <div class="cmd-row"><code>cipi backup run [app]</code><span>Backup DB + shared/ to S3</span></div>
+                    <div class="cmd-row"><code>cipi backup list [app]</code><span>List S3 backups</span></div>
+                    <div class="cmd-row"><code>cipi backup prune [app] --weeks=N</code><span>Delete backups older than N
+                            weeks</span></div>
                 </div>
                 <div class="commands-content" id="tab-ssl">
                     <div class="cmd-row"><code>cipi ssl install &lt;app&gt;</code><span>Install Let's Encrypt SSL</span>
@@ -2286,6 +2542,7 @@
                     <span class="provider-tag">Google Cloud</span>
                     <span class="provider-tag">OVH</span>
                     <span class="provider-tag">Scaleway</span>
+                    <span class="provider-tag">And more...</span>
                 </div>
             </div>
         </div>
@@ -2390,7 +2647,7 @@
                 <div class="cta-install-text">
                     <span class="prompt">$</span>
                     <span class="cmd-truncated">wget -O -
-                        https://raw.githubusercontent.com/andreapollastri/cipi/refs/heads/latest/install.sh |
+                        https://cipi.sh/setup.sh |
                         bash</span>
                 </div>
                 <button class="cta-copy-btn" onclick="copyCmd(this)">Copy</button>
@@ -2425,7 +2682,7 @@
                     Made with ❤️ by <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a>
                 </div>
                 <ul class="footer-links">
-                    <li><a href="https://github.com/andreapollastri/ssh-connection-manager" target="_blank">Try SSH
+                    <li><a href="https://conn.web.ap.it" target="_blank">Try SSH
                             Connection Manager with Cipi</a></li>
                 </ul>
             </div>
@@ -2483,7 +2740,7 @@
             });
         });
         function copyCmd(btn) {
-            const cmd = 'wget -O - https://raw.githubusercontent.com/andreapollastri/cipi/refs/heads/latest/install.sh | bash';
+            const cmd = 'wget -O - https://cipi.sh/setup.sh | bash';
             navigator.clipboard.writeText(cmd).then(() => {
                 btn.textContent = 'Copied!';
                 setTimeout(() => btn.textContent = 'Copy', 2000);
@@ -2508,6 +2765,133 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // ── AI Chat interactive demo ──
+        (function () {
+            var chatBody = document.getElementById('aiChatBody');
+            var chatTabs = document.getElementById('aiChatTabs');
+            if (!chatBody || !chatTabs) return;
+
+            var scenes = [
+                {
+                    messages: [
+                        { role: 'user', html: '<strong>Deploy myapp to production. Make sure migrations ran.</strong>' },
+                        { role: 'ai', html: 'Taking a safety snapshot first, then deploying.<span class="tool-call">→ cipi_deploy({ app: "myapp" })</span><span class="tool-result">✓ Release 14 live — zero-downtime swap complete</span>' },
+                        { role: 'ai', html: 'Verifying post-deploy health.<span class="tool-call">→ cipi_artisan({ app: "myapp", cmd: "migrate:status" })</span><span class="tool-result">✓ All migrations applied</span><span class="tool-call">→ cipi_health({ app: "myapp" })</span><span class="tool-result">✓ HTTP 200 — 48ms response time</span>' },
+                        { role: 'ai', html: 'All clear. Release 14 is live at <code>myapp.example.com</code>. DB snapshot saved for instant rollback if needed.', summary: true }
+                    ]
+                },
+                {
+                    messages: [
+                        { role: 'user', html: '<strong>Users report 500 errors on myapp. What\'s going on?</strong>' },
+                        { role: 'ai', html: 'Pulling the latest error logs.<span class="tool-call">→ cipi_logs({ app: "myapp", lines: 50 })</span><span class="tool-result">✓ 50 lines retrieved from laravel.log</span>' },
+                        { role: 'ai', html: 'Found the issue.<span class="tool-log">SQLSTATE[HY000] Too many connections — DatabaseManager.php:47</span>The connection pool is exhausted. Clearing stale config.<span class="tool-call">→ cipi_artisan({ app: "myapp", cmd: "config:clear" })</span><span class="tool-result">✓ Configuration cache cleared</span>' },
+                        { role: 'ai', html: 'Root cause: DB connection pool limit reached. Cache cleared and connections reset. Increase <code>DB_MAX_CONNECTIONS</code> in .env to prevent recurrence.', summary: true }
+                    ]
+                },
+                {
+                    messages: [
+                        { role: 'user', html: '<strong>Run a full backup of myapp before tonight\'s migration.</strong>' },
+                        { role: 'ai', html: 'Starting database backup now.<span class="tool-call">→ cipi_db_backup({ app: "myapp" })</span><span class="tool-result">✓ myapp_20260305_143022.sql.gz — 12.4 MB</span>' },
+                        { role: 'ai', html: 'Full backup complete and verified. Restore anytime with <code>cipi db restore myapp</code>. You\'re safe to proceed with the migration.', summary: true }
+                    ]
+                },
+                {
+                    messages: [
+                        { role: 'user', html: '<strong>Give me a full status report on myapp.</strong>' },
+                        { role: 'ai', html: 'Gathering health metrics and app details.<span class="tool-call">→ cipi_health({ app: "myapp" })</span><span class="tool-result">✓ HTTP 200 — 32ms — uptime 99.98%</span><span class="tool-call">→ cipi_app_info({ app: "myapp" })</span><span class="tool-result">✓ PHP 8.4 · Laravel 12 · myapp.example.com</span>' },
+                        { role: 'ai', html: 'myapp is healthy. SSL valid until Sep 2026. 3 queue workers active, 0 failed jobs, no pending migrations.', summary: true }
+                    ]
+                },
+                {
+                    messages: [
+                        { role: 'user', html: '<strong>Are there failed jobs? Retry them if so.</strong>' },
+                        { role: 'ai', html: 'Inspecting the queue.<span class="tool-call">→ cipi_artisan({ app: "myapp", cmd: "queue:failed" })</span><span class="tool-result">✓ 3 failed jobs found</span>' },
+                        { role: 'ai', html: 'Retrying all failed jobs now.<span class="tool-call">→ cipi_artisan({ app: "myapp", cmd: "queue:retry all" })</span><span class="tool-result">✓ 3 jobs pushed back to queue</span>' },
+                        { role: 'ai', html: '3 failed jobs retried successfully. Queue is processing normally — 142 jobs/min throughput.', summary: true }
+                    ]
+                },
+                {
+                    messages: [
+                        { role: 'ai', html: 'Hey! I\'m Cipi. How can I help you today?<br><br>I can deploy, rollback, read logs, run migrations, clear caches, manage queues, back up databases, check health, run any Artisan command... basically everything except making you coffee.<br><br>Although, if your server runs a smart coffee machine... <span class="tool-call">→ cipi_artisan({ app: "coffee", cmd: "brew --double-shot" })</span><span class="tool-result">✓ Espresso ready. You\'re welcome.</span>' }
+                    ]
+                }
+            ];
+
+            var current = 0;
+            var timer = null;
+            var busy = false;
+
+            function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+            async function renderScene(idx) {
+                if (busy) return;
+                busy = true;
+                current = idx;
+
+                chatTabs.querySelectorAll('.ai-chat-tab').forEach(function (t, i) {
+                    t.classList.toggle('active', i === idx);
+                });
+
+                chatBody.innerHTML = '';
+                var msgs = scenes[idx].messages;
+
+                for (var i = 0; i < msgs.length; i++) {
+                    var msg = msgs[i];
+
+                    if (msg.role === 'ai') {
+                        var typing = document.createElement('div');
+                        typing.className = 'ai-msg visible';
+                        typing.innerHTML = '<div class="ai-msg-avatar claude">AI</div><div class="ai-msg-text"><span class="ai-typing-indicator"><span></span><span></span><span></span></span></div>';
+                        chatBody.appendChild(typing);
+                        chatBody.scrollTop = chatBody.scrollHeight;
+                        await sleep(400 + Math.random() * 200);
+                        typing.remove();
+                    }
+
+                    var el = document.createElement('div');
+                    el.className = 'ai-msg';
+                    var avCls = msg.role === 'user' ? 'user' : 'claude';
+                    var avTxt = msg.role === 'user' ? 'you' : 'AI';
+                    var style = msg.summary ? ' style="color:rgba(228,228,231,0.55);font-size:0.72rem;"' : '';
+                    el.innerHTML = '<div class="ai-msg-avatar ' + avCls + '">' + avTxt + '</div><div class="ai-msg-text"' + style + '>' + msg.html + '</div>';
+                    chatBody.appendChild(el);
+                    await sleep(30);
+                    el.classList.add('visible');
+                    chatBody.scrollTop = chatBody.scrollHeight;
+
+                    if (i < msgs.length - 1) {
+                        await sleep(msg.role === 'user' ? 500 : 600);
+                    }
+                }
+
+                busy = false;
+            }
+
+            chatTabs.addEventListener('click', function (e) {
+                var tab = e.target.closest('.ai-chat-tab');
+                if (!tab || busy) return;
+                var idx = parseInt(tab.dataset.scene);
+                renderScene(idx);
+                scheduleNext();
+            });
+
+            function scheduleNext() {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    var next = (current + 1) % scenes.length;
+                    renderScene(next).then(scheduleNext);
+                }, 8000);
+            }
+
+            var chatObs = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) {
+                    renderScene(0).then(scheduleNext);
+                    chatObs.disconnect();
+                }
+            }, { threshold: 0.15 });
+            chatObs.observe(chatBody.closest('.ai-chat-panel'));
+        })();
 
         // ── Terminal demo ──
         (function () {
@@ -2696,6 +3080,10 @@
         })();
     </script>
 
+    <!-- 100% privacy-first analytics -->
+    <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt=""
+            referrerpolicy="no-referrer-when-downgrade" /></noscript>
 </body>
 
 </html>
