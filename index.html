@@ -1314,96 +1314,131 @@
             }
         }
 
-        /* ── Commands ── */
-        .commands-block {
-            margin-top: 56px;
+        /* ── API Section ── */
+        .api-section {
             background: var(--code-bg);
-            border-radius: var(--radius);
-            overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .commands-tabs-wrapper {
-            position: relative;
-        }
-
-        .commands-tabs-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 1px;
-            width: 48px;
-            background: linear-gradient(to right, transparent, var(--code-bg));
-            pointer-events: none;
-            border-radius: 0 var(--radius) 0 0;
-        }
-
-        .commands-tabs {
-            display: flex;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .commands-tabs::-webkit-scrollbar {
-            display: none;
-        }
-
-        .commands-tab {
-            padding: 14px 24px;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            background: none;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: color 0.2s;
-            border-bottom: 2px solid transparent;
-        }
-
-        .commands-tab:hover {
-            color: var(--code-text);
-        }
-
-        .commands-tab.active {
-            color: var(--code-accent);
-            border-bottom-color: var(--code-accent);
-        }
-
-        .commands-content {
-            padding: 24px 28px;
-            display: none;
-        }
-
-        .commands-content.active {
-            display: block;
-        }
-
-        .cmd-row {
+        .api-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            align-items: baseline;
+            gap: 72px;
+            align-items: center;
         }
 
-        .cmd-row:last-child {
-            border-bottom: none;
+        .api-label {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--code-accent);
+            margin-bottom: 12px;
         }
 
-        .cmd-row code {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
+        .api-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 300;
+            line-height: 1.2;
             color: var(--code-text);
+            margin-bottom: 20px;
         }
 
-        .cmd-row span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+        .api-headline em {
+            font-style: italic;
+            color: var(--code-accent);
+        }
+
+        .api-desc {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: rgba(228, 228, 231, 0.85);
+            margin-bottom: 32px;
+        }
+
+        .api-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--code-accent);
+            font-weight: 500;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .api-cta:hover {
+            opacity: 0.9;
+        }
+
+        .api-visual {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+        .api-visual-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 24px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .api-visual-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(151, 188, 98, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .api-visual-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(151, 188, 98, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .api-visual-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+            color: var(--code-accent);
+        }
+
+        .api-visual-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--code-text);
+            text-align: center;
+        }
+
+        .api-visual-sublabel {
+            font-size: 0.75rem;
+            color: rgba(228, 228, 231, 0.6);
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .api-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .api-visual {
+                max-width: 100%;
+            }
         }
 
         /* ── Docs CTA Banner ── */
@@ -1867,7 +1902,7 @@
                 <li><a href="#forwhom">Built for</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#ai-agents">AI</a></li>
-                <li><a href="#commands">Commands</a></li>
+                <li><a href="#api">API</a></li>
                 <li><a href="docs.html">Docs</a></li>
                 <li><a href="https://github.com/andreapollastri/cipi" target="_blank" class="btn-nav">GitHub</a></li>
             </ul>
@@ -1913,7 +1948,7 @@
             <li><a href="#forwhom">Built for</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#ai-agents">AI</a></li>
-            <li><a href="#commands">Commands</a></li>
+            <li><a href="#api">API</a></li>
             <li><a href="docs.html">Docs</a></li>
             <li><a href="https://github.com/andreapollastri/cipi" target="_blank" class="btn-nav-mobile">GitHub</a></li>
         </ul>
@@ -1925,7 +1960,7 @@
             <div class="hero-content fade-in">
                 <div class="hero-badge">
                     <span class="dot"></span>
-                    v4.0.4 — MIT Licensed — 1.1k Stars
+                    v4.0.6 — MIT Licensed — 1.1k Stars
                 </div>
                 <h1>Easy Laravel <em>Deployments</em></h1>
                 <p>The open-source CLI built exclusively for Laravel, with AI and MCP integration. One command installs
@@ -2369,161 +2404,6 @@
         </div>
     </section>
 
-    <!-- Commands -->
-    <section id="commands">
-        <div class="container">
-            <div class="fade-in">
-                <p class="section-label">CLI Reference</p>
-                <h2 class="section-title">One command for everything</h2>
-                <p class="section-desc">No GUI, no overhead. Manage your entire Laravel infrastructure from the
-                    terminal.</p>
-            </div>
-            <div class="commands-block fade-in">
-                <div class="commands-tabs-wrapper">
-                    <div class="commands-tabs">
-                        <button class="commands-tab active" onclick="switchTab(event, 'tab-apps')">Apps</button>
-                        <button class="commands-tab" onclick="switchTab(event, 'tab-deploy')">Deploy</button>
-                        <button class="commands-tab" onclick="switchTab(event, 'tab-workers')">Workers</button>
-                        <button class="commands-tab" onclick="switchTab(event, 'tab-db')">Database</button>
-                        <button class="commands-tab" onclick="switchTab(event, 'tab-auth')">Auth</button>
-                        <button class="commands-tab" onclick="switchTab(event, 'tab-backup')">Backup</button>
-                        <button class="commands-tab" onclick="switchTab(event, 'tab-ssl')">SSL</button>
-                        <button class="commands-tab" onclick="switchTab(event, 'tab-php')">PHP</button>
-                        <button class="commands-tab" onclick="switchTab(event, 'tab-aliases')">Aliases</button>
-                        <button class="commands-tab" onclick="switchTab(event, 'tab-services')">Services</button>
-                        <button class="commands-tab" onclick="switchTab(event, 'tab-security')">Security</button>
-                        <button class="commands-tab" onclick="switchTab(event, 'tab-cipi')">Cipi</button>
-                    </div>
-                </div><!-- /.commands-tabs-wrapper -->
-                <div class="commands-content active" id="tab-apps">
-                    <div class="cmd-row"><code>cipi app create</code><span>Create app (interactive)</span></div>
-                    <div class="cmd-row">
-                        <code>cipi app create --user=U --domain=D --repository=R --php=V</code><span>Create app (flags,
-                            non-interactive)</span>
-                    </div>
-                    <div class="cmd-row"><code>cipi app list</code><span>List all apps</span></div>
-                    <div class="cmd-row"><code>cipi app show &lt;app&gt;</code><span>App details, deploy key,
-                            workers</span></div>
-                    <div class="cmd-row"><code>cipi app edit &lt;app&gt; --php=8.5</code><span>Change PHP version</span>
-                    </div>
-                    <div class="cmd-row"><code>cipi app edit &lt;app&gt; --branch=develop</code><span>Change deploy
-                            branch</span></div>
-                    <div class="cmd-row"><code>cipi app env &lt;app&gt;</code><span>Edit .env in nano</span></div>
-                    <div class="cmd-row"><code>cipi app logs &lt;app&gt;</code><span>Tail all logs</span></div>
-                    <div class="cmd-row"><code>cipi app logs &lt;app&gt; --type=deploy</code><span>Tail specific log
-                            type (nginx, php, worker, deploy)</span></div>
-                    <div class="cmd-row"><code>cipi app artisan &lt;app&gt; migrate</code><span>Run Artisan
-                            command</span></div>
-                    <div class="cmd-row"><code>cipi app tinker &lt;app&gt;</code><span>Open Tinker</span></div>
-                    <div class="cmd-row"><code>cipi app delete &lt;app&gt;</code><span>Delete app</span></div>
-                </div>
-                <div class="commands-content" id="tab-deploy">
-                    <div class="cmd-row"><code>cipi deploy &lt;app&gt;</code><span>Deploy via Deployer</span></div>
-                    <div class="cmd-row"><code>cipi deploy &lt;app&gt; --rollback</code><span>Rollback to previous
-                            release</span></div>
-                    <div class="cmd-row"><code>cipi deploy &lt;app&gt; --releases</code><span>List releases</span></div>
-                    <div class="cmd-row"><code>cipi deploy &lt;app&gt; --key</code><span>Show SSH deploy key</span>
-                    </div>
-                    <div class="cmd-row"><code>cipi deploy &lt;app&gt; --webhook</code><span>Show webhook URL &amp;
-                            token</span></div>
-                    <div class="cmd-row"><code>cipi deploy &lt;app&gt; --unlock</code><span>Remove a stuck deploy
-                            lock</span></div>
-                    <div class="cmd-row"><code>cipi deploy &lt;app&gt; --trust-host=git.example.com</code><span>Trust
-                            custom Git server fingerprint</span></div>
-                    <div class="cmd-row">
-                        <code>cipi deploy &lt;app&gt; --trust-host=git.example.com:2222</code><span>Trust custom Git
-                            server on non-standard port</span>
-                    </div>
-                </div>
-                <div class="commands-content" id="tab-workers">
-                    <div class="cmd-row"><code>cipi worker add &lt;app&gt; --queue=Q --processes=N</code><span>Add
-                            worker</span></div>
-                    <div class="cmd-row"><code>cipi worker list &lt;app&gt;</code><span>List workers</span></div>
-                    <div class="cmd-row"><code>cipi worker edit &lt;app&gt; --queue=Q --processes=N</code><span>Edit
-                            worker</span></div>
-                    <div class="cmd-row"><code>cipi worker remove &lt;app&gt; &lt;queue&gt;</code><span>Remove
-                            worker</span></div>
-                    <div class="cmd-row"><code>cipi worker restart &lt;app&gt;</code><span>Restart all workers</span>
-                    </div>
-                </div>
-                <div class="commands-content" id="tab-db">
-                    <div class="cmd-row"><code>cipi db create</code><span>Create database</span></div>
-                    <div class="cmd-row"><code>cipi db list</code><span>List databases with sizes</span></div>
-                    <div class="cmd-row"><code>cipi db backup &lt;n&gt;</code><span>Backup to local file</span></div>
-                    <div class="cmd-row"><code>cipi db restore &lt;n&gt; &lt;file&gt;</code><span>Restore from
-                            file</span></div>
-                    <div class="cmd-row"><code>cipi db password &lt;n&gt;</code><span>Regenerate password</span></div>
-                    <div class="cmd-row"><code>cipi db delete &lt;n&gt;</code><span>Delete database</span></div>
-                </div>
-                <div class="commands-content" id="tab-auth">
-                    <div class="cmd-row"><code>cipi auth create &lt;app&gt;</code><span>Create auth.json in shared/ and
-                            register in Deployer</span></div>
-                    <div class="cmd-row"><code>cipi auth edit &lt;app&gt;</code><span>Edit auth.json in $EDITOR,
-                            validate JSON on close</span></div>
-                    <div class="cmd-row"><code>cipi auth show &lt;app&gt;</code><span>Print auth.json formatted with
-                            jq</span></div>
-                    <div class="cmd-row"><code>cipi auth delete &lt;app&gt;</code><span>Delete auth.json and remove from
-                            Deployer</span></div>
-                </div>
-                <div class="commands-content" id="tab-backup">
-                    <div class="cmd-row"><code>cipi backup configure</code><span>Configure S3 credentials</span></div>
-                    <div class="cmd-row"><code>cipi backup run [app]</code><span>Backup DB + shared/ to S3</span></div>
-                    <div class="cmd-row"><code>cipi backup list [app]</code><span>List S3 backups</span></div>
-                    <div class="cmd-row"><code>cipi backup prune [app] --weeks=N</code><span>Delete backups older than N
-                            weeks</span></div>
-                </div>
-                <div class="commands-content" id="tab-ssl">
-                    <div class="cmd-row"><code>cipi ssl install &lt;app&gt;</code><span>Install Let's Encrypt SSL</span>
-                    </div>
-                    <div class="cmd-row"><code>cipi ssl renew</code><span>Renew all certificates</span></div>
-                    <div class="cmd-row"><code>cipi ssl status</code><span>Show certificates &amp; expiry</span></div>
-                </div>
-                <div class="commands-content" id="tab-php">
-                    <div class="cmd-row"><code>cipi php install &lt;ver&gt;</code><span>Install PHP version</span></div>
-                    <div class="cmd-row"><code>cipi php remove &lt;ver&gt;</code><span>Remove PHP version</span></div>
-                    <div class="cmd-row"><code>cipi php list</code><span>List installed PHP versions</span></div>
-                </div>
-                <div class="commands-content" id="tab-aliases">
-                    <div class="cmd-row"><code>cipi alias add &lt;app&gt; &lt;domain&gt;</code><span>Add domain
-                            alias</span></div>
-                    <div class="cmd-row"><code>cipi alias remove &lt;app&gt; &lt;domain&gt;</code><span>Remove
-                            alias</span></div>
-                    <div class="cmd-row"><code>cipi alias list &lt;app&gt;</code><span>List aliases</span></div>
-                </div>
-                <div class="commands-content" id="tab-services">
-                    <div class="cmd-row"><code>cipi service list</code><span>Status of all services with uptime
-                            info</span></div>
-                    <div class="cmd-row"><code>cipi service list &lt;service&gt;</code><span>Status of a specific
-                            service</span></div>
-                    <div class="cmd-row"><code>cipi service restart</code><span>Restart all services</span></div>
-                    <div class="cmd-row"><code>cipi service restart &lt;service&gt;</code><span>Restart one service
-                            (nginx uses graceful reload)</span></div>
-                    <div class="cmd-row"><code>cipi service restart php</code><span>Restart all installed PHP-FPM
-                            versions</span></div>
-                    <div class="cmd-row"><code>cipi service start &lt;service&gt;</code><span>Start a stopped
-                            service</span></div>
-                    <div class="cmd-row"><code>cipi service stop &lt;service&gt;</code><span>Stop a running service
-                            (with confirmation)</span></div>
-                </div>
-                <div class="commands-content" id="tab-security">
-                    <div class="cmd-row"><code>cipi firewall allow &lt;port&gt;</code><span>Allow port</span></div>
-                    <div class="cmd-row"><code>cipi firewall allow &lt;port&gt; --from=IP</code><span>Allow port from
-                            IP</span></div>
-                    <div class="cmd-row"><code>cipi firewall deny &lt;port&gt;</code><span>Deny port</span></div>
-                    <div class="cmd-row"><code>cipi firewall list</code><span>Show firewall rules</span></div>
-                </div>
-                <div class="commands-content" id="tab-cipi">
-                    <div class="cmd-row"><code>cipi status</code><span>Server status (CPU, RAM, disk, services, PHP,
-                            apps)</span></div>
-                    <div class="cmd-row"><code>cipi version</code><span>Show Cipi version</span></div>
-                    <div class="cmd-row"><code>cipi self-update</code><span>Update Cipi</span></div>
-                    <div class="cmd-row"><code>cipi self-update --check</code><span>Check for updates without
-                            installing</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Providers -->
     <section
         style="background: var(--bg-warm); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
@@ -2543,6 +2423,73 @@
                     <span class="provider-tag">OVH</span>
                     <span class="provider-tag">Scaleway</span>
                     <span class="provider-tag">And more...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API -->
+    <section class="api-section" id="api">
+        <div class="container" style="padding-top: 100px; padding-bottom: 100px;">
+            <div class="api-grid fade-in">
+                <div>
+                    <span class="api-label">Optional</span>
+                    <h2 class="api-headline">REST API &amp; Global MCP<br>when you need it.</h2>
+                    <p class="api-desc">Cipi stays CLI-first by default — but when you want to automate, integrate, or
+                        let AI agents manage your server, enable the optional API layer with a single command. A
+                        <strong>global MCP server</strong> lets you create and manage multiple applications across your
+                        infrastructure from a single endpoint — no extra setup, no third-party services. Your
+                        infrastructure, your control.
+                    </p>
+                    <a href="docs.html#cipi-api" class="api-cta">
+                        Learn how to enable it
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="api-visual fade-in">
+                    <div class="api-visual-card">
+                        <svg class="api-visual-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 20V10" />
+                            <path d="M12 20V4" />
+                            <path d="M6 20v-6" />
+                        </svg>
+                        <span class="api-visual-label">REST API</span>
+                        <span class="api-visual-sublabel">Apps · Deploy · SSL</span>
+                    </div>
+                    <div class="api-visual-card">
+                        <svg class="api-visual-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                        <span class="api-visual-label">Swagger</span>
+                        <span class="api-visual-sublabel">Interactive docs</span>
+                    </div>
+                    <div class="api-visual-card">
+                        <svg class="api-visual-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                        <span class="api-visual-label">Tokens</span>
+                        <span class="api-visual-sublabel">Granular permissions</span>
+                    </div>
+                    <div class="api-visual-card">
+                        <svg class="api-visual-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                        <span class="api-visual-label">MCP Server</span>
+                        <span class="api-visual-sublabel">AI agents ready</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2745,14 +2692,6 @@
                 btn.textContent = 'Copied!';
                 setTimeout(() => btn.textContent = 'Copy', 2000);
             });
-        }
-
-        // Tab switching
-        function switchTab(e, tabId) {
-            document.querySelectorAll('.commands-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.commands-content').forEach(c => c.classList.remove('active'));
-            e.target.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
         }
 
         // Fade-in on scroll
