@@ -1115,6 +1115,7 @@
                 <a href="#cli-workers" class="sidebar-link"><code>worker</code></a>
                 <a href="#cli-firewall" class="sidebar-link"><code>firewall</code></a>
                 <a href="#cli-services" class="sidebar-link"><code>service</code></a>
+                <a href="#cli-ssh" class="sidebar-link"><code>ssh</code></a>
                 <a href="#cli-cipi" class="sidebar-link"><code>cipi</code></a>
             </div>
 
@@ -1154,6 +1155,13 @@
                     command. The installer takes roughly 10 minutes and sets up Nginx, MariaDB, PHP, Redis, Supervisor,
                     Fail2ban, UFW, Certbot, Deployer, and the <code>cipi</code> CLI itself.</p>
 
+                <p>During installation, the wizard <strong>asks for your SSH public key</strong> before any package is
+                    installed. Cipi creates a dedicated <code>cipi</code> Linux user as the <strong>sole SSH entry
+                    point</strong> for the server and applies aggressive SSH hardening: root login is disabled,
+                    password authentication is turned off, login attempts are limited to 3 with a 20-second grace
+                    period, and X11 forwarding is disabled. After setup, the only way to access the server is via
+                    public-key authentication as the <code>cipi</code> user.</p>
+
                 <h3>Standard installation</h3>
                 <div class="code-block">
                     <div class="code-block-header">
@@ -1174,8 +1182,8 @@
 <span class="p">$</span> wget -O - https://cipi.sh/setup.sh | bash</pre>
                 </div>
 
-                <p>At the end of the installation you will see a summary screen with the MariaDB root password.
-                    <strong>Save it immediately</strong> — it is shown only once. The password is stored in
+                <p>At the end of the installation you will see a summary screen with the SSH access details and the MariaDB root password.
+                    <strong>Save them immediately</strong> — they are shown only once. The password is stored in
                     <code>/etc/cipi/server.json</code>, which — like all Cipi configuration files — is
                     <strong>encrypted at rest</strong> using AES-256-CBC via the built-in <a href="#cipi-vault">Vault</a>
                     system. Credentials, SSH keys, <code>.env</code> files, and database dumps are protected both on disk
@@ -1191,8 +1199,8 @@
                         <line x1="12" y1="9" x2="12" y2="13" />
                         <line x1="12" y1="17" x2="12.01" y2="17" />
                     </svg>
-                    <div><strong>Save the MariaDB root password.</strong> Shown only once during installation. Stored
-                        encrypted at <code>/etc/cipi/server.json</code>.</div>
+                    <div><strong>Save the SSH access details and MariaDB root password.</strong> Shown only once during
+                        installation. Credentials are stored encrypted at <code>/etc/cipi/server.json</code>.</div>
                 </div>
             </div>
 
@@ -4110,6 +4118,37 @@ myapp@server:~$ crontab -e</pre>
 
 
 
+            <div class="doc-section" id="cli-ssh">
+                <h2><code>cipi ssh</code> — SSH Key Management</h2>
+                <p>Manage the authorized SSH keys for the <code>cipi</code> user — the sole SSH entry point to the
+                    server. All server access goes through this user; root login and password authentication are
+                    disabled at installation time.</p>
+
+                <h3>Commands</h3>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi ssh list                 <span class="c"># list all authorized keys with fingerprint, comment, and current-session marker</span>
+<span class="p">$</span> cipi ssh add [key]             <span class="c"># add a new SSH public key (validates format, prevents duplicates)</span>
+<span class="p">$</span> cipi ssh remove [n]            <span class="c"># remove a key by number</span></pre>
+                </div>
+
+                <h3>Safety mechanisms</h3>
+                <p><code>cipi ssh remove</code> includes two safeguards to prevent lockout:</p>
+                <ul>
+                    <li><strong>Current-session protection</strong> — you cannot remove the key used by your active SSH
+                        session.</li>
+                    <li><strong>Last-key protection</strong> — you cannot remove the last remaining authorized key.</li>
+                </ul>
+
+                <h3>Email notifications</h3>
+                <p>When SMTP is configured, Cipi sends an email alert every time a key is added or removed. The
+                    notification includes the server hostname, IP address, key fingerprint, timestamp, and remaining
+                    key count.</p>
+            </div>
+
+
+
             <div class="doc-section" id="cli-cipi">
                 <h2><code>cipi</code> — Server &amp; Self-Update</h2>
                 <p>Top-level commands for server status and Cipi self-management.</p>
@@ -4361,10 +4400,12 @@ myapp@server:~$ crontab -e</pre>
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">bash</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
-                    <pre><span class="p">$</span> cipi sync export [app ...] [--with-db] [--with-storage] [--output=&lt;path&gt;] [--passphrase=&lt;secret&gt;]
-<span class="p">$</span> cipi sync import &lt;archive.tar.gz.enc&gt; [app ...] [--update] [--deploy] [--yes] [--passphrase=&lt;secret&gt;]
-<span class="p">$</span> cipi sync push   [app ...] [--host=IP] [--port=22] [--with-db] [--with-storage] [--import] [--passphrase=&lt;secret&gt;]
-<span class="p">$</span> cipi sync list   &lt;archive.tar.gz.enc&gt; [--passphrase=&lt;secret&gt;]</pre>
+                    <pre><span class="p">$</span> cipi sync export  [app ...] [--with-db] [--with-storage] [--output=&lt;path&gt;] [--passphrase=&lt;secret&gt;]
+<span class="p">$</span> cipi sync import  &lt;archive.tar.gz.enc&gt; [app ...] [--update] [--deploy] [--yes] [--passphrase=&lt;secret&gt;]
+<span class="p">$</span> cipi sync push    [app ...] [--host=IP] [--port=22] [--with-db] [--with-storage] [--import] [--passphrase=&lt;secret&gt;]
+<span class="p">$</span> cipi sync list    &lt;archive.tar.gz.enc&gt; [--passphrase=&lt;secret&gt;]
+<span class="p">$</span> cipi sync pubkey  <span class="c"># display the server's sync public key for inter-server trust</span>
+<span class="p">$</span> cipi sync trust   <span class="c"># add a remote server's public key to cipi's authorized_keys</span></pre>
                 </div>
 
                 <h3>Archive encryption</h3>
@@ -4586,7 +4627,7 @@ myapp@server:~$ crontab -e</pre>
 
 <span class="c">Cipi Sync Archive</span>
 <span class="c">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
-<span class="c">  Cipi           v4.1.2</span>
+<span class="c">  Cipi           v4.2.0</span>
 <span class="c">  Exported       2026-03-06T15:00:00Z</span>
 <span class="c">  Source         aws01 (3.120.xx.xx)</span>
 <span class="c">  Database       true</span>
@@ -4632,14 +4673,19 @@ myapp@server:~$ crontab -e</pre>
                     safe to run repeatedly via cron.</p>
 
                 <h4>SSH setup for push</h4>
-                <p>The source server needs SSH access to the target as root. Set up key-based auth for unattended
-                    operation:</p>
+                <p>The source server needs SSH access to the target as the <code>cipi</code> user. Use the built-in
+                    trust mechanism for passwordless, key-based authentication between Cipi servers:</p>
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">bash</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
-                    <pre><span class="c"># On the source server</span>
-<span class="p">$</span> ssh-copy-id -p 22 root@51.195.xx.xx</pre>
+                    <pre><span class="c"># On the SOURCE server — display its sync public key</span>
+<span class="p">$</span> cipi sync pubkey
+
+<span class="c"># On the TARGET server — add the source's public key to cipi's authorized_keys</span>
+<span class="p">$</span> cipi sync trust</pre>
                 </div>
+                <p>Once trusted, <code>cipi sync push</code> connects as the <code>cipi</code> user automatically —
+                    no root access required.</p>
 
                 <h3>Practical scenarios</h3>
 
@@ -4670,8 +4716,8 @@ myapp@server:~$ crontab -e</pre>
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">bash</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
-                    <pre><span class="c"># One-time setup on Server 1</span>
-<span class="p">$</span> ssh-copy-id root@server2-ip
+                    <pre><span class="c"># One-time setup on Server 1 — trust Server 2 using cipi sync trust</span>
+<span class="p">$</span> cipi sync pubkey  <span class="c"># copy this key, then run "cipi sync trust" on Server 2</span>
 <span class="p">$</span> echo "YourStr0ngPassphrase!" > /etc/cipi/.sync_passphrase
 <span class="p">$</span> chmod 400 /etc/cipi/.sync_passphrase
 
@@ -4820,18 +4866,25 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                         <code>sudo</code>, including who ran it and from which TTY</li>
                     <li>Privileged SSH login — notifies when <code>root</code> or any sudoer logs in via SSH,
                         including source IP</li>
+                    <li>SSH key changes — notifies when an SSH key is added to or removed from the
+                        <code>cipi</code> user, including hostname, IP, fingerprint, timestamp, and remaining key
+                        count</li>
                 </ul>
 
                 <h3>Security auth notifications</h3>
                 <p>Starting from v4.1.1, Cipi integrates PAM-based authentication notifications via
                     <code>pam_exec.so</code>. When SMTP is configured, the system automatically sends email alerts
-                    on two security-relevant events:</p>
+                    on these security-relevant events:</p>
                 <ul>
                     <li><strong>Sudo elevation</strong> — triggered when any user successfully runs
                         <code>sudo</code>. The notification includes the username, the TTY, and the timestamp.</li>
                     <li><strong>Privileged SSH login</strong> — triggered when <code>root</code> or any user in the
                         <code>sudo</code> group logs in via SSH. The notification includes the username and the
                         source IP address.</li>
+                    <li><strong>SSH key changes</strong> — triggered when an SSH key is added to or removed from the
+                        <code>cipi</code> user via <code>cipi ssh add</code> or <code>cipi ssh remove</code>. The
+                        notification includes the hostname, server IP, key fingerprint, timestamp, and remaining
+                        key count.</li>
                 </ul>
                 <p>Notifications run asynchronously in the background so they never delay login or command
                     execution. If SMTP is not configured, the hooks fail silently with no impact on the system.</p>
@@ -5163,6 +5216,27 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
             <div class="doc-section" id="security-model">
                 <h2>Security Model</h2>
 
+                <h3>SSH hardening</h3>
+                <p>During installation, Cipi creates a dedicated <code>cipi</code> Linux user as the <strong>sole SSH
+                    entry point</strong> and applies the following hardening to <code>sshd_config</code>:</p>
+                <ul>
+                    <li><code>PermitRootLogin no</code></li>
+                    <li><code>PasswordAuthentication no</code></li>
+                    <li><code>PubkeyAuthentication yes</code></li>
+                    <li><code>MaxAuthTries 3</code></li>
+                    <li><code>LoginGraceTime 20</code></li>
+                    <li><code>X11Forwarding no</code></li>
+                </ul>
+                <p>Root login and password-based access are completely disabled. The only way to access the server is
+                    via public-key authentication as the <code>cipi</code> user. SSH keys are managed with
+                    <code>cipi ssh list / add / remove</code> — see <a href="#cli-ssh">SSH Key Management</a>.</p>
+
+                <h3>SSH key management &amp; notifications</h3>
+                <p>Authorized keys for the <code>cipi</code> user can be managed via the CLI with built-in safety:
+                    format validation, duplicate prevention, current-session protection, and last-key protection to
+                    avoid lockout. When SMTP is configured, every key addition or removal triggers an email alert
+                    with hostname, IP, fingerprint, timestamp, and remaining key count.</p>
+
                 <h3>User isolation</h3>
                 <p>Each app runs under its own Linux user with <code>chmod 750</code> on the home directory. No app can
                     read another app's files. PHP-FPM runs each app's pool as the app user with its own Unix socket.</p>
@@ -5208,16 +5282,23 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     debugging and audit trails. See <a href="#cipi-log-retention">Log retention</a> for the full
                     policy.</p>
 
-                <h3>Auth notifications</h3>
+                <h3>Auth &amp; key notifications</h3>
                 <p>Cipi monitors privileged authentication events via PAM (<code>pam_exec.so</code>) and sends
                     real-time email alerts when a user elevates to root via <code>sudo</code> or when
-                    <code>root</code>/sudoers log in via SSH. Notifications include contextual details (username,
-                    TTY, source IP) and run asynchronously to avoid login delays. Requires SMTP configured — fails
-                    silently otherwise. See <a href="#cipi-smtp">Email Notifications</a> for setup.</p>
+                    <code>root</code>/sudoers log in via SSH. Email alerts are also sent when SSH keys are added to
+                    or removed from the <code>cipi</code> user. Notifications include contextual details (username,
+                    TTY, source IP, fingerprint, key count) and run asynchronously to avoid login delays. Requires
+                    SMTP configured — fails silently otherwise. See <a href="#cipi-smtp">Email Notifications</a> for
+                    setup.</p>
 
                 <h3>No web panel</h3>
                 <p>Cipi has no web interface. There is no attack surface from an admin panel. All management happens
-                    over SSH using the <code>cipi</code> CLI.</p>
+                    over SSH as the <code>cipi</code> user using the <code>cipi</code> CLI.</p>
+
+                <h3>Nginx default virtual host</h3>
+                <p>The Nginx default virtual host serves a minimal "Server Up" page instead of returning a 404 error.
+                    This prevents Nginx from exposing its version number in default error pages when accessed by IP
+                    address or unconfigured domains.</p>
 
                 <h3>Network</h3>
                 <p>UFW blocks all ports by default except 22, 80, and 443. Fail2ban monitors SSH for brute-force
