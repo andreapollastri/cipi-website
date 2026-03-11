@@ -1135,6 +1135,7 @@
                 <a href="#cli-app-cron" class="sidebar-link">user crontab</a>
                 <a href="#cli-workers" class="sidebar-link"><code>worker</code></a>
                 <a href="#cli-firewall" class="sidebar-link"><code>firewall</code></a>
+                <a href="#cli-ban" class="sidebar-link"><code>ban</code></a>
                 <a href="#cli-services" class="sidebar-link"><code>service</code></a>
                 <a href="#cli-ssh" class="sidebar-link"><code>ssh</code></a>
                 <a href="#cli-cipi" class="sidebar-link"><code>cipi</code></a>
@@ -1439,7 +1440,7 @@ root@server:~# su - myapp</pre>
                         </tr>
                         <tr>
                             <td><strong>Fail2ban</strong></td>
-                            <td>SSH brute-force protection</td>
+                            <td>Progressive brute-force protection with recidive jail</td>
                         </tr>
                         <tr>
                             <td><strong>unattended-upgrades</strong></td>
@@ -2483,10 +2484,14 @@ myapp@server:~$ ls -lt ~/releases/</pre>
                     interrupted.</p>
 
                 <h3>Deploy pipeline</h3>
+                <p>Deployer and Composer run with the <strong>app's configured PHP version</strong> (e.g.
+                    <code>/usr/bin/php8.4</code>), not the system default. This applies to <code>cipi deploy</code>,
+                    <code>cipi deploy --rollback</code>, crontab deploy triggers, <code>cipi sync import</code> deploys,
+                    and the <code>deploy</code> / <code>composer</code> aliases in the app user's <code>.bashrc</code>.</p>
                 <ol>
                     <li>Stop queue workers (<code>cipi worker stop</code>)</li>
                     <li>Clone repo into <code>releases/N/</code></li>
-                    <li>Run <code>composer install --no-dev</code></li>
+                    <li>Run <code>composer install --no-dev</code> (with app's PHP)</li>
                     <li>Link <code>shared/.env</code> and <code>shared/storage/</code></li>
                     <li>Run <code>artisan migrate --force</code></li>
                     <li>Run <code>artisan optimize</code></li>
@@ -3823,10 +3828,21 @@ cleanup-preview:
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">bash</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
-                    <pre><span class="p">$</span> cipi php list              <span class="c"># list installed PHP versions and their status</span>
+                    <pre><span class="p">$</span> cipi php list              <span class="c"># list installed versions, status, and system default</span>
 <span class="p">$</span> cipi php install 8.5       <span class="c"># install a new PHP version</span>
-<span class="p">$</span> cipi php remove 8.4        <span class="c"># remove a version (only if no apps use it)</span></pre>
+<span class="p">$</span> cipi php switch 8.5        <span class="c"># set system default (root/cipi, API pool)</span>
+<span class="p">$</span> cipi php remove 8.4        <span class="c"># remove a version (blocks if system default or apps use it)</span></pre>
                 </div>
+
+                <h3>System default vs app-specific PHP</h3>
+                <p>The <strong>system default</strong> is the PHP version used by the <code>root</code> and <code>cipi</code>
+                    users, the Cipi API FPM pool, and the API queue worker. Use <code>cipi php switch &lt;ver&gt;</code> to
+                    change it. The command migrates the API pool, restarts the API worker, and sends an email notification
+                    if SMTP is configured.</p>
+                <p>Each app has its <strong>own</strong> PHP version (set at <code>app create</code> or via
+                    <code>cipi app edit --php=</code>). Deployer, Composer, crontab deploy triggers, and
+                    <code>cipi sync import</code> always run with the app's configured PHP — never the system default.
+                </p>
 
                 <p>To switch an existing app to a different version:</p>
                 <div class="code-block">
@@ -4178,6 +4194,42 @@ myapp@server:~$ crontab -e</pre>
 <span class="p">$</span> cipi firewall allow 3306 --from=10.0.0.0/24 <span class="c"># allow from subnet</span>
 <span class="p">$</span> cipi firewall deny 8080                   <span class="c"># block a port</span>
 <span class="p">$</span> cipi firewall list                        <span class="c"># show all rules</span></pre>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="cli-ban">
+                <h2><code>cipi ban</code></h2>
+                <p>Inspect and manage Fail2ban bans directly from the CLI. Cipi configures Fail2ban with progressive
+                    banning: a 24-hour base ban that doubles on each repeat offence up to a 7-day cap, with max retries
+                    reduced to 3. A dedicated <code>recidive</code> jail bans repeat offenders for 7 days after 3 bans
+                    within 24 hours.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi ban list                        <span class="c"># list all banned IPs, grouped by jail</span>
+<span class="p">$</span> cipi ban unban 203.0.113.42           <span class="c"># unban a specific IP from all jails</span></pre>
+                </div>
+
+                <h3><code>cipi ban list</code></h3>
+                <p>Lists every IP currently banned by Fail2ban, grouped by jail (e.g. <code>sshd</code>,
+                    <code>recidive</code>). Useful for a quick security check or before running an unban.</p>
+
+                <h3><code>cipi ban unban &lt;IP&gt;</code></h3>
+                <p>Removes the given IP from <strong>all</strong> Fail2ban jails at once. Handy when a legitimate user
+                    or CI runner gets locked out by mistake.</p>
+
+                <div class="callout info">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="16" x2="12" y2="12" />
+                        <line x1="12" y1="8" x2="12.01" y2="8" />
+                    </svg>
+                    <div>Existing installations are upgraded automatically by the 4.3.0 migration script when you run
+                        <code>cipi self-update</code>. No manual configuration is needed.</div>
                 </div>
             </div>
 
@@ -5535,8 +5587,12 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     from exposing its version number in default error pages.</p>
 
                 <h3>Network</h3>
-                <p>UFW blocks all ports by default except 22, 80, and 443. Fail2ban monitors SSH for brute-force
-                    attempts and bans offending IPs automatically.</p>
+                <p>UFW blocks all ports by default except 22, 80, and 443. Fail2ban monitors SSH with
+                    <strong>progressive banning</strong>: a 24-hour base ban that doubles on each repeat offence (7-day
+                    cap), with only 3 retries allowed before a ban. A dedicated <code>recidive</code> jail catches
+                    repeat offenders — 3 bans within 24 hours triggers a 7-day block. Use
+                    <code>cipi ban list</code> and <code>cipi ban unban</code> to inspect and manage bans from the CLI.
+                </p>
 
                 <h3>Automatic OS security updates</h3>
                 <p>Cipi enables <strong>unattended-upgrades</strong> during installation, so the underlying Ubuntu
