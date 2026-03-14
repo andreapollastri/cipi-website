@@ -1326,11 +1326,13 @@ root@server:~# su - myapp</pre>
     --domain=myapp.com \
     --repository=git@github.com:you/myapp.git \
     --branch=main \
-    --php=8.4</pre>
+    --php=8.5</pre>
                 </div>
 
                 <p>At the end, Cipi prints a credentials summary — <strong>save it, shown only once</strong> — including
-                    the SSH deploy key, database credentials, webhook URL, and webhook token.</p>
+                    the server's public IP address (for DNS configuration), the SSH deploy key, database credentials,
+                    a ready-to-use <code>mariadb+ssh://</code> connection URL for GUI clients (TablePlus, DBeaver,
+                    Sequel Pro), webhook URL, and webhook token.</p>
 
                 <h3>2. Add the deploy key to your Git provider</h3>
                 <p>If you have configured a GitHub or GitLab token via <code>cipi git</code>, this step is
@@ -1486,7 +1488,7 @@ root@server:~# su - myapp</pre>
     └── deploy.log</div>
 
                 <p>In addition to the home directory, Cipi creates these system files:</p>
-                <div class="tree-block">PHP-FPM pool: /etc/php/8.4/fpm/pool.d/<span class="tree-accent">myapp</span>.conf <span class="tree-comment">(user=myapp)</span>
+                <div class="tree-block">PHP-FPM pool: /etc/php/8.5/fpm/pool.d/<span class="tree-accent">myapp</span>.conf <span class="tree-comment">(user=myapp)</span>
 Nginx vhost: /etc/nginx/sites-available/<span class="tree-accent">myapp</span>
 Supervisor: /etc/supervisor/conf.d/<span class="tree-accent">myapp</span>.conf
 Crontab: * * * * * php artisan schedule:run
@@ -1651,7 +1653,7 @@ MariaDB: database '<span class="tree-accent">myapp</span>', user '<span class="t
                     <pre>{
   <span class="s">"status"</span>: <span class="s">"healthy"</span>,
   <span class="s">"app_user"</span>: <span class="s">"myapp"</span>,
-  <span class="s">"php"</span>: <span class="s">"8.4"</span>,
+  <span class="s">"php"</span>: <span class="s">"8.5"</span>,
   <span class="s">"laravel"</span>: <span class="s">"12.0.0"</span>,
   <span class="s">"commit"</span>: <span class="s">"a1b2c3d"</span>,
   <span class="s">"checks"</span>: {
@@ -2124,7 +2126,7 @@ MariaDB: database '<span class="tree-accent">myapp</span>', user '<span class="t
     --domain=myapp.com \
     --repository=git@github.com:you/myapp.git \
     --branch=main \
-    --php=8.4</pre>
+    --php=8.5</pre>
                 </div>
 
                 <div class="options-list">
@@ -2136,8 +2138,8 @@ MariaDB: database '<span class="tree-accent">myapp</span>', user '<span class="t
                             <code>git@github.com:you/repo.git</code>). Must be SSH, not HTTPS.</span></div>
                     <div class="option-item"><code>--branch</code><span>Branch to deploy. Defaults to
                             <code>main</code>.</span></div>
-                    <div class="option-item"><code>--php</code><span>PHP version for this app (e.g. <code>8.4</code>).
-                            Must be an installed version.</span></div>
+                    <div class="option-item"><code>--php</code><span>PHP version for this app (e.g. <code>8.5</code>).
+                            Defaults to PHP 8.5. Must be an installed version.</span></div>
                 </div>
 
                 <div class="callout info">
@@ -2446,7 +2448,7 @@ myapp@server:~$ pwd
 myapp@server:~$ cd ~/current
 
 <span class="c"># run artisan directly with the correct PHP version</span>
-myapp@server:~$ /usr/bin/php8.4 ~/current/artisan tinker
+myapp@server:~$ /usr/bin/php8.5 ~/current/artisan tinker
 
 <span class="c"># inspect the shared .env</span>
 myapp@server:~$ cat ~/shared/.env
@@ -2486,7 +2488,7 @@ myapp@server:~$ ls -lt ~/releases/</pre>
 
                 <h3>Deploy pipeline</h3>
                 <p>Deployer and Composer run with the <strong>app's configured PHP version</strong> (e.g.
-                    <code>/usr/bin/php8.4</code>), not the system default. This applies to <code>cipi deploy</code>,
+                    <code>/usr/bin/php8.5</code>), not the system default. This applies to <code>cipi deploy</code>,
                     <code>cipi deploy --rollback</code>, crontab deploy triggers, <code>cipi sync import</code> deploys,
                     and the <code>deploy</code> / <code>composer</code> aliases in the app user's <code>.bashrc</code>.</p>
                 <ol>
@@ -3623,7 +3625,7 @@ jobs:
                 --domain="$DOMAIN" \
                 --repository="$REPO" \
                 --branch="$BRANCH" \
-                --php=8.4
+                --php=8.5
 
               <span class="c"># Patch nginx to listen on 443 using the pre-installed wildcard cert</span>
               awk -v cert="$WILDCARD" '
@@ -3741,7 +3743,7 @@ deploy-preview:
             --domain="\$DOMAIN" \
             --repository="\$REPO" \
             --branch="\$BRANCH" \
-            --php=8.4
+            --php=8.5
 
           awk -v cert="\$WILDCARD" '
             /^    listen 80;/ {
@@ -3822,7 +3824,7 @@ cleanup-preview:
             <div class="doc-section" id="cli-php">
                 <p class="doc-section-label">Infrastructure</p>
                 <h2><code>cipi php</code></h2>
-                <p>Multiple PHP versions are installed during setup. New versions can be added at any time from the
+                <p>PHP 8.5 is pre-installed during setup. Additional versions (7.4–8.4) can be added at any time from the
                     ondrej/php PPA (the de-facto standard for PHP on Ubuntu — new releases typically land there within
                     days of their official release).</p>
 
@@ -3830,8 +3832,8 @@ cleanup-preview:
                     <div class="code-block-header"><span class="code-block-lang">bash</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
                     <pre><span class="p">$</span> cipi php list              <span class="c"># list installed versions, status, and system default</span>
-<span class="p">$</span> cipi php install 8.5       <span class="c"># install a new PHP version</span>
-<span class="p">$</span> cipi php switch 8.5        <span class="c"># set system default (root/cipi, API pool)</span>
+<span class="p">$</span> cipi php install 8.4       <span class="c"># install an additional PHP version</span>
+<span class="p">$</span> cipi php switch 8.4        <span class="c"># set system default (root/cipi, API pool)</span>
 <span class="p">$</span> cipi php remove 8.4        <span class="c"># remove a version (blocks if system default or apps use it)</span></pre>
                 </div>
 
@@ -3860,6 +3862,9 @@ cleanup-preview:
             <div class="doc-section" id="cli-db">
                 <h2><code>cipi db</code></h2>
                 <p>Cipi creates a dedicated MariaDB database for each app automatically during <code>app create</code>.
+                    After database setup, a ready-to-use <code>mariadb+ssh://</code> connection URL is displayed,
+                    combining SSH credentials, server IP, and database information in a single copyable string for
+                    GUI clients like TablePlus, DBeaver, or Sequel Pro.
                     You can also manage additional standalone databases.</p>
 
                 <div class="code-block">
@@ -4046,7 +4051,7 @@ cleanup-preview:
                     <div class="code-block-header"><span class="code-block-lang">bash</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
                     <pre><span class="c"># installed automatically by cipi app create</span>
-* * * * * /usr/bin/php8.4 /home/myapp/current/artisan schedule:run >> /dev/null 2>&1</pre>
+* * * * * /usr/bin/php8.5 /home/myapp/current/artisan schedule:run >> /dev/null 2>&1</pre>
                 </div>
 
                 <p>This entry runs as the <code>myapp</code> Linux user every minute, using the PHP version selected for
@@ -4080,7 +4085,7 @@ myapp@server:~$ crontab -e</pre>
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">bash</span></div>
                     <pre><span class="c"># existing Laravel scheduler (do not remove)</span>
-* * * * * /usr/bin/php8.4 /home/myapp/current/artisan schedule:run >> /dev/null 2>&1
+* * * * * /usr/bin/php8.5 /home/myapp/current/artisan schedule:run >> /dev/null 2>&1
 
 <span class="c"># nightly database backup at 2 AM</span>
 0 2 * * * /usr/local/bin/cipi db backup myapp >> /home/myapp/logs/backup.log 2>&1
@@ -4255,7 +4260,7 @@ myapp@server:~$ crontab -e</pre>
 
                 <p>Supported service names: <code>nginx</code>, <code>mariadb</code>, <code>redis-server</code>,
                     <code>supervisor</code>, <code>fail2ban</code>, <code>php&lt;ver&gt;-fpm</code> (e.g.
-                    <code>php8.4-fpm</code>). The keyword
+                    <code>php8.5-fpm</code>). The keyword
                     <code>php</code> targets all installed PHP-FPM versions at once.
                 </p>
                 <p>Redis is included in the default stack (from Cipi 4.0.4). It is installed with a password, bound to
@@ -5654,8 +5659,8 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                                 <div>The full v4 changelog is available on <a
                                         href="https://github.com/cipi-sh/cipi/releases" target="_blank"
                                         rel="noopener">GitHub Releases</a>.
-                                    Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/4.2.3"
-                                        target="_blank" rel="noopener">4.2.3</a>.
+                                    Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/4.3.2"
+                                        target="_blank" rel="noopener">4.3.2</a>.
                                 </div>
                             </div>
                         </div>
