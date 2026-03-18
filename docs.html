@@ -1152,6 +1152,7 @@
                 <a href="#redis" class="sidebar-link">redis</a>
                 <a href="#self-update" class="sidebar-link">self-update</a>
                 <a href="#wildcard-domains" class="sidebar-link">wildcard domains</a>
+                <a href="#nginx-config" class="sidebar-link">edit Nginx config</a>
                 <a href="#uninstall" class="sidebar-link">uninstall Cipi</a>
             </div>
 
@@ -5361,6 +5362,18 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     <div>Running <code>cipi ssl install myapp</code> after manual wildcard setup will overwrite your
                         custom nginx SSL directives with a Let's Encrypt HTTP-01 certificate. If you manage a wildcard
                         cert manually, avoid running <code>cipi ssl install</code> on that app.</div>
+                </div>
+            </div>
+
+            <div class="doc-section" id="nginx-config">
+                <h2>Edit Nginx config</h2>
+                <p>To customise the Nginx vhost for an app, edit the site config directly. After changes, test and
+                    reload Nginx.</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> sudo nano /etc/nginx/sites-available/&lt;app&gt;
+<span class="p">$</span> sudo nginx -t &amp;&amp; sudo systemctl reload nginx</pre>
                 </div>
             </div>
 
