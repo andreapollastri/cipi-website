@@ -6076,11 +6076,13 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                         <line x1="12" y1="8" x2="12" y2="12" />
                         <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
-                    <div>Cipi's core proposition: <strong>free forever, MIT open source, Laravel-only, CLI-first,
+                    <div>Cipi's core proposition: <strong>free forever, MIT open source, Laravel-first (with custom app support), CLI-first,
                             AI-ready with dual MCP server, native GitHub &amp; GitLab integration, full REST API,
                             AES-256-CBC encryption at rest, GDPR-compliant log retention,
                             self-contained on your VPS</strong>. It does one thing and does it well — it does not try to
-                        be a generic hosting panel, a SaaS platform, or a multi-stack tool. Cipi provides automatic
+                        be a generic hosting panel, a SaaS platform, or a multi-stack tool. In addition to Laravel,
+                        Cipi supports <a href="https://cipi.sh/docs#cli-app-custom">custom apps</a> (static sites, SPAs,
+                        WordPress, alternative PHP frameworks, and other non-Laravel projects). Cipi provides automatic
                         deployment integration with GitHub and GitLab, a complete REST API for managing hosts and
                         applications programmatically, a dual MCP server architecture for AI-driven management, built-in
                         Vault encryption for all configuration files and sync archives, and GDPR-compliant automatic
@@ -6433,6 +6435,35 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                                         <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
                                     </svg></td>
                             </tr>
+                            <tr style="border-bottom:1px solid var(--border);">
+                                <td style="padding:0.55rem 1rem;">Vito Deploy</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                            </tr>
                             <tr>
                                 <td style="padding:0.55rem 1rem;">GridPane / xCloud / ServerAvatar</td>
                                 <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
@@ -6569,6 +6600,41 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     gives you a faster, cleaner experience. If you also need to host Node.js, Python, or WordPress
                     alongside Laravel, CloudPanel is the more appropriate choice.</p>
 
+                <!-- Vito Deploy -->
+                <h3>Cipi vs Vito Deploy</h3>
+                <p><a href="https://vitodeploy.com/" target="_blank">Vito Deploy</a> is a free,
+                    open-source, self-hosted server management tool with a clean GUI dashboard, built with Laravel and
+                    htmx. It supports PHP (including Laravel and WordPress), MySQL, MariaDB, and PostgreSQL, and
+                    includes SSL management, firewall configuration, background workers, cron jobs, server monitoring,
+                    team collaboration, custom workflows, plugins, and an API.</p>
+                <p>Vito Deploy and Cipi share the same philosophy: free, open source, and self-hosted — no SaaS
+                    dependency. The key differences are in approach and depth:</p>
+                <ul>
+                    <li><strong>GUI vs CLI</strong> — Vito Deploy is GUI-first with a web dashboard; Cipi is CLI-first
+                        with no GUI. If your team prefers a visual interface, Vito Deploy is a strong fit. If you need
+                        scriptable, pipeline-ready automation, Cipi is the better choice.</li>
+                    <li><strong>AI integration</strong> — Cipi provides a dual MCP server (per-app and global) for
+                        AI-driven infrastructure management from any MCP-compatible IDE or agent. Vito Deploy has no
+                        MCP or AI integration.</li>
+                    <li><strong>CLI automation</strong> — Cipi is entirely operable over SSH with composable shell
+                        commands that can be chained in pipelines, triggered by webhooks, or run from GitHub Actions.
+                        Vito Deploy is primarily operated through its web dashboard.</li>
+                    <li><strong>Native Git deploy</strong> — Cipi provides automatic webhook-driven zero-downtime
+                        deployment integration with both GitHub and GitLab, configured in a single command.</li>
+                    <li><strong>Encryption at rest</strong> — All Cipi configuration files are encrypted with AES-256-CBC
+                        via the Vault system. Vito Deploy does not advertise config encryption at rest.</li>
+                    <li><strong>Server sync</strong> — Cipi includes built-in encrypted server-to-server sync with
+                        <code>cipi sync push</code> for automated failover replication. Vito Deploy has no equivalent
+                        feature.</li>
+                    <li><strong>Infrastructure footprint</strong> — Vito Deploy requires a dedicated VPS or
+                        environment to host its own dashboard (it is a full Laravel application with a database).
+                        Cipi is a single binary that runs directly on the same VPS as your applications — no
+                        additional server, no separate database, no extra infrastructure to maintain or secure.</li>
+                </ul>
+                <p>Vito Deploy is a genuinely good alternative in the free/OSS self-hosted space. If you want a GUI
+                    dashboard with team collaboration and monitoring, and don't need CLI-first automation or AI
+                    integration, Vito Deploy is worth evaluating.</p>
+
                 <!-- ServerPilot -->
                 <h3>Cipi vs ServerPilot</h3>
                 <p>ServerPilot is a PHP/WordPress-focused SaaS panel ($12–49/month) that automates PHP-FPM and Nginx
@@ -6687,6 +6753,11 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                         Law (DSL), which in certain circumstances allow Chinese government access to data stored on
                         Chinese-operated systems. For EU teams or teams processing sensitive data, this is a significant
                         compliance consideration.</li>
+                    <li><strong>Vito Deploy</strong> is self-hosted — like Cipi, no infrastructure data leaves your
+                        VPS. From a GDPR perspective, Vito Deploy shares the same advantage: no third-party data
+                        processor for server management. However, Vito Deploy does not advertise encryption at rest
+                        for configuration files, whereas Cipi encrypts all configs with AES-256-CBC via the Vault
+                        system.</li>
                 </ul>
 
                 <h4>Cipi: self-contained, zero data exfiltration</h4>
@@ -6723,7 +6794,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 
                 <h3>When to choose Cipi</h3>
                 <ul>
-                    <li>You deploy <strong>Laravel exclusively</strong> — Cipi is designed for nothing else.</li>
+                    <li>You deploy <strong>Laravel</strong> — Cipi is designed primarily for Laravel, with <a href="https://cipi.sh/docs#cli-app-custom">custom app support</a> for static sites, SPAs, WordPress, and other PHP projects.</li>
                     <li>You want <strong>zero monthly panel cost</strong> — one server or fifty, the price is the same.
                     </li>
                     <li>You need <strong>full CLI and pipeline automation</strong> — every Cipi operation is scriptable
