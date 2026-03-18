@@ -4406,8 +4406,9 @@ myapp@server:~$ crontab -e</pre>
                 <p class="doc-section-label">Advanced</p>
                 <h2><code>cipi api</code></h2>
                 <p>Cipi can optionally enable a REST API layer on the server via <code>cipi api
-                    &lt;domain&gt;</code>. The API exposes operations on apps, aliases, and SSL with Bearer token
-                    authentication and granular permissions.</p>
+                    &lt;domain&gt;</code>. The API exposes operations on apps, aliases, databases, and SSL with Bearer
+                    token authentication and granular permissions. The package requires <strong>PHP 8.2+</strong> and
+                    <strong>Laravel 12+</strong>.</p>
 
                 <h3>Commands</h3>
                 <div class="code-block">
@@ -4436,13 +4437,20 @@ myapp@server:~$ crontab -e</pre>
                     <li><code>aliases-view</code> — read aliases</li>
                     <li><code>aliases-create</code> — add aliases</li>
                     <li><code>aliases-delete</code> — remove aliases</li>
+                    <li><code>dbs-view</code> — list databases</li>
+                    <li><code>dbs-create</code> — create databases</li>
+                    <li><code>dbs-delete</code> — delete databases</li>
+                    <li><code>dbs-manage</code> — backup, restore, regenerate password</li>
                     <li><code>mcp-access</code> — access the MCP server</li>
                 </ul>
 
                 <h3>REST endpoints</h3>
                 <p>All endpoints require the <code>Authorization: Bearer &lt;token&gt;</code> header. Write operations
-                    (create, edit, delete, deploy, rollback, unlock, SSL, alias) are asynchronous: they return
+                    (create, edit, delete, deploy, rollback, unlock, SSL, alias, database) are asynchronous: they return
                     <code>202 Accepted</code> with a <code>job_id</code> to poll via <code>GET /api/jobs/{id}</code>.
+                    <code>POST /api/apps</code> accepts optional <code>custom</code> (boolean) and
+                    <code>docroot</code> (string) parameters for creating
+                    <a href="https://cipi.sh/docs#cli-app-custom">custom apps</a> with classic deployment.
                 </p>
                 <table class="cmd-table">
                     <thead>
@@ -4515,6 +4523,36 @@ myapp@server:~$ crontab -e</pre>
                         </tr>
                         <tr>
                             <td>GET</td>
+                            <td><code>/api/dbs</code></td>
+                            <td>dbs-view</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td><code>/api/dbs</code></td>
+                            <td>dbs-create</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td><code>/api/dbs/{name}</code></td>
+                            <td>dbs-delete</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td><code>/api/dbs/{name}/backup</code></td>
+                            <td>dbs-manage</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td><code>/api/dbs/{name}/restore</code></td>
+                            <td>dbs-manage</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td><code>/api/dbs/{name}/password</code></td>
+                            <td>dbs-manage</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
                             <td><code>/api/jobs/{id}</code></td>
                             <td>—</td>
                         </tr>
@@ -4527,14 +4565,20 @@ myapp@server:~$ crontab -e</pre>
                 <h3>MCP server</h3>
                 <p>An <strong>MCP</strong> (Model Context Protocol) server is exposed at <code>/mcp</code> via
                     Streamable
-                    HTTP. It requires a token with the <code>mcp-access</code> ability. It exposes tools for app, alias,
-                    deploy, and SSL management — <code>AppList</code>, <code>AppShow</code>, <code>AppCreate</code>,
-                    <code>AppEdit</code>, <code>AppDelete</code>, <code>AppDeploy</code>,
-                    <code>AppDeployRollback</code>,
-                    <code>AppDeployUnlock</code>, <code>AliasList</code>, <code>AliasAdd</code>,
-                    <code>AliasRemove</code>,
-                    <code>SslInstall</code> — with async dispatch and <code>job_id</code> return for polling.
-                </p>
+                    HTTP. It requires a token with the <code>mcp-access</code> ability. It exposes 19 tools for app,
+                    alias, database, deploy, and SSL management — with async dispatch and <code>job_id</code> return
+                    for polling:</p>
+                <ul>
+                    <li><strong>Applications:</strong> <code>AppList</code>, <code>AppShow</code>,
+                        <code>AppCreate</code>, <code>AppEdit</code>, <code>AppDelete</code>,
+                        <code>AppDeploy</code>, <code>AppDeployRollback</code>, <code>AppDeployUnlock</code></li>
+                    <li><strong>Aliases:</strong> <code>AliasList</code>, <code>AliasAdd</code>,
+                        <code>AliasRemove</code></li>
+                    <li><strong>Databases:</strong> <code>DbList</code>, <code>DbCreate</code>,
+                        <code>DbDelete</code>, <code>DbBackup</code>, <code>DbRestore</code>,
+                        <code>DbPassword</code></li>
+                    <li><strong>SSL:</strong> <code>SslInstall</code></li>
+                </ul>
 
                 <h3>Installing the MCP server</h3>
                 <p>The MCP endpoint is optional and loads only when the required MCP package is installed. To use it
@@ -4590,6 +4634,15 @@ myapp@server:~$ crontab -e</pre>
                 <p>Use <strong>MCP: Add Server</strong> from the Command Palette for a guided setup. VS Code connects
                     over
                     HTTP — no bridge needed.</p>
+
+                <h4>Claude Code</h4>
+                <p>Add the MCP server directly from the CLI:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> claude mcp add --transport http cipi-api https://&lt;your-api-domain&gt;/mcp \
+    --header "Authorization: Bearer &lt;your-token&gt;"</pre>
+                </div>
 
                 <h4>Claude Desktop</h4>
                 <p>Claude Desktop requires the <strong>mcp-remote</strong> bridge to convert stdio to HTTP. Add to
