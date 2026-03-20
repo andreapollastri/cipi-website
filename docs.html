@@ -1311,8 +1311,10 @@ root@server:~# su - myapp</pre>
                 <h2>Quick Start</h2>
 
                 <h3>1. Create your first app</h3>
-                <p>The interactive wizard asks for a username, primary domain, Git repository URL (SSH format), branch,
-                    and PHP version.</p>
+                <p>The interactive wizard asks for a username, primary domain, Git repository URL (SSH format) and branch
+                    when applicable, and PHP version. Laravel apps always require a repository; for <strong>custom</strong>
+                    apps you can leave the repository empty to host the site via SFTP only — see
+                    <a href="#cli-app-custom">custom apps</a>.</p>
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">bash</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
@@ -2172,21 +2174,38 @@ MariaDB: database '<span class="tree-accent">myapp</span>', user '<span class="t
                     index.php</code>, <code>try_files $uri $uri/ /index.php?$args</code>, and
                     <code>error_page 404 /404.html</code> — no prompts for try_files or entry point.
                 </p>
-                <p>Custom apps have <strong>no database</strong>, <strong>no <code>.env</code></strong>, no cron, no
-                    queue workers, no webhook. The post-creation summary shows only SSH access, deploy key, and next
-                    steps.
+                <h3>Git optional (SFTP-only)</h3>
+                <p>Since <strong>v4.4.4</strong>, the Git repository is <strong>optional</strong> for custom apps.
+                    <strong>Laravel</strong> apps still require a repository. If you skip the repository for a custom app,
+                    Cipi creates <code>/home/&lt;app&gt;/htdocs</code> with a placeholder <code>index.html</code> and does
+                    not configure a deploy key or webhook — you upload files with <strong>SFTP</strong> (or SCP/rsync) to
+                    <code>~/htdocs</code> as the app user. The onboarding output explains this “no repo — SFTP only”
+                    workflow. If you do provide a repository, behavior is unchanged: use <code>cipi deploy
+                    &lt;app&gt;</code> to pull code into <code>htdocs</code>.
+                </p>
+                <p>Custom apps have <strong>no database</strong>, <strong>no <code>.env</code></strong>, no cron, and no
+                    queue workers. When a repository is configured, a deploy key and (with Git auto-setup) webhook are
+                    shown; for SFTP-only apps, those are omitted. The post-creation summary lists SSH access and next
+                    steps accordingly.
                 </p>
                 <p>If your custom app needs a database (e.g. WordPress, Drupal), create one with
                     <code>cipi db create --name=&lt;app&gt;</code> after deployment. See <a href="#cli-db">cipi db</a>
                     for backup, restore, and password management.
                 </p>
+                <p>With Git — non-interactive example:</p>
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">bash</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
                     <pre><span class="p">$</span> cipi app create --custom --user=mysite --domain=mysite.com \
     --repository=git@github.com:you/mysite.git --docroot=dist</pre>
                 </div>
-                <p>Use <code>cipi deploy &lt;app&gt;</code> to deploy. Code is cloned into
+                <p>SFTP-only — omit <code>--repository</code> and <code>--branch</code>:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi app create --custom --user=mysite --domain=mysite.com --docroot=dist</pre>
+                </div>
+                <p>With a repository, use <code>cipi deploy &lt;app&gt;</code> to deploy; code is cloned into
                     <code>/home/&lt;app&gt;/htdocs</code>.
                 </p>
             </div>
@@ -2209,7 +2228,7 @@ MariaDB: database '<span class="tree-accent">myapp</span>', user '<span class="t
                         <tr>
                             <td>cipi app show &lt;app&gt;</td>
                             <td>Full details: domain, PHP, deploy key, workers, webhook. For custom apps: type
-                                "Custom", docroot; webhook line omitted.</td>
+                                "Custom", docroot; webhook (and deploy key) omitted when SFTP-only without a repository.</td>
                         </tr>
                         <tr>
                             <td>cipi app edit &lt;app&gt; --php=8.5</td>
@@ -4451,6 +4470,12 @@ myapp@server:~$ crontab -e</pre>
                     <code>POST /api/apps</code> accepts optional <code>custom</code> (boolean) and
                     <code>docroot</code> (string) parameters for creating
                     <a href="https://cipi.sh/docs#cli-app-custom">custom apps</a> with classic deployment.
+                    The <code>repository</code> field is <strong>required</strong> for Laravel apps and
+                    <strong>optional</strong> for custom apps: omit it (or send empty) to provision an SFTP-only site
+                    aligned with Cipi <strong>v4.4.4+</strong>. When no repository is set, <code>branch</code> is omitted.
+                    The MCP tool <code>AppCreate</code> follows the same rules. Update the API package to
+                    <strong>1.6.1+</strong> on the server (<code>cipi api update</code> / <code>cipi api upgrade</code>)
+                    so validation and OpenAPI match this behavior.
                 </p>
                 <table class="cmd-table">
                     <thead>
@@ -5763,9 +5788,11 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                                 <div>The full v4 changelog is available on <a
                                         href="https://github.com/cipi-sh/cipi/releases" target="_blank"
                                         rel="noopener">GitHub Releases</a>.
-                                    Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/4.3.3"
-                                        target="_blank" rel="noopener">4.3.3</a> — adds
-                                    <code>cipi app create --custom</code> for static sites and SPAs.
+                                    Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/4.4.4"
+                                        target="_blank" rel="noopener">4.4.4</a> — optional Git repository for
+                                    <code>cipi app create --custom</code> (SFTP-only sites); pair the server with the
+                                    <a href="https://github.com/cipi-sh/api/compare/1.6.0...1.6.1" target="_blank"
+                                        rel="noopener">cipi-sh/api 1.6.1</a> package for matching REST/MCP validation.
                                 </div>
                             </div>
                         </div>
