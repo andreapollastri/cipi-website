@@ -747,6 +747,16 @@
             color: var(--code-accent);
         }
 
+        .tree-block pre {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: inherit;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
         /* ── Divider ── */
         .doc-divider {
             border: none;
@@ -1473,37 +1483,33 @@ root@server:~# su - myapp</pre>
                 <p>When you run <code>cipi app create</code>, Cipi creates a fully isolated environment for the app.
                     Here is everything that gets set up:</p>
 
-                <div class="tree-block"><span class="tree-accent">/home/myapp/</span> <span class="tree-comment">←
-                        isolated Linux user (chmod 750)</span>
-                    ├── .ssh/
-                    │ ├── id_ed25519 <span class="tree-comment">← deploy key (private)</span>
-                    │ └── id_ed25519.pub <span class="tree-comment">← deploy key (public — add to Git)</span>
-                    ├── .deployer/
-                    │ └── deploy.php <span class="tree-comment">← Deployer config (auto-generated)</span>
-                    ├── <span class="tree-accent">current</span> -> releases/3/ <span class="tree-comment">← symlink to
-                        active release</span>
-                    ├── releases/
-                    │ ├── 1/
-                    │ ├── 2/
-                    │ └── 3/ <span class="tree-comment">← latest release (last 5 kept)</span>
-                    ├── shared/
-                    │ ├── .env <span class="tree-comment">← auto-compiled by Cipi</span>
-                    │ └── storage/ <span class="tree-comment">← persistent storage</span>
-                    └── logs/
-                    ├── nginx-access.log
-                    ├── nginx-error.log
-                    ├── php-fpm-error.log
-                    ├── worker-default.log
-                    └── deploy.log</div>
+                <div class="tree-block"><pre><span class="tree-accent">/home/myapp/</span> <span class="tree-comment">← isolated Linux user (chmod 750)</span>
+├── .ssh/
+│   ├── id_ed25519 <span class="tree-comment">← deploy key (private)</span>
+│   └── id_ed25519.pub <span class="tree-comment">← deploy key (public — add to Git)</span>
+├── .deployer/
+│   └── deploy.php <span class="tree-comment">← Deployer config (auto-generated)</span>
+├── <span class="tree-accent">current</span> -&gt; releases/3/ <span class="tree-comment">← symlink to active release</span>
+├── releases/
+│   ├── 1/
+│   ├── 2/
+│   └── 3/ <span class="tree-comment">← latest release (last 5 kept)</span>
+├── shared/
+│   ├── .env <span class="tree-comment">← auto-compiled by Cipi</span>
+│   └── storage/ <span class="tree-comment">← persistent storage</span>
+└── logs/
+    ├── nginx-access.log
+    ├── nginx-error.log
+    ├── php-fpm-error.log
+    ├── worker-default.log
+    └── deploy.log</pre></div>
 
                 <p>In addition to the home directory, Cipi creates these system files:</p>
-                <div class="tree-block">PHP-FPM pool: /etc/php/8.5/fpm/pool.d/<span
-                        class="tree-accent">myapp</span>.conf <span class="tree-comment">(user=myapp)</span>
-                    Nginx vhost: /etc/nginx/sites-available/<span class="tree-accent">myapp</span>
-                    Supervisor: /etc/supervisor/conf.d/<span class="tree-accent">myapp</span>.conf
-                    Crontab: * * * * * php artisan schedule:run
-                    MariaDB: database '<span class="tree-accent">myapp</span>', user '<span
-                        class="tree-accent">myapp</span>'@'localhost'</div>
+                <div class="tree-block"><pre>PHP-FPM pool: /etc/php/8.5/fpm/pool.d/<span class="tree-accent">myapp</span>.conf <span class="tree-comment">(user=myapp)</span>
+Nginx vhost:  /etc/nginx/sites-available/<span class="tree-accent">myapp</span>
+Supervisor:   /etc/supervisor/conf.d/<span class="tree-accent">myapp</span>.conf
+Crontab:      * * * * * php artisan schedule:run
+MariaDB:      database '<span class="tree-accent">myapp</span>', user '<span class="tree-accent">myapp</span>'@'localhost'</pre></div>
 
                 <p>The <code>.env</code> is auto-compiled with all credentials — database name, password, webhook token,
                     and <code>APP_KEY</code>. You never have to touch it manually, but you can always edit it with
