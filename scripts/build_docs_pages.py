@@ -267,6 +267,18 @@ NAV_BLOCK = """    <nav>
                 </a>
                 <span class="nav-badge">Docs</span>
             </div>
+            <div class="nav-search">
+                <button type="button" class="docs-search-trigger" id="docsSearchOpen"
+                    aria-haspopup="dialog" aria-expanded="false" aria-controls="docsSearchDialog">
+                    <svg class="docs-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7" />
+                        <line x1="16.65" y1="16.65" x2="21" y2="21" />
+                    </svg>
+                    <span class="docs-search-trigger-label">Search</span>
+                    <kbd class="docs-search-kbd-hint" aria-hidden="true"><span class="docs-kbd-mod">⌘</span>K</kbd>
+                </button>
+            </div>
             <div class="nav-right">
                 <a href="../index.html" class="nav-link">Home</a>
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
@@ -299,7 +311,34 @@ NAV_BLOCK = """    <nav>
     </nav>
 """
 
-FOOTER_AND_SCRIPT = """    <footer>
+FOOTER_AND_SCRIPT = """    <div class="docs-search-overlay" id="docsSearchOverlay" hidden>
+        <div class="docs-search-backdrop" id="docsSearchBackdrop" tabindex="-1"></div>
+        <div class="docs-search-panel" role="dialog" aria-modal="true" aria-labelledby="docsSearchHeading"
+            id="docsSearchDialog">
+            <div class="docs-search-header">
+                <span id="docsSearchHeading" class="docs-sr-only">Search documentation</span>
+                <svg class="docs-search-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" />
+                    <line x1="16.65" y1="16.65" x2="21" y2="21" />
+                </svg>
+                <input type="search" id="docsSearchInput" class="docs-search-input"
+                    placeholder="Search documentation…" autocomplete="off" autocorrect="off" autocapitalize="off"
+                    spellcheck="false" />
+                <button type="button" class="docs-search-close" id="docsSearchClose" aria-label="Close search">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+            <p class="docs-search-status docs-sr-only" id="docsSearchStatus" role="status" aria-live="polite"></p>
+            <ul class="docs-search-results" id="docsSearchResults" role="listbox" aria-label="Search results"></ul>
+            <p class="docs-search-empty" id="docsSearchEmpty" hidden>No matching sections.</p>
+        </div>
+    </div>
+
+    <footer>
         <div class="footer-inner">
             <span>Made with ❤️ by <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> — Open source, MIT
                 Licensed</span>
@@ -373,6 +412,9 @@ FOOTER_AND_SCRIPT = """    <footer>
             });
         }
     </script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+    <script defer src="docs-search.js"></script>
 
     <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
     <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt=""
@@ -688,6 +730,265 @@ EXTRA_CSS = """
                 max-width: 100%;
             }
         }
+
+        .docs-sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        nav .nav-inner {
+            display: grid;
+            grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto);
+            align-items: center;
+            gap: 0 12px;
+            justify-content: unset;
+        }
+
+        .nav-search {
+            display: flex;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        .docs-search-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            max-width: 320px;
+            padding: 7px 12px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .docs-search-trigger:hover {
+            border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+            color: var(--text-secondary);
+        }
+
+        .docs-search-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .docs-search-trigger-label {
+            flex: 1;
+            text-align: left;
+        }
+
+        .docs-search-kbd-hint {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 500;
+            padding: 2px 6px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--bg-warm);
+            color: var(--text-muted);
+        }
+
+        .docs-kbd-mod {
+            font-size: 0.75em;
+        }
+
+        .docs-search-overlay[hidden] {
+            display: none !important;
+        }
+
+        .docs-search-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 400;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 10vh 16px 16px;
+        }
+
+        .docs-search-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 15, 18, 0.45);
+            backdrop-filter: blur(4px);
+        }
+
+        [data-theme="dark"] .docs-search-backdrop {
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        .docs-search-panel {
+            position: relative;
+            width: min(100%, 32rem);
+            max-height: min(70vh, 520px);
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .docs-search-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .docs-search-input-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            color: var(--text-muted);
+        }
+
+        .docs-search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font: inherit;
+            font-size: 0.95rem;
+            color: var(--text);
+            min-width: 0;
+        }
+
+        .docs-search-input:focus {
+            outline: none;
+        }
+
+        .docs-search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .docs-search-close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .docs-search-close:hover {
+            color: var(--text);
+            background: var(--bg-warm);
+        }
+
+        .docs-search-results {
+            list-style: none;
+            margin: 0;
+            padding: 6px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .docs-search-results a {
+            display: block;
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.15s;
+        }
+
+        .docs-search-results a:hover,
+        .docs-search-results a:focus-visible {
+            background: var(--bg-warm);
+            outline: none;
+        }
+
+        .docs-search-result-chapter {
+            display: block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .docs-search-result-title {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .docs-search-result-snippet {
+            display: -webkit-box;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            line-height: 1.45;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .docs-search-empty {
+            padding: 16px;
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 900px) {
+            .nav-search {
+                max-width: none;
+                margin: 0 8px;
+            }
+
+            .docs-search-trigger-label {
+                display: none;
+            }
+
+            .docs-search-kbd-hint {
+                display: none;
+            }
+
+            .docs-search-trigger {
+                width: auto;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-inner {
+                flex-wrap: wrap;
+                row-gap: 8px;
+            }
+
+            .nav-search {
+                order: 3;
+                flex: 1 1 100%;
+                margin: 0;
+                max-width: none;
+            }
+
+            .docs-search-trigger {
+                max-width: none;
+            }
+        }
 """
 
 
@@ -710,6 +1011,64 @@ def build_sidebar_mapping() -> None:
             ANCHOR_TO_PAGE[anchor] = fname
 
 
+def _strip_small_html_fragment(fragment: str) -> str:
+    """Plain text from a short HTML string (e.g. sidebar titles with <code>)."""
+    t = re.sub(r"<[^>]+>", " ", fragment)
+    t = html.unescape(t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def _html_chunk_to_plain(chunk: str, max_len: int = 8000) -> str:
+    """Strip tags and scripts from a doc section for search text."""
+    chunk = re.sub(r"<script[^>]*>.*?</script>", "", chunk, flags=re.DOTALL | re.IGNORECASE)
+    chunk = re.sub(r"<style[^>]*>.*?</style>", "", chunk, flags=re.DOTALL | re.IGNORECASE)
+    chunk = re.sub(r"<[^>]+>", " ", chunk)
+    chunk = html.unescape(chunk)
+    chunk = re.sub(r"\s+", " ", chunk).strip()
+    if len(chunk) > max_len:
+        chunk = chunk[:max_len].rsplit(" ", 1)[0] + " …"
+    return chunk
+
+
+def _section_h2_title(html_chunk: str, fallback: str) -> str:
+    m = re.search(r"<h2[^>]*>(.*?)</h2>", html_chunk, re.DOTALL | re.IGNORECASE)
+    if m:
+        return _strip_small_html_fragment(m.group(1))
+    return fallback
+
+
+def anchor_sidebar_meta() -> dict[str, tuple[str, str]]:
+    """anchor -> (group label, plain sidebar title)."""
+    out: dict[str, tuple[str, str]] = {}
+    for label, items in SIDEBAR_GROUPS:
+        for anchor, title_html in items:
+            out[anchor] = (label, _strip_small_html_fragment(title_html))
+    return out
+
+
+def build_search_index(sections: dict[str, str]) -> list[dict[str, str]]:
+    """Records for client-side Fuse.js (docs/search-index.json)."""
+    meta = anchor_sidebar_meta()
+    records: list[dict[str, str]] = []
+    for anchor in sorted(sections.keys()):
+        chunk = sections[anchor]
+        group_label, sidebar_title = meta.get(anchor, ("", anchor))
+        title = _section_h2_title(chunk, sidebar_title)
+        page = ANCHOR_TO_PAGE.get(anchor)
+        if not page:
+            continue
+        records.append(
+            {
+                "id": anchor,
+                "url": f"{page}#{anchor}",
+                "chapter": group_label,
+                "title": title,
+                "text": _html_chunk_to_plain(chunk),
+            }
+        )
+    return records
+
+
 def main() -> None:
     build_sidebar_mapping()
     text = DOCS_HTML.read_text(encoding="utf-8")
@@ -723,6 +1082,12 @@ def main() -> None:
     CSS_OUT.write_text(base_css + EXTRA_CSS, encoding="utf-8")
 
     sections = extract_sections(lines)
+
+    search_path = DOCS_DIR / "search-index.json"
+    search_path.write_text(
+        json.dumps(build_search_index(sections), ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8",
+    )
 
     # Chapter HTML
     for start_line, out_name, pkey in CHAPTER_RANGES:
