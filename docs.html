@@ -2188,7 +2188,7 @@ MariaDB:      database '<span class="tree-accent">myapp</span>', user '<span cla
                     <code>error_page 404 /404.html</code> — no prompts for try_files or entry point.
                 </p>
                 <h3>Git optional (SFTP-only)</h3>
-                <p>Since <strong>v4.4.5</strong>, the Git repository is <strong>optional</strong> for custom apps.
+                <p>The Git repository is <strong>optional</strong> for custom apps.
                     <strong>Laravel</strong> apps still require a repository. If you skip the repository for a custom
                     app,
                     Cipi creates <code>/home/&lt;app&gt;/htdocs</code> with a placeholder <code>index.html</code> and
@@ -4502,7 +4502,7 @@ myapp@server:~$ crontab -e</pre>
                     <a href="https://cipi.sh/docs#cli-app-custom">custom apps</a> with classic deployment.
                     The <code>repository</code> field is <strong>required</strong> for Laravel apps and
                     <strong>optional</strong> for custom apps: omit it (or send empty) to provision an SFTP-only site
-                    aligned with Cipi <strong>v4.4.5+</strong>. When no repository is set, <code>branch</code> is
+                    aligned with Cipi <strong>v4.4.13+</strong>. When no repository is set, <code>branch</code> is
                     omitted.
                     The MCP tool <code>AppCreate</code> follows the same rules. Update the API package to
                     <strong>1.6.1+</strong> on the server (<code>cipi api update</code> / <code>cipi api upgrade</code>)
@@ -4982,7 +4982,7 @@ myapp@server:~$ crontab -e</pre>
 
 <span class="c">Cipi Sync Archive</span>
 <span class="c">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
-<span class="c">  Cipi           v4.2.0</span>
+<span class="c">  Cipi           v4.4.13</span>
 <span class="c">  Exported       2026-03-06T15:00:00Z</span>
 <span class="c">  Source         aws01 (3.120.xx.xx)</span>
 <span class="c">  Database       true</span>
@@ -5828,8 +5828,8 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                                 <div>The full v4 changelog is available on <a
                                         href="https://github.com/cipi-sh/cipi/releases" target="_blank"
                                         rel="noopener">GitHub Releases</a>.
-                                    Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/4.4.5" target="_blank"
-                                        rel="noopener">4.4.5</a> — optional Git repository for
+                                    Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/4.4.13" target="_blank"
+                                        rel="noopener">4.4.13</a> — optional Git repository for
                                     <code>cipi app create --custom</code> (SFTP-only sites); pair the server with the
                                     <a href="https://github.com/cipi-sh/api/compare/1.6.0...1.6.1" target="_blank"
                                         rel="noopener">cipi-sh/api 1.6.1</a> package for matching REST/MCP validation.
