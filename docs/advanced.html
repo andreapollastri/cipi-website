@@ -647,17 +647,19 @@
                 </table>
 
                 <h3>Extending the module</h3>
-<pre><code>// Example: add an alias from a WHMCS hook
+<pre><code class="language-php">&lt;?php
+
+// Example: add an alias from a WHMCS hook
 require_once ROOTDIR . '/modules/servers/cipi/lib/CipiApiClient.php';
 
 $client = new CipiApiClient('https://api.example.com', $token);
-$client->addAlias('myapp', 'alias.example.com');
+$client-&gt;addAlias('myapp', 'alias.example.com');
 
 // Example: create an extra database
-$client->createDatabase('myapp_extra');
+$client-&gt;createDatabase('myapp_extra');
 
 // Example: backup a database
-$client->backupDatabase('myapp');</code></pre>
+$client-&gt;backupDatabase('myapp');</code></pre>
 
                 <h3>Customer-facing behaviour</h3>
                 <p>The module does <strong>not</strong> add a Client Area tab, custom buttons, or live status from Cipi.
