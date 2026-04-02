@@ -806,6 +806,167 @@
             gap: 20px;
         }
 
+        /* ── Discovery Navigator ── */
+        .discovery-nav {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            z-index: 150;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 10px 10px 20px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .discovery-nav.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .discovery-nav-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            min-width: 120px;
+        }
+
+        .discovery-nav-step {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.72rem;
+        }
+
+        .discovery-nav-title {
+            max-width: 140px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .discovery-nav-progress {
+            width: 80px;
+            height: 3px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .discovery-nav-progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .discovery-nav-arrows {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .discovery-nav-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s;
+            flex-shrink: 0;
+        }
+
+        .discovery-nav-btn:hover:not(:disabled) {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        .discovery-nav-btn:disabled {
+            opacity: 0.25;
+            cursor: default;
+        }
+
+        .discovery-nav-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ── Scroll Hint (Hero) ── */
+        .scroll-hint {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        .scroll-hint:hover {
+            color: var(--accent);
+        }
+
+        .scroll-hint-text {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+
+        .scroll-hint-chevron {
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+
+        .scroll-hint-chevron svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(6px); opacity: 0.5; }
+        }
+
+        /* ── Section Connector Lines ── */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--border), transparent);
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
         /* ── Scroll Reveal ── */
         .reveal {
             opacity: 0;
@@ -820,6 +981,28 @@
 
         /* ── Responsive ── */
         @media (max-width:900px) {
+
+            .discovery-nav {
+                bottom: 16px;
+                gap: 10px;
+                padding: 8px 8px 8px 14px;
+            }
+
+            .discovery-nav-title {
+                display: none;
+            }
+
+            .discovery-nav-progress {
+                width: 50px;
+            }
+
+            .scroll-hint {
+                bottom: 24px;
+            }
+
+            .slide::before {
+                display: none;
+            }
 
             .hero-grid,
             .slide-inner {
@@ -888,6 +1071,26 @@
         }
 
         @media (max-width:600px) {
+            .discovery-nav {
+                bottom: 12px;
+                gap: 8px;
+                padding: 6px 6px 6px 12px;
+            }
+
+            .discovery-nav-label {
+                font-size: 0.6rem;
+                min-width: auto;
+            }
+
+            .discovery-nav-btn {
+                width: 32px;
+                height: 32px;
+            }
+
+            .discovery-nav-progress {
+                width: 36px;
+            }
+
             .hero {
                 padding: calc(var(--nav-height) + 32px) 20px 48px;
             }
@@ -1040,6 +1243,10 @@
                 <div class="terminal-body"></div>
             </div>
         </div>
+        <a href="#smtp" class="scroll-hint">
+            <span class="scroll-hint-text">Start exploring</span>
+            <span class="scroll-hint-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </a>
     </section>
 
     <!-- ════════════════════════════════════════ -->
@@ -1661,6 +1868,25 @@
         </div>
     </section>
 
+    <!-- Discovery Navigator -->
+    <div class="discovery-nav" id="discoveryNav">
+        <div class="discovery-nav-label">
+            <span class="discovery-nav-step" id="navStep">01</span>
+            <span class="discovery-nav-title" id="navTitle">Install</span>
+        </div>
+        <div class="discovery-nav-progress">
+            <div class="discovery-nav-progress-fill" id="navProgress"></div>
+        </div>
+        <div class="discovery-nav-arrows">
+            <button class="discovery-nav-btn" id="navPrev" aria-label="Previous section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="discovery-nav-btn" id="navNext" aria-label="Next section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-inner">
@@ -2110,6 +2336,109 @@
             const heroTerminal = document.querySelector('[data-demo="install"]');
             if (heroTerminal) startTerminal(heroTerminal);
         }, 600);
+
+        // ── Discovery Navigator ──
+        (function () {
+            const sections = [
+                { id: 'hero', step: '01', title: 'Install' },
+                { id: 'smtp', step: '02', title: 'Alerts' },
+                { id: 'git', step: '03', title: 'Git' },
+                { id: 'agent', step: '04', title: 'Agent' },
+                { id: 'cli', step: '05', title: 'Apps CLI' },
+                { id: 'custom-apps', step: '06', title: 'Custom' },
+                { id: 'api', step: '07', title: 'REST API' },
+                { id: 'whmcs', step: '08', title: 'WHMCS' },
+                { id: 'webhook', step: '09', title: 'Auto-deploy' },
+                { id: 'notifications', step: '10', title: 'Events' },
+                { id: 'health', step: '11', title: 'Health' },
+                { id: 'mcp', step: '12', title: 'MCP' },
+                { id: 'anonymize', step: '13', title: 'Anonymize' },
+                { id: 'backup-db', step: '14', title: 'Backup' },
+                { id: 'restore', step: '15', title: 'Restore' },
+                { id: 'backup-s3', step: '16', title: 'S3' },
+                { id: 'sync', step: '17', title: 'Sync' },
+                { id: 'security', step: '18', title: 'Security' },
+            ];
+
+            const nav = document.getElementById('discoveryNav');
+            const stepEl = document.getElementById('navStep');
+            const titleEl = document.getElementById('navTitle');
+            const progressEl = document.getElementById('navProgress');
+            const prevBtn = document.getElementById('navPrev');
+            const nextBtn = document.getElementById('navNext');
+            let currentIdx = 0;
+
+            function updateNav(idx) {
+                currentIdx = idx;
+                const s = sections[idx];
+                stepEl.textContent = s.step;
+                titleEl.textContent = s.title;
+                const pct = ((idx) / (sections.length - 1)) * 100;
+                progressEl.style.width = pct + '%';
+                prevBtn.disabled = idx === 0;
+                nextBtn.disabled = idx === sections.length - 1;
+            }
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        const idx = sections.findIndex(s => s.id === e.target.id);
+                        if (idx !== -1) updateNav(idx);
+                    }
+                });
+
+                const heroEl = document.getElementById('hero');
+                const ctaEl = document.querySelector('.cta-bottom');
+                const heroRect = heroEl ? heroEl.getBoundingClientRect() : null;
+                const ctaRect = ctaEl ? ctaEl.getBoundingClientRect() : null;
+                const heroVisible = heroRect && heroRect.bottom > window.innerHeight * 0.6;
+                const ctaVisible = ctaRect && ctaRect.top < window.innerHeight * 0.7;
+
+                if (heroVisible || ctaVisible) {
+                    nav.classList.remove('visible');
+                } else {
+                    nav.classList.add('visible');
+                }
+            }, { threshold: 0.3 });
+
+            sections.forEach(s => {
+                const el = document.getElementById(s.id);
+                if (el) sectionObserver.observe(el);
+            });
+
+            const ctaBottom = document.querySelector('.cta-bottom');
+            if (ctaBottom) sectionObserver.observe(ctaBottom);
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIdx > 0) {
+                    const target = document.getElementById(sections[currentIdx - 1].id);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIdx < sections.length - 1) {
+                    const target = document.getElementById(sections[currentIdx + 1].id);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    if (currentIdx > 0) {
+                        e.preventDefault();
+                        prevBtn.click();
+                    }
+                } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    if (currentIdx < sections.length - 1) {
+                        e.preventDefault();
+                        nextBtn.click();
+                    }
+                }
+            });
+
+            updateNav(0);
+        })();
     </script>
 
     <script async src="https://stats.web.ap.it/i/5ae6c482-e1ef-4447-b949-49ff9a43a5fb.js"></script>
