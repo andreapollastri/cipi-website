@@ -1568,6 +1568,150 @@
             }
         }
 
+        /* ── CLI Client Section ── */
+        .cli-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cli-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 72px;
+            align-items: center;
+        }
+
+        .cli-label {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--tag-bg);
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .cli-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .cli-headline em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .cli-desc {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .cli-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 36px;
+            display: grid;
+            gap: 14px;
+        }
+
+        .cli-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .cli-features li svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: var(--accent);
+        }
+
+        .cli-cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .cli-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            font-weight: 500;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .cli-cta:hover {
+            opacity: 0.9;
+        }
+
+        .cli-terminal {
+            background: var(--code-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .cli-terminal-topbar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .cli-terminal-topbar .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .cli-terminal-topbar .terminal-dot.red { background: #ff5f57; }
+        .cli-terminal-topbar .terminal-dot.yellow { background: #febc2e; }
+        .cli-terminal-topbar .terminal-dot.green { background: #28c840; }
+
+        .cli-terminal-title {
+            flex: 1;
+            text-align: center;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.35);
+            font-family: var(--font-mono);
+        }
+
+        .cli-terminal-body {
+            padding: 20px 22px;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            line-height: 1.9;
+            color: var(--code-text);
+        }
+
+        .cli-terminal-body .prompt { color: var(--code-accent); }
+        .cli-terminal-body .dim { color: rgba(228, 228, 231, 0.4); }
+        .cli-terminal-body .success { color: var(--code-accent); }
+
+        @media (max-width: 900px) {
+            .cli-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .cli-terminal {
+                max-width: 100%;
+            }
+        }
+
         /* ── Docs CTA Banner ── */
         .docs-cta-banner {
             display: flex;
@@ -2061,6 +2205,7 @@
                 <li><a href="#ai-agents">AI</a></li>
                 <li><a href="#api">API</a></li>
                 <li><a href="#whmcs">WHMCS</a></li>
+                <li><a href="#cli-client">CLI</a></li>
                 <li><a href="docs/">Docs</a></li>
                 <li><a href="discovery" class="btn-nav" style="display: inline-flex; align-items: center; gap: 6px;">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -2118,6 +2263,7 @@
             <li><a href="#ai-agents">AI</a></li>
             <li><a href="#api">API</a></li>
             <li><a href="#whmcs">WHMCS</a></li>
+            <li><a href="#cli-client">CLI</a></li>
             <li><a href="docs/">Docs</a></li>
             <li><a href="discovery" class="btn-nav-mobile" style="display: inline-flex; align-items: center; gap: 6px;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -2816,6 +2962,107 @@
                             <strong>Lifecycle managed from billing</strong>
                             <span>Suspend, unsuspend, terminate &mdash; all from WHMCS Admin</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLI Client -->
+    <section class="cli-section" id="cli-client">
+        <div class="container" style="padding-top: 100px; padding-bottom: 100px;">
+            <div class="cli-grid fade-in">
+                <div>
+                    <span class="cli-label">Remote Management</span>
+                    <h2 class="cli-headline">Your server,<br>from <em>any terminal</em>.</h2>
+                    <p class="cli-desc"><code style="color:var(--code-accent)">cipi-cli</code> is a standalone Go binary
+                        that talks to the Cipi REST API from your local machine. No SSH required &mdash; manage apps,
+                        databases, SSL certificates, and deployments from any terminal. Available for Linux and macOS.</p>
+                    <ul class="cli-features">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Full app lifecycle &mdash; create, edit, deploy, and delete from your machine
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Database management &mdash; create, backup, restore, and rotate passwords
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            SSL provisioning &mdash; install Let's Encrypt certificates with one command
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Domain aliases &mdash; add, list, and remove aliases per app
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            JSON output &mdash; pipe to <code>jq</code> for scripting and CI/CD pipelines
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Open source, MIT licensed &mdash; pre-built binaries and build from source
+                        </li>
+                    </ul>
+                    <div class="cli-cta-group">
+                        <a href="https://github.com/cipi-sh/cli" target="_blank" class="btn-primary"
+                            style="font-size: 0.9rem; padding: 10px 22px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            View on GitHub
+                        </a>
+                        <a href="docs/cli-client" class="cli-cta">
+                            Read the docs
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="cli-terminal fade-in">
+                    <div class="cli-terminal-topbar">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="cli-terminal-title">cipi-cli</span>
+                    </div>
+                    <div class="cli-terminal-body">
+                        <span class="prompt">$</span> cipi-cli apps list<br>
+                        <span class="dim">  NAME       DOMAIN            PHP</span><br>
+                        <span class="dim">  myapp      myapp.com         8.5</span><br>
+                        <span class="dim">  blog       blog.acme.com     8.4</span><br>
+                        <br>
+                        <span class="prompt">$</span> cipi-cli deploy myapp<br>
+                        <span class="dim">  Deploying myapp...</span><br>
+                        <span class="success">  Deployed to release #14. Zero downtime.</span><br>
+                        <br>
+                        <span class="prompt">$</span> cipi-cli ssl install myapp<br>
+                        <span class="success">  Certificate provisioned for myapp.com</span><br>
+                        <br>
+                        <span class="prompt">$</span> cipi-cli db backup myapp<br>
+                        <span class="success">  Backup: myapp_20260402.sql.gz</span>
                     </div>
                 </div>
             </div>
