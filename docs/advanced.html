@@ -647,19 +647,21 @@
                 </table>
 
                 <h3>Extending the module</h3>
-<pre><code class="language-php">&lt;?php
+<div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">php</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c">// Example: add an alias from a WHMCS hook</span>
+<span class="k">require_once</span> ROOTDIR . <span class="s">'/modules/servers/cipi/lib/CipiApiClient.php'</span>;
 
-// Example: add an alias from a WHMCS hook
-require_once ROOTDIR . '/modules/servers/cipi/lib/CipiApiClient.php';
+<span class="v">$client</span> = <span class="k">new</span> CipiApiClient(<span class="s">'https://api.example.com'</span>, <span class="v">$token</span>);
+<span class="v">$client</span>->addAlias(<span class="s">'myapp'</span>, <span class="s">'alias.example.com'</span>);
 
-$client = new CipiApiClient('https://api.example.com', $token);
-$client-&gt;addAlias('myapp', 'alias.example.com');
+<span class="c">// Example: create an extra database</span>
+<span class="v">$client</span>->createDatabase(<span class="s">'myapp_extra'</span>);
 
-// Example: create an extra database
-$client-&gt;createDatabase('myapp_extra');
-
-// Example: backup a database
-$client-&gt;backupDatabase('myapp');</code></pre>
+<span class="c">// Example: backup a database</span>
+<span class="v">$client</span>->backupDatabase(<span class="s">'myapp'</span>);</pre>
+                </div>
 
                 <h3>Customer-facing behaviour</h3>
                 <p>The module does <strong>not</strong> add a Client Area tab, custom buttons, or live status from Cipi.
