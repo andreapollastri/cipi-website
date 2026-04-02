@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipi Docs — Deploy & CI/CD</title>
+    <meta name="description" content="Zero-downtime deployments, Git integration, CI/CD pipelines, notifications, and preview environments.">
+    <meta name="author" content="Andrea Pollastri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cipi.sh/docs/deploy">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cipi">
+    <meta property="og:url" content="https://cipi.sh/docs/deploy">
+    <meta property="og:title" content="Cipi Docs — Deploy & CI/CD">
+    <meta property="og:description" content="Zero-downtime deployments, Git integration, CI/CD pipelines, notifications, and preview environments.">
+    <meta property="og:image" content="https://cipi.sh/og.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@cipi_sh">
+    <meta name="twitter:title" content="Cipi Docs — Deploy & CI/CD">
+    <meta name="twitter:description" content="Zero-downtime deployments, Git integration, CI/CD pipelines, notifications, and preview environments.">
+    <meta name="twitter:image" content="https://cipi.sh/og.png">
+
+    <link rel="icon" id="favicon" type="image/png" sizes="48x48" href="/favicon-light.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-light-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-light-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-light-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-left">
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round">
+                        <line x1="4" y1="7" x2="20" y2="7" />
+                        <line x1="4" y1="12" x2="20" y2="12" />
+                        <line x1="4" y1="17" x2="20" y2="17" />
+                    </svg>
+                </button>
+                <a href="../index.html" class="nav-logo">
+                    <svg class="tux-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M16.2182,35.9c-3.1368,0-6.8982,1.496-7.2988,5.6766a.916.916,0,0,0,.9061,1.0025h11.97A.9.9,0,0,0,22.7,41.643C22.6175,39.8048,21.7865,35.9,16.2182,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M18.0508,20.564c-1.35,1.0368-7.3687,7.51-4.3595,15.6667" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M31.7818,35.9c3.1368,0,6.8982,1.496,7.2988,5.6766a.916.916,0,0,1-.9061,1.0025h-11.97A.9.9,0,0,1,25.3,41.643C25.3825,39.8048,26.2135,35.9,31.7818,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M35.0148,36.4556c3.1848-2.8438,2.7468-7.5246,2.7468-8.7785,2.8935.82,5.0306,2.9709,5.5941,2.17,1.3744-1.9531-7.5193-7.5461-7.6918-10.8989C35.4951,15.6692,35.1706,5.4214,24,5.4214S12.5049,15.6692,12.3361,18.9484c-.1725,3.3528-9.0662,8.9458-7.6918,10.8989.5635.8007,2.7006-1.35,5.5941-2.17,0,1.2539-.438,5.9347,2.7468,8.7785" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M29.2763,19.8324c1.9318,1.5032,8.0416,8.242,5.0324,16.3983" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M24,24.8431l3.9479-4.2791c-.3858-1.0127-1.712-1.929-3.9479-1.929s-3.5621.9163-3.9479,1.929Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M20.0521,20.564c-3.424.5063-3.9062-2.7247-3.9062-4.7019,0-2.7006,1.4467-4.4367,3.9062-4.4367S23.79,14.7529,23.79,16.3443A3.8486,3.8486,0,0,1,23.181,18.68" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M27.7205,20.1334c.6751.0482,3.9538-.3892,3.9538-3.331s-1.76-3.7615-4.1232-3.7615a3.7861,3.7861,0,0,0-3.8164,2.6682" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M22.7012,41.4815a6.8371,6.8371,0,0,0,2.6076,0" />
+                        <circle fill="currentColor" cx="22.1579" cy="16.5888" r="0.75" />
+                        <circle fill="currentColor" cx="25.5497" cy="16.5888" r="0.75" />
+                    </svg>
+                    <span>Cipi</span>
+                </a>
+                <span class="nav-badge">Docs</span>
+            </div>
+            <div class="nav-right">
+                <a href="../index.html" class="nav-link">Home</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                </button>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-nav-sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="docs-layout">
+
+        <aside class="docs-sidebar" id="docsSidebar">
+
+            <div class="sidebar-group" data-chapter="getting-started">
+                <a href="getting-started" class="sidebar-group-label">getting started</a>
+                <a href="getting-started#installation" class="sidebar-link">installation</a>
+                <a href="getting-started#requirements" class="sidebar-link">requirements</a>
+                <a href="getting-started#quickstart" class="sidebar-link">quick start</a>
+                <a href="getting-started#tech-stack" class="sidebar-link">tech stack</a>
+                <a href="getting-started#app-structure" class="sidebar-link">app structure</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="agent">
+                <a href="agent" class="sidebar-group-label">cipi agent</a>
+                <a href="agent#agent-install" class="sidebar-link">installation</a>
+                <a href="agent#agent-webhook" class="sidebar-link">webhook</a>
+                <a href="agent#agent-health" class="sidebar-link">health check</a>
+                <a href="agent#agent-mcp" class="sidebar-link">MCP server</a>
+                <a href="agent#agent-anonymizer" class="sidebar-link">database anonymizer</a>
+                <a href="agent#agent-env" class="sidebar-link">ENV variables</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="apps">
+                <a href="apps" class="sidebar-group-label">apps</a>
+                <a href="apps#cli-app-create" class="sidebar-link"><code>app create</code></a>
+                <a href="apps#cli-app-custom" class="sidebar-link">custom apps</a>
+                <a href="apps#cli-app-manage" class="sidebar-link"><code>app list / show / edit</code></a>
+                <a href="apps#cli-app-env" class="sidebar-link"><code>app env</code></a>
+                <a href="apps#cli-app-logs" class="sidebar-link"><code>app logs</code></a>
+                <a href="apps#cli-app-artisan" class="sidebar-link"><code>app artisan / tinker</code></a>
+                <a href="apps#cli-app-ssh" class="sidebar-link">SSH as app user</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="deploy">
+                <a href="deploy" class="sidebar-group-label">deploy & ci/cd</a>
+                <a href="deploy#cli-deploy" class="sidebar-link"><code>deploy</code></a>
+                <a href="deploy#cli-auth" class="sidebar-link"><code>auth.json</code></a>
+                <a href="deploy#git-providers" class="sidebar-link">Git providers</a>
+                <a href="deploy#git-auto-setup" class="sidebar-link">Git auto-setup</a>
+                <a href="deploy#cli-deploy-script" class="sidebar-link">deploy script</a>
+                <a href="deploy#ci-pipelines" class="sidebar-link">CI/CD pipelines</a>
+                <a href="deploy#deploy-notifications" class="sidebar-link">deploy notifications</a>
+                <a href="deploy#safe-deploy" class="sidebar-link">safe deploy w/ backup</a>
+                <a href="deploy#preview-environments" class="sidebar-link">preview environments</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="infrastructure">
+                <a href="infrastructure" class="sidebar-group-label">infrastructure</a>
+                <a href="infrastructure#cli-php" class="sidebar-link"><code>php</code></a>
+                <a href="infrastructure#cli-db" class="sidebar-link"><code>db</code></a>
+                <a href="infrastructure#cli-aliases" class="sidebar-link"><code>alias</code></a>
+                <a href="infrastructure#cli-ssl" class="sidebar-link"><code>ssl</code></a>
+                <a href="infrastructure#cli-backup" class="sidebar-link"><code>backup</code></a>
+                <a href="infrastructure#cli-app-cron" class="sidebar-link">user crontab</a>
+                <a href="infrastructure#cli-workers" class="sidebar-link"><code>worker</code></a>
+                <a href="infrastructure#cli-firewall" class="sidebar-link"><code>firewall</code></a>
+                <a href="infrastructure#cli-ban" class="sidebar-link"><code>ban</code></a>
+                <a href="infrastructure#cli-services" class="sidebar-link"><code>service</code></a>
+                <a href="infrastructure#cli-ssh" class="sidebar-link"><code>ssh</code></a>
+                <a href="infrastructure#cli-cipi" class="sidebar-link"><code>cipi</code></a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="advanced">
+                <a href="advanced" class="sidebar-group-label">advanced</a>
+                <a href="advanced#cipi-api" class="sidebar-link"><code>cipi api</code></a>
+                <a href="advanced#whmcs" class="sidebar-link">WHMCS module</a>
+                <a href="advanced#cipi-sync" class="sidebar-link"><code>cipi sync</code></a>
+                <a href="advanced#cipi-vault" class="sidebar-link">vault &amp; encryption</a>
+                <a href="advanced#cipi-smtp" class="sidebar-link">email notifications</a>
+                <a href="advanced#cipi-log-retention" class="sidebar-link">log retention (GDPR)</a>
+                <a href="advanced#redis" class="sidebar-link">redis</a>
+                <a href="advanced#self-update" class="sidebar-link">self-update</a>
+                <a href="advanced#wildcard-domains" class="sidebar-link">wildcard domains</a>
+                <a href="advanced#nginx-config" class="sidebar-link">edit Nginx config</a>
+                <a href="advanced#uninstall" class="sidebar-link">uninstall Cipi</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="about">
+                <a href="about" class="sidebar-group-label">about cipi</a>
+                <a href="about#history" class="sidebar-link">history</a>
+                <a href="about#security-model" class="sidebar-link">security model</a>
+                <a href="about#why-mariadb" class="sidebar-link">why MariaDB?</a>
+                <a href="about#why-laravel" class="sidebar-link">why Laravel?</a>
+                <a href="about#why-cipi" class="sidebar-link">why "Ci-Pi"?</a>
+                <a href="about#vs-alternatives" class="sidebar-link">Cipi vs alternatives</a>
+            </div>
+
+
+        </aside>
+
+        <main class="docs-content" id="docsContent">
+
+            <div class="doc-section" id="cli-deploy">
+                <p class="doc-section-label">Deploy &amp; CI/CD</p>
+                <h2><code>cipi deploy</code></h2>
+                <p>Cipi uses <strong>Deployer</strong> for all deployments. Every deploy is atomic: a new release
+                    directory is prepared fully before the <code>current</code> symlink is swapped, so traffic is never
+                    interrupted.</p>
+
+                <h3>Deploy pipeline</h3>
+                <p>Deployer and Composer run with the <strong>app's configured PHP version</strong> (e.g.
+                    <code>/usr/bin/php8.5</code>), not the system default. This applies to <code>cipi deploy</code>,
+                    <code>cipi deploy --rollback</code>, crontab deploy triggers, <code>cipi sync import</code> deploys,
+                    and the <code>deploy</code> / <code>composer</code> aliases in the app user's <code>.bashrc</code>.
+                </p>
+                <ol>
+                    <li>Stop queue workers (<code>cipi worker stop</code>)</li>
+                    <li>Clone repo into <code>releases/N/</code></li>
+                    <li>Run <code>composer install --no-dev</code> (with app's PHP)</li>
+                    <li>Link <code>shared/.env</code> and <code>shared/storage/</code></li>
+                    <li>Run <code>artisan migrate --force</code></li>
+                    <li>Run <code>artisan optimize</code></li>
+                    <li>Run <code>artisan storage:link</code></li>
+                    <li>Swap <code>current</code> symlink atomically</li>
+                    <li>Restart queue workers</li>
+                    <li>Prune old releases (keep last 5)</li>
+                </ol>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi deploy myapp              <span class="c"># deploy latest commit</span>
+<span class="p">$</span> cipi deploy myapp --rollback   <span class="c"># instant rollback to previous release</span>
+<span class="p">$</span> cipi deploy myapp --releases   <span class="c"># list all releases with timestamps</span>
+<span class="p">$</span> cipi deploy myapp --key        <span class="c"># show the SSH deploy key</span>
+<span class="p">$</span> cipi deploy myapp --webhook    <span class="c"># show webhook URL and token</span>
+<span class="p">$</span> cipi deploy myapp --unlock     <span class="c"># remove a stuck deploy lock</span>
+<span class="p">$</span> cipi deploy myapp --trust-host=git.mycompany.com       <span class="c"># trust a custom Git server fingerprint</span>
+<span class="p">$</span> cipi deploy myapp --trust-host=git.mycompany.com:2222  <span class="c"># trust on non-standard port (also writes ~/.ssh/config)</span></pre>
+                </div>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>If a deploy is interrupted (e.g. by a network error), Deployer may leave a lock file behind.
+                        Use <code>cipi deploy myapp --unlock</code> to remove it before re-deploying.</div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="cli-auth">
+                <h2><code>auth.json</code></h2>
+                <p>Manage the <code>auth.json</code> file for an app. This file lives at
+                    <code>/home/&lt;app&gt;/shared/auth.json</code> and is automatically symlinked into every release by
+                    Deployer — exactly like <code>.env</code>. Use it to store structured credential data (e.g. API
+                    keys, feature flags, or any JSON payload) that your Laravel app can read at runtime.
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi auth create myapp   <span class="c"># create auth.json with initial { "users": [] } structure</span>
+<span class="p">$</span> cipi auth edit myapp     <span class="c"># open in $EDITOR (fallback: nano), validate JSON on close</span>
+<span class="p">$</span> cipi auth show myapp     <span class="c"># print contents formatted with jq</span>
+<span class="p">$</span> cipi auth delete myapp   <span class="c"># delete file (asks for confirmation)</span></pre>
+                </div>
+
+                <h3>Command details</h3>
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>cipi auth create &lt;app&gt;</code></td>
+                            <td>Creates <code>shared/auth.json</code> with the initial structure
+                                <code>{"users":[]}</code>, sets permissions to <code>640</code> (owner
+                                <code>app:app</code>), and adds <code>auth.json</code> to
+                                <code>shared_files</code> in the app's Deployer config so it is symlinked on every
+                                deploy.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi auth edit &lt;app&gt;</code></td>
+                            <td>Opens <code>shared/auth.json</code> in <code>$EDITOR</code> (falls back to
+                                <code>nano</code>). After the editor closes, validates the JSON with
+                                <code>jq</code> and warns if the file is malformed.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi auth show &lt;app&gt;</code></td>
+                            <td>Prints the contents of <code>shared/auth.json</code> formatted with
+                                <code>jq</code>.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi auth delete &lt;app&gt;</code></td>
+                            <td>Asks for confirmation, then deletes <code>shared/auth.json</code> and removes the
+                                <code>auth.json</code> entry from <code>shared_files</code> in the app's Deployer
+                                config.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Deployer integration</h3>
+                <p><code>cipi auth create</code> automatically appends <code>auth.json</code> to the
+                    <code>shared_files</code> list in <code>/home/&lt;app&gt;/.deployer/deploy.php</code>, and
+                    <code>cipi auth delete</code> removes it. This means the file is treated exactly like
+                    <code>.env</code>: it persists across releases and is never overwritten by a deploy.
+                </p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>Every <code>cipi auth</code> operation is logged via <code>log_action</code> for
+                        auditability. The <code>AUTH</code> section is also listed in the output of
+                        <code>cipi help</code>.
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="git-providers">
+                <h2>Git providers</h2>
+                <p>Cipi is ready to work with <strong>GitHub</strong> and <strong>GitLab</strong> but it supports any
+                    other Git provider that supports SSH deploy keys — no vendor lock-in.</p>
+
+                <p>For self-hosted or custom Git servers, you need to trust the server's host fingerprint before
+                    Deployer can clone over SSH. Use the <code>--trust-host</code> flag to add the fingerprint to the
+                    app user's <code>~/.ssh/known_hosts</code> automatically:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># show the deploy key and add it to your Git provider</span>
+<span class="p">$</span> cipi deploy myapp --key
+
+<span class="c"># trust a custom Git server fingerprint (standard port)</span>
+<span class="p">$</span> cipi deploy myapp --trust-host=git.mycompany.com
+
+<span class="c"># trust a custom Git server on a non-standard port</span>
+<span class="c"># (also writes ~/.ssh/config automatically)</span>
+<span class="p">$</span> cipi deploy myapp --trust-host=git.mycompany.com:2222</pre>
+                </div>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>When a non-standard port is specified, Cipi also writes the
+                        <code>Host</code> / <code>Port</code> entry to the app user's <code>~/.ssh/config</code> so
+                        that Deployer can reach the server without any extra configuration.
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="git-auto-setup">
+                <h2>Git auto-setup</h2>
+                <p>If you save a <strong>GitHub</strong> or <strong>GitLab</strong> Personal Access Token, Cipi
+                    automatically adds the SSH deploy key and creates the webhook on the repository every time you run
+                    <code>cipi app create</code>. No manual steps required.
+                </p>
+
+                <h3>Save a token</h3>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># GitHub (fine-grained or classic PAT)</span>
+<span class="p">$</span> cipi git github-token ghp_xxxxxxxxxxxxxxxxxxxx
+
+<span class="c"># GitLab (gitlab.com)</span>
+<span class="p">$</span> cipi git gitlab-token glpat-xxxxxxxxxxxxxxxxxxxx
+
+<span class="c"># GitLab (self-hosted — set the URL before or after the token)</span>
+<span class="p">$</span> cipi git gitlab-url https://gitlab.example.com
+<span class="p">$</span> cipi git gitlab-token glpat-xxxxxxxxxxxxxxxxxxxx</pre>
+                </div>
+
+                <h4>GitHub token permissions</h4>
+                <p>Fine-grained tokens (recommended) need <strong>Administration</strong> and
+                    <strong>Webhooks</strong> set to <em>Read and write</em> on the target repositories. Classic tokens
+                    need the <code>repo</code> scope.
+                </p>
+
+                <h4>GitLab token permissions</h4>
+                <p>The <code>api</code> scope is the minimum required — GitLab does not offer a more granular scope
+                    that covers both deploy keys and webhooks.</p>
+
+                <h3>Automatic lifecycle</h3>
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>What Cipi does automatically</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>app create</code></td>
+                            <td>Adds deploy key + creates webhook on the repository via API. The summary shows
+                                <em>"auto-configured &#10003;"</em> instead of manual instructions.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>app edit --repository=...</code></td>
+                            <td>Removes deploy key + webhook from the old repository, then adds them to the new one.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>app delete</code></td>
+                            <td>Removes deploy key + webhook from the repository before deleting the app.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3><code>cipi git</code> commands</h3>
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>cipi git status</code></td>
+                            <td>Show provider connection status and per-app integration details (deploy key ID,
+                                webhook ID)</td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi git github-token &lt;token&gt;</code></td>
+                            <td>Save a GitHub Personal Access Token</td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi git gitlab-token &lt;token&gt;</code></td>
+                            <td>Save a GitLab Personal Access Token</td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi git gitlab-url &lt;url&gt;</code></td>
+                            <td>Set the base URL for a self-hosted GitLab instance</td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi git remove-github</code></td>
+                            <td>Remove the stored GitHub token</td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi git remove-gitlab</code></td>
+                            <td>Remove the stored GitLab token and URL</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Manual setup (fallback)</h3>
+                <p>Auto-setup is skipped when no token is configured, when the API call fails (wrong permissions,
+                    repository not found, rate limit), or when the repository is hosted on a provider other than
+                    GitHub or GitLab (e.g. Gitea, Forgejo, Bitbucket). In all these cases Cipi falls back to the
+                    manual workflow and the app creation proceeds normally.</p>
+
+                <p>To configure deploy key and webhook manually:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># print the SSH deploy key to add to your Git provider</span>
+<span class="p">$</span> cipi deploy myapp --key
+
+<span class="c"># print the webhook URL and token</span>
+<span class="p">$</span> cipi deploy myapp --webhook
+
+<span class="c"># if using a custom Git server, trust the host fingerprint first</span>
+<span class="p">$</span> cipi deploy myapp --trust-host=git.mycompany.com</pre>
+                </div>
+
+                <p>Then add them in your provider's repository settings:</p>
+                <ul>
+                    <li><strong>Deploy key</strong> — GitHub: <em>Settings → Deploy keys → Add deploy key</em>;
+                        GitLab: <em>Settings → Repository → Deploy keys</em></li>
+                    <li><strong>Webhook</strong> — GitHub: <em>Settings → Webhooks → Add webhook</em>;
+                        GitLab: <em>Settings → Webhooks → Add new webhook</em>. Set the payload URL and
+                        secret to the values shown by <code>cipi deploy myapp --webhook</code></li>
+                </ul>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>If you remove a provider token after apps have been created with auto-setup, Cipi will not
+                        be able to clean up deploy keys and webhooks when you delete or edit those apps. A warning is
+                        shown and you will need to remove them manually from the provider's repository settings.</div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="cli-deploy-script">
+                <h2>Customising the deploy script</h2>
+                <p>The deploy configuration for each app is stored
+                    at:</p>
+                <div class="tree-block">/home/<span class="tree-accent">myapp</span>/.deployer/deploy.php</div>
+
+                <p>This file is auto-generated by Cipi during <code>app create</code> and updated automatically when you
+                    change the PHP version or deploy branch via <code>cipi app edit</code>. You can edit it to customise
+                    the deploy pipeline, but you should understand the implications before doing so.</p>
+
+                <h3>Default deploy pipeline</h3>
+                <p>The auto-generated <code>deploy.php</code> runs these tasks in order:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">php</span><button class="code-copy-btn"
+                            onclick="copyCode(this)">Copy</button></div>
+                    <pre>deploy:prepare          <span class="c">// create releases/N/ directory</span>
+deploy:vendors          <span class="c">// composer install --no-dev</span>
+deploy:shared           <span class="c">// link shared/.env and shared/storage/</span>
+artisan:migrate         <span class="c">// php artisan migrate --force</span>
+artisan:optimize        <span class="c">// php artisan optimize</span>
+artisan:storage:link    <span class="c">// php artisan storage:link</span>
+deploy:symlink          <span class="c">// swap current → releases/N/ atomically</span>
+cipi:restart-workers    <span class="c">// supervisorctl restart myapp-*</span>
+deploy:cleanup          <span class="c">// keep last 5 releases, delete older</span></pre>
+                </div>
+
+                <h3>Adding custom tasks</h3>
+                <p>You can add tasks before or after any step. Common examples:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">php</span><button class="code-copy-btn"
+                            onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c">// Run artisan db:seed after migrations</span>
+after('artisan:migrate', 'artisan:db:seed');
+
+<span class="c">// Clear view cache after symlink swap</span>
+after('deploy:symlink', 'artisan:view:clear');
+
+<span class="c">// Custom task — send a Slack notification</span>
+task('notify:slack', function () {
+    run('curl -X POST https://hooks.slack.com/... -d \'{"text":"Deployed!"}\'');
+});
+after('deploy:symlink', 'notify:slack');</pre>
+                </div>
+
+                <h3>Running additional artisan commands</h3>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">php</span><button class="code-copy-btn"
+                            onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c">// Seed only in specific environments</span>
+task('artisan:db:seed', function () {
+    run('{{bin/php}} {{release_path}}/artisan db:seed --force');
+});</pre>
+                </div>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div><strong>Cipi may overwrite deploy.php</strong> when you run
+                        <code>cipi app edit myapp --php=X</code> or <code>cipi app edit myapp --branch=X</code>. Back up
+                        your customisations or keep them in a section clearly separated from the Cipi-managed blocks. A
+                        safe pattern is to put all custom tasks at the bottom of the file after the default task
+                        definition.
+                    </div>
+                </div>
+
+                <h3>Disabling a default step</h3>
+                <p>To skip a task — for example if you handle migrations manually — comment it out or remove it from the
+                    <code>deploy</code> task definition:
+                </p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">php</span><button class="code-copy-btn"
+                            onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c">// Remove the migrate step from the pipeline</span>
+task('deploy', [
+    'deploy:prepare',
+    'deploy:vendors',
+    'deploy:shared',
+    <span class="c">// 'artisan:migrate',  ← disabled</span>
+    'artisan:optimize',
+    'artisan:storage:link',
+    'deploy:symlink',
+    'cipi:restart-workers',
+    'deploy:cleanup',
+]);</pre>
+                </div>
+
+                <h3>Testing your changes</h3>
+                <p>After editing <code>deploy.php</code>, always do a test deploy before pushing to production:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi deploy myapp
+
+<span class="c"># If something goes wrong, instant rollback:</span>
+<span class="p">$</span> cipi deploy myapp --rollback
+
+<span class="c"># If the deploy is stuck (e.g. interrupted mid-run):</span>
+<span class="p">$</span> cipi deploy myapp --unlock</pre>
+                </div>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>The deploy log is always available at <code>~/logs/deploy.log</code> or via
+                        <code>cipi app logs myapp --type=deploy</code>. Check it first when troubleshooting a failed
+                        deploy.
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="ci-pipelines">
+                <h2>CI/CD Pipelines — GitHub &amp; GitLab</h2>
+                <p>Cipi supports two integration patterns with CI/CD pipelines. Choose the one that fits your workflow.
+                </p>
+
+                <h3>Option A — Webhook (recommended)</h3>
+                <p>The cleanest approach: install <code>cipi-agent</code> in your Laravel project, configure one webhook
+                    in your Git provider, and every push to the target branch triggers a deploy automatically. The
+                    pipeline does not need SSH access to your server.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># 1. Install the agent in your Laravel project</span>
+<span class="p">$</span> composer require cipi/agent
+
+<span class="c"># 2. Get your webhook URL and token</span>
+<span class="p">$</span> cipi deploy myapp --webhook</pre>
+                </div>
+
+                <p>Then add the webhook in your Git provider (URL + token) and you are done. See the <a
+                        href="agent#agent-webhook">Cipi Agent — Webhook</a> section for the full
+                    setup.</p>
+
+                <h3>Option B — SSH deploy from the pipeline</h3>
+                <p>If you want explicit control inside your pipeline (e.g. deploy only after tests pass, or only from a
+                    specific environment), you can SSH into the server and run <code>cipi deploy</code> directly from
+                    the CI job.</p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>Generate a dedicated ed25519 SSH key pair for the CI runner. Add the <strong>public
+                            key</strong> to <code>/root/.ssh/authorized_keys</code> on the server and store the
+                        <strong>private key</strong> as a CI secret. Never reuse deploy keys or personal keys.
+                    </div>
+                </div>
+
+                <h4>Generate a dedicated CI key</h4>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># on your local machine</span>
+<span class="p">$</span> ssh-keygen -t ed25519 -C "ci-deploy" -f ~/.ssh/ci_deploy -N ""
+
+<span class="c"># copy the public key to the server</span>
+<span class="p">$</span> ssh-copy-id -i ~/.ssh/ci_deploy.pub cipi@your-server-ip
+
+<span class="c"># copy the private key content → add it as a CI secret</span>
+<span class="p">$</span> cat ~/.ssh/ci_deploy</pre>
+                </div>
+
+                <h3>GitHub Actions</h3>
+                <p>Add the private key as a repository secret named <code>SERVER_SSH_KEY</code> and the server IP as
+                    <code>SERVER_HOST</code>.
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># .github/workflows/deploy.yml</span>
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
+        run: php artisan test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test          <span class="c"># only deploy if tests pass</span>
+    steps:
+      - name: Deploy via Cipi
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: cipi
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: sudo cipi deploy myapp</pre>
+                </div>
+
+                <p>For rollback on failure, extend the script step:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre>          script: |
+            sudo cipi deploy myapp || (sudo cipi deploy myapp --rollback && exit 1)</pre>
+                </div>
+
+                <h3>GitLab CI / CD</h3>
+                <p>Add the private key as a CI/CD variable named <code>SERVER_SSH_KEY</code> (type: File) and the server
+                    IP as <code>SERVER_HOST</code>.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># .gitlab-ci.yml</span>
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  script:
+    - php artisan test
+
+deploy:
+  stage: deploy
+  environment: production
+  only:
+    - main
+  before_script:
+    - apt-get install -y openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SERVER_SSH_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - ssh-keyscan -H $SERVER_HOST >> ~/.ssh/known_hosts
+  script:
+    - ssh root@$SERVER_HOST "cipi deploy myapp"</pre>
+                </div>
+
+                <p>With rollback on failure:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre>  script:
+    - ssh root@$SERVER_HOST "cipi deploy myapp || (cipi deploy myapp --rollback && exit 1)"</pre>
+                </div>
+
+                <h3>Multi-app deploy</h3>
+                <p>If the same pipeline manages multiple apps on the same server:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># GitHub Actions — deploy multiple apps in parallel</span>
+      - name: Deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cipi deploy frontend &
+            cipi deploy api &
+            wait</pre>
+                </div>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div><strong>Avoid running both webhook and pipeline deploys</strong> for the same app
+                        simultaneously — two concurrent Deployer runs will conflict on the lock file. Pick one strategy
+                        per app. Use <code>cipi deploy myapp --unlock</code> if a stuck lock is left behind.</div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="deploy-notifications">
+                <h2>Deploy notifications</h2>
+                <p>Add notification steps to any pipeline to keep the team informed on deploy success, failure, and
+                    automatic rollbacks. Both examples below work with GitHub Actions and GitLab CI using only standard
+                    HTTP calls — no extra platform dependencies.</p>
+
+                <h3>Slack</h3>
+                <p>Add a final step that posts to a Slack webhook regardless of deploy outcome. Use
+                    <code>if: always()</code> in GitHub Actions so the notification fires on both success and failure.
+                </p>
+
+                <p>Create an <a href="https://api.slack.com/messaging/webhooks" target="_blank" rel="noopener">Incoming
+                        Webhook</a> in your Slack workspace and store the URL as
+                    <code>SLACK_WEBHOOK_URL</code> in your CI secrets.
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># GitHub Actions — deploy + Slack notification</span>
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        id: deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: cipi deploy myapp
+
+      - name: Notify Slack — success
+        if: success()
+        uses: slackapi/slack-github-action@v2
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "text": ":white_check_mark: *myapp* deployed successfully",
+              "attachments": [{
+                "color": "good",
+                "fields": [
+                  { "title": "Branch",  "value": "${{ github.ref_name }}", "short": true },
+                  { "title": "By",      "value": "${{ github.actor }}",    "short": true },
+                  { "title": "Commit",  "value": "${{ github.sha }}",      "short": false }
+                ]
+              }]
+            }
+
+      - name: Notify Slack — failure
+        if: failure()
+        uses: slackapi/slack-github-action@v2
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "text": ":x: *myapp* deploy FAILED — rolling back",
+              "attachments": [{
+                "color": "danger",
+                "fields": [
+                  { "title": "Branch", "value": "${{ github.ref_name }}", "short": true },
+                  { "title": "By",     "value": "${{ github.actor }}",    "short": true },
+                  { "title": "Run",    "value": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}", "short": false }
+                ]
+              }]
+            }
+
+      - name: Rollback on failure
+        if: failure()
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: cipi deploy myapp --rollback</pre>
+                </div>
+
+                <p>For GitLab CI, use <code>curl</code> directly — no plugin needed:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># .gitlab-ci.yml — deploy stage with Slack notification</span>
+deploy:
+  stage: deploy
+  script:
+    - ssh root@$SERVER_HOST "cipi deploy myapp" && export DEPLOY_STATUS="success" || export DEPLOY_STATUS="failed"
+    - |
+      if [ "$DEPLOY_STATUS" = "success" ]; then
+        curl -s -X POST "$SLACK_WEBHOOK_URL" \
+          -H "Content-Type: application/json" \
+          -d "{\"text\":\":white_check_mark: *myapp* deployed by $GITLAB_USER_LOGIN on \`$CI_COMMIT_REF_NAME\`\"}"
+      else
+        curl -s -X POST "$SLACK_WEBHOOK_URL" \
+          -H "Content-Type: application/json" \
+          -d "{\"text\":\":x: *myapp* deploy FAILED — &lt;$CI_PIPELINE_URL|view pipeline&gt;\"}"
+        ssh root@$SERVER_HOST "cipi deploy myapp --rollback"
+        exit 1
+      fi</pre>
+                </div>
+
+                <h3>Telegram</h3>
+                <p>Create a Telegram bot via <a href="https://t.me/BotFather" target="_blank"
+                        rel="noopener">@BotFather</a>, get the bot token, and find your chat/group ID.
+                    Store them as <code>TELEGRAM_BOT_TOKEN</code> and <code>TELEGRAM_CHAT_ID</code> in CI secrets.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># GitHub Actions — deploy + Telegram notification</span>
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        id: deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: cipi deploy myapp
+
+      - name: Notify Telegram — success
+        if: success()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d parse_mode="Markdown" \
+            -d text="✅ *myapp* deployed successfully%0ABranch: \`${{ github.ref_name }}\`%0ABy: ${{ github.actor }}"
+
+      - name: Notify Telegram — failure + rollback
+        if: failure()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d parse_mode="Markdown" \
+            -d text="❌ *myapp* deploy FAILED — rolling back%0ABranch: \`${{ github.ref_name }}\`%0A[View run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          ssh -o StrictHostKeyChecking=no -i <(echo "${{ secrets.SERVER_SSH_KEY }}") \
+            root@${{ secrets.SERVER_HOST }} "cipi deploy myapp --rollback"</pre>
+                </div>
+
+                <p>GitLab CI equivalent (pure <code>curl</code>, no extra dependencies):</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># .gitlab-ci.yml — deploy stage with Telegram notification</span>
+deploy:
+  stage: deploy
+  script:
+    - ssh root@$SERVER_HOST "cipi deploy myapp" && RESULT="✅ deployed" || RESULT="❌ FAILED"
+    - |
+      curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+        -d chat_id="$TELEGRAM_CHAT_ID" \
+        -d parse_mode="Markdown" \
+        -d text="*myapp* ${RESULT}%0ABranch: \`$CI_COMMIT_REF_NAME\`%0ABy: $GITLAB_USER_LOGIN"
+    - |
+      if echo "$RESULT" | grep -q "FAILED"; then
+        ssh root@$SERVER_HOST "cipi deploy myapp --rollback"
+        exit 1
+      fi</pre>
+                </div>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>To find your Telegram chat ID, add the bot to the target group/channel, then call
+                        <code>https://api.telegram.org/bot&lt;TOKEN&gt;/getUpdates</code> and look for the
+                        <code>chat.id</code> field in the response. For private chats, just message the bot first.
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="safe-deploy">
+                <h2>Safe deploy — backup before release</h2>
+                <p>A production-grade deploy pipeline should always create a restore point <em>before</em> the new code
+                    goes live. Cipi provides two complementary backup commands that map to two different safety levels:
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span></div>
+                    <pre><span class="c"># local DB snapshot — fast, on-disk, instant rollback</span>
+<span class="p">$</span> cipi db backup myapp
+<span class="c"># → /var/log/cipi/backups/myapp_20260303_143012.sql.gz</span>
+
+<span class="c"># S3 backup — DB dump + shared/ folder uploaded to your bucket</span>
+<span class="p">$</span> cipi backup run myapp
+<span class="c"># → s3://your-bucket/cipi/myapp/2026-03-03_143015/db.sql.gz</span>
+<span class="c"># → s3://your-bucket/cipi/myapp/2026-03-03_143015/shared.tar.gz</span></pre>
+                </div>
+
+                <p>Used together in a pipeline, they give you both a fast local restore point and an off-server copy of
+                    the database and all uploaded files. The deploy only starts if both backups succeed.</p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div><strong>Pre-requisite:</strong> run <code>cipi backup configure</code> once on the server to
+                        link your S3 credentials before <code>cipi backup run</code> can be used.
+                        <code>cipi db backup</code> works without any configuration — it is always available.
+                    </div>
+                </div>
+
+                <h3>What each command does internally</h3>
+
+                <p><strong><code>cipi db backup &lt;app&gt;</code></strong> calls
+                    <code>mysqldump --single-transaction --routines --triggers</code> and gzips the output to
+                    <code>/var/log/cipi/backups/&lt;app&gt;_&lt;timestamp&gt;.sql.gz</code>. The file stays on the
+                    server and is never deleted automatically — add a cleanup step or a cron if disk space matters.
+                </p>
+
+                <p><strong><code>cipi backup run &lt;app&gt;</code></strong> does two things: dumps the database with
+                    <code>mariadb-dump --single-transaction</code> into a temp dir, and archives the entire
+                    <code>/home/&lt;app&gt;/shared/</code> folder (which contains <code>.env</code>,
+                    <code>storage/</code>, and any user-uploaded files). Both archives are then uploaded to S3 under the
+                    path <code>cipi/&lt;app&gt;/&lt;timestamp&gt;/</code>. The temp files are deleted after a successful
+                    upload.
+                </p>
+
+                <h3>GitHub Actions — safe deploy workflow</h3>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># .github/workflows/deploy.yml</span>
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: php artisan test
+
+  backup:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Local DB backup
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: cipi db backup myapp
+
+      - name: S3 backup (DB + shared)
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: cipi backup run myapp
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: backup          <span class="c"># only runs if backup job succeeds</span>
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: cipi deploy myapp
+
+      - name: Rollback on failure
+        if: failure()
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cipi deploy myapp --rollback
+            echo "Deploy failed — rolled back to previous release"</pre>
+                </div>
+
+                <p>The job graph enforces the order: <code>test</code> → <code>backup</code> → <code>deploy</code>. If
+                    any job fails, the subsequent ones are skipped. If the deploy step itself fails, the
+                    <code>rollback</code> step fires automatically and restores the previous Deployer release.
+                </p>
+
+                <h3>GitLab CI/CD — safe deploy pipeline</h3>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># .gitlab-ci.yml</span>
+stages:
+  - test
+  - backup
+  - deploy
+
+variables:
+  APP: myapp
+
+.ssh: &ssh
+  before_script:
+    - apt-get install -y openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SERVER_SSH_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - ssh-keyscan -H "$SERVER_HOST" >> ~/.ssh/known_hosts
+
+test:
+  stage: test
+  script: php artisan test
+  only: [main]
+
+backup-local:
+  stage: backup
+  <<: *ssh
+  only: [main]
+  script:
+    - ssh root@$SERVER_HOST "cipi db backup $APP"
+
+backup-s3:
+  stage: backup
+  <<: *ssh
+  only: [main]
+  script:
+    - ssh root@$SERVER_HOST "cipi backup run $APP"
+
+deploy:
+  stage: deploy
+  <<: *ssh
+  only: [main]
+  script:
+    - |
+      ssh root@$SERVER_HOST "
+        cipi deploy $APP || {
+          cipi deploy $APP --rollback
+          echo 'Deploy failed — rolled back'
+          exit 1
+        }
+      "
+  after_script:
+    - echo "Released → https://myapp.com"</pre>
+                </div>
+
+                <p><code>backup-local</code> and <code>backup-s3</code> are in the same stage so they run in parallel if
+                    you have multiple runners, cutting overall pipeline time. Both must succeed before the
+                    <code>deploy</code> stage starts.
+                </p>
+
+                <h3>Restore from local backup</h3>
+                <p>If you need to roll back the database to the snapshot taken just before the deploy:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># list available local snapshots</span>
+<span class="p">$</span> ls -lh /var/log/cipi/backups/myapp_*.sql.gz
+
+<span class="c"># restore the most recent one</span>
+<span class="p">$</span> cipi db restore myapp /var/log/cipi/backups/myapp_20260303_143012.sql.gz
+
+<span class="c"># also roll back the code release</span>
+<span class="p">$</span> cipi deploy myapp --rollback</pre>
+                </div>
+
+                <h3>Restore from S3 backup</h3>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># list available S3 snapshots for this app</span>
+<span class="p">$</span> cipi backup list myapp
+
+<span class="c"># download the DB snapshot from S3</span>
+<span class="p">$</span> aws s3 cp s3://your-bucket/cipi/myapp/2026-03-03_143015/db.sql.gz /tmp/db.sql.gz
+
+<span class="c"># restore the database</span>
+<span class="p">$</span> cipi db restore myapp /tmp/db.sql.gz
+
+<span class="c"># (optional) restore shared/ files</span>
+<span class="p">$</span> aws s3 cp s3://your-bucket/cipi/myapp/2026-03-03_143015/shared.tar.gz /tmp/shared.tar.gz
+<span class="p">$</span> tar -xzf /tmp/shared.tar.gz -C /home/myapp/</pre>
+                </div>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>
+                        <strong>Local backups are never deleted automatically.</strong> Each deploy adds a new
+                        <code>.sql.gz</code> file to <code>/var/log/cipi/backups/</code>. On a busy deployment schedule,
+                        add a cleanup cron or keep only the last N files:<br><br>
+                        <code>ls -t /var/log/cipi/backups/myapp_*.sql.gz | tail -n +6 | xargs rm -f</code><br><br>
+                        This example keeps the 5 most recent snapshots and deletes older ones.
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="preview-environments">
+                <h2>Preview environments (per-branch deploy)</h2>
+                <p>Every branch in your repository can automatically get its own live URL — a fully deployed Laravel app
+                    with its own database, workers, and HTTPS. This pattern is sometimes called "review apps" or
+                    "ephemeral environments".</p>
+
+                <p>The URL format uses three slugs separated by hyphens, so each environment is human-readable and
+                    globally unique:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">example URLs</span></div>
+                    <pre>https://develop-acmeco-3a1f9c2e.preview.domain.ltd
+https://release-1-2-3-acmeco-3a1f9c2e.preview.domain.ltd
+https://main-acmeco-3a1f9c2e.preview.domain.ltd</pre>
+                </div>
+
+                <h3>How the identifiers are generated</h3>
+                <p>Three values are derived at pipeline runtime:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># branch name → lowercase, non-alphanum → hyphens, trim edges</span>
+BRANCH_SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' \
+  | sed 's/[^a-z0-9]/-/g; s/--*/-/g; s/^-//; s/-$//')
+
+<span class="c"># repo/project name → same treatment</span>
+PROJECT_SLUG=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]' \
+  | sed 's/[^a-z0-9]/-/g')
+
+<span class="c"># deterministic MD5 hash — same branch always gets the same environment</span>
+HASH=$(echo -n "${BRANCH_SLUG}${PROJECT_SLUG}" | md5sum | cut -c1-8)
+
+<span class="c"># Cipi app username: must be lowercase alphanumeric, 3–32 chars, no hyphens</span>
+<span class="c"># hex chars (0–9, a–f) are valid; prefix "pr" ensures it starts with a letter</span>
+APP_NAME="pr${HASH}"    <span class="c"># e.g. pr3a1f9c2e</span>
+
+<span class="c"># human-readable domain with wildcard base</span>
+DOMAIN="${BRANCH_SLUG}-${PROJECT_SLUG}-${HASH}.${DEPLOY_WILDCARD_DOMAIN}"</pre>
+                </div>
+
+                <h3>Pre-requisites (one-time server setup)</h3>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>
+                        <strong>1. DNS wildcard</strong> — add an <code>A</code> record
+                        <code>*.preview.domain.ltd → &lt;server-ip&gt;</code> in your DNS provider. All subdomains
+                        resolve automatically; no per-branch DNS changes needed.<br><br>
+                        <strong>2. Wildcard SSL certificate</strong> — obtain a wildcard cert via DNS-01 challenge once
+                        and install it on the server. See the <a href="advanced#wildcard-domains">Wildcard domains</a> section
+                        for instructions. The cert path
+                        used by the pipeline examples below is
+                        <code>/etc/letsencrypt/live/preview.domain.ltd/</code>.<br><br>
+                        <strong>3. Repository access</strong> — the pipeline examples use an HTTPS URL with a personal
+                        access token (PAT) embedded, so no per-app SSH deploy key setup is needed. The token only needs
+                        <em>read</em> access to the repository.
+                    </div>
+                </div>
+
+                <h3>GitHub Actions</h3>
+                <p>Add these secrets to the repository: <code>SERVER_HOST</code>, <code>SERVER_SSH_KEY</code>,
+                    <code>DEPLOY_WILDCARD_DOMAIN</code> (e.g. <code>preview.domain.ltd</code>), <code>GH_PAT</code> (a
+                    fine-grained PAT with read access to the repo).
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># .github/workflows/preview.yml</span>
+name: Preview
+
+on:
+  push:
+    branches-ignore: [main, master]   <span class="c"># main branch uses your production pipeline</span>
+  delete:                              <span class="c"># clean up when a branch is deleted</span>
+
+jobs:
+  deploy:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compute identifiers
+        id: ids
+        run: |
+          BRANCH_SLUG=$(echo "${{ github.ref_name }}" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed 's/[^a-z0-9]/-/g; s/--*/-/g; s/^-//; s/-$//')
+          PROJECT_SLUG=$(echo "${{ github.event.repository.name }}" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed 's/[^a-z0-9]/-/g')
+          HASH=$(echo -n "${BRANCH_SLUG}${PROJECT_SLUG}" | md5sum | cut -c1-8)
+          APP_NAME="pr${HASH}"
+          DOMAIN="${BRANCH_SLUG}-${PROJECT_SLUG}-${HASH}.${{ secrets.DEPLOY_WILDCARD_DOMAIN }}"
+          REPO="https://oauth2:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git"
+          echo "app_name=${APP_NAME}"   >> "$GITHUB_OUTPUT"
+          echo "domain=${DOMAIN}"       >> "$GITHUB_OUTPUT"
+          echo "repo_url=${REPO}"       >> "$GITHUB_OUTPUT"
+
+      - name: Create or update preview
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            APP="${{ steps.ids.outputs.app_name }}"
+            DOMAIN="${{ steps.ids.outputs.domain }}"
+            REPO="${{ steps.ids.outputs.repo_url }}"
+            BRANCH="${{ github.ref_name }}"
+            WILDCARD="/etc/letsencrypt/live/${{ secrets.DEPLOY_WILDCARD_DOMAIN }}"
+
+            if cipi app show "$APP" &>/dev/null; then
+              echo "→ Updating: $APP"
+              cipi deploy "$APP"
+            else
+              echo "→ Creating: $APP → $DOMAIN"
+              cipi app create \
+                --user="$APP" \
+                --domain="$DOMAIN" \
+                --repository="$REPO" \
+                --branch="$BRANCH" \
+                --php=8.5
+
+              <span class="c"># Patch nginx to listen on 443 using the pre-installed wildcard cert</span>
+              awk -v cert="$WILDCARD" '
+                /^    listen 80;/ {
+                  print
+                  print "    listen 443 ssl http2;"
+                  print "    ssl_certificate " cert "/fullchain.pem;"
+                  print "    ssl_certificate_key " cert "/privkey.pem;"
+                  next
+                }
+                { print }
+              ' "/etc/nginx/sites-available/$APP" > /tmp/_cipi_vhost \
+                && mv /tmp/_cipi_vhost "/etc/nginx/sites-available/$APP"
+              nginx -t && systemctl reload nginx
+
+              cipi deploy "$APP"
+            fi
+
+      - name: Print preview URL
+        run: |
+          echo ""
+          echo "  Preview → https://${{ steps.ids.outputs.domain }}"
+          echo ""
+
+  cleanup:
+    if: github.event_name == 'delete'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compute identifiers
+        id: ids
+        run: |
+          BRANCH_SLUG=$(echo "${{ github.event.ref }}" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed 's/[^a-z0-9]/-/g; s/--*/-/g; s/^-//; s/-$//')
+          PROJECT_SLUG=$(echo "${{ github.event.repository.name }}" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed 's/[^a-z0-9]/-/g')
+          HASH=$(echo -n "${BRANCH_SLUG}${PROJECT_SLUG}" | md5sum | cut -c1-8)
+          echo "app_name=pr${HASH}" >> "$GITHUB_OUTPUT"
+
+      - name: Delete preview
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            APP="${{ steps.ids.outputs.app_name }}"
+            if cipi app show "$APP" &>/dev/null; then
+              echo "y" | cipi app delete "$APP"
+              echo "→ Deleted: $APP"
+            else
+              echo "→ Not found, nothing to delete"
+            fi</pre>
+                </div>
+
+                <h3>GitLab CI/CD</h3>
+                <p>Add these CI/CD variables: <code>SERVER_HOST</code>, <code>SERVER_SSH_KEY</code> (File type),
+                    <code>DEPLOY_WILDCARD_DOMAIN</code>, <code>GL_TOKEN</code> (a project/group access token with
+                    <em>read_repository</em> scope).
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">yaml</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># .gitlab-ci.yml</span>
+stages:
+  - preview
+  - cleanup
+
+.ssh_setup: &ssh_setup
+  before_script:
+    - apt-get install -y openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SERVER_SSH_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - ssh-keyscan -H "$SERVER_HOST" >> ~/.ssh/known_hosts
+
+.compute_ids: &compute_ids |
+  BRANCH_SLUG=$(echo "$CI_COMMIT_REF_NAME" \
+    | tr '[:upper:]' '[:lower:]' \
+    | sed 's/[^a-z0-9]/-/g; s/--*/-/g; s/^-//; s/-$//')
+  PROJECT_SLUG=$(echo "$CI_PROJECT_NAME" \
+    | tr '[:upper:]' '[:lower:]' \
+    | sed 's/[^a-z0-9]/-/g')
+  HASH=$(echo -n "${BRANCH_SLUG}${PROJECT_SLUG}" | md5sum | cut -c1-8)
+  APP="pr${HASH}"
+  DOMAIN="${BRANCH_SLUG}-${PROJECT_SLUG}-${HASH}.${DEPLOY_WILDCARD_DOMAIN}"
+  REPO="https://oauth2:${GL_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
+  WILDCARD="/etc/letsencrypt/live/${DEPLOY_WILDCARD_DOMAIN}"
+
+deploy-preview:
+  stage: preview
+  <<: *ssh_setup
+  except:
+    - main
+    - master
+  script:
+    - *compute_ids
+    - |
+      ssh root@$SERVER_HOST bash -s << ENDSSH
+        APP="$APP"
+        DOMAIN="$DOMAIN"
+        REPO="$REPO"
+        BRANCH="$CI_COMMIT_REF_NAME"
+        WILDCARD="$WILDCARD"
+
+        if cipi app show "\$APP" &>/dev/null; then
+          echo "Updating: \$APP"
+          cipi deploy "\$APP"
+        else
+          echo "Creating: \$APP → \$DOMAIN"
+          cipi app create \
+            --user="\$APP" \
+            --domain="\$DOMAIN" \
+            --repository="\$REPO" \
+            --branch="\$BRANCH" \
+            --php=8.5
+
+          awk -v cert="\$WILDCARD" '
+            /^    listen 80;/ {
+              print
+              print "    listen 443 ssl http2;"
+              print "    ssl_certificate " cert "/fullchain.pem;"
+              print "    ssl_certificate_key " cert "/privkey.pem;"
+              next
+            }
+            { print }
+          ' "/etc/nginx/sites-available/\$APP" > /tmp/_cipi_vhost \
+            && mv /tmp/_cipi_vhost "/etc/nginx/sites-available/\$APP"
+          nginx -t && systemctl reload nginx
+
+          cipi deploy "\$APP"
+        fi
+      ENDSSH
+    - echo "Preview → https://$DOMAIN"
+
+cleanup-preview:
+  stage: cleanup
+  <<: *ssh_setup
+  only:
+    - branches
+  when: manual                    <span class="c"># or trigger on MR merge via rules:</span>
+  script:
+    - *compute_ids
+    - |
+      ssh root@$SERVER_HOST "
+        APP='$APP'
+        if cipi app show \"\$APP\" &>/dev/null; then
+          echo 'y' | cipi app delete \"\$APP\"
+        fi
+      "</pre>
+                </div>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>In GitLab, you can trigger <code>cleanup-preview</code> automatically when a merge request is
+                        merged by adding a <code>rules:</code> block that checks
+                        <code>$CI_MERGE_REQUEST_EVENT_TYPE == "merge_train"</code> or using a dedicated
+                        <code>workflow:</code> with <code>if: $CI_PIPELINE_SOURCE == "merge_request_event"</code>.
+                    </div>
+                </div>
+
+                <h3>Notes and limits</h3>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>
+                        <strong>Each preview app is a full Cipi app</strong> — it gets its own Linux user, database, FPM
+                        pool, Supervisor worker, and crontab. On a small VPS this accumulates quickly. Run
+                        <code>cipi app list</code> periodically and delete stale previews.<br><br>
+                        <strong>The nginx SSL patch is not idempotent</strong> — if the pipeline runs
+                        <code>cipi app create</code> twice (e.g. due to a retry), the <code>awk</code> patch will be
+                        applied again. The hash ensures <code>APP_NAME</code> is deterministic, so the
+                        <code>if cipi app show</code> guard prevents double-creation under normal conditions.<br><br>
+                        <strong>Avoid running <code>cipi ssl install</code></strong> on a preview app — it will
+                        overwrite the wildcard cert config with a per-domain Let's Encrypt cert that will fail (the
+                        domain has no dedicated DNS record, only the wildcard).
+                    </div>
+                </div>
+            </div>
+
+            <hr class="doc-divider">
+
+            <div class="page-nav">
+                <a href="apps" class="page-nav-link page-nav-link--prev">
+                    <span class="page-nav-label">Previous</span>
+                    <span class="page-nav-title">Apps</span>
+                </a>
+                <a href="infrastructure" class="page-nav-link page-nav-link--next">
+                    <span class="page-nav-label">Next</span>
+                    <span class="page-nav-title">Infrastructure</span>
+                </a>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <span>Made with ❤️ by <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> — Open source, MIT
+                Licensed</span>
+            <ul class="footer-links">
+                <li><a href="https://conn.web.ap.it" target="_blank">Try SSH
+                        Connection Manager with Cipi</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        function updateFavicon(theme) {
+            const variant = theme === 'dark' ? 'dark' : 'light';
+            document.getElementById('favicon').href = `/favicon-${variant}.png`;
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('cipi-theme', next);
+            updateFavicon(next);
+        }
+
+        (function () {
+            const saved = localStorage.getItem('cipi-theme');
+            if (saved) { document.documentElement.setAttribute('data-theme', saved); updateFavicon(saved); }
+            else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark'); updateFavicon('dark');
+            }
+        })();
+
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const docsSidebar = document.getElementById('docsSidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function openSidebar() { docsSidebar.classList.add('open'); sidebarOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { docsSidebar.classList.remove('open'); sidebarOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+        sidebarToggle.addEventListener('click', () => docsSidebar.classList.contains('open') ? closeSidebar() : openSidebar());
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', () => { if (window.innerWidth < 900) closeSidebar(); });
+        });
+
+        const sections = document.querySelectorAll('.doc-section[id]');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    const active = document.querySelector(`.sidebar-link[href$="#${entry.target.id}"]`);
+                    if (active) {
+                        active.classList.add('active');
+                        active.scrollIntoView({ block: 'nearest' });
+                    }
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+        sections.forEach(s => observer.observe(s));
+
+        // Highlight current chapter in sidebar
+        (function() {
+            const page = location.pathname.split('/').pop().replace('.html', '') || 'index';
+            document.querySelectorAll('.sidebar-group').forEach(g => {
+                if (g.dataset.chapter === page) g.classList.add('current-chapter');
+            });
+        })();
+
+        function copyCode(btn) {
+            const pre = btn.closest('.code-block').querySelector('pre');
+            const text = pre.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+
+    <script async src="https://stats.web.ap.it/i/5ae6c482-e1ef-4447-b949-49ff9a43a5fb.js"></script>
+    <noscript><img src="https://stats.web.ap.it/collect/pixel.gif?k=5ae6c482-e1ef-4447-b949-49ff9a43a5fb&p=/" width="1" height="1" /></noscript>
+</body>
+
+</html>

@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipi Docs — About Cipi</title>
+    <meta name="description" content="History, security model, design decisions, and comparison with alternatives.">
+    <meta name="author" content="Andrea Pollastri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cipi.sh/docs/about">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cipi">
+    <meta property="og:url" content="https://cipi.sh/docs/about">
+    <meta property="og:title" content="Cipi Docs — About Cipi">
+    <meta property="og:description" content="History, security model, design decisions, and comparison with alternatives.">
+    <meta property="og:image" content="https://cipi.sh/og.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@cipi_sh">
+    <meta name="twitter:title" content="Cipi Docs — About Cipi">
+    <meta name="twitter:description" content="History, security model, design decisions, and comparison with alternatives.">
+    <meta name="twitter:image" content="https://cipi.sh/og.png">
+
+    <link rel="icon" id="favicon" type="image/png" sizes="48x48" href="/favicon-light.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-light-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-light-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-light-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-left">
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round">
+                        <line x1="4" y1="7" x2="20" y2="7" />
+                        <line x1="4" y1="12" x2="20" y2="12" />
+                        <line x1="4" y1="17" x2="20" y2="17" />
+                    </svg>
+                </button>
+                <a href="../index.html" class="nav-logo">
+                    <svg class="tux-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M16.2182,35.9c-3.1368,0-6.8982,1.496-7.2988,5.6766a.916.916,0,0,0,.9061,1.0025h11.97A.9.9,0,0,0,22.7,41.643C22.6175,39.8048,21.7865,35.9,16.2182,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M18.0508,20.564c-1.35,1.0368-7.3687,7.51-4.3595,15.6667" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M31.7818,35.9c3.1368,0,6.8982,1.496,7.2988,5.6766a.916.916,0,0,1-.9061,1.0025h-11.97A.9.9,0,0,1,25.3,41.643C25.3825,39.8048,26.2135,35.9,31.7818,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M35.0148,36.4556c3.1848-2.8438,2.7468-7.5246,2.7468-8.7785,2.8935.82,5.0306,2.9709,5.5941,2.17,1.3744-1.9531-7.5193-7.5461-7.6918-10.8989C35.4951,15.6692,35.1706,5.4214,24,5.4214S12.5049,15.6692,12.3361,18.9484c-.1725,3.3528-9.0662,8.9458-7.6918,10.8989.5635.8007,2.7006-1.35,5.5941-2.17,0,1.2539-.438,5.9347,2.7468,8.7785" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M29.2763,19.8324c1.9318,1.5032,8.0416,8.242,5.0324,16.3983" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M24,24.8431l3.9479-4.2791c-.3858-1.0127-1.712-1.929-3.9479-1.929s-3.5621.9163-3.9479,1.929Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M20.0521,20.564c-3.424.5063-3.9062-2.7247-3.9062-4.7019,0-2.7006,1.4467-4.4367,3.9062-4.4367S23.79,14.7529,23.79,16.3443A3.8486,3.8486,0,0,1,23.181,18.68" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M27.7205,20.1334c.6751.0482,3.9538-.3892,3.9538-3.331s-1.76-3.7615-4.1232-3.7615a3.7861,3.7861,0,0,0-3.8164,2.6682" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M22.7012,41.4815a6.8371,6.8371,0,0,0,2.6076,0" />
+                        <circle fill="currentColor" cx="22.1579" cy="16.5888" r="0.75" />
+                        <circle fill="currentColor" cx="25.5497" cy="16.5888" r="0.75" />
+                    </svg>
+                    <span>Cipi</span>
+                </a>
+                <span class="nav-badge">Docs</span>
+            </div>
+            <div class="nav-right">
+                <a href="../index.html" class="nav-link">Home</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                </button>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-nav-sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="docs-layout">
+
+        <aside class="docs-sidebar" id="docsSidebar">
+
+            <div class="sidebar-group" data-chapter="getting-started">
+                <a href="getting-started" class="sidebar-group-label">getting started</a>
+                <a href="getting-started#installation" class="sidebar-link">installation</a>
+                <a href="getting-started#requirements" class="sidebar-link">requirements</a>
+                <a href="getting-started#quickstart" class="sidebar-link">quick start</a>
+                <a href="getting-started#tech-stack" class="sidebar-link">tech stack</a>
+                <a href="getting-started#app-structure" class="sidebar-link">app structure</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="agent">
+                <a href="agent" class="sidebar-group-label">cipi agent</a>
+                <a href="agent#agent-install" class="sidebar-link">installation</a>
+                <a href="agent#agent-webhook" class="sidebar-link">webhook</a>
+                <a href="agent#agent-health" class="sidebar-link">health check</a>
+                <a href="agent#agent-mcp" class="sidebar-link">MCP server</a>
+                <a href="agent#agent-anonymizer" class="sidebar-link">database anonymizer</a>
+                <a href="agent#agent-env" class="sidebar-link">ENV variables</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="apps">
+                <a href="apps" class="sidebar-group-label">apps</a>
+                <a href="apps#cli-app-create" class="sidebar-link"><code>app create</code></a>
+                <a href="apps#cli-app-custom" class="sidebar-link">custom apps</a>
+                <a href="apps#cli-app-manage" class="sidebar-link"><code>app list / show / edit</code></a>
+                <a href="apps#cli-app-env" class="sidebar-link"><code>app env</code></a>
+                <a href="apps#cli-app-logs" class="sidebar-link"><code>app logs</code></a>
+                <a href="apps#cli-app-artisan" class="sidebar-link"><code>app artisan / tinker</code></a>
+                <a href="apps#cli-app-ssh" class="sidebar-link">SSH as app user</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="deploy">
+                <a href="deploy" class="sidebar-group-label">deploy & ci/cd</a>
+                <a href="deploy#cli-deploy" class="sidebar-link"><code>deploy</code></a>
+                <a href="deploy#cli-auth" class="sidebar-link"><code>auth.json</code></a>
+                <a href="deploy#git-providers" class="sidebar-link">Git providers</a>
+                <a href="deploy#git-auto-setup" class="sidebar-link">Git auto-setup</a>
+                <a href="deploy#cli-deploy-script" class="sidebar-link">deploy script</a>
+                <a href="deploy#ci-pipelines" class="sidebar-link">CI/CD pipelines</a>
+                <a href="deploy#deploy-notifications" class="sidebar-link">deploy notifications</a>
+                <a href="deploy#safe-deploy" class="sidebar-link">safe deploy w/ backup</a>
+                <a href="deploy#preview-environments" class="sidebar-link">preview environments</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="infrastructure">
+                <a href="infrastructure" class="sidebar-group-label">infrastructure</a>
+                <a href="infrastructure#cli-php" class="sidebar-link"><code>php</code></a>
+                <a href="infrastructure#cli-db" class="sidebar-link"><code>db</code></a>
+                <a href="infrastructure#cli-aliases" class="sidebar-link"><code>alias</code></a>
+                <a href="infrastructure#cli-ssl" class="sidebar-link"><code>ssl</code></a>
+                <a href="infrastructure#cli-backup" class="sidebar-link"><code>backup</code></a>
+                <a href="infrastructure#cli-app-cron" class="sidebar-link">user crontab</a>
+                <a href="infrastructure#cli-workers" class="sidebar-link"><code>worker</code></a>
+                <a href="infrastructure#cli-firewall" class="sidebar-link"><code>firewall</code></a>
+                <a href="infrastructure#cli-ban" class="sidebar-link"><code>ban</code></a>
+                <a href="infrastructure#cli-services" class="sidebar-link"><code>service</code></a>
+                <a href="infrastructure#cli-ssh" class="sidebar-link"><code>ssh</code></a>
+                <a href="infrastructure#cli-cipi" class="sidebar-link"><code>cipi</code></a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="advanced">
+                <a href="advanced" class="sidebar-group-label">advanced</a>
+                <a href="advanced#cipi-api" class="sidebar-link"><code>cipi api</code></a>
+                <a href="advanced#whmcs" class="sidebar-link">WHMCS module</a>
+                <a href="advanced#cipi-sync" class="sidebar-link"><code>cipi sync</code></a>
+                <a href="advanced#cipi-vault" class="sidebar-link">vault &amp; encryption</a>
+                <a href="advanced#cipi-smtp" class="sidebar-link">email notifications</a>
+                <a href="advanced#cipi-log-retention" class="sidebar-link">log retention (GDPR)</a>
+                <a href="advanced#redis" class="sidebar-link">redis</a>
+                <a href="advanced#self-update" class="sidebar-link">self-update</a>
+                <a href="advanced#wildcard-domains" class="sidebar-link">wildcard domains</a>
+                <a href="advanced#nginx-config" class="sidebar-link">edit Nginx config</a>
+                <a href="advanced#uninstall" class="sidebar-link">uninstall Cipi</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="about">
+                <a href="about" class="sidebar-group-label">about cipi</a>
+                <a href="about#history" class="sidebar-link">history</a>
+                <a href="about#security-model" class="sidebar-link">security model</a>
+                <a href="about#why-mariadb" class="sidebar-link">why MariaDB?</a>
+                <a href="about#why-laravel" class="sidebar-link">why Laravel?</a>
+                <a href="about#why-cipi" class="sidebar-link">why "Ci-Pi"?</a>
+                <a href="about#vs-alternatives" class="sidebar-link">Cipi vs alternatives</a>
+            </div>
+
+
+        </aside>
+
+        <main class="docs-content" id="docsContent">
+
+            <div class="doc-section" id="history">
+                <p class="doc-section-label">About Cipi</p>
+                <h2>History</h2>
+                <p>Cipi was created by <a href="https://web.ap.it" target="_blank" rel="noopener">Andrea Pollastri</a>,
+                    a software developer since 2005 specialising
+                    in Laravel, system administration, and cybersecurity — with experience at companies like Docebo and
+                    Musement. He built Cipi out of a practical need: a fast, scriptable way to provision and deploy
+                    Laravel applications on his own VPS, without handing control to a SaaS panel. What started as a
+                    private tool became an open-source project that grew to over 1,000 GitHub stars and hundreds of
+                    active deployments worldwide. Here is a brief account of how it evolved across six years and four
+                    major versions.</p>
+
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-body">
+                            <span class="timeline-version">v0.1</span>
+                            <span class="timeline-date">June 2019</span>
+                            <h3 class="timeline-title">The idea</h3>
+                            <p>A collection of shell scripts to automate the tedious parts of setting up a Laravel
+                                server on a fresh Ubuntu VPS — Nginx, PHP, MariaDB, Supervisor. No web UI, no package.
+                                Just bash.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-body">
+                            <span class="timeline-version">v1.x</span>
+                            <span class="timeline-date">June 2019</span>
+                            <h3 class="timeline-title">First release — Laravel panel</h3>
+                            <p>The shell scripts were wrapped in a <strong>Laravel web application</strong> acting as a
+                                server control panel. Users could create apps, manage deployments, and configure Nginx
+                                through a browser UI hosted on the same server. The project was published on GitHub and
+                                quickly attracted interest from the Laravel community.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-body">
+                            <span class="timeline-version">v2.x</span>
+                            <span class="timeline-date">May 2020</span>
+                            <h3 class="timeline-title">Feature growth</h3>
+                            <p>A year of rapid iteration added SMTP configuration, local database backups, PHP-FPM
+                                permission fixes, server service management, and root password reset. The v2 series
+                                reached 2.4.9 across dozens of patch releases, establishing Cipi as a stable option for
+                                small-team Laravel hosting.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-body">
+                            <span class="timeline-version">v3.0</span>
+                            <span class="timeline-date">March 2021</span>
+                            <h3 class="timeline-title">The big leap — API, PHP 8, real-time UI</h3>
+                            <p>Built on <strong>Laravel 8</strong>, v3 introduced a fully documented <strong>REST
+                                    API</strong> (Swagger / OA), <strong>PHP 8</strong> support, real-time CPU/RAM
+                                charts, a Cronjob editor, Supervisor management, a GitHub repository manager, Node 15,
+                                Composer 2, and JWT authentication. Cipi could now manage the same server it ran on. The
+                                project reached 1k GitHub stars.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-body">
+                            <span class="timeline-version">v3.1</span>
+                            <span class="timeline-date">December 2021</span>
+                            <h3 class="timeline-title">The last web UI — and a question</h3>
+                            <p><strong>PHP 8.1</strong> became the default version. Node was upgraded to v16, Certbot
+                                was refreshed, and domain alias handling was fixed. The v3.1.x series was the most
+                                polished release of the web-UI era and many teams kept it running in production for
+                                years.</p>
+                            <p>It was also the version that prompted a harder question: <em>was a browser-based control
+                                    panel still the right interface?</em> Modern development workflows had moved toward
+                                SSH, CI/CD pipelines, GitOps, and — increasingly — AI agents that could orchestrate
+                                infrastructure through shell commands. A web UI required authentication, a running
+                                Laravel process, and a database just to issue a deploy. A CLI needed none of that. The
+                                answer shaped everything that came next.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item timeline-item--current">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-body">
+                            <span class="timeline-version">v4.x</span>
+                            <span class="timeline-date">March 2026</span>
+                            <h3 class="timeline-title">The rewrite — CLI-first, Laravel-exclusive</h3>
+                            <p>After years of maintaining a full Laravel web application as the control plane, v4 made
+                                the boldest decision yet: <strong>drop the web UI entirely</strong>. Cipi became a pure
+                                CLI tool operated over SSH. The scope also narrowed from generic PHP to <strong>Laravel
+                                    exclusively</strong>, allowing every part of the stack to be optimised for one
+                                framework. MySQL was replaced by <strong>MariaDB 11.4</strong>, <code>git pull</code>
+                                was replaced by <strong>Deployer zero-downtime releases</strong>, shared deploy keys
+                                became per-app <code>ed25519</code> keys, and <strong>S3 automated backups</strong> and
+                                native webhook support for GitHub and GitLab were added from day one. v4 also introduced
+                                a complete <strong>REST API</strong> for programmatic management of hosts and
+                                applications, native integration with <strong>GitHub and GitLab</strong> git providers,
+                                a groundbreaking <strong>dual MCP server</strong> architecture — one per-app and one
+                                global — enabling full AI-driven infrastructure management directly from any
+                                MCP-compatible IDE or AI agent, <strong>encrypted server sync</strong> for
+                                migrating apps between VPS instances, and a built-in <strong>database
+                                    anonymizer</strong> for GDPR-safe data exports. The result is the version you are
+                                using today.</p>
+                            <div class="callout info" style="margin-top:16px;">
+                                <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="8" x2="12" y2="12" />
+                                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                                </svg>
+                                <div>The full v4 changelog is available on <a
+                                        href="https://github.com/cipi-sh/cipi/releases" target="_blank"
+                                        rel="noopener">GitHub Releases</a>.
+                                    Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/4.4.13" target="_blank"
+                                        rel="noopener">4.4.13</a> — optional Git repository for
+                                    <code>cipi app create --custom</code> (SFTP-only sites); pair the server with the
+                                    <a href="https://github.com/cipi-sh/api/compare/1.6.0...1.6.1" target="_blank"
+                                        rel="noopener">cipi-sh/api 1.6.1</a> package for matching REST/MCP validation.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="doc-section" id="security-model">
+                <h2>Security Model</h2>
+
+                <h3>SSH hardening</h3>
+                <p>During installation, Cipi creates groups <code>cipi-ssh</code> and <code>cipi-apps</code> and applies
+                    the following SSH architecture:</p>
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Access</th>
+                            <th>Method</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>root</code></td>
+                            <td>blocked</td>
+                            <td><code>PermitRootLogin no</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>cipi</code></td>
+                            <td>key-only</td>
+                            <td>group <code>cipi-ssh</code>, <code>PasswordAuthentication no</code> globally</td>
+                        </tr>
+                        <tr>
+                            <td>app users</td>
+                            <td>user + password</td>
+                            <td>group <code>cipi-apps</code>, <code>Match Group cipi-apps</code> →
+                                <code>PasswordAuthentication yes</code>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><code>sshd_config</code> uses <code>AllowGroups cipi-ssh cipi-apps</code> instead of
+                    <code>AllowUsers</code>. App users can connect with <code>ssh myapp@server-ip</code> and the
+                    password generated at app creation. Admin access is via public-key as <code>cipi</code>. SSH keys
+                    are managed with <code>cipi ssh list / add / remove</code> — see <a href="infrastructure#cli-ssh">SSH Key
+                        Management</a>.
+                </p>
+
+                <h3>SSH key management &amp; notifications</h3>
+                <p>Authorized keys for the <code>cipi</code> user can be managed via the CLI with built-in safety:
+                    format validation, duplicate prevention, current-session protection, and last-key protection to
+                    avoid lockout. When SMTP is configured, every key addition, removal, or rename triggers an email
+                    alert with hostname, IP, fingerprint, timestamp, and remaining key count. Rename alerts also
+                    include the old and new key name.</p>
+
+                <h3>Privilege escalation prevention</h3>
+                <p>Application users are restricted from using <code>su</code> to escalate privileges to
+                    <code>root</code> or the <code>cipi</code> account. This is enforced via
+                    <code>pam_wheel.so group=sudo</code>, ensuring that only members of the <code>sudo</code> group
+                    can switch users.
+                </p>
+
+                <h3>Sudoers hardening</h3>
+                <p>The <code>www-data</code> user (used by Nginx and PHP-FPM) has its <code>sudoers</code> access
+                    restricted to an explicit command whitelist instead of a wildcard pattern. Only the specific
+                    <code>/usr/local/bin/cipi</code> subcommands required by the API are allowed. This prevents
+                    <code>www-data</code> from running arbitrary commands even if the web application is
+                    compromised.
+                </p>
+
+                <h3>API command whitelist</h3>
+                <p>The Cipi API validates every CLI command against an internal whitelist before executing it via
+                    <code>sudo</code>. Commands not on the whitelist are rejected, preventing command injection
+                    through the API layer.
+                </p>
+
+                <h3>User isolation</h3>
+                <p>Each app runs under its own Linux user with <code>chmod 750</code> on the home directory. No app can
+                    read another app's files. PHP-FPM runs each app's pool as the app user with its own Unix socket.</p>
+
+                <h3>PHP open_basedir</h3>
+                <p><code>open_basedir</code> is configured per FPM pool to restrict PHP to the app's home directory.
+                    Even if an app is compromised, PHP cannot access the filesystem outside its own home.</p>
+
+                <h3>Database isolation</h3>
+                <p>Each app has its own MariaDB database and user with <code>GRANT ALL</code> restricted to that
+                    database only. A compromised app cannot read or write to another app's database.</p>
+
+                <h3>Per-app SSH deploy keys</h3>
+                <p>Each app gets its own ed25519 SSH key pair. A compromised deploy key only affects one repository —
+                    not all apps on the server.</p>
+
+                <h3>Webhook security</h3>
+                <p>GitHub webhooks are verified using HMAC-SHA256 signatures. GitLab webhooks use token comparison. The
+                    webhook handler in cipi-agent returns 200 immediately and writes a flag file — Deployer runs
+                    separately as the app user with no elevated privileges.</p>
+
+                <h3>Configuration encryption (Vault)</h3>
+                <p>All Cipi configuration files — <code>server.json</code>, <code>apps.json</code>,
+                    <code>databases.json</code>, <code>backup.json</code>, <code>smtp.json</code>,
+                    <code>api.json</code> — are <strong>encrypted at rest</strong> using AES-256-CBC via the built-in
+                    Vault system. A per-server master key (<code>/etc/cipi/.vault_key</code>, <code>chmod 400</code>)
+                    ensures that even if an attacker gains read access to the filesystem, configuration files containing
+                    database passwords, API tokens, and credentials are unreadable without root privileges. See
+                    <a href="advanced#cipi-vault">Vault &amp; Encryption</a> for the full architecture.
+                </p>
+
+                <h3>Encrypted sync archives</h3>
+                <p>When transferring applications between servers via <code>cipi sync</code>, the entire archive —
+                    including <code>.env</code> files, SSH keys, database dumps, and configuration — is encrypted with
+                    AES-256-CBC using a user-provided passphrase. Archives use the <code>.tar.gz.enc</code> extension
+                    and cannot be read without the passphrase. This protects sensitive data both at rest (on disk) and
+                    in transit (during rsync/scp transfer). See <a href="advanced#cipi-sync">Sync</a> for details.</p>
+
+                <h3>GDPR-compliant log retention</h3>
+                <p>Cipi enforces automatic log rotation: application and security logs are retained for 12 months,
+                    while HTTP/navigation logs (which contain IP addresses — personal data under GDPR) are retained for
+                    90 days. This satisfies the GDPR data minimization principle while preserving enough history for
+                    debugging and audit trails. See <a href="advanced#cipi-log-retention">Log retention</a> for the full
+                    policy.</p>
+
+                <h3>Auth &amp; key notifications</h3>
+                <p>Cipi monitors privileged authentication events via PAM (<code>pam_exec.so</code>) and sends
+                    real-time email alerts when a user elevates via <code>sudo</code> or <code>su</code>, or when
+                    <code>root</code>/sudoers log in via SSH. SSH login notifications include the key fingerprint and
+                    comment (resolved by matching the <code>/var/log/auth.log</code> fingerprint against
+                    <code>authorized_keys</code>), so you can immediately identify which key was used to access the
+                    server. Email alerts are also sent when SSH keys are added to, removed from, or renamed on the
+                    <code>cipi</code> user, and when apps are created, edited, or deleted. Notifications include
+                    contextual details (username, TTY, source IP, fingerprint, key comment, key count) and run
+                    asynchronously to avoid login delays. All events are also logged to
+                    <code>/var/log/cipi/events.log</code> regardless of SMTP. Email alerts require SMTP configured —
+                    fails silently otherwise. See <a href="advanced#cipi-smtp">Email Notifications</a> for setup.
+                </p>
+
+                <h3>No web panel</h3>
+                <p>Cipi has no web interface. There is no attack surface from an admin panel. All management happens
+                    over SSH as the <code>cipi</code> user using the <code>cipi</code> CLI.</p>
+
+                <h3>Nginx default virtual host</h3>
+                <p>The Nginx default virtual host uses a <code>rewrite</code> rule to serve a minimal "Server Up" page
+                    for all requests to unconfigured domains or direct IP access. This reliable catch-all prevents Nginx
+                    from exposing its version number in default error pages.</p>
+
+                <h3>Network</h3>
+                <p>UFW blocks all ports by default except 22, 80, and 443. Fail2ban monitors SSH with
+                    <strong>progressive banning</strong>: a 24-hour base ban that doubles on each repeat offence (7-day
+                    cap), with only 3 retries allowed before a ban. A dedicated <code>recidive</code> jail catches
+                    repeat offenders — 3 bans within 24 hours triggers a 7-day block. Use
+                    <code>cipi ban list</code> and <code>cipi ban unban</code> to inspect and manage bans from the CLI.
+                </p>
+
+                <h3>Automatic OS security updates</h3>
+                <p>Cipi enables <strong>unattended-upgrades</strong> during installation, so the underlying Ubuntu
+                    system applies security patches automatically — without any manual intervention. Only
+                    security-classified updates are installed unattended; major version upgrades require explicit
+                    confirmation.</p>
+                <p>You can verify and manage the configuration at any time:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># check unattended-upgrades status</span>
+<span class="p">$</span> systemctl status unattended-upgrades
+
+<span class="c"># view the upgrade log</span>
+<span class="p">$</span> cat /var/log/unattended-upgrades/unattended-upgrades.log
+
+<span class="c"># force an immediate unattended upgrade run</span>
+<span class="p">$</span> unattended-upgrade --debug --dry-run</pre>
+                </div>
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>Automatic reboots after kernel updates are <strong>disabled by default</strong> to avoid
+                        unexpected downtime. If a kernel update requires a reboot, you will see a notice when you log in
+                        via SSH. Schedule the reboot at a convenient maintenance window with <code>sudo reboot</code>.
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="why-mariadb">
+                <h2>Why MariaDB?</h2>
+                <p>Cipi uses MariaDB instead of MySQL for several reasons:</p>
+                <ul>
+                    <li><strong>Drop-in replacement</strong> — Laravel doesn't notice the difference. Same PDO driver,
+                        same SQL syntax, same migration files.</li>
+                    <li><strong>Better performance</strong> — more advanced query optimizer and native thread pool in
+                        the community edition.</li>
+                    <li><strong>Clean licensing</strong> — pure GPL, no Oracle involvement.</li>
+                    <li><strong>Native on Ubuntu</strong> — installs from the default Ubuntu repositories without
+                        external PPAs.</li>
+                    <li><strong>Auto-tuned</strong> — Cipi configures <code>innodb_buffer_pool_size</code> based on your
+                        server's RAM (256M for 1 GB RAM, up to 4 GB for 16 GB+ servers).</li>
+                </ul>
+            </div>
+
+
+
+            <div class="doc-section" id="why-laravel">
+                <h2>Why Laravel?</h2>
+                <p>When v4 was designed, one of the clearest decisions was to drop generic PHP and WordPress support
+                    entirely and go all-in on a single framework. That framework was Laravel — and the reasoning goes
+                    well beyond personal preference.</p>
+
+                <h3>Speed of development</h3>
+                <p>Laravel gives developers an extraordinary head start. Authentication, queues, scheduled tasks, file
+                    storage, email, notifications, API resources, database migrations — all of it is built in,
+                    consistent, and documented. A team can go from an empty project to a production-ready application in
+                    a fraction of the time it would take with a lower-level stack. For Cipi, this means that every
+                    deployment assumption — directory layout, <code>.env</code> handling, queue workers, the scheduler —
+                    maps cleanly to a known structure. There is no guesswork.</p>
+
+                <h3>A thriving open-source community</h3>
+                <p>Laravel has one of the most active and welcoming communities in the PHP world. Packages are
+                    published, maintained, and discussed daily on GitHub, Laracasts, Discord, and X. When you hire a
+                    Laravel developer, you get someone who already knows the conventions, the tooling, and the
+                    ecosystem. When you publish a Laravel package, it reaches tens of thousands of developers overnight.
+                    That network effect is genuinely valuable — and it is one of the reasons Cipi's companion package,
+                    <strong>cipi-agent</strong>, works so well: drop it into a Laravel app and it just fits.
+                </p>
+
+                <h3>Security by default</h3>
+                <p>Laravel takes security seriously out of the box. CSRF protection, SQL injection prevention through
+                    the query builder, XSS mitigation via Blade's auto-escaping, rate limiting, signed URLs, encrypted
+                    cookies — these are not add-ons you wire together, they are the defaults. The framework's release
+                    cycle includes prompt security patches, and the team publishes clear upgrade guides. For production
+                    applications that handle real users and real data, that reliability matters enormously.</p>
+
+                <h3>Longevity and support</h3>
+                <p>Every major Laravel version receives bug fixes for 18 months and security fixes for two years after
+                    release. LTS versions extend that further. Taylor Otwell and the core team have maintained a
+                    consistent, principled release cadence since 2011 — a track record that is rare and genuinely
+                    reassuring for long-term projects. When you deploy on Cipi, you are not betting on a framework that
+                    might be abandoned next year.</p>
+
+                <h3>The Laravel ecosystem</h3>
+                <p>Laravel does not stand alone. Around it has grown an ecosystem of first-party and community tools
+                    that are among the best in the industry:</p>
+                <ul>
+                    <li><strong>Livewire</strong> — full-stack reactive components without leaving PHP</li>
+                    <li><strong>Filament</strong> — a stunning admin panel and form builder built on Livewire</li>
+                    <li><strong>Inertia.js</strong> — the bridge between Laravel and modern front-end frameworks (Vue,
+                        React, Svelte)</li>
+                    <li><strong>Laravel Horizon</strong> — a beautiful dashboard for monitoring Redis queues</li>
+                    <li><strong>Laravel Telescope</strong> — an elegant debug assistant for local and staging
+                        environments</li>
+                    <li><strong>Laravel Octane</strong> — supercharges application performance with FrankenPHP, Swoole,
+                        or RoadRunner</li>
+                    <li><strong>Pest</strong> — a delightful PHP testing framework with a Laravel-native plugin</li>
+                    <li><strong>Laracasts</strong> — the best screencasts in PHP, period</li>
+                </ul>
+                <p>These tools do not just exist — they are actively developed, widely adopted, and genuinely fun to
+                    use. The Laravel world has a rare quality: it manages to be both opinionated enough to feel cohesive
+                    and flexible enough to stay out of your way when you need it to.</p>
+
+                <h3>Ship or die</h3>
+                <p><a href="https://x.com/taylorotwell" target="_blank" rel="noopener">Taylor Otwell</a>, the founder of
+                    Laravel, has a mantra that
+                    resonates far beyond the framework: <strong>"we must ship."</strong> It is a simple statement, but
+                    it encapsulates an entire philosophy — that code only has value when it reaches users, that
+                    perfectionism is the enemy of progress, and that the best developers are the ones who find ways to
+                    move forward even when the conditions are not ideal.</p>
+                <p>The broader tech world has its own, blunter version: <strong>ship or die.</strong> Build something
+                    real, put it in front of people, learn, and iterate — or watch it slowly become irrelevant in a
+                    drawer. Laravel's entire ecosystem is built around that spirit. The framework reduces friction, the
+                    community celebrates releases, and the tooling rewards velocity. Cipi exists for the same reason: to
+                    remove the server management friction that stands between a developer and a live, deployed
+                    application.</p>
+                <p>If you are reading these docs, you are probably a developer who wants to build things, not babysit
+                    infrastructure. That is exactly the kind of developer Cipi was made for.</p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>Cipi is built <em>for</em> Laravel and <em>with</em> Laravel. The installer, the deploy
+                        pipeline, the agent package, the cron setup, the worker management — every decision was made
+                        with a Laravel app in mind. If you love the framework, you will feel right at home.</div>
+                </div>
+            </div>
+
+            <div class="doc-section" id="why-cipi">
+                <h2>Why "ci-pi"?</h2>
+
+                <div class="why-cipi-intro">
+                    <div class="why-cipi-mascot">
+                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M16.2182,35.9c-3.1368,0-6.8982,1.496-7.2988,5.6766a.916.916,0,0,0,.9061,1.0025h11.97A.9.9,0,0,0,22.7,41.643C22.6175,39.8048,21.7865,35.9,16.2182,35.9Z">
+                            </path>
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M18.0508,20.564c-1.35,1.0368-7.3687,7.51-4.3595,15.6667"></path>
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M31.7818,35.9c3.1368,0,6.8982,1.496,7.2988,5.6766a.916.916,0,0,1-.9061,1.0025h-11.97A.9.9,0,0,1,25.3,41.643C25.3825,39.8048,26.2135,35.9,31.7818,35.9Z">
+                            </path>
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M35.0148,36.4556c3.1848-2.8438,2.7468-7.5246,2.7468-8.7785,2.8935.82,5.0306,2.9709,5.5941,2.17,1.3744-1.9531-7.5193-7.5461-7.6918-10.8989C35.4951,15.6692,35.1706,5.4214,24,5.4214S12.5049,15.6692,12.3361,18.9484c-.1725,3.3528-9.0662,8.9458-7.6918,10.8989.5635.8007,2.7006-1.35,5.5941-2.17,0,1.2539-.438,5.9347,2.7468,8.7785">
+                            </path>
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M29.2763,19.8324c1.9318,1.5032,8.0416,8.242,5.0324,16.3983"></path>
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M24,24.8431l3.9479-4.2791c-.3858-1.0127-1.712-1.929-3.9479-1.929s-3.5621.9163-3.9479,1.929Z">
+                            </path>
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M20.0521,20.564c-3.424.5063-3.9062-2.7247-3.9062-4.7019,0-2.7006,1.4467-4.4367,3.9062-4.4367S23.79,14.7529,23.79,16.3443A3.8486,3.8486,0,0,1,23.181,18.68">
+                            </path>
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M27.7205,20.1334c.6751.0482,3.9538-.3892,3.9538-3.331s-1.76-3.7615-4.1232-3.7615a3.7861,3.7861,0,0,0-3.8164,2.6682">
+                            </path>
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M22.7012,41.4815a6.8371,6.8371,0,0,0,2.6076,0"></path>
+                            <circle fill="currentColor" cx="22.1579" cy="16.5888" r="0.75"></circle>
+                            <circle fill="currentColor" cx="25.5497" cy="16.5888" r="0.75"></circle>
+                        </svg>
+                    </div>
+                    <div class="why-cipi-text">
+                        <p><strong>Cipi</strong> is the Italian reading of the letters <strong>C</strong> and
+                            <strong>P</strong> — which stand for <strong>Control Panel</strong>. It is a quiet nod to
+                            the project's Italian roots and to the fact that, underneath all the CLI commands, Cipi is
+                            doing exactly what a control panel does: managing Nginx, PHP-FPM, MariaDB, Supervisor,
+                            Certbot, and UFW on your behalf — just without the browser tab.
+                        </p>
+                        <p>The name also carries a deliberate lightness. Server management tools tend to take themselves
+                            very seriously. Cipi does not. It is a tool built by a developer for developers, with the
+                            goal of getting out of the way as quickly as possible.</p>
+                    </div>
+                </div>
+
+                <h3>The mascot</h3>
+                <p>The Cipi mascot is a penguin — an intentional reference to <strong>Tux</strong>, the official Linux
+                    mascot created by Larry Ewing in 1996. Where Tux is polished and iconic, the Cipi penguin is drawn
+                    in a minimal, hand-sketched line style: same species, different attitude. Think of it as Tux's
+                    quieter sibling who prefers the terminal over the spotlight.</p>
+                <p>The illustration is rendered as a pure SVG using the project's accent color, so it adapts naturally
+                    to light and dark mode and scales to any size without losing quality.</p>
+            </div>
+
+            <div class="doc-section" id="vs-alternatives">
+                <h2>Cipi vs alternatives</h2>
+                <p>There are many tools for provisioning and managing web servers. This page explains where Cipi sits in
+                    that landscape and why you might — or might not — choose it over each category. The comparison is
+                    focused on seven axes: <strong>AI integration (dual MCP server — per-app and global)</strong>,
+                    <strong>native Git deploy (GitHub &amp; GitLab)</strong>, <strong>REST API</strong>,
+                    <strong>CLI-first automation</strong>, <strong>encryption at rest (Vault)</strong>,
+                    <strong>GDPR compliance</strong>, and <strong>total cost of ownership</strong>.
+                </p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>Cipi's core proposition: <strong>free forever, MIT open source, Laravel-first (with custom app
+                            support), CLI-first,
+                            AI-ready with dual MCP server, native GitHub &amp; GitLab integration, full REST API,
+                            AES-256-CBC encryption at rest, GDPR-compliant log retention,
+                            self-contained on your VPS</strong>. It does one thing and does it well — it does not try to
+                        be a generic hosting panel, a SaaS platform, or a multi-stack tool. In addition to Laravel,
+                        Cipi supports <a href="apps#cli-app-custom">custom apps</a> (static sites, SPAs,
+                        WordPress, alternative PHP frameworks, and other non-Laravel projects). Cipi provides automatic
+                        deployment integration with GitHub and GitLab, a complete REST API for managing hosts and
+                        applications programmatically, a dual MCP server architecture for AI-driven management, built-in
+                        Vault encryption for all configuration files and sync archives, and GDPR-compliant automatic
+                        log rotation. No credentials, SSH keys, or sensitive data are ever stored in plaintext — and no
+                        infrastructure data ever leaves your VPS.</div>
+                </div>
+
+                <!-- Quick overview table -->
+                <div style="overflow-x:auto;margin:1.5rem 0;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+                        <thead>
+                            <tr style="border-bottom:2px solid var(--border);">
+                                <th
+                                    style="text-align:left;padding:0.6rem 1rem;color:var(--text-muted);font-weight:600;">
+                                    Tool</th>
+                                <th
+                                    style="text-align:center;padding:0.6rem 0.5rem;color:var(--text-muted);font-weight:600;">
+                                    AI ready (MCP)</th>
+                                <th
+                                    style="text-align:center;padding:0.6rem 0.5rem;color:var(--text-muted);font-weight:600;">
+                                    CLI / automation</th>
+                                <th
+                                    style="text-align:center;padding:0.6rem 0.5rem;color:var(--text-muted);font-weight:600;">
+                                    Free / OSS</th>
+                                <th
+                                    style="text-align:center;padding:0.6rem 0.5rem;color:var(--text-muted);font-weight:600;">
+                                    No SaaS dep.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- SVG helpers (reused inline):
+                                 yes  = circle + check, green #22c55e
+                                 no   = circle + x,     slate #94a3b8
+                                 part = circle + dash,  amber #f59e0b  -->
+                            <tr
+                                style="border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--accent) 6%,transparent)">
+                                <td style="padding:0.55rem 1rem;font-weight:700;">Cipi</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border);">
+                                <td style="padding:0.55rem 1rem;">Laravel Forge</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
+                                        style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="16"
+                                            height="16" viewBox="0 0 16 16" fill="none" stroke="#f59e0b"
+                                            stroke-width="1.5" stroke-linecap="round">
+                                            <circle cx="8" cy="8" r="6.25" />
+                                            <line x1="5.5" y1="8" x2="10.5" y2="8" />
+                                        </svg><span
+                                            style="font-size:0.8rem;color:var(--text-muted);">partial</span></span></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
+                                        style="display:inline-flex;align-items:center;gap:0.3rem;white-space:nowrap;"><svg
+                                            width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#94a3b8"
+                                            stroke-width="1.5" stroke-linecap="round">
+                                            <circle cx="8" cy="8" r="6.25" />
+                                            <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                            <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                        </svg><span
+                                            style="font-size:0.8rem;color:var(--text-muted);">$12–19/mo</span></span>
+                                </td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border);">
+                                <td style="padding:0.55rem 1rem;">Ploi</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
+                                        style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="16"
+                                            height="16" viewBox="0 0 16 16" fill="none" stroke="#f59e0b"
+                                            stroke-width="1.5" stroke-linecap="round">
+                                            <circle cx="8" cy="8" r="6.25" />
+                                            <line x1="5.5" y1="8" x2="10.5" y2="8" />
+                                        </svg><span
+                                            style="font-size:0.8rem;color:var(--text-muted);">partial</span></span></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
+                                        style="display:inline-flex;align-items:center;gap:0.3rem;white-space:nowrap;"><svg
+                                            width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#94a3b8"
+                                            stroke-width="1.5" stroke-linecap="round">
+                                            <circle cx="8" cy="8" r="6.25" />
+                                            <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                            <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                        </svg><span
+                                            style="font-size:0.8rem;color:var(--text-muted);">€8–30/mo</span></span>
+                                </td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border);">
+                                <td style="padding:0.55rem 1rem;">moss.sh</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
+                                        style="display:inline-flex;align-items:center;gap:0.3rem;white-space:nowrap;"><svg
+                                            width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#f59e0b"
+                                            stroke-width="1.5" stroke-linecap="round">
+                                            <circle cx="8" cy="8" r="6.25" />
+                                            <line x1="5.5" y1="8" x2="10.5" y2="8" />
+                                        </svg><span style="font-size:0.8rem;color:var(--text-muted);">limited free /
+                                            $9–49/mo</span></span></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border);">
+                                <td style="padding:0.55rem 1rem;">RunCloud</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
+                                        style="display:inline-flex;align-items:center;gap:0.3rem;white-space:nowrap;"><svg
+                                            width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#94a3b8"
+                                            stroke-width="1.5" stroke-linecap="round">
+                                            <circle cx="8" cy="8" r="6.25" />
+                                            <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                            <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                        </svg><span
+                                            style="font-size:0.8rem;color:var(--text-muted);">$12–18/mo</span></span>
+                                </td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border);">
+                                <td style="padding:0.55rem 1rem;">CloudPanel</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
+                                        style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="16"
+                                            height="16" viewBox="0 0 16 16" fill="none" stroke="#f59e0b"
+                                            stroke-width="1.5" stroke-linecap="round">
+                                            <circle cx="8" cy="8" r="6.25" />
+                                            <line x1="5.5" y1="8" x2="10.5" y2="8" />
+                                        </svg><span
+                                            style="font-size:0.8rem;color:var(--text-muted);">partial</span></span></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border);">
+                                <td style="padding:0.55rem 1rem;">ServerPilot</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
+                                        style="display:inline-flex;align-items:center;gap:0.3rem;white-space:nowrap;"><svg
+                                            width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#94a3b8"
+                                            stroke-width="1.5" stroke-linecap="round">
+                                            <circle cx="8" cy="8" r="6.25" />
+                                            <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                            <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                        </svg><span
+                                            style="font-size:0.8rem;color:var(--text-muted);">$12–49/mo</span></span>
+                                </td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border);">
+                                <td style="padding:0.55rem 1rem;">HestiaCP / VestaCP</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border);">
+                                <td style="padding:0.55rem 1rem;">cPanel / Plesk</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><span
+                                        style="display:inline-flex;align-items:center;gap:0.3rem;white-space:nowrap;"><svg
+                                            width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#94a3b8"
+                                            stroke-width="1.5" stroke-linecap="round">
+                                            <circle cx="8" cy="8" r="6.25" />
+                                            <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                            <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                        </svg><span
+                                            style="font-size:0.8rem;color:var(--text-muted);">$20+/mo</span></span></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border);">
+                                <td style="padding:0.55rem 1rem;">aaPanel</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border);">
+                                <td style="padding:0.55rem 1rem;">Vito Deploy</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <polyline points="4.75,8 6.5,9.75 11.25,5.5" />
+                                    </svg></td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.55rem 1rem;">GridPane / xCloud / ServerAvatar</td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                                <td style="text-align:center;padding:0.55rem 0.5rem;"><svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" stroke="#94a3b8" stroke-width="1.5"
+                                        stroke-linecap="round">
+                                        <circle cx="8" cy="8" r="6.25" />
+                                        <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" />
+                                        <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" />
+                                    </svg></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Laravel Forge -->
+                <h3>Cipi vs Laravel Forge</h3>
+                <p><a href="https://forge.laravel.com/" target="_blank">Forge</a> is the
+                    most direct competitor and the benchmark in the space — it is built by the Laravel team, mature,
+                    polished, and battle-tested at scale (970k+ servers, 56M+ deployments). It features a clean GUI,
+                    zero-downtime deployments, server monitoring, heartbeats, health checks, and integration with all
+                    major cloud providers (AWS, DigitalOcean, Hetzner, Vultr, and others).</p>
+                <p><strong>Where Cipi wins:</strong></p>
+                <ul>
+                    <li><strong>Cost</strong> — Forge costs starts at $12month per server. Cipi is free, for all your
+                        servers, for life.</li>
+                    <li><strong>No SaaS dependency</strong> — Forge requires an active subscription and a reachable
+                        forge.laravel.com to manage your servers. If the service has downtime or you cancel, you lose
+                        the management interface. Cipi lives entirely on your VPS — it works independently of any
+                        external service.</li>
+                    <li><strong>CLI and pipeline automation</strong> — Cipi is entirely operable over SSH with
+                        composable shell commands. Every operation can be scripted, chained in a pipeline, triggered by
+                        a webhook, or run from a GitHub Action. Forge's automation relies primarily on its GUI and
+                        deployment scripts.</li>
+                    <li><strong>Open source</strong> — Cipi is MIT-licensed. You can read, audit, fork, and modify every
+                        line. Forge is proprietary.</li>
+                    <li><strong>Simplicity</strong> — Forge has grown into a feature-rich platform. Cipi has a
+                        deliberately small surface area — one binary, a handful of commands, zero GUI.</li>
+                    <li><strong>Native Git deploy (GitHub &amp; GitLab)</strong> — Cipi provides automatic deployment
+                        integration with both GitHub and GitLab out of the box, with webhook-driven zero-downtime
+                        releases configured in a single command.</li>
+                    <li><strong>REST API</strong> — Cipi exposes a full REST API for managing hosts and applications
+                        programmatically, enabling integration with external tools, dashboards, and custom workflows.
+                    </li>
+                    <li><strong>Dual MCP server</strong> — Cipi is the only server panel with a dual MCP architecture: a
+                        per-app MCP server for managing a single application and a global MCP server for creating,
+                        deploying, modifying, deleting, and managing SSL certificates across all applications on the
+                        server. This enables full AI-driven infrastructure management from any MCP-compatible IDE or
+                        agent.</li>
+                    <li><strong>Encryption at rest</strong> — All Cipi configuration files (passwords, tokens, SSH keys)
+                        are encrypted with AES-256-CBC via the Vault system. Forge stores server credentials on its
+                        own SaaS infrastructure; Cipi keeps everything encrypted on your VPS.</li>
+                    <li><strong>GDPR / data sovereignty</strong> — Cipi runs entirely on your server. No infrastructure
+                        data is sent to any third party. Forge is operated by a US company and processes your server
+                        metadata under US law — requiring a DPA for GDPR compliance. With Cipi there is no third-party
+                        data processor to manage.</li>
+                    <li><strong>Server sync &amp; replication</strong> — Built-in encrypted server-to-server sync with
+                        <code>cipi sync push</code> enables automated failover replication via cron. Forge has no
+                        equivalent feature.
+                    </li>
+                </ul>
+                <p><strong>Where Forge wins:</strong> GUI, multi-cloud provisioning, teams, monitoring dashboards,
+                    heartbeats, health checks, and years of production hardening. If your team is not comfortable with
+                    SSH and prefers a visual interface, or if you need to manage servers across multiple cloud accounts,
+                    Forge is the better choice.</p>
+
+                <!-- Ploi -->
+                <h3>Cipi vs Ploi &amp; moss.sh</h3>
+                <p><a href="https://ploi.io/" target="_blank">Ploi</a> is a SaaS server
+                    management panel with strong Laravel support, a clean UI, and a good set of features (zero-downtime
+                    deployments, automatic database backups, S3 file backups, Supervisor queue management, DNS
+                    management). It starts at €8/month per server (Basic) up to €30/month (Unlimited). <a
+                        href="https://moss.sh" target="_blank">Moss</a> is in the same
+                    category — a SaaS "virtual sysadmin" targeting freelancers and agencies, supporting PHP, Laravel,
+                    Symfony, WordPress, and Node.js on Ubuntu servers, with plans from $9 to $49/month and a limited
+                    free tier (capped at 25 git deploys/month).</p>
+                <p>Both Ploi and Moss trade a monthly fee and SaaS dependency for a polished GUI and built-in
+                    monitoring. Cipi trades the GUI for zero cost, open source code, full CLI control, a complete REST
+                    API, native GitHub &amp; GitLab deployment integration, a dual MCP server (per-app and global)
+                    for AI-driven management, AES-256-CBC encryption at rest for all configs, and built-in encrypted
+                    server-to-server sync for automated failover replication. Notable differences: Moss is not
+                    Laravel-exclusive (no built-in Deployer, no artisan shortcuts) and its free tier imposes a deploy
+                    quota that runs out quickly on active workflows — Cipi has no deploy limits. On data sovereignty:
+                    Ploi is EU-based (Netherlands) and natively GDPR-compliant, which is a genuine advantage over
+                    US-based alternatives. Cipi goes further — no infrastructure data leaves your VPS at all, and all
+                    configs are encrypted on disk. Neither Ploi nor Moss offer config encryption at rest or built-in
+                    server sync. Ploi is the better choice if you want a Forge-like experience at a lower price point.
+                    Both remain the right choice over Cipi if your team prefers a GUI and does not need CLI-first
+                    pipeline automation or AI integration.</p>
+
+                <!-- RunCloud -->
+                <h3>Cipi vs RunCloud</h3>
+                <p><a href="https://runcloud.io/" target="_blank">RunCloud</a> is a
+                    PHP-oriented SaaS control panel that supports Nginx and Apache, multiple PHP versions, and basic
+                    deployment scripts. It is popular for WordPress and generic PHP apps and costs $12–18/month per
+                    server.</p>
+                <p>RunCloud is <em>not</em> Laravel-native: it has no built-in Deployer integration, no artisan shortcut
+                    commands, no automatic Supervisor configuration for Laravel queues, and no understanding of
+                    Laravel's shared directory structure. Deploying a Laravel app on RunCloud requires manual
+                    configuration of many pieces that Cipi handles automatically. If you are deploying Laravel
+                    exclusively, Cipi gives you far more out of the box at zero cost.</p>
+
+                <!-- CloudPanel -->
+                <h3>Cipi vs CloudPanel</h3>
+                <p><a href="https://www.cloudpanel.io/" target="_blank">CloudPanel</a> is a
+                    free, open-source panel supporting PHP, Node.js, Python, and static sites. It is well-maintained,
+                    has a polished UI, and includes a CLI. It is a genuinely good option for teams that need to host a
+                    mix of application types on the same server.</p>
+                <p>The key difference is focus: CloudPanel is a generic multi-stack panel; Cipi is a Laravel-only tool.
+                    CloudPanel has no Deployer integration, no artisan commands, no automatic queue worker setup, and no
+                    webhook deploy system designed for Laravel. The CloudPanel CLI covers server administration but not
+                    Laravel application lifecycle management. If you only deploy Laravel, Cipi's opinionated approach
+                    gives you a faster, cleaner experience. If you also need to host Node.js, Python, or WordPress
+                    alongside Laravel, CloudPanel is the more appropriate choice.</p>
+
+                <!-- Vito Deploy -->
+                <h3>Cipi vs Vito Deploy</h3>
+                <p><a href="https://vitodeploy.com/" target="_blank">Vito Deploy</a> is a free,
+                    open-source, self-hosted server management tool with a clean GUI dashboard, built with Laravel and
+                    htmx. It supports PHP (including Laravel and WordPress), MySQL, MariaDB, and PostgreSQL, and
+                    includes SSL management, firewall configuration, background workers, cron jobs, server monitoring,
+                    team collaboration, custom workflows, plugins, and an API.</p>
+                <p>Vito Deploy and Cipi share the same philosophy: free, open source, and self-hosted — no SaaS
+                    dependency. The key differences are in approach and depth:</p>
+                <ul>
+                    <li><strong>GUI vs CLI</strong> — Vito Deploy is GUI-first with a web dashboard; Cipi is CLI-first
+                        with no GUI. If your team prefers a visual interface, Vito Deploy is a strong fit. If you need
+                        scriptable, pipeline-ready automation, Cipi is the better choice.</li>
+                    <li><strong>AI integration</strong> — Cipi provides a dual MCP server (per-app and global) for
+                        AI-driven infrastructure management from any MCP-compatible IDE or agent. Vito Deploy has no
+                        MCP or AI integration.</li>
+                    <li><strong>CLI automation</strong> — Cipi is entirely operable over SSH with composable shell
+                        commands that can be chained in pipelines, triggered by webhooks, or run from GitHub Actions.
+                        Vito Deploy is primarily operated through its web dashboard.</li>
+                    <li><strong>Native Git deploy</strong> — Cipi provides automatic webhook-driven zero-downtime
+                        deployment integration with both GitHub and GitLab, configured in a single command.</li>
+                    <li><strong>Encryption at rest</strong> — All Cipi configuration files are encrypted with
+                        AES-256-CBC
+                        via the Vault system. Vito Deploy does not advertise config encryption at rest.</li>
+                    <li><strong>Server sync</strong> — Cipi includes built-in encrypted server-to-server sync with
+                        <code>cipi sync push</code> for automated failover replication. Vito Deploy has no equivalent
+                        feature.
+                    </li>
+                    <li><strong>Infrastructure footprint</strong> — Vito Deploy requires a dedicated VPS or
+                        environment to host its own dashboard (it is a full Laravel application with a database).
+                        Cipi is a single binary that runs directly on the same VPS as your applications — no
+                        additional server, no separate database, no extra infrastructure to maintain or secure.</li>
+                </ul>
+                <p>Vito Deploy is a genuinely good alternative in the free/OSS self-hosted space. If you want a GUI
+                    dashboard with team collaboration and monitoring, and don't need CLI-first automation or AI
+                    integration, Vito Deploy is worth evaluating.</p>
+
+                <!-- ServerPilot -->
+                <h3>Cipi vs ServerPilot</h3>
+                <p>ServerPilot is a PHP/WordPress-focused SaaS panel ($12–49/month) that automates PHP-FPM and Nginx
+                    setup. It has no Laravel-specific tooling, no CLI for application management, and no zero-downtime
+                    deploy system. It is primarily aimed at WordPress developers who want automated PHP updates without
+                    thinking about server internals. For Laravel developers, it offers little value over Cipi at
+                    significant ongoing cost.</p>
+
+                <!-- WordPress/PHP panels -->
+                <h3>Cipi vs GridPane, xCloud, ServerAvatar</h3>
+                <p>These three panels are focused on WordPress and WooCommerce, not PHP in general and certainly not
+                    Laravel specifically. They optimize for WordPress-centric workflows (staging clones, multisite,
+                    Redis object cache for WP, Cloudflare integration for WordPress). None of them have Laravel-specific
+                    tooling. If your workload is WordPress, evaluate them on their own merits. If your workload is
+                    Laravel, they are not the right category of tool.</p>
+
+                <!-- Traditional hosting panels -->
+                <h3>Cipi vs cPanel &amp; Plesk</h3>
+                <p>cPanel and Plesk are traditional hosting control panels designed for shared hosting resellers: they
+                    manage email accounts, FTP, DNS zones, databases, and multiple customer websites on one machine.
+                    They are expensive (cPanel starts at $20+/month per server, Plesk similarly), GUI-only, built around
+                    Apache by default, and carry enormous complexity — most of which is irrelevant when deploying a
+                    single-stack Laravel application.</p>
+                <p>They are the right tool for hosting providers that sell shared hosting accounts to non-technical
+                    customers. They are the wrong tool for a development team that owns its own VPS and deploys Laravel
+                    apps. Cipi is purpose-built for the latter scenario at zero cost.</p>
+
+                <!-- Virtualmin / ISPConfig / Froxlor -->
+                <h3>Cipi vs Webmin</h3>
+                <p>Webmin is a free, open-source, browser-based interface for low-level Unix system administration —
+                    managing users, cron jobs, packages, firewall rules, services, and disk usage through a GUI rather
+                    than the shell. It is not a hosting panel or a deployment tool; it is a remote administration
+                    console for sysadmins. Virtualmin is the hosting-focused module built on top of Webmin.</p>
+                <p>Webmin and Cipi solve entirely different problems. Webmin lets you <em>administer a server</em>; Cipi
+                    lets you <em>deploy and manage Laravel applications</em> on a server. They are not mutually
+                    exclusive — you could technically run both on the same machine — but Cipi's CLI replaces any need
+                    for a GUI-based admin console for the tasks it covers (app creation, deploys, PHP management,
+                    firewall, SSL, backups). Webmin has no Laravel awareness: no Deployer, no artisan, no queue workers,
+                    no zero-downtime release management.</p>
+                <p>If your team needs a point-and-click interface for general server maintenance (editing
+                    <code>/etc/hosts</code>, managing system users, reviewing logs visually), Webmin is a reasonable
+                    complementary tool. For Laravel deployments specifically, Cipi is more capable and requires no
+                    browser or active session.
+                </p>
+
+                <!-- Virtualmin / ISPConfig / Froxlor -->
+                <h3>Cipi vs Virtualmin, ISPConfig, Froxlor, Ajenti</h3>
+                <p>These are free, open-source hosting panels designed for ISPs, hosting resellers, and system
+                    administrators managing many tenants on a single machine. They all share similar characteristics:
+                    email servers (Postfix/Dovecot), DNS (BIND), FTP (ProFTPD/vsftpd), multiple virtual host management,
+                    and complex multi-user permissions. They are powerful but have steep learning curves and are
+                    designed for environments far more complex than a dedicated Laravel application server.</p>
+                <p>None of them have Laravel-specific tooling. None of them integrate with Deployer. None of them are
+                    CLI-first in the sense that every operation can be scripted. For a team deploying Laravel
+                    exclusively, they are overbuilt and underspecialized compared to Cipi.</p>
+
+                <!-- HestiaCP / VestaCP -->
+                <h3>Cipi vs HestiaCP &amp; VestaCP</h3>
+                <p>VestaCP has been effectively abandoned since 2019. HestiaCP is its active community fork — free, open
+                    source, and maintained. It is a lighter alternative to cPanel for generic hosting (email, FTP, DNS,
+                    multiple PHP versions). Like the other traditional panels, it has no Laravel-specific tooling: no
+                    Deployer, no queue workers managed automatically, no artisan integration. Its primary audience is
+                    small hosting businesses or individuals who want a GUI for managing multiple websites on one server
+                    across multiple stacks. If you only deploy Laravel, Cipi is the more focused and simpler option.</p>
+
+                <!-- aaPanel -->
+                <h3>Cipi vs aaPanel</h3>
+                <p>aaPanel (also known as BaoTa Panel) is a free panel of Chinese origin, widely used in the
+                    Asia-Pacific region. It supports LNMP/LAMP stacks, Node.js, Docker, and various database engines
+                    through a plugin system. It is genuinely capable and has a large user base, but it is a generic
+                    multi-stack tool with a GUI-centric philosophy and no Laravel-native automation. Server
+                    communication is managed through the panel's own agent, creating a dependency on the panel's
+                    infrastructure similar to SaaS tools. For Laravel-specific, CLI-driven deployments, Cipi is a
+                    cleaner fit.</p>
+
+                <!-- CWP -->
+                <h3>Cipi vs CentOS Web Panel (CWP / AlmaLinux Web Panel)</h3>
+                <p>CentOS Web Panel — now repositioned around AlmaLinux — is a traditional hosting panel historically
+                    tied to the RHEL ecosystem. Cipi targets Ubuntu exclusively, which is the dominant OS for modern
+                    Laravel deployments and where the ondrej/php PPA gives access to all PHP versions from 7.4 to 8.5
+                    within hours of release. Beyond the OS mismatch, CWP is a generic panel with no Laravel tooling and
+                    significant complexity overhead for a single-application Laravel server.</p>
+
+                <!-- ZPanel -->
+                <h3>Cipi vs ZPanel</h3>
+                <p>ZPanel is effectively unmaintained and should not be used for new deployments. It is included here
+                    only because it appears in comparisons on the web. Choose any of the other options listed on this
+                    page instead.</p>
+
+                <!-- Summary -->
+                <!-- GDPR -->
+                <h3>Privacy, GDPR, and data sovereignty</h3>
+                <p>This dimension is rarely discussed in tool comparisons but is legally significant for teams that
+                    process personal data — EU-based companies, healthcare, fintech, or any product subject to GDPR,
+                    HIPAA, or local data protection regulations.</p>
+
+                <h4>SaaS panels and data residency</h4>
+                <p>When you connect a server to a SaaS panel (Forge, Ploi, RunCloud, ServerPilot, xCloud, GridPane,
+                    ServerAvatar), you are providing that service with data about your infrastructure: server IP
+                    addresses, hostnames, deployment credentials, environment variable names, and in some cases SSH
+                    private keys or deploy tokens. The SaaS provider stores and processes this data on their own
+                    infrastructure, which may be located in jurisdictions outside the EU.</p>
+                <ul>
+                    <li><strong>Laravel Forge</strong> is operated by Laravel LLC, a US company. Data is processed under
+                        US law. Under GDPR, Forge acts as a <em>data processor</em> for your infrastructure data, which
+                        requires a signed Data Processing Agreement (DPA). As of 2025, Forge provides a DPA on request,
+                        but the data remains on US-based servers.</li>
+                    <li><strong>Ploi</strong> is operated by WebBuilds B.V., a Dutch company — EU-based and natively
+                        subject to GDPR. This makes it the most compliant SaaS option in this list for EU teams. Data is
+                        hosted in Europe.</li>
+                    <li><strong>RunCloud, ServerPilot, GridPane, ServerAvatar, xCloud</strong> are primarily US or
+                        non-EU companies. Their data residency and DPA availability varies; check each provider's
+                        privacy policy and DPA status before using them with data subject to GDPR.</li>
+                    <li><strong>aaPanel</strong> is of Chinese origin. Its privacy policy and data handling are subject
+                        to Chinese law, including the Personal Information Protection Law (PIPL) and the Data Security
+                        Law (DSL), which in certain circumstances allow Chinese government access to data stored on
+                        Chinese-operated systems. For EU teams or teams processing sensitive data, this is a significant
+                        compliance consideration.</li>
+                    <li><strong>Vito Deploy</strong> is self-hosted — like Cipi, no infrastructure data leaves your
+                        VPS. From a GDPR perspective, Vito Deploy shares the same advantage: no third-party data
+                        processor for server management. However, Vito Deploy does not advertise encryption at rest
+                        for configuration files, whereas Cipi encrypts all configs with AES-256-CBC via the Vault
+                        system.</li>
+                </ul>
+
+                <h4>Cipi: self-contained, zero data exfiltration</h4>
+                <p>Cipi is installed directly on your VPS and operates entirely within your own infrastructure. It does
+                    not phone home, it does not send telemetry, and it does not contact any external service during
+                    normal operation (the only external calls are to GitHub for self-updates and to Let's Encrypt for
+                    SSL certificates — both are standard and optional). No server metadata, no credentials, no
+                    application data ever leaves your machine.</p>
+                <p>From a GDPR perspective, this means:</p>
+                <ul>
+                    <li><strong>No third-party data processor</strong> for infrastructure management — you are the sole
+                        data controller and processor for your server management operations.</li>
+                    <li><strong>No DPA required</strong> with Cipi itself (there is no Cipi company processing your
+                        data).</li>
+                    <li><strong>Full data sovereignty</strong> — your server data stays in the jurisdiction where your
+                        VPS is hosted, which you choose freely (Hetzner DE, OVH FR, AWS eu-central-1, etc.).</li>
+                    <li><strong>Easier audit trails</strong> — every Cipi action is logged locally in
+                        <code>/var/log/cipi/cipi.log</code>, accessible only to you, not to a third-party dashboard.
+                    </li>
+                </ul>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>For EU companies processing personal data, teams operating under ISO 27001 or SOC 2
+                        requirements, or any project subject to data residency rules, Cipi's self-contained model
+                        eliminates an entire category of third-party data processor risk that SaaS panels introduce by
+                        design.</div>
+                </div>
+
+                <h3>When to choose Cipi</h3>
+                <ul>
+                    <li>You deploy <strong>Laravel</strong> — Cipi is designed primarily for Laravel, with <a
+                            href="apps#cli-app-custom">custom app support</a> for static sites, SPAs,
+                        WordPress, and other PHP projects.</li>
+                    <li>You want <strong>zero monthly panel cost</strong> — one server or fifty, the price is the same.
+                        and you don't need a commercial support contract</li>
+                    <li>You need <strong>full CLI and pipeline automation</strong> — every Cipi operation is scriptable
+                        over SSH.</li>
+                    <li>You need <strong>native Git deploy</strong> — automatic deployment integration with GitHub and
+                        GitLab, with webhook-driven zero-downtime releases.</li>
+                    <li>You need <strong>a REST API</strong> — full programmatic control over hosts and applications for
+                        integration with external tools, dashboards, and custom workflows.</li>
+                    <li>You need <strong>AI-driven management</strong> — Cipi's dual MCP server (per-app and global)
+                        enables creating, deploying, modifying, deleting, and managing SSL certificates across all
+                        applications from any MCP-compatible AI IDE or agent.</li>
+                    <li>You want <strong>no external dependency</strong> — the panel lives on your VPS and works
+                        independently of any SaaS.</li>
+                    <li>You value <strong>open source and auditability</strong> — every line of Cipi is readable,
+                        forkable, and MIT-licensed.</li>
+                    <li>You need <strong>GDPR / data sovereignty compliance</strong> — no infrastructure data leaves
+                        your VPS, no third-party data processor, no DPA required.</li>
+                    <li>You need <strong>encryption at rest</strong> — all configuration files, credentials, and SSH
+                        keys
+                        are encrypted with AES-256-CBC via the Vault system. Sync archives are also encrypted with a
+                        user-defined passphrase.</li>
+                    <li>You need <strong>server-to-server sync and replication</strong> — <code>cipi sync push</code>
+                        enables automated failover replication via cron, with encrypted transfer and incremental
+                        updates.</li>
+                </ul>
+            </div>
+
+            <div class="page-nav">
+                <a href="advanced" class="page-nav-link page-nav-link--prev">
+                    <span class="page-nav-label">Previous</span>
+                    <span class="page-nav-title">Advanced</span>
+                </a>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <span>Made with ❤️ by <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> — Open source, MIT
+                Licensed</span>
+            <ul class="footer-links">
+                <li><a href="https://conn.web.ap.it" target="_blank">Try SSH
+                        Connection Manager with Cipi</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        function updateFavicon(theme) {
+            const variant = theme === 'dark' ? 'dark' : 'light';
+            document.getElementById('favicon').href = `/favicon-${variant}.png`;
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('cipi-theme', next);
+            updateFavicon(next);
+        }
+
+        (function () {
+            const saved = localStorage.getItem('cipi-theme');
+            if (saved) { document.documentElement.setAttribute('data-theme', saved); updateFavicon(saved); }
+            else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark'); updateFavicon('dark');
+            }
+        })();
+
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const docsSidebar = document.getElementById('docsSidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function openSidebar() { docsSidebar.classList.add('open'); sidebarOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { docsSidebar.classList.remove('open'); sidebarOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+        sidebarToggle.addEventListener('click', () => docsSidebar.classList.contains('open') ? closeSidebar() : openSidebar());
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', () => { if (window.innerWidth < 900) closeSidebar(); });
+        });
+
+        const sections = document.querySelectorAll('.doc-section[id]');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    const active = document.querySelector(`.sidebar-link[href$="#${entry.target.id}"]`);
+                    if (active) {
+                        active.classList.add('active');
+                        active.scrollIntoView({ block: 'nearest' });
+                    }
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+        sections.forEach(s => observer.observe(s));
+
+        // Highlight current chapter in sidebar
+        (function() {
+            const page = location.pathname.split('/').pop().replace('.html', '') || 'index';
+            document.querySelectorAll('.sidebar-group').forEach(g => {
+                if (g.dataset.chapter === page) g.classList.add('current-chapter');
+            });
+        })();
+
+        function copyCode(btn) {
+            const pre = btn.closest('.code-block').querySelector('pre');
+            const text = pre.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+
+    <script async src="https://stats.web.ap.it/i/5ae6c482-e1ef-4447-b949-49ff9a43a5fb.js"></script>
+    <noscript><img src="https://stats.web.ap.it/collect/pixel.gif?k=5ae6c482-e1ef-4447-b949-49ff9a43a5fb&p=/" width="1" height="1" /></noscript>
+</body>
+
+</html>

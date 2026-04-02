@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipi Docs — Cipi Agent</title>
+    <meta name="description" content="Laravel package for webhooks, health checks, MCP server, database anonymizer, and ENV variables.">
+    <meta name="author" content="Andrea Pollastri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cipi.sh/docs/agent">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cipi">
+    <meta property="og:url" content="https://cipi.sh/docs/agent">
+    <meta property="og:title" content="Cipi Docs — Cipi Agent">
+    <meta property="og:description" content="Laravel package for webhooks, health checks, MCP server, database anonymizer, and ENV variables.">
+    <meta property="og:image" content="https://cipi.sh/og.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@cipi_sh">
+    <meta name="twitter:title" content="Cipi Docs — Cipi Agent">
+    <meta name="twitter:description" content="Laravel package for webhooks, health checks, MCP server, database anonymizer, and ENV variables.">
+    <meta name="twitter:image" content="https://cipi.sh/og.png">
+
+    <link rel="icon" id="favicon" type="image/png" sizes="48x48" href="/favicon-light.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-light-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-light-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-light-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-left">
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round">
+                        <line x1="4" y1="7" x2="20" y2="7" />
+                        <line x1="4" y1="12" x2="20" y2="12" />
+                        <line x1="4" y1="17" x2="20" y2="17" />
+                    </svg>
+                </button>
+                <a href="../index.html" class="nav-logo">
+                    <svg class="tux-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M16.2182,35.9c-3.1368,0-6.8982,1.496-7.2988,5.6766a.916.916,0,0,0,.9061,1.0025h11.97A.9.9,0,0,0,22.7,41.643C22.6175,39.8048,21.7865,35.9,16.2182,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M18.0508,20.564c-1.35,1.0368-7.3687,7.51-4.3595,15.6667" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M31.7818,35.9c3.1368,0,6.8982,1.496,7.2988,5.6766a.916.916,0,0,1-.9061,1.0025h-11.97A.9.9,0,0,1,25.3,41.643C25.3825,39.8048,26.2135,35.9,31.7818,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M35.0148,36.4556c3.1848-2.8438,2.7468-7.5246,2.7468-8.7785,2.8935.82,5.0306,2.9709,5.5941,2.17,1.3744-1.9531-7.5193-7.5461-7.6918-10.8989C35.4951,15.6692,35.1706,5.4214,24,5.4214S12.5049,15.6692,12.3361,18.9484c-.1725,3.3528-9.0662,8.9458-7.6918,10.8989.5635.8007,2.7006-1.35,5.5941-2.17,0,1.2539-.438,5.9347,2.7468,8.7785" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M29.2763,19.8324c1.9318,1.5032,8.0416,8.242,5.0324,16.3983" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M24,24.8431l3.9479-4.2791c-.3858-1.0127-1.712-1.929-3.9479-1.929s-3.5621.9163-3.9479,1.929Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M20.0521,20.564c-3.424.5063-3.9062-2.7247-3.9062-4.7019,0-2.7006,1.4467-4.4367,3.9062-4.4367S23.79,14.7529,23.79,16.3443A3.8486,3.8486,0,0,1,23.181,18.68" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M27.7205,20.1334c.6751.0482,3.9538-.3892,3.9538-3.331s-1.76-3.7615-4.1232-3.7615a3.7861,3.7861,0,0,0-3.8164,2.6682" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            d="M22.7012,41.4815a6.8371,6.8371,0,0,0,2.6076,0" />
+                        <circle fill="currentColor" cx="22.1579" cy="16.5888" r="0.75" />
+                        <circle fill="currentColor" cx="25.5497" cy="16.5888" r="0.75" />
+                    </svg>
+                    <span>Cipi</span>
+                </a>
+                <span class="nav-badge">Docs</span>
+            </div>
+            <div class="nav-right">
+                <a href="../index.html" class="nav-link">Home</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                </button>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-nav-sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="docs-layout">
+
+        <aside class="docs-sidebar" id="docsSidebar">
+
+            <div class="sidebar-group" data-chapter="getting-started">
+                <a href="getting-started" class="sidebar-group-label">getting started</a>
+                <a href="getting-started#installation" class="sidebar-link">installation</a>
+                <a href="getting-started#requirements" class="sidebar-link">requirements</a>
+                <a href="getting-started#quickstart" class="sidebar-link">quick start</a>
+                <a href="getting-started#tech-stack" class="sidebar-link">tech stack</a>
+                <a href="getting-started#app-structure" class="sidebar-link">app structure</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="agent">
+                <a href="agent" class="sidebar-group-label">cipi agent</a>
+                <a href="agent#agent-install" class="sidebar-link">installation</a>
+                <a href="agent#agent-webhook" class="sidebar-link">webhook</a>
+                <a href="agent#agent-health" class="sidebar-link">health check</a>
+                <a href="agent#agent-mcp" class="sidebar-link">MCP server</a>
+                <a href="agent#agent-anonymizer" class="sidebar-link">database anonymizer</a>
+                <a href="agent#agent-env" class="sidebar-link">ENV variables</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="apps">
+                <a href="apps" class="sidebar-group-label">apps</a>
+                <a href="apps#cli-app-create" class="sidebar-link"><code>app create</code></a>
+                <a href="apps#cli-app-custom" class="sidebar-link">custom apps</a>
+                <a href="apps#cli-app-manage" class="sidebar-link"><code>app list / show / edit</code></a>
+                <a href="apps#cli-app-env" class="sidebar-link"><code>app env</code></a>
+                <a href="apps#cli-app-logs" class="sidebar-link"><code>app logs</code></a>
+                <a href="apps#cli-app-artisan" class="sidebar-link"><code>app artisan / tinker</code></a>
+                <a href="apps#cli-app-ssh" class="sidebar-link">SSH as app user</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="deploy">
+                <a href="deploy" class="sidebar-group-label">deploy & ci/cd</a>
+                <a href="deploy#cli-deploy" class="sidebar-link"><code>deploy</code></a>
+                <a href="deploy#cli-auth" class="sidebar-link"><code>auth.json</code></a>
+                <a href="deploy#git-providers" class="sidebar-link">Git providers</a>
+                <a href="deploy#git-auto-setup" class="sidebar-link">Git auto-setup</a>
+                <a href="deploy#cli-deploy-script" class="sidebar-link">deploy script</a>
+                <a href="deploy#ci-pipelines" class="sidebar-link">CI/CD pipelines</a>
+                <a href="deploy#deploy-notifications" class="sidebar-link">deploy notifications</a>
+                <a href="deploy#safe-deploy" class="sidebar-link">safe deploy w/ backup</a>
+                <a href="deploy#preview-environments" class="sidebar-link">preview environments</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="infrastructure">
+                <a href="infrastructure" class="sidebar-group-label">infrastructure</a>
+                <a href="infrastructure#cli-php" class="sidebar-link"><code>php</code></a>
+                <a href="infrastructure#cli-db" class="sidebar-link"><code>db</code></a>
+                <a href="infrastructure#cli-aliases" class="sidebar-link"><code>alias</code></a>
+                <a href="infrastructure#cli-ssl" class="sidebar-link"><code>ssl</code></a>
+                <a href="infrastructure#cli-backup" class="sidebar-link"><code>backup</code></a>
+                <a href="infrastructure#cli-app-cron" class="sidebar-link">user crontab</a>
+                <a href="infrastructure#cli-workers" class="sidebar-link"><code>worker</code></a>
+                <a href="infrastructure#cli-firewall" class="sidebar-link"><code>firewall</code></a>
+                <a href="infrastructure#cli-ban" class="sidebar-link"><code>ban</code></a>
+                <a href="infrastructure#cli-services" class="sidebar-link"><code>service</code></a>
+                <a href="infrastructure#cli-ssh" class="sidebar-link"><code>ssh</code></a>
+                <a href="infrastructure#cli-cipi" class="sidebar-link"><code>cipi</code></a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="advanced">
+                <a href="advanced" class="sidebar-group-label">advanced</a>
+                <a href="advanced#cipi-api" class="sidebar-link"><code>cipi api</code></a>
+                <a href="advanced#whmcs" class="sidebar-link">WHMCS module</a>
+                <a href="advanced#cipi-sync" class="sidebar-link"><code>cipi sync</code></a>
+                <a href="advanced#cipi-vault" class="sidebar-link">vault &amp; encryption</a>
+                <a href="advanced#cipi-smtp" class="sidebar-link">email notifications</a>
+                <a href="advanced#cipi-log-retention" class="sidebar-link">log retention (GDPR)</a>
+                <a href="advanced#redis" class="sidebar-link">redis</a>
+                <a href="advanced#self-update" class="sidebar-link">self-update</a>
+                <a href="advanced#wildcard-domains" class="sidebar-link">wildcard domains</a>
+                <a href="advanced#nginx-config" class="sidebar-link">edit Nginx config</a>
+                <a href="advanced#uninstall" class="sidebar-link">uninstall Cipi</a>
+            </div>
+
+            <div class="sidebar-group" data-chapter="about">
+                <a href="about" class="sidebar-group-label">about cipi</a>
+                <a href="about#history" class="sidebar-link">history</a>
+                <a href="about#security-model" class="sidebar-link">security model</a>
+                <a href="about#why-mariadb" class="sidebar-link">why MariaDB?</a>
+                <a href="about#why-laravel" class="sidebar-link">why Laravel?</a>
+                <a href="about#why-cipi" class="sidebar-link">why "Ci-Pi"?</a>
+                <a href="about#vs-alternatives" class="sidebar-link">Cipi vs alternatives</a>
+            </div>
+
+
+        </aside>
+
+        <main class="docs-content" id="docsContent">
+
+            <div class="doc-section" id="agent-install">
+                <p class="doc-section-label">Cipi Agent</p>
+                <h2>Installation</h2>
+                <p><strong>cipi-agent</strong> is a lightweight Laravel package that connects your application to Cipi.
+                    It provides a webhook endpoint for automatic deploys on <code>git push</code>, a health check
+                    endpoint, an MCP server for AI assistants, a database anonymizer for GDPR-safe data exports,
+                    and a set of useful Artisan commands.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> composer require cipi/agent</pre>
+                </div>
+
+                <p>The service provider auto-discovers — no configuration or <code>config/app.php</code> change is
+                    needed. Cipi already injected the required <code>.env</code> variables during
+                    <code>cipi app create</code>, so the package works out of the box.
+                </p>
+
+                <div class="callout success">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <div>After installing the package, commit and push. Cipi will pick it up on the next deploy
+                        automatically.</div>
+                </div>
+
+                <h3>Artisan commands</h3>
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>php artisan cipi:status</td>
+                            <td>Show Cipi config values and connectivity status</td>
+                        </tr>
+                        <tr>
+                            <td>php artisan cipi:deploy-key</td>
+                            <td>Print the SSH deploy key for this app</td>
+                        </tr>
+                        <tr>
+                            <td>php artisan cipi:mcp</td>
+                            <td>Show the MCP endpoint URL and setup snippets for Cursor, VS Code, and Claude Desktop
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>php artisan cipi:generate-token {type}</td>
+                            <td>Generate a secure token. Type can be <code>mcp</code>, <code>health</code>, or
+                                <code>anonymize</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>php artisan cipi:service {type} --enable|--disable</td>
+                            <td>Toggle a service on or off. Updates <code>.env</code> in place. Type can be
+                                <code>mcp</code> or <code>anonymize</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>php artisan cipi:init-anonymize</td>
+                            <td>Scaffold the anonymization config at
+                                <code>/home/{app_user}/.db/anonymization.json</code>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <div class="doc-section" id="agent-webhook">
+                <h2>Webhook — Automatic Deploys</h2>
+                <p>The agent exposes a POST endpoint at <code>/cipi/webhook</code>. When your Git provider sends a push
+                    event, the agent verifies the signature and writes a <code>.deploy-trigger</code> flag file. A cron
+                    job running every minute as the app user detects this file, removes it, and runs Deployer in the
+                    background.</p>
+
+                <p>This design means the webhook response is instant (no HTTP timeout waiting for deployment to
+                    complete) and Deployer runs with the correct user permissions — no <code>sudo</code> required.</p>
+
+                <h3>Configure your Git provider</h3>
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>Provider</th>
+                            <th>Webhook URL</th>
+                            <th>Secret field</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GitHub</td>
+                            <td>https://yourdomain.com/cipi/webhook</td>
+                            <td>Secret</td>
+                        </tr>
+                        <tr>
+                            <td>GitLab</td>
+                            <td>https://yourdomain.com/cipi/webhook</td>
+                            <td>Secret token</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>The token to use is stored in <code>.env</code> as <code>CIPI_WEBHOOK_TOKEN</code>. You can also
+                    retrieve it any time with:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi deploy myapp --webhook</pre>
+                </div>
+
+                <h3>Branch filtering</h3>
+                <p>By default every push triggers a deploy. To restrict deploys to a specific branch, add this to your
+                    <code>.env</code>:
+                </p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">env</span></div>
+                    <pre>CIPI_DEPLOY_BRANCH=main</pre>
+                </div>
+                <p>Pushes to any other branch will receive a <code>skipped</code> response and no deploy will be
+                    triggered.</p>
+            </div>
+
+
+
+            <div class="doc-section" id="agent-health">
+                <h2>Health Check</h2>
+                <p>The agent also exposes a GET endpoint at <code>/cipi/health</code> that returns a JSON payload with
+                    the status of the app, database, cache, queue, and the currently deployed Git commit hash. Useful
+                    for external monitoring services such as UptimeRobot. Protected by the
+                    <code>CIPI_HEALTH_TOKEN</code> Bearer token — generate one with
+                    <code>php artisan cipi:generate-token health</code>.
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> curl -H "Authorization: Bearer YOUR_CIPI_HEALTH_TOKEN" \
+    https://yourdomain.com/cipi/health</pre>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">json</span></div>
+                    <pre>{
+  <span class="s">"status"</span>: <span class="s">"healthy"</span>,
+  <span class="s">"app_user"</span>: <span class="s">"myapp"</span>,
+  <span class="s">"php"</span>: <span class="s">"8.5"</span>,
+  <span class="s">"laravel"</span>: <span class="s">"12.0.0"</span>,
+  <span class="s">"commit"</span>: <span class="s">"a1b2c3d"</span>,
+  <span class="s">"checks"</span>: {
+    <span class="s">"database"</span>: { <span class="s">"ok"</span>: <span class="k">true</span> },
+    <span class="s">"cache"</span>:    { <span class="s">"ok"</span>: <span class="k">true</span> },
+    <span class="s">"queue"</span>:    { <span class="s">"ok"</span>: <span class="k">true</span>, <span class="s">"pending_jobs"</span>: 0 }
+  }
+}</pre>
+                </div>
+
+                <p>The <code>commit</code> field shows the short Git hash of the currently deployed release, useful
+                    for verifying which version is running in production.</p>
+            </div>
+
+
+
+            <div class="doc-section" id="agent-mcp">
+                <h2>MCP Server</h2>
+                <p><strong>cipi-agent</strong> includes a built-in <strong>MCP server</strong> (Model Context Protocol)
+                    that exposes your application to AI assistants such as <strong>Cursor</strong>,
+                    <strong>VS Code</strong> (with GitHub Copilot), and <strong>Claude Desktop</strong>. The endpoint
+                    implements MCP 2024-11-05 over HTTP using JSON-RPC 2.0
+                    and is protected by the <code>CIPI_MCP_TOKEN</code> Bearer token.
+                </p>
+
+                <p>The MCP endpoint is available at <code>POST /cipi/mcp</code> and is disabled by default. To enable
+                    it:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> php artisan cipi:service mcp --enable
+<span class="p">$</span> php artisan cipi:generate-token mcp</pre>
+                </div>
+
+                <h3>Available tools</h3>
+                <p>The MCP server exposes six tools that an AI assistant can invoke by name:</p>
+
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>health</td>
+                            <td>App, database, cache, and queue status — same data as the
+                                <code>/cipi/health</code> endpoint
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>app_info</td>
+                            <td>Full application configuration: app user, PHP version, Laravel version, environment,
+                                queue/cache/session drivers, deploy branch, and all Cipi URLs</td>
+                        </tr>
+                        <tr>
+                            <td>deploy</td>
+                            <td>Trigger a new zero-downtime deployment — writes the
+                                <code>.deploy-trigger</code> file; Deployer picks it up within 1 minute
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>logs</td>
+                            <td>Read the last N lines (default 50, max 500) from application logs. Supports
+                                <code>type</code> (<code>laravel</code>, <code>nginx</code>, <code>php</code>,
+                                <code>worker</code>, <code>deploy</code>), <code>level</code> for Laravel severity
+                                filtering (e.g. <code>error</code>), and <code>search</code> for keyword filtering.
+                                Laravel daily rotation (<code>laravel-YYYY-MM-DD.log</code>) is auto-detected.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>db_query</td>
+                            <td>Execute SQL queries against the application database — equivalent to
+                                <code>cipi app tinker</code>. Supports SELECT, SHOW, DESCRIBE, EXPLAIN (read) and
+                                INSERT, UPDATE, DELETE (write). Results formatted as ASCII table, capped at 100 rows.
+                                Destructive DDL (DROP TABLE/DATABASE, TRUNCATE, GRANT/REVOKE, file I/O) is blocked.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>artisan</td>
+                            <td>Run any Artisan command (e.g. <code>migrate:status</code>,
+                                <code>queue:size</code>, <code>cache:clear</code>). Long-running and interactive
+                                commands like <code>serve</code>, <code>queue:work</code>, and
+                                <code>tinker</code> are blocked
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Setup instructions</h3>
+                <p>Run the <code>cipi:mcp</code> Artisan command to get the endpoint URL and ready-to-paste
+                    configuration snippets for your AI client:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> php artisan cipi:mcp</pre>
+                </div>
+
+                <p>The command prints the available tools and the JSON configuration for Cursor, VS Code, and Claude
+                    Desktop.</p>
+
+                <h4>Cursor</h4>
+                <p>Add the following to <code>~/.cursor/mcp.json</code> (or go to Cursor &rarr; Settings &rarr; MCP):
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">json</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre>{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"cipi-myapp"</span>: {
+      <span class="s">"type"</span>: <span class="s">"http"</span>,
+      <span class="s">"url"</span>: <span class="s">"https://yourdomain.com/cipi/mcp"</span>,
+      <span class="s">"headers"</span>: {
+        <span class="s">"Authorization"</span>: <span class="s">"Bearer YOUR_CIPI_MCP_TOKEN"</span>
+      }
+    }
+  }
+}</pre>
+                </div>
+
+                <p>Replace <code>cipi-myapp</code> with your app user name, <code>yourdomain.com</code> with your
+                    actual domain, and <code>YOUR_CIPI_MCP_TOKEN</code> with the token from your
+                    <code>.env</code>. Cursor connects natively over HTTP — no bridge needed.
+                </p>
+
+                <h4>VS Code</h4>
+                <p>VS Code (with GitHub Copilot) supports MCP natively since version 1.102. Add the following to
+                    <code>.vscode/mcp.json</code> in your project (or run <strong>MCP: Open User Configuration</strong>
+                    for a global setup):
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">json</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre>{
+  <span class="s">"servers"</span>: {
+    <span class="s">"cipi-myapp"</span>: {
+      <span class="s">"type"</span>: <span class="s">"http"</span>,
+      <span class="s">"url"</span>: <span class="s">"https://yourdomain.com/cipi/mcp"</span>,
+      <span class="s">"headers"</span>: {
+        <span class="s">"Authorization"</span>: <span class="s">"Bearer YOUR_CIPI_MCP_TOKEN"</span>
+      }
+    }
+  }
+}</pre>
+                </div>
+
+                <p>Replace <code>cipi-myapp</code>, <code>yourdomain.com</code>, and
+                    <code>YOUR_CIPI_MCP_TOKEN</code>
+                    as above. Use <strong>MCP: Add Server</strong> from the Command Palette for a guided setup. VS Code
+                    connects over HTTP — no bridge needed.
+                </p>
+
+                <h4>Claude Desktop</h4>
+                <p>Claude Desktop requires the <strong>mcp-remote</strong> bridge to convert stdio to HTTP. Add the
+                    following to <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">json</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre>{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"cipi-myapp"</span>: {
+      <span class="s">"command"</span>: <span class="s">"npx"</span>,
+      <span class="s">"args"</span>: [
+        <span class="s">"-y"</span>,
+        <span class="s">"mcp-remote"</span>,
+        <span class="s">"https://yourdomain.com/cipi/mcp"</span>,
+        <span class="s">"--header"</span>,
+        <span class="s">"Authorization: Bearer YOUR_CIPI_MCP_TOKEN"</span>
+      ]
+    }
+  }
+}</pre>
+                </div>
+
+                <p>Install <code>mcp-remote</code> globally once with:</p>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> npm install -g mcp-remote</pre>
+                </div>
+
+                <h3>What you can do with it</h3>
+                <p>Once connected, your AI assistant can interact with the Cipi-managed application in natural
+                    language. For example:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">conversation</span></div>
+                    <pre><span class="c">User:</span>  Is the app healthy? Any pending jobs in the queue?
+
+<span class="c">Claude:</span> Calling health tool...
+         Status: healthy — database, cache, and queue all OK.
+         Queue: 0 pending jobs.
+
+<span class="c">User:</span>  Show me the last errors from the log.
+
+<span class="c">Claude:</span> Calling logs tool (lines: 100)...
+         Found 2 errors in the last 100 lines:
+         [2026-03-04 14:22:01] production.ERROR: Connection refused [...]
+         [2026-03-04 14:23:15] production.ERROR: Redis timeout [...]
+
+<span class="c">User:</span>  Clear the cache and deploy the latest version.
+
+<span class="c">Claude:</span> Calling artisan tool (cache:clear)...
+         Cache cleared successfully.
+         Calling deploy tool...
+         Deploy queued — Deployer will run within 1 minute.
+
+<span class="c">User:</span>  What's the current migration status?
+
+<span class="c">Claude:</span> Calling artisan tool (migrate:status)...
+         All 47 migrations have been run.
+
+<span class="c">User:</span>  How many users signed up in the last 7 days?
+
+<span class="c">Claude:</span> Calling db_query tool (SELECT COUNT(*) FROM users WHERE created_at >= ...)...
+         | count |
+         |-------|
+         | 23    |</pre>
+                </div>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>The MCP server does not require SSH access to the VPS. It works entirely over HTTPS using
+                        the same Bearer token used by the webhook and health check endpoints. This makes it ideal for
+                        teams where developers should be able to monitor and deploy without root access.</div>
+                </div>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>Keep your <code>CIPI_MCP_TOKEN</code> secret. Anyone with the token can trigger deploys,
+                        read logs, run database queries, and run Artisan commands through the MCP endpoint. If you
+                        suspect a leak, regenerate
+                        the token with <code>php artisan cipi:generate-token mcp</code> and restart the application.
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="agent-anonymizer">
+                <h2>Database Anonymizer</h2>
+                <p><strong>cipi-agent</strong> includes a built-in database anonymizer that creates sanitized copies of
+                    your production database — ideal for sharing with developers, QA teams, or staging environments
+                    without exposing real user data. It supports both MySQL and PostgreSQL and uses
+                    <strong>Faker</strong>-based transformations configured via a JSON file.
+                </p>
+
+                <h3>How it works</h3>
+                <ol>
+                    <li>A <code>POST /cipi/db</code> request queues an <code>AnonymizeDatabaseJob</code> in the
+                        background</li>
+                    <li>The job runs <code>php artisan cipi:anonymize</code>, which dumps the database, applies
+                        Faker-based transformations according to <code>anonymization.json</code>, and produces a
+                        sanitized SQL file</li>
+                    <li>When complete, an email notification is sent with a signed download URL</li>
+                    <li><code>GET /cipi/db/{token}</code> serves the anonymized dump via a signed URL that expires
+                        after 15 minutes</li>
+                </ol>
+
+                <p>A utility endpoint <code>POST /cipi/db/user</code> is also available for user ID lookup, useful
+                    when building anonymization rules.</p>
+
+                <h3>Setup</h3>
+                <p>Scaffold the anonymization configuration file:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> php artisan cipi:init-anonymize</pre>
+                </div>
+
+                <p>This creates <code>/home/{app_user}/.db/anonymization.json</code> with a starter template. The
+                    file is stored outside the project repository for security — it never gets committed.</p>
+
+                <h3>Configuration</h3>
+                <p>Edit <code>/home/{app_user}/.db/anonymization.json</code> to define which tables and columns to
+                    anonymize:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">json</span></div>
+                    <pre>{
+  <span class="s">"tables"</span>: {
+    <span class="s">"users"</span>: {
+      <span class="s">"name"</span>: <span class="s">"name"</span>,
+      <span class="s">"email"</span>: <span class="s">"safeEmail"</span>,
+      <span class="s">"phone"</span>: <span class="s">"phoneNumber"</span>,
+      <span class="s">"address"</span>: <span class="s">"address"</span>
+    },
+    <span class="s">"orders"</span>: {
+      <span class="s">"shipping_address"</span>: <span class="s">"address"</span>,
+      <span class="s">"notes"</span>: <span class="s">"sentence"</span>
+    }
+  }
+}</pre>
+                </div>
+
+                <p>Each key under <code>tables</code> is a database table name. Each nested key is a column name,
+                    and the value is a <a href="https://fakerphp.org/formatters/" target="_blank" rel="noopener">Faker
+                        formatter</a> (e.g. <code>name</code>, <code>safeEmail</code>,
+                    <code>phoneNumber</code>, <code>address</code>, <code>sentence</code>).
+                </p>
+
+                <h3>Endpoints</h3>
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Endpoint</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>POST</td>
+                            <td>/cipi/db</td>
+                            <td>Queue an anonymization job. Returns immediately; sends email when done.</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/cipi/db/user</td>
+                            <td>User ID lookup utility</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/cipi/db/{token}</td>
+                            <td>Download the anonymized dump (signed URL, expires in 15 minutes)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>All endpoints are protected by the <code>CIPI_ANONYMIZER_TOKEN</code> Bearer token.</p>
+
+                <h3>Enable the anonymizer</h3>
+                <p>The anonymizer is disabled by default. Enable it and generate a token:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> php artisan cipi:service anonymize --enable
+<span class="p">$</span> php artisan cipi:generate-token anonymize</pre>
+                </div>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>The anonymization config file contains the mapping of your database schema. Keep it outside
+                        your repository (the default path <code>/home/{app_user}/.db/</code> is already excluded).
+                        Never commit it to version control.</div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="agent-env">
+                <h2>ENV Variables</h2>
+                <p>These variables are automatically injected by Cipi into the app's <code>.env</code> during
+                    <code>cipi app create</code>. You normally do not need to set them manually.
+                </p>
+                <table class="env-table">
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CIPI_WEBHOOK_TOKEN</td>
+                            <td>HMAC secret / token for webhook validation</td>
+                            <td>auto-generated</td>
+                        </tr>
+                        <tr>
+                            <td>CIPI_DEPLOY_BRANCH</td>
+                            <td>Branch that triggers a deploy (empty = all branches)</td>
+                            <td><em>empty</em></td>
+                        </tr>
+                        <tr>
+                            <td>CIPI_APP_USER</td>
+                            <td>Linux user owning this app</td>
+                            <td>auto-set</td>
+                        </tr>
+                        <tr>
+                            <td>CIPI_MCP</td>
+                            <td>Enable or disable the MCP server endpoint at <code>/cipi/mcp</code></td>
+                            <td><code>false</code></td>
+                        </tr>
+                        <tr>
+                            <td>CIPI_MCP_TOKEN</td>
+                            <td>Bearer token for MCP endpoint authentication</td>
+                            <td><em>none</em></td>
+                        </tr>
+                        <tr>
+                            <td>CIPI_HEALTH_TOKEN</td>
+                            <td>Bearer token for the <code>/cipi/health</code> endpoint</td>
+                            <td><em>none</em></td>
+                        </tr>
+                        <tr>
+                            <td>CIPI_ANONYMIZER</td>
+                            <td>Enable or disable the database anonymizer endpoints at <code>/cipi/db</code></td>
+                            <td><code>false</code></td>
+                        </tr>
+                        <tr>
+                            <td>CIPI_ANONYMIZER_TOKEN</td>
+                            <td>Bearer token for the anonymizer endpoints</td>
+                            <td><em>none</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>Use <code>php artisan cipi:generate-token {type}</code> to generate tokens for
+                        <code>mcp</code>, <code>health</code>, or <code>anonymize</code>. Use
+                        <code>php artisan cipi:service {type} --enable|--disable</code> to toggle services — the
+                        command updates your <code>.env</code> in place.
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-nav">
+                <a href="getting-started" class="page-nav-link page-nav-link--prev">
+                    <span class="page-nav-label">Previous</span>
+                    <span class="page-nav-title">Getting Started</span>
+                </a>
+                <a href="apps" class="page-nav-link page-nav-link--next">
+                    <span class="page-nav-label">Next</span>
+                    <span class="page-nav-title">Apps</span>
+                </a>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <span>Made with ❤️ by <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> — Open source, MIT
+                Licensed</span>
+            <ul class="footer-links">
+                <li><a href="https://conn.web.ap.it" target="_blank">Try SSH
+                        Connection Manager with Cipi</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        function updateFavicon(theme) {
+            const variant = theme === 'dark' ? 'dark' : 'light';
+            document.getElementById('favicon').href = `/favicon-${variant}.png`;
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('cipi-theme', next);
+            updateFavicon(next);
+        }
+
+        (function () {
+            const saved = localStorage.getItem('cipi-theme');
+            if (saved) { document.documentElement.setAttribute('data-theme', saved); updateFavicon(saved); }
+            else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark'); updateFavicon('dark');
+            }
+        })();
+
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const docsSidebar = document.getElementById('docsSidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function openSidebar() { docsSidebar.classList.add('open'); sidebarOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { docsSidebar.classList.remove('open'); sidebarOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+        sidebarToggle.addEventListener('click', () => docsSidebar.classList.contains('open') ? closeSidebar() : openSidebar());
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', () => { if (window.innerWidth < 900) closeSidebar(); });
+        });
+
+        const sections = document.querySelectorAll('.doc-section[id]');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    const active = document.querySelector(`.sidebar-link[href$="#${entry.target.id}"]`);
+                    if (active) {
+                        active.classList.add('active');
+                        active.scrollIntoView({ block: 'nearest' });
+                    }
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+        sections.forEach(s => observer.observe(s));
+
+        // Highlight current chapter in sidebar
+        (function() {
+            const page = location.pathname.split('/').pop().replace('.html', '') || 'index';
+            document.querySelectorAll('.sidebar-group').forEach(g => {
+                if (g.dataset.chapter === page) g.classList.add('current-chapter');
+            });
+        })();
+
+        function copyCode(btn) {
+            const pre = btn.closest('.code-block').querySelector('pre');
+            const text = pre.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+
+    <script async src="https://stats.web.ap.it/i/5ae6c482-e1ef-4447-b949-49ff9a43a5fb.js"></script>
+    <noscript><img src="https://stats.web.ap.it/collect/pixel.gif?k=5ae6c482-e1ef-4447-b949-49ff9a43a5fb&p=/" width="1" height="1" /></noscript>
+</body>
+
+</html>

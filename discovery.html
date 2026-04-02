@@ -984,7 +984,7 @@
             </div>
             <div class="nav-right">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="docs.html" class="nav-link hide-mobile">Docs</a>
+                <a href="docs/" class="nav-link hide-mobile">Docs</a>
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -1018,7 +1018,7 @@
                 <p class="hero-sub">Cipi installs Nginx, PHP, MariaDB, Redis, SSL, Fail2ban, UFW, Supervisor, and
                     Deployer on any Ubuntu VPS. In about ten minutes. For free.</p>
                 <div class="hero-actions">
-                    <a href="docs.html#installation" class="btn-hero btn-primary">Read the Docs <svg width="16"
+                    <a href="docs/getting-started#installation" class="btn-hero btn-primary">Read the Docs <svg width="16"
                             height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round">
                             <line x1="5" y1="12" x2="19" y2="12" />
@@ -1075,7 +1075,7 @@
                             <polyline points="20 6 9 17 4 12" />
                         </svg>All events logged to /var/log/cipi/events.log</li>
                 </ul>
-                <a href="docs.html#cipi-smtp" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/advanced#cipi-smtp" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1119,7 +1119,7 @@
                             <polyline points="20 6 9 17 4 12" />
                         </svg>Custom GitLab URL support</li>
                 </ul>
-                <a href="docs.html#git-providers" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/deploy#git-providers" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1157,7 +1157,7 @@
                             <polyline points="20 6 9 17 4 12" />
                         </svg>.env variables auto-injected by Cipi</li>
                 </ul>
-                <a href="docs.html#agent-install" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/agent#agent-install" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1186,7 +1186,7 @@
                     <span class="pill">Zero-downtime</span>
                     <span class="pill">Auto SSL</span>
                 </div>
-                <a href="docs.html#cli-app-create" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/apps#cli-app-create" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1219,7 +1219,7 @@
                     <span class="pill">Optional Git</span>
                     <span class="pill">SFTP-ready</span>
                 </div>
-                <a href="docs.html#cli-app-custom" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/apps#cli-app-custom" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1258,7 +1258,7 @@
                             <polyline points="20 6 9 17 4 12" />
                         </svg>Async jobs with status polling</li>
                 </ul>
-                <a href="docs.html#cipi-api" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/advanced#cipi-api" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1273,12 +1273,51 @@
     </section>
 
     <!-- ════════════════════════════════════════ -->
-    <!-- 08 — Webhook Auto-deploy                -->
+    <!-- 08 — WHMCS Integration                  -->
+    <!-- ════════════════════════════════════════ -->
+    <section class="slide" id="whmcs">
+        <div class="slide-inner">
+            <div class="slide-text reveal">
+                <div class="slide-number">08 &mdash; WHMCS</div>
+                <h2>Billing meets <em>provisioning</em></h2>
+                <p>The official WHMCS module connects your billing panel to Cipi's REST API. Customer orders a hosting
+                    product, WHMCS calls <code>POST /api/apps</code> — the app is created automatically. Supports Laravel
+                    and custom app types, test connection, and async job polling.</p>
+                <ul class="slide-features">
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>Create &amp; terminate apps from WHMCS</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>Laravel and custom app types</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>Bearer token auth with granular permissions</li>
+                </ul>
+                <a href="https://github.com/cipi-sh/whmcs" target="_blank" class="deep-link">View on GitHub <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg></a>
+            </div>
+            <div class="terminal reveal" data-demo="whmcs">
+                <div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span
+                        class="terminal-dot g"></span><span class="terminal-title">~ whmcs provisioning</span></div>
+                <div class="terminal-body"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════ -->
+    <!-- 09 — Webhook Auto-deploy                -->
     <!-- ════════════════════════════════════════ -->
     <section class="slide" id="webhook">
         <div class="slide-inner">
             <div class="slide-text reveal">
-                <div class="slide-number">08 &mdash; AUTO-DEPLOY</div>
+                <div class="slide-number">09 &mdash; AUTO-DEPLOY</div>
                 <h2><em>git push</em> = deployed</h2>
                 <p>Push to your branch, the webhook fires, Cipi deploys in the background. Signature-verified,
                     zero-downtime, instant HTTP response. No CI/CD pipeline needed.</p>
@@ -1296,7 +1335,7 @@
                             <polyline points="20 6 9 17 4 12" />
                         </svg>Branch filtering support</li>
                 </ul>
-                <a href="docs.html#agent-webhook" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/agent#agent-webhook" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1311,12 +1350,12 @@
     </section>
 
     <!-- ════════════════════════════════════════ -->
-    <!-- 09 — Security Notifications             -->
+    <!-- 10 — Security Notifications             -->
     <!-- ════════════════════════════════════════ -->
     <section class="slide" id="notifications">
         <div class="slide-inner">
             <div class="slide-text reveal">
-                <div class="slide-number">09 &mdash; SECURITY ALERTS</div>
+                <div class="slide-number">10 &mdash; SECURITY ALERTS</div>
                 <h2>Your server <em>talks back</em></h2>
                 <p>Get alerted on SSH intrusion attempts, blocked IPs, deploy failures, and service restarts. Cipi
                     watches, you sleep.</p>
@@ -1334,7 +1373,7 @@
                             <polyline points="20 6 9 17 4 12" />
                         </svg>Configurable via SMTP or Telegram</li>
                 </ul>
-                <a href="docs.html#deploy-notifications" class="deep-link">Deep dive <svg viewBox="0 0 24 24"
+                <a href="docs/deploy#deploy-notifications" class="deep-link">Deep dive <svg viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1349,16 +1388,16 @@
     </section>
 
     <!-- ════════════════════════════════════════ -->
-    <!-- 10 — App Health                         -->
+    <!-- 11 — App Health                         -->
     <!-- ════════════════════════════════════════ -->
     <section class="slide" id="health">
         <div class="slide-inner">
             <div class="slide-text reveal">
-                <div class="slide-number">10 &mdash; HEALTH CHECK</div>
+                <div class="slide-number">11 &mdash; HEALTH CHECK</div>
                 <h2>Real-time app <em>vitals</em></h2>
                 <p>A JSON endpoint that reports PHP version, database connectivity, disk usage, queue health, and
                     scheduler status. Perfect for UptimeRobot, Pingdom, or custom monitors.</p>
-                <a href="docs.html#agent-health" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/agent#agent-health" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1373,12 +1412,12 @@
     </section>
 
     <!-- ════════════════════════════════════════ -->
-    <!-- 11 — MCP Debug                          -->
+    <!-- 12 — MCP Debug                          -->
     <!-- ════════════════════════════════════════ -->
     <section class="slide" id="mcp">
         <div class="slide-inner">
             <div class="slide-text reveal">
-                <div class="slide-number">11 &mdash; MCP SERVER</div>
+                <div class="slide-number">12 &mdash; MCP SERVER</div>
                 <h2>Your AI talks to <em>production</em></h2>
                 <p>Connect Cursor, VS Code, or Claude Desktop to your live app via MCP. Six tools:
                     <strong>health</strong>, <strong>app_info</strong>, <strong>logs</strong>,
@@ -1411,7 +1450,7 @@
                             <polyline points="20 6 9 17 4 12" />
                         </svg>Works over HTTPS only &mdash; no SSH access required</li>
                 </ul>
-                <a href="docs.html#agent-mcp" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/agent#agent-mcp" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1427,16 +1466,16 @@
     </section>
 
     <!-- ════════════════════════════════════════ -->
-    <!-- 12 — Data Anonymization                 -->
+    <!-- 13 — Data Anonymization                 -->
     <!-- ════════════════════════════════════════ -->
     <section class="slide" id="anonymize">
         <div class="slide-inner">
             <div class="slide-text reveal">
-                <div class="slide-number">12 &mdash; ANONYMIZATION</div>
+                <div class="slide-number">13 &mdash; ANONYMIZATION</div>
                 <h2><em>GDPR-safe</em> data exports</h2>
                 <p>Define anonymization rules per table and column. Get a full database dump with fake data replacing
                     PII. Real structure, no real personal data.</p>
-                <a href="docs.html#agent-anonymizer" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/agent#agent-anonymizer" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1451,16 +1490,16 @@
     </section>
 
     <!-- ════════════════════════════════════════ -->
-    <!-- 13 — DB Backup                          -->
+    <!-- 14 — DB Backup                          -->
     <!-- ════════════════════════════════════════ -->
     <section class="slide" id="backup-db">
         <div class="slide-inner">
             <div class="slide-text reveal">
-                <div class="slide-number">13 &mdash; DB BACKUP</div>
+                <div class="slide-number">14 &mdash; DB BACKUP</div>
                 <h2>Quick dumps, <em>one command</em></h2>
                 <p>One command to backup a database. Schedule it in cron, get a compressed dump. No manual mysqldump, no
                     hassle.</p>
-                <a href="docs.html#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/infrastructure#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1475,16 +1514,16 @@
     </section>
 
     <!-- ════════════════════════════════════════ -->
-    <!-- 14 — DB Restore                         -->
+    <!-- 15 — DB Restore                         -->
     <!-- ════════════════════════════════════════ -->
     <section class="slide" id="restore">
         <div class="slide-inner">
             <div class="slide-text reveal">
-                <div class="slide-number">14 &mdash; DB RESTORE</div>
+                <div class="slide-number">15 &mdash; DB RESTORE</div>
                 <h2>Restore from <em>backup</em></h2>
                 <p>Pick a backup, restore it. One command, no manual SQL imports. Your database is back to the exact
                     state you need.</p>
-                <a href="docs.html#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/infrastructure#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1499,12 +1538,12 @@
     </section>
 
     <!-- ════════════════════════════════════════ -->
-    <!-- 15 — Full Backup S3                     -->
+    <!-- 16 — Full Backup S3                     -->
     <!-- ════════════════════════════════════════ -->
     <section class="slide" id="backup-s3">
         <div class="slide-inner">
             <div class="slide-text reveal">
-                <div class="slide-number">15 &mdash; S3 BACKUP</div>
+                <div class="slide-number">16 &mdash; S3 BACKUP</div>
                 <h2>Full app backup to <em>the cloud</em></h2>
                 <p>Code, database, .env, storage &mdash; everything encrypted and shipped to any S3-compatible bucket.
                     Schedule it, forget it, sleep well.</p>
@@ -1514,7 +1553,7 @@
                     <span class="pill">MinIO</span>
                     <span class="pill">Backblaze</span>
                 </div>
-                <a href="docs.html#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/infrastructure#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1529,12 +1568,12 @@
     </section>
 
     <!-- ════════════════════════════════════════ -->
-    <!-- 16 — Sync Replica                       -->
+    <!-- 17 — Sync Replica                       -->
     <!-- ════════════════════════════════════════ -->
     <section class="slide" id="sync">
         <div class="slide-inner">
             <div class="slide-text reveal">
-                <div class="slide-number">16 &mdash; SYNC</div>
+                <div class="slide-number">17 &mdash; SYNC</div>
                 <h2>Clone server <em>A &rarr; B</em></h2>
                 <p>Transfer apps, databases, configs, and SSL certificates to a replica server in one encrypted SSH
                     transfer. Migration or disaster recovery, one command.</p>
@@ -1552,7 +1591,7 @@
                             <polyline points="20 6 9 17 4 12" />
                         </svg>Include DB dumps and storage files</li>
                 </ul>
-                <a href="docs.html#cipi-sync" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/advanced#cipi-sync" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1567,12 +1606,12 @@
     </section>
 
     <!-- ════════════════════════════════════════ -->
-    <!-- 17 — Security                           -->
+    <!-- 18 — Security                           -->
     <!-- ════════════════════════════════════════ -->
     <section class="slide" id="security">
         <div class="slide-inner">
             <div class="slide-text reveal">
-                <div class="slide-number">17 &mdash; SECURITY</div>
+                <div class="slide-number">18 &mdash; SECURITY</div>
                 <h2>Hardened by <em>default</em></h2>
                 <p>SSH key-only auth, Fail2ban with progressive banning and recidive jail, UFW firewall, unattended
                     security upgrades, AES-256 vault for all credentials, GDPR-compliant log retention, and isolated
@@ -1584,7 +1623,7 @@
                     <span class="pill">AES-256 vault</span>
                     <span class="pill">GDPR logs</span>
                 </div>
-                <a href="docs.html#security-model" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
+                <a href="docs/about#security-model" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -1605,7 +1644,7 @@
         <h2>Ready to <em>ship</em>?</h2>
         <p>One command to install. One command to deploy. Zero lock-in, forever free, MIT licensed.</p>
         <div class="cta-actions">
-            <a href="docs.html#installation" class="btn-hero btn-primary">Read the Docs <svg width="16" height="16"
+            <a href="docs/getting-started#installation" class="btn-hero btn-primary">Read the Docs <svg width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
@@ -1798,6 +1837,28 @@
                 { text: '', delay: 300 },
                 { text: '<span class="hl"># GET /api/jobs/42 — poll until complete</span>', delay: 200 },
                 { text: '<span class="out">{ "job_id": 42, "status": "<span class="ok">completed</span>" }</span>', delay: 400 },
+            ],
+            whmcs: [
+                { text: '<span class="hl"># Install WHMCS module</span>', delay: 0 },
+                { text: '<span class="prompt">$</span> <span class="cmd">cp -r modules/servers/cipi/ /var/www/whmcs/modules/servers/cipi/</span>', delay: 300 },
+                { text: '<span class="ok">Module installed.</span>', delay: 400 },
+                { text: '', delay: 300 },
+                { text: '<span class="hl"># WHMCS Admin → Servers → Add New Server</span>', delay: 300 },
+                { text: '<span class="out">Type:</span>     <span class="cmd">Cipi (Laravel hosting)</span>', delay: 300 },
+                { text: '<span class="out">Hostname:</span> <span class="cmd">https://api.myhosting.com</span>', delay: 300 },
+                { text: '<span class="out">Password:</span> <span class="warn">3|a8Kz9xR2mVp...</span> <span class="out">(Bearer token)</span>', delay: 300 },
+                { text: '', delay: 400 },
+                { text: '<span class="prompt">$</span> <span class="cmd">Test Connection</span>', delay: 300 },
+                { text: '<span class="out">GET /api/apps ...</span> <span class="ok">200 OK</span>', delay: 500 },
+                { text: '<span class="ok">Connection successful.</span>', delay: 300 },
+                { text: '', delay: 400 },
+                { text: '<span class="hl"># Customer orders a hosting product → Module → Create</span>', delay: 300 },
+                { text: '<span class="out">POST /api/apps</span>', delay: 300 },
+                { text: '<span class="out">{ "name": "customer1", "domain": "shop.example.com", "php": "8.5" }</span>', delay: 400 },
+                { text: '<span class="out">{ "job_id": 12, "status": "<span class="ok">queued</span>" }</span>  <span class="hl">← 202 Accepted</span>', delay: 500 },
+                { text: '<span class="out">Polling job #12...</span> <span class="ok">completed</span>', delay: 600 },
+                { text: '', delay: 200 },
+                { text: '<span class="ok">App provisioned.</span> <span class="out">Customer is live.</span>', delay: 300 },
             ],
             webhook: [
                 { text: '<span class="hl"># You push to GitHub...</span>', delay: 0 },
