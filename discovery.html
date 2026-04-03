@@ -950,8 +950,17 @@
         }
 
         @keyframes scrollBounce {
-            0%, 100% { transform: translateY(0); opacity: 1; }
-            50% { transform: translateY(6px); opacity: 0.5; }
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(6px);
+                opacity: 0.5;
+            }
         }
 
         /* ── Section Connector Lines ── */
@@ -1221,9 +1230,9 @@
                 <p class="hero-sub">Cipi installs Nginx, PHP, MariaDB, Redis, SSL, Fail2ban, UFW, Supervisor, and
                     Deployer on any Ubuntu VPS. In about ten minutes. For free.</p>
                 <div class="hero-actions">
-                    <a href="docs/getting-started#installation" class="btn-hero btn-primary">Read the Docs <svg width="16"
-                            height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round">
+                    <a href="docs/getting-started#installation" class="btn-hero btn-primary">Read the Docs <svg
+                            width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
                             <line x1="5" y1="12" x2="19" y2="12" />
                             <polyline points="12 5 19 12 12 19" />
                         </svg></a>
@@ -1245,7 +1254,10 @@
         </div>
         <a href="#smtp" class="scroll-hint">
             <span class="scroll-hint-text">Start exploring</span>
-            <span class="scroll-hint-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="scroll-hint-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
+                </svg></span>
         </a>
     </section>
 
@@ -1488,7 +1500,8 @@
                 <div class="slide-number">08 &mdash; WHMCS</div>
                 <h2>Billing meets <em>provisioning</em></h2>
                 <p>The official WHMCS module connects your billing panel to Cipi's REST API. Customer orders a hosting
-                    product, WHMCS calls <code>POST /api/apps</code> — the app is created automatically. Supports Laravel
+                    product, WHMCS calls <code>POST /api/apps</code> — the app is created automatically. Supports
+                    Laravel
                     and custom app types, test connection, and async job polling.</p>
                 <ul class="slide-features">
                     <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1504,8 +1517,8 @@
                             <polyline points="20 6 9 17 4 12" />
                         </svg>Bearer token auth with granular permissions</li>
                 </ul>
-                <a href="https://github.com/cipi-sh/whmcs" target="_blank" class="deep-link">View on GitHub <svg viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <a href="https://github.com/cipi-sh/whmcs" target="_blank" class="deep-link">View on GitHub <svg
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
                     </svg></a>
@@ -1527,7 +1540,8 @@
                 <div class="slide-number">09 &mdash; CLI CLIENT</div>
                 <h2>Your server, <em>locally</em></h2>
                 <p>The official <code>cipi-cli</code> Go binary talks to the REST API from your local machine.
-                    Manage apps, databases, SSL, and deploys without SSH. Cross-platform — Linux and macOS, amd64 and arm64.</p>
+                    Manage apps, databases, SSL, and deploys without SSH. Cross-platform — Linux and macOS, amd64 and
+                    arm64.</p>
                 <ul class="slide-features">
                     <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -1542,8 +1556,8 @@
                             <polyline points="20 6 9 17 4 12" />
                         </svg>Async job polling with live spinner</li>
                 </ul>
-                <a href="https://github.com/cipi-sh/cli" target="_blank" class="deep-link">View on GitHub <svg viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <a href="https://github.com/cipi-sh/cli" target="_blank" class="deep-link">View on GitHub <svg
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
                     </svg></a>
@@ -1744,8 +1758,8 @@
                 <h2>Quick dumps, <em>one command</em></h2>
                 <p>One command to backup a database. Schedule it in cron, get a compressed dump. No manual mysqldump, no
                     hassle.</p>
-                <a href="docs/infrastructure#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <a href="docs/infrastructure#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
                     </svg></a>
@@ -1768,8 +1782,8 @@
                 <h2>Restore from <em>backup</em></h2>
                 <p>Pick a backup, restore it. One command, no manual SQL imports. Your database is back to the exact
                     state you need.</p>
-                <a href="docs/infrastructure#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <a href="docs/infrastructure#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
                     </svg></a>
@@ -1798,8 +1812,8 @@
                     <span class="pill">MinIO</span>
                     <span class="pill">Backblaze</span>
                 </div>
-                <a href="docs/infrastructure#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <a href="docs/infrastructure#cli-backup" class="deep-link">Deep dive <svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
                     </svg></a>
@@ -1889,8 +1903,9 @@
         <h2>Ready to <em>ship</em>?</h2>
         <p>One command to install. One command to deploy. Zero lock-in, forever free, MIT licensed.</p>
         <div class="cta-actions">
-            <a href="docs/getting-started#installation" class="btn-hero btn-primary">Read the Docs <svg width="16" height="16"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <a href="docs/getting-started#installation" class="btn-hero btn-primary">Read the Docs <svg width="16"
+                    height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
                 </svg></a>
@@ -1917,10 +1932,16 @@
         </div>
         <div class="discovery-nav-arrows">
             <button class="discovery-nav-btn" id="navPrev" aria-label="Previous section">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
             </button>
             <button class="discovery-nav-btn" id="navNext" aria-label="Next section">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 6 15 12 9 18" />
+                </svg>
             </button>
         </div>
     </div>
@@ -1961,7 +1982,7 @@
                 { text: '<span class="ok">| |   | | \'_ \\ | |</span>', delay: 100 },
                 { text: '<span class="ok">| |___| | |_) || |</span>', delay: 100 },
                 { text: '<span class="ok"> \\____|_| .__/ |_|</span>', delay: 100 },
-                { text: '<span class="ok">        |_|        v4.4.13</span>', delay: 100 },
+                { text: '<span class="ok">        |_|        v4.4.14</span>', delay: 100 },
                 { text: '', delay: 300 },
                 { text: '<span class="out">Paste your SSH public key:</span>', delay: 400 },
                 { text: '<span class="cmd">ssh-ed25519 AAAAC3NzaC1lZDI1NTE5... andrea@mbp</span>', delay: 500 },
@@ -2327,7 +2348,7 @@
             security: [
                 { text: '<span class="prompt">$</span> <span class="cmd">cipi status</span>', delay: 0 },
                 { text: '', delay: 400 },
-                { text: '<span class="out">Cipi v4.4.13 on Ubuntu 24.04</span>', delay: 200 },
+                { text: '<span class="out">Cipi v4.4.14 on Ubuntu 24.04</span>', delay: 200 },
                 { text: '', delay: 200 },
                 { text: '<span class="out">SSH</span>        <span class="ok">key-only</span>  <span class="out">root disabled, group cipi-ssh</span>', delay: 200 },
                 { text: '<span class="out">Fail2ban</span>   <span class="ok">active</span>    <span class="out">progressive banning + recidive jail</span>', delay: 200 },
@@ -2503,7 +2524,8 @@
     </script>
 
     <script async src="https://stats.web.ap.it/i/5ae6c482-e1ef-4447-b949-49ff9a43a5fb.js"></script>
-    <noscript><img src="https://stats.web.ap.it/collect/pixel.gif?k=5ae6c482-e1ef-4447-b949-49ff9a43a5fb&p=/" width="1" height="1" /></noscript>
+    <noscript><img src="https://stats.web.ap.it/collect/pixel.gif?k=5ae6c482-e1ef-4447-b949-49ff9a43a5fb&p=/" width="1"
+            height="1" /></noscript>
 </body>
 
 </html>

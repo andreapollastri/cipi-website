@@ -15,13 +15,15 @@
     <meta property="og:site_name" content="Cipi">
     <meta property="og:url" content="https://cipi.sh/docs/about">
     <meta property="og:title" content="Cipi Docs — About Cipi">
-    <meta property="og:description" content="History, security model, design decisions, and comparison with alternatives.">
+    <meta property="og:description"
+        content="History, security model, design decisions, and comparison with alternatives.">
     <meta property="og:image" content="https://cipi.sh/og.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@cipi_sh">
     <meta name="twitter:title" content="Cipi Docs — About Cipi">
-    <meta name="twitter:description" content="History, security model, design decisions, and comparison with alternatives.">
+    <meta name="twitter:description"
+        content="History, security model, design decisions, and comparison with alternatives.">
     <meta name="twitter:image" content="https://cipi.sh/og.png">
 
     <link rel="icon" id="favicon" type="image/png" sizes="48x48" href="/favicon-light.png">
@@ -31,7 +33,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -332,8 +335,8 @@
                                 <div>The full v4 changelog is available on <a
                                         href="https://github.com/cipi-sh/cipi/releases" target="_blank"
                                         rel="noopener">GitHub Releases</a>.
-                                    Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/4.4.13" target="_blank"
-                                        rel="noopener">4.4.13</a> — optional Git repository for
+                                    Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/4.4.14"
+                                        target="_blank" rel="noopener">4.4.14</a> — optional Git repository for
                                     <code>cipi app create --custom</code> (SFTP-only sites); pair the server with the
                                     <a href="https://github.com/cipi-sh/api/compare/1.6.0...1.6.1" target="_blank"
                                         rel="noopener">cipi-sh/api 1.6.1</a> package for matching REST/MCP validation.
@@ -383,7 +386,8 @@
                 <p><code>sshd_config</code> uses <code>AllowGroups cipi-ssh cipi-apps</code> instead of
                     <code>AllowUsers</code>. App users can connect with <code>ssh myapp@server-ip</code> and the
                     password generated at app creation. Admin access is via public-key as <code>cipi</code>. SSH keys
-                    are managed with <code>cipi ssh list / add / remove</code> — see <a href="infrastructure#cli-ssh">SSH Key
+                    are managed with <code>cipi ssh list / add / remove</code> — see <a
+                        href="infrastructure#cli-ssh">SSH Key
                         Management</a>.
                 </p>
 
@@ -1528,7 +1532,7 @@
         sections.forEach(s => observer.observe(s));
 
         // Highlight current chapter in sidebar
-        (function() {
+        (function () {
             const page = location.pathname.split('/').pop().replace('.html', '') || 'index';
             document.querySelectorAll('.sidebar-group').forEach(g => {
                 if (g.dataset.chapter === page) g.classList.add('current-chapter');
@@ -1546,7 +1550,8 @@
     </script>
 
     <script async src="https://stats.web.ap.it/i/5ae6c482-e1ef-4447-b949-49ff9a43a5fb.js"></script>
-    <noscript><img src="https://stats.web.ap.it/collect/pixel.gif?k=5ae6c482-e1ef-4447-b949-49ff9a43a5fb&p=/" width="1" height="1" /></noscript>
+    <noscript><img src="https://stats.web.ap.it/collect/pixel.gif?k=5ae6c482-e1ef-4447-b949-49ff9a43a5fb&p=/" width="1"
+            height="1" /></noscript>
 </body>
 
 </html>

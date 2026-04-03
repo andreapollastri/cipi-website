@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cipi Docs — Advanced</title>
-    <meta name="description" content="REST API, server sync, vault encryption, SMTP notifications, log retention, and advanced configuration.">
+    <meta name="description"
+        content="REST API, server sync, vault encryption, SMTP notifications, log retention, and advanced configuration.">
     <meta name="author" content="Andrea Pollastri">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cipi.sh/docs/advanced">
@@ -15,13 +16,15 @@
     <meta property="og:site_name" content="Cipi">
     <meta property="og:url" content="https://cipi.sh/docs/advanced">
     <meta property="og:title" content="Cipi Docs — Advanced">
-    <meta property="og:description" content="REST API, server sync, vault encryption, SMTP notifications, log retention, and advanced configuration.">
+    <meta property="og:description"
+        content="REST API, server sync, vault encryption, SMTP notifications, log retention, and advanced configuration.">
     <meta property="og:image" content="https://cipi.sh/og.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@cipi_sh">
     <meta name="twitter:title" content="Cipi Docs — Advanced">
-    <meta name="twitter:description" content="REST API, server sync, vault encryption, SMTP notifications, log retention, and advanced configuration.">
+    <meta name="twitter:description"
+        content="REST API, server sync, vault encryption, SMTP notifications, log retention, and advanced configuration.">
     <meta name="twitter:image" content="https://cipi.sh/og.png">
 
     <link rel="icon" id="favicon" type="image/png" sizes="48x48" href="/favicon-light.png">
@@ -31,7 +34,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -267,7 +271,7 @@
                     <a href="apps#cli-app-custom">custom apps</a> with classic deployment.
                     The <code>repository</code> field is <strong>required</strong> for Laravel apps and
                     <strong>optional</strong> for custom apps: omit it (or send empty) to provision an SFTP-only site
-                    aligned with Cipi <strong>v4.4.13+</strong>. When no repository is set, <code>branch</code> is
+                    aligned with Cipi <strong>v4.4.14+</strong>. When no repository is set, <code>branch</code> is
                     omitted.
                     The MCP tool <code>AppCreate</code> follows the same rules. Update the API package to
                     <strong>1.6.1+</strong> on the server (<code>cipi api update</code> / <code>cipi api upgrade</code>)
@@ -513,7 +517,8 @@
                 <h3>Requirements</h3>
                 <ul>
                     <li>WHMCS 8.x (provisioning module type &ldquo;Server&rdquo;)</li>
-                    <li>Cipi server with API enabled: <code>cipi api &lt;domain&gt;</code> and <code>cipi api ssl</code></li>
+                    <li>Cipi server with API enabled: <code>cipi api &lt;domain&gt;</code> and <code>cipi api ssl</code>
+                    </li>
                     <li>Sanctum Bearer token with the required abilities:</li>
                 </ul>
                 <table class="cmd-table">
@@ -524,19 +529,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td><code>apps-view</code></td><td>Test Connection, App Info</td></tr>
-                        <tr><td><code>apps-create</code></td><td>Create Account</td></tr>
-                        <tr><td><code>apps-edit</code></td><td>Change Package</td></tr>
-                        <tr><td><code>apps-delete</code></td><td>Terminate Account</td></tr>
-                        <tr><td><code>deploy-manage</code></td><td>Deploy, Rollback, Unlock</td></tr>
-                        <tr><td><code>ssl-manage</code></td><td>Install SSL, Auto-SSL</td></tr>
+                        <tr>
+                            <td><code>apps-view</code></td>
+                            <td>Test Connection, App Info</td>
+                        </tr>
+                        <tr>
+                            <td><code>apps-create</code></td>
+                            <td>Create Account</td>
+                        </tr>
+                        <tr>
+                            <td><code>apps-edit</code></td>
+                            <td>Change Package</td>
+                        </tr>
+                        <tr>
+                            <td><code>apps-delete</code></td>
+                            <td>Terminate Account</td>
+                        </tr>
+                        <tr>
+                            <td><code>deploy-manage</code></td>
+                            <td>Deploy, Rollback, Unlock</td>
+                        </tr>
+                        <tr>
+                            <td><code>ssl-manage</code></td>
+                            <td>Install SSL, Auto-SSL</td>
+                        </tr>
                     </tbody>
                 </table>
 
                 <h3>Installation</h3>
                 <ol>
                     <li>Copy <code>modules/servers/cipi/</code> into your WHMCS root:
-<pre><code>your-whmcs/
+                        <pre><code>your-whmcs/
 └── modules/
     └── servers/
         └── cipi/
@@ -547,12 +570,14 @@
                     <li>In <strong>WHMCS Admin &rarr; System Settings &rarr; Servers &rarr; Add New Server</strong>:
                         <ul>
                             <li><strong>Type</strong>: Cipi (Laravel hosting)</li>
-                            <li><strong>Hostname</strong>: API base URL (e.g. <code>https://api.example.com</code>, no trailing slash)</li>
+                            <li><strong>Hostname</strong>: API base URL (e.g. <code>https://api.example.com</code>, no
+                                trailing slash)</li>
                             <li><strong>Password</strong>: Bearer token from <code>cipi api token create</code></li>
                             <li><strong>Secure</strong>: Yes (recommended &mdash; enables TLS verification)</li>
                         </ul>
                     </li>
-                    <li>Create a <strong>hosting product</strong> linked to this server and configure <strong>Module Settings</strong>:</li>
+                    <li>Create a <strong>hosting product</strong> linked to this server and configure <strong>Module
+                            Settings</strong>:</li>
                 </ol>
                 <table class="cmd-table">
                     <thead>
@@ -563,11 +588,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>PHP Version</td><td>8.2 / 8.3 / 8.4 / 8.5</td><td>8.5</td></tr>
-                        <tr><td>App Type</td><td><code>laravel</code> or <code>custom</code></td><td>laravel</td></tr>
-                        <tr><td>Git Repository (SSH)</td><td>Required for Laravel; optional for custom</td><td>&mdash;</td></tr>
-                        <tr><td>Git Branch</td><td>Branch to deploy</td><td>main</td></tr>
-                        <tr><td>Auto SSL</td><td>Install Let&rsquo;s Encrypt after creation</td><td>No</td></tr>
+                        <tr>
+                            <td>PHP Version</td>
+                            <td>8.2 / 8.3 / 8.4 / 8.5</td>
+                            <td>8.5</td>
+                        </tr>
+                        <tr>
+                            <td>App Type</td>
+                            <td><code>laravel</code> or <code>custom</code></td>
+                            <td>laravel</td>
+                        </tr>
+                        <tr>
+                            <td>Git Repository (SSH)</td>
+                            <td>Required for Laravel; optional for custom</td>
+                            <td>&mdash;</td>
+                        </tr>
+                        <tr>
+                            <td>Git Branch</td>
+                            <td>Branch to deploy</td>
+                            <td>main</td>
+                        </tr>
+                        <tr>
+                            <td>Auto SSL</td>
+                            <td>Install Let&rsquo;s Encrypt after creation</td>
+                            <td>No</td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -585,14 +630,17 @@
                         <tr>
                             <td><strong>laravel</strong> (default)</td>
                             <td><code>cipi app create</code></td>
-                            <td>Isolated Linux user, PHP-FPM pool, Nginx vhost, MariaDB, Supervisor workers, Deployer releases</td>
+                            <td>Isolated Linux user, PHP-FPM pool, Nginx vhost, MariaDB, Supervisor workers, Deployer
+                                releases</td>
                             <td>SSH repository URL <strong>required</strong>; branch from settings</td>
                         </tr>
                         <tr>
                             <td><strong>custom</strong></td>
                             <td><code>cipi app create --custom</code></td>
-                            <td>htdocs/ directory, Nginx + PHP &mdash; ideal for static sites, SPAs, WordPress, or generic PHP apps</td>
-                            <td><strong>Optional</strong>: leave Git Repository empty for SFTP-only hosting, or set a repo for Git-based deploy</td>
+                            <td>htdocs/ directory, Nginx + PHP &mdash; ideal for static sites, SPAs, WordPress, or
+                                generic PHP apps</td>
+                            <td><strong>Optional</strong>: leave Git Repository empty for SFTP-only hosting, or set a
+                                repo for Git-based deploy</td>
                         </tr>
                     </tbody>
                 </table>
@@ -607,11 +655,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td><strong>Test Connection</strong></td><td><code>GET /api/apps</code></td><td>Validates token and API reachability</td></tr>
-                        <tr><td><strong>Create Account</strong></td><td><code>POST /api/apps</code></td><td>Provisions a Cipi app (Laravel or custom); waits for async jobs; optionally installs SSL</td></tr>
-                        <tr><td><strong>Suspend / Unsuspend</strong></td><td><em>none</em></td><td>Returns success so WHMCS updates billing state (Cipi has no suspend endpoint)</td></tr>
-                        <tr><td><strong>Terminate Account</strong></td><td><code>DELETE /api/apps/{name}</code></td><td>Removes the app; waits for async jobs</td></tr>
-                        <tr><td><strong>Change Package</strong></td><td><code>PUT /api/apps/{name}</code></td><td>Updates PHP version, Git repository, or branch</td></tr>
+                        <tr>
+                            <td><strong>Test Connection</strong></td>
+                            <td><code>GET /api/apps</code></td>
+                            <td>Validates token and API reachability</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Create Account</strong></td>
+                            <td><code>POST /api/apps</code></td>
+                            <td>Provisions a Cipi app (Laravel or custom); waits for async jobs; optionally installs SSL
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Suspend / Unsuspend</strong></td>
+                            <td><em>none</em></td>
+                            <td>Returns success so WHMCS updates billing state (Cipi has no suspend endpoint)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Terminate Account</strong></td>
+                            <td><code>DELETE /api/apps/{name}</code></td>
+                            <td>Removes the app; waits for async jobs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Change Package</strong></td>
+                            <td><code>PUT /api/apps/{name}</code></td>
+                            <td>Updates PHP version, Git repository, or branch</td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -626,11 +695,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td><strong>Install SSL</strong></td><td><code>POST /api/apps/{name}/ssl</code></td><td>Install a Let&rsquo;s Encrypt certificate</td></tr>
-                        <tr><td><strong>Deploy</strong></td><td><code>POST /api/apps/{name}/deploy</code></td><td>Trigger a zero-downtime deployment</td></tr>
-                        <tr><td><strong>Rollback Deploy</strong></td><td><code>POST /api/apps/{name}/deploy/rollback</code></td><td>Revert to the previous release</td></tr>
-                        <tr><td><strong>Unlock Deploy</strong></td><td><code>POST /api/apps/{name}/deploy/unlock</code></td><td>Unlock a stuck deployment</td></tr>
-                        <tr><td><strong>App Info</strong></td><td><code>GET /api/apps/{name}</code></td><td>Fetch current app details into the Module Log</td></tr>
+                        <tr>
+                            <td><strong>Install SSL</strong></td>
+                            <td><code>POST /api/apps/{name}/ssl</code></td>
+                            <td>Install a Let&rsquo;s Encrypt certificate</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deploy</strong></td>
+                            <td><code>POST /api/apps/{name}/deploy</code></td>
+                            <td>Trigger a zero-downtime deployment</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rollback Deploy</strong></td>
+                            <td><code>POST /api/apps/{name}/deploy/rollback</code></td>
+                            <td>Revert to the previous release</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Unlock Deploy</strong></td>
+                            <td><code>POST /api/apps/{name}/deploy/unlock</code></td>
+                            <td>Unlock a stuck deployment</td>
+                        </tr>
+                        <tr>
+                            <td><strong>App Info</strong></td>
+                            <td><code>GET /api/apps/{name}</code></td>
+                            <td>Fetch current app details into the Module Log</td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -650,19 +739,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td><strong>Apps</strong></td><td>listApps, getApp, createApp, editApp, deleteApp</td></tr>
-                        <tr><td><strong>Deploy</strong></td><td>deployApp, rollbackDeploy, unlockDeploy</td></tr>
-                        <tr><td><strong>SSL</strong></td><td>installSsl</td></tr>
-                        <tr><td><strong>Aliases</strong></td><td>listAliases, addAlias, removeAlias</td></tr>
-                        <tr><td><strong>Databases</strong></td><td>listDatabases, createDatabase, deleteDatabase, backupDatabase, restoreDatabase, resetDatabasePassword</td></tr>
-                        <tr><td><strong>Jobs</strong></td><td>getJob, waitForJob</td></tr>
+                        <tr>
+                            <td><strong>Apps</strong></td>
+                            <td>listApps, getApp, createApp, editApp, deleteApp</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deploy</strong></td>
+                            <td>deployApp, rollbackDeploy, unlockDeploy</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SSL</strong></td>
+                            <td>installSsl</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Aliases</strong></td>
+                            <td>listAliases, addAlias, removeAlias</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Databases</strong></td>
+                            <td>listDatabases, createDatabase, deleteDatabase, backupDatabase, restoreDatabase,
+                                resetDatabasePassword</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Jobs</strong></td>
+                            <td>getJob, waitForJob</td>
+                        </tr>
                     </tbody>
                 </table>
 
                 <h3>Extending the module</h3>
-<div class="code-block">
-                    <div class="code-block-header"><span class="code-block-lang">php</span><button
-                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">php</span><button class="code-copy-btn"
+                            onclick="copyCode(this)">Copy</button></div>
                     <pre><span class="c">// Example: add an alias from a WHMCS hook</span>
 <span class="k">require_once</span> ROOTDIR . <span class="s">'/modules/servers/cipi/lib/CipiApiClient.php'</span>;
 
@@ -679,14 +787,16 @@
                 <h3>Customer-facing behaviour</h3>
                 <p>The module does <strong>not</strong> add a Client Area tab, custom buttons, or live status from Cipi.
                     Customers see the standard WHMCS service view (domain, status, renewal dates).
-                    When Cipi provisions an app it generates <strong>one-time secrets</strong> (SSH password, DB password,
+                    When Cipi provisions an app it generates <strong>one-time secrets</strong> (SSH password, DB
+                    password,
                     deploy key, webhook URL). The REST API does not automatically push those secrets into WHMCS &mdash;
-                    you should extend the module, write a hook, or deliver credentials through your support workflow.</p>
+                    you should extend the module, write a hook, or deliver credentials through your support workflow.
+                </p>
 
                 <h3>Module logging</h3>
                 <p>All API calls are logged via <code>logModuleCall()</code> &mdash; Create, Terminate, Change Package,
                     SSL, Deploy, Rollback, Unlock, and App Info. Enable <strong>Utilities &rarr; Logs &rarr; Module
-                    Log</strong> in WHMCS Admin for full visibility.</p>
+                        Log</strong> in WHMCS Admin for full visibility.</p>
 
                 <div class="callout info">
                     <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -697,7 +807,8 @@
                     </svg>
                     <div>Full source code, project structure, and contribution guidelines are available on
                         <a href="https://github.com/cipi-sh/whmcs" target="_blank">GitHub</a>.
-                        The module is open-source under the MIT License.</div>
+                        The module is open-source under the MIT License.
+                    </div>
                 </div>
             </div>
 
@@ -948,7 +1059,7 @@
 
 <span class="c">Cipi Sync Archive</span>
 <span class="c">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
-<span class="c">  Cipi           v4.4.13</span>
+<span class="c">  Cipi           v4.4.14</span>
 <span class="c">  Exported       2026-03-06T15:00:00Z</span>
 <span class="c">  Source         aws01 (3.120.xx.xx)</span>
 <span class="c">  Database       true</span>
@@ -1758,7 +1869,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
         sections.forEach(s => observer.observe(s));
 
         // Highlight current chapter in sidebar
-        (function() {
+        (function () {
             const page = location.pathname.split('/').pop().replace('.html', '') || 'index';
             document.querySelectorAll('.sidebar-group').forEach(g => {
                 if (g.dataset.chapter === page) g.classList.add('current-chapter');
@@ -1776,7 +1887,8 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
     </script>
 
     <script async src="https://stats.web.ap.it/i/5ae6c482-e1ef-4447-b949-49ff9a43a5fb.js"></script>
-    <noscript><img src="https://stats.web.ap.it/collect/pixel.gif?k=5ae6c482-e1ef-4447-b949-49ff9a43a5fb&p=/" width="1" height="1" /></noscript>
+    <noscript><img src="https://stats.web.ap.it/collect/pixel.gif?k=5ae6c482-e1ef-4447-b949-49ff9a43a5fb&p=/" width="1"
+            height="1" /></noscript>
 </body>
 
 </html>
