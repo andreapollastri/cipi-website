@@ -210,6 +210,9 @@
             transition: all 0.15s;
             line-height: 1.4;
             text-transform: lowercase;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
         }
 
         .sidebar-link:hover {
@@ -1240,8 +1243,9 @@ a.sidebar-group-label:hover {
     display: none;
 }
 
-/* Current chapter expanded into a contained panel */
-.docs-sidebar .sidebar-group.current-chapter {
+/* Current / manually opened chapter expanded into a contained panel */
+.docs-sidebar .sidebar-group.current-chapter,
+.docs-sidebar .sidebar-group.open {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 0;
@@ -1250,7 +1254,8 @@ a.sidebar-group-label:hover {
     box-shadow: var(--shadow-sm);
 }
 
-.docs-sidebar .sidebar-group.current-chapter > .sidebar-link {
+.docs-sidebar .sidebar-group.current-chapter > .sidebar-link,
+.docs-sidebar .sidebar-group.open > .sidebar-link {
     display: block;
     padding: 7px 12px;
     margin: 1px 0;
@@ -1259,24 +1264,31 @@ a.sidebar-group-label:hover {
     text-transform: none;
 }
 
-.docs-sidebar .sidebar-group.current-chapter > a.sidebar-group-label {
-    color: var(--accent);
+.docs-sidebar .sidebar-group.current-chapter > a.sidebar-group-label,
+.docs-sidebar .sidebar-group.open > a.sidebar-group-label {
     background: transparent;
     margin-bottom: 4px;
 }
 
-.docs-sidebar .sidebar-group.current-chapter > a.sidebar-group-label::after {
+.docs-sidebar .sidebar-group.current-chapter > a.sidebar-group-label {
+    color: var(--accent);
+}
+
+.docs-sidebar .sidebar-group.current-chapter > a.sidebar-group-label::after,
+.docs-sidebar .sidebar-group.open > a.sidebar-group-label::after {
     transform: rotate(45deg);
     opacity: 0.9;
 }
 
 /* Active + hover states inside the open chapter */
-.docs-sidebar .sidebar-group.current-chapter > .sidebar-link:hover {
+.docs-sidebar .sidebar-group.current-chapter > .sidebar-link:hover,
+.docs-sidebar .sidebar-group.open > .sidebar-link:hover {
     background: rgba(0, 0, 0, 0.04);
     color: var(--text);
 }
 
-[data-theme="dark"] .docs-sidebar .sidebar-group.current-chapter > .sidebar-link:hover {
+[data-theme="dark"] .docs-sidebar .sidebar-group.current-chapter > .sidebar-link:hover,
+[data-theme="dark"] .docs-sidebar .sidebar-group.open > .sidebar-link:hover {
     background: rgba(255, 255, 255, 0.05);
 }
 

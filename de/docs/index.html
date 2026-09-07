@@ -179,6 +179,7 @@
 <a class="sidebar-link" href="/de/docs/apps#cli-app-clone"><code>app clone</code></a>
 <a class="sidebar-link" href="/de/docs/apps#cli-app-limits"><code>app limits</code></a>
 <a class="sidebar-link" href="/de/docs/apps#cli-app-suspend"><code>app suspend</code></a>
+<a class="sidebar-link" href="/de/docs/apps#cli-basicauth"><code>basicauth</code></a>
 <a class="sidebar-link" href="/de/docs/apps#cli-app-env"><code>app env</code></a>
 <a class="sidebar-link" href="/de/docs/apps#cli-app-run"><code>app run</code></a>
 <a class="sidebar-link" href="/de/docs/apps#cli-app-logs"><code>app logs</code></a>
@@ -365,9 +366,7 @@
         sidebarToggle.addEventListener('click', () => docsSidebar.classList.contains('open') ? closeSidebar() : openSidebar());
         sidebarOverlay.addEventListener('click', closeSidebar);
 
-        document.querySelectorAll('.sidebar-link').forEach(link => {
-            link.addEventListener('click', () => { if (window.innerWidth < 900) closeSidebar(); });
-        });
+
 
         // Scrollspy — scoped to the current chapter so duplicate hashes
         // (e.g. #cli-deploy on deploy vs cli-client) highlight the right link.
@@ -383,6 +382,17 @@
                 : Array.from(document.querySelectorAll('.sidebar-link'));
 
             let currentId = '';
+            let spyLockUntil = 0;
+
+            function scrollSidebarTo(el) {
+                const pane = document.getElementById('docsSidebar');
+                if (!pane || !el) return;
+                const p = pane.getBoundingClientRect();
+                const r = el.getBoundingClientRect();
+                if (r.top < p.top + 8) pane.scrollTop -= (p.top + 8 - r.top);
+                else if (r.bottom > p.bottom - 8) pane.scrollTop += (r.bottom - p.bottom + 8);
+            }
+
             function setActive(id) {
                 if (!id || id === currentId) return;
                 currentId = id;
@@ -393,14 +403,54 @@
                 });
                 if (active) {
                     active.classList.add('active');
-                    active.scrollIntoView({ block: 'nearest' });
+                    scrollSidebarTo(active);
                 }
                 document.querySelectorAll('.docs-toc-list a').forEach(function (l) {
                     l.classList.toggle('active', l.dataset.target === id);
                 });
             }
 
+            function sameDocsPath(hrefPath) {
+                const dest = (hrefPath || '').replace(/\.html$/, '').replace(/\/$/, '');
+                const here = location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+                return !dest || dest === here;
+            }
+
+            document.querySelectorAll('.sidebar-link').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    if (window.innerWidth < 900) closeSidebar();
+                    const href = link.getAttribute('href') || '';
+                    const hashAt = href.indexOf('#');
+                    if (hashAt === -1) return;
+                    const id = href.slice(hashAt + 1);
+                    const target = id && document.getElementById(id);
+                    if (!target || !sameDocsPath(href.slice(0, hashAt))) return;
+                    e.preventDefault();
+                    spyLockUntil = Date.now() + 900;
+                    currentId = '';
+                    setActive(id);
+                    if (history.replaceState) history.replaceState(null, '', href.slice(hashAt));
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            document.querySelectorAll('.docs-sidebar a.sidebar-group-label').forEach(function (label) {
+                label.addEventListener('click', function (e) {
+                    const group = label.parentElement;
+                    if (!group || !group.classList.contains('sidebar-group')) return;
+                    if (group.classList.contains('current-chapter')) return;
+                    if (!group.classList.contains('open')) {
+                        e.preventDefault();
+                        document.querySelectorAll('.sidebar-group.open').forEach(function (g) {
+                            g.classList.remove('open');
+                        });
+                        group.classList.add('open');
+                    }
+                });
+            });
+
             function update() {
+                if (Date.now() < spyLockUntil) return;
                 if (!sections.length) return;
                 const marker = window.scrollY + Math.min(120, window.innerHeight * 0.2);
                 let id = sections[0].id;
