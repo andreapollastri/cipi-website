@@ -72,6 +72,21 @@ Forge: proprietary SaaS, from $12/mo per server, web GUI, manages servers from f
 ### Cipi vs Laravel Cloud (https://cipi.sh/en/alternative-to-laravel-cloud · IT: https://cipi.sh/it/alternativa-a-laravel-cloud)
 Laravel Cloud: official fully-managed PaaS, usage-based pricing, zero server management, vendor lock-in. Cipi: self-hosted on a fixed-cost VPS you own. Both support Octane. Choose Laravel Cloud for zero-ops; choose Cipi for fixed costs and full control.
 
+### Cipi vs fortrabbit (https://cipi.sh/en/alternative-to-fortrabbit · IT: https://cipi.sh/it/alternativa-a-fortrabbit)
+fortrabbit: managed PHP PaaS (Ireland/Virginia) from €4.50/mo, Git deploys, SSH/SFTP, MCP, CLI, teams/clients. Cipi: free, self-hosted, Laravel-first (Octane/Horizon/Reverb), full root, fixed VPS cost. fortrabbit wins on managed PHP hosting and collaboration without sysadmin work.
+
+### Cipi vs Render (https://cipi.sh/en/alternative-to-render · IT: https://cipi.sh/it/alternativa-a-render)
+Render: usage-based multi-stack PaaS (autoscaling, PR previews, managed Postgres/Redis, Docker, MCP). Cipi: Laravel-native on a native LEMP/Octane stack you own. Render wins for mixed stacks and zero-ops scale.
+
+### Cipi vs 20i (https://cipi.sh/en/alternative-to-20i · IT: https://cipi.sh/it/alternativa-a-20i)
+20i: hosting company (reseller, WordPress, managed cloud, VPS, domains, My20i, 24×7 support). Cipi: Laravel deploy CLI on your own VPS, not a hosting catalog. 20i wins for agencies that need mail, CDN, reseller branding and human support.
+
+### Cipi vs Sevalla (https://cipi.sh/en/alternative-to-sevalla · IT: https://cipi.sh/it/alternativa-a-sevalla)
+Sevalla (Kinsta): resource-based app platform — apps, databases, object storage, static sites, MCP, 25 regions. Cipi: self-hosted Laravel on a portable VPS stack. Sevalla wins if you want to drop DIY cloud entirely.
+
+### Cipi vs Ploi Cloud (https://cipi.sh/en/alternative-to-ploi-cloud · IT: https://cipi.sh/it/alternativa-a-ploi-cloud)
+Ploi Cloud (ploi.cloud): European Laravel/PHP/Node PaaS, €13.88/GB RAM, Amsterdam/London/Chicago — not the same product as Ploi.io. Cipi: self-hosted, fixed VPS cost, full root. See also Cipi vs Ploi.io for the server-panel comparison.
+
 ### Cipi vs Ploi (https://cipi.sh/en/alternative-to-ploi · IT: https://cipi.sh/it/alternativa-a-ploi)
 Ploi: polished EU-based SaaS panel, €8–30/mo. Cipi: free, self-hosted, CLI-first, no deploy limits. Ploi wins for teams that want a managed GUI.
 

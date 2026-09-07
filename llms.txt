@@ -80,6 +80,11 @@ Key facts:
 - [Best Laravel Forge Alternatives 2026](https://cipi.sh/en/best-laravel-forge-alternatives): Buyer's guide — Cipi, Ploi, Coolify, Vito Deploy, Cleavr, RunCloud and Laravel Cloud compared
 - [Laravel Forge Alternative](https://cipi.sh/en/alternative-to-laravel-forge): Free, open-source, self-hosted alternative to Laravel Forge
 - [Laravel Cloud Alternative](https://cipi.sh/en/alternative-to-laravel-cloud): Self-hosted, fixed-cost alternative to the Laravel Cloud PaaS
+- [fortrabbit Alternative](https://cipi.sh/en/alternative-to-fortrabbit): Self-hosted, Laravel-first alternative to the fortrabbit PHP PaaS
+- [Render Alternative](https://cipi.sh/en/alternative-to-render): Self-hosted, fixed-cost alternative to Render for Laravel teams
+- [20i Alternative](https://cipi.sh/en/alternative-to-20i): Laravel deploy CLI alternative to 20i managed hosting
+- [Sevalla Alternative](https://cipi.sh/en/alternative-to-sevalla): Self-hosted alternative to Sevalla (Kinsta) for Laravel
+- [Ploi Cloud Alternative](https://cipi.sh/en/alternative-to-ploi-cloud): Self-hosted alternative to Ploi Cloud (ploi.cloud), distinct from Ploi.io
 - [Ploi Alternative](https://cipi.sh/en/alternative-to-ploi): Free, open-source alternative to Ploi.io with no deploy limits
 - [Cleavr Alternative](https://cipi.sh/en/alternative-to-cleavr): Free, self-hosted alternative to Cleavr for Laravel teams
 - [moss.sh Alternative](https://cipi.sh/en/alternative-to-moss): Free, unlimited-deploy alternative to moss.sh
@@ -138,6 +143,11 @@ Key facts:
 - [Migliori alternative a Laravel Forge 2026](https://cipi.sh/it/migliori-alternative-a-laravel-forge)
 - [Alternativa a Laravel Forge](https://cipi.sh/it/alternativa-a-laravel-forge)
 - [Alternativa a Laravel Cloud](https://cipi.sh/it/alternativa-a-laravel-cloud)
+- [Alternativa a fortrabbit](https://cipi.sh/it/alternativa-a-fortrabbit)
+- [Alternativa a Render](https://cipi.sh/it/alternativa-a-render)
+- [Alternativa a 20i](https://cipi.sh/it/alternativa-a-20i)
+- [Alternativa a Sevalla](https://cipi.sh/it/alternativa-a-sevalla)
+- [Alternativa a Ploi Cloud](https://cipi.sh/it/alternativa-a-ploi-cloud)
 - [Alternativa a Ploi](https://cipi.sh/it/alternativa-a-ploi)
 - [Alternativa a Cleavr](https://cipi.sh/it/alternativa-a-cleavr)
 - [Alternativa a moss.sh](https://cipi.sh/it/alternativa-a-moss)
