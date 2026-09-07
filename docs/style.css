@@ -4,6 +4,13 @@
         :root {
             --sidebar-width: 240px;
             --nav-height: 3.6rem;
+            --docs-anchor-offset: calc(var(--nav-height) + 24px);
+        }
+
+        /* One offset only — tokens.css also sets scroll-padding-top; stacking both
+           would land hash targets below the scrollspy marker and highlight the previous section. */
+        html {
+            scroll-padding-top: var(--docs-anchor-offset);
         }
 
         body {
@@ -246,7 +253,7 @@
         /* ── Doc sections ── */
         .doc-section {
             margin-bottom: 72px;
-            scroll-margin-top: calc(var(--nav-height) + 24px);
+            scroll-margin-top: 0;
         }
 
         .doc-section-label {

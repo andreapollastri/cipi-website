@@ -2166,28 +2166,76 @@
                 });
             });
 
+            function spyOffset() {
+                const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+                const margin = sections[0] ? parseFloat(getComputedStyle(sections[0]).scrollMarginTop) || 0 : 0;
+                const nav = document.querySelector('body > nav');
+                const navH = nav ? nav.getBoundingClientRect().height : 0;
+                return Math.max(navH, pad + margin) + 8;
+            }
+
+            function hashId() {
+                try { return decodeURIComponent((location.hash || '').replace(/^#/, '')); }
+                catch (e) { return (location.hash || '').replace(/^#/, ''); }
+            }
+
+            function applyHash() {
+                const id = hashId();
+                if (!id || !document.getElementById(id)) return false;
+                currentId = '';
+                setActive(id);
+                return true;
+            }
+
             function update() {
                 if (Date.now() < spyLockUntil) return;
                 if (!sections.length) return;
-                const marker = window.scrollY + Math.min(120, window.innerHeight * 0.2);
+                const offset = spyOffset();
                 let id = sections[0].id;
                 for (let i = 0; i < sections.length; i++) {
-                    const top = sections[i].getBoundingClientRect().top + window.scrollY;
-                    if (top <= marker) id = sections[i].id;
+                    if (sections[i].getBoundingClientRect().top <= offset) id = sections[i].id;
                     else break;
                 }
                 const doc = document.documentElement;
                 if (window.innerHeight + window.scrollY >= doc.scrollHeight - 4) {
                     id = sections[sections.length - 1].id;
                 }
+                const hid = hashId();
+                const hashed = hid && document.getElementById(hid);
+                if (hashed) {
+                    const top = hashed.getBoundingClientRect().top;
+                    if (Math.abs(top - offset) <= 48) id = hid;
+                }
                 setActive(id);
             }
 
+            document.addEventListener('click', function (e) {
+                const a = e.target.closest && e.target.closest('.docs-toc-list a');
+                if (!a) return;
+                const id = a.dataset.target;
+                const target = id && document.getElementById(id);
+                if (!target) return;
+                e.preventDefault();
+                spyLockUntil = Date.now() + 900;
+                currentId = '';
+                setActive(id);
+                if (history.replaceState) history.replaceState(null, '', '#' + id);
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
             window.addEventListener('scroll', update, { passive: true });
             window.addEventListener('resize', update);
-            // Expose for TOC init (built later in this page)
-            window.__docsScrollspyUpdate = update;
-            update();
+            window.addEventListener('hashchange', function () {
+                applyHash();
+            });
+            window.addEventListener('load', function () {
+                spyLockUntil = 0;
+                if (!applyHash()) update();
+            });
+            window.__docsScrollspyUpdate = function () {
+                if (!applyHash()) update();
+            };
+            if (!applyHash()) update();
         })();
 
         // ── Reading progress bar ──
