@@ -101,6 +101,9 @@ assertRedirect('/en/guide/usare-cipi-agent-in-laravel', '/en/guides/cipi-agent-l
 assertRedirect('/guide/pannello-ui-e-api-cipi', '/it/guide/pannello-ui-e-api-cipi');
 assertRedirect('/it/guides/cipi-gui-and-api', '/it/guide/pannello-ui-e-api-cipi');
 assertRedirect('/en/guide/pannello-ui-e-api-cipi', '/en/guides/cipi-gui-and-api');
+assertRedirect('/guide/gestire-app-con-cipi-yml', '/it/guide/gestire-app-con-cipi-yml');
+assertRedirect('/it/guides/manage-apps-with-cipi-yml', '/it/guide/gestire-app-con-cipi-yml');
+assertRedirect('/en/guide/gestire-app-con-cipi-yml', '/en/guides/manage-apps-with-cipi-yml');
 assertRedirect('/docs/primi-passi', '/it/docs/primi-passi');
 
 // Unknown paths: real 404, not redirect-to-/en/404
@@ -166,6 +169,11 @@ assert('localize de gui api guide', localizeCanon('/guides/cipi-gui-and-api', 'd
 assert('localize fr gui api guide', localizeCanon('/guides/cipi-gui-and-api', 'fr') === '/guides/panneau-ui-et-api');
 assert('localize es gui api guide', localizeCanon('/guides/cipi-gui-and-api', 'es') === '/guides/panel-ui-y-api');
 assert('localize pt gui api guide', localizeCanon('/guides/cipi-gui-and-api', 'pt') === '/guides/painel-ui-e-api');
+assert('localize it cipi yml guide', localizeCanon('/guides/manage-apps-with-cipi-yml', 'it') === '/guide/gestire-app-con-cipi-yml');
+assert('localize de cipi yml guide', localizeCanon('/guides/manage-apps-with-cipi-yml', 'de') === '/guides/apps-mit-cipi-yml-verwalten');
+assert('localize fr cipi yml guide', localizeCanon('/guides/manage-apps-with-cipi-yml', 'fr') === '/guides/gerer-apps-avec-cipi-yml');
+assert('localize es cipi yml guide', localizeCanon('/guides/manage-apps-with-cipi-yml', 'es') === '/guides/gestionar-apps-con-cipi-yml');
+assert('localize pt cipi yml guide', localizeCanon('/guides/manage-apps-with-cipi-yml', 'pt') === '/guides/gerenciar-apps-com-cipi-yml');
 
 // In-tree English slugs 301 to localized guide slugs
 assertRedirect('/de/guides/deploy-laravel-ubuntu-vps', '/de/guides/laravel-auf-ubuntu-vps-deployen');
@@ -178,6 +186,10 @@ assertRedirect('/de/guides/cipi-gui-and-api', '/de/guides/gui-panel-und-api');
 assertRedirect('/fr/guides/cipi-gui-and-api', '/fr/guides/panneau-ui-et-api');
 assertRedirect('/es/guides/cipi-gui-and-api', '/es/guides/panel-ui-y-api');
 assertRedirect('/pt/guides/cipi-gui-and-api', '/pt/guides/painel-ui-e-api');
+assertRedirect('/de/guides/manage-apps-with-cipi-yml', '/de/guides/apps-mit-cipi-yml-verwalten');
+assertRedirect('/fr/guides/manage-apps-with-cipi-yml', '/fr/guides/gerer-apps-avec-cipi-yml');
+assertRedirect('/es/guides/manage-apps-with-cipi-yml', '/es/guides/gestionar-apps-con-cipi-yml');
+assertRedirect('/pt/guides/manage-apps-with-cipi-yml', '/pt/guides/gerenciar-apps-com-cipi-yml');
 assertRedirect('/es/guides/laravel-security-checklist', '/es/guides/checklist-seguridad-laravel');
 assertRedirect('/pt/guides/laravel-ecosystem-2026', '/pt/guides/ecossistema-laravel-2026');
 assertRedirect('/de/guides/cipi-agent-laravel-mcp', '/de/guides/cipi-agent-in-laravel-nutzen');
@@ -196,6 +208,12 @@ assertPass('/es/guides/panel-ui-y-api');
 assertPass('/pt/guides/painel-ui-e-api');
 assertPass('/it/guide/pannello-ui-e-api-cipi');
 assertPass('/en/guides/cipi-gui-and-api');
+assertPass('/de/guides/apps-mit-cipi-yml-verwalten');
+assertPass('/fr/guides/gerer-apps-avec-cipi-yml');
+assertPass('/es/guides/gestionar-apps-con-cipi-yml');
+assertPass('/pt/guides/gerenciar-apps-com-cipi-yml');
+assertPass('/it/guide/gestire-app-con-cipi-yml');
+assertPass('/en/guides/manage-apps-with-cipi-yml');
 assertPass('/es/guides/checklist-seguridad-laravel');
 assertPass('/pt/guides/ecossistema-laravel-2026');
 assertPass('/de/guides/cipi-agent-in-laravel-nutzen');
@@ -222,6 +240,10 @@ assertRedirect('/guides/gui-panel-und-api', '/de/guides/gui-panel-und-api');
 assertRedirect('/guides/panneau-ui-et-api', '/fr/guides/panneau-ui-et-api');
 assertRedirect('/guides/panel-ui-y-api', '/es/guides/panel-ui-y-api');
 assertRedirect('/guides/painel-ui-e-api', '/pt/guides/painel-ui-e-api');
+assertRedirect('/guides/apps-mit-cipi-yml-verwalten', '/de/guides/apps-mit-cipi-yml-verwalten');
+assertRedirect('/guides/gerer-apps-avec-cipi-yml', '/fr/guides/gerer-apps-avec-cipi-yml');
+assertRedirect('/guides/gestionar-apps-con-cipi-yml', '/es/guides/gestionar-apps-con-cipi-yml');
+assertRedirect('/guides/gerenciar-apps-com-cipi-yml', '/pt/guides/gerenciar-apps-com-cipi-yml');
 assert('languageForBarePath DE guide slug', languageForBarePath('/guides/laravel-auf-ubuntu-vps-deployen') === 'de');
 
 // Generated pages must not leak machine-translation placeholders

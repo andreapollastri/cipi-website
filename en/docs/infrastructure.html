@@ -407,6 +407,7 @@
 <span class="p">$</span> cipi ini reset [--app=shop]                  <span class="c"># back to Cipi defaults</span>
 <span class="p">$</span> cipi ini keys                                <span class="c"># what can be set, and what cannot</span></pre>
                 </div>
+                <p>A <strong>5.1.3</strong> hotfix stopped <code>cipi ini list</code> from dying on the first setting after printing the table header (<code>_INI_SOURCE: unbound variable</code>). No migration: <code>cipi self-update</code> copies the new <code>lib/ini.sh</code>.</p>
 
                 <h3>What it does for you</h3>
                 <ul>

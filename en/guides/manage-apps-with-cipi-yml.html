@@ -4,59 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide</title>
-    <meta name="description" content="Set up off-site VPS backups to Amazon S3 or any S3-compatible bucket with Cipi: credentials, first run, cron schedule, retention and a restore drill you can actually trust.">
-    <meta name="keywords" content="cipi backup s3, vps backup s3, laravel backup s3, hetzner object storage backup, digitalocean spaces backup, s3 compatible backup ubuntu">
+    <title>Manage Laravel apps with cipi.yml — config that ships with the code</title>
+    <meta name="description" content="A practical guide to managing Cipi apps with cipi.yml: generate the file from the server, review the plan, apply aliases, PHP, workers, Reverb, healthchecks and backups, then opt in so every deploy reconciles.">
+    <meta name="keywords" content="cipi.yml, manage laravel apps, cipi yml apply, cipi yml plan, laravel configuration as code, queue workers yaml, laravel reverb yaml, cipi backup profiles">
     <meta name="author" content="Andrea Pollastri">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <link rel="canonical" href="https://cipi.sh/en/guides/backup-vps-s3">
-                <!-- i18n:alternates -->
-    <link rel="alternate" hreflang="en" href="https://cipi.sh/en/guides/backup-vps-s3">
-    <link rel="alternate" hreflang="de" href="https://cipi.sh/de/guides/vps-backup-auf-s3">
-    <link rel="alternate" hreflang="fr" href="https://cipi.sh/fr/guides/sauvegarde-vps-vers-s3">
-    <link rel="alternate" hreflang="it" href="https://cipi.sh/it/guide/backup-vps-s3-con-cipi">
-    <link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/copias-seguridad-vps-s3">
-    <link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/backup-vps-para-s3">
-    <link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/backup-vps-s3">
+    <link rel="canonical" href="https://cipi.sh/en/guides/manage-apps-with-cipi-yml">
+                            <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="en" href="https://cipi.sh/en/guides/manage-apps-with-cipi-yml">
+    <link rel="alternate" hreflang="de" href="https://cipi.sh/de/guides/apps-mit-cipi-yml-verwalten">
+    <link rel="alternate" hreflang="fr" href="https://cipi.sh/fr/guides/gerer-apps-avec-cipi-yml">
+    <link rel="alternate" hreflang="it" href="https://cipi.sh/it/guide/gestire-app-con-cipi-yml">
+    <link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/gestionar-apps-con-cipi-yml">
+    <link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/gerenciar-apps-com-cipi-yml">
+    <link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/manage-apps-with-cipi-yml">
     <!-- /i18n:alternates -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Cipi">
-    <meta property="og:url" content="https://cipi.sh/en/guides/backup-vps-s3">
-    <meta property="og:title" content="How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide">
-    <meta property="og:description" content="Set up off-site VPS backups to Amazon S3 or any S3-compatible bucket with Cipi: credentials, first run, cron schedule, retention and a restore drill you can actually trust.">
+    <meta property="og:url" content="https://cipi.sh/en/guides/manage-apps-with-cipi-yml">
+    <meta property="og:title" content="Manage Laravel apps with cipi.yml — config that ships with the code">
+    <meta property="og:description" content="A practical guide to managing Cipi apps with cipi.yml: generate the file from the server, review the plan, apply aliases, PHP, workers, Reverb, healthchecks and backups, then opt in so every deploy reconciles.">
     <meta property="og:image" content="https://cipi.sh/og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="How to back up a VPS to an S3 bucket with Cipi">
+    <meta property="og:image:alt" content="Manage Laravel apps with cipi.yml">
             <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="de_DE">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="it_IT">
     <meta property="og:locale:alternate" content="es_ES">
-    <meta property="og:locale:alternate" content="pt_PT"><meta property="article:published_time" content="2026-08-22T08:00:00+02:00">
-    <meta property="article:modified_time" content="2026-08-22T08:00:00+02:00">
+    <meta property="og:locale:alternate" content="pt_PT"><meta property="article:published_time" content="2026-09-07T08:00:00+02:00">
+    <meta property="article:modified_time" content="2026-09-07T08:00:00+02:00">
     <meta property="article:author" content="https://web.ap.it">
     <meta property="article:section" content="Guides">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide">
-    <meta name="twitter:description" content="Set up off-site VPS backups to Amazon S3 or any S3-compatible bucket with Cipi: credentials, first run, cron schedule, retention and a restore drill you can actually trust.">
+    <meta name="twitter:title" content="Manage Laravel apps with cipi.yml — config that ships with the code">
+    <meta name="twitter:description" content="A practical guide to managing Cipi apps with cipi.yml: generate the file from the server, review the plan, apply aliases, PHP, workers, Reverb, healthchecks and backups, then opt in so every deploy reconciles.">
     <meta name="twitter:image" content="https://cipi.sh/og.png">
 
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide",
-  "name": "How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide",
-  "url": "https://cipi.sh/en/guides/backup-vps-s3",
-  "description": "Set up off-site VPS backups to Amazon S3 or any S3-compatible bucket with Cipi: credentials, first run, cron schedule, retention and a restore drill you can actually trust.",
+  "headline": "Manage Laravel apps with cipi.yml — config that ships with the code",
+  "name": "Manage Laravel apps with cipi.yml — config that ships with the code",
+  "url": "https://cipi.sh/en/guides/manage-apps-with-cipi-yml",
+  "description": "A practical guide to managing Cipi apps with cipi.yml: generate the file from the server, review the plan, apply aliases, PHP, workers, Reverb, healthchecks and backups, then opt in so every deploy reconciles.",
   "inLanguage": "en",
   "image": "https://cipi.sh/og.png",
-  "datePublished": "2026-08-22",
-  "dateModified": "2026-08-22",
+  "datePublished": "2026-09-07",
+  "dateModified": "2026-09-07",
   "author": {
     "@type": "Person",
     "name": "Andrea Pollastri",
@@ -77,7 +77,7 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://cipi.sh/en/guides/backup-vps-s3"
+    "@id": "https://cipi.sh/en/guides/manage-apps-with-cipi-yml"
   },
   "about": {
     "@type": "SoftwareApplication",
@@ -113,8 +113,8 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "VPS backups to S3",
-      "item": "https://cipi.sh/en/guides/backup-vps-s3"
+      "name": "Manage apps with cipi.yml",
+      "item": "https://cipi.sh/en/guides/manage-apps-with-cipi-yml"
     }
   ]
 }
@@ -126,47 +126,48 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Does Cipi work only with Amazon S3?",
+      "name": "Do I have to write cipi.yml by hand?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. cipi backup configure accepts any S3-compatible endpoint: Hetzner Object Storage, DigitalOcean Spaces, Backblaze B2, MinIO, or a self-hosted store such as Johnny. Leave the endpoint empty for AWS; fill it for every other provider."
+        "text": "No. cipi yml generate prints the app's current server configuration as a ready-to-commit file. cipi yml example prints a blank commented template if you prefer to start from scratch."
       }
     },
     {
       "@type": "Question",
-      "name": "What is the difference between cipi db backup and cipi backup run?",
+      "name": "Does a deploy apply cipi.yml automatically?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "cipi db backup writes a compressed SQL dump on the same VPS under /var/log/cipi/backups/. It is always available and needs no configuration. cipi backup run dumps the database and the app shared/ folder, then uploads both archives to your S3 bucket. Use the local dump for a fast rollback; use the S3 copy for a real off-site restore."
+        "text": "Only after you opt in with cipi yml auto on. Until then deploys ignore the file and you reconcile manually with cipi yml plan and cipi yml apply."
       }
     },
     {
       "@type": "Question",
-      "name": "How often should I back up a Laravel VPS?",
+      "name": "What happens to things the file does not mention?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Daily is the sensible default for production. Add cipi backup run to the root crontab at a quiet hour, then prune older than four weeks. If the database changes constantly, run it twice a day. Always run a backup before a risky migration or a production deploy."
+        "text": "They are left alone. Only the sections you declare are reconciled, with one exception: the alias list is authoritative, so removing an alias from the file removes it from Nginx."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I restore a Cipi S3 backup onto a new VPS?",
+      "name": "Can a commit break the server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — that is the point of an off-site copy. Install Cipi on a fresh Ubuntu VPS, recreate the app, download db.sql.gz and shared.tar.gz from the bucket, restore the database with cipi db restore, and extract shared/ into /home/<app>/."
+        "text": "The schema carries no shell commands or include paths. An app can only touch databases and backup profiles named after itself. An invalid file is rejected as a whole, never applied halfway. Deploys ignore the file until yml auto is on."
       }
     },
     {
       "@type": "Question",
-      "name": "Where does Cipi store S3 credentials?",
+      "name": "Does it work with the Git webhook?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "cipi backup configure writes them to /etc/cipi/backup.conf. Keep that file root-only. The same credentials are used by cipi backup run, list and prune. Staging of large archives defaults to /var/tmp so a small RAM-backed /tmp does not abort the job."
+        "text": "Yes. With cipi yml auto on, both cipi deploy and a webhook-triggered deploy reconcile after a successful release."
       }
     }
   ]
 }
     </script>
+
 
     <link rel="icon" id="favicon" type="image/png" sizes="48x48" href="/favicon-light.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-light-96.png">
@@ -278,7 +279,7 @@
                 
                 
                 
-                <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">EN</summary><div class="lang-menu"><a class="active" href="/en/guides/backup-vps-s3" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/vps-backup-auf-s3" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/sauvegarde-vps-vers-s3" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/backup-vps-s3-con-cipi" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/copias-seguridad-vps-s3" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/guides/backup-vps-para-s3" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
+                <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">EN</summary><div class="lang-menu"><a class="active" href="/en/guides/manage-apps-with-cipi-yml" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/apps-mit-cipi-yml-verwalten" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/gerer-apps-avec-cipi-yml" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/gestire-app-con-cipi-yml" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/gestionar-apps-con-cipi-yml" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/guides/gerenciar-apps-com-cipi-yml" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
@@ -311,173 +312,227 @@
             <span class="sep">&rsaquo;</span>
             <a href="/en/guides/">Guides</a>
             <span class="sep">&rsaquo;</span>
-            <span class="current">VPS backups to S3</span>
+            <span class="current">Manage apps with cipi.yml</span>
         </nav>
 
-        <span class="cmp-eyebrow">Backups · S3 · VPS</span>
-        <h1>How to back up a VPS to an <em>S3 bucket</em> with Cipi</h1>
-        <p class="cmp-updated">By <a href="https://web.ap.it" target="_blank" rel="author">Andrea Pollastri</a> · Last updated: <time datetime="2026-08-22">August 22, 2026</time> · free to read, no paywall</p>
-        <p class="lead">A dump that lives on the same disk as the app is a snapshot, not a backup. This guide walks through the whole off-site loop with <a class="inline" href="/">Cipi</a>: create a bucket, store credentials once, run the first upload, schedule it, prune the old ones, and restore onto a clean VPS so you know the plan works.</p>
+        <span class="cmp-eyebrow">cipi.yml · config as code</span>
+        <h1>Manage Laravel apps with <em>cipi.yml</em></h1>
+        <p class="cmp-updated">By <a href="https://web.ap.it" target="_blank" rel="author">Andrea Pollastri</a> · Last updated: <time datetime="2026-09-07">September 7, 2026</time> · free to read, no paywall</p>
+        <p class="lead">The state an app expects on the server — aliases, PHP, workers, health, backups — usually lives in a panel or in someone's head. Since Cipi 5.1 it can live in a <code>cipi.yml</code> at the root of the repository, reviewed in the same pull request as the code that depends on it. This guide is the practical loop: generate, plan, apply, then opt in so every deploy reconciles.</p>
 
         <div class="toc">
             <strong>In this guide</strong>
             <ol>
-                <li><a href="#why-offsite">Why the same-disk dump is not a backup</a></li>
-                <li><a href="#what">What Cipi actually uploads</a></li>
-                <li><a href="#prereqs">What you need</a></li>
-                <li><a href="#bucket">Create the bucket</a></li>
-                <li><a href="#configure">Configure Cipi once</a></li>
-                <li><a href="#first-run">First backup and verify</a></li>
-                <li><a href="#schedule">Cron, retention and prune</a></li>
-                <li><a href="#restore">Restore drill</a></li>
-                <li><a href="#before-deploy">Backup before every release</a></li>
-                <li><a href="#mistakes">Mistakes that make backups useless</a></li>
+                <li><a href="#why">Why the file belongs next to the code</a></li>
+                <li><a href="#generate">Start from the live server</a></li>
+                <li><a href="#commands">The commands you will use</a></li>
+                <li><a href="#declare">What you can declare</a></li>
+                <li><a href="#example">A complete file</a></li>
+                <li><a href="#plan">Plan, then apply</a></li>
+                <li><a href="#week">A week of real changes</a></li>
+                <li><a href="#auto">Opt in after every deploy</a></li>
+                <li><a href="#left-alone">What the file will not touch</a></li>
+                <li><a href="#safety">Safe to accept over Git</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ol>
         </div>
 
-        <h2 id="why-offsite">Why the same-disk dump is not a backup</h2>
-        <p>Provider snapshots, a <code>.sql.gz</code> in <code>/var/log</code>, a tarball next to <code>storage/</code> — they all die with the machine. Disk full, ransomware, a fat-fingered <code>rm -rf</code>, a region outage, a stolen VPS: the copy you need is the one that was already somewhere else.</p>
-        <p>The rule that still holds is <strong>3-2-1</strong>: three copies, two media, one off-site. Cipi covers the last hop. <code>cipi db backup</code> gives you a fast local rollback; <code>cipi backup run</code> ships the database and the <code>shared/</code> folder to Amazon S3 or any S3-compatible bucket. That is the copy you restore from when the VPS is gone.</p>
+        <h2 id="why">Why the file belongs next to the code</h2>
+        <p>A release that adds a queued job without a worker is half-shipped. A rollback that leaves last week's <code>upload_max_filesize</code> is half-rolled-back. Server state usually lives somewhere else: a panel, a wiki page, or the memory of whoever set the box up.</p>
+        <p>A <code>cipi.yml</code> committed next to the Laravel application makes that state part of the same pull request as the code that depends on it. The file is <strong>declarative</strong>: it describes the end state, not the steps. Cipi reads what the server has, compares it with the file and shows you the difference before touching anything.</p>
         <div class="note">
-            <p>A backup you have never restored is a hope, not a plan. Budget 20 minutes after the first successful upload and do the drill in <a href="#restore">Restore</a>. Repeat it every quarter.</p>
+            <p>The product page <a class="inline" href="/en/cipi-yml">cipi.yml — config that ships with the code</a> is the overview. The full schema lives in <a class="inline" href="/en/docs/deploy#cli-yml">Docs → Deploy → cipi.yml</a>. This guide is the day-to-day loop for one app.</p>
         </div>
 
-        <h2 id="what">What Cipi actually uploads</h2>
-        <p>Each run creates a timestamped prefix on the bucket:</p>
-        <div class="install-box">s3://your-bucket/cipi/myapp/2026-08-22_020015/</div>
-        <p>Inside that folder you get two archives:</p>
-        <ul>
-            <li><strong><code>db.sql.gz</code></strong> — a compressed dump of the app database (<code>mariadb-dump --single-transaction</code>, or the PostgreSQL equivalent if the app uses that engine).</li>
-            <li><strong><code>shared.tar.gz</code></strong> — the entire <code>/home/&lt;app&gt;/shared/</code> directory: <code>.env</code>, <code>storage/</code>, uploaded files, and anything else that survives a Deployer release swap.</li>
-        </ul>
-        <p>Code is not in the archive. Releases live in Git; if you need the last good tree, clone the repo. What you cannot clone is the database and the files users uploaded after go-live — those two files are the restore point.</p>
-        <p>Since <strong>v4.7.14</strong> staging happens on disk in <code>/var/tmp</code>, not in a RAM-backed <code>/tmp</code>. Large apps no longer die halfway through because tmpfs filled up. Override with <code>tmpdir</code> in <code>backup.json</code> or the <code>CIPI_BACKUP_TMPDIR</code> environment variable.</p>
+        <h2 id="generate">Start from the live server</h2>
+        <p>You do not have to write the file by hand. On a Cipi 5.1+ box, print the app's current configuration — aliases, PHP version and per-app settings, extra databases, queue workers read back out of Supervisor, Horizon, Reverb, the scheduler and the backup profiles the app owns — as a ready-to-commit file:</p>
+        <pre class="code-pre"><code>$ cipi yml generate myapp &gt; cipi.yml
+$ cipi yml plan myapp                  <span class="c"># reports nothing to do</span></code></pre>
+        <p>Commit that file at the repository root. Cipi looks it up in <code>current/cipi.yml</code>, then <code>current/cipi.yaml</code>, then <code>shared/cipi.yml</code> — override with <code>--file=&lt;path&gt;</code> if you keep it elsewhere.</p>
+        <p>Prefer a blank, fully commented template? <code>cipi yml example myapp</code> prints one with placeholder databases and profiles already inside that app's namespace, so the template validates as-is.</p>
 
-        <h2 id="prereqs">What you need</h2>
-        <ul>
-            <li>A VPS already managed by Cipi. If you are starting from zero, run <code>wget -O - https://cipi.sh/setup.sh | bash</code> on a fresh Ubuntu 24.04/26.04 box, then <code>cipi app create</code>. The <a class="inline" href="/en/docs/getting-started">getting started guide</a> covers the install.</li>
-            <li>At least one app on that server. <code>cipi backup run</code> without a name backs up every app; <code>cipi backup run myapp</code> targets one.</li>
-            <li>An S3 or S3-compatible bucket and an access key that can write to it. Create a dedicated IAM user — do not reuse your root cloud credentials.</li>
-        </ul>
-
-        <h2 id="bucket">Create the bucket</h2>
-        <p>Pick a provider, create a private bucket in a region that is <em>not</em> the same datacenter as the VPS, and mint a key pair scoped to that bucket only. Enable server-side encryption if the provider offers it. Versioning is optional but cheap insurance against an accidental overwrite.</p>
-        <p>Minimum IAM actions on that bucket: <code>s3:PutObject</code>, <code>s3:GetObject</code>, <code>s3:ListBucket</code>, <code>s3:DeleteObject</code>. The last one is only required if you want <code>cipi backup prune</code> to clean old prefixes.</p>
+        <h2 id="commands">The commands you will use</h2>
         <div class="cmp-table-wrap">
             <table class="cmp-table">
-                <thead><tr><th>Provider</th><th>Endpoint URL</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>What it does</th>
+                    </tr>
+                </thead>
                 <tbody>
-                    <tr><td>AWS S3</td><td><em>leave empty</em></td></tr>
-                    <tr><td>Hetzner Object Storage</td><td><code>https://&lt;datacenter&gt;.your-objectstorage.com</code></td></tr>
-                    <tr><td>DigitalOcean Spaces</td><td><code>https://&lt;region&gt;.digitaloceanspaces.com</code></td></tr>
-                    <tr><td>Backblaze B2</td><td><code>https://s3.&lt;region&gt;.backblazeb2.com</code></td></tr>
-                    <tr><td>MinIO</td><td><code>https://your-minio-host</code></td></tr>
-                    <tr><td><a class="inline" href="https://johnny.web.ap.it" target="_blank" rel="noopener">Johnny</a> (self-hosted S3)</td><td>your Johnny public URL</td></tr>
+                    <tr>
+                        <td><code>cipi yml generate</code></td>
+                        <td>Prints the app's configuration as it stands on the server, ready to commit</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi yml example</code></td>
+                        <td>A blank commented template, namespaced to the app so it validates as-is</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi yml validate</code></td>
+                        <td>Parses the file and checks every value against the schema. Changes nothing</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi yml plan</code></td>
+                        <td>The diff: every alias, worker, database, setting and profile that would be added, changed or removed</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi yml apply</code></td>
+                        <td>Applies the plan. Add <code>--yes</code> for scripts and CI</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi yml auto</code></td>
+                        <td><code>on</code> / <code>off</code> / <code>status</code> — reconcile after every successful deploy</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <p>Any S3-compatible store works. If you want the off-site copy on a second VPS you own — not another SaaS invoice — <a class="inline" href="https://johnny.web.ap.it" target="_blank" rel="noopener">Johnny</a> is the open-source option already mentioned in the <a class="inline" href="/en/guides/laravel-developer-stack-2026">self-hosted developer stack</a>.</p>
+        <pre class="code-pre"><code>$ cipi yml generate myapp
+$ cipi yml example myapp
+$ cipi yml validate myapp
+$ cipi yml plan myapp
+$ cipi yml apply myapp [--yes]
+$ cipi yml auto myapp on|off|status</code></pre>
 
-        <h2 id="configure">Configure Cipi once</h2>
-        <p>SSH in as the admin user, become root, and run the wizard. It writes <code>/etc/cipi/backup.conf</code> and you should not have to touch it again unless the key or the bucket changes.</p>
-        <div class="code-pre"><code><span class="c"># as root on the VPS</span>
-$ cipi backup configure
-<span class="c"># → AWS Access Key ID</span>
-<span class="c"># → AWS Secret Access Key</span>
-<span class="c"># → Bucket name</span>
-<span class="c"># → Region</span>
-<span class="c"># → Endpoint URL (empty for AWS; required for everyone else)</span></code></div>
-        <p>Keep <code>/etc/cipi/backup.conf</code> mode <code>600</code> and owned by root. Those keys open every backup you will ever take. If a key leaks, rotate it at the provider and run <code>cipi backup configure</code> again — old objects stay in the bucket; only new uploads use the new key.</p>
-        <div class="note">
-            <p><code>cipi db backup</code> works with no configuration. <code>cipi backup run</code> does not. If the S3 command fails with a credentials error, you skipped this step.</p>
-        </div>
-
-        <h2 id="first-run">First backup and verify</h2>
-        <p>Do not put anything in cron until a manual run has landed in the bucket. Start with a single app:</p>
-        <div class="code-pre"><code>$ cipi backup run myapp
-<span class="c"># → s3://your-bucket/cipi/myapp/2026-08-22_143015/db.sql.gz</span>
-<span class="c"># → s3://your-bucket/cipi/myapp/2026-08-22_143015/shared.tar.gz</span>
-
-$ cipi backup list myapp
-$ cipi backup run
-<span class="c"># no app name = every app on the server</span></code></div>
-        <p>Then confirm from the provider console — or with the AWS CLI, which also talks to compatible endpoints if you pass <code>--endpoint-url</code>:</p>
-        <div class="code-pre"><code>$ aws s3 ls s3://your-bucket/cipi/myapp/
-$ aws s3 ls s3://your-bucket/cipi/myapp/2026-08-22_143015/</code></div>
-        <p>You should see both objects, with sizes that match a compressed dump plus the <code>shared/</code> tree. A 200-byte object usually means an empty dump or a failed upload — fix that before you schedule anything.</p>
-
-        <h2 id="schedule">Cron, retention and prune</h2>
-        <p>Daily at 02:00 is the boring default. Prune at 03:00 so yesterday's run is never deleted by a race. Four weeks of history is enough for most Laravel apps; drop to two if the bucket bill hurts, raise to eight if you need to unwind a slow-burn data bug.</p>
-        <div class="code-pre"><code><span class="c"># crontab -e as root</span>
-0 2 * * * /usr/local/bin/cipi backup run myapp >> /var/log/cipi/backup.log 2>&amp;1
-0 3 * * * /usr/local/bin/cipi backup prune myapp --weeks=4 >> /var/log/cipi/backup-prune.log 2>&amp;1</code></div>
-        <p>To back up every app on the box, drop the app name from both commands. <code>cipi backup prune</code> reads the same <code>/etc/cipi/backup.conf</code> and works with any compatible provider.</p>
-        <div class="code-pre"><code>$ cipi backup prune myapp --weeks=4
-$ cipi backup prune myapp --weeks=2</code></div>
-        <p>Watch <code>/var/log/cipi/backup.log</code> for a week. A silent cron that failed on day one is how people discover they have no backups the morning after a disk death.</p>
-
-        <h2 id="restore">Restore drill</h2>
-        <p>Do this on a staging app, or on a spare VPS, not on live traffic the first time. The happy path from an S3 prefix back to a running app:</p>
-        <div class="code-pre"><code>$ cipi backup list myapp
-
-$ aws s3 cp s3://your-bucket/cipi/myapp/2026-08-22_143015/db.sql.gz /tmp/db.sql.gz
-$ cipi db restore myapp /tmp/db.sql.gz
-
-$ aws s3 cp s3://your-bucket/cipi/myapp/2026-08-22_143015/shared.tar.gz /tmp/shared.tar.gz
-$ tar -xzf /tmp/shared.tar.gz -C /home/myapp/</code></div>
-        <p>If the VPS itself is gone, the sequence is: install Cipi on a new Ubuntu box, <code>cipi app create</code> with the same Git remote, then the two restores above, then <code>cipi ssl install</code> and a DNS cut. The <a class="inline" href="/en/docs/infrastructure#cli-backup">infrastructure docs</a> list the same commands; this drill is the part most people skip.</p>
-        <p>For a same-server rollback — bad migration, bad deploy — the local dump is faster:</p>
-        <div class="code-pre"><code>$ ls -lh /var/log/cipi/backups/myapp_*.sql.gz
-$ cipi db restore myapp /var/log/cipi/backups/myapp_20260822_143012.sql.gz
-$ cipi deploy myapp --rollback</code></div>
-        <div class="note">
-            <p>Local dumps in <code>/var/log/cipi/backups/</code> are never deleted automatically. On a busy deploy schedule they fill the disk. Keep the last five and drop the rest: <code>ls -t /var/log/cipi/backups/myapp_*.sql.gz | tail -n +6 | xargs rm -f</code>.</p>
-        </div>
-
-        <h2 id="before-deploy">Backup before every release</h2>
-        <p>Webhook auto-deploy cannot pause for a backup — the push fires <code>cipi deploy</code> immediately. For production, put a backup stage in CI so a failed dump blocks the release. The full GitHub Actions and GitLab examples live in <a class="inline" href="/en/docs/deploy#safe-deploy">Safe deploy — backup before release</a>. The two commands you need in that stage:</p>
-        <div class="code-pre"><code>$ cipi db backup myapp
-<span class="c"># fast local rollback</span>
-$ cipi backup run myapp
-<span class="c"># off-site copy of DB + shared/</span></code></div>
-        <p>Used together you get a same-box restore that takes seconds and an S3 prefix you can still open if the box is gone. If either command fails, do not deploy.</p>
-
-        <h2 id="mistakes">Mistakes that make backups useless</h2>
+        <h2 id="declare">What you can declare</h2>
+        <p>Seven areas. You do not have to declare all of them — only the sections you write are reconciled.</p>
         <ul>
-            <li><strong>Same region as the VPS, same provider account, no second copy.</strong> A suspended account or a regional outage takes both. Put the bucket in another region, or on another vendor.</li>
-            <li><strong>Root cloud keys on the server.</strong> A dedicated IAM user with four S3 actions on one bucket is enough. If the VPS is compromised, the blast radius stays that bucket.</li>
-            <li><strong>Never testing restore.</strong> Compression flags, empty dumps, a <code>shared/</code> extract that overwrites the wrong tree — you only meet those bugs during an incident unless you drill.</li>
-            <li><strong>No prune, then a surprise bill.</strong> Daily 2 GB dumps become 60 GB a month. Set <code>--weeks</code> the same day you set cron.</li>
-            <li><strong>Trusting provider snapshots alone.</strong> They are convenient. They are also on the same account, often the same region, and they do not give you a portable <code>db.sql.gz</code>.</li>
-            <li><strong>Skipping <code>shared/</code>.</strong> A database without uploaded files is half an app. <code>cipi backup run</code> already packs both; do not invent a dump-only cron "to keep it simple".</li>
+            <li><strong>Aliases</strong> — the declared list replaces the current one. An alias you delete from the file is removed from Nginx. Wildcards such as <code>*.myapp.com</code> are accepted. The primary domain is never managed here.</li>
+            <li><strong>PHP and php.ini</strong> — pin the app to PHP 8.3, 8.4 or 8.5 (already installed on the server) and set per-app overrides: <code>upload_max_filesize</code>, <code>post_max_size</code>, <code>memory_limit</code> and the rest. Server-wide values stay with <code>cipi ini set</code>.</li>
+            <li><strong>Extra databases</strong> — beyond the one created with the app, on MariaDB or PostgreSQL. Credentials land in <code>shared/cipi-databases.env</code> and are never written back to the repository. Databases are created, never dropped.</li>
+            <li><strong>Queue workers and Horizon</strong> — declare each queue with process count, tries and timeout, and Supervisor is reconciled to match. Or set <code>horizon: true</code> and let Horizon own the queues. Since <strong>5.1.2</strong>, <code>horizon: false</code> is actually read — previously <code>false</code> was treated like a missing key.</li>
+            <li><strong>Laravel Reverb</strong> — since <strong>5.1.2</strong>, <code>reverb: true</code> gives the app a localhost port, a Supervisor program, an nginx proxy for <code>/app/{key}</code> and <code>/apps/{id}/…</code> on its own domain, and generated <code>REVERB_*</code> credentials. Laravel apps only. An app that already owns <code>/app</code> or <code>/apps</code> cannot share that domain with Reverb.</li>
+            <li><strong>Scheduler</strong> — one boolean turns <code>* * * * * artisan schedule:run</code> on or off. No crontab editing on the next server.</li>
+            <li><strong>Healthcheck</strong> — an HTTP probe on one of the app's own domains, checked every five minutes and again right after every deploy. Optionally roll a failing release back automatically — the code symlink only; migrations are not undone.</li>
+            <li><strong>Backup profiles</strong> — per-app profiles with their own scope, schedule, retention, destinations and encryption. Names must be <code>myapp</code> or <code>myapp-*</code>.</li>
         </ul>
 
+        <h2 id="example">A complete file</h2>
+        <p>This is what a production app typically ships. You can generate most of it; the comments are for the pull request.</p>
+        <pre class="code-pre"><code>version: 1
+
+app:
+  php: "8.5"
+  aliases:
+    - "www.myapp.com"
+    - "*.myapp.com"
+  ini:
+    upload_max_filesize: 50M
+    post_max_size: 60M
+    memory_limit: 512M
+
+databases:
+  - name: myapp_reporting
+  - name: myapp_analytics
+    engine: pgsql
+
+workers:
+  horizon: false
+  reverb: false
+  queues:
+    - queue: default
+      processes: 2
+    - queue: emails
+      processes: 1
+      tries: 5
+      timeout: 300
+
+schedule: true
+
+health:
+  url: "https://myapp.com/up"
+  expect: 200
+
+backup:
+  profiles:
+    - name: myapp-db
+      scope: db
+      databases: ["myapp", "myapp_*"]
+      exclude_tables: ["*.jobs", "*.telescope_*"]
+      every: 30m
+      keep: 48
+      destinations: [local]
+    - name: myapp-nightly
+      scope: all
+      cron: "0 2 * * *"
+      keep_days: 14
+      destinations: [s3]
+      encrypt: true</code></pre>
+
+        <h2 id="plan">Plan, then apply</h2>
+        <p>Nothing changes until you look at the diff. <code>cipi yml plan myapp</code> lists every alias, worker, database, setting and profile that would be added, changed or removed. Read it the way you read a pull request.</p>
+        <pre class="code-pre"><code>$ cipi yml validate myapp
+$ cipi yml plan myapp
+$ cipi yml apply myapp                 <span class="c"># asks for confirmation</span>
+$ cipi yml apply myapp --yes           <span class="c"># scripts and CI</span></code></pre>
+        <p>A file that fails validation is rejected as a whole and <strong>never partially applied</strong>. That is the same fail-closed path a deploy uses when <code>yml auto</code> is on: email <code>yml_fail</code>, no half-state on the box.</p>
+
+        <h2 id="week">A week of real changes</h2>
+        <p>Treat the file like application code. Each of these is a one-line (or one-block) commit, reviewed, then applied — or applied automatically after the release if <code>yml auto</code> is already on.</p>
+        <ul>
+            <li><strong>Monday — aliases.</strong> Add <code>www.myapp.com</code> and <code>*.myapp.com</code> for multi-tenant subdomains. Remember: the list is authoritative. Dropping an alias from the file removes it from Nginx.</li>
+            <li><strong>Tuesday — php.ini.</strong> A form starts accepting 40&nbsp;MB uploads. Bump <code>upload_max_filesize</code> and <code>post_max_size</code> in <code>app.ini</code>. Server-wide defaults stay with <code>cipi ini set</code>.</li>
+            <li><strong>Wednesday — a new queue.</strong> The release adds an <code>emails</code> queue. Add the worker with <code>processes</code>, <code>tries</code> and <code>timeout</code>. Supervisor matches the file. If you switch the app to Horizon, set <code>horizon: true</code> and drop the queue list.</li>
+            <li><strong>Thursday — an extra database.</strong> Reporting needs its own MariaDB (or <code>engine: pgsql</code>). Name it <code>myapp_reporting</code>. Credentials appear in <code>/home/myapp/shared/cipi-databases.env</code> — never in Git. Cipi creates databases; it will not drop them if you delete the entry later.</li>
+            <li><strong>Friday — health and backups.</strong> Point <code>health.url</code> at <code>https://myapp.com/up</code> (it must be one of the app's own domains). Add a cheap <code>myapp-db</code> profile every 30 minutes and an encrypted nightly copy to S3.</li>
+        </ul>
+        <div class="note">
+            <p>PHP 8.5 must already be installed (<code>cipi php install 8.5</code>) before you pin <code>app.php</code> to it. The file will not install a runtime that is not on the box.</p>
+        </div>
+
+        <h2 id="auto">Opt in after every deploy</h2>
+        <p>Deploys ignore the file until you say otherwise. That is deliberate: a first commit of <code>cipi.yml</code> should not surprise production.</p>
+        <pre class="code-pre"><code>$ cipi yml auto myapp on       <span class="c"># reconcile after every successful deploy</span>
+$ cipi yml auto myapp status
+$ cipi yml auto myapp off      <span class="c"># back to manual apply</span></code></pre>
+        <p>With the opt-in given, every <strong>successful</strong> deploy reconciles — from both <code>cipi deploy</code> and the Git webhook. A release that carries no <code>cipi.yml</code> is a quiet no-op. A file that fails validation is reported by email (<code>yml_fail</code>) and never applied halfway. A successful reconcile fires <code>yml_apply</code>.</p>
+
+        <h2 id="left-alone">What the file will not touch</h2>
+        <ul>
+            <li>It can only <strong>configure</strong> an app that already exists — never create, rename or delete one.</li>
+            <li>Sections you omit are left alone. The one deliberate exception is the alias list: it is authoritative.</li>
+            <li>The app's own primary database and server-wide backup profiles stay yours. <code>generate</code> leaves them out on purpose.</li>
+            <li>Databases are created, never dropped. Removing a database entry from the file does not delete the database.</li>
+            <li>No field carries a shell command or a path to include. Unknown keys are errors.</li>
+        </ul>
+
+        <h2 id="safety">Safe to accept over Git</h2>
+        <p>The file arrives from a repository, so anyone who can commit controls its contents. The schema is fail-closed throughout:</p>
+        <ul>
+            <li>Databases must be named <code>&lt;app&gt;</code> or <code>&lt;app&gt;_*</code>; backup profiles <code>&lt;app&gt;</code> or <code>&lt;app&gt;-*</code>.</li>
+            <li>The healthcheck URL must resolve to one of the app's own domains — otherwise a commit could aim the five-minute prober at an internal address and read the answer back out of the alert emails.</li>
+            <li>The parser implements a small YAML subset and refuses anchors, aliases, tags, merge keys, block scalars and flow mappings outright.</li>
+        </ul>
+        <div class="note">
+            <p>Once <code>yml auto</code> is on, anyone who can push to that repository can change the app's aliases, PHP settings, workers, healthcheck and backup profiles. That is the point of configuration-as-code — treat write access to the repo accordingly.</p>
+        </div>
+
         <div class="cta-box">
-            <h2>Run it on a Cipi VPS</h2>
-            <p>Cipi is the free, open-source Laravel deploy CLI used throughout this guide. One command turns a fresh Ubuntu VPS into a hardened production server — and <code>cipi backup configure</code> is the step that makes the server survivable.</p>
+            <h2>Ship the file with the next release</h2>
+            <p>Generate what the server already has, commit it, read the plan, then turn <code>yml auto</code> on when you trust the loop. The overview and the full schema are one click away.</p>
             <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
             <div class="cta-actions">
-                <a href="/en/docs/getting-started" class="btn-primary">Get started free</a>
-                <a href="/en/docs/infrastructure#cli-backup" class="btn-ghost">Backup CLI reference</a>
+                <a href="/en/cipi-yml" class="btn-primary">cipi.yml overview</a>
+                <a href="/en/docs/deploy#cli-yml" class="btn-ghost">Full reference</a>
                 <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-ghost">Star on GitHub</a>
             </div>
         </div>
 
         <h2 id="faq">Frequently asked questions</h2>
-        <div class="faq-item"><h3>Does Cipi work only with Amazon S3?</h3><p>No. <code>cipi backup configure</code> accepts any S3-compatible endpoint: Hetzner Object Storage, DigitalOcean Spaces, Backblaze B2, MinIO, or a self-hosted store such as <a class="inline" href="https://johnny.web.ap.it" target="_blank" rel="noopener">Johnny</a>. Leave the endpoint empty for AWS; fill it for every other provider.</p></div>
-        <div class="faq-item"><h3>What is the difference between <code>cipi db backup</code> and <code>cipi backup run</code>?</h3><p><code>cipi db backup</code> writes a compressed SQL dump on the same VPS under <code>/var/log/cipi/backups/</code>. It is always available and needs no configuration. <code>cipi backup run</code> dumps the database and the app <code>shared/</code> folder, then uploads both archives to your S3 bucket. Use the local dump for a fast rollback; use the S3 copy for a real off-site restore.</p></div>
-        <div class="faq-item"><h3>How often should I back up a Laravel VPS?</h3><p>Daily is the sensible default for production. Add <code>cipi backup run</code> to the root crontab at a quiet hour, then prune older than four weeks. If the database changes constantly, run it twice a day. Always run a backup before a risky migration or a production deploy.</p></div>
-        <div class="faq-item"><h3>Can I restore a Cipi S3 backup onto a new VPS?</h3><p>Yes — that is the point of an off-site copy. Install Cipi on a fresh Ubuntu VPS, recreate the app, download <code>db.sql.gz</code> and <code>shared.tar.gz</code> from the bucket, restore the database with <code>cipi db restore</code>, and extract <code>shared/</code> into <code>/home/&lt;app&gt;/</code>.</p></div>
-        <div class="faq-item"><h3>Where does Cipi store S3 credentials?</h3><p><code>cipi backup configure</code> writes them to <code>/etc/cipi/backup.conf</code>. Keep that file root-only. The same credentials are used by <code>cipi backup run</code>, <code>list</code> and <code>prune</code>. Staging of large archives defaults to <code>/var/tmp</code> so a small RAM-backed <code>/tmp</code> does not abort the job.</p></div>
+        <div class="faq-item"><h3>Do I have to write cipi.yml by hand?</h3><p>No. <code>cipi yml generate &lt;app&gt;</code> prints the app's current server configuration as a ready-to-commit file, and <code>cipi yml example</code> prints a blank commented template if you would rather start from scratch.</p></div>
+        <div class="faq-item"><h3>Does a deploy apply the file automatically?</h3><p>Only after you opt in with <code>cipi yml auto &lt;app&gt; on</code>. Until then deploys ignore the file and you reconcile manually with <code>plan</code> and <code>apply</code>.</p></div>
+        <div class="faq-item"><h3>What happens to things the file does not mention?</h3><p>They are left alone. Only the sections you declare are reconciled — with one deliberate exception: the alias list is authoritative, so removing an alias from the file removes it from the server.</p></div>
+        <div class="faq-item"><h3>Can a commit break my server?</h3><p>The schema carries no shell commands and no include paths, an app can only touch its own databases and backup profiles, and a file that fails validation is rejected as a whole rather than applied halfway. Deploys ignore the file entirely until you turn <code>yml auto</code> on.</p></div>
+        <div class="faq-item"><h3>Does it work with the Git webhook?</h3><p>Yes. With <code>cipi yml auto</code> on, both <code>cipi deploy</code> and a webhook-triggered deploy reconcile after a successful release.</p></div>
 
         <h2>Keep reading</h2>
         <div class="related">
-            <a href="/en/guides/deploy-laravel-ubuntu-vps">Deploy Laravel on Ubuntu</a>
-            <a href="/en/guides/laravel-security-checklist">Laravel security checklist</a>
+            <a href="/en/cipi-yml">cipi.yml overview</a>
+            <a href="/en/docs/deploy#cli-yml">Docs: cipi.yml</a>
             <a href="/en/guides/laravel-ci-cd-git-workflow">CI/CD for Laravel</a>
-            <a href="/en/docs/infrastructure#cli-backup">Docs: cipi backup</a>
-            <a href="/en/docs/deploy#safe-deploy">Safe deploy with backup</a>
+            <a href="/en/guides/backup-vps-s3">VPS backups to S3</a>
+            <a href="/en/guides/deploy-laravel-ubuntu-vps">Deploy Laravel on Ubuntu</a>
         </div>
 
     </main>

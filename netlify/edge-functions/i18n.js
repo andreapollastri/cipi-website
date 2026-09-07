@@ -90,6 +90,13 @@ const GUIDE_SLUGS = {
     pt: '/guides/painel-ui-e-api',
     it: '/guide/pannello-ui-e-api-cipi',
   },
+  '/guides/manage-apps-with-cipi-yml': {
+    de: '/guides/apps-mit-cipi-yml-verwalten',
+    fr: '/guides/gerer-apps-avec-cipi-yml',
+    es: '/guides/gestionar-apps-con-cipi-yml',
+    pt: '/guides/gerenciar-apps-com-cipi-yml',
+    it: '/guide/gestire-app-con-cipi-yml',
+  },
 };
 
 export const SLUGS_IT = {

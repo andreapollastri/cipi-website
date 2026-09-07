@@ -23,7 +23,7 @@ Cipi is a free, open-source (MIT), Laravel-first deploy CLI for Ubuntu VPS. One 
 - Admin access: SSH as `cipi` user, then `sudo -s` to run `cipi` commands
 - License: MIT, source at https://github.com/cipi-sh/cipi
 - Author: Andrea Pollastri (https://github.com/andreapollastri)
-- Current major version: Cipi 5.1.2 (Reverb production-ready: generated credentials, ws/wss from the certificate, proxy limited to /app/{key} and /apps/{id}/…, raised connection limits, workers.reverb in cipi.yml; 5.1.1 hotfix: FPM pool repair and wildcard domains end to end; 5.1.0: backup profiles, cipi.yml, cipi ini, post-deploy healthchecks, nginx default-server, wildcard aliases; plus Laravel Octane on FrankenPHP, Horizon, PostgreSQL, Node build on deploy, pre-deploy snapshots, wildcard SSL via DNS-01, staging clones)
+- Current major version: Cipi 5.1.3 (5.1.3 hotfix: `cipi ini list` no longer dies on the first setting after printing the header; 5.1.2 Reverb production-ready: generated credentials, ws/wss from the certificate, proxy limited to /app/{key} and /apps/{id}/…, raised connection limits, workers.reverb in cipi.yml; 5.1.1 hotfix: FPM pool repair and wildcard domains end to end; 5.1.0: backup profiles, cipi.yml, cipi ini, post-deploy healthchecks, nginx default-server, wildcard aliases; plus Laravel Octane on FrankenPHP, Horizon, PostgreSQL, Node build on deploy, pre-deploy snapshots, wildcard SSL via DNS-01, staging clones)
 
 ## Core capabilities
 

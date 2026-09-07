@@ -357,6 +357,7 @@
 <span class="p">$</span> cipi ini reset [--app=shop]                  <span class="c"># back to Cipi defaults</span>
 <span class="p">$</span> cipi ini keys                                <span class="c"># what can be set, and what cannot</span></pre>
 </div>
+<p>Uma correção <strong>5.1.3</strong> impediu que <code>cipi ini list</code> morresse no primeiro ajuste depois de imprimir o cabeçalho (<code>_INI_SOURCE: unbound variable</code>). Sem migração: <code>cipi self-update</code> copia o novo <code>lib/ini.sh</code>.</p>
 <h3>O que isso faz por você</h3>
 <ul>
 <li><strong>Ele aumenta as configurações que limitariam silenciosamente as suas.</strong> Configuração
