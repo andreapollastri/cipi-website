@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gérez Laravel applications avec cipi.yml — configuration fournie avec le code</title>
+<meta content="Un guide pratique pour gérer Cipi applications avec cipi.yml : générez le fichier à partir du serveur, examinez le plan, appliquez les alias, PHP, les travailleurs, Reverb, les contrôles de santé et les sauvegardes, puis activez-le pour que chaque déploiement soit réconcilié." name="description"/>
+<meta content="cipi.yml, gérer laravel applications, cipi yml apply, cipi plan yml, laravel configuration en tant que code, files d'attente yaml, laravel reverb yaml, cipi profils de sauvegarde" name="keywords"/>
+<meta content="Andrea Pollastri" name="author"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
+<link href="https://cipi.sh/fr/guides/gerer-apps-avec-cipi-yml" rel="canonical"/>
+    <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="en" href="https://cipi.sh/en/guides/manage-apps-with-cipi-yml">
+    <link rel="alternate" hreflang="de" href="https://cipi.sh/de/guides/apps-mit-cipi-yml-verwalten">
+    <link rel="alternate" hreflang="fr" href="https://cipi.sh/fr/guides/gerer-apps-avec-cipi-yml">
+    <link rel="alternate" hreflang="it" href="https://cipi.sh/it/guide/gestire-app-con-cipi-yml">
+    <link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/gestionar-apps-con-cipi-yml">
+    <link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/gerenciar-apps-com-cipi-yml">
+    <link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/manage-apps-with-cipi-yml">
+    <!-- /i18n:alternates -->
+<link href="/sitemap.xml" rel="sitemap" type="application/xml"/>
+<meta content="article" property="og:type"/>
+<meta content="Cipi" property="og:site_name"/>
+<meta content="https://cipi.sh/fr/guides/gerer-apps-avec-cipi-yml" property="og:url"/>
+<meta content="Gérez Laravel applications avec cipi.yml — configuration fournie avec le code" property="og:title"/>
+<meta content="Un guide pratique pour gérer Cipi applications avec cipi.yml : générez le fichier à partir du serveur, examinez le plan, appliquez les alias, PHP, les travailleurs, Reverb, les contrôles de santé et les sauvegardes, puis activez-le pour que chaque déploiement soit réconcilié." property="og:description"/>
+<meta content="https://cipi.sh/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Manage Laravel apps with cipi.yml" property="og:image:alt"/>
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="pt_PT"><meta content="2026-09-07T08:00:00+02:00" property="article:published_time"/>
+<meta content="2026-09-07T08:00:00+02:00" property="article:modified_time"/>
+<meta content="https://web.ap.it" property="article:author"/>
+<meta content="Guides" property="article:section"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Gérez Laravel applications avec cipi.yml — configuration fournie avec le code" name="twitter:title"/>
+<meta content="Un guide pratique pour gérer Cipi applications avec cipi.yml : générez le fichier à partir du serveur, examinez le plan, appliquez les alias, PHP, les travailleurs, Reverb, les contrôles de santé et les sauvegardes, puis activez-le pour que chaque déploiement soit réconcilié." name="twitter:description"/>
+<meta content="https://cipi.sh/og.png" name="twitter:image"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Manage Laravel apps with cipi.yml — config that ships with the code",
+  "name": "Manage Laravel apps with cipi.yml — config that ships with the code",
+  "url": "https://cipi.sh/en/guides/manage-apps-with-cipi-yml",
+  "description": "A practical guide to managing Cipi apps with cipi.yml: generate the file from the server, review the plan, apply aliases, PHP, workers, Reverb, healthchecks and backups, then opt in so every deploy reconciles.",
+  "inLanguage": "fr",
+  "image": "https://cipi.sh/og.png",
+  "datePublished": "2026-09-07",
+  "dateModified": "2026-09-07",
+  "author": {
+    "@type": "Person",
+    "name": "Andrea Pollastri",
+    "url": "https://web.ap.it",
+    "sameAs": [
+      "https://github.com/andreapollastri",
+      "https://www.linkedin.com/in/andrea-pollastri"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cipi",
+    "url": "https://cipi.sh/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cipi.sh/favicon-light-192.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cipi.sh/en/guides/manage-apps-with-cipi-yml"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Cipi",
+    "url": "https://cipi.sh/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Ubuntu"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Cipi",
+    "url": "https://cipi.sh/"
+  }
+}
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://cipi.sh/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://cipi.sh/en/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Manage apps with cipi.yml",
+      "item": "https://cipi.sh/en/guides/manage-apps-with-cipi-yml"
+    }
+  ]
+}
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I have to write cipi.yml by hand?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. cipi yml generate prints the app's current server configuration as a ready-to-commit file. cipi yml example prints a blank commented template if you prefer to start from scratch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a deploy apply cipi.yml automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only after you opt in with cipi yml auto on. Until then deploys ignore the file and you reconcile manually with cipi yml plan and cipi yml apply."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to things the file does not mention?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are left alone. Only the sections you declare are reconciled, with one exception: the alias list is authoritative, so removing an alias from the file removes it from Nginx."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a commit break the server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The schema carries no shell commands or include paths. An app can only touch databases and backup profiles named after itself. An invalid file is rejected as a whole, never applied halfway. Deploys ignore the file until yml auto is on."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work with the Git webhook?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. With cipi yml auto on, both cipi deploy and a webhook-triggered deploy reconcile after a successful release."
+      }
+    }
+  ]
+}
+    </script>
+<link href="/favicon-light.png" id="favicon" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-light-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/favicon-light-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/favicon-light-192.png" rel="apple-touch-icon" sizes="192x192"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
+<link href="/docs/style.css" rel="stylesheet"/>
+<style>
+        .cmp { max-width: 880px; margin: 0 auto; padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem; }
+        .cmp-breadcrumb { display:inline-flex; align-items:center; flex-wrap:wrap; gap:.15rem; font-size:.82rem; margin-bottom:1.6rem; padding:.35rem .6rem; border:1px solid var(--border); border-radius:0; background:var(--bg-card); box-shadow:var(--shadow-sm); }
+        .cmp-breadcrumb a { display:inline-flex; align-items:center; color:var(--text-secondary); text-decoration:none; padding:.2rem .55rem; transition:color .15s, background .15s; }
+        .cmp-breadcrumb a:hover { color:var(--accent); background:var(--tag-bg); }
+        .cmp-breadcrumb .sep { color:var(--text-muted); opacity:.5; font-size:1rem; line-height:1; }
+        .cmp-breadcrumb .current { color:var(--text); font-weight:600; padding:.2rem .55rem; }
+        .cmp-breadcrumb .home-ico { width:13px; height:13px; margin-right:.35rem; }
+        .cmp-eyebrow { display:inline-block; font-family:var(--font-mono); font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); background:var(--tag-bg); padding:.3rem .7rem; margin-bottom:1.1rem; }
+        .cmp h1 { font-family:var(--font-display); font-size:clamp(1.9rem, 4.6vw, 2.9rem); line-height:1.1; letter-spacing:-.02em; margin-bottom:1rem; }
+        .cmp h1 em { color:var(--accent); font-style:normal; }
+        .cmp-updated { font-family:var(--font-mono); font-size:.78rem; color:var(--text-muted); margin:0 0 1.2rem; }
+        .cmp-updated a { color:var(--text-muted); }
+        .cmp .lead { font-size:1.15rem; color:var(--text-secondary); max-width:46rem; margin-bottom:1.2rem; }
+        .cmp h2 { font-family:var(--font-display); font-size:1.65rem; margin:3rem 0 1rem; letter-spacing:-.01em; }
+        .cmp h3 { font-family:var(--font-display); font-size:1.18rem; margin:2rem 0 .6rem; }
+        .cmp p { color:var(--text-secondary); margin-bottom:1rem; line-height:1.75; }
+        .cmp ul, .cmp ol { margin:0 0 1.2rem 1.35rem; color:var(--text-secondary); line-height:1.7; }
+        .cmp li { margin-bottom:.5rem; padding-left:.25rem; }
+        .cmp li strong, .cmp p strong { color:var(--text); }
+        .cmp a.inline { color:var(--accent); text-decoration:none; }
+        .cmp a.inline:hover { text-decoration:underline; }
+        .cmp code { font-family:var(--font-mono); font-size:.85em; background:var(--tag-bg); padding:.1rem .35rem; }
+        .code-pre { background:var(--code-bg); color:var(--code-text); padding:1.1rem 1.3rem; overflow-x:auto; font-family:var(--font-mono); font-size:.84rem; line-height:1.65; margin:1rem 0 1.4rem; white-space:pre; }
+        .code-pre code { background:none; padding:0; font-size:1em; color:inherit; }
+        .install-box { background:var(--code-bg); color:var(--code-text); padding:1.1rem 1.4rem; font-family:var(--font-mono); font-size:.9rem; overflow-x:auto; margin:1rem 0; }
+        .install-box .c, .code-pre .c { color:var(--code-comment); font-style:italic; }
+        .cmp-table-wrap { overflow-x:auto; margin:1.4rem 0; }
+        .cmp-table { width:100%; border-collapse:collapse; font-size:.92rem; border:1px solid var(--border); min-width:560px; }
+        .cmp-table th, .cmp-table td { padding:.7rem .9rem; text-align:left; border-bottom:1px solid var(--border); }
+        .cmp-table thead th { background:var(--bg-warm); font-family:var(--font-display); font-weight:600; }
+        .cmp-table tr:last-child td { border-bottom:none; }
+        .note { border-left:3px solid var(--accent); padding:.9rem 1.1rem; background:var(--tag-bg); margin:1.5rem 0; }
+        .note p { margin:0; }
+        .toc { border:1px solid var(--border); background:var(--bg-card); padding:1.1rem 1.3rem; margin:1.6rem 0 2rem; box-shadow:var(--shadow-sm); }
+        .toc strong { font-family:var(--font-display); display:block; margin-bottom:.5rem; }
+        .toc ol { margin:0 0 0 1.3rem; }
+        .toc li { margin-bottom:.3rem; }
+        .toc a { color:var(--text-secondary); text-decoration:none; }
+        .toc a:hover { color:var(--accent); }
+        .cta-box { border:1px solid var(--accent); background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, var(--bg-card)), var(--bg-card)); padding:1.6rem 1.7rem; margin:2.6rem 0; }
+        .cta-box h2 { margin:0 0 .6rem; font-size:1.3rem; }
+        .cta-box p { margin-bottom:.9rem; }
+        .cta-actions { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1rem; }
+        .btn-primary { display:inline-flex; align-items:center; gap:.5rem; background:var(--accent); color:#0A0A0A; font-weight:600; padding:.7rem 1.3rem; border-radius:var(--radius-sm); text-decoration:none; font-family:var(--font-display); transition:transform .15s, box-shadow .15s; }
+        .btn-primary:hover { transform:translateY(-1px); box-shadow:var(--shadow-md); }
+        .btn-ghost { display:inline-flex; align-items:center; gap:.5rem; border:1px solid var(--border); color:var(--text); padding:.7rem 1.3rem; border-radius:var(--radius-sm); text-decoration:none; font-weight:500; transition:border-color .15s,color .15s; }
+        .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+        .faq-item { border-bottom:1px solid var(--border); padding:1.2rem 0; }
+        .faq-item:last-child { border-bottom:none; }
+        .faq-item h3 { font-family:var(--font-display); font-size:1.08rem; margin:0 0 .45rem; }
+        .faq-item p { margin:0; }
+        .related { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+        .related a { font-size:.9rem; border:1px solid var(--border); padding:.4rem .9rem; text-decoration:none; color:var(--text-secondary); }
+        .related a:hover { border-color:var(--accent); color:var(--accent); }
+        .guide-grid { display:grid; gap:1rem; grid-template-columns:1fr; margin:1.6rem 0; }
+        @media(min-width:680px){ .guide-grid{ grid-template-columns:1fr 1fr; } }
+        .guide-card { display:block; border:1px solid var(--border); padding:1.4rem 1.5rem; background:var(--bg-card); box-shadow:var(--shadow-sm); text-decoration:none; transition:transform .15s, border-color .15s, box-shadow .15s; }
+        .guide-card:hover { transform:translateY(-2px); border-color:var(--accent); box-shadow:var(--shadow-md); }
+        .guide-card h2 { font-family:var(--font-display); font-size:1.15rem; margin:0 0 .4rem; }
+        .guide-card h2 span { color:var(--accent); }
+        .guide-card p { font-size:.92rem; margin:0 0 .7rem; color:var(--text-secondary); }
+        .guide-card .go { font-size:.85rem; font-weight:600; color:var(--accent); font-family:var(--font-display); }
+        .guide-tag { display:inline-block; font-size:.72rem; font-family:var(--font-mono); color:var(--text-muted); border:1px solid var(--border); padding:.15rem .55rem; margin-bottom:.8rem; }
+    </style>
+<meta content="#65A30D" id="themeColor" name="theme-color"/>
+</head>
+<body>
+<div aria-hidden="true" class="atmosphere"></div>
+<nav>
+<div class="nav-inner">
+<div class="nav-left">
+<a class="nav-logo" href="/">
+<svg class="tux-logo" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.2182,35.9c-3.1368,0-6.8982,1.496-7.2988,5.6766a.916.916,0,0,0,.9061,1.0025h11.97A.9.9,0,0,0,22.7,41.643C22.6175,39.8048,21.7865,35.9,16.2182,35.9Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M18.0508,20.564c-1.35,1.0368-7.3687,7.51-4.3595,15.6667" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M31.7818,35.9c3.1368,0,6.8982,1.496,7.2988,5.6766a.916.916,0,0,1-.9061,1.0025h-11.97A.9.9,0,0,1,25.3,41.643C25.3825,39.8048,26.2135,35.9,31.7818,35.9Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M35.0148,36.4556c3.1848-2.8438,2.7468-7.5246,2.7468-8.7785,2.8935.82,5.0306,2.9709,5.5941,2.17,1.3744-1.9531-7.5193-7.5461-7.6918-10.8989C35.4951,15.6692,35.1706,5.4214,24,5.4214S12.5049,15.6692,12.3361,18.9484c-.1725,3.3528-9.0662,8.9458-7.6918,10.8989.5635.8007,2.7006-1.35,5.5941-2.17,0,1.2539-.438,5.9347,2.7468,8.7785" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M29.2763,19.8324c1.9318,1.5032,8.0416,8.242,5.0324,16.3983" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M24,24.8431l3.9479-4.2791c-.3858-1.0127-1.712-1.929-3.9479-1.929s-3.5621.9163-3.9479,1.929Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M20.0521,20.564c-3.424.5063-3.9062-2.7247-3.9062-4.7019,0-2.7006,1.4467-4.4367,3.9062-4.4367S23.79,14.7529,23.79,16.3443A3.8486,3.8486,0,0,1,23.181,18.68" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M27.7205,20.1334c.6751.0482,3.9538-.3892,3.9538-3.331s-1.76-3.7615-4.1232-3.7615a3.7861,3.7861,0,0,0-3.8164,2.6682" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M22.7012,41.4815a6.8371,6.8371,0,0,0,2.6076,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="22.1579" cy="16.5888" fill="currentColor" r="0.75"></circle>
+<circle cx="25.5497" cy="16.5888" fill="currentColor" r="0.75"></circle>
+</svg>
+<span>Ci<span style="color:var(--signal)">pi</span></span>
+</a>
+<span class="nav-badge">Guides</span>
+</div>
+<div class="nav-right">
+<a class="nav-link" href="/fr/cipi-yml">cipi.yml</a>
+
+<!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">FR</summary><div class="lang-menu"><a href="/en/guides/manage-apps-with-cipi-yml" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/apps-mit-cipi-yml-verwalten" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a class="active" href="/fr/guides/gerer-apps-avec-cipi-yml" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/gestire-app-con-cipi-yml" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/gestionar-apps-con-cipi-yml" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/guides/gerenciar-apps-com-cipi-yml" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
+<button aria-label="Changer de thème" class="theme-toggle" onclick="toggleTheme()">
+<svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
+<path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
+</svg>
+<svg class="icon-sun" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="12" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+</button>
+<a class="btn-nav-sm" href="https://github.com/cipi-sh/cipi" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14">
+<path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path>
+</svg>
+                    GitHub
+                </a>
+</div>
+</div>
+</nav>
+<main class="cmp">
+<nav aria-label="Fil d'Ariane" class="cmp-breadcrumb">
+<a href="/"><svg class="home-ico" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Accueil</a>
+<span class="sep">›</span>
+<a href="/fr/guides/">Guides</a>
+<span class="sep">›</span>
+<span class="current">Gérer les applications avec cipi.yml</span>
+</nav>
+<span class="cmp-eyebrow">cipi.yml · configuration en tant que code</span>
+<h1>Gérez Laravel applications avec <em>cipi.yml</em></h1>
+<p class="cmp-updated">Par <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Dernière mise à jour : <time datetime="2026-09-07">7 septembre 2026</time> · lecture gratuite, pas de paywall</p>
+<p class="lead">L'état qu'une application attend sur le serveur (alias, PHP, Workers, santé, sauvegardes) se trouve généralement dans un panneau ou dans la tête de quelqu'un. Depuis Cipi 5.1, il peut vivre dans un <code>cipi.yml</code> à la racine du dépôt, revu dans la même pull request que le code qui en dépend. Ce guide est la boucle pratique : générer, planifier, appliquer, puis s'inscrire pour que chaque déploiement soit réconcilié.</p>
+<div class="toc">
+<strong>Dans ce guide</strong>
+<ol>
+<li><a href="#why">Pourquoi le fichier appartient à côté du code</a></li>
+<li><a href="#generate">Démarrer à partir du serveur live</a></li>
+<li><a href="#commands">Les commandes que vous utiliserez</a></li>
+<li><a href="#declare">Ce que vous pouvez déclarer</a></li>
+<li><a href="#example">Un dossier complet</a></li>
+<li><a href="#plan">Planifiez, puis postulez</a></li>
+<li><a href="#week">Une semaine de vrais changements</a></li>
+<li><a href="#auto">Inscrivez-vous après chaque déploiement</a></li>
+<li><a href="#left-alone">Ce que le fichier ne touchera pas</a></li>
+<li><a href="#safety">Acceptation sûre via Git</a></li>
+<li><a href="#faq">FAQ</a></li>
+</ol>
+</div>
+<h2 id="why">Pourquoi le fichier appartient à côté du code</h2>
+<p>Une version qui ajoute une tâche en file d'attente sans travailleur est à moitié expédiée. Un rollback qui laisse celui de la semaine dernière <code>upload_max_filesize</code>est à moitié annulé. L'état du serveur réside généralement ailleurs : un panneau, une page wiki ou la mémoire de celui qui a configuré la boîte.</p>
+<p>A <code>cipi.yml</code> validé à côté de l'application Laravel fait que cet état fait partie de la même pull request que le code qui en dépend. Le fichier est <strong>déclaratif</strong>: il décrit l'état final, pas les étapes. Cipi lit ce que possède le serveur, le compare avec le fichier et vous montre la différence avant de toucher à quoi que ce soit.</p>
+<div class="note">
+<p>La page produit <a class="inline" href="/fr/cipi-yml">cipi.yml — configuration fournie avec le code</a> est l'aperçu. Le schéma complet réside dans <a class="inline" href="/fr/docs/deploy#cli-yml">Docs → Déployer → cipi.yml</a>. Ce guide est la boucle quotidienne d'une application.</p>
+</div>
+<h2 id="generate">Démarrer à partir du serveur live</h2>
+<p>Vous n'êtes pas obligé d'écrire le fichier à la main. Sur une boîte Cipi 5.1+, imprimez la configuration actuelle de l'application (alias, version PHP et paramètres par application, bases de données supplémentaires, files d'attente relues à partir de Supervisor, Horizon, Reverb, le planificateur et les profils de sauvegarde que possède l'application) — sous forme de fichier prêt à être validé :</p>
+<pre class="code-pre"><code>$ cipi yml generate myapp &gt; cipi.yml
+$ cipi yml plan myapp                  <span class="c"># reports nothing to do</span></code></pre>
+<p>Validez ce fichier à la racine du référentiel. Cipi le recherche dans <code>current/cipi.yml</code>, alors <code>current/cipi.yaml</code>, alors <code>shared/cipi.yml</code> — remplacer par <code>--file=&lt;path&gt;</code> si vous le gardez ailleurs.</p>
+<p>Vous préférez un modèle vierge et entièrement commenté ? <code>cipi yml example myapp</code> en imprime un avec des bases de données et des profils réservés déjà dans l'espace de noms de cette application, de sorte que le modèle soit validé tel quel.</p>
+<h2 id="commands">Les commandes que vous utiliserez</h2>
+<div class="cmp-table-wrap">
+<table class="cmp-table">
+<thead>
+<tr>
+<th>Commande</th>
+<th>Ce que ça fait</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cipi yml generate</code></td>
+<td>Imprime la configuration de l'application telle qu'elle se présente sur le serveur, prête à être validée</td>
+</tr>
+<tr>
+<td><code>cipi yml example</code></td>
+<td>Un modèle commenté vierge, avec un espace de noms pour l'application afin qu'il soit validé tel quel</td>
+</tr>
+<tr>
+<td><code>cipi yml validate</code></td>
+<td>Analyse le fichier et vérifie chaque valeur par rapport au schéma. Cela ne change rien</td>
+</tr>
+<tr>
+<td><code>cipi yml plan</code></td>
+<td>La différence : chaque alias, travailleur, base de données, paramètre et profil qui serait ajouté, modifié ou supprimé</td>
+</tr>
+<tr>
+<td><code>cipi yml apply</code></td>
+<td>Applique le plan. Ajouter <code>--yes</code> pour les scripts et CI</td>
+</tr>
+<tr>
+<td><code>cipi yml auto</code></td>
+<td><code>on</code> / <code>off</code> / <code>status</code> — réconcilier après chaque déploiement réussi</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre class="code-pre"><code>$ cipi yml generate myapp
+$ cipi yml example myapp
+$ cipi yml validate myapp
+$ cipi yml plan myapp
+$ cipi yml apply myapp [--yes]
+$ cipi yml auto myapp on|off|status</code></pre>
+<h2 id="declare">Ce que vous pouvez déclarer</h2>
+<p>Sept domaines. Vous n’êtes pas obligé de tous les déclarer : seules les sections que vous rédigez sont rapprochées.</p>
+<ul>
+<li><strong>Alias</strong> — la liste déclarée remplace la liste actuelle. Un alias que vous supprimez du fichier est supprimé de Nginx. Caractères génériques tels que<code>*.myapp.com</code> sont acceptés. Le domaine principal n'est jamais géré ici.</li>
+<li><strong>PHP et php.ini</strong> — épinglez l'application sur PHP 8.3, 8.4 ou 8.5 (déjà installée sur le serveur) et définissez des remplacements par application : <code>upload_max_filesize</code>, <code>post_max_size</code>, <code>memory_limit</code> et le reste. Les valeurs à l'échelle du serveur restent les mêmes <code>cipi ini set</code>.</li>
+<li><strong>Bases de données supplémentaires</strong> — au-delà de celui créé avec l'application, le MariaDB ou le PostgreSQL. Les informations d’identification arrivent <code>shared/cipi-databases.env</code> et ne sont jamais réécrits dans le référentiel. Les bases de données sont créées, jamais supprimées.</li>
+<li><strong>Travailleurs de file d'attente et Horizon</strong> — déclarez chaque file d'attente avec le nombre de processus, les tentatives et le délai d'attente, et Supervisor est rapproché pour correspondre. Ou définir <code>horizon: true</code> et laissez Horizon posséder les files d'attente. Depuis <strong>5.1.2</strong>, <code>horizon: false</code> est effectivement lu - auparavant<code>false</code> a été traité comme une clé manquante.</li>
+<li><strong>Laravel Reverb</strong> — depuis <strong>5.1.2</strong>, <code>reverb: true</code> donne à l'application un port localhost, un programme Supervisor, un proxy nginx pour <code>/app/{key}</code> et <code>/apps/{id}/…</code> sur son propre domaine, et généré <code>REVERB_*</code> informations d'identification. Laravel applications uniquement. Une application qui possède déjà <code>/app</code> ou <code>/apps</code> ne peut pas partager ce domaine avec Reverb.</li>
+<li><strong>Planificateur</strong> — un tour booléen <code>* * * * * artisan schedule:run</code> allumé ou éteint. Pas de modification de crontab sur le serveur suivant.</li>
+<li><strong>Bilan de santé</strong> — une sonde HTTP sur l'un des domaines propres à l'application, vérifiée toutes les cinq minutes et à nouveau juste après chaque déploiement. Facultativement, annulez automatiquement une version défaillante - le lien symbolique du code uniquement ; les migrations ne se défont pas.</li>
+<li><strong>Profils de sauvegarde</strong> — des profils par application avec leur propre portée, calendrier, conservation, destinations et cryptage. Les noms doivent être <code>myapp</code> ou <code>myapp-*</code>.</li>
+</ul>
+<h2 id="example">Un dossier complet</h2>
+<p>C’est ce qu’une application de production propose généralement. Vous pouvez en générer la majeure partie ; les commentaires sont pour la pull request.</p>
+<pre class="code-pre"><code>version: 1
+
+app:
+  php: "8.5"
+  aliases:
+    - "www.myapp.com"
+    - "*.myapp.com"
+  ini:
+    upload_max_filesize: 50M
+    post_max_size: 60M
+    memory_limit: 512M
+
+databases:
+  - name: myapp_reporting
+  - name: myapp_analytics
+    engine: pgsql
+
+workers:
+  horizon: false
+  reverb: false
+  queues:
+    - queue: default
+      processes: 2
+    - queue: emails
+      processes: 1
+      tries: 5
+      timeout: 300
+
+schedule: true
+
+health:
+  url: "https://myapp.com/up"
+  expect: 200
+
+backup:
+  profiles:
+    - name: myapp-db
+      scope: db
+      databases: ["myapp", "myapp_*"]
+      exclude_tables: ["*.jobs", "*.telescope_*"]
+      every: 30m
+      keep: 48
+      destinations: [local]
+    - name: myapp-nightly
+      scope: all
+      cron: "0 2 * * *"
+      keep_days: 14
+      destinations: [s3]
+      encrypt: true</code></pre>
+<h2 id="plan">Planifiez, puis postulez</h2>
+<p>Rien ne change jusqu'à ce que vous regardiez la différence. <code>cipi yml plan myapp</code> répertorie tous les alias, travailleurs, bases de données, paramètres et profils qui seraient ajoutés, modifiés ou supprimés. Lisez-le comme vous lisez une pull request.</p>
+<pre class="code-pre"><code>$ cipi yml validate myapp
+$ cipi yml plan myapp
+$ cipi yml apply myapp                 <span class="c"># asks for confirmation</span>
+$ cipi yml apply myapp --yes           <span class="c"># scripts and CI</span></code></pre>
+<p>Un dossier dont la validation échoue est rejeté dans son ensemble et <strong>jamais partiellement appliqué</strong>. Il s'agit du même chemin fermé en cas d'échec qu'un déploiement utilise lorsque <code>yml auto</code> est activé : email <code>yml_fail</code>, pas de demi-état sur la boite.</p>
+<h2 id="week">Une semaine de vrais changements</h2>
+<p>Traitez le fichier comme du code d'application. Chacun d'entre eux est un commit d'une ligne (ou d'un bloc), révisé, puis appliqué - ou appliqué automatiquement après la publication si <code>yml auto</code> est déjà allumé.</p>
+<ul>
+<li><strong>Lundi – pseudonymes.</strong> Ajouter <code>www.myapp.com</code> et <code>*.myapp.com</code> pour les sous-domaines multi-locataires. N'oubliez pas : la liste fait autorité. Supprimer un alias du fichier le supprime de Nginx.</li>
+<li><strong>Mardi — php.ini.</strong> Un formulaire commence à accepter les importations de 40 Mo. Bosse <code>upload_max_filesize</code> et <code>post_max_size</code> dans <code>app.ini</code>. Les valeurs par défaut à l'échelle du serveur restent les mêmes <code>cipi ini set</code>.</li>
+<li><strong>Mercredi — une nouvelle file d'attente.</strong> La version ajoute un <code>emails</code> file d'attente. Ajoutez le travailleur avec <code>processes</code>, <code>tries</code> et <code>timeout</code>. Supervisor correspond au fichier. Si vous basculez l'application sur Horizon, réglez <code>horizon: true</code> et supprimez la liste d'attente.</li>
+<li><strong>Jeudi — une base de données supplémentaire.</strong> Le reporting nécessite son propre MariaDB (ou <code>engine: pgsql</code>). Nommez-le <code>myapp_reporting</code>. Les informations d'identification apparaissent dans <code>/home/myapp/shared/cipi-databases.env</code>- jamais dans Git. Cipi crée des bases de données ; il ne les supprimera pas si vous supprimez l'entrée plus tard.</li>
+<li><strong>Vendredi – santé et sauvegardes.</strong> Point <code>health.url</code> à <code>https://myapp.com/up</code> (il doit s'agir de l'un des domaines propres à l'application). Ajoutez un bon marché <code>myapp-db</code> profil toutes les 30 minutes et une copie nocturne cryptée sur S3.</li>
+</ul>
+<div class="note">
+<p>PHP 8.5 doit déjà être installé (<code>cipi php install 8.5</code>) avant d'épingler <code>app.php</code> à cela. Le fichier n'installera pas un runtime qui n'est pas sur la boîte.</p>
+</div>
+<h2 id="auto">Inscrivez-vous après chaque déploiement</h2>
+<p>Les déploiements ignorent le fichier jusqu'à ce que vous disiez le contraire. C'est délibéré : un premier engagement de<code>cipi.yml</code>ne devrait pas surprendre la production.</p>
+<pre class="code-pre"><code>$ cipi yml auto myapp on       <span class="c"># reconcile after every successful deploy</span>
+$ cipi yml auto myapp status
+$ cipi yml auto myapp off      <span class="c"># back to manual apply</span></code></pre>
+<p>Avec l'opt-in donné, chaque <strong>réussi</strong> déployer des rapprochements - des deux <code>cipi deploy</code> et le Git webhook. Une version qui ne porte aucun <code>cipi.yml</code> est une opération silencieuse. Un fichier dont la validation échoue est signalé par email (<code>yml_fail</code>) et jamais appliqué à mi-chemin. Un rapprochement réussi des incendies <code>yml_apply</code>.</p>
+<h2 id="left-alone">Ce que le fichier ne touchera pas</h2>
+<ul>
+<li>Cela ne peut que <strong>configurer</strong>une application qui existe déjà – ne jamais en créer, renommer ou supprimer.</li>
+<li>Les sections que vous omettez sont laissées telles quelles. La seule exception délibérée est la liste d’alias : elle fait autorité.</li>
+<li>La base de données principale de l'application et les profils de sauvegarde à l'échelle du serveur restent les vôtres. <code>generate</code> les laisse volontairement de côté.</li>
+<li>Les bases de données sont créées, jamais supprimées. La suppression d'une entrée de base de données du fichier ne supprime pas la base de données.</li>
+<li>Aucun champ ne contient de commande shell ou de chemin à inclure. Les clés inconnues sont des erreurs.</li>
+</ul>
+<h2 id="safety">Acceptation sûre via Git</h2>
+<p>Le fichier provient d'un référentiel, donc toute personne pouvant valider contrôle son contenu. Le schéma est fermé en cas d'échec :</p>
+<ul>
+<li>Les bases de données doivent être nommées <code>&lt;app&gt;</code> ou <code>&lt;app&gt;_*</code>; profils de sauvegarde <code>&lt;app&gt;</code> ou <code>&lt;app&gt;-*</code>.</li>
+<li>L'URL du contrôle de santé doit correspondre à l'un des propres domaines de l'application. Dans le cas contraire, une validation pourrait viser une sonde de cinq minutes vers une adresse interne et relire la réponse dans les e-mails d'alerte.</li>
+<li>L'analyseur implémente un petit sous-ensemble YAML et refuse catégoriquement les ancres, les alias, les balises, les clés de fusion, les scalaires de bloc et les mappages de flux.</li>
+</ul>
+<div class="note">
+<p>Une fois <code>yml auto</code> est activé, toute personne pouvant accéder à ce référentiel peut modifier les alias, les paramètres PHP, les travailleurs, le contrôle de santé et les profils de sauvegarde de l'application. C'est le but de la configuration en tant que code : traitez l'accès en écriture au dépôt en conséquence.</p>
+</div>
+<div class="cta-box">
+<h2>Expédiez le fichier avec la prochaine version</h2>
+<p>Générez ce que le serveur possède déjà, validez-le, lisez le plan, puis activez <code>yml auto</code> activé lorsque vous faites confiance à la boucle. L'aperçu et le schéma complet sont accessibles en un seul clic.</p>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | coup</div>
+<div class="cta-actions">
+<a class="btn-primary" href="/fr/cipi-yml">Présentation de cipi.yml</a>
+<a class="btn-ghost" href="/fr/docs/deploy#cli-yml">Référence complète</a>
+<a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Étoile sur GitHub</a>
+</div>
+</div>
+<h2 id="faq">Questions fréquemment posées</h2>
+<div class="faq-item"><h3>Dois-je écrire cipi.yml à la main ?</h3><p>Non. <code>cipi yml generate &lt;app&gt;</code> imprime la configuration actuelle du serveur de l'application sous forme de fichier prêt à être validé, et <code>cipi yml example</code> imprime un modèle commenté vierge si vous préférez repartir de zéro.</p></div>
+<div class="faq-item"><h3>Un déploiement applique-t-il automatiquement le fichier ?</h3><p>Seulement après vous être inscrit avec <code>cipi yml auto &lt;app&gt; on</code>. Jusque-là, les déploiements ignorent le fichier et vous réconciliez manuellement avec <code>plan</code> et <code>apply</code>.</p></div>
+<div class="faq-item"><h3>Qu’arrive-t-il aux choses que le dossier ne mentionne pas ?</h3><p>Ils sont laissés seuls. Seules les sections que vous déclarez sont réconciliées — à une exception délibérée près : la liste des alias fait autorité, donc supprimer un alias du fichier le supprime du serveur.</p></div>
+<div class="faq-item"><h3>Un commit peut-il casser mon serveur ?</h3><p>Le schéma ne contient aucune commande shell ni aucun chemin d'inclusion, une application ne peut toucher que ses propres bases de données et profils de sauvegarde, et un fichier qui échoue à la validation est rejeté dans son ensemble plutôt qu'appliqué à mi-chemin. Les déploiements ignorent complètement le fichier jusqu'à ce que vous activiez <code>yml auto</code> sur.</p></div>
+<div class="faq-item"><h3>Est-ce que ça marche avec Git webhook ?</h3><p>Oui. Avec <code>cipi yml auto</code> sur, les deux <code>cipi deploy</code> et une réconciliation de déploiement déclenchée par webhook après une version réussie.</p></div>
+<h2>Continuez à lire</h2>
+<div class="related">
+<a href="/fr/cipi-yml">Présentation de cipi.yml</a>
+<a href="/fr/docs/deploy#cli-yml">Documents : cipi.yml</a>
+<a href="/fr/guides/ci-cd-et-workflow-git-laravel">CI/CD pour Laravel</a>
+<a href="/fr/guides/sauvegarde-vps-vers-s3">VPS sauvegardes sur S3</a>
+<a href="/fr/guides/deployer-laravel-sur-vps-ubuntu">Déployer Laravel sur Ubuntu</a>
+</div>
+</main>
+<footer>
+<div class="footer-shell">
+<div class="footer-grid">
+<div class="footer-brand">
+<a class="footer-logo" href="/">Cipi</a>
+<p>Déploiement gratuit open-source Laravel CLI pour Ubuntu VPS — Octane, Horizon, Reverb et déploiements Git sans temps d'arrêt.</p>
+<ul class="footer-brand-links">
+<li><a href="/fr/docs/getting-started">Commencez</a></li>
+<li><a href="/fr/docs/">Documents</a></li>
+<li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
+</ul>
+</div>
+<nav aria-label="Comparez Cipi avec des alternatives" class="footer-col footer-col--compare">
+<strong>Comparez Cipi</strong>
+<ul>
+<li><a href="/fr/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
+<li><a href="/fr/alternative-to-laravel-cloud">Laravel Alternative au cloud</a></li>
+<li><a href="/fr/alternative-to-ploi">Ploi alternative</a></li>
+<li><a href="/fr/alternative-to-coolify">Coolify alternative</a></li>
+<li><a href="/fr/alternative-to-runcloud">RunCloud alternative</a></li>
+<li><a href="/fr/alternative-to-cloudpanel">CloudPanel alternative</a></li>
+<li><a href="/fr/alternative-to-cpanel">cPanel alternative</a></li>
+<li><a href="/fr/alternative-to-plesk">Alternative à Plesk</a></li>
+<li><a href="/fr/best-laravel-forge-alternatives">Meilleures Forge alternatives 2026</a></li>
+<li><a href="/fr/alternatives">Toutes les comparaisons</a></li>
+</ul>
+</nav>
+<nav aria-label="Guides Laravel gratuits" class="footer-col">
+<strong>Guides gratuits</strong>
+<ul>
+<li><a href="/fr/guides/gerer-apps-avec-cipi-yml">Gérer les apps avec cipi.yml</a></li>
+<li><a href="/fr/guides/panneau-ui-et-api">Panneau UI et API</a></li>
+<li><a href="/fr/guides/utiliser-cipi-agent-laravel">cipi/agent et MCP de projet</a></li>
+<li><a href="/fr/guides/deployer-wordpress-app-personnalisee">Déployer WordPress sur Cipi</a></li>
+<li><a href="/fr/guides/">Tous les guides</a></li>
+</ul>
+</nav>
+</div>
+<div class="footer-content">
+<div class="footer-left">
+                    Réalisé avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+<span class="footer-license"> · Open source, licence MIT</span>
+</div>
+<ul class="footer-links">
+<li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">Gestionnaire de connexions SSH</a></li>
+<li><a href="/fr/discovery">Découverte</a></li>
+</ul>
+</div>
+</div>
+</footer>
+<script>
+        function updateFavicon(theme) {
+            const variant = theme === 'dark' ? 'dark' : 'light';
+            document.getElementById('favicon').href = `/favicon-${variant}.png`;
+        }
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            var tc=document.getElementById('themeColor'); if(tc) tc.content=(html.getAttribute('data-theme')==='dark')?'#A3E635':'#65A30D';
+            localStorage.setItem('cipi-theme', next);
+            updateFavicon(next);
+        }
+        (function () {
+            const saved = localStorage.getItem('cipi-theme');
+            if (saved) { document.documentElement.setAttribute('data-theme', saved); updateFavicon(saved); }
+            else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark'); updateFavicon('dark');
+            }
+        })();
+    </script>
+<script async="" src="https://stats.misterdev.it/i/12f27ee0-8603-466d-8b1a-f719f7ecc6d7.js"></script>
+<noscript><img height="1" src="https://stats.misterdev.it/collect/pixel.gif?k=12f27ee0-8603-466d-8b1a-f719f7ecc6d7&amp;p=/" width="1"/></noscript>
+</body>
+</html>

@@ -72,6 +72,7 @@ Key facts:
 - [Deploy WordPress on Cipi](https://cipi.sh/en/guides/deploy-wordpress-custom-app): Custom app, MariaDB, SSL, safe uploads/wp-config, GitHub Actions auto-deploy on push to main
 - [Use cipi/agent in Laravel](https://cipi.sh/en/guides/cipi-agent-laravel-mcp): Laravel package `cipi/agent` — project MCP for debug, named seeders, logs and `db_query` from Cursor without SSH
 - [Cipi Control Panel and API](https://cipi.sh/en/guides/cipi-gui-and-api): Optional cipi/api + cipi/gui extensions — REST, MCP, Swagger, multi-server dashboard, server cockpit, cipi-cli and WHMCS on the same API
+- [Manage Laravel apps with cipi.yml](https://cipi.sh/en/guides/manage-apps-with-cipi-yml): Generate, plan and apply aliases, PHP, workers, Reverb, healthchecks and backups from a committed `cipi.yml`, then opt in so every deploy reconciles
 
 ## Comparisons (English)
 
@@ -129,6 +130,7 @@ Key facts:
 - [Deploy WordPress con Cipi](https://cipi.sh/it/guide/deploy-wordpress-app-custom-github)
 - [Usare cipi/agent in Laravel](https://cipi.sh/it/guide/usare-cipi-agent-in-laravel)
 - [Pannello UI e API di Cipi](https://cipi.sh/it/guide/pannello-ui-e-api-cipi)
+- [Gestire le app con cipi.yml](https://cipi.sh/it/guide/gestire-app-con-cipi-yml)
 
 ## Italiano — Confronti e pagine
 
