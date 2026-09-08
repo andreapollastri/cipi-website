@@ -28,7 +28,7 @@
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Laravel Security Checklist 2026 — Hardening PHP Apps &amp; Servers" property="og:image:alt"/>
+<meta content="Laravel-Sicherheitscheckliste 2026 – PHP-Apps und Server härten" property="og:image:alt"/>
         <meta property="og:locale" content="de_DE">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="fr_FR">
@@ -46,8 +46,8 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Laravel Security Checklist 2026 — Hardening PHP Apps & Servers",
-  "name": "Laravel Security Checklist 2026 — Hardening PHP Apps & Servers",
+  "headline": "Laravel-Sicherheitscheckliste 2026 – PHP-Apps und Server härten",
+  "name": "Laravel-Sicherheitscheckliste 2026 – PHP-Apps und Server härten",
   "url": "https://cipi.sh/en/guides/laravel-security-checklist",
   "description": "A practical Laravel and PHP security checklist for 2026: server hardening, application settings, dependency scanning, secrets management and incident response — with the tools to automate each step.",
   "inLanguage": "de",
@@ -261,7 +261,7 @@
 </svg>
 <span>Ci<span style="color:var(--signal)">pi</span></span>
 </a>
-<span class="nav-badge">Führer</span>
+<span class="nav-badge">Guides</span>
 </div>
 <div class="nav-right">
 
@@ -280,7 +280,7 @@
 
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">DE</summary><div class="lang-menu"><a href="/en/guides/laravel-security-checklist" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a class="active" href="/de/guides/laravel-sicherheitscheckliste" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/checklist-securite-laravel" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/checklist-sicurezza-laravel" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/checklist-seguridad-laravel" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/guides/checklist-seguranca-laravel" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Thema umschalten" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Theme wechseln" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -309,14 +309,14 @@
 <nav aria-label="Semmelbrösel" class="cmp-breadcrumb">
 <a href="/"><svg class="home-ico" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Zuhause</a>
 <span class="sep">›</span>
-<a href="/de/guides/">Führer</a>
+<a href="/de/guides/">Guides</a>
 <span class="sep">›</span>
 <span class="current">Laravel Sicherheitscheckliste</span>
 </nav>
 <span class="cmp-eyebrow">Cybersicherheit · PHP &amp; Laravel</span>
 <h1>Das Praktische <em>Laravel Sicherheit</em> Checkliste</h1>
 <p class="cmp-updated">Von <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Letzte Aktualisierung: <time datetime="2026-08-04">4. August 2026</time> · Kostenlose Lektüre, keine Paywall</p>
-<p class="lead">Die meisten Laravel-Apps werden nicht von cleveren Zero-Days gehackt. Sie werden durch offengelegte .env-Dateien, aktivierten Debug-Modus, ungepatchtes PHP und schwaches SSH gehackt. Diese Checkliste deckt zunächst die langweiligen, wirkungsvollen Arbeiten ab – Server, Anwendung, Abhängigkeiten, Geheimnisse und Reaktion – und bietet eine Möglichkeit, jeden Schritt zu automatisieren.</p>
+<p class="lead">Die meisten Laravel-Apps werden nicht von cleveren Zero-Days gehackt. Sie werden durch offengelegte .env-Dateien, aktivierten Debug-Modus, ungepatchtes PHP und schwaches SSH gehackt. Diese Checkliste deckt zunächst die langweiligen, wirkungsvollen Arbeiten ab – Server, Anwendung, Abhängigkeiten, Secrets und Reaktion – und bietet eine Möglichkeit, jeden Schritt zu automatisieren.</p>
 <div class="toc">
 <strong>In diesem Ratgeber</strong>
 <ol>
@@ -324,7 +324,7 @@
 <li><a href="#server">Checkliste zur Serverhärtung</a></li>
 <li><a href="#app">Checkliste zur Anwendungshärtung</a></li>
 <li><a href="#deps">Abhängigkeiten und Lieferkette</a></li>
-<li><a href="#secrets">Geheimnisse &amp; Datenschutz</a></li>
+<li><a href="#secrets">Secrets &amp; Datenschutz</a></li>
 <li><a href="#monitor">Erkennung, Überwachung und Reaktion</a></li>
 <li><a href="#faq">FAQ</a></li>
 </ol>
@@ -344,7 +344,7 @@
 <li><strong>Admin-Panels ohne MFA</strong> und ohne Ratenbegrenzung.</li>
 </ol>
 <p>Langweilig schlägt clever: Wenn Sie diese sieben Türen schließen, sind Sie der überwiegenden Mehrheit der Produktion voraus PHP
-            Bereitstellungen.</p>
+            Deployments.</p>
 <h2 id="server">Checkliste zur Serverhärtung</h2>
 <ul>
 <li><strong>SSH: nur Schlüssel, kein Root.</strong>Deaktivieren Sie die Passwortauthentifizierung und die Root-Anmeldung. benutze a
@@ -383,7 +383,7 @@
 <li><strong>Standardmäßig Escape.</strong> Behandeln <code>{!! !!}</code> als Code-Geruch, der einer Begründung bedarf
                 und Desinfektion.</li>
 <li><strong>Datei-Uploads:</strong> MIME-Typ und -Größe validieren, außerhalb speichern <code>public/</code> mit
-                Zufällige Namen, Bereitstellung über signierte URLs oder einen Controller.</li>
+                Zufällige Namen, Deployment über signierte URLs oder einen Controller.</li>
 <li><strong>Sicherheitsheader:</strong> X-Frame-Options, X-Content-Type-Options, Referrer-Policy und ein CSP
                 passend zu Ihrem Frontend.</li>
 </ul>
@@ -393,7 +393,7 @@
 <li><strong>Sperrdateien festschreiben</strong> (<code>composer.lock</code>, <code>package-lock.json</code>) also
                 Die Produktion läuft genau so, wie Sie es getestet haben.</li>
 <li><strong>Lauf <code>composer audit</code> im CI</strong> bei jeder Pull-Anfrage – der Build schlägt fehl, wenn
-                Eine Abhängigkeit verfügt über eine bekannte Empfehlung. (Die Verkabelung in eine Pipeline dauert fünf Minuten – siehe unsere
+                Eine Abhängigkeit verfügt über eine bekannte Empfehlung. (Die Verdrahtung in eine Pipeline dauert fünf Minuten – siehe unsere
                 <a class="inline" href="/de/guides/ci-cd-git-workflow-fuer-laravel">CI/CD Anleitung</a>.)</li>
 <li><strong>Automatisieren Sie Update-PRs</strong> mit Renovate oder Dependabot; Kleine wöchentliche Ausschläge schlagen vierteljährlich
                 Mega-Upgrades.</li>
@@ -405,20 +405,20 @@
                 <a class="inline" href="https://hackly.web.ap.it" target="_blank">Hackly</a> Läuft wiederkehrend
                 Schwachstellenscans auf Ihrer öffentlichen Oberfläche – der Sicht des Angreifers auf Ihren Stack, nach einem Zeitplan.</li>
 </ul>
-<h2 id="secrets">Geheimnisse &amp; Datenschutz</h2>
+<h2 id="secrets">Secrets &amp; Datenschutz</h2>
 <ul>
-<li><strong><code>.env</code> betritt Git nie.</strong> Verteilen Sie Geheimnisse über Ihre Bereitstellungstools.
+<li><strong><code>.env</code> betritt Git nie.</strong> Verteilen Sie Secrets über Ihre Deployment-Tools.
                 nicht das Repository.</li>
 <li><strong>Datenbankbenutzer mit den geringsten Rechten:</strong> ein Benutzer pro App, nein <code>GRANT ALL</code> auf
                 <code>*.*</code>. (Cipi erstellt eine dedizierte Datenbank und einen Benutzer pro App.)</li>
 <li><strong>Verschlüsseln Sie die Infrastrukturkonfiguration im Ruhezustand.</strong> Cipi speichert seine Server- und App-Konfiguration
                 verschlüsselt mit AES-256 auf Ihrem VPS – Infrastrukturmetadaten verlassen niemals den Computer.</li>
-<li><strong>Geltungsbereich API Token</strong> (Sanctum-Fähigkeiten) und wechselnde Anmeldeinformationen, wenn Leute das Heiligtum verlassen.</li>
-<li><strong>Anonymisieren Sie Produktionsdaten vor der Weitergabe.</strong> Übergeben Sie niemals Produktionsdeponien an die Bereitstellung oder
+<li><strong>Geltungsbereich API Token</strong> (Sanctum-Abilities) und wechselnde Anmeldeinformationen, wenn Leute das Heiligtum verlassen.</li>
+<li><strong>Anonymisieren Sie Produktionsdaten vor der Weitergabe.</strong> Übergeben Sie niemals Produktionsdeponien an das Deployment oder
                 externe Entwickler roh; die <a class="inline" href="/de/docs/agent">Cipi Agent</a> Das Paket Laravel enthält a
                 Datenbank-Anonymisierer für genau diesen Workflow.</li>
 <li><strong>Verschlüsselte Offsite-Backups</strong> – und testen Sie den Wiederherstellungspfad (siehe
-                <a class="inline" href="/de/guides/laravel-auf-ubuntu-vps-deployen">Bereitstellungsanleitung</a> für die Sicherung
+                <a class="inline" href="/de/guides/laravel-auf-ubuntu-vps-deployen">Bereitstellungsanleitung</a> für das Backup
                 Setup).</li>
 </ul>
 <h2 id="monitor">Erkennung, Überwachung und Reaktion</h2>
@@ -426,33 +426,33 @@
 <li><strong>Ausnahmen zentralisieren.</strong> Eine Spitze in 500 Sekunden ist oft das erste Anzeichen einer Sondierung.
                 <a class="inline" href="https://boogle.web.ap.it" target="_blank">Boogle</a> gibt dir ein self-hosted
                 Ausnahme-Tracker, sodass Fehler-Payloads (die häufig Benutzerdaten enthalten) in Ihrer Infrastruktur verbleiben.</li>
-<li><strong>Gesundheitschecks + Verfügbarkeitswarnungen.</strong> Cipi 5 versendet App-Gesundheitsprüfungen; Kombiniere sie mit einem
+<li><strong>Health-Checks + Verfügbarkeitswarnungen.</strong> Cipi 5 versendet App-Gesundheitsprüfungen; Kombiniere sie mit einem
                 Externer Betriebszeitmonitor für die Außenansicht.</li>
 <li><strong>Sehen Sie sich die Authentifizierungsprotokolle an.</strong> Fail2ban-Berichte und <code>lastb</code> Sag dir, wer klopft.</li>
 <li><strong>Erstellen Sie einen Reaktionsplan, bevor Sie ihn benötigen:</strong> Isolieren Sie die Kiste, drehen Sie jedes Geheimnis um
                 (einschließlich APP_KEY-Auswirkungen auf verschlüsselte Daten), Wiederherstellung von einem bekanntermaßen funktionierenden Snapshot
-                (<code>cipi backup run</code> deckt geplante Schnappschüsse ab; Cipi 5 fügt Datenbank-Snapshots vor der Bereitstellung hinzu),
+                (<code>cipi backup run</code> deckt geplante Snapshots ab; Cipi 5 fügt Datenbank-Snapshots vor dem Deployment hinzu),
                 Identifizieren Sie den Einstiegspunkt und schreiben Sie dann die Obduktion. Versuchen Sie niemals, ein kompromittiertes Leben zu führen
                 Gastgeber.</li>
 </ul>
 <div class="cta-box">
 <h2>Setzen Sie dies mit Cipi in die Praxis um</h2>
-<p>Cipi ist die kostenlose open-source Bereitstellung CLI, auf die in diesem Handbuch verwiesen wird: Ein Befehl verwandelt einen neuen
+<p>Cipi ist die kostenlose Open-Source-Deploy-CLI, auf die in diesem Handbuch verwiesen wird: Ein Befehl verwandelt einen neuen
                 Ubuntu VPS in einen gehärteten Produktionsserver für Laravel – Nginx, PHP-FPM oder Octane, MariaDB oder
-                PostgreSQL, Warteschlangen, Scheduler, SSL und Git-Bereitstellungen ohne Ausfallzeiten enthalten.</p>
+                PostgreSQL, Queues, Scheduler, SSL und Git-Zero-Downtime-Deployments enthalten.</p>
 <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
-<a class="btn-primary" href="/de/docs/getting-started">Starten Sie kostenlos durch</a>
+<a class="btn-primary" href="/de/docs/getting-started">Kostenlos starten</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Stern auf GitHub</a>
 <a class="btn-ghost" href="/de/alternatives">Vergleichen Sie mit anderen Tools</a>
 </div>
 </div>
 <h2 id="faq">Häufig gestellte Fragen</h2>
 <div class="faq-item"><h3>Ist Laravel standardmäßig sicher?</h3><p>Das Framework bietet starke Standardeinstellungen: CSRF-Schutz, gehashte Passwörter, SQL-Injection-Schutz durch den Abfrage-Builder und maskierte Blade-Ausgabe. Die meisten Vorfälle in der realen Welt sind auf Bereitstellungsfehler zurückzuführen – aktivierter Debug-Modus, offengelegte .env-Dateien, ungepatchtes PHP, schwaches SSH – weshalb die Serverhärtung genauso wichtig ist wie Anwendungscode.</p></div>
-<div class="faq-item"><h3>Was ist die wichtigste Laravel-Sicherheitseinstellung?</h3><p>APP_DEBUG=false in der Produktion. Eine offengelegte Debug-Seite gibt Umgebungsvariablen, Anmeldeinformationen und Pfade preis und ist immer noch der häufigste selbstverschuldete Laravel-Verstoß. Überprüfen Sie es jetzt und automatisieren Sie dann die Prüfung in Ihrer Bereitstellungspipeline.</p></div>
+<div class="faq-item"><h3>Was ist die wichtigste Laravel-Sicherheitseinstellung?</h3><p>APP_DEBUG=false in der Produktion. Eine offengelegte Debug-Seite gibt Umgebungsvariablen, Anmeldeinformationen und Pfade preis und ist immer noch der häufigste selbstverschuldete Laravel-Verstoß. Überprüfen Sie es jetzt und automatisieren Sie dann die Prüfung in Ihrer Deployment-Pipeline.</p></div>
 <div class="faq-item"><h3>Wie oft sollte ich PHP und meine Abhängigkeiten aktualisieren?</h3><p>Wenden Sie Sicherheitspatches so schnell wie möglich an – automatisieren Sie die Erkennung mit composer Audit in CI und Renovate oder Dependabot für Update-PRs. Verwenden Sie für PHP selbst einen verwalteten Mechanismus anstelle von Speicher: Cipi prüft beispielsweise wöchentlich und wendet PHP Sicherheitspatches über cipi php Upgrade an.</p></div>
 <div class="faq-item"><h3>Benötige ich eine WAF für eine Laravel-App?</h3><p>Eine WAF ist eine nützliche zusätzliche Ebene und kein Ersatz für die Grundlagen. Schließen Sie zunächst die Grundlagen ab: TLS, gepatchte Software, gehärtetes SSH, validierte Eingabe, Ratenbegrenzung. Danach sorgt eine WAF auf CDN-Ebene für einen umfassenden Schutz vor automatisierten Angriffen.</p></div>
-<div class="faq-item"><h3>Was soll ich zuerst tun, wenn ich den Verdacht habe, dass ein Server kompromittiert ist?</h3><p>Isolieren Sie die Maschine vom Datenverkehr, rotieren Sie alle darin enthaltenen Geheimnisse (Datenbankkennwörter, API-Tokens, APP_KEY), stellen Sie die Anwendung aus einem nachweislich funktionierenden Backup auf einem sauberen Server wieder her und untersuchen Sie erst dann den Einstiegspunkt. Den infizierten Live-Host zu patchen und zu hoffen, ist die Möglichkeit für Angreifer, Fuß zu fassen.</p></div>
+<div class="faq-item"><h3>Was soll ich zuerst tun, wenn ich den Verdacht habe, dass ein Server kompromittiert ist?</h3><p>Isolieren Sie die Maschine vom Datenverkehr, rotieren Sie alle darin enthaltenen Secrets (Datenbankkennwörter, API-Tokens, APP_KEY), stellen Sie die Anwendung aus einem nachweislich funktionierenden Backup auf einem sauberen Server wieder her und untersuchen Sie erst dann den Einstiegspunkt. Den infizierten Live-Host zu patchen und zu hoffen, ist die Möglichkeit für Angreifer, Fuß zu fassen.</p></div>
 <h2>Lesen Sie weiter</h2>
 <div class="related">
 <a href="/de/guides/laravel-auf-ubuntu-vps-deployen">Stellen Sie Laravel auf Ubuntu bereit</a>
@@ -467,43 +467,43 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Kostenlose open-source Laravel Bereitstellung CLI für Ubuntu VPS – Octane, Horizon, Reverb und Git-Bereitstellungen ohne Ausfallzeiten.</p>
+<p>Kostenlose Open-Source-Deploy-CLI für Laravel auf Ubuntu VPS – Octane, Horizon, Reverb und Zero-Downtime-Git-Deploys.</p>
 <ul class="footer-brand-links">
-<li><a href="/de/docs/getting-started">Fangen Sie an</a></li>
-<li><a href="/de/docs/">Dokumente</a></li>
+<li><a href="/de/docs/getting-started">Jetzt starten</a></li>
+<li><a href="/de/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Vergleichen Sie Cipi mit Alternativen" class="footer-col footer-col--compare">
-<strong>Vergleichen Sie Cipi</strong>
+<nav aria-label="Cipi mit Alternativen vergleichen" class="footer-col footer-col--compare">
+<strong>Cipi vergleichen</strong>
 <ul>
 <li><a href="/de/alternative-to-laravel-forge">Laravel Forge Alternative</a></li>
-<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud-Alternative</a></li>
+<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud Alternative</a></li>
 <li><a href="/de/alternative-to-ploi">Ploi Alternative</a></li>
 <li><a href="/de/alternative-to-coolify">Coolify Alternative</a></li>
 <li><a href="/de/alternative-to-runcloud">RunCloud Alternative</a></li>
 <li><a href="/de/alternative-to-cloudpanel">CloudPanel Alternative</a></li>
 <li><a href="/de/alternative-to-cpanel">cPanel Alternative</a></li>
-<li><a href="/de/alternative-to-plesk">Plesk-Alternative</a></li>
+<li><a href="/de/alternative-to-plesk">Plesk Alternative</a></li>
 <li><a href="/de/best-laravel-forge-alternatives">Beste Forge-Alternativen 2026</a></li>
 <li><a href="/de/alternatives">Alle Vergleiche</a></li>
 </ul>
 </nav>
 <nav aria-label="Kostenlose Laravel-Anleitungen" class="footer-col">
-<strong>Kostenlose Reiseführer</strong>
+<strong>Kostenlose Guides</strong>
 <ul>
 <li><a href="/de/guides/apps-mit-cipi-yml-verwalten">Apps mit cipi.yml verwalten</a></li>
-<li><a href="/de/guides/gui-panel-und-api">GUI-Panel und API</a></li>
+<li><a href="/de/guides/gui-panel-und-api">Control-Panel und API</a></li>
 <li><a href="/de/guides/cipi-agent-in-laravel-nutzen">cipi/agent und Projekt-MCP</a></li>
-<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi bereitstellen</a></li>
+<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi deployen</a></li>
 <li><a href="/de/guides/">Alle Anleitungen</a></li>
                     </ul>
 </nav>
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Hergestellt mit ❤️ von <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
-<span class="footer-license"> · Open source, MIT-lizenziert</span>
+                    Mit ❤️ gebaut von <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+<span class="footer-license"> · Open Source, MIT-lizenziert</span>
 </div>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">SSH-Verbindungsmanager</a></li>

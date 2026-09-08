@@ -5,8 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Self-Hosted Alternativa ao Ploi Cloud (2026) — Cipi, gratuito e Open Source</title>
-<meta content="Cipi é uma alternativa gratuita, open-source, self-hosted ao Ploi Cloud. Tenha seu VPS em vez de um PaaS Laravel europeu — custos fixos, root completo, implantações CLI. Não é o mesmo produto que o Ploi.io." name="description"/>
-<meta content="Ploi Cloud alternativa, ploi.cloud alternativa, self-hosted Ploi Cloud alternativa, Ploi Cloud vs Cipi, PaaS Laravel europeu alternativa, Laravel implantação CLI" name="keywords"/>
+<meta content="Cipi é uma alternativa gratuita, open-source, self-hosted ao Ploi Cloud. Tenha seu VPS em vez de um PaaS Laravel europeu — custos fixos, root completo, deploys CLI. Não é o mesmo produto que o Ploi.io." name="description"/>
+<meta content="Ploi Cloud alternativa, ploi.cloud alternativa, self-hosted Ploi Cloud alternativa, Ploi Cloud vs Cipi, PaaS Laravel europeu alternativa, Laravel deploy CLI" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/pt/alternative-to-ploi-cloud" rel="canonical"/>
@@ -36,7 +36,7 @@
 <meta content="it_IT" property="og:locale:alternate"/>
 <meta content="es_ES" property="og:locale:alternate"/><meta content="summary_large_image" name="twitter:card"/>
 <meta content="Self-Hosted Alternativa ao Ploi Cloud — Cipi" name="twitter:title"/>
-<meta content="Open-source, self-hosted alternativa ao Ploi Cloud. Tenha VPS, custos fixos, implantações CLI. Diferente do Ploi.io." name="twitter:description"/>
+<meta content="Open-source, self-hosted alternativa ao Ploi Cloud. Tenha VPS, custos fixos, deploys CLI. Diferente do Ploi.io." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
     {
@@ -81,7 +81,7 @@
         {
           "@type": "Question",
           "name": "Existe uma alternativa self-hosted ao Ploi Cloud?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Cipi é uma alternativa gratuita, open-source (MIT) e self-hosted ao Ploi Cloud. Em vez de um PaaS Laravel/PHP gerenciado, você possui um VPS em qualquer provedor e Cipi instala e gerencia toda a pilha de produção nele." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Cipi é uma alternativa gratuita, open-source (MIT) e self-hosted ao Ploi Cloud. Em vez de um PaaS Laravel/PHP gerenciado, você possui um VPS em qualquer provedor e Cipi instala e gerencia toda o stack de produção nele." }
         },
         {
           "@type": "Question",
@@ -96,12 +96,12 @@
         {
           "@type": "Question",
           "name": "Quando ainda devo escolher o Ploi Cloud?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Escolha o Ploi Cloud se quiser hospedagem gerenciada europeia em primeiro lugar, implantações git-push, auto-scaling e bancos gerenciados sem executar um VPS, e se sentir confortável com faturamento baseado em memória." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Escolha o Ploi Cloud se quiser hospedagem gerenciada europeia em primeiro lugar, deploys git-push, auto-scaling e bancos gerenciados sem executar um VPS, e se sentir confortável com faturamento baseado em memória." }
         },
         {
           "@type": "Question",
           "name": "Posso migrar do Ploi Cloud para Cipi?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Provisione um Ubuntu VPS, instale Cipi, crie o aplicativo com cipi app create (adicione --octane para continuar executando Octane), restaure o dump do banco, copie valores de ambiente e aponte o DNS. Você troca o faturamento PaaS por um custo VPS fixo." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Provisione um VPS Ubuntu, instale Cipi, crie o aplicativo com cipi app create (adicione --octane para continuar executando Octane), restaure o dump do banco, copie valores de ambiente e aponte o DNS. Você troca o faturamento PaaS por um custo VPS fixo." }
         }
       ]
     }
@@ -111,7 +111,7 @@
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "Como migrar do Ploi Cloud para Cipi",
-  "description": "Migre seus aplicativos Laravel do Ploi Cloud para Cipi, a CLI de implantação gratuita e open-source, com um cutover limpo e sem alterações de código.",
+  "description": "Migre seus aplicativos Laravel do Ploi Cloud para Cipi, a CLI de deploy gratuita e open-source, com um cutover limpo e sem alterações de código.",
   "totalTime": "PT1H",
   "tool": [
     {
@@ -129,14 +129,14 @@
     {
       "@type": "HowToStep",
       "position": 2,
-      "name": "Provisione um Ubuntu VPS novo e instale Cipi",
-      "text": "Qualquer provedor funciona (Hetzner, DigitalOcean, Vultr, Linode, AWS). Em Ubuntu 24.04/26.04 execute o instalador de um comando (wget -O - https://cipi.sh/setup.sh | bash) e a pilha de produção completa — Nginx, PHP, MariaDB, Valkey, Supervisor — é configurada em minutos."
+      "name": "Provisione um VPS Ubuntu novo e instale Cipi",
+      "text": "Qualquer provedor funciona (Hetzner, DigitalOcean, Vultr, Linode, AWS). Em Ubuntu 24.04/26.04 execute o instalador de um comando (wget -O - https://cipi.sh/setup.sh | bash) e o stack de produção completo — Nginx, PHP, MariaDB, Valkey, Supervisor — fica configurado em minutos."
     },
     {
       "@type": "HowToStep",
       "position": 3,
       "name": "Recrie cada aplicativo e conecte o Git",
-      "text": "cipi app create provisiona um aplicativo isolado com seu próprio usuário de sistema, banco de dados, pool PHP e vhost Nginx (adicione --octane para Laravel Octane). Conectar GitHub ou GitLab configura chaves de implantação e webhooks automaticamente para implantações com tempo de inatividade zero."
+      "text": "cipi app create provisiona um aplicativo isolado com seu próprio usuário de sistema, banco de dados, pool PHP e vhost Nginx (adicione --octane para Laravel Octane). Ao conectar GitHub ou GitLab, as deploy keys e os webhooks são configurados automaticamente para deploys sem downtime."
     },
     {
       "@type": "HowToStep",
@@ -246,7 +246,7 @@
 <a href="/pt/cipi-yml" class="nav-link">cipi.yml</a>
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">PT</summary><div class="lang-menu"><a href="/en/alternative-to-ploi-cloud" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/alternative-to-ploi-cloud" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/alternative-to-ploi-cloud" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/alternativa-a-ploi-cloud" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/alternative-to-ploi-cloud" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a class="active" href="/pt/alternative-to-ploi-cloud" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Alternar tema" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Mudar tema" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -294,11 +294,11 @@
 </div>
 <span class="cmp-eyebrow">Ploi Cloud alternativa</span>
 <h1>A self-hosted <em>alternativa ao Ploi Cloud</em></h1>
-<p class="cmp-updated">Última atualização da comparação: <time datetime="2026-09-07">7 de setembro de 2026</time> · reflete Cipi 5 e preços/recursos atuais do Ploi Cloud</p>
+<p class="cmp-updated">Comparação atualizada em <time datetime="2026-09-07">7 de setembro de 2026</time> · reflete Cipi 5 e preços/recursos atuais do Ploi Cloud</p>
 <p class="lead">Ploi Cloud (ploi.cloud) é um PaaS Laravel/PHP/Node europeu — preços baseados em memória, Amsterdã/Londres/Chicago, MCP e CLI — e <strong>não</strong> é o mesmo produto que o <a class="inline" href="/pt/alternative-to-ploi">Ploi.io</a> (o painel de servidor). Cipi é o oposto self-hosted: você possui um VPS em qualquer provedor, com acesso root completo, um custo fixo previsível e sem dependência de fornecedor. Gratuito, open source e totalmente orientado para CLI.</p>
 <div class="cmp-cta">
 <a class="btn-primary" href="/pt/docs/getting-started">Comece gratuitamente</a>
-<a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Ver em GitHub</a>
+<a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Ver no GitHub</a>
 </div>
 <h2>Cipi vs Ploi Cloud em resumo</h2>
 <div class="cmp-table-wrap">
@@ -313,10 +313,10 @@
 <tbody>
 <tr><td>Modelo de preços</td><td class="col-cipi">Custo gratuito + fixo VPS</td><td>€13,88 por GB de RAM / mês</td></tr>
 <tr><td>Licença</td><td class="col-cipi">Open source (MIT)</td><td>Proprietário</td></tr>
-<tr><td>Acesso raiz/SSH</td><td class="col-cipi"><span class="yes">Controle total</span></td><td><span class="no">Não — nuvem gerenciada</span></td></tr>
+<tr><td>Acesso root/SSH</td><td class="col-cipi"><span class="yes">Controle total</span></td><td><span class="no">Não — nuvem gerenciada</span></td></tr>
 <tr><td>Possuir a infraestrutura</td><td class="col-cipi"><span class="yes">Sim – qualquer provedor</span></td><td><span class="no">Não — regiões Ploi Cloud</span></td></tr>
-<tr><td>Sem dependência de fornecedor</td><td class="col-cipi"><span class="yes">Pilha portátil</span></td><td><span class="no">Vinculado ao Ploi Cloud</span></td></tr>
-<tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Sim — CLI nativo</span></td><td><span class="partial">PaaS amigável ao Laravel</span></td></tr>
+<tr><td>Sem vendor lock-in</td><td class="col-cipi"><span class="yes">Stack portátil</span></td><td><span class="no">Vinculado ao Ploi Cloud</span></td></tr>
+<tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Sim — nativo na CLI</span></td><td><span class="partial">PaaS amigável ao Laravel</span></td></tr>
 <tr><td>CLI e automação de pipeline</td><td class="col-cipi"><span class="yes">Sim</span></td><td><span class="yes">CLI + MCP</span></td></tr>
 <tr><td>Servidor AI/MCP</td><td class="col-cipi"><span class="yes">Dupla MCP</span></td><td><span class="yes">Servidor MCP</span></td></tr>
 <tr><td>Produto relacionado</td><td class="col-cipi">CLI self-hosted no seu VPS</td><td>PaaS (distinto do <a class="inline" href="/pt/alternative-to-ploi">Ploi.io</a>)</td></tr>
@@ -330,28 +330,28 @@
 <div class="cards">
 <div class="card"><h3>Custo previsível e fixo</h3><p>Cipi é gratuito; você paga apenas pelo VPS. O Ploi Cloud cobra €13,88 por GB de memória (a CPU escala com a RAM) — simples, ainda uma fatura hospedada que cresce com as instâncias.</p></div>
 <div class="card"><h3>Você possui o servidor</h3><p>Root completo em qualquer provedor. O Ploi Cloud executa seu app na nuvem europeia (e Chicago) deles — você não recebe a máquina.</p></div>
-<div class="card"><h3>Sem dependência de fornecedor</h3><p>Cipi usa uma pilha padrão portátil Ubuntu + Nginx + PHP-FPM / Laravel Octane + MariaDB (opcional PostgreSQL) + Supervisor que você pode reproduzir em qualquer lugar.</p></div>
-<div class="card"><h3>Profundidade Laravel em uma pilha nativa</h3><p>Octane, Horizon, Reverb, Deployer e filas são recursos CLI de primeira classe. O Ploi Cloud é um PaaS amigável ao Laravel, não uma CLI de gerenciamento de servidor que você pode auditar.</p></div>
+<div class="card"><h3>Sem vendor lock-in</h3><p>Cipi usa um stack padrão portátil Ubuntu + Nginx + PHP-FPM / Laravel Octane + MariaDB (opcional PostgreSQL) + Supervisor que você pode reproduzir em qualquer lugar.</p></div>
+<div class="card"><h3>Profundidade Laravel em um stack nativo</h3><p>Octane, Horizon, Reverb, Deployer e filas são recursos CLI de primeira classe. O Ploi Cloud é um PaaS amigável ao Laravel, não uma CLI de gerenciamento de servidor que você pode auditar.</p></div>
 <div class="card"><h3>Open source e nativo de IA</h3><p>Licenciado pelo MIT e auditável, com um servidor duplo MCP. O Ploi Cloud também envia MCP e uma CLI — no plano de controle deles.</p></div>
 <div class="card"><h3>Criptografia em repouso + soberania</h3><p>Todas as configurações criptografadas com AES-256-CBC em um VPS na região que você escolher. O Ploi Cloud é hospedagem UE orientada a GDPR; Cipi nunca envia dados de infraestrutura para fora da caixa.</p></div>
-<div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Crie ou converta aplicativos com <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Execute Octane ao lado de aplicativos FPM clássicos no mesmo servidor.</p></div>
+<div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Crie ou converta apps com <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Execute Octane ao lado de aplicativos FPM clássicos no mesmo servidor.</p></div>
 <div class="card"><h3>Não é o mesmo que o Ploi.io</h3><p>Precisa de um painel que gerencia <em>o seu</em> VPS em vez de um PaaS? Veja a comparação dedicada <a class="inline" href="/pt/alternative-to-ploi">Cipi versus Ploi.io</a> — produto diferente, compensações diferentes.</p></div>
 </div>
-<h2>Instale Cipi em um comando</h2>
-<p>Crie um novo Ubuntu VPS e execute:</p>
+<h2>Instalar o Cipi com um comando</h2>
+<p>Suba um VPS Ubuntu novo e rode:</p>
 <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
-<p>Isso instala e configura a pilha de produção completa — Nginx, PHP-FPM / Laravel Octane, MariaDB, opcional PostgreSQL, Redis e Supervisor. Veja o
+<p>Isso instala e configura o stack de produção completo — Nginx, PHP-FPM / Laravel Octane, MariaDB, PostgreSQL opcional, Redis e Supervisor. Veja o
             <a class="inline" href="/pt/docs/getting-started">guia de primeiros passos</a>.</p>
 <h2>Onde Ploi Cloud é a melhor escolha</h2>
 <div class="note">
-<p>O Ploi Cloud vence em gerenciamento zero de servidor com um PaaS europeu consciente de Laravel: implantações git-push, SSL automático, auto-scaling, bancos gerenciados (MySQL, PostgreSQL, Redis, Valkey, MongoDB, MinIO), Amsterdã/Londres/Chicago, GDPR por design, MCP e CLI. Se você quer residência de dados na UE como serviço e não quer possuir um VPS, o Ploi Cloud é a melhor opção. Se você já usa o Ploi.io para gerenciar servidores, Cloud é o runtime hospedado deles — Cipi substitui o lado “possuir o VPS” dessa história.</p>
+<p>O Ploi Cloud vence em gerenciamento zero de servidor com um PaaS europeu consciente de Laravel: deploys git-push, SSL automático, auto-scaling, bancos gerenciados (MySQL, PostgreSQL, Redis, Valkey, MongoDB, MinIO), Amsterdã/Londres/Chicago, GDPR por design, MCP e CLI. Se você quer residência de dados na UE como serviço e não quer possuir um VPS, o Ploi Cloud é a melhor opção. Se você já usa o Ploi.io para gerenciar servidores, Cloud é o runtime hospedado deles — Cipi substitui o lado “possuir o VPS” dessa história.</p>
 </div>
 <h2 id="migrate">Como migrar do Ploi Cloud para Cipi</h2>
 <p>Mudar do Ploi Cloud para Cipi é uma transição limpa, em vez de uma conversão no local: você levanta um novo servidor ao lado da configuração atual, implanta a partir do mesmo repositório Git e altera o DNS quando tudo confere. Sua base de código Laravel não precisa ser alterada.</p>
 <ol class="migrate-steps">
 <li><strong>Exporte seus dados do Ploi Cloud.</strong> Faça dump do banco gerenciado, anote variáveis de ambiente, workers e o tamanho de memória/instância que você pagava para dimensionar o novo VPS.</li>
-                    <li><strong>Provisione um novo Ubuntu VPS e instale Cipi.</strong> Qualquer provedor funciona (Hetzner, DigitalOcean, Vultr, Linode, AWS). Em Ubuntu 24.04/26.04, execute <code>wget -O - https://cipi.sh/setup.sh | bash</code> e a pilha de produção completa — Nginx, PHP, MariaDB, Valkey, Supervisor — é configurada em minutos.</li>
-                    <li><strong>Recrie cada aplicativo e conecte o Git.</strong> <code>cipi app create</code> provisiona um aplicativo isolado com seu próprio usuário de sistema, banco de dados, pool PHP e vhost Nginx (adicionar <code>--octane</code> para Laravel Octane). Conectar GitHub ou GitLab configura chaves de implantação e webhooks automaticamente para implantações com tempo de inatividade zero.</li>
+                    <li><strong>Provisione um VPS Ubuntu novo e instale o Cipi.</strong> Serve qualquer provedor (Hetzner, DigitalOcean, Vultr, Linode, AWS). No Ubuntu 24.04/26.04, rode <code>wget -O - https://cipi.sh/setup.sh | bash</code> e o stack de produção completo — Nginx, PHP, MariaDB, Valkey, Supervisor — fica configurado em minutos.</li>
+                    <li><strong>Recrie cada app e conecte o Git.</strong> <code>cipi app create</code> provisiona uma app isolada com o seu próprio usuário de sistema, banco de dados, pool PHP e vhost Nginx (adicione <code>--octane</code> para Laravel Octane). Ao conectar GitHub ou GitLab, as deploy keys e os webhooks são configurados automaticamente para deploys sem downtime.</li>
                     <li><strong>Mova os dados e faça o cutover.</strong> Importe seu dump de banco de dados, copie seus valores <code>.env</code>, emita certificados HTTPS com <code>cipi ssl install</code>, aponte o DNS para o novo servidor e desative a configuração antiga.</li>
 </ol>
 <div class="note">
@@ -360,15 +360,15 @@
 </div>
 <h2>Perguntas frequentes</h2>
 <div class="faq-item"><h3>Ploi Cloud é o mesmo que Ploi.io?</h3><p>Não. Ploi.io é um painel SaaS que gerencia servidores que você possui. Ploi Cloud (ploi.cloud) é um PaaS europeu hospedado com preços baseados em memória. Cipi é uma alternativa self-hosted a ambos: veja também Cipi versus Ploi.io.</p></div>
-<div class="faq-item"><h3>Existe uma alternativa self-hosted ao Ploi Cloud?</h3><p>Sim. Cipi é uma alternativa gratuita, open-source (MIT) e self-hosted ao Ploi Cloud. Em vez de um PaaS Laravel/PHP gerenciado, você possui um VPS em qualquer provedor e Cipi instala e gerencia toda a pilha de produção nele.</p></div>
+<div class="faq-item"><h3>Existe uma alternativa self-hosted ao Ploi Cloud?</h3><p>Sim. Cipi é uma alternativa gratuita, open-source (MIT) e self-hosted ao Ploi Cloud. Em vez de um PaaS Laravel/PHP gerenciado, você possui um VPS em qualquer provedor e Cipi instala e gerencia toda o stack de produção nele.</p></div>
 <div class="faq-item"><h3>Qual é a diferença entre Cipi e Ploi Cloud?</h3><p>Ploi Cloud é um PaaS totalmente gerenciado, precificado por memória, em Amsterdã, Londres e Chicago, com MCP e uma CLI. Cipi é executado no seu próprio VPS com acesso root completo e um custo fixo, é open source e adiciona Laravel Octane, um servidor MCP duplo e criptografia de configuração em repouso.</p></div>
 <div class="faq-item"><h3>Cipi é mais barato que o Ploi Cloud?</h3><p>Cipi em si é gratuito; seu único custo é o VPS. O Ploi Cloud cobra €13,88 por GB de memória por mês. Uma instância Cloud pequena pode custar mais que um VPS equivalente mais Cipi gratuito.</p></div>
-<div class="faq-item"><h3>Quando ainda devo escolher o Ploi Cloud?</h3><p>Escolha o Ploi Cloud se quiser hospedagem gerenciada europeia em primeiro lugar, implantações git-push, auto-scaling e bancos gerenciados sem executar um VPS, e se sentir confortável com faturamento baseado em memória.</p></div>
-<div class="faq-item"><h3>Posso migrar do Ploi Cloud para Cipi?</h3><p>Sim. Provisione um Ubuntu VPS, instale Cipi, crie o aplicativo com cipi app create (adicione --octane para continuar executando Octane), restaure o dump do banco, copie valores de ambiente e aponte o DNS. Você troca o faturamento PaaS por um custo VPS fixo.</p></div>
+<div class="faq-item"><h3>Quando ainda devo escolher o Ploi Cloud?</h3><p>Escolha o Ploi Cloud se quiser hospedagem gerenciada europeia em primeiro lugar, deploys git-push, auto-scaling e bancos gerenciados sem executar um VPS, e se sentir confortável com faturamento baseado em memória.</p></div>
+<div class="faq-item"><h3>Posso migrar do Ploi Cloud para Cipi?</h3><p>Sim. Provisione um VPS Ubuntu, instale Cipi, crie o aplicativo com cipi app create (adicione --octane para continuar executando Octane), restaure o dump do banco, copie valores de ambiente e aponte o DNS. Você troca o faturamento PaaS por um custo VPS fixo.</p></div>
 <h2>Compare Cipi com outras ferramentas</h2>
 <div class="related">
-<a href="/pt/alternative-to-laravel-forge">versus Laravel Forge</a>
-<a href="/pt/alternative-to-laravel-cloud">vs Laravel Nuvem</a>
+<a href="/pt/alternative-to-laravel-forge">vs Laravel Forge</a>
+<a href="/pt/alternative-to-laravel-cloud">vs Laravel Cloud</a>
 <a href="/pt/alternative-to-fortrabbit">vs fortrabbit</a>
 <a href="/pt/alternative-to-render">vs Render</a>
 <a href="/pt/alternative-to-20i">vs 20i</a>
@@ -381,14 +381,14 @@
 <a href="/pt/alternative-to-dokku">versus Dokku</a>
 <a href="/pt/alternative-to-easypanel">versus Easypanel</a>
 <a href="/pt/alternative-to-coolify">versus Coolify</a>
-<a href="/pt/alternative-to-vito-deploy">vs Vito Implantar</a>
+<a href="/pt/alternative-to-vito-deploy">vs Vito Deploy</a>
 <a href="/pt/alternative-to-runcloud">versus RunCloud</a>
 <a href="/pt/alternative-to-serverpilot">versus ServerPilot</a>
 <a href="/pt/alternative-to-cloudpanel">versus CloudPanel</a>
 <a href="/pt/alternative-to-cpanel">versus cPanel</a>
 <a href="/pt/alternative-to-directadmin">versus DirectAdmin</a>
 <a href="/pt/alternative-to-plesk">versus Plesk</a>
-<a href="/pt/best-laravel-forge-alternatives">Melhores alternativas de Forge 2026</a>
+<a href="/pt/best-laravel-forge-alternatives">Melhores alternativas ao Forge em 2026</a>
 <a href="/pt/docs/about#vs-alternatives">Comparação completa</a>
 </div>
 </main>
@@ -397,18 +397,18 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Implantação gratuita de open-source Laravel CLI para Ubuntu VPS — Octane, Horizon, Reverb e implantações Git com tempo de inatividade zero.</p>
+<p>CLI open source e gratuita para fazer deploy de Laravel num VPS Ubuntu — Octane, Horizon, Reverb e deploys Git sem downtime.</p>
 <ul class="footer-brand-links">
-<li><a href="/pt/docs/getting-started">Comece</a></li>
-<li><a href="/pt/docs/">Documentos</a></li>
+<li><a href="/pt/docs/getting-started">Primeiros passos</a></li>
+<li><a href="/pt/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
 <nav aria-label="Compare Cipi com alternativas" class="footer-col footer-col--compare">
 <strong>Comparar Cipi</strong>
 <ul>
-<li><a href="/pt/alternative-to-laravel-forge">Laravel Forge alternativa</a></li>
-<li><a href="/pt/alternative-to-laravel-cloud">Laravel Alternativa de nuvem</a></li>
+<li><a href="/pt/alternative-to-laravel-forge">Alternativa ao Laravel Forge</a></li>
+<li><a href="/pt/alternative-to-laravel-cloud">Alternativa ao Laravel Cloud</a></li>
 <li><a href="/pt/alternative-to-ploi-cloud">Ploi Cloud alternativa</a></li>
 <li><a href="/pt/alternative-to-ploi">Ploi alternativa</a></li>
 <li><a href="/pt/alternative-to-coolify">Coolify alternativa</a></li>
@@ -416,17 +416,17 @@
 <li><a href="/pt/alternative-to-cloudpanel">CloudPanel alternativa</a></li>
 <li><a href="/pt/alternative-to-cpanel">cPanel alternativa</a></li>
 <li><a href="/pt/alternative-to-plesk">Alternativa Plesk</a></li>
-<li><a href="/pt/best-laravel-forge-alternatives">Melhores alternativas de Forge 2026</a></li>
+<li><a href="/pt/best-laravel-forge-alternatives">Melhores alternativas ao Forge em 2026</a></li>
 <li><a href="/pt/alternatives">Todas as comparações</a></li>
 </ul>
 </nav>
-<nav aria-label="Guias Laravel gratuitos" class="footer-col">
+<nav aria-label="Guias gratuitos de Laravel" class="footer-col">
 <strong>Guias gratuitos</strong>
 <ul>
 <li><a href="/pt/guides/gerenciar-apps-com-cipi-yml">Gerenciar apps com cipi.yml</a></li>
-<li><a href="/pt/guides/painel-ui-e-api">Painel UI e API</a></li>
+<li><a href="/pt/guides/painel-ui-e-api">Painel de controle e API</a></li>
 <li><a href="/pt/guides/usar-cipi-agent-no-laravel">cipi/agent e MCP do projeto</a></li>
-<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Implantar WordPress no Cipi</a></li>
+<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Deploy de WordPress no Cipi</a></li>
 <li><a href="/pt/guides/">Todos os guias</a></li>
                     </ul>
 </nav>

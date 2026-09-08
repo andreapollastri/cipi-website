@@ -5,8 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>So stellen Sie Laravel auf einem Ubuntu VPS bereit – Vollständiger Leitfaden für 2026</title>
-<meta content="Schritt-für-Schritt-Anleitung für die Bereitstellung von Laravel auf einem Ubuntu VPS im Jahr 2026: der vollständige Produktionsstack (Nginx, PHP-FPM/Octane, MariaDB, Valkey), manuelle Einrichtung, die Ein-Befehl-Alternative, Härtung und Betrieb." name="description"/>
-<meta content="Bereitstellen von laravel ubuntu, laravel vps Setup, laravel Produktionsserver, nginx php-fpm laravel, laravel Bereitstellungshandbuch, ubuntu laravel Hosting" name="keywords"/>
+<meta content="Schritt-für-Schritt-Anleitung für das Deployment von Laravel auf einem Ubuntu VPS im Jahr 2026: der vollständige Produktionsstack (Nginx, PHP-FPM/Octane, MariaDB, Valkey), manuelle Einrichtung, die Ein-Befehl-Alternative, Härtung und Betrieb." name="description"/>
+<meta content="Deploy von laravel ubuntu, laravel vps Setup, laravel Produktionsserver, nginx php-fpm laravel, laravel Bereitstellungshandbuch, ubuntu laravel Hosting" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/de/guides/laravel-auf-ubuntu-vps-deployen" rel="canonical"/>
@@ -24,7 +24,7 @@
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/de/guides/laravel-auf-ubuntu-vps-deployen" property="og:url"/>
 <meta content="So stellen Sie Laravel auf einem Ubuntu VPS bereit – Vollständiger Leitfaden für 2026" property="og:title"/>
-<meta content="Schritt-für-Schritt-Anleitung für die Bereitstellung von Laravel auf einem Ubuntu VPS im Jahr 2026: der vollständige Produktionsstack (Nginx, PHP-FPM/Octane, MariaDB, Valkey), manuelle Einrichtung, die Ein-Befehl-Alternative, Härtung und Betrieb." property="og:description"/>
+<meta content="Schritt-für-Schritt-Anleitung für das Deployment von Laravel auf einem Ubuntu VPS im Jahr 2026: der vollständige Produktionsstack (Nginx, PHP-FPM/Octane, MariaDB, Valkey), manuelle Einrichtung, die Ein-Befehl-Alternative, Härtung und Betrieb." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -40,7 +40,7 @@
 <meta content="Guides" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="So stellen Sie Laravel auf einem Ubuntu VPS bereit – Vollständiger Leitfaden für 2026" name="twitter:title"/>
-<meta content="Schritt-für-Schritt-Anleitung für die Bereitstellung von Laravel auf einem Ubuntu VPS im Jahr 2026: der vollständige Produktionsstack (Nginx, PHP-FPM/Octane, MariaDB, Valkey), manuelle Einrichtung, die Ein-Befehl-Alternative, Härtung und Betrieb." name="twitter:description"/>
+<meta content="Schritt-für-Schritt-Anleitung für das Deployment von Laravel auf einem Ubuntu VPS im Jahr 2026: der vollständige Produktionsstack (Nginx, PHP-FPM/Octane, MariaDB, Valkey), manuelle Einrichtung, die Ein-Befehl-Alternative, Härtung und Betrieb." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
 {
@@ -110,7 +110,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Deploy Laravel on Ubuntu",
+      "name": "Setze Laravel auf Ubuntu ein",
       "item": "https://cipi.sh/en/guides/deploy-laravel-ubuntu-vps"
     }
   ]
@@ -261,7 +261,7 @@
 </svg>
 <span>Ci<span style="color:var(--signal)">pi</span></span>
 </a>
-<span class="nav-badge">Führer</span>
+<span class="nav-badge">Guides</span>
 </div>
 <div class="nav-right">
 
@@ -280,7 +280,7 @@
 
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">DE</summary><div class="lang-menu"><a href="/en/guides/deploy-laravel-ubuntu-vps" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a class="active" href="/de/guides/laravel-auf-ubuntu-vps-deployen" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/deployer-laravel-sur-vps-ubuntu" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/deploy-laravel-su-ubuntu-vps" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/desplegar-laravel-en-vps-ubuntu" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/guides/deploy-laravel-em-vps-ubuntu" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Thema umschalten" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Theme wechseln" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -309,11 +309,11 @@
 <nav aria-label="Semmelbrösel" class="cmp-breadcrumb">
 <a href="/"><svg class="home-ico" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Zuhause</a>
 <span class="sep">›</span>
-<a href="/de/guides/">Führer</a>
+<a href="/de/guides/">Guides</a>
 <span class="sep">›</span>
 <span class="current">Stellen Sie Laravel auf Ubuntu bereit</span>
 </nav>
-<span class="cmp-eyebrow">Ubuntu · Laravel Bereitstellung</span>
+<span class="cmp-eyebrow">Ubuntu · Laravel Deployment</span>
 <h1>So stellen Sie Laravel auf einem bereit<em>Ubuntu VPS</em></h1>
 <p class="cmp-updated">Von <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Letzte Aktualisierung: <time datetime="2026-08-04">4. August 2026</time> · Kostenlose Lektüre, keine Paywall</p>
 <p class="lead">Ein VPS für 5–7 $/Monat ist immer noch die günstigste und flexibelste Möglichkeit, Laravel in der Produktion auszuführen – wenn Sie es richtig einrichten. Dieser Leitfaden führt durch den gesamten Produktions-Stack, jeden manuellen Schritt, die Ein-Befehl-Alternative und die Betriebsgewohnheiten, die einen Server über Jahre hinweg funktionsfähig halten.</p>
@@ -321,29 +321,29 @@
 <strong>In diesem Ratgeber</strong>
 <ol>
 <li><a href="#why-vps">Warum ein VPS (und wann nicht)</a></li>
-<li><a href="#stack">Der Produktionsstapel, erklärt</a></li>
+<li><a href="#stack">Der Produktions-Stack, erklärt</a></li>
 <li><a href="#manual">Die manuelle Einrichtung, Schritt für Schritt</a></li>
 <li><a href="#one-command">Die Ein-Befehl-Alternative</a></li>
-<li><a href="#operations">Wichtige Vorgänge nach der Bereitstellung</a></li>
+<li><a href="#operations">Wichtige Vorgänge nach dem Deployment</a></li>
 <li><a href="#mistakes">Häufige Fehler, die es zu vermeiden gilt</a></li>
 <li><a href="#faq">FAQ</a></li>
 </ol>
 </div>
 <h2 id="why-vps">Warum ein VPS (und wann nicht)</h2>
-<p>Beim Shared Hosting können Warteschlangenarbeiter, WebSockets oder Laravel Octane sowie verwaltete PaaS-Plattformen nicht ordnungsgemäß ausgeführt werden
+<p>Beim Shared Hosting können Queue-Worker, WebSockets oder Laravel Octane sowie verwaltete PaaS-Plattformen nicht ordnungsgemäß ausgeführt werden
             Kosten für Komfort mit nutzungsbasierter Preisgestaltung. Ein VPS von <strong>Hetzner, DigitalOcean, Vultr oder
             Linode</strong> bietet Ihnen Root-Zugriff, vorhersehbare Abrechnung und genügend Spielraum, um mehrere Laravel zu hosten
             Apps auf einem Computer.</p>
 <ul>
 <li><strong>Größe:</strong> 1 vCPU / 2 GB RAM ist ein komfortabler Ausgangspunkt für eine Produktions-App mit einem
-                Datenbank, Warteschlangenarbeiter und Cache auf derselben Box. Fügen Sie Swap für alles unter 4 GB hinzu.</li>
-<li><strong>Ubuntu-Version:</strong> Verwenden Sie ein aktuelles LTS – Ubuntu 24.04 oder 26.04. Überspringen Sie vorläufige Veröffentlichungen für
+                Datenbank, Queue-Worker und Cache auf derselben Box. Fügen Sie Swap für alles unter 4 GB hinzu.</li>
+<li><strong>Ubuntu-Version:</strong> Verwenden Sie ein aktuelles LTS – Ubuntu 24.04 oder 26.04. Überspringen Sie vorläufige Releases für
                 Produktion.</li>
 <li><strong>Wann kein VPS verwendet werden sollte:</strong> Wenn niemand im Team auf eine Serverwarnung reagieren kann, wird ein verwalteter Server erstellt
-                plattformartig <a class="inline" href="/de/alternative-to-laravel-cloud">Laravel Wolke</a> ist sicherer
+                plattformartig <a class="inline" href="/de/alternative-to-laravel-cloud">Laravel Cloud</a> ist sicherer
                 Handel – Sie zahlen, um Operationen zum Problem eines anderen zu machen.</li>
 </ul>
-<h2 id="stack">Der Produktionsstapel, erklärt</h2>
+<h2 id="stack">Der Produktions-Stack, erklärt</h2>
 <p>Jeder Produktions-Laravel-Server konvergiert auf denselben Komponenten. Verstehen Sie vorher, was jedes Stück bewirkt
             Sie automatisieren etwas davon:</p>
 <div class="cmp-table-wrap">
@@ -353,12 +353,12 @@
 <tr><td>Nginx</td><td>Webserver / Reverse-Proxy</td><td>Stellt statische Assets bereit und leitet PHP-Anfragen weiter</td></tr>
 <tr><td>PHP-FPM oder Octane</td><td>PHP Laufzeit</td><td>FPM ist der zuverlässige Standard; Octane (FrankenPHP) sorgt dafür, dass die App für einen hohen Durchsatz gebootet bleibt</td></tr>
 <tr><td>MariaDB / PostgreSQL</td><td>Datenbank</td><td>Entweder funktioniert mit Laravel; Wählen Sie pro App</td></tr>
-<tr><td>Valkey (Redis-kompatibel)</td><td>Cache, Sitzungen, Warteschlangen</td><td>Open-source Redis fork; Kommen Sie vorbei für Laravel</td></tr>
+<tr><td>Valkey (Redis-kompatibel)</td><td>Cache, Sitzungen, Queues</td><td>Open-source Redis fork; Kommen Sie vorbei für Laravel</td></tr>
 <tr><td>Supervisor</td><td>Prozessmanager</td><td>Hält <code>queue:work</code> und Horizon am Leben</td></tr>
 <tr><td>Cron</td><td>Planer</td><td>Ein Eintrag: <code>artisan schedule:run</code> jede Minute</td></tr>
 <tr><td>UFW + Fail2ban</td><td>Firewall / Brute-Force-Schutz</td><td>Standardmäßig verweigern, wiederholte SSH-Fehler verbieten</td></tr>
 <tr><td>Certbot</td><td>TLS Zertifikate</td><td>Kostenlose Let's Encrypt-Zertifikate mit automatischer Verlängerung</td></tr>
-<tr><td>Releases im Deployer-Stil</td><td>Bereitstellung ohne Ausfallzeiten</td><td>Releases-Verzeichnis + Symlink-Tausch</td></tr>
+<tr><td>Releases im Deployer-Stil</td><td>Zero-Downtime-Deploys</td><td>Releases-Verzeichnis + Symlink-Tausch</td></tr>
 </tbody>
 </table>
 </div>
@@ -379,7 +379,7 @@
 <li><strong>Installieren Sie Composer</strong> weltweit.</li>
 <li><strong>Installieren Sie MariaDB</strong>, lauf <code>mariadb-secure-installation</code>, eine Datenbank erstellen und
                 ein dedizierter Benutzer pro App – root niemals wiederverwenden.</li>
-<li><strong>Installieren Sie Valkey</strong> (oder Redis) für Cache, Sitzungen und Warteschlangen.</li>
+<li><strong>Installieren Sie Valkey</strong> (oder Redis) für Cache, Sitzungen und Queues.</li>
 <li><strong>Schreiben Sie den Serverblock Nginx.</strong> Dokumentstammpunkte auf
                 <code>current/public</code>, <code>try_files</code> fällt zurück auf <code>index.php</code>, FastCGI
                 wird an den PHP-FPM-Socket der App übergeben.</li>
@@ -390,8 +390,8 @@
 <li><strong>Migrieren und zwischenspeichern.</strong> <code>php artisan migrate --force</code> dann
                 <code>config:cache</code>, <code>route:cache</code>, <code>view:cache</code>.</li>
 <li><strong>Konfigurieren Sie Supervisor</strong> laufen <code>php artisan queue:work</code> (oder Horizon) und
-                Starten Sie es bei jeder Bereitstellung neu.</li>
-<li><strong>Fügen Sie den Planer cron hinzu:</strong> <code>* * * * * php artisan schedule:run</code>.</li>
+                Starten Sie es bei jedem Deployment neu.</li>
+<li><strong>Fügen Sie den Scheduler cron hinzu:</strong> <code>* * * * * php artisan schedule:run</code>.</li>
 <li><strong>Stellen Sie TLS Zertifikate aus</strong> mit Certbot und erzwinge HTTPS.</li>
 </ol>
 <p>Multiplizieren Sie nun mit jeder App, die Sie hosten, und noch einmal mit jedem Server – und sorgen Sie dafür, dass PHP, Nginx und das Betriebssystem gepatcht bleiben
@@ -406,12 +406,12 @@
             mehr Befehl:</p>
 <div class="install-box">cipi App erstellen <span class="c"># add --octane for Laravel Octane on FrankenPHP</span></div>
 <p>Das sieht vor <strong>Isolierter Systembenutzer, PHP-FPM-Pool, Nginx Vhost und Datenbank pro App</strong>,
-            verbindet GitHub oder GitLab mit Bereitstellungsschlüsseln und Webhooks für Git-Bereitstellungen ohne Ausfallzeiten und verbindet Warteschlangen
-            Arbeiter und der Planer. SSL ist <code>cipi ssl install</code>; PostgreSQL ist
+            verbindet GitHub oder GitLab mit Bereitstellungsschlüsseln und Webhooks für Git-Zero-Downtime-Deployments und verbindet Queues
+            Worker und der Scheduler. SSL ist <code>cipi ssl install</code>; PostgreSQL ist
             <code>cipi db install pgsql</code>. Siehe die <a class="inline" href="/de/docs/getting-started">den Anfang machen
-            Führer</a> für die vollständige Komplettlösung oder die <a class="inline" href="/de/alternatives">Vergleichszentrum</a> wenn
+            Guides</a> für die vollständige Komplettlösung oder die <a class="inline" href="/de/alternatives">Vergleichszentrum</a> wenn
             Sie vergleichen es mit Forge, Ploi und Freunden.</p>
-<h2 id="operations">Wichtige Vorgänge nach der Bereitstellung</h2>
+<h2 id="operations">Wichtige Vorgänge nach dem Deployment</h2>
 <p>Es ist schon die halbe Miete, zu erreichen, dass es funktioniert. Es sind diese Gewohnheiten, die einen Server, der jahrelang hält, von einem anderen unterscheiden
             das überrascht dich:</p>
 <ul>
@@ -424,8 +424,8 @@
                 tun. <a class="inline" href="https://boogle.web.ap.it" target="_blank">Boogle</a> ist ein self-hosted
                 Ausnahme-Tracker, der Fehlerdaten in Ihrer eigenen Infrastruktur speichert – eine gute Lösung, wenn Sie sich für VPS entscheiden.
                 für Dateneigentum in erster Linie.</li>
-<li><strong>Gesundheitschecks und Protokolle.</strong> Cipi 5 versendet App-Zustandsprüfungen und
-                <code>cipi app logs</code> Tails Laravel, Nginx und Bereitstellung von Protokollen ohne SSH-Gymnastik.</li>
+<li><strong>Health-Checks und Logs.</strong> Cipi 5 versendet App-Zustandsprüfungen und
+                <code>cipi app logs</code> Tails Laravel, Nginx und Deployment von Logs ohne SSH-Gymnastik.</li>
 <li><strong>Disziplin beim Patchen.</strong> Unbeaufsichtigte Betriebssystem-Sicherheitsupdates plus ein bewusstes PHP-Upgrade
                 Pfad (<code>cipi php upgrade</code> verwaltet PHP Sicherheitspatches mit einer wöchentlichen Überprüfung) schlagen „Wir werden
                 aktualisieren, wenn wir uns erinnern".</li>
@@ -435,14 +435,14 @@
 </ul>
 <h2 id="mistakes">Häufige Fehler, die es zu vermeiden gilt</h2>
 <ul>
-<li><strong>Bereitstellung als Root.</strong> Eine kompromittierte App besitzt die gesamte Box. Verwenden Sie Pro-App-Benutzer – dies
+<li><strong>Deployment als Root.</strong> Eine kompromittierte App besitzt die gesamte Box. Verwenden Sie Pro-App-Benutzer – dies
                 Aus diesem Grund isoliert Cipi jede App unter ihrem eigenen Systembenutzer.</li>
 <li><strong>APP_DEBUG=true in der Produktion.</strong> Debug-Seiten geben Umgebungsvariablen, Anmeldeinformationen und Pfade preis. Es ist
                 der häufigste selbstverschuldete Laravel-Verstoß.</li>
 <li><strong>Engagement <code>.env</code></strong> oder gehen <code>.git/</code> über das Internet zugänglich.</li>
 <li><strong>777 Berechtigungen</strong> „um den Fehler zu beheben“. Nur <code>storage/</code> und
                 <code>bootstrap/cache/</code> müssen vom Laufzeitbenutzer beschreibbar sein.</li>
-<li><strong>Kein Warteschlangenarbeiter.</strong> E-Mails und Aufträge stapeln sich stillschweigend für immer in der Warteschlangentabelle.</li>
+<li><strong>Kein Queue-Worker.</strong> E-Mails und Aufträge stapeln sich stillschweigend für immer in der Warteschlangentabelle.</li>
 <li><strong>Opcache überspringen</strong> – kostenloser 2–3-facher Durchsatzverlust.</li>
 <li><strong>Kein Austausch bei kleinen Instanzen</strong> – Composer und Asset-Builds OOM-Kill zum ungünstigsten Zeitpunkt.</li>
 <li><strong>Ungetestete SSL Verlängerungen.</strong> Zertifikate verlängern sich automatisch bis zu dem Tag, an dem dies nicht mehr der Fall ist. überwachen
@@ -450,18 +450,18 @@
 </ul>
 <div class="cta-box">
 <h2>Setzen Sie dies mit Cipi in die Praxis um</h2>
-<p>Cipi ist die kostenlose open-source Bereitstellung CLI, auf die in diesem Handbuch verwiesen wird: Ein Befehl verwandelt einen neuen
+<p>Cipi ist die kostenlose Open-Source-Deploy-CLI, auf die in diesem Handbuch verwiesen wird: Ein Befehl verwandelt einen neuen
                 Ubuntu VPS in einen gehärteten Produktionsserver für Laravel – Nginx, PHP-FPM oder Octane, MariaDB oder
-                PostgreSQL, Warteschlangen, Scheduler, SSL und Git-Bereitstellungen ohne Ausfallzeiten enthalten.</p>
+                PostgreSQL, Queues, Scheduler, SSL und Git-Zero-Downtime-Deployments enthalten.</p>
 <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
-<a class="btn-primary" href="/de/docs/getting-started">Starten Sie kostenlos durch</a>
+<a class="btn-primary" href="/de/docs/getting-started">Kostenlos starten</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Stern auf GitHub</a>
 <a class="btn-ghost" href="/de/alternatives">Vergleichen Sie mit anderen Tools</a>
 </div>
 </div>
 <h2 id="faq">Häufig gestellte Fragen</h2>
-<div class="faq-item"><h3>Was sind die Mindestserveranforderungen für Laravel in der Produktion?</h3><p>Eine einzelne vCPU mit 2 GB RAM führt bequem eine typische Laravel-App mit Datenbank, Cache und einem Warteschlangenarbeiter aus; Swap unter 4 GB hinzufügen. Octane, Horizon und umfangreiche Build-Schritte profitieren von 4 GB. Cipi installiert seinen vollständigen Stack auf jedem neuen Ubuntu 24.04/26.04 VPS.</p></div>
+<div class="faq-item"><h3>Was sind die Mindestserveranforderungen für Laravel in der Produktion?</h3><p>Eine einzelne vCPU mit 2 GB RAM führt bequem eine typische Laravel-App mit Datenbank, Cache und einem Queue-Worker aus; Swap unter 4 GB hinzufügen. Octane, Horizon und umfangreiche Build-Schritte profitieren von 4 GB. Cipi installiert seinen vollständigen Stack auf jedem neuen Ubuntu 24.04/26.04 VPS.</p></div>
 <div class="faq-item"><h3>Kann ich mehrere Laravel-Apps auf einem VPS hosten?</h3><p>Ja, und es ist normalerweise die kostengünstigste Einrichtung. Der Schlüssel liegt in der Isolation: Jede App sollte über einen eigenen Systembenutzer, einen eigenen PHP-FPM-Pool und eigene Datenbankanmeldeinformationen verfügen, damit eine kompromittierte oder sich schlecht verhaltende App die anderen nicht berühren kann. Cipi stellt genau diese Isolation automatisch mit cipi app create bereit.</p></div>
 <div class="faq-item"><h3>Sollte ich PHP-FPM oder Laravel Octane verwenden?</h3><p>PHP-FPM ist die langweilige, zuverlässige Standardeinstellung und für die meisten Apps richtig. Octane sorgt dafür, dass das Framework zwischen Anfragen gebootet wird, und glänzt bei APIs mit hohem Datenverkehr und latenzempfindlichen Endpunkten. Mit Cipi können Sie beide auf demselben Server ausführen und Octane Apps mit cipi app create --octane erstellen.</p></div>
 <div class="faq-item"><h3>Wie halte ich PHP auf Ubuntu auf dem Laufenden?</h3><p>Verfolgen Sie ein gepflegtes PHP-Repository und wenden Sie Sicherheitspatches umgehend an, anstatt auf Distributions-Upgrades zu warten. Cipi verwaltet PHP Sicherheitspatches selbst mit einer wöchentlichen Überprüfung (cipi php Upgrade), sodass Server nicht stillschweigend ins Hintertreffen geraten.</p></div>
@@ -472,7 +472,7 @@
 <a href="/de/guides/ci-cd-git-workflow-fuer-laravel">CI/CD für Laravel</a>
 <a href="/de/guides/self-hosted-entwickler-stack-2026">Der self-hosted-Entwicklerstapel</a>
 <a href="/de/alternative-to-laravel-forge">Cipi vs. Laravel Forge</a>
-<a href="/de/docs/getting-started">Cipi Dokumente: Erste Schritte</a>
+<a href="/de/docs/getting-started">Cipi Docs: Erste Schritte</a>
 </div>
 </main>
 <footer>
@@ -480,43 +480,43 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Kostenlose open-source Laravel Bereitstellung CLI für Ubuntu VPS – Octane, Horizon, Reverb und Git-Bereitstellungen ohne Ausfallzeiten.</p>
+<p>Kostenlose Open-Source-Deploy-CLI für Laravel auf Ubuntu VPS – Octane, Horizon, Reverb und Zero-Downtime-Git-Deploys.</p>
 <ul class="footer-brand-links">
-<li><a href="/de/docs/getting-started">Fangen Sie an</a></li>
-<li><a href="/de/docs/">Dokumente</a></li>
+<li><a href="/de/docs/getting-started">Jetzt starten</a></li>
+<li><a href="/de/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Vergleichen Sie Cipi mit Alternativen" class="footer-col footer-col--compare">
-<strong>Vergleichen Sie Cipi</strong>
+<nav aria-label="Cipi mit Alternativen vergleichen" class="footer-col footer-col--compare">
+<strong>Cipi vergleichen</strong>
 <ul>
 <li><a href="/de/alternative-to-laravel-forge">Laravel Forge Alternative</a></li>
-<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud-Alternative</a></li>
+<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud Alternative</a></li>
 <li><a href="/de/alternative-to-ploi">Ploi Alternative</a></li>
 <li><a href="/de/alternative-to-coolify">Coolify Alternative</a></li>
 <li><a href="/de/alternative-to-runcloud">RunCloud Alternative</a></li>
 <li><a href="/de/alternative-to-cloudpanel">CloudPanel Alternative</a></li>
 <li><a href="/de/alternative-to-cpanel">cPanel Alternative</a></li>
-<li><a href="/de/alternative-to-plesk">Plesk-Alternative</a></li>
+<li><a href="/de/alternative-to-plesk">Plesk Alternative</a></li>
 <li><a href="/de/best-laravel-forge-alternatives">Beste Forge-Alternativen 2026</a></li>
 <li><a href="/de/alternatives">Alle Vergleiche</a></li>
 </ul>
 </nav>
 <nav aria-label="Kostenlose Laravel-Anleitungen" class="footer-col">
-<strong>Kostenlose Reiseführer</strong>
+<strong>Kostenlose Guides</strong>
 <ul>
 <li><a href="/de/guides/apps-mit-cipi-yml-verwalten">Apps mit cipi.yml verwalten</a></li>
-<li><a href="/de/guides/gui-panel-und-api">GUI-Panel und API</a></li>
+<li><a href="/de/guides/gui-panel-und-api">Control-Panel und API</a></li>
 <li><a href="/de/guides/cipi-agent-in-laravel-nutzen">cipi/agent und Projekt-MCP</a></li>
-<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi bereitstellen</a></li>
+<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi deployen</a></li>
 <li><a href="/de/guides/">Alle Anleitungen</a></li>
                     </ul>
 </nav>
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Hergestellt mit ❤️ von <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
-<span class="footer-license"> · Open source, MIT-lizenziert</span>
+                    Mit ❤️ gebaut von <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+<span class="footer-license"> · Open Source, MIT-lizenziert</span>
 </div>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">SSH-Verbindungsmanager</a></li>

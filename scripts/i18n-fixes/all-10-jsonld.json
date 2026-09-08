@@ -1,0 +1,130 @@
+{
+ "de": {
+  "segments": [
+   [
+    "Any provider works (Hetzner, DigitalOcean, Vultr, Linode, AWS). On Ubuntu 24.04/26.04 run the one-command installer (wget -O - https://cipi.sh/setup.sh | bash) and the full production stack — Nginx, PHP, MariaDB, Valkey, Supervisor — is configured in minutes.",
+    "Jeder Anbieter geht (Hetzner, DigitalOcean, Vultr, Linode, AWS). Führen Sie auf Ubuntu 24.04/26.04 den Ein-Befehl-Installer aus (wget -O - https://cipi.sh/setup.sh | bash) — und der komplette Produktions-Stack aus Nginx, PHP, MariaDB, Valkey und Supervisor ist in wenigen Minuten konfiguriert."
+   ],
+   [
+    "cipi app create provisions an isolated app with its own system user, database, PHP pool and Nginx vhost (add --octane for Laravel Octane). Connecting GitHub or GitLab configures deploy keys and webhooks automatically for zero-downtime deploys.",
+    "cipi app create legt eine isolierte App mit eigenem Systembenutzer, eigener Datenbank, eigenem PHP-Pool und eigenem Nginx-vhost an (mit --octane für Laravel Octane). Verbinden Sie GitHub oder GitLab, und Deploy-Keys und Webhooks werden automatisch für Zero-Downtime-Deployments konfiguriert."
+   ],
+   [
+    "Import your database dump, copy your .env values, issue HTTPS certificates with cipi ssl install, then point DNS at the new server and retire the old setup.",
+    "Importieren Sie Ihren Datenbank-Dump, übernehmen Sie Ihre .env-Werte, stellen Sie die HTTPS-Zertifikate mit cipi ssl install aus, richten Sie dann das DNS auf den neuen Server und nehmen Sie das alte Setup außer Betrieb."
+   ],
+   [
+    "Does a deploy apply cipi.yml automatically?",
+    "Wendet ein Deploy die cipi.yml automatisch an?"
+   ],
+   [
+    "Cipi — Easy Laravel Deployments",
+    "Cipi – Laravel einfach deployen"
+   ],
+   [
+    "Best Laravel Forge alternatives in 2026",
+    "Die besten Laravel Forge-Alternativen 2026"
+   ],
+   [
+    "Laravel Security Checklist 2026 — Hardening PHP Apps & Servers",
+    "Laravel-Sicherheitscheckliste 2026 – PHP-Apps und Server härten"
+   ]
+  ]
+ },
+ "fr": {
+  "segments": [
+   [
+    "Any provider works (Hetzner, DigitalOcean, Vultr, Linode, AWS). On Ubuntu 24.04/26.04 run the one-command installer (wget -O - https://cipi.sh/setup.sh | bash) and the full production stack — Nginx, PHP, MariaDB, Valkey, Supervisor — is configured in minutes.",
+    "N’importe quel fournisseur convient (Hetzner, DigitalOcean, Vultr, Linode, AWS). Sur Ubuntu 24.04/26.04, lancez l’installateur en une commande (wget -O - https://cipi.sh/setup.sh | bash) et toute la stack de production — Nginx, PHP, MariaDB, Valkey, Supervisor — est configurée en quelques minutes."
+   ],
+   [
+    "cipi app create provisions an isolated app with its own system user, database, PHP pool and Nginx vhost (add --octane for Laravel Octane). Connecting GitHub or GitLab configures deploy keys and webhooks automatically for zero-downtime deploys.",
+    "cipi app create provisionne une application isolée avec son propre utilisateur système, sa base de données, son pool PHP et son vhost Nginx (ajoutez --octane pour Laravel Octane). En connectant GitHub ou GitLab, les clés de déploiement et les webhooks sont configurés automatiquement pour des déploiements sans interruption."
+   ],
+   [
+    "Import your database dump, copy your .env values, issue HTTPS certificates with cipi ssl install, then point DNS at the new server and retire the old setup.",
+    "Importez votre dump de base de données, reprenez vos valeurs .env, émettez les certificats HTTPS avec cipi ssl install, puis faites pointer le DNS vers le nouveau serveur et mettez l’ancienne installation hors service."
+   ],
+   [
+    "Does a deploy apply cipi.yml automatically?",
+    "Un déploiement applique-t-il cipi.yml automatiquement ?"
+   ],
+   [
+    "Cipi — Easy Laravel Deployments",
+    "Cipi — Déployer Laravel en toute simplicité"
+   ],
+   [
+    "Best Laravel Forge alternatives in 2026",
+    "Les meilleures alternatives à Laravel Forge en 2026"
+   ],
+   [
+    "Laravel Security Checklist 2026 — Hardening PHP Apps & Servers",
+    "Checklist de sécurité Laravel 2026 — durcir vos applications PHP et vos serveurs"
+   ]
+  ]
+ },
+ "es": {
+  "segments": [
+   [
+    "Any provider works (Hetzner, DigitalOcean, Vultr, Linode, AWS). On Ubuntu 24.04/26.04 run the one-command installer (wget -O - https://cipi.sh/setup.sh | bash) and the full production stack — Nginx, PHP, MariaDB, Valkey, Supervisor — is configured in minutes.",
+    "Sirve cualquier proveedor (Hetzner, DigitalOcean, Vultr, Linode, AWS). En Ubuntu 24.04/26.04 ejecuta el instalador de un solo comando (wget -O - https://cipi.sh/setup.sh | bash) y todo el stack de producción — Nginx, PHP, MariaDB, Valkey, Supervisor — queda configurado en minutos."
+   ],
+   [
+    "cipi app create provisions an isolated app with its own system user, database, PHP pool and Nginx vhost (add --octane for Laravel Octane). Connecting GitHub or GitLab configures deploy keys and webhooks automatically for zero-downtime deploys.",
+    "cipi app create aprovisiona una app aislada con su propio usuario de sistema, su base de datos, su pool PHP y su vhost de Nginx (añade --octane para Laravel Octane). Al conectar GitHub o GitLab, las claves de despliegue y los webhooks se configuran automáticamente para desplegar sin downtime."
+   ],
+   [
+    "Import your database dump, copy your .env values, issue HTTPS certificates with cipi ssl install, then point DNS at the new server and retire the old setup.",
+    "Importa el dump de tu base de datos, reutiliza tus valores .env, emite los certificados HTTPS con cipi ssl install y después apunta el DNS al nuevo servidor y retira la instalación antigua."
+   ],
+   [
+    "Does a deploy apply cipi.yml automatically?",
+    "¿Un despliegue aplica cipi.yml automáticamente?"
+   ],
+   [
+    "Cipi — Easy Laravel Deployments",
+    "Cipi — Despliegues de Laravel sin complicaciones"
+   ],
+   [
+    "Best Laravel Forge alternatives in 2026",
+    "Las mejores alternativas a Laravel Forge en 2026"
+   ],
+   [
+    "Laravel Security Checklist 2026 — Hardening PHP Apps & Servers",
+    "Checklist de seguridad de Laravel 2026: endurecer apps PHP y servidores"
+   ]
+  ]
+ },
+ "pt": {
+  "segments": [
+   [
+    "Any provider works (Hetzner, DigitalOcean, Vultr, Linode, AWS). On Ubuntu 24.04/26.04 run the one-command installer (wget -O - https://cipi.sh/setup.sh | bash) and the full production stack — Nginx, PHP, MariaDB, Valkey, Supervisor — is configured in minutes.",
+    "Serve qualquer provedor (Hetzner, DigitalOcean, Vultr, Linode, AWS). No Ubuntu 24.04/26.04, rode o instalador de um comando (wget -O - https://cipi.sh/setup.sh | bash) e todo o stack de produção — Nginx, PHP, MariaDB, Valkey, Supervisor — fica configurado em minutos."
+   ],
+   [
+    "cipi app create provisions an isolated app with its own system user, database, PHP pool and Nginx vhost (add --octane for Laravel Octane). Connecting GitHub or GitLab configures deploy keys and webhooks automatically for zero-downtime deploys.",
+    "cipi app create provisiona uma app isolada com o seu próprio usuário de sistema, banco de dados, pool PHP e vhost Nginx (adicione --octane para Laravel Octane). Ao conectar GitHub ou GitLab, as deploy keys e os webhooks são configurados automaticamente para deploys sem downtime."
+   ],
+   [
+    "Import your database dump, copy your .env values, issue HTTPS certificates with cipi ssl install, then point DNS at the new server and retire the old setup.",
+    "Importe o dump do seu banco de dados, reaproveite os seus valores .env, emita os certificados HTTPS com cipi ssl install e depois aponte o DNS para o novo servidor e desative a instalação antiga."
+   ],
+   [
+    "Does a deploy apply cipi.yml automatically?",
+    "Um deploy aplica o cipi.yml automaticamente?"
+   ],
+   [
+    "Cipi — Easy Laravel Deployments",
+    "Cipi — Deploy de Laravel sem complicação"
+   ],
+   [
+    "Best Laravel Forge alternatives in 2026",
+    "As melhores alternativas ao Laravel Forge em 2026"
+   ],
+   [
+    "Laravel Security Checklist 2026 — Hardening PHP Apps & Servers",
+    "Checklist de segurança do Laravel 2026 — blindando apps PHP e servidores"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "de": [
+  [
+   "Yes, optionally. Running cipi gui yourdomain.com installs a free, self-hosted web control panel that manages one or more Cipi servers from the browser \\\\u2014 apps, databases, SSL, deploys and logs. The dashboard is opt-in, and the server never depends on a panel service or containers to keep running; Cipi remains fully usable from the CLI alone\\.",
+   "Ja, optional. cipi gui yourdomain.com installiert ein kostenloses, self-hosted Web-Control-Panel, das einen oder mehrere Cipi-Server im Browser verwaltet \\\\u2014 Apps, Datenbanken, SSL, Deploys und Logs. Das Dashboard ist optional, und der Server h\\\\u00e4ngt f\\\\u00fcr den Betrieb nie von einem Panel-Dienst oder von Containern ab; Cipi bleibt allein \\\\u00fcber die CLI voll nutzbar."
+  ]
+ ],
+ "fr": [
+  [
+   "Yes, optionally. Running cipi gui yourdomain.com installs a free, self-hosted web control panel that manages one or more Cipi servers from the browser \\\\u2014 apps, databases, SSL, deploys and logs. The dashboard is opt-in, and the server never depends on a panel service or containers to keep running; Cipi remains fully usable from the CLI alone\\.",
+   "Oui, en option. cipi gui yourdomain.com installe un panneau de contr\\\\u00f4le web self-hosted et gratuit qui pilote un ou plusieurs serveurs Cipi depuis le navigateur \\\\u2014 applications, bases de donn\\\\u00e9es, SSL, d\\\\u00e9ploiements et logs. Le tableau de bord est facultatif, et le serveur ne d\\\\u00e9pend jamais d\\\\u2019un service de panneau ni de conteneurs pour fonctionner ; Cipi reste enti\\\\u00e8rement utilisable en CLI uniquement."
+  ]
+ ],
+ "es": [
+  [
+   "Yes, optionally. Running cipi gui yourdomain.com installs a free, self-hosted web control panel that manages one or more Cipi servers from the browser \\\\u2014 apps, databases, SSL, deploys and logs. The dashboard is opt-in, and the server never depends on a panel service or containers to keep running; Cipi remains fully usable from the CLI alone\\.",
+   "S\\\\u00ed, opcionalmente. cipi gui yourdomain.com instala un panel de control web self-hosted y gratuito que gestiona uno o varios servidores Cipi desde el navegador \\\\u2014 apps, bases de datos, SSL, despliegues y logs. El dashboard es opcional y el servidor nunca depende de un servicio de panel ni de contenedores para seguir funcionando; Cipi sigue siendo totalmente usable solo con la CLI."
+  ]
+ ],
+ "pt": [
+  [
+   "Yes, optionally. Running cipi gui yourdomain.com installs a free, self-hosted web control panel that manages one or more Cipi servers from the browser \\\\u2014 apps, databases, SSL, deploys and logs. The dashboard is opt-in, and the server never depends on a panel service or containers to keep running; Cipi remains fully usable from the CLI alone\\.",
+   "Sim, opcionalmente. cipi gui yourdomain.com instala um painel de controle web self-hosted e gratuito que gerencia um ou v\\\\u00e1rios servidores Cipi pelo navegador \\\\u2014 apps, bancos de dados, SSL, deploys e logs. O painel \\\\u00e9 opcional e o servidor nunca depende de um servi\\\\u00e7o de painel nem de cont\\\\u00eaineres para continuar rodando; o Cipi segue totalmente utiliz\\\\u00e1vel apenas pela CLI."
+  ]
+ ]
+}

@@ -103,7 +103,7 @@
         {
           "@type": "Question",
           "name": "Posso migrare da Vito Deploy a Cipi?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sì. Prova un VPS Ubuntu nuovo, installa Cipi con un solo comando, ricrea ogni sito con cipi app create, collega il tuo repository GitHub o GitLab per deploy zero-downtime, importa il dump del database, poi punta il DNS al nuovo server. Il tuo codebase Laravel non richiede modifiche." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Sì. Fai il provisioning di un VPS Ubuntu nuovo, installa Cipi con un solo comando, ricrea ogni sito con cipi app create, collega il tuo repository GitHub o GitLab per i deploy zero-downtime, importa il dump del database e poi punta il DNS al nuovo server. Il codice Laravel non richiede alcuna modifica." }
         },
         {
           "@type": "Question",
@@ -150,7 +150,7 @@
       "@type": "HowToStep",
       "position": 4,
       "name": "Sposta i dati e fai il cutover",
-      "text": "Importa il dump del database, copia i valori del tuo .env, emetti certificati HTTPS con cipi ssl install, poi punta il DNS al nuovo server e dismetti il setup vecchio."
+      "text": "Importa il dump del database, copia i valori del tuo .env, emetti certificati HTTPS con cipi ssl install, poi punta il DNS al nuovo server e dismetti il vecchio setup."
     }
   ]
 }
@@ -328,9 +328,9 @@
                     <tr><td>Interfaccia</td><td class="col-cipi">CLI + REST API + GUI opzionale</td><td>Dashboard web GUI</td></tr>
                     <tr><td>Impronta infrastrutturale</td><td class="col-cipi"><span class="yes">Gira sul VPS delle tue app</span></td><td><span class="no">Serve un VPS + DB dedicato</span></td></tr>
                     <tr><td>Automazione CLI e pipeline</td><td class="col-cipi"><span class="yes">Sì</span></td><td><span class="partial">Guidato dalla dashboard</span></td></tr>
-                    <tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Sì — nativo CLI</span></td><td><span class="partial">Manuale</span></td></tr>
+                    <tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Sì — nativo in CLI</span></td><td><span class="partial">Manuale</span></td></tr>
                     <tr><td>Server AI / MCP</td><td class="col-cipi"><span class="yes">Dual MCP</span></td><td><span class="no">No</span></td></tr>
-                    <tr><td>Crittografia config at rest (AES-256)</td><td class="col-cipi"><span class="yes">Sì</span></td><td><span class="no">Non pubblicizzato</span></td></tr>
+                    <tr><td>Crittografia delle config at rest (AES-256)</td><td class="col-cipi"><span class="yes">Sì</span></td><td><span class="no">Non pubblicizzato</span></td></tr>
                     <tr><td>Sync server-to-server e failover</td><td class="col-cipi"><span class="yes">Sì</span></td><td><span class="no">No</span></td></tr>
                     <tr><td>Dashboard web, team, monitoraggio</td><td class="col-cipi"><span class="partial">GUI opzionale</span></td><td><span class="yes">Sì</span></td></tr>
                     <tr><td>Supporto PostgreSQL</td><td class="col-cipi"><span class="yes">Opzionale</span></td><td><span class="yes">Sì</span></td></tr>
@@ -341,13 +341,13 @@
         <h2>Perché gli sviluppatori scelgono Cipi invece di Vito Deploy</h2>
         <div class="cards">
             <div class="card"><h3>Nessun server dashboard separato</h3><p>Vito Deploy è un'app Laravel completa con database che richiede un VPS dedicato. Cipi è un singolo binary sullo stesso server delle tue app — niente in più da mantenere o mettere in sicurezza.</p></div>
-            <div class="card"><h3>CLI-first e pronto per la pipeline</h3><p>Ogni operazione è un comando shell componibile, scriptabile in CI/CD e attivabile via webhook o GitHub Actions.</p></div>
+            <div class="card"><h3>CLI-first e pronto per le pipeline</h3><p>Ogni operazione è un comando shell componibile, scriptabile in CI/CD e attivabile via webhook o GitHub Actions.</p></div>
             <div class="card"><h3>AI-native con dual MCP</h3><p>I server MCP per app e globali abilitano la gestione completa dell'infrastruttura guidata dall'AI da qualsiasi IDE o agente compatibile MCP.</p></div>
             <div class="card"><h3>Deploy Git zero-downtime nativi</h3><p>Release atomiche guidate da webhook per GitHub e GitLab configurate con un solo comando.</p></div>
             <div class="card"><h3>Crittografia at rest</h3><p>Tutte le config, token e chiavi crittografate con AES-256-CBC tramite il sistema Vault.</p></div>
             <div class="card"><h3>Sync tra server e failover</h3><p>Sync server-to-server crittografato integrato per replica failover automatica via cron.</p></div>
-            <div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Crea o converti app con <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Esegui Octane accanto ad app FPM classiche, più Horizon e Reverb di prima classe — nessun pannello SaaS richiesto.</p></div>
-            <div class="card"><h3>PostgreSQL opzionale</h3><p>MariaDB di default; installa PostgreSQL con un solo comando e scegli un motore per app (<code>cipi db install pgsql</code>).</p></div>
+            <div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Crea o converti app con <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Esegui Octane accanto alle app FPM classiche, con Horizon e Reverb supportati nativamente — senza alcun pannello SaaS.</p></div>
+            <div class="card"><h3>PostgreSQL opzionale</h3><p>MariaDB di default; installa PostgreSQL con un solo comando e scegli il motore app per app (<code>cipi db install pgsql</code>).</p></div>
         </div>
 
         <h2>Installa Cipi con un solo comando</h2>
@@ -364,12 +364,12 @@
         <p>Passare da Vito Deploy a Cipi è un cutover pulito, non una conversione in place: allesti un server nuovo accanto al setup attuale, fai il deploy dallo stesso repository Git e sposti il DNS quando tutto è a posto. Il tuo codebase Laravel non deve cambiare.</p>
         <ol class="migrate-steps">
             <li><strong>Fai inventario in Vito.</strong> Annota i server e i siti gestiti nella tua dashboard Vito; le tue app vivono già sui tuoi VPS.</li>
-                    <li><strong>Prova un VPS Ubuntu nuovo e installa Cipi.</strong> Qualsiasi provider va bene (Hetzner, DigitalOcean, Vultr, Linode, AWS). Su Ubuntu 24.04/26.04 esegui <code>wget -O - https://cipi.sh/setup.sh | bash</code> e lo stack di produzione completo — Nginx, PHP, MariaDB, Valkey, Supervisor — è configurato in pochi minuti.</li>
+                    <li><strong>Fai il provisioning di un VPS Ubuntu nuovo e installa Cipi.</strong> Qualsiasi provider va bene (Hetzner, DigitalOcean, Vultr, Linode, AWS). Su Ubuntu 24.04/26.04 esegui <code>wget -O - https://cipi.sh/setup.sh | bash</code> e lo stack di produzione completo — Nginx, PHP, MariaDB, Valkey, Supervisor — è configurato in pochi minuti.</li>
                     <li><strong>Ricrea ogni app e collega Git.</strong> <code>cipi app create</code> provisiona un'app isolata con il proprio utente di sistema, database, pool PHP e vhost Nginx (aggiungi <code>--octane</code> per Laravel Octane). Collegare GitHub o GitLab configura automaticamente deploy key e webhook per deploy zero-downtime.</li>
-                    <li><strong>Sposta i dati e fai il cutover.</strong> Importa il dump del database, copia i valori del tuo <code>.env</code>, emetti certificati HTTPS con <code>cipi ssl install</code>, poi punta il DNS al nuovo server e dismetti il setup vecchio.</li>
+                    <li><strong>Sposta i dati e fai il cutover.</strong> Importa il dump del database, copia i valori del tuo <code>.env</code>, emetti certificati HTTPS con <code>cipi ssl install</code>, poi punta il DNS al nuovo server e dismetti il vecchio setup.</li>
         </ol>
         <div class="note">
-            <p>Cipi usa convenzioni standard Nginx, PHP-FPM / Laravel Octane e Deployer, quindi non c'è configurazione vendor-specific da smantellare in seguito. Dettagli completi nella <a class="inline" href="/it/docs/primi-passi">guida ai primi passi</a>.</p>
+            <p>Cipi segue le convenzioni standard di Nginx, PHP-FPM / Laravel Octane e Deployer: non resta alcuna configurazione vendor-specific da smantellare in seguito. Tutti i dettagli nella <a class="inline" href="/it/docs/primi-passi">guida ai primi passi</a>.</p>
         </div>
 
         <h2>Domande frequenti</h2>
@@ -378,12 +378,12 @@
         <div class="faq-item"><h3>Cipi richiede un server separato come Vito Deploy?</h3><p>No. Vito Deploy gira come app Laravel autonoma e in genere richiede un VPS dedicato per la dashboard e il database. Cipi si installa direttamente sul server che ospita le tue applicazioni, senza infrastruttura aggiuntiva da mantenere o mettere in sicurezza.</p></div>
         <div class="faq-item"><h3>Quando dovrei scegliere ancora Vito Deploy?</h3><p>Scegli Vito Deploy se vuoi una dashboard GUI web curata con collaborazione in team e monitoraggio integrato, e non ti servono automazione pipeline CLI-first o integrazione AI/MCP.</p></div>
 
-        <div class="faq-item"><h3>Posso migrare da Vito Deploy a Cipi?</h3><p>Sì. Prova un VPS Ubuntu nuovo, installa Cipi con un solo comando, ricrea ogni sito con cipi app create, collega il tuo repository GitHub o GitLab per deploy zero-downtime, importa il dump del database, poi punta il DNS al nuovo server. Il tuo codebase Laravel non richiede modifiche.</p></div>
+        <div class="faq-item"><h3>Posso migrare da Vito Deploy a Cipi?</h3><p>Sì. Fai il provisioning di un VPS Ubuntu nuovo, installa Cipi con un solo comando, ricrea ogni sito con cipi app create, collega il tuo repository GitHub o GitLab per i deploy zero-downtime, importa il dump del database e poi punta il DNS al nuovo server. Il codice Laravel non richiede alcuna modifica.</p></div>
         <div class="faq-item"><h3>Cipi ha una UI web come Vito Deploy?</h3><p>Sì, opzionalmente. Eseguire cipi gui yourdomain.com installa un pannello di controllo web gratuito e self-hosted che gestisce uno o più server Cipi dal browser. A differenza di Vito, il pannello è opt-in e non serve un server di gestione separato; Cipi resta pienamente utilizzabile solo dalla CLI.</p></div>
 
         <h2>Confronta Cipi con altri strumenti</h2>
         <div class="related">
-            <a href="/it/alternativa-a-laravel-forge">vs Laravel Forge</a> <a href="/it/alternativa-a-laravel-cloud">vs Laravel Cloud</a> <a href="/it/alternativa-a-fortrabbit">vs fortrabbit</a> <a href="/it/alternativa-a-render">vs Render</a> <a href="/it/alternativa-a-20i">vs 20i</a> <a href="/it/alternativa-a-sevalla">vs Sevalla</a> <a href="/it/alternativa-a-ploi-cloud">vs Ploi Cloud</a> <a href="/it/alternativa-a-ploi">vs Ploi</a> <a href="/it/alternativa-a-cleavr">vs Cleavr</a> <a href="/it/alternativa-a-moss">vs moss.sh</a> <a href="/it/alternativa-a-kamal">vs Kamal</a> <a href="/it/alternativa-a-dokku">vs Dokku</a> <a href="/it/alternativa-a-easypanel">vs Easypanel</a> <a href="/it/alternativa-a-coolify">vs Coolify</a> <a href="/it/alternativa-a-runcloud">vs RunCloud</a> <a href="/it/alternativa-a-serverpilot">vs ServerPilot</a> <a href="/it/alternativa-a-cloudpanel">vs CloudPanel</a> <a href="/it/alternativa-a-cpanel">vs cPanel</a> <a href="/it/alternativa-a-directadmin">vs DirectAdmin</a> <a href="/it/alternativa-a-plesk">vs Plesk</a> <a href="/it/migliori-alternative-a-laravel-forge">Migliori alternative a Forge 2026</a> <a href="/it/docs/informazioni#vs-alternatives">Confronto completo</a>
+            <a href="/it/alternativa-a-laravel-forge">vs Laravel Forge</a> <a href="/it/alternativa-a-laravel-cloud">vs Laravel Cloud</a> <a href="/it/alternativa-a-fortrabbit">vs fortrabbit</a> <a href="/it/alternativa-a-render">vs Render</a> <a href="/it/alternativa-a-20i">vs 20i</a> <a href="/it/alternativa-a-sevalla">vs Sevalla</a> <a href="/it/alternativa-a-ploi-cloud">vs Ploi Cloud</a> <a href="/it/alternativa-a-ploi">vs Ploi</a> <a href="/it/alternativa-a-cleavr">vs Cleavr</a> <a href="/it/alternativa-a-moss">vs moss.sh</a> <a href="/it/alternativa-a-kamal">vs Kamal</a> <a href="/it/alternativa-a-dokku">vs Dokku</a> <a href="/it/alternativa-a-easypanel">vs Easypanel</a> <a href="/it/alternativa-a-coolify">vs Coolify</a> <a href="/it/alternativa-a-runcloud">vs RunCloud</a> <a href="/it/alternativa-a-serverpilot">vs ServerPilot</a> <a href="/it/alternativa-a-cloudpanel">vs CloudPanel</a> <a href="/it/alternativa-a-cpanel">vs cPanel</a> <a href="/it/alternativa-a-directadmin">vs DirectAdmin</a> <a href="/it/alternativa-a-plesk">vs Plesk</a> <a href="/it/migliori-alternative-a-laravel-forge">Le migliori alternative a Forge nel 2026</a> <a href="/it/docs/informazioni#vs-alternatives">Confronto completo</a>
         </div>
     </main>
 
@@ -410,7 +410,7 @@
                     <li><a href="/it/alternativa-a-cloudpanel">alternativa a CloudPanel</a></li>
                     <li><a href="/it/alternativa-a-cpanel">alternativa a cPanel</a></li>
                     <li><a href="/it/alternativa-a-plesk">alternativa a Plesk</a></li>
-                    <li><a href="/it/migliori-alternative-a-laravel-forge">Migliori alternative a Forge 2026</a></li>
+                    <li><a href="/it/migliori-alternative-a-laravel-forge">Le migliori alternative a Forge nel 2026</a></li>
                     <li><a href="/it/alternative">Tutti i confronti</a></li>
                     </ul>
                 </nav>
@@ -418,7 +418,7 @@
                     <strong>Guide gratuite</strong>
                     <ul>
                         <li><a href="/it/guide/gestire-app-con-cipi-yml">Gestire le app con cipi.yml</a></li>
-                    <li><a href="/it/guide/pannello-ui-e-api-cipi">Pannello UI e API</a></li>
+                    <li><a href="/it/guide/pannello-ui-e-api-cipi">Pannello di controllo e API</a></li>
                     <li><a href="/it/guide/usare-cipi-agent-in-laravel">cipi/agent e MCP di progetto</a></li>
                     <li><a href="/it/guide/deploy-wordpress-app-custom-github">Deploy WordPress con Cipi</a></li>
                     <li><a href="/it/guide/">Tutte le guide</a></li>

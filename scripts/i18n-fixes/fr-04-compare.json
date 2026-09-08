@@ -1,0 +1,186 @@
+{
+ "fr": {
+  "segments": [
+   [
+    "Meilleures alternatives Forge 2026",
+    "Meilleures alternatives à Forge en 2026"
+   ],
+   [
+    "Laravel Forge alternative",
+    "Alternative à Laravel Forge"
+   ],
+   [
+    "Questions fréquemment posées",
+    "Questions fréquentes"
+   ],
+   [
+    "Panneau UI et API",
+    "Panneau de contrôle et API"
+   ],
+   [
+    "Créez ou convertissez des applications avec",
+    "Créez ou convertissez vos applications avec"
+   ],
+   [
+    "Installez Cipi en une seule commande",
+    "Installer Cipi en une seule commande"
+   ],
+   [
+    "Lancez un nouveau VPS Ubuntu, puis exécutez :",
+    "Lancez un VPS Ubuntu neuf, puis exécutez :"
+   ],
+   [
+    "Provisionnez un nouveau VPS Ubuntu et installez Cipi.",
+    "Provisionnez un VPS Ubuntu neuf et installez Cipi."
+   ],
+   [
+    "Recréez chaque application et connectez Git.",
+    "Recréez chaque application et branchez Git."
+   ],
+   [
+    "Comparer Cipi avec d'autres outils",
+    "Comparer Cipi à d’autres outils"
+   ],
+   [
+    "contre Ploi Cloud",
+    "vs Ploi Cloud"
+   ],
+   [
+    "contre Laravel Forge",
+    "vs Laravel Forge"
+   ],
+   [
+    "contre Laravel Cloud",
+    "vs Laravel Cloud"
+   ],
+   [
+    "vs Vito Déployer",
+    "vs Vito Deploy"
+   ],
+   [
+    "Oui — CLI natif",
+    "Oui — natif en CLI"
+   ],
+   [
+    ". Exécutez Octane à côté des applications FPM classiques, ainsi que Horizon et Reverb de première classe — aucun panneau SaaS requis.",
+    ". Faites tourner Octane à côté des applications FPM classiques, avec Horizon et Reverb pris en charge nativement — sans aucun panneau SaaS."
+   ],
+   [
+    "CLI + API REST + optionnel GUI",
+    "CLI + API REST + GUI optionnelle"
+   ],
+   [
+    "Déplacez les données et effectuez une transition.",
+    "Migrez les données et basculez."
+   ],
+   [
+    "Déplacez les données et basculez.",
+    "Migrez les données et basculez."
+   ],
+   [
+    "Importez votre dump de base de données, copiez votre",
+    "Importez votre dump de base de données, reprenez vos"
+   ],
+   [
+    "Importez votre dump de base de données, copiez vos valeurs",
+    "Importez votre dump de base de données, reprenez vos valeurs"
+   ],
+   [
+    ", puis pointez DNS vers le nouveau serveur et retirez l'ancienne configuration.",
+    ", puis faites pointer le DNS vers le nouveau serveur et mettez l’ancienne installation hors service."
+   ],
+   [
+    ", puis pointez le DNS vers le nouveau serveur et retirez l’ancienne configuration.",
+    ", puis faites pointer le DNS vers le nouveau serveur et mettez l’ancienne installation hors service."
+   ],
+   [
+    "Cipi utilise les conventions standards Nginx, PHP-FPM / Laravel Octane et Deployer, il n'y a donc pas de configuration spécifique au fournisseur pour un déroulement ultérieur. Tous les détails dans le",
+    "Cipi s’appuie sur les conventions standard de Nginx, PHP-FPM / Laravel Octane et Deployer : aucune configuration propre à un fournisseur ne restera à défaire plus tard. Tous les détails dans le"
+   ],
+   [
+    "Cipi utilise les conventions standards Nginx, PHP-FPM / Laravel Octane et Deployer, il n'y a donc pas de configuration spécifique au fournisseur à démêler plus tard. Tous les détails dans le",
+    "Cipi s’appuie sur les conventions standard de Nginx, PHP-FPM / Laravel Octane et Deployer : aucune configuration propre à un fournisseur ne restera à défaire plus tard. Tous les détails dans le"
+   ],
+   [
+    "Cela installe et configure la stack de production complète : Nginx, PHP-FPM / Laravel Octane, MariaDB, en option PostgreSQL, Redis et Supervisor. Voir le",
+    "Cela installe et configure toute la stack de production — Nginx, PHP-FPM / Laravel Octane, MariaDB, PostgreSQL en option, Redis et Supervisor. Voir le"
+   ],
+   [
+    "Laravel-native (Deployer, artisan, files d'attente)",
+    "Laravel-native (Deployer, artisan, queues)"
+   ],
+   [
+    "Pas de dépendance vis-à-vis du fournisseur",
+    "Aucun vendor lock-in"
+   ],
+   [
+    "CLI et automatisation des pipelines",
+    "CLI et automatisation de pipelines"
+   ],
+   [
+    "Synchronisation et basculement de serveur à serveur",
+    "Sync serveur à serveur et failover"
+   ],
+   [
+    "Chiffrement au repos et synchronisation du serveur",
+    "Chiffrement au repos et sync entre serveurs"
+   ],
+   [
+    "Déploiements de Git sans interruption",
+    "Déploiements Git sans interruption"
+   ],
+   [
+    "AES-256-CBC Cryptage Vault pour toutes les configurations, ainsi qu'une synchronisation chiffrée de serveur à serveur intégrée pour la réplication par basculement.",
+    "Chiffrement Vault AES-256-CBC pour toutes les configurations, plus une synchronisation chiffrée de serveur à serveur intégrée pour la réplication de failover."
+   ],
+   [
+    "Serveurs MCP par application et globaux pour une gestion complète de l'infrastructure basée sur l'IA à partir de n'importe quel agent compatible MCP.",
+    "Serveurs MCP par application et globaux — pour piloter toute l’infrastructure par l’IA depuis n’importe quel agent compatible MCP."
+   ],
+   [
+    "N'importe quel fournisseur fonctionne (Hetzner, DigitalOcean, Vultr, Linode, AWS). Sur Ubuntu 24.04/26.04",
+    "N’importe quel fournisseur convient (Hetzner, DigitalOcean, Vultr, Linode, AWS). Sur Ubuntu 24.04/26.04, lancez"
+   ],
+   [
+    "N’importe quel fournisseur fonctionne (Hetzner, DigitalOcean, Vultr, Linode, AWS). Sur Ubuntu 24.04/26.04, exécutez",
+    "N’importe quel fournisseur convient (Hetzner, DigitalOcean, Vultr, Linode, AWS). Sur Ubuntu 24.04/26.04, lancez"
+   ],
+   [
+    "provisionne une application isolée avec son propre utilisateur système, sa propre base de données, son pool PHP et son vhost Nginx (ajouter",
+    "provisionne une application isolée avec son propre utilisateur système, sa base de données, son pool PHP et son vhost Nginx (ajoutez"
+   ],
+   [
+    "MariaDB par défaut ; installez PostgreSQL avec une seule commande et choisissez un moteur par application (",
+    "MariaDB par défaut ; installez PostgreSQL en une commande et choisissez le moteur application par application ("
+   ],
+   [
+    "Modèle de tarification",
+    "Modèle tarifaire"
+   ],
+   [
+    "Gratuit + coût fixe de VPS",
+    "Gratuit + coût fixe du VPS"
+   ],
+   [
+    "Gratuit, pour toujours",
+    "Gratuit, pour de bon"
+   ],
+   [
+    "gratuit · CLI-first",
+    "gratuit · CLI-first"
+   ],
+   [
+    "Chiffrement de configuration au repos (AES-256)",
+    "Chiffrement des configurations au repos (AES-256)"
+   ],
+   [
+    "Dernière mise à jour de la comparaison :",
+    "Comparaison mise à jour le"
+   ],
+   [
+    "Réalisé avec ❤️ par",
+    "Fait avec ❤️ par"
+   ]
+  ]
+ }
+}

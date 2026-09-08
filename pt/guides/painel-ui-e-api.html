@@ -110,7 +110,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Control panel and API",
+      "name": "Painel de controle e API",
       "item": "https://cipi.sh/en/guides/cipi-gui-and-api"
     }
   ]
@@ -268,7 +268,7 @@
 <a href="/pt/cipi-yml" class="nav-link">cipi.yml</a>
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">PT</summary><div class="lang-menu"><a href="/en/guides/cipi-gui-and-api" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/gui-panel-und-api" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/panneau-ui-et-api" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/pannello-ui-e-api-cipi" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/panel-ui-y-api" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a class="active" href="/pt/guides/painel-ui-e-api" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Alternar tema" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Mudar tema" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -304,7 +304,7 @@
 <span class="cmp-eyebrow">GUI · API · MCP</span>
 <h1>Cipi painel de controle e API: o que os dois <em>extensões opcionais</em> desbloquear</h1>
 <p class="cmp-updated">Por <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Última atualização: <time datetime="2026-08-22">22 de agosto de 2026</time> · grátis para ler, sem acesso pago</p>
-<p class="lead"><a class="inline" href="/">Cipi</a> é, e permanece, CLI-primeiro. Tudo o que um servidor precisa — aplicativos, bancos de dados, SSL, implantações, backups — é um <code>cipi</code> comando sobre SSH. Desde a v4.7.0 você pode adicionar dois pacotes opcionais: <strong>cipi/api</strong> e <strong>cipi/gui</strong>. Este guia é sobre o que eles desbloqueiam juntos e por que nenhum deles é necessário.</p>
+<p class="lead"><a class="inline" href="/">Cipi</a> é, e permanece, CLI-first. Tudo o que um servidor precisa — aplicativos, bancos de dados, SSL, deploys, backups — é um <code>cipi</code> comando sobre SSH. Desde a v4.7.0 você pode adicionar dois pacotes opcionais: <strong>cipi/api</strong> e <strong>cipi/gui</strong>. Este guia é sobre o que eles desbloqueiam juntos e por que nenhum deles é necessário.</p>
 <div class="toc">
 <strong>Neste guia</strong>
 <ol>
@@ -358,7 +358,7 @@ $ cipi api token create</code></pre>
 </tr>
 <tr>
 <td>Implantar</td>
-<td>Implantação, reversão e desbloqueio de uma versão travada com tempo de inatividade zero</td>
+<td>Deploy, reversão e desbloqueio de uma versão travada sem downtime</td>
 </tr>
 <tr>
 <td>Aliases e WWW</td>
@@ -374,7 +374,7 @@ $ cipi api token create</code></pre>
 </tr>
 <tr>
 <td>Servidor</td>
-<td><code>GET /api/status</code> (CPU, RAM, disco, serviços, PHP pools, contagem de aplicativos) — o mesmo instantâneo que <code>cipi status</code></td>
+<td><code>GET /api/status</code> (CPU, RAM, disco, serviços, PHP pools, contagem de aplicativos) — o mesmo snapshot que <code>cipi status</code></td>
 </tr>
 <tr>
 <td>Cabine</td>
@@ -409,7 +409,7 @@ curl -sS "${CIPI_API_URL}/api/status" \
 <p>Auth é Laravel Sanctum. Cada token carrega um ou mais <em>habilidades</em>: um token CI pode conter apenas <code>deploy-manage</code> e <code>apps-view</code>; um token de painel precisa do conjunto completo. <code>cipi api token create</code> lê a lista canônica do pacote (o mesmo que <code>php artisan cipi:token-abilities</code>).</p>
 <p>As habilidades abrangem aplicativos (visualizar/criar/editar/excluir/suspender/basicauth/env/auth/artisan/run/deploy-config), aliases, www, implantar, SSL, bancos de dados, status, MCP e — desde API <strong>1.15+</strong> — PHP, SSH, serviços, SMTP, integridade e lista de permissões de IP. Revogar com <code>cipi api token revoke &lt;id&gt;</code>. Não reutilize um token de capacidade total num pipeline público.</p>
 <h2 id="jobs">Trabalhos assíncronos e pesquisas</h2>
-<p>Uma implantação ou <code>db create</code> não reside na requisição HTTP: o API coloca o trabalho na fila e retorna <code>202</code> + <code>job_id</code>. Enquete <code>GET /api/jobs/{id}</code> para status, CLI <code>output</code> e <code>exit_code</code>. Essa é a mesma sobreposição que GUI mostra e o mesmo loop que <code>cipi-cli jobs wait</code>.</p>
+<p>Um deploy ou <code>db create</code> não reside na requisição HTTP: o API coloca o trabalho na fila e retorna <code>202</code> + <code>job_id</code>. Enquete <code>GET /api/jobs/{id}</code> para status, CLI <code>output</code> e <code>exit_code</code>. Essa é a mesma sobreposição que GUI mostra e o mesmo loop que <code>cipi-cli jobs wait</code>.</p>
 <pre class="code-pre"><code>curl -sS -X POST "${CIPI_API_URL}/api/apps/myapp/deploy" \
   -H "Authorization: Bearer ${CIPI_API_TOKEN}"
 
@@ -417,7 +417,7 @@ curl -sS "${CIPI_API_URL}/api/jobs/JOB_ID" \
   -H "Authorization: Bearer ${CIPI_API_TOKEN}"</code></pre>
 <p>Desde Cipi <strong>4.6.3</strong> o pacote API é atualizado todas as noites às 04:30 (<code>cipi api update</code>), para que os endpoints REST e as ferramentas MCP permaneçam atualizados sem uma etapa manual.</p>
 <h2 id="mcp">MCP: Cipi dentro do Cursor, VS Code e Claude</h2>
-<p>O servidor MCP em <code>/mcp</code> (Streamable HTTP) expõe <strong>Mais de 50 ferramentas</strong>: aplicativos, aliases, www, bancos de dados, implantação, SSL, autenticação básica, cockpit do servidor, <code>.env</code> / <code>auth.json</code> / app-run / deploy-config, jobs, logs and <code>ServerStatus</code>. De API <strong>1.11.1+</strong> um token com apenas <code>mcp-access</code> é suficiente para cada ferramenta MCP — as habilidades REST por endpoint não são verificadas em <code>/mcp</code>.</p>
+<p>O servidor MCP em <code>/mcp</code> (Streamable HTTP) expõe <strong>Mais de 50 ferramentas</strong>: aplicativos, aliases, www, bancos de dados, deploy, SSL, autenticação básica, cockpit do servidor, <code>.env</code> / <code>auth.json</code> / app-run / deploy-config, jobs, logs and <code>ServerStatus</code>. De API <strong>1.11.1+</strong> um token com apenas <code>mcp-access</code> é suficiente para cada ferramenta MCP — as habilidades REST por endpoint não são verificadas em <code>/mcp</code>.</p>
 <p>Configuração do cursor em <code>~/.cursor/mcp.json</code>:</p>
 <pre class="code-pre"><code>{
   "mcpServers": {
@@ -432,7 +432,7 @@ curl -sS "${CIPI_API_URL}/api/jobs/JOB_ID" \
 }</code></pre>
 <p>O VS Code (Copilot) usa o mesmo transporte HTTP; Claude Code adiciona o servidor com <code>claude mcp add --transport http</code>; Claude Desktop passa <code>mcp-remote</code>. As ferramentas de log editam segredos comuns antes que eles retornem. O mesmo protocolo, do lado do aplicativo, é o que o <a class="inline" href="/pt/guides/desenvolvimento-spec-driven-ia-laravel">Agente no aplicativo MCP</a> expõe – duas superfícies, um padrão.</p>
 <h2 id="gui">O painel UI como um cockpit multiservidor</h2>
-<p>O GUI é uma fina camada visual sobre o API. Ele vive em <code>/opt/cipi/gui</code>, é Laravel 12 e não mantém nenhum trabalhador de fila local: ele autentica no API de cada servidor, despacha jobs e pesquisa seu status. Desmonte o painel e reconstrua-o em outro lugar sem tocar em um servidor gerenciado.</p>
+<p>O GUI é uma fina camada visual sobre o API. Ele vive em <code>/opt/cipi/gui</code>, é Laravel 12 e não mantém nenhum worker de fila local: ele autentica no API de cada servidor, despacha jobs e pesquisa seu status. Desmonte o painel e reconstrua-o em outro lugar sem tocar em um servidor gerenciado.</p>
 <p>Um login, muitos servidores. Registre endpoint + token para caixas de produção, teste e cliente e alterne entre eles. É o cockpit que você deseja quando tem mais de um VPS e não quer dez sessões SSH abertas.</p>
 <div class="note">
 <p>O painel precisa do API ligado <em>cada</em> servidor que você deseja gerenciar, com um token de portador com capacidade total (inclui <code>www-manage</code>, <code>status-view</code> e, para ferramentas de aplicativos, <code>apps-env</code>, <code>apps-auth</code>, <code>apps-artisan</code>, <code>apps-run</code>, <code>apps-deploy-config</code>). Sem o API, o GUI é uma concha vazia.</p>
@@ -443,7 +443,7 @@ curl -sS "${CIPI_API_URL}/api/jobs/JOB_ID" \
 <li><strong>Aliases, WWW, SSL, autenticação básica</strong> — o mesmo fluxo que CLI, mais força HTTPS e redirecionamentos apex/www.</li>
 <li><strong><code>.env</code>, <code>auth.json</code>, Artisan, Comandos do aplicativo</strong> — saída do editor e terminal com cópia Markdown (API <strong>1.14+</strong> / Cipi <strong>5.0.3+</strong>).</li>
 <li><strong>Bancos de dados multimecanismo</strong> — escolha MariaDB ou PostgreSQL no momento da criação; backup, restauração e rotação de senha do navegador (API <strong>1.12+</strong> / Cipi <strong>4.8+</strong>).</li>
-<li><strong>Registros</strong> — nginx, PHP-FPM, Laravel, trabalhador, implantar: tipo filtro, paginação, atualização automática. Segredos comuns são redigidos.</li>
+<li><strong>Logs</strong> — nginx, PHP-FPM, Laravel, worker, implantar: tipo filtro, paginação, atualização automática. Segredos comuns são redigidos.</li>
 <li><strong>Sobreposição de trabalho</strong> — girador e saída CLI enquanto o painel pesquisa <code>GET /api/jobs/{id}</code>.</li>
 <li><strong>Painel ao vivo</strong> — CPU, memória, disco, serviços e contagem de aplicativos via <code>GET /api/status</code>.</li>
 </ul>
@@ -480,13 +480,13 @@ $ cipi api ip-whitelist show --json</code></pre>
 <h2 id="use-cases">Casos de uso: equipes, agências, hospedagem, IA</h2>
 <ul>
 <li><strong>Freelancer com dois VPS</strong> — API + <code>cipi-cli</code> do laptop. O GUI é opcional; um <code>prod</code> e um <code>staging</code> perfil são suficientes.</li>
-<li><strong>Uma equipe que não vive em SSH</strong> — um painel, 2FA, painel ao vivo, Artisan e registros sem entregar root a todos.</li>
+<li><strong>Uma equipe que não vive em SSH</strong> — um painel, 2FA, painel ao vivo, Artisan e logs sem entregar root a todos.</li>
 <li><strong>Agência multicliente</strong> — um login, N servidores. Cada caixa possui seu próprio token; descartar um cliente é revogar um token, não desinstalar Cipi.</li>
 <li><strong>Hospedagem com cobrança</strong> - o <a class="inline" href="/pt/docs/advanced#whmcs">Módulo WHMCS</a> fala o mesmo REST API: criar, SSL, implantar, excluir no ciclo de vida do produto.</li>
 <li><strong>Agentes de IA</strong> — servidor MCP para infraestrutura; Agente MCP no aplicativo para a base de código. Especificações e guarda-corpos no <a class="inline" href="/pt/guides/desenvolvimento-spec-driven-ia-laravel">guia baseado em especificações</a>.</li>
 </ul>
 <h2 id="clients">cipi-cli e WHMCS no mesmo fio</h2>
-<p>O <a class="inline" href="/pt/docs/cli-client">CLI cliente</a> é um binário Go que fala REST do seu laptop: aplicativos, aliases, implantação, SSL, bancos de dados, status global, trabalhos. Os mesmos tokens, os mesmos perfis de vários servidores. Prefere o terminal? Você não precisa do GUI. Prefere o navegador? Você não precisa <code>cipi-cli</code>. Precisa de ambos em dias diferentes? Idem API.</p>
+<p>O <a class="inline" href="/pt/docs/cli-client">Cliente CLI</a> é um binário Go que fala REST do seu laptop: aplicativos, aliases, deploy, SSL, bancos de dados, status global, trabalhos. Os mesmos tokens, os mesmos perfis de vários servidores. Prefere o terminal? Você não precisa do GUI. Prefere o navegador? Você não precisa <code>cipi-cli</code>. Precisa de ambos em dias diferentes? Idem API.</p>
 <pre class="code-pre"><code>$ cipi-cli api token add prod
 $ cipi-cli prod apps list
 $ cipi-cli prod deploy myapp
@@ -495,7 +495,7 @@ $ cipi-cli status</code></pre>
 <div class="cta-box">
 <h2>Experimente ambas as extensões em um Cipi VPS</h2>
 <p>Cipi fica grátis, open-source CLI. API e GUI são pacotes opcionais: instale-os quando precisar de um navegador, um CI webhook ou um agente de IA — e remova-os quando não precisar.</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | festa</div>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
 <a class="btn-primary" href="/pt/docs/gui">GUI documentos do painel</a>
 <a class="btn-ghost" href="/pt/docs/advanced#cipi-api">cipi api documentos</a>
@@ -503,16 +503,16 @@ $ cipi-cli status</code></pre>
 </div>
 </div>
 <h2 id="faq">Perguntas frequentes</h2>
-<div class="faq-item"><h3>Preciso do painel UI para usar Cipi?</h3><p>Não. Cipi é CLI-primeiro. Sem <code>cipi api</code> e sem <code>cipi gui</code> o servidor ainda faz o mesmo trabalho: aplicativos, implantações, SSL, backups, firewall. Ambos os pacotes são extensões opcionais desde a v4.7.0.</p></div>
+<div class="faq-item"><h3>Preciso do painel UI para usar Cipi?</h3><p>Não. Cipi é CLI-first. Sem <code>cipi api</code> e sem <code>cipi gui</code> o servidor ainda faz o mesmo trabalho: aplicativos, deploys, SSL, backups, firewall. Ambos os pacotes são extensões opcionais desde a v4.7.0.</p></div>
 <div class="faq-item"><h3>Posso usar o GUI sem o API?</h3><p>Não. O painel é um cliente HTTP do REST API. Todo servidor gerenciado precisa <code>cipi api</code> e uma ficha de Portador com as habilidades que você deseja expor. Sem o API não há nada para mostrar.</p></div>
 <div class="faq-item"><h3>O GUI substitui o CLI no servidor?</h3><p>Não. Todas as ações do navegador são iguais <code>cipi</code> comando executado via sudo pelo painel API. Você pode continuar trabalhando em SSH em paralelo, sem estado de cérebro dividido.</p></div>
 <div class="faq-item"><h3>Qual é a diferença entre REST, MCP e cipi-cli?</h3><p>O mesmo API, três clientes. REST é para scripts, CI e WHMCS. MCP é para agentes de IA (Cursor, VS Code, Claude). <code>cipi-cli</code> é o terminal do laptop. O GUI é o quarto cliente, construído para humanos.</p></div>
 <div class="faq-item"><h3>Posso gerenciar vários servidores a partir de um painel?</h3><p>Sim. Registre endpoint e token para cada caixa e alterne entre eles com o mesmo login. O painel não tem estado em relação à sua infraestrutura: ele não armazena o estado do servidor, ele o lê no arquivo API.</p></div>
 <h2>Continue lendo</h2>
 <div class="related">
-<a href="/pt/docs/gui">Documentos: painel GUI</a>
-<a href="/pt/docs/advanced#cipi-api">Documentos: cipi api</a>
-<a href="/pt/docs/cli-client">CLI cliente</a>
+<a href="/pt/docs/gui">Docs: painel GUI</a>
+<a href="/pt/docs/advanced#cipi-api">Docs: cipi api</a>
+<a href="/pt/docs/cli-client">Cliente CLI</a>
 <a href="/pt/guides/desenvolvimento-spec-driven-ia-laravel">Desenvolvimento de IA orientado por especificações</a>
 <a href="/pt/guides/deploy-laravel-em-vps-ubuntu">Implante Laravel em Ubuntu</a>
 </div>
@@ -522,17 +522,17 @@ $ cipi-cli status</code></pre>
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Implantação gratuita de open-source Laravel CLI para Ubuntu VPS — Octane, Horizon, Reverb e implantações Git com tempo de inatividade zero.</p>
+<p>CLI open source e gratuita para fazer deploy de Laravel num VPS Ubuntu — Octane, Horizon, Reverb e deploys Git sem downtime.</p>
 <ul class="footer-brand-links">
-<li><a href="/pt/docs/getting-started">Comece</a></li>
-<li><a href="/pt/docs/">Documentos</a></li>
+<li><a href="/pt/docs/getting-started">Primeiros passos</a></li>
+<li><a href="/pt/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
 <nav aria-label="Compare Cipi com alternativas" class="footer-col footer-col--compare">
 <strong>Comparar Cipi</strong>
 <ul>
-<li><a href="/pt/alternative-to-laravel-forge">Laravel Forge alternativa</a></li>
+<li><a href="/pt/alternative-to-laravel-forge">Alternativa ao Laravel Forge</a></li>
 <li><a href="/pt/alternative-to-laravel-cloud">Laravel Alternativa em nuvem</a></li>
 <li><a href="/pt/alternative-to-ploi">Ploi alternativa</a></li>
 <li><a href="/pt/alternative-to-coolify">Coolify alternativa</a></li>
@@ -544,13 +544,13 @@ $ cipi-cli status</code></pre>
 <li><a href="/pt/alternatives">Todas as comparações</a></li>
 </ul>
 </nav>
-<nav aria-label="Guias Laravel gratuitos" class="footer-col">
+<nav aria-label="Guias gratuitos de Laravel" class="footer-col">
 <strong>Guias gratuitos</strong>
 <ul>
 <li><a href="/pt/guides/gerenciar-apps-com-cipi-yml">Gerenciar apps com cipi.yml</a></li>
-<li><a href="/pt/guides/painel-ui-e-api">Painel UI e API</a></li>
+<li><a href="/pt/guides/painel-ui-e-api">Painel de controle e API</a></li>
 <li><a href="/pt/guides/usar-cipi-agent-no-laravel">cipi/agent e MCP do projeto</a></li>
-<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Implantar WordPress no Cipi</a></li>
+<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Deploy de WordPress no Cipi</a></li>
 <li><a href="/pt/guides/">Todos os guias</a></li>
                     </ul>
 </nav>

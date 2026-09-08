@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Cipi Docs — Avancé</title>
-<meta content="REST API, synchronisation du serveur, chiffrement du coffre-fort, notifications SMTP, conservation des journaux et configuration avancée." name="description"/>
+<meta content="REST API, synchronisation du serveur, chiffrement du coffre-fort, notifications SMTP, conservation des logs et configuration avancée." name="description"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/fr/docs/advanced" rel="canonical"/>
@@ -23,7 +23,7 @@
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/fr/docs/advanced" property="og:url"/>
 <meta content="Cipi Docs — Avancé" property="og:title"/>
-<meta content="REST API, synchronisation du serveur, chiffrement du coffre-fort, notifications SMTP, conservation des journaux et configuration avancée." property="og:description"/>
+<meta content="REST API, synchronisation du serveur, chiffrement du coffre-fort, notifications SMTP, conservation des logs et configuration avancée." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -35,7 +35,7 @@
     <meta property="og:locale:alternate" content="es_ES">
     <meta property="og:locale:alternate" content="pt_PT"><meta content="summary_large_image" name="twitter:card"/>
 <meta content="Cipi Docs — Avancé" name="twitter:title"/>
-<meta content="REST API, synchronisation du serveur, chiffrement du coffre-fort, notifications SMTP, conservation des journaux et configuration avancée." name="twitter:description"/>
+<meta content="REST API, synchronisation du serveur, chiffrement du coffre-fort, notifications SMTP, conservation des logs et configuration avancée." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
     {
@@ -43,10 +43,10 @@
       "@type": "TechArticle",
       "datePublished": "2026-06-03",
       "dateModified": "2026-08-04",
-      "headline": "Cipi Docs — Advanced",
+      "headline": "Cipi Docs — Avancé",
       "name": "Advanced",
       "url": "https://cipi.sh/en/docs/advanced",
-      "description": "REST API, server sync, vault encryption, SMTP notifications, log retention, and advanced configuration.",
+      "description": "REST API, synchronisation du serveur, chiffrement du coffre-fort, notifications SMTP, conservation des logs et configuration avancée.",
       "inLanguage": "fr",
       "image": "https://cipi.sh/og.png",
       "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/" },
@@ -105,7 +105,7 @@
 </svg>
 <span>Ci<span style="color:var(--signal)">pi</span></span>
 </a>
-<span class="nav-badge">Documents</span>
+<span class="nav-badge">Docs</span>
 </div>
 <div class="nav-right">
 
@@ -149,14 +149,14 @@
 <a class="sidebar-link" href="/fr/docs/getting-started#installation">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#requirements">exigences</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#quickstart">démarrage rapide</a>
-<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">pile technologique</a>
+<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">stack technologique</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#app-structure">structure de l'application</a>
 </div>
 <div class="sidebar-group" data-chapter="agent">
 <a class="sidebar-group-label" href="/fr/docs/agent">cipi agent</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-install">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-webhook">webhook</a>
-<a class="sidebar-link" href="/fr/docs/agent#agent-health">bilan de santé</a>
+<a class="sidebar-link" href="/fr/docs/agent#agent-health">health check</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-mcp">serveur MCP</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-anonymizer">anonymiseur de base de données</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-security">sécurité</a>
@@ -255,9 +255,9 @@
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-api"><code>cipi api</code></a>
 <a class="sidebar-link" href="/fr/docs/advanced#whmcs">Module WHMCS</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-sync"><code>cipi sync</code></a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et cryptage</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et chiffrement</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-smtp">notifications par courrier électronique</a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des journaux (RGPD)</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des logs (RGPD)</a>
 <a class="sidebar-link" href="/fr/docs/advanced#valkey">valkey</a>
 <a class="sidebar-link" href="/fr/docs/advanced#self-update">mise à jour automatique</a>
 <a class="sidebar-link" href="/fr/docs/advanced#wildcard-domains">domaines génériques</a>
@@ -287,9 +287,9 @@
                     (version actuelle <strong>1.20</strong>), qui expose :
                 </p>
 <ul>
-<li><strong>REPOS API</strong> — des applications (dont Octane create, <code>.env</code>,
+<li><strong>API REST</strong> — des applications (dont Octane create, <code>.env</code>,
                         <code>auth.json</code>, Artisan, sur liste blanche <code>app run</code>, déployer-config), alias, www
-                        redirections, déploiement, SSL, bases de données multimoteurs, journaux d'applications, état du serveur (<code>/api/*</code>)</li>
+                        redirections, déploiement, SSL, bases de données multimoteurs, logs d'applications, état du serveur (<code>/api/*</code>)</li>
 <li><strong>serveur MCP</strong> — Plus de 50 outils sur <code>/mcp</code> (Diffusion HTTP)</li>
 <li><strong>Poste de pilotage du serveur</strong> — PHP installation/commutation, clés SSH, services, SMTP, contrôles de santé,
                         Liste blanche IP (API <strong>1.15.0+</strong> / Cipi <strong>5.0.6+</strong>)</li>
@@ -303,7 +303,7 @@
                     dispositions Laravel à <code>/opt/cipi/api</code>, Nginx, SSL, file d'attente des tâches SQLite et
                     <code>cipi-queue.service</code>. Pour référence ou configurations personnalisées :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> composer require cipi/api
 <span class="p">$</span> php artisan vendor:publish --tag=cipi-config
 <span class="p">$</span> php artisan vendor:publish --tag=cipi-assets
@@ -320,7 +320,7 @@
                     (MIT). Emballage client : <a href="/fr/docs/cli-client">cipi-cli</a>.</p>
 <h3>Commandes</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi api &lt;domain&gt;           <span class="c"># configure API at root (e.g. api.myhosting.com)</span>
 <span class="p">$</span> cipi api ssl                  <span class="c"># install Let's Encrypt certificate for API domain</span>
 <span class="p">$</span> cipi api token list           <span class="c"># list tokens</span>
@@ -333,12 +333,12 @@
 </div>
 <h3>Dépannage du panneau API</h3>
 <p>Après <code>cipi self-update</code>, fichiers appartenant à la racine sous <code>/opt/cipi/api</code> ou
-                    <code>/opt/cipi/gui</code> peut empêcher PHP-FPM (<code>www-data</code>) à partir de l'écriture de journaux ou du
+                    <code>/opt/cipi/gui</code> peut empêcher PHP-FPM (<code>www-data</code>) à partir de l'écriture de logs ou du
                     Base de données de tâches SQLite : le navigateur affiche un simple <strong>HTTP 500</strong> sur <code>/docs</code> ou
                     <code>/mcp</code>. Cipi répare normalement automatiquement la propriété lors de la mise à jour automatique (migration
                     <strong>5.0.13+</strong> récupère API/GUI propriété) ; si les problèmes persistent :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi api fix-permissions   <span class="c"># chown storage, database, bootstrap/cache, .env → www-data</span>
 <span class="p">$</span> cipi api status              <span class="c"># confirm Laravel version, queue worker, pending jobs</span></pre>
 </div>
@@ -358,7 +358,7 @@
                     <em>J'ai peur de ne pas pouvoir faire ça</em>), donc la liste blanche utilise des éléments de fin<code>*</code> seulement;
                     approvisionnement <code>common.sh</code> n'abandonne plus les commandes en lecture seule lorsque
                     <code>/etc/cipi</code> est remonté en lecture seule ; API <code>open_basedir</code> comprend
-                    <code>/usr/local/bin/</code> pour les aides-journaux ; et <code>cipi db list</code> affiche les bases de données vides
+                    <code>/usr/local/bin/</code> pour les aides-logs ; et <code>cipi db list</code> affiche les bases de données vides
                     et les erreurs de coffre-fort/MariaDB de surfaces. Courir <code>cipi self-update</code> postuler.</p>
 <h3>Création de jetons et autorisations granulaires</h3>
 <p>Utilisations de l'authentification <strong>Sanctuaire</strong>. Chaque jeton peut avoir un ou plusieurs <em>capacités</em> que
@@ -446,7 +446,7 @@
                     paquet actuel avec <code>cipi api update</code> / <code>cipi api upgrade</code> donc validation et
                     OpenAPI correspond à ce comportement.
                 </p>
-<p><code>POST /api/apps/{name}/suspend</code> met une application hors ligne en échangeant son hôte virtuel Nginx contre un
+<p><code>POST /api/apps/{name}/suspend</code> met une application hors ligne en échangeant son vhost Nginx contre un
                     générique<strong>HTTP 503</strong> page de maintenance (HTTPS incluse) sans la supprimer, tout en
                     <code>POST /api/apps/{name}/unsuspend</code> restaure le vhost normal. Les deux nécessitent le
                     <code>apps-suspend</code> capacité et retour <code>409</code> si l'application est déjà dans la cible
@@ -527,7 +527,7 @@
 <p><strong>Liste blanche IP</strong> — middleware <code>cipi.ip</code> sur <code>api/*</code> et
                     <code>/mcp</code> lit <code>/etc/cipi/api-ip-whitelist</code> (fichier manquant ou <code>*</code> =
                     permettre tout). Les clients rejetés obtiennent <code>403</code>
-<code>{ "error": "IP not allowed", "ip": "…" }</code>. REPOS :
+<code>{ "error": "IP not allowed", "ip": "…" }</code>. REST :
                     <code>GET /api/ip-whitelist</code>, <code>PUT /api/ip-whitelist</code> (<code>entries</code>,
                     facultatif <code>ensure_client_ip</code>), <code>POST /api/ip-whitelist</code> (<code>ip</code>),
                     <code>DELETE /api/ip-whitelist</code> (<code>ip</code>),
@@ -544,8 +544,8 @@
                     <code>mcp-access</code>. Depuis votre ordinateur portable, utilisez
                     <a href="/fr/docs/cli-client#cli-status"><code>cipi-cli status</code></a> pour un aperçu global de tous
                     profils de serveur configurés ou détails d'un profil.</p>
-<p><code>GET /api/apps/{name}/logs</code> renvoie des instantanés de journaux paginés et synchrones pour nginx,
-                    PHP-FPM, Laravel (le cas échéant), les journaux de travail et de déploiement — l'équivalent REST de
+<p><code>GET /api/apps/{name}/logs</code> renvoie des instantanés de logs paginés et synchrones pour nginx,
+                    PHP-FPM, Laravel (le cas échéant), les logs de travail et de déploiement — l'équivalent REST de
                     <a href="/fr/docs/apps#cli-app-logs"><code>cipi app logs</code></a> et
                     <a href="/fr/docs/cli-client#cli-apps"><code>cipi-cli apps logs</code></a>. Paramètres de requête :
                     <code>type</code> (par défaut <code>all</code>), <code>page</code> (par défaut <code>1</code>, la plupart
@@ -838,26 +838,26 @@
 <h3 id="cipi-api-curl">Exemples REST (curl)</h3>
 <p>Définissez votre API URL de base et votre jeton (à partir de <code>cipi api token create</code>):</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="k">exporter</span> CIPI_API_URL=<span class="s">"https://api.myserver.com"</span>
 <span class="k">exporter</span> CIPI_API_TOKEN=<span class="s">"votre-jeton-de-sanctuaire"</span></pre>
 </div>
 <p><strong>Liste des applications</strong> (synchronisation, <code>200</code>):</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>curl -sS <span class="s">"${CIPI_API_URL}/api/apps"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_API_TOKEN}"</span> \
   -H <span class="s">"Accepter : candidature/json"</span></pre>
 </div>
 <p><strong>Statut du serveur</strong> (synchronisation, nécessite <code>status-view</code>):</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>curl -sS <span class="s">"${CIPI_API_URL}/api/statut"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_API_TOKEN}"</span></pre>
 </div>
-<p><strong>Journaux d'applications</strong> (synchronisation, nécessite <code>apps-view</code>, API <strong>1.11.9+</strong>):</p>
+<p><strong>Logs d'applications</strong> (synchronisation, nécessite <code>apps-view</code>, API <strong>1.11.9+</strong>):</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>curl -sS <span class="s">"${CIPI_API_URL}/api/apps/myapp/logs?type=deploy&amp;page=1&amp;per_page=50"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_API_TOKEN}"</span> \
   -H <span class="s">"Accepter : candidature/json"</span></pre>
@@ -865,17 +865,17 @@
 <p><strong>Créer une application Laravel Octane</strong> (asynchrone, API <strong>1.13.0+</strong> / Cipi
                     <strong>5.0+</strong>; nécessite <code>apps-create</code>):</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>curl -sS -X POST <span class="s">"${CIPI_API_URL}/api/apps"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_API_TOKEN}"</span> \
   -H <span class="s">"Accepter : candidature/json"</span> \
-  -H <span class="s">"Type de contenu : application/json"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
   -d <span class="s">'{
-    "domaine": "boutique.exemple.com",
-    "dépôt": "git@github.com:you/shop.git",
-    "branche": "principale",
-    "octane" : vrai,
-    "moteur": "mariadb"
+    "domain": "shop.example.com",
+    "repository": "git@github.com:you/shop.git",
+    "branch": "main",
+    "octane": true,
+    "engine": "mariadb"
   }'</span></pre>
 </div>
 <p>Envoyer <code>"octane": "frankenphp"</code> pour le même effet. Omettre <code>octane</code> pour le classique
@@ -884,27 +884,27 @@
 <p><strong>Application <code>.env</code></strong> (synchronisation, API <strong>1.14.0+</strong> / Cipi
                     <strong>5.0.3+</strong>; nécessite <code>apps-env</code>):</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>curl -sS <span class="s">"${CIPI_API_URL}/api/apps/myapp/env"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_API_TOKEN}"</span>
 
 curl -sS -X PUT <span class="s">"${CIPI_API_URL}/api/apps/myapp/env"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_API_TOKEN}"</span> \
-  -H <span class="s">"Type de contenu : application/json"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
   -d <span class="s">'{"set":{"APP_DEBUG":"false"},"unset":["LEGACY_KEY"]}'</span></pre>
 </div>
 <p><strong>Artisan / exécution de l'application</strong> (tâches asynchrones, API <strong>1.14.0+</strong>; capacités
                     <code>apps-artisan</code> / <code>apps-run</code>):</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>curl -sS -X POST <span class="s">"${CIPI_API_URL}/api/apps/myapp/artisan"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_API_TOKEN}"</span> \
-  -H <span class="s">"Type de contenu : application/json"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
   -d <span class="s">'{"command":"cache:clear"}'</span>
 
 curl -sS -X POST <span class="s">"${CIPI_API_URL}/api/apps/myapp/run"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_API_TOKEN}"</span> \
-  -H <span class="s">"Type de contenu : application/json"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
   -d <span class="s">'{"command": composer install --no-dev"}'</span>
 
 curl -sS <span class="s">"${CIPI_API_URL}/api/run-commands"</span> \
@@ -914,7 +914,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/run-commands"</span> \
                     <code>app-artisan</code>, <code>app-run</code>.</p>
 <p><strong>Déployer une application</strong> (asynchrone, <code>202</code> + <code>job_id</code>):</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>curl -sS -X POST <span class="s">"${CIPI_API_URL}/api/apps/myapp/deploy"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_API_TOKEN}"</span> \
   -H <span class="s">"Accepter : candidature/json"</span>
@@ -927,7 +927,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
                     le travail <code>result</code>, pas un dump anonymisé (voir
                     <a href="/fr/docs/agent#agent-anonymizer">Anonymiseur d'agent</a>):</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>curl -sS -X POST <span class="s">"${CIPI_API_URL}/api/dbs/myapp_db/backup"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_API_TOKEN}"</span></pre>
 </div>
@@ -971,7 +971,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
                     <code>/etc/cipi/api-ip-whitelist</code> est <code>*</code> (permettre tout). Une adresse IPv4/IPv6 ou
                     CIDR par ligne (ou séparés par des virgules) <code>--ips=</code>).</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi api ip-whitelist show
 <span class="p">$</span> cipi api ip-whitelist add 203.0.113.10
 <span class="p">$</span> cipi api ip-whitelist set --ips=203.0.113.0/24,2001:db8::/32
@@ -985,7 +985,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <p>Une documentation interactive est disponible sur <code>/docs</code> (interface utilisateur Swagger). La spécification OpenAPI est
                     généré à partir de <code>public/api-docs/openapi.json</code> et couvre les applications (y compris la suspension,
                     reprise, changement de nom de domaine, authentification de base,<code>.env</code>, Composer <code>auth.json</code>,
-                    Artisan / tâches exécutées par l'application, déploiement-config, journaux paginés, redirections www, Octane création et
+                    Artisan / tâches exécutées par l'application, déploiement-config, logs paginés, redirections www, Octane création et
                     multimoteur <code>engine</code>), alias, déploiement, SSL (installer + forcer HTTPS), bases de données
                     (liste des moteurs + en option <code>engine</code> sur les mutations), l'état du serveur, l'interrogation des tâches avec
                     structuré <code>result</code> types et MCP schémas d’outils. Version actuelle du package API :
@@ -1036,13 +1036,13 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
                     </li>
 <li><strong>SSL :</strong> <code>SslInstall</code>, <code>SslForce</code>
                         (API <strong>1.12.0+</strong>)</li>
-<li><strong>Travaux et journaux :</strong> <code>JobShow</code> (interroger l'état du travail asynchrone, analysé
-                        <code>result</code>, et sortie CLI), <code>AppLogs</code> (journaux d'applications récents par type :
+<li><strong>Travaux et logs :</strong> <code>JobShow</code> (interroger l'état du travail asynchrone, analysé
+                        <code>result</code>, et sortie CLI), <code>AppLogs</code> (logs d'applications récents par type :
                         <code>all</code>, <code>nginx</code>, <code>php</code>, <code>worker</code>,
                         <code>deploy</code>, <code>laravel</code> — pareil que<a href="/fr/docs/apps#cli-app-logs"><code>cipi app
                             logs</code></a>; Équivalent REST :
                         <code>GET /api/apps/{name}/logs</code> depuis API <strong>1.11.9+</strong>),
-                        <code>ApiLogShow</code> (journaux Laravel récents pour l'hôte du panneau API)
+                        <code>ApiLogShow</code> (logs Laravel récents pour l'hôte du panneau API)
                     </li>
 <li><strong>Surveillance du serveur :</strong> <code>ServerStatus</code> (correspondance JSON structurée
                         <code>GET /api/status</code> / <a href="/fr/docs/infrastructure#cli-cipi"><code>cipi status</code></a>),
@@ -1055,7 +1055,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <line x1="12" x2="12" y1="9" y2="13"></line>
 <line x1="12" x2="12.01" y1="17" y2="17"></line>
 </svg>
-<div>Depuis API <strong>1.11.5+</strong>, MCP outils de journalisation (<code>AppLogs</code>,
+<div>Depuis API <strong>1.11.5+</strong>, MCP outils de logs (<code>AppLogs</code>,
                         <code>ApiLogShow</code>) préfixez chaque réponse avec un avertissement relatif au contenu de production et rédigez
                         secrets communs avant la livraison. Sortie CLI sensible de <code>JobShow</code> et
                         <code>AppArtisan</code> est également expurgé ; travail structuré <code>result</code> objets (par exemple, application
@@ -1124,7 +1124,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <h4>Claude Code</h4>
 <p>Ajoutez le serveur MCP directement depuis le CLI :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> claude mcp add --transport http cipi-api https://&lt;your-api-domain&gt;/mcp \
     --header "Authorization: Bearer &lt;your-token&gt;"</pre>
 </div>
@@ -1280,7 +1280,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <tr>
 <th>Type d'application</th>
 <th>Cipi équivalent</th>
-<th>Pile</th>
+<th>Stack</th>
 <th>Git/Déployer</th>
 </tr>
 </thead>
@@ -1288,7 +1288,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <tr>
 <td><strong>laravel</strong> (par défaut)</td>
 <td><code>cipi app create</code></td>
-<td>Utilisateur Linux isolé, pool PHP-FPM, Nginx vhost, MariaDB, Supervisor Workers, déployeur
+<td>Utilisateur Linux isolé, pool PHP-FPM, Nginx vhost, MariaDB, Supervisor Workers, Deployer
                                                     sorties</td>
 <td>URL du référentiel SSH <strong>requis</strong>; branchement à partir des paramètres</td>
 </tr>
@@ -1373,7 +1373,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <tr>
 <td><strong>Déployer</strong></td>
 <td><code>POST /api/apps/{name}/deploy</code></td>
-<td>Déclenchez un déploiement sans temps d'arrêt</td>
+<td>Déclenchez un déploiement sans interruption</td>
 </tr>
 <tr>
 <td><strong>Déploiement de restauration</strong></td>
@@ -1415,24 +1415,24 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 </tr>
 <tr>
 <td><strong>Déployer</strong></td>
-<td>déployerApp, rollbackDeploy, unlockDeploy</td>
+<td>deployApp, rollbackDeploy, unlockDeploy</td>
 </tr>
 <tr>
 <td><strong>SSL</strong></td>
-<td>installerSsl</td>
+<td>installSsl</td>
 </tr>
 <tr>
 <td><strong>Alias</strong></td>
-<td>listAlias, addAlias, RemoveAlias</td>
+<td>listAliases, addAlias, removeAlias</td>
 </tr>
 <tr>
 <td><strong>Bases de données</strong></td>
-<td>listDatabases, createDatabase, deleteDatabase, backupDatabase, restaurerDatabase,
-                                                    réinitialiser le mot de passe de la base de données</td>
+<td>listDatabases, createDatabase, deleteDatabase, backupDatabase, restoreDatabase,
+                                                    resetDatabasePassword</td>
 </tr>
 <tr>
 <td><strong>Emplois</strong></td>
-<td>getJob, attendreJob</td>
+<td>getJob, waitForJob</td>
 </tr>
 </tbody>
 </table>
@@ -1444,13 +1444,13 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <span class="k">require_once</span> ROOTDIR . <span class="s">'/modules/servers/cipi/lib/CipiApiClient.php'</span>;
 
 <span class="v">$client</span> = <span class="k">nouveau</span> CipiApiClient(<span class="s">'https://api.example.com'</span>, <span class="v">$token</span>);
-<span class="v">$client</span>-&gt;addAlias(<span class="s">'monapplication'</span>, <span class="s">'alias.exemple.com'</span>);
+<span class="v">$client</span>-&gt;addAlias(<span class="s">'myapp'</span>, <span class="s">'alias.exemple.com'</span>);
 
 <span class="c">// Example: create an extra database</span>
 <span class="v">$client</span>-&gt;createDatabase(<span class="s">'monapp_extra'</span>);
 
 <span class="c">// Example: backup a database</span>
-<span class="v">$client</span>-&gt;backupDatabase(<span class="s">'monapplication'</span>);</pre>
+<span class="v">$client</span>-&gt;backupDatabase(<span class="s">'myapp'</span>);</pre>
 </div>
 <h3>Comportement face au client</h3>
 <p>Le module fait <strong>pas</strong> ajoutez un onglet Espace client, des boutons personnalisés ou un statut en direct à partir de Cipi.
@@ -1458,11 +1458,11 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
                     Lorsque Cipi provisionne une application, il génère <strong>secrets ponctuels</strong> (Mot de passe SSH, BD
                     mot de passe,
                     clé de déploiement, webhook URL). Le REST API ne transmet pas automatiquement ces secrets dans WHMCS —
-                    vous devez étendre le module, écrire un hook ou fournir des informations d'identification via votre flux de travail de support.
+                    vous devez étendre le module, écrire un hook ou fournir des informations d'identification via votre workflow de support.
                 </p>
 <h3>Journalisation des modules</h3>
 <p>Tous les API appels sont enregistrés via <code>logModuleCall()</code> - Créer, résilier, modifier le package,
-                    SSL, Déploiement, Restauration, Déverrouillage et Informations sur l'application. Activer <strong>Utilitaires → Journaux → Module
+                    SSL, Déploiement, Restauration, Déverrouillage et Informations sur l'application. Activer <strong>Utilitaires → Logs → Module
                         Journal</strong> dans WHMCS Admin pour une visibilité complète.</p>
 <div class="callout info">
 <svg class="callout-icon" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
@@ -1481,13 +1481,13 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <h2><code>cipi sync</code></h2>
 <p>Transférez, répliquez et sauvegardez Laravel applications entières entre Cipi serveurs, y compris
                     configuration, sauvegardes de base de données, fichiers de stockage, clés SSH, Workers et crontabs. Chaque archive est
-                    <strong>crypté avec AES-256-CBC</strong> et protégé par une phrase secrète définie par l'utilisateur, donc
+                    <strong>chiffré avec AES-256-CBC</strong> et protégé par une phrase secrète définie par l'utilisateur, donc
                     informations d'identification
                     et les données sensibles sont en sécurité au repos et pendant le transfert.
                 </p>
 <h3>Présentation des commandes</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi sync export  [app ...] [--with-db] [--with-storage] [--output=&lt;path&gt;] [--passphrase=&lt;secret&gt;]
 <span class="p">$</span> cipi sync import  &lt;archive.tar.gz.enc&gt; [app ...] [--update] [--deploy] [--yes] [--passphrase=&lt;secret&gt;]
 <span class="p">$</span> cipi sync push    [app ...] [--host=IP] [--port=22] [--with-db] [--with-storage] [--import] [--passphrase=&lt;secret&gt;]
@@ -1501,7 +1501,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
                     requis pour l’importer ou l’inspecter. Cela protège les clés SSH, <code>.env</code> fichiers, dumps de base de données,
                     et les informations d'identification au repos et pendant le transfert.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># Interactive mode (default) — prompted for passphrase</span>
 <span class="p">$</span> cipi sync export --with-db
 <span class="c">#   Enter passphrase to encrypt the archive: ********</span>
@@ -1523,10 +1523,10 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
                     </div>
 </div>
 <h3>Exporter</h3>
-<p>Regroupe les configurations d'application dans un fichier crypté <code>.tar.gz.enc</code> archive. Inclut en option une base de données
+<p>Regroupe les configurations d'application dans un fichier chiffré <code>.tar.gz.enc</code> archive. Inclut en option une base de données
                     dumps et fichiers de stockage.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># Export all apps (config only)</span>
 <span class="p">$</span> cipi sync export
 
@@ -1559,7 +1559,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 </tr>
 <tr>
 <td><code>deploy.php</code></td>
-<td>Configuration du déployeur</td>
+<td>Configuration du Deployer</td>
 <td>Toujours</td>
 </tr>
 <tr>
@@ -1569,7 +1569,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 </tr>
 <tr>
 <td><code>supervisor.conf</code></td>
-<td>Configuration des travailleurs de file d'attente</td>
+<td>Configuration des workers de file d'attente</td>
 <td>Toujours</td>
 </tr>
 <tr>
@@ -1596,7 +1596,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <h3>Importer</h3>
 <p>Restaure les applications d'une archive sur le serveur actuel.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># Import all apps from archive</span>
 <span class="p">$</span> cipi sync import /tmp/cipi-sync-aws01-20260306.tar.gz.enc
 
@@ -1658,7 +1658,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
                     il<strong>mises à jour</strong> applications existantes et <strong>crée</strong> des nouveaux.
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi sync import /tmp/archive.tar.gz.enc --update --passphrase="MyStr0ngP@ss"</pre>
 </div>
 <h4>Que fait la mise à jour pour une application existante</h4>
@@ -1676,8 +1676,8 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <li><strong>Stockage</strong> — Si l'archive dispose d'un stockage, extraite sur le répertoire existant (nouveau
                         fichiers ajoutés, existants écrasés).</li>
 <li><strong>Migration de versions PHP</strong> — Si la source utilise une version PHP différente, la mise à jour
-                        migre le pool FPM, supervisor, crontab, le déployeur et <code>.env</code> automatiquement.</li>
-<li><strong>Nginx vhost, Supervisor Workers, configuration du déployeur</strong> — Régénéré à partir des archives
+                        migre le pool FPM, supervisor, crontab, le Deployer et <code>.env</code> automatiquement.</li>
+<li><strong>Nginx vhost, Supervisor Workers, configuration du Deployer</strong> — Régénéré à partir des archives
                         données.</li>
 <li><strong>Déployer</strong> — Si <code>--deploy</code> est passé, court <code>dep deploy</code> à
                         tirer
@@ -1693,7 +1693,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <h3>Liste (inspecter les archives)</h3>
 <p>Visualisez le contenu d'une archive sans rien importer.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi sync list /tmp/cipi-sync-aws01-20260306.tar.gz.enc --passphrase="MyStr0ngP@ss"
 
 <span class="c">Cipi Synchroniser les archives</span>
@@ -1716,7 +1716,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
                     <strong>source</strong> serveur.
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># Interactive push — prompted for target IP and passphrase</span>
 <span class="p">$</span> cipi sync push --with-db --with-storage --import
 
@@ -1746,7 +1746,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <p>Le serveur source a besoin d'un accès SSH à la cible en tant que <code>cipi</code> utilisateur. Utilisez le
                     mécanisme de confiance pour l'authentification sans mot de passe et basée sur une clé entre Cipi serveurs :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># On the SOURCE server — display its sync public key</span>
 <span class="p">$</span> cipi sync pubkey
 
@@ -1759,7 +1759,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <h4>Scénario 1 : Migrer toutes les applications d'AWS vers OVH</h4>
 <p>Vous disposez de 20 applications sur AWS. Vous avez acheté un VPS d'OVH et installé Cipi dessus.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># On AWS (source server)</span>
 <span class="p">$</span> cipi sync push --host=51.195.xx.xx --with-db --with-storage --import</pre>
 </div>
@@ -1769,7 +1769,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
                     importer,
                     installez SSL et mettez à jour DNS :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># On OVH (target server)</span>
 <span class="p">$</span> cipi ssl install shop
 <span class="p">$</span> cipi ssl install blog
@@ -1779,7 +1779,7 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <p>Toutes les 6 heures, le serveur 1 synchronise toutes les applications avec le serveur 2. Si le serveur 1 tombe en panne, modifiez DNS et continuez en direct.
                     Serveur 2.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># One-time setup on Server 1 — trust Server 2 using cipi sync trust</span>
 <span class="p">$</span> cipi sync pubkey  <span class="c"># copy this key, then run "cipi sync trust" on Server 2</span>
 <span class="p">$</span> echo "YourStr0ngPassphrase!" &gt; /etc/cipi/.sync_passphrase
@@ -1804,12 +1804,12 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 0 */6 * * * /usr/local/bin/cipi sync push --host=51.195.xx.xx --with-db --with-storage --import --passphrase="$(cat /etc/cipi/.sync_passphrase)" &gt;&gt; /var/log/cipi/sync-ovh.log 2&gt;&amp;1
 30 */6 * * * /usr/local/bin/cipi sync push --host=164.90.xx.xx --with-db --with-storage --import --passphrase="$(cat /etc/cipi/.sync_passphrase)" &gt;&gt; /var/log/cipi/sync-do.log 2&gt;&amp;1</pre>
 </div>
-<h4>Scénario 4 : Sauvegarde cryptée quotidienne (pas de transfert)</h4>
+<h4>Scénario 4 : Sauvegarde chiffrée quotidienne (pas de transfert)</h4>
 <div class="code-block">
 <div class="code-block-header"><span class="code-block-lang">cron</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>0 3 * * * /usr/local/bin/cipi sync export --with-db --with-storage --output=/root/backups/cipi-$(date +\%Y\%m\%d).tar.gz --passphrase="$(cat /etc/cipi/.sync_passphrase)" &gt;&gt; /var/log/cipi/export.log 2&gt;&amp;1</pre>
 </div>
-<p>Crée une archive portable cryptée chaque nuit. Restaurez sur n'importe quel serveur Cipi à tout moment avec
+<p>Crée une archive portable chiffrée chaque nuit. Restaurez sur n'importe quel serveur Cipi à tout moment avec
                     <code>cipi sync import</code>.
                 </p>
 <h3>Limites</h3>
@@ -1832,17 +1832,17 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
 <div class="doc-section" id="cipi-vault">
 <h2>Coffre-fort et chiffrement</h2>
 <p>Cipi chiffre tous les fichiers de configuration au repos en utilisant <strong>AES-256-CBC</strong>. Le système Vault
-                    fournit un cryptage et un déchiffrement transparents afin que les données sensibles — mots de passe de base de données, API
+                    fournit un chiffrement et un déchiffrement transparents afin que les données sensibles — mots de passe de base de données, API
                     des jetons,
                     Clés SSH, <code>.env</code> contenu - n'est jamais stocké en texte brut sur le disque.</p>
 <h3>Architecture</h3>
 <p>Le système est construit sur deux couches :</p>
 <ul>
-<li><strong>Coffre-fort</strong> — cryptage transparent de JSON fichiers de configuration sur le disque
+<li><strong>Coffre-fort</strong> — chiffrement transparent de JSON fichiers de configuration sur le disque
                         (<code>server.json</code>, <code>apps.json</code>, <code>databases.json</code>,
                         <code>backup.json</code>, <code>smtp.json</code>, <code>api.json</code>)
                     </li>
-<li><strong>Synchroniser le cryptage</strong> — cryptage basé sur une phrase secrète des archives d'exportation pour une sécurité
+<li><strong>Synchroniser le chiffrement</strong> — chiffrement basé sur une phrase secrète des archives d'exportation pour une sécurité
                         transfert entre serveurs</li>
 </ul>
 <h3>Comment fonctionne Vault</h3>
@@ -1851,11 +1851,11 @@ curl -sS <span class="s">"${CIPI_API_URL}/api/jobs/JOB_ID"</span> \
                     chiffré sur le disque avec <code>openssl enc -aes-256-cbc -salt -pbkdf2</code>. Les fichiers conservent le
                     <code>.json</code> extension — le contenu est simplement un blob chiffré au lieu d'un fichier JSON lisible.
                 </p>
-<p>Le <code>vault_read</code> La fonction détecte automatiquement si un fichier est en texte brut ou crypté (en arrière
+<p>Le <code>vault_read</code> La fonction détecte automatiquement si un fichier est en texte brut ou chiffré (en arrière
                     compatibilité), de sorte que les serveurs existants migrent de manière transparente lors de la mise à jour.</p>
 <h3>Fonctions du coffre-fort</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># Core functions in lib/vault.sh</span>
 vault_init          <span class="c"># Generate .vault_key if not present</span>
 vault_read &lt;file&gt;   <span class="c"># Decrypt and output JSON to stdout (auto-detect plain/encrypted)</span>
@@ -1867,11 +1867,11 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 <p>Cipi génère un <code>apps-public.json</code> fichier contenant uniquement des champs non sensibles (domaine,
                     alias, version PHP, branche, référentiel, utilisateur, horodatage de création, plus
                     <code>suspended</code> et <code>basic_auth</code> drapeaux). Le <code>cipi-api</code> lectures de groupe
-                    cette projection en texte brut au lieu du fichier crypté, gardant la clé du coffre-fort limitée à root.
+                    cette projection en texte brut au lieu du fichier chiffré, gardant la clé du coffre-fort limitée à root.
                 </p>
 <h3>Synchroniser le chiffrement des archives</h3>
 <p>Quand tu cours <code>cipi sync export</code>, les configurations sont déchiffrées du coffre-fort vers une zone de transit,
-                    alors l'intégralité de l'archive est cryptée avec votre phrase secrète. A l'import, l'archive est déchiffrée avec
+                    alors l'intégralité de l'archive est chiffrée avec votre phrase secrète. A l'import, l'archive est déchiffrée avec
                     la phrase secrète et les configurations sont rechiffrées avec le <strong>coffre-fort du serveur de destination
                         clé</strong>.
                 </p>
@@ -1892,11 +1892,11 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 <h2>Notifications par courrier électronique</h2>
 <p>Cipi peut envoyer des alertes par e-mail en cas d'erreurs de sauvegarde, d'échecs de déploiement, d'échecs de tâches du système cron ou
                     des événements d'authentification liés à la sécurité se produisent.
-                    La configuration SMTP est stockée cryptée dans <code>/etc/cipi/smtp.json</code> et inclus dans la synchronisation
+                    La configuration SMTP est stockée chiffrée dans <code>/etc/cipi/smtp.json</code> et inclus dans la synchronisation
                     exportations.</p>
 <h3>Commandes</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi smtp configure      <span class="c"># interactive setup (Gmail, SendGrid, Mailgun, custom)</span>
 <span class="p">$</span> cipi smtp status          <span class="c"># display current notification settings</span>
 <span class="p">$</span> cipi smtp test            <span class="c"># send a verification email</span>
@@ -1915,7 +1915,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     Tous les déclencheurs sont <strong>activé par défaut</strong>; les événements sont toujours enregistrés
                     <code>/var/log/cipi/events.log</code> peu importe.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi notifications list              <span class="c"># all triggers grouped by category</span>
 <span class="p">$</span> cipi notifications enable &lt;trigger&gt;   <span class="c"># turn one trigger on</span>
 <span class="p">$</span> cipi notifications disable &lt;trigger&gt;  <span class="c"># turn one trigger off</span>
@@ -1962,7 +1962,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 <tr><td><code>deploy_fail</code></td><td>Déployer</td><td>Échec du déploiement</td></tr>
 <tr><td><code>deploy_rollback</code></td><td>Déployer</td><td>Déployer la restauration</td></tr>
 <tr><td><code>deploy_snapshot_fail</code></td><td>Déployer</td><td>Échec de l'instantané de base de données de pré-déploiement</td></tr>
-<tr><td><code>health_fail</code></td><td>Santé</td><td>HTTP échec du bilan de santé (périodique, après 3 échecs)</td></tr>
+<tr><td><code>health_fail</code></td><td>Santé</td><td>HTTP échec du health check (périodique, après 3 échecs)</td></tr>
 <tr><td><code>deploy_health_fail</code></td><td>Santé</td><td>Échec du contrôle de santé post-déploiement</td></tr>
 <tr><td><code>ssl_install</code></td><td>SSL</td><td>Certificat SSL installé</td></tr>
 <tr><td><code>ssl_force</code></td><td>SSL</td><td>HTTP → HTTPS redirection forcée</td></tr>
@@ -2011,11 +2011,11 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 <li>Erreurs de sauvegarde (échecs de téléchargement S3, erreurs de dump, archive corrompue) et, depuis
                         <strong>v5.1.0</strong>, des sauvegardes qui sont simplement <strong>en retard</strong>
                         (<code>backup_stale</code>)</li>
-<li>Déployer les résultats — depuis <strong>v5.1.0</strong> les deux succès <em>et</em>panne, dès le CLI
+<li>Déployer les résultats — depuis <strong>v5.1.0</strong> les deux succès <em>et</em>panne, depuis le CLI
                         et le Git webhook, avec la branche, le numéro de version, le commit, l'auteur, la durée et le
                         verdict du contrôle de santé post-déploiement dans le corps</li>
 <li>Une version qui a échoué <a href="/fr/docs/infrastructure#cli-health">post-déploiement
-                            bilan de santé</a> (<code>deploy_health_fail</code>), y compris ce qu'est une restauration automatique
+                            health check</a> (<code>deploy_health_fail</code>), y compris ce qu'est une restauration automatique
                         j'ai fait à ce sujet</li>
 <li>Échecs de tâches du système cron (via le <code>cipi-cron-notify</code> emballage)</li>
 <li>Événements du cycle de vie de l'application : avertit lorsqu'une application est créée, modifiée ou supprimée, y compris
@@ -2073,22 +2073,22 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 </div>
 <!-- ── Log Retention ── -->
 <div class="doc-section" id="cipi-log-retention">
-<h2>Conservation des journaux (RGPD)</h2>
-<p>Cipi applique des politiques de rotation automatique des journaux conçues pour respecter le RGPD et la protection générale des données.
-                    exigences. Les journaux sont alternés et supprimés automatiquement — aucun nettoyage manuel n'est nécessaire.</p>
+<h2>Conservation des logs (RGPD)</h2>
+<p>Cipi applique des politiques de rotation automatique des logs conçues pour respecter le RGPD et la protection générale des données.
+                    exigences. Les logs sont alternés et supprimés automatiquement — aucun nettoyage manuel n'est nécessaire.</p>
 <div class="table-scroll">
 <table class="cmd-table">
 <thead>
 <tr>
 <th>Catégorie</th>
-<th>Journaux</th>
+<th>Logs</th>
 <th>Rétention</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Demande</td>
-<td>Laravel, PHP-FPM, travailleurs, déploiement, système</td>
+<td>Laravel, PHP-FPM, workers, déploiement, système</td>
 <td>12 mois</td>
 </tr>
 <tr>
@@ -2098,7 +2098,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 </tr>
 <tr>
 <td>HTTP / Navigation</td>
-<td>Nginx journaux d'accès et d'erreurs</td>
+<td>Nginx logs d'accès et d'erreurs</td>
 <td>90 jours</td>
 </tr>
 </tbody>
@@ -2110,15 +2110,15 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 <line x1="12" x2="12" y1="8" y2="12"></line>
 <line x1="12" x2="12.01" y1="16" y2="16"></line>
 </svg>
-<div>Les journaux de navigation HTTP/(journaux d'accès nginx) contiennent des adresses IP, qui sont des données personnelles sous
+<div>Les logs de navigation HTTP/(logs d'accès nginx) contiennent des adresses IP, qui sont des données personnelles sous
                         RGPD. La conservation de 90 jours garantit le respect du principe de minimisation des données tout en
-                        conserver suffisamment d'historique pour le débogage et l'analyse de sécurité. Les journaux d'application et de sécurité sont
+                        conserver suffisamment d'historique pour le débogage et l'analyse de sécurité. Les logs d'application et de sécurité sont
                         conservés pendant 12 mois pour soutenir les pistes d’audit et les enquêtes sur les incidents.</div>
 </div>
 </div>
 <div class="doc-section" id="valkey">
 <h2>Valkey</h2>
-<p><strong>Valkey</strong> est le magasin de données en mémoire que Cipi installe dans le cadre de la pile par défaut.
+<p><strong>Valkey</strong> est le magasin de données en mémoire que Cipi installe dans le cadre de la stack par défaut.
                     Depuis <strong>v4.5.6</strong> Cipi dispositions <strong>Valkey</strong> au lieu de
                     <code>redis-server</code>. Il excelle dans la mise en cache, le stockage de sessions, les files d'attente de messages, le temps réel
                     diffusion et limitation du débit.</p>
@@ -2164,10 +2164,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     paquet démon; <code>4.5.6</code> initialement utilisé <code>valkey</code>) et effectue la migration entièrement
                     autonome et sécuritaire. Il active automatiquement le <code>universe</code> composant APT lorsque l'emballage
                     n'est pas trouvé, exécute une vérification de l'état après le démarrage (<code>PING</code> → <code>PONG</code> avec le
-                    mot de passe), et <strong>revient à <code>redis-server</code></strong> — restoring both the saved
-                    password and the dataset — if Valkey can't be installed or doesn't come up healthy. The dataset
-                    snapshot is kept until the switch is verified, then cleaned up. The migration is idempotent: servers
-                    already on Valkey skip it.</p>
+                    mot de passe), et <strong>revient à <code>redis-server</code></strong> — en restaurant à la fois le mot de passe enregistré et le jeu de données — si Valkey ne peut pas être installé ou ne démarre pas correctement. Le snapshot du jeu de données est conservé jusqu'à ce que la bascule soit vérifiée, puis nettoyé. La migration est idempotente : les serveurs déjà sur Valkey la sautent.</p>
 <h3>Laravel intégration</h3>
 <p>Ajoutez ces variables à votre <code>.env</code> via <code>cipi app env myapp</code>. Les noms de variables
                     rester <code>REDIS_*</code> — c'est quoi <code>phpredis</code> et des Laravel <code>redis</code>
@@ -2194,7 +2191,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 <h2>Mise à jour automatique</h2>
 <p>Cipi peut se mettre à jour à partir de GitHub sans affecter aucune application, base de données ou configuration.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi self-update --check   <span class="c"># check for a new version</span>
 <span class="p">$</span> cipi self-update           <span class="c"># update to latest</span></pre>
 </div>
@@ -2317,7 +2314,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     alias et laissez Cipi émettre un seul certificat SAN les couvrant tous :
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi alias add myapp api.myapp.com
 <span class="p">$</span> cipi alias add myapp admin.myapp.com
 <span class="p">$</span> cipi alias add myapp www.myapp.com
@@ -2330,7 +2327,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     certificat manuellement à l'aide d'un plugin DNS pour certbot et placez-le sur le serveur. Cipi ne sera pas
                     gérez-le, renouvelez-le ou suivez-le : vous êtes entièrement propriétaire du cycle de vie.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># example with the Cloudflare DNS plugin</span>
 <span class="p">$</span> pip install certbot-dns-cloudflare
 <span class="p">$</span> certbot certonly --dns-cloudflare \
@@ -2342,7 +2339,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     <code>server_name *.myapp.com myapp.com;</code>. Rechargez ensuite nginx :
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> nginx -t &amp;&amp; systemctl reload nginx</pre>
 </div>
 <div class="callout warning">
@@ -2361,7 +2358,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 <p>Pour personnaliser le vhost Nginx pour une application, modifiez directement la configuration du site. Après modifications, testez et
                     rechargez Nginx.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> sudo nano /etc/nginx/sites-available/&lt;app&gt;
 <span class="p">$</span> sudo nginx -t &amp;&amp; sudo systemctl reload nginx</pre>
 </div>
@@ -2386,11 +2383,11 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                         consiste à réapprovisionner le serveur à partir de zéro.</div>
 </div>
 <h3>1 — Arrêtez et supprimez toutes les applications</h3>
-<p>Pour chaque application gérée par Cipi, supprimez son utilisateur système, son répertoire personnel, sa base de données, son hôte virtuel nginx, son PHP-FPM.
+<p>Pour chaque application gérée par Cipi, supprimez son utilisateur système, son répertoire personnel, sa base de données, son vhost nginx, son PHP-FPM.
                     piscine,
                     et supervisor config.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># List all app users (members of cipi-apps group)</span>
 <span class="p">$</span> grep cipi-apps /etc/group
 
@@ -2406,14 +2403,14 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 </div>
 <h3>2 — Supprimer l'utilisateur et les groupes Cipi</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> userdel -r cipi
 <span class="p">$</span> groupdel cipi-ssh 2&gt;/dev/null
 <span class="p">$</span> groupdel cipi-apps 2&gt;/dev/null</pre>
 </div>
 <h3>3 — Supprimer Cipi binaires, bibliothèques et données</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> rm -f /usr/local/bin/cipi
 <span class="p">$</span> rm -f /usr/local/bin/cipi-worker
 <span class="p">$</span> rm -f /usr/local/bin/cipi-cron-notify
@@ -2424,7 +2421,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 </div>
 <h3>4 — Supprimer Cipi API (si installé)</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> systemctl stop cipi-queue 2&gt;/dev/null
 <span class="p">$</span> systemctl disable cipi-queue 2&gt;/dev/null
 <span class="p">$</span> rm -f /etc/systemd/system/cipi-queue.service
@@ -2432,14 +2429,14 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 </div>
 <h3>5 — Supprimer Cipi cron tâches</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># Edit root crontab and remove all Cipi entries</span>
 <span class="p">$</span> crontab -e
 <span class="c"># Remove lines referencing: cipi self-update, certbot renewal, cache cleanup, RAM drop</span></pre>
 </div>
 <h3>6 — Supprimer Cipi fichiers de configuration</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># Sudoers</span>
 <span class="p">$</span> rm -f /etc/sudoers.d/cipi-sudo
 <span class="p">$</span> rm -f /etc/sudoers.d/cipi-api
@@ -2470,7 +2467,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 <h3>7 — Purger les packages installés</h3>
 <p>Supprimez tous les packages installés par Cipi. Ignorez tout package que vous souhaitez conserver à d’autres fins.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> systemctl stop nginx mariadb valkey-server fail2ban supervisor
 <span class="p">$</span> systemctl stop php*-fpm
 
@@ -2483,7 +2480,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 </div>
 <h3>8 — Supprimer APT référentiels</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> add-apt-repository --remove ppa:ondrej/php -y
 <span class="p">$</span> rm -f /etc/apt/sources.list.d/mariadb.list
 <span class="p">$</span> rm -f /etc/apt/sources.list.d/nodesource.list
@@ -2492,13 +2489,13 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 </div>
 <h3>9 — Supprimer Composer et Deployer</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> rm -f /usr/local/bin/composer
 <span class="p">$</span> rm -f /usr/local/bin/dep</pre>
 </div>
 <h3>10 — Supprimer le fichier d'échange</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> swapoff /var/swap.1
 <span class="p">$</span> rm -f /var/swap.1
 <span class="c"># Remove the swap entry from /etc/fstab</span>
@@ -2508,7 +2505,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 <p>Cipi renforce SSH (désactive la connexion root et l'authentification par mot de passe) et ajoute des hooks PAM. Si vous devez restaurer
                     valeurs par défaut :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># Restore sshd_config to allow password auth (if needed)</span>
 <span class="p">$</span> sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 <span class="p">$</span> sed -i 's/^PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -2525,7 +2522,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 </div>
 <h3>12 — Réinitialiser le pare-feu</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> ufw disable
 <span class="p">$</span> ufw reset</pre>
 </div>
@@ -2535,7 +2532,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 <line x1="12" x2="12" y1="16" y2="12"></line>
 <line x1="12" x2="12.01" y1="8" y2="8"></line>
 </svg>
-<div>Après une désinstallation complète, le serveur sera dépouillé de sa pile Web et de son renforcement de sécurité.
+<div>Après une désinstallation complète, le serveur sera dépouillé de sa stack Web et de son renforcement de sécurité.
                         <strong>L'approche recommandée consiste à reprovisionner le serveur à partir d'une image de système d'exploitation propre.</strong>plutôt
                         que d'essayer de reconfigurer la même machine. Utilisez ce guide principalement pour nettoyer avant un nouveau
                         démarrer, ou pour supprimer sélectivement Cipi composants tout en conservant les packages dont vous avez encore besoin.
@@ -2558,7 +2555,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
 </div>
 <footer>
 <div class="footer-inner">
-<span>Réalisé avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
+<span>Fait avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" target="_blank">Essayez SSH
                         Gestionnaire de connexions avec Cipi</a></li>

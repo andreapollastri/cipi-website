@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>cipi.yml — Configuration du serveur fournie avec votre code Laravel | Cipi</title>
-<meta content="cipi.yml est un fichier que vous validez à côté de votre application Laravel : alias de domaine, version PHP et php.ini, bases de données supplémentaires, gestionnaires de file d'attente, le planificateur, bilan de santé et profils de sauvegarde — réconciliés avec le plan yml cipi et l'application cipi yml." name="description"/>
+<meta content="cipi.yml est un fichier que vous validez à côté de votre application Laravel : alias de domaine, version PHP et php.ini, bases de données supplémentaires, workers de queue, le planificateur, health check et profils de sauvegarde — réconciliés avec le plan yml cipi et l'application cipi yml." name="description"/>
 <meta content="cipi.yml, Laravel configuration en tant que code, configuration du serveur dans le référentiel, cipi application yml, cipi plan yml, Laravel fichier de configuration de déploiement, files d'attente YAML, profils de sauvegarde YAML" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
@@ -63,7 +63,7 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Do I have to write cipi.yml by hand?",
+          "name": "Dois-je écrire cipi.yml à la main ?",
           "acceptedAnswer": { "@type": "Answer", "text": "No. cipi yml generate <app> prints the app's current server configuration as a ready-to-commit cipi.yml, and cipi yml example prints a blank commented template if you prefer to start from scratch." }
         },
         {
@@ -73,7 +73,7 @@
         },
         {
           "@type": "Question",
-          "name": "Does a deploy apply cipi.yml automatically?",
+          "name": "Un déploiement applique-t-il cipi.yml automatiquement ?",
           "acceptedAnswer": { "@type": "Answer", "text": "Only if you opt in with cipi yml auto <app> on. Until then deploys ignore the file and you reconcile manually with cipi yml plan and cipi yml apply." }
         },
         {
@@ -217,8 +217,8 @@
 <span class="hero-kicker">Depuis Cipi 5.1</span>
 <h1 class="hero-title" id="cipi-yml-title"><span class="accent">cipi.yml</span> - configuration fournie avec le code.</h1>
 <p class="hero-copy">Un fichier à la racine de votre référentiel décrit l'état attendu par une application sur le
-                    serveur : alias de domaine, version PHP et paramètres par application, bases de données supplémentaires, gestionnaires de file d'attente, le
-                    planificateur, son bilan de santé et ses profils de sauvegarde. Examinez-le dans une pull request, envoyez-le avec le
+                    serveur : alias de domaine, version PHP et paramètres par application, bases de données supplémentaires, workers de queue, le
+                    planificateur, son health check et ses profils de sauvegarde. Examinez-le dans une pull request, envoyez-le avec le
                     relâchez et laissez<code>cipi yml apply</code> réconcilier le serveur avec lui.</p>
 <div aria-label="Points forts" class="hero-metrics">
 <div class="hero-metric"><strong>7 zones</strong><span>Alias, PHP, php.ini, bases de données, Workers, planificateur, santé et sauvegardes.</span></div>
@@ -241,7 +241,7 @@
             le serveur l'a, le compare avec le fichier et vous montre la différence avant de toucher quoi que ce soit.</p>
 <h2 class="cmp-h2-lg" id="commands">Les commandes</h2>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi yml generate myapp          <span class="c"># this app's current config, as a cipi.yml</span>
 <span class="p">$</span> cipi yml example myapp           <span class="c"># blank commented template, in myapp's namespace</span>
 <span class="p">$</span> cipi yml validate myapp          <span class="c"># parse and check, change nothing</span>
@@ -319,7 +319,7 @@
 <span class="go">Bases de données dans la documentation →</span>
 </a>
 <a class="alt-card" href="/fr/docs/infrastructure#cli-workers">
-<span class="alt-tag">travailleurs</span>
+<span class="alt-tag">workers</span>
 <h3>Travailleurs de file d'attente et <span>Horizon</span></h3>
 <p>Déclarez chaque file d'attente avec son nombre de processus, ses tentatives et son délai d'attente, et Supervisor est réconcilié avec
                     correspondre. Ou définir <code>horizon: true</code> et laissez Horizon posséder les files d'attente à la place.</p>
@@ -349,8 +349,8 @@
 <a class="alt-card" href="/fr/docs/infrastructure#cli-backup">
 <span class="alt-tag">sauvegarde.profils</span>
 <h3>Sauvegarde <span>profils</span></h3>
-<p>Profils par application avec leur propre portée, calendrier, conservation, destinations et cryptage : un système bon marché
-                    base de données exécutée toutes les 30 minutes, une copie cryptée complète à S3 la nuit. Les noms de profil sont limités
+<p>Profils par application avec leur propre portée, calendrier, conservation, destinations et chiffrement : un système bon marché
+                    base de données exécutée toutes les 30 minutes, une copie chiffrée complète à S3 la nuit. Les noms de profil sont limités
                     à l'application.</p>
 <span class="go">Sauvegardes dans la documentation →</span>
 </a>
@@ -366,7 +366,7 @@
 <p>Vous n'êtes pas obligé de l'écrire à la main. <code>cipi yml generate &lt;app&gt;</code> imprime ce que le serveur
             l'a déjà fait ; commettre cela et <code>cipi yml plan</code> rapporte rien à faire.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi yml generate myapp &gt; cipi.yml   <span class="c"># then commit it</span>
 <span class="p">$</span> cipi yml plan myapp                  <span class="c"># reports nothing to do</span></pre>
 </div>
@@ -433,7 +433,7 @@ backup:
     <span class="c"># Frequent and cheap: databases only, without the noisy tables.</span>
     - name: myapp-db
       scope: db
-      databases: [<span class="s">"monapplication"</span>, <span class="s">"monapplication_*"</span>, <span class="s">"locataire_*"</span>]
+      databases: [<span class="s">"myapp"</span>, <span class="s">"monapplication_*"</span>, <span class="s">"locataire_*"</span>]
       exclude_tables: [<span class="s">"*.emplois"</span>, <span class="s">"*.télescope_*"</span>]
       every: 30m           <span class="c"># 5m/10m/15m/20m/30m, 1h..12h, 1d..28d</span>
       keep: 48             <span class="c"># keep the last 48 runs</span>
@@ -454,7 +454,7 @@ backup:
             est signalé par email (<code>yml_fail</code>) et <strong>jamais partiellement appliqué</strong>. Un succès
             réconcilier les incendies <code>yml_apply</code>.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi yml auto myapp on       <span class="c"># reconcile after every successful deploy</span>
 <span class="p">$</span> cipi yml auto myapp status   <span class="c"># is it on?</span>
 <span class="p">$</span> cipi yml auto myapp off      <span class="c"># back to manual apply</span></pre>
@@ -480,7 +480,7 @@ backup:
 <line x1="12" x2="12.01" y1="17" y2="17"></line>
 </svg>
 <div>Une fois <code>yml auto</code> est activé, toute personne pouvant accéder à ce référentiel peut modifier les alias de l'application,
-                PHP paramètres, travailleurs, bilan de santé et profils de sauvegarde. C'est le point de la configuration en tant que code -
+                PHP paramètres, workers, health check et profils de sauvegarde. C'est le point de la configuration en tant que code -
                 traitez l'accès en écriture au dépôt en conséquence.</div>
 </div>
 <h2 class="cmp-h2-lg" id="faq">Questions</h2>
@@ -517,18 +517,18 @@ backup:
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Déploiement gratuit open-source Laravel CLI pour Ubuntu VPS — Octane, Horizon, Reverb et déploiements Git sans temps d'arrêt.</p>
+<p>Déploiement gratuit open-source Laravel CLI pour VPS Ubuntu — Octane, Horizon, Reverb et déploiements Git sans interruption.</p>
 <ul class="footer-brand-links">
-<li><a href="/fr/docs/getting-started">Commencez</a></li>
-<li><a href="/fr/docs/">Documents</a></li>
+<li><a href="/fr/docs/getting-started">Démarrer</a></li>
+<li><a href="/fr/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Comparez Cipi avec des alternatives" class="footer-col footer-col--compare">
-<strong>Comparez Cipi</strong>
+<nav aria-label="Comparer Cipi aux alternatives" class="footer-col footer-col--compare">
+<strong>Comparer Cipi</strong>
 <ul>
-<li><a href="/fr/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
-<li><a href="/fr/alternative-to-laravel-cloud">Laravel Alternative au cloud</a></li>
+<li><a href="/fr/alternative-to-laravel-forge">Alternative à Laravel Forge</a></li>
+<li><a href="/fr/alternative-to-laravel-cloud">Alternative à Laravel Cloud</a></li>
 <li><a href="/fr/alternative-to-ploi">Ploi alternative</a></li>
 <li><a href="/fr/alternative-to-coolify">Coolify alternative</a></li>
 <li><a href="/fr/alternative-to-runcloud">RunCloud alternative</a></li>
@@ -543,7 +543,7 @@ backup:
 <strong>Guides gratuits</strong>
 <ul>
 <li><a href="/fr/guides/gerer-apps-avec-cipi-yml">Gérer les apps avec cipi.yml</a></li>
-<li><a href="/fr/guides/panneau-ui-et-api">Panneau UI et API</a></li>
+<li><a href="/fr/guides/panneau-ui-et-api">Panneau de contrôle et API</a></li>
 <li><a href="/fr/guides/utiliser-cipi-agent-laravel">cipi/agent et MCP de projet</a></li>
 <li><a href="/fr/guides/deployer-wordpress-app-personnalisee">Déployer WordPress sur Cipi</a></li>
 <li><a href="/fr/guides/">Tous les guides</a></li>
@@ -552,7 +552,7 @@ backup:
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Réalisé avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+                    Fait avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
 <span class="footer-license"> · Open source, licence MIT</span>
 </div>
 <ul class="footer-links">

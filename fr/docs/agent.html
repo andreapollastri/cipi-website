@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Cipi Documents — Cipi Agent</title>
+<title>Cipi Docs — Cipi Agent</title>
 <meta content="Package Laravel pour les webhooks, les vérifications de l'état, le serveur MCP, l'anonymiseur de base de données et les variables ENV." name="description"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
@@ -22,7 +22,7 @@
 <meta content="website" property="og:type"/>
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/fr/docs/agent" property="og:url"/>
-<meta content="Cipi Documents — Cipi Agent" property="og:title"/>
+<meta content="Cipi Docs — Cipi Agent" property="og:title"/>
 <meta content="Package Laravel pour les webhooks, les vérifications de l'état, le serveur MCP, l'anonymiseur de base de données et les variables ENV." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
@@ -34,7 +34,7 @@
     <meta property="og:locale:alternate" content="it_IT">
     <meta property="og:locale:alternate" content="es_ES">
     <meta property="og:locale:alternate" content="pt_PT"><meta content="summary_large_image" name="twitter:card"/>
-<meta content="Cipi Documents — Cipi Agent" name="twitter:title"/>
+<meta content="Cipi Docs — Cipi Agent" name="twitter:title"/>
 <meta content="Package Laravel pour les webhooks, les vérifications de l'état, le serveur MCP, l'anonymiseur de base de données et les variables ENV." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
@@ -46,7 +46,7 @@
       "headline": "Cipi Docs — Cipi Agent",
       "name": "Cipi Agent",
       "url": "https://cipi.sh/en/docs/agent",
-      "description": "Laravel package for webhooks, health checks, MCP server, database anonymizer, and ENV variables.",
+      "description": "Package Laravel pour les webhooks, les vérifications de l'état, le serveur MCP, l'anonymiseur de base de données et les variables ENV.",
       "inLanguage": "fr",
       "image": "https://cipi.sh/og.png",
       "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/" },
@@ -105,7 +105,7 @@
 </svg>
 <span>Ci<span style="color:var(--signal)">pi</span></span>
 </a>
-<span class="nav-badge">Documents</span>
+<span class="nav-badge">Docs</span>
 </div>
 <div class="nav-right">
 
@@ -149,14 +149,14 @@
 <a class="sidebar-link" href="/fr/docs/getting-started#installation">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#requirements">exigences</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#quickstart">démarrage rapide</a>
-<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">pile technologique</a>
+<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">stack technologique</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#app-structure">structure de l'application</a>
 </div>
 <div class="sidebar-group" data-chapter="agent">
 <a class="sidebar-group-label" href="/fr/docs/agent">cipi agent</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-install">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-webhook">webhook</a>
-<a class="sidebar-link" href="/fr/docs/agent#agent-health">bilan de santé</a>
+<a class="sidebar-link" href="/fr/docs/agent#agent-health">health check</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-mcp">serveur MCP</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-anonymizer">anonymiseur de base de données</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-security">sécurité</a>
@@ -255,9 +255,9 @@
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-api"><code>cipi api</code></a>
 <a class="sidebar-link" href="/fr/docs/advanced#whmcs">Module WHMCS</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-sync"><code>cipi sync</code></a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et cryptage</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et chiffrement</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-smtp">notifications par courrier électronique</a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des journaux (RGPD)</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des logs (RGPD)</a>
 <a class="sidebar-link" href="/fr/docs/advanced#valkey">valkey</a>
 <a class="sidebar-link" href="/fr/docs/advanced#self-update">mise à jour automatique</a>
 <a class="sidebar-link" href="/fr/docs/advanced#wildcard-domains">domaines génériques</a>
@@ -290,7 +290,7 @@
 <li>Une application intégrée <strong>serveur MCP</strong> pour les assistants IA (Curseur, VS Code, Claude Desktop)</li>
 <li>Une solution orientée RGPD<strong>anonymiseur de base de données</strong></li>
 </ul>
-<p>Sur un serveur géré par Cipi, <code>cipi app create</code> injecte le nécessaire <code>.env</code>automatiquement les variables. Le bilan de santé et MCP peuvent fonctionner sur n'importe quel hôte Laravel ; déploiement complet et journalisation
+<p>Sur un serveur géré par Cipi, <code>cipi app create</code> injecte le nécessaire <code>.env</code>automatiquement les variables. Le health check et MCP peuvent fonctionner sur n'importe quel hôte Laravel ; déploiement complet et journalisation
                     l'accès s'attend à un environnement géré en Cipi.</p>
 <h3>Exigences</h3>
 <div class="table-scroll">
@@ -322,14 +322,14 @@
 </table>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> composer require cipi/agent</pre>
 </div>
 <p>Le fournisseur de services découvre automatiquement – non <code>config/app.php</code> un changement est nécessaire. Après l'installation,
                     s'engager et pousser ; Cipi déploie la mise à jour sur la prochaine version.</p>
 <p>Facultatif : publiez le fichier de configuration (valeurs par défaut non Cipi ou personnalisées) :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> php artisan vendor:publish --tag=cipi-config
 <span class="p">$</span> php artisan cipi:status   <span class="c"># verify config and DB connectivity</span></pre>
 </div>
@@ -435,7 +435,7 @@
 <p>Le jeton à utiliser est stocké dans <code>.env</code> comme <code>CIPI_WEBHOOK_TOKEN</code>. Vous pouvez également
                     récupérez-le à tout moment avec :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi deploy myapp --webhook</pre>
 </div>
 <h3>Filtrage des branches</h3>
@@ -458,7 +458,7 @@
                     <code>php artisan cipi:generate-token health</code>.
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> curl -H "Authorization: Bearer YOUR_CIPI_HEALTH_TOKEN" \
     https://yourdomain.com/cipi/health</pre>
 </div>
@@ -466,7 +466,7 @@
 <div class="code-block-header"><span class="code-block-lang">json</span></div>
 <pre>{
   <span class="s">"statut"</span>: <span class="s">"en bonne santé"</span>,
-  <span class="s">"utilisateur_app"</span>: <span class="s">"monapplication"</span>,
+  <span class="s">"utilisateur_app"</span>: <span class="s">"myapp"</span>,
   <span class="s">"php"</span>: <span class="s">"8.5"</span>,
   <span class="s">"laravel"</span>: <span class="s">"12.0.0"</span>,
   <span class="s">"environnement"</span>: <span class="s">"production"</span>,
@@ -494,11 +494,11 @@
                 </p>
 <h3>Surveillance des intégrations</h3>
 <p>Le point de terminaison de santé fonctionne avec n'importe quel vérificateur HTTP prenant en charge les jetons Bearer, par ex.
-                    <strong>Temps de disponibilitéRobot</strong>, <strong>Meilleure pile</strong>, <strong>Grafana</strong>, ou personnalisé
+                    <strong>Uptime Robot</strong>, <strong>Meilleure stack</strong>, <strong>Grafana</strong>, ou personnalisé
                     cron + <code>curl</code>. Sondage <code>checks.queue.pending_jobs</code> pour les alertes de retard de file d’attente.</p>
 </div>
 <div class="doc-section" id="agent-mcp">
-<h2>MCP Serveur</h2>
+<h2>Serveur MCP</h2>
 <p><strong>cipi-agent</strong> comprend un intégré <strong>serveur MCP</strong> (Protocole de contexte modèle)
                     qui expose votre application à des assistants IA tels que <strong>Curseur</strong>,
                     <strong>Code VS</strong> (avec GitHub Copilot), et <strong>Bureau Claude</strong>. Le point final
@@ -508,7 +508,7 @@
 <p>Le point final MCP est disponible sur <code>POST /cipi/mcp</code> et est désactivé par défaut. Pour activer
                     ça :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> php artisan cipi:service mcp --enable
 <span class="p">$</span> php artisan cipi:generate-token mcp</pre>
 </div>
@@ -536,13 +536,13 @@
 </tr>
 <tr>
 <td>déployer</td>
-<td>Déclenchez un nouveau déploiement sans temps d'arrêt – écrit le
-                                                    <code>.deploy-trigger</code> fichier; Le déployeur le récupère dans la minute suivante
+<td>Déclenchez un nouveau déploiement sans interruption – écrit le
+                                                    <code>.deploy-trigger</code> fichier; Le Deployer le récupère dans la minute suivante
                                                 </td>
 </tr>
 <tr>
-<td>journaux</td>
-<td>Lisez les N dernières lignes (50 par défaut, 500 maximum) à partir des journaux d'application. Prise en charge
+<td>logs</td>
+<td>Lisez les N dernières lignes (50 par défaut, 500 maximum) à partir des logs d'application. Prise en charge
                                                     <code>type</code> (<code>laravel</code>, <code>nginx</code>, <code>php</code>,
                                                     <code>worker</code>, <code>deploy</code>), <code>level</code> pour Laravel gravité
                                                     filtrage (par ex. <code>error</code>), et <code>search</code> pour le filtrage par mots clés.
@@ -588,12 +588,12 @@
 <tr>
 <td><code>level</code></td>
 <td><code>debug</code> … <code>emergency</code></td>
-<td>Gravité minimale : Laravel journaux uniquement</td>
+<td>Gravité minimale : Laravel logs uniquement</td>
 </tr>
 <tr>
 <td><code>search</code></td>
 <td>n'importe quelle chaîne</td>
-<td>Filtre de mots-clés insensible à la casse ; les traces de pile restent intactes</td>
+<td>Filtre de mots-clés insensible à la casse ; les traces de stack restent intactes</td>
 </tr>
 <tr>
 <td><code>lines</code></td>
@@ -616,7 +616,7 @@
 <p>Exécutez le <code>cipi:mcp</code> Commande Artisan pour obtenir l'URL du point de terminaison et prête à coller
                     extraits de configuration pour votre client AI :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> php artisan cipi:mcp</pre>
 </div>
 <p>La commande imprime les outils disponibles et la configuration JSON pour Cursor, VS Code et Claude
@@ -627,7 +627,7 @@
 <div class="code-block-header"><span class="code-block-lang">json</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>{
   <span class="s">"mcpServeurs"</span>: {
-    <span class="s">"cipi-monapplication"</span>: {
+    <span class="s">"cipi-myapp"</span>: {
       <span class="s">"type"</span>: <span class="s">"http"</span>,
       <span class="s">"url"</span>: <span class="s">"https://votredomaine.com/cipi/mcp"</span>,
       <span class="s">"en-têtes"</span>: {
@@ -650,7 +650,7 @@
 <div class="code-block-header"><span class="code-block-lang">json</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>{
   <span class="s">"serveurs"</span>: {
-    <span class="s">"cipi-monapplication"</span>: {
+    <span class="s">"cipi-myapp"</span>: {
       <span class="s">"type"</span>: <span class="s">"http"</span>,
       <span class="s">"url"</span>: <span class="s">"https://votredomaine.com/cipi/mcp"</span>,
       <span class="s">"en-têtes"</span>: {
@@ -672,7 +672,7 @@
 <div class="code-block-header"><span class="code-block-lang">json</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>{
   <span class="s">"mcpServeurs"</span>: {
-    <span class="s">"cipi-monapplication"</span>: {
+    <span class="s">"cipi-myapp"</span>: {
       <span class="s">"commande"</span>: <span class="s">"npx"</span>,
       <span class="s">"arguments"</span>: [
         <span class="s">"-y"</span>,
@@ -687,7 +687,7 @@
 </div>
 <p>Installer <code>mcp-remote</code> globalement une fois avec :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> npm install -g mcp-remote</pre>
 </div>
 <h3>Ce que vous pouvez faire avec</h3>
@@ -733,9 +733,7 @@
 <line x1="12" x2="12" y1="8" y2="12"></line>
 <line x1="12" x2="12.01" y1="16" y2="16"></line>
 </svg>
-<div>The MCP server does not require SSH access to the VPS. It works entirely over HTTPS using
-                        the same Bearer token used by the webhook and health check endpoints. This makes it ideal for
-                        teams where developers should be able to monitor and deploy without root access.</div>
+<div>Le serveur MCP ne demande aucun accès SSH au VPS. Il fonctionne entièrement en HTTPS, avec le même jeton Bearer que les endpoints de webhook et de health check. C'est donc l'option idéale pour les équipes où les développeurs doivent pouvoir surveiller et déployer sans accès root.</div>
 </div>
 <div class="callout warning">
 <svg class="callout-icon" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
@@ -744,7 +742,7 @@
 <line x1="12" x2="12.01" y1="17" y2="17"></line>
 </svg>
 <div>Gardez votre <code>CIPI_MCP_TOKEN</code> secrète. Toute personne possédant le jeton peut déclencher des déploiements,
-                        lire les journaux, exécuter des requêtes de base de données et exécuter Artisan commandes via le point de terminaison MCP. Si vous
+                        lire les logs, exécuter des requêtes de base de données et exécuter Artisan commandes via le point de terminaison MCP. Si vous
                         soupçonner une fuite, régénérer
                         le jeton avec <code>php artisan cipi:generate-token mcp</code> et redémarrez l'application.
                     </div>
@@ -755,8 +753,8 @@
 <line x1="12" x2="12" y1="8" y2="12"></line>
 <line x1="12" x2="12.01" y1="16" y2="16"></line>
 </svg>
-<div><strong>Deux MCP serveurs en Cipi :</strong> <em>Agent MCP</em> (<code>POST /cipi/mcp</code> sur
-                        le domaine de l'application, 6 outils, la base de données/journaux d'une application) vs <em>panneau API MCP</em>
+<div><strong>Deux serveur MCPs en Cipi :</strong> <em>Agent MCP</em> (<code>POST /cipi/mcp</code> sur
+                        le domaine de l'application, 6 outils, la base de données/logs d'une application) vs <em>panneau API MCP</em>
                         (<code>POST /mcp</code> sur le domaine API, 46 outils, serveur entier). Utilisez l'agent MCP pour
                         débogage spécifique à l'application ; utiliser <a href="/fr/docs/advanced#cipi-api">panneau API MCP</a> pour créer des applications, gérer
                         SSL, ou répertoriez toutes les bases de données.</div>
@@ -951,7 +949,7 @@ MAIL_FROM_NAME="${APP_NAME}"</pre>
 </div>
 <p>Test rapide du courrier (en tant qu'utilisateur de l'application, avant votre premier export) :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> php artisan tinker --execute=<span class="s">"Mail::raw('Cipi test de courrier anonymiseur', fn (\$m) =&gt; \$m-&gt;to('you@example.com')-&gt;subject('Mail test'));"</span></pre>
 </div>
 <p>Si ce message n'arrive pas, corrigez d'abord le courrier Laravel — ou utilisez le chemin CLI
@@ -963,19 +961,19 @@ MAIL_FROM_NAME="${APP_NAME}"</pre>
                 </p>
 <p><strong>1. Installez l'agent</strong> (si ce n'est pas déjà fait <code>composer.json</code>):</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> composer require cipi/agent
 <span class="c"># commit, push, deploy — or run on the current release</span></pre>
 </div>
 <p><strong>2. Activez le service et créez un jeton :</strong></p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> php artisan cipi:service anonymize --enable
 <span class="p">$</span> php artisan cipi:generate-token anonymize</pre>
 </div>
 <p><strong>3. Échafaudez le fichier de configuration :</strong></p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> php artisan cipi:init-anonymize</pre>
 </div>
 <p>Cela crée<code>/home/{app_user}/.db/anonymization.json</code> (autorisations <code>0640</code>)
@@ -988,7 +986,7 @@ MAIL_FROM_NAME="${APP_NAME}"</pre>
                     <a href="#agent-anonymizer-email">Notifications par courrier électronique</a>).
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> php artisan cipi:status          <span class="c"># DB connectivity</span>
 <span class="p">$</span> php artisan queue:work --once   <span class="c"># optional: confirm worker can run jobs</span>
 <span class="c"># send a test email — must arrive before using POST /cipi/db</span>
@@ -1173,16 +1171,16 @@ MAIL_FROM_NAME="${APP_NAME}"</pre>
 <h3 id="agent-anonymizer-curl">Exemples pratiques (curl)</h3>
 <p>Définissez les variables une fois (remplacez-les par le domaine de votre application et le jeton de <code>.env</code>):</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="k">exporter</span> APP_URL=<span class="s">"https://myapp.example.com"</span>
 <span class="k">exporter</span> CIPI_ANONYMIZER_TOKEN=<span class="s">"votre-jeton-de-l'environnement"</span></pre>
 </div>
 <h4>1. Mettre en file d'attente une tâche d'anonymisation</h4>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>curl -sS -X POST <span class="s">"${APP_URL}/cipi/db"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_ANONYMIZER_TOKEN}"</span> \
-  -H <span class="s">"Type de contenu : application/json"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
   -H <span class="s">"Accepter : candidature/json"</span> \
   -d <span class="s">'{"email": "developer@example.com"}'</span></pre>
 </div>
@@ -1206,12 +1204,12 @@ MAIL_FROM_NAME="${APP_NAME}"</pre>
 <h4>2. Téléchargez le dump (à partir du lien e-mail)</h4>
 <p>L'e-mail de fin contient une URL telle que :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">texte</span></div>
+<div class="code-block-header"><span class="code-block-lang">text</span></div>
 <pre>https://myapp.example.com/cipi/db/AbCdEf...?expires=1710000000&amp;signature=...</pre>
 </div>
 <p>Enregistrez-le avec curl (collez l'URL complète de l'e-mail - pas d'en-tête Bearer) :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>curl -sS -L -o anonymized.sql <span class="s">"PASTE_FULL_SIGNED_URL_FROM_EMAIL"</span>
 
 <span class="c"># Import locally (MySQL example)</span>
@@ -1225,10 +1223,10 @@ mysql -u root -p myapp_local &lt; anonymized.sql</pre>
                     déverser :
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>curl -sS -X POST <span class="s">"${APP_URL}/cipi/db/utilisateur"</span> \
   -H <span class="s">"Autorisation : Porteur ${CIPI_ANONYMIZER_TOKEN}"</span> \
-  -H <span class="s">"Type de contenu : application/json"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
   -d <span class="s">'{"email": "client@production.com"}'</span></pre>
 </div>
 <div class="code-block">
@@ -1277,7 +1275,7 @@ mysql -u root -p myapp_local &lt; anonymized.sql</pre>
 <tr>
 <td>500</td>
 <td>Jeton non configuré, erreur de base de données ou outil de vidage manquant</td>
-<td>Vérifier <code>.env</code>, <code>mysqldump</code>/<code>pg_dump</code>, Laravel journaux
+<td>Vérifier <code>.env</code>, <code>mysqldump</code>/<code>pg_dump</code>, Laravel logs
                                                 </td>
 </tr>
 <tr>
@@ -1294,7 +1292,7 @@ mysql -u root -p myapp_local &lt; anonymized.sql</pre>
 <h3>CLI — exécuter sans HTTP</h3>
 <p>Pour les scripts, cron, ou les exports ponctuels sur le serveur :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> php artisan cipi:anonymize \
     /home/myapp/.db/anonymization.json \
     /home/myapp/anonymized_export.sql</pre>
@@ -1306,7 +1304,7 @@ mysql -u root -p myapp_local &lt; anonymized.sql</pre>
                     <a href="/fr/docs/advanced#cipi-api">Cipi API</a> ressemble à ceci (hôte, jeton et sémantique différents) :
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="k">exporter</span> CIPI_API_URL=<span class="s">"https://api.myserver.com"</span>
 <span class="k">exporter</span> CIPI_API_TOKEN=<span class="s">"jeton-sanctum-avec-dbs-manage"</span>
 
@@ -1420,12 +1418,12 @@ curl -sS -X POST <span class="s">"${CIPI_API_URL}/api/dbs/myapp_db/backup"</span
 </tr>
 <tr>
 <td>CIPI_PHP_VERSION</td>
-<td>Version PHP signalée dans le bilan de santé</td>
+<td>Version PHP signalée dans le health check</td>
 <td>système PHP</td>
 </tr>
 <tr>
 <td>CIPI_DEPLOY_SCRIPT</td>
-<td>Chemin d'accès à la configuration du déployeur</td>
+<td>Chemin d'accès à la configuration du Deployer</td>
 <td><code>~/.deployer/deploy.php</code></td>
 </tr>
 <tr>
@@ -1492,7 +1490,7 @@ curl -sS -X POST <span class="s">"${CIPI_API_URL}/api/dbs/myapp_db/backup"</span
 <div class="page-nav">
 <a class="page-nav-link page-nav-link--prev" href="/fr/docs/getting-started">
 <span class="page-nav-label">Précédent</span>
-<span class="page-nav-title">Commencer</span>
+<span class="page-nav-title">Premiers pas</span>
 </a>
 <a class="page-nav-link page-nav-link--next" href="/fr/docs/apps">
 <span class="page-nav-label">Suivant</span>
@@ -1503,7 +1501,7 @@ curl -sS -X POST <span class="s">"${CIPI_API_URL}/api/dbs/myapp_db/backup"</span
 </div>
 <footer>
 <div class="footer-inner">
-<span>Réalisé avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
+<span>Fait avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" target="_blank">Essayez SSH
                         Gestionnaire de connexions avec Cipi</a></li>

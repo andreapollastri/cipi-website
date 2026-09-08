@@ -46,10 +46,10 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide",
-  "name": "How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide",
+  "headline": "Cómo hacer una copia de seguridad de un VPS en un cubo S3 con Cipi — Guía 2026",
+  "name": "Cómo hacer una copia de seguridad de un VPS en un cubo S3 con Cipi — Guía 2026",
   "url": "https://cipi.sh/en/guides/backup-vps-s3",
-  "description": "Set up off-site VPS backups to Amazon S3 or any S3-compatible bucket with Cipi: credentials, first run, cron schedule, retention and a restore drill you can actually trust.",
+  "description": "Configure copias de seguridad VPS externas en Amazon S3 o cualquier depósito compatible con S3 con Cipi: credenciales, primera ejecución, programación cron, retención y un ejercicio de restauración en el que realmente pueda confiar.",
   "inLanguage": "es",
   "image": "https://cipi.sh/og.png",
   "datePublished": "2026-08-22",
@@ -110,7 +110,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "VPS backups to S3",
+      "name": "VPS copias de seguridad en S3",
       "item": "https://cipi.sh/en/guides/backup-vps-s3"
     }
   ]
@@ -123,7 +123,7 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Does Cipi work only with Amazon S3?",
+      "name": "¿Funciona Cipi solo con Amazon S3?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No. cipi backup configure accepts any S3-compatible endpoint: Hetzner Object Storage, DigitalOcean Spaces, Backblaze B2, MinIO, or a self-hosted store such as Johnny. Leave the endpoint empty for AWS; fill it for every other provider."
@@ -139,23 +139,23 @@
     },
     {
       "@type": "Question",
-      "name": "How often should I back up a Laravel VPS?",
+      "name": "¿Con qué frecuencia debo hacer una copia de seguridad de un Laravel VPS?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Daily is the sensible default for production. Add cipi backup run to the root crontab at a quiet hour, then prune older than four weeks. If the database changes constantly, run it twice a day. Always run a backup before a risky migration or a production deploy."
+        "text": "Diariamente es el valor predeterminado sensato para la producción. Añadir cipi backup run al crontab de root en una hora tranquila, luego pode cuando tenga más de cuatro semanas. Si la base de datos cambia constantemente, ejecútela dos veces al día. Ejecute siempre una copia de seguridad antes de una migración riesgosa o una despliegue de producción."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I restore a Cipi S3 backup onto a new VPS?",
+      "name": "¿Puedo restaurar una copia de seguridad Cipi S3 en una nueva VPS?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — that is the point of an off-site copy. Install Cipi on a fresh Ubuntu VPS, recreate the app, download db.sql.gz and shared.tar.gz from the bucket, restore the database with cipi db restore, and extract shared/ into /home/<app>/."
+        "text": "Yes — that is the point of an off-site copy. Install Cipi on a fresh VPS Ubuntu, recreate the app, download db.sql.gz and shared.tar.gz from the bucket, restore the database with cipi db restore, and extract shared/ into /home/<app>/."
       }
     },
     {
       "@type": "Question",
-      "name": "Where does Cipi store S3 credentials?",
+      "name": "¿Dónde almacena Cipi las credenciales S3?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "cipi backup configure writes them to /etc/cipi/backup.conf. Keep that file root-only. The same credentials are used by cipi backup run, list and prune. Staging of large archives defaults to /var/tmp so a small RAM-backed /tmp does not abort the job."
@@ -272,7 +272,7 @@
 
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">ES</summary><div class="lang-menu"><a href="/en/guides/backup-vps-s3" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/vps-backup-auf-s3" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/sauvegarde-vps-vers-s3" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/backup-vps-s3-con-cipi" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a class="active" href="/es/guides/copias-seguridad-vps-s3" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/guides/backup-vps-para-s3" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Alternar tema" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Cambiar tema" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -298,7 +298,7 @@
 </div>
 </nav>
 <main class="cmp">
-<nav aria-label="Miga de pan" class="cmp-breadcrumb">
+<nav aria-label="Ruta de navegación" class="cmp-breadcrumb">
 <a href="/"><svg class="home-ico" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Inicio</a>
 <span class="sep">›</span>
 <a href="/es/guides/">Guías</a>
@@ -308,7 +308,7 @@
 <span class="cmp-eyebrow">Copias de seguridad · S3 · VPS</span>
 <h1>Cómo hacer una copia de seguridad de un VPS en un <em>S3 balde</em> con Cipi</h1>
 <p class="cmp-updated">Por <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Última actualización: <time datetime="2026-08-22">22 de agosto de 2026</time> · lectura gratuita, sin muro de pago</p>
-<p class="lead">Un volcado que se encuentra en el mismo disco que la aplicación es una instantánea, no una copia de seguridad. Esta guía recorre todo el circuito externo con<a class="inline" href="/">Cipi</a>: cree un depósito, almacene las credenciales una vez, ejecute la primera carga, prográmela, elimine las antiguas y restaure en un VPS limpio para que sepa que el plan funciona.</p>
+<p class="lead">Un volcado que se encuentra en el mismo disco que la aplicación es un snapshot, no una copia de seguridad. Esta guía recorre todo el circuito externo con<a class="inline" href="/">Cipi</a>: cree un depósito, almacene las credenciales una vez, ejecute la primera carga, prográmela, elimine las antiguas y restaure en un VPS limpio para que sepa que el plan funciona.</p>
 <div class="toc">
 <strong>En esta guía</strong>
 <ol>
@@ -320,13 +320,13 @@
 <li><a href="#first-run">Primera copia de seguridad y verificación.</a></li>
 <li><a href="#schedule">Cron, retención y poda</a></li>
 <li><a href="#restore">Simulacro de restauración</a></li>
-<li><a href="#before-deploy">Copia de seguridad antes de cada lanzamiento</a></li>
+<li><a href="#before-deploy">Backup antes de cada lanzamiento</a></li>
 <li><a href="#mistakes">Errores que inutilizan las copias de seguridad</a></li>
 <li><a href="#faq">Preguntas frecuentes</a></li>
 </ol>
 </div>
 <h2 id="why-offsite">Por qué el volcado del mismo disco no es una copia de seguridad</h2>
-<p>Instantáneas del proveedor, una <code>.sql.gz</code> en <code>/var/log</code>, un tarball al lado <code>storage/</code> — todos mueren con la máquina. Disco lleno, ransomware, un dedo gordo <code>rm -rf</code>, un corte de región, un VPS robado: la copia que necesitas es la que ya estaba en otro lugar.</p>
+<p>Snapshots del proveedor, una <code>.sql.gz</code> en <code>/var/log</code>, un tarball al lado <code>storage/</code> — todos mueren con la máquina. Disco lleno, ransomware, un dedo gordo <code>rm -rf</code>, un corte de región, un VPS robado: la copia que necesitas es la que ya estaba en otro lugar.</p>
 <p>La regla que aún se mantiene es <strong>3-2-1</strong>: tres copias, dos medios, uno fuera del sitio. Cipi cubre el último salto. <code>cipi db backup</code> le brinda una reversión local rápida; <code>cipi backup run</code> envía la base de datos y el <code>shared/</code> carpeta a Amazon S3 o cualquier depósito compatible con S3. Esa es la copia que restauras cuando desaparece el VPS.</p>
 <div class="note">
 <p>Una copia de seguridad que nunca has restaurado es una esperanza, no un plan. Haga un presupuesto de 20 minutos después de la primera carga exitosa y realice el ejercicio en <a href="#restore">Restaurar</a>. Repítelo cada trimestre.</p>
@@ -363,7 +363,7 @@
 </tbody>
 </table>
 </div>
-<p>Cualquier tienda compatible con S3 sirve. Si desea la copia externa en una segunda factura de SaaS de su propiedad (no en otra factura de SaaS), <a class="inline" href="https://johnny.web.ap.it" rel="noopener" target="_blank">Johnny</a> es la opción open-source ya mencionada en el <a class="inline" href="/es/guides/stack-desarrollador-self-hosted-2026">self-hosted pila de desarrollador</a>.</p>
+<p>Cualquier tienda compatible con S3 sirve. Si desea la copia externa en una segunda factura de SaaS de su propiedad (no en otra factura de SaaS), <a class="inline" href="https://johnny.web.ap.it" rel="noopener" target="_blank">Johnny</a> es la opción open-source ya mencionada en el <a class="inline" href="/es/guides/stack-desarrollador-self-hosted-2026">self-hosted stack de desarrollador</a>.</p>
 <h2 id="configure">Configurar Cipi una vez</h2>
 <p>Inicie sesión mediante SSH como usuario administrador, conviértase en root y ejecute el asistente. escribe <code>/etc/cipi/backup.conf</code> y no deberías tener que volver a tocarlo a menos que cambie la llave o el cubo.</p>
 <div class="code-pre"><code><span class="c"># as root on the VPS</span>
@@ -409,15 +409,15 @@ $ cipi db restore myapp /tmp/db.sql.gz
 $ aws s3 cp s3://your-bucket/cipi/myapp/2026-08-22_143015/shared.tar.gz /tmp/shared.tar.gz
 $ tar -xzf /tmp/shared.tar.gz -C /home/myapp/</code></div>
 <p>Si el VPS ya no está, la secuencia es: instale Cipi en una nueva caja Ubuntu, <code>cipi app create</code> con el mismo control remoto de Git, luego las dos restauraciones anteriores, luego <code>cipi ssl install</code> y un corte DNS. el <a class="inline" href="/es/docs/infrastructure#cli-backup">documentos de infraestructura</a> enumerar los mismos comandos; Este ejercicio es la parte que la mayoría de la gente se salta.</p>
-<p>Para una reversión del mismo servidor (mala migración, mala implementación), el volcado local es más rápido:</p>
+<p>Para una reversión del mismo servidor (mala migración, mala despliegue), el volcado local es más rápido:</p>
 <div class="code-pre"><code>$ ls -lh /var/log/cipi/backups/myapp_*.sql.gz
 $ cipi db restore myapp /var/log/cipi/backups/myapp_20260822_143012.sql.gz
 $ cipi deploy myapp --rollback</code></div>
 <div class="note">
-<p>Vertederos locales en <code>/var/log/cipi/backups/</code> nunca se eliminan automáticamente. En una apretada agenda de implementación, llenan el disco. Quédate con los últimos cinco y suelta el resto: <code>ls -t /var/log/cipi/backups/myapp_*.sql.gz | tail -n +6 | xargs rm -f</code>.</p>
+<p>Vertederos locales en <code>/var/log/cipi/backups/</code> nunca se eliminan automáticamente. En una apretada agenda de despliegue, llenan el disco. Quédate con los últimos cinco y suelta el resto: <code>ls -t /var/log/cipi/backups/myapp_*.sql.gz | tail -n +6 | xargs rm -f</code>.</p>
 </div>
-<h2 id="before-deploy">Copia de seguridad antes de cada lanzamiento</h2>
-<p>Webhook la implementación automática no puede pausarse para realizar una copia de seguridad: se activa el envío <code>cipi deploy</code> inmediatamente. Para producción, coloque una etapa de respaldo en CI para que un volcado fallido bloquee el lanzamiento. Las GitHub acciones completas y los GitLab ejemplos se encuentran en <a class="inline" href="/es/docs/deploy#safe-deploy">Implementación segura: copia de seguridad antes del lanzamiento</a>. Los dos comandos que necesitas en esa etapa:</p>
+<h2 id="before-deploy">Backup antes de cada lanzamiento</h2>
+<p>Webhook la despliegue automática no puede pausarse para realizar una copia de seguridad: se activa el envío <code>cipi deploy</code> inmediatamente. Para producción, coloque una etapa de respaldo en CI para que un volcado fallido bloquee el lanzamiento. Las GitHub acciones completas y los GitLab ejemplos se encuentran en <a class="inline" href="/es/docs/deploy#safe-deploy">Despliegue segura: copia de seguridad antes del lanzamiento</a>. Los dos comandos que necesitas en esa etapa:</p>
 <div class="code-pre"><code>$ cipi db backup myapp
 <span class="c"># fast local rollback</span>
 $ cipi backup run myapp
@@ -429,32 +429,32 @@ $ cipi backup run myapp
 <li><strong>Claves de nube raíz en el servidor.</strong>Un usuario de IAM dedicado con cuatro acciones S3 en un depósito es suficiente. Si el VPS se ve comprometido, el radio de explosión permanece en ese nivel.</li>
 <li><strong>Nunca probando la restauración.</strong> Banderas de compresión, volcados vacíos, un <code>shared/</code> extracto que sobrescribe el árbol incorrecto; solo encontrará esos errores durante un incidente a menos que profundice.</li>
 <li><strong>Sin ciruela pasa, luego una factura sorpresa.</strong>Los volcados diarios de 2 GB se convierten en 60 GB al mes. conjunto <code>--weeks</code> el mismo día que configuraste cron.</li>
-<li><strong>Confiar únicamente en las instantáneas del proveedor.</strong> Son convenientes. También están en la misma cuenta, a menudo en la misma región, y no te dan un teléfono portátil. <code>db.sql.gz</code>.</li>
+<li><strong>Confiar únicamente en los snapshots del proveedor.</strong> Son convenientes. También están en la misma cuenta, a menudo en la misma región, y no te dan un teléfono portátil. <code>db.sql.gz</code>.</li>
 <li><strong>saltando <code>shared/</code>.</strong> Una base de datos sin archivos cargados es media aplicación. <code>cipi backup run</code> ya empaca ambos; no invente un volcado cron "para que sea simple".</li>
 </ul>
 <div class="cta-box">
 <h2>Ejecútelo en un Cipi VPS</h2>
-<p>Cipi es el open-source Laravel despliegue CLI gratuito que se utiliza en esta guía. Un comando convierte un Ubuntu VPS nuevo en un servidor de producción reforzado, y <code>cipi backup configure</code> es el paso que hace que el servidor pueda sobrevivir.</p>
+<p>Cipi es el open-source Laravel despliegue CLI gratuito que se utiliza en esta guía. Un comando convierte un VPS Ubuntu nuevo en un servidor de producción reforzado, y <code>cipi backup configure</code> es el paso que hace que el servidor pueda sobrevivir.</p>
 <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
 <a class="btn-primary" href="/es/docs/getting-started">Empiece gratis</a>
-<a class="btn-ghost" href="/es/docs/infrastructure#cli-backup">Copia de seguridad CLI referencia</a>
+<a class="btn-ghost" href="/es/docs/infrastructure#cli-backup">Backup CLI referencia</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Estrella en GitHub</a>
 </div>
 </div>
 <h2 id="faq">Preguntas frecuentes</h2>
 <div class="faq-item"><h3>¿Funciona Cipi solo con Amazon S3?</h3><p>No. <code>cipi backup configure</code> acepta cualquier punto final compatible con S3: Hetzner Object Storage, DigitalOcean Spaces, Backblaze B2, MinIO o una tienda self-hosted como <a class="inline" href="https://johnny.web.ap.it" rel="noopener" target="_blank">Johnny</a>. Deje el punto final vacío para AWS; llénelo para todos los demás proveedores.</p></div>
 <div class="faq-item"><h3>¿Cuál es la diferencia entre <code>cipi db backup</code> y <code>cipi backup run</code>?</h3><p><code>cipi db backup</code> escribe un volcado de SQL comprimido en el mismo VPS bajo <code>/var/log/cipi/backups/</code>. Siempre está disponible y no necesita configuración. <code>cipi backup run</code> vuelca la base de datos y la aplicación <code>shared/</code> carpeta, luego sube ambos archivos a su depósito S3. Utilice el volcado local para una reversión rápida; utilice la copia S3 para una restauración real fuera del sitio.</p></div>
-<div class="faq-item"><h3>¿Con qué frecuencia debo hacer una copia de seguridad de un Laravel VPS?</h3><p>Diariamente es el valor predeterminado sensato para la producción. Añadir <code>cipi backup run</code> al crontab raíz en una hora tranquila, luego pode cuando tenga más de cuatro semanas. Si la base de datos cambia constantemente, ejecútela dos veces al día. Ejecute siempre una copia de seguridad antes de una migración riesgosa o una implementación de producción.</p></div>
-<div class="faq-item"><h3>¿Puedo restaurar una copia de seguridad Cipi S3 en una nueva VPS?</h3><p>Sí, ese es el objetivo de una copia externa. Instale Cipi en un Ubuntu VPS nuevo, vuelva a crear la aplicación, descargue <code>db.sql.gz</code> y <code>shared.tar.gz</code> desde el depósito, restaure la base de datos con<code>cipi db restore</code>y extraer <code>shared/</code> en <code>/home/&lt;app&gt;/</code>.</p></div>
-<div class="faq-item"><h3>¿Dónde almacena Cipi las credenciales S3?</h3><p><code>cipi backup configure</code> les escribe a <code>/etc/cipi/backup.conf</code>. Mantenga ese archivo solo como raíz. Las mismas credenciales son utilizadas por <code>cipi backup run</code>, <code>list</code> y <code>prune</code>. La preparación de archivos grandes por defecto es <code>/var/tmp</code> entonces una pequeña RAM respaldada <code>/tmp</code> no aborta el trabajo.</p></div>
+<div class="faq-item"><h3>¿Con qué frecuencia debo hacer una copia de seguridad de un Laravel VPS?</h3><p>Diariamente es el valor predeterminado sensato para la producción. Añadir <code>cipi backup run</code> al crontab de root en una hora tranquila, luego pode cuando tenga más de cuatro semanas. Si la base de datos cambia constantemente, ejecútela dos veces al día. Ejecute siempre una copia de seguridad antes de una migración riesgosa o una despliegue de producción.</p></div>
+<div class="faq-item"><h3>¿Puedo restaurar una copia de seguridad Cipi S3 en una nueva VPS?</h3><p>Sí, ese es el objetivo de una copia externa. Instale Cipi en un VPS Ubuntu nuevo, vuelva a crear la aplicación, descargue <code>db.sql.gz</code> y <code>shared.tar.gz</code> desde el depósito, restaure la base de datos con<code>cipi db restore</code>y extraer <code>shared/</code> en <code>/home/&lt;app&gt;/</code>.</p></div>
+<div class="faq-item"><h3>¿Dónde almacena Cipi las credenciales S3?</h3><p><code>cipi backup configure</code> les escribe a <code>/etc/cipi/backup.conf</code>. Mantenga ese archivo solo como root. Las mismas credenciales son utilizadas por <code>cipi backup run</code>, <code>list</code> y <code>prune</code>. La staging de archivos grandes por defecto es <code>/var/tmp</code> entonces una pequeña RAM respaldada <code>/tmp</code> no aborta el trabajo.</p></div>
 <h2>Sigue leyendo</h2>
 <div class="related">
 <a href="/es/guides/desplegar-laravel-en-vps-ubuntu">Implementar Laravel en Ubuntu</a>
 <a href="/es/guides/checklist-seguridad-laravel">Laravel lista de control de seguridad</a>
 <a href="/es/guides/ci-cd-flujo-git-laravel">CI/CD por Laravel</a>
-<a href="/es/docs/infrastructure#cli-backup">Documentos: cipi copia de seguridad</a>
-<a href="/es/docs/deploy#safe-deploy">Implementación segura con respaldo</a>
+<a href="/es/docs/infrastructure#cli-backup">Docs: cipi copia de seguridad</a>
+<a href="/es/docs/deploy#safe-deploy">Despliegue segura con respaldo</a>
 </div>
 </main>
 <footer>
@@ -462,33 +462,33 @@ $ cipi backup run myapp
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Implementación gratuita open-source Laravel CLI para Ubuntu VPS — Octane, Horizon, Reverb y implementaciones de Git sin tiempo de inactividad.</p>
+<p>Despliegue gratuita open-source Laravel CLI para VPS Ubuntu — Octane, Horizon, Reverb y despliegues de Git sin downtime.</p>
 <ul class="footer-brand-links">
-<li><a href="/es/docs/getting-started">empezar</a></li>
-<li><a href="/es/docs/">Documentos</a></li>
+<li><a href="/es/docs/getting-started">Primeros pasos</a></li>
+<li><a href="/es/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
 <nav aria-label="Comparar Cipi con alternativas" class="footer-col footer-col--compare">
 <strong>Comparar Cipi</strong>
 <ul>
-<li><a href="/es/alternative-to-laravel-forge">Laravel Forge alternativa</a></li>
-<li><a href="/es/alternative-to-laravel-cloud">Laravel Alternativa a la nube</a></li>
+<li><a href="/es/alternative-to-laravel-forge">Alternativa a Laravel Forge</a></li>
+<li><a href="/es/alternative-to-laravel-cloud">Alternativa a Laravel Cloud</a></li>
 <li><a href="/es/alternative-to-ploi">Ploi alternativa</a></li>
 <li><a href="/es/alternative-to-coolify">Coolify alternativa</a></li>
 <li><a href="/es/alternative-to-runcloud">RunCloud alternativa</a></li>
 <li><a href="/es/alternative-to-cloudpanel">CloudPanel alternativa</a></li>
 <li><a href="/es/alternative-to-cpanel">cPanel alternativa</a></li>
 <li><a href="/es/alternative-to-plesk">Alternativa a Plesk</a></li>
-<li><a href="/es/best-laravel-forge-alternatives">Las mejores alternativas Forge 2026</a></li>
+<li><a href="/es/best-laravel-forge-alternatives">Las mejores alternativas a Forge en 2026</a></li>
 <li><a href="/es/alternatives">Todas las comparaciones</a></li>
 </ul>
 </nav>
-<nav aria-label="Guías Laravel gratuitas" class="footer-col">
+<nav aria-label="Guías gratuitas de Laravel" class="footer-col">
 <strong>Guías gratuitas</strong>
 <ul>
 <li><a href="/es/guides/gestionar-apps-con-cipi-yml">Gestionar apps con cipi.yml</a></li>
-<li><a href="/es/guides/panel-ui-y-api">Panel UI y API</a></li>
+<li><a href="/es/guides/panel-ui-y-api">Panel de control y API</a></li>
 <li><a href="/es/guides/usar-cipi-agent-en-laravel">cipi/agent y MCP de proyecto</a></li>
 <li><a href="/es/guides/desplegar-wordpress-app-personalizada">Desplegar WordPress en Cipi</a></li>
 <li><a href="/es/guides/">Todas las guías</a></li>
@@ -501,7 +501,7 @@ $ cipi backup run myapp
 <span class="footer-license"> · Open source, Licencia MIT</span>
 </div>
 <ul class="footer-links">
-<li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">Administrador de conexiones SSH</a></li>
+<li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">Gestor de conexiones SSH</a></li>
 <li><a href="/es/discovery">Descubrimiento</a></li>
 </ul>
 </div>

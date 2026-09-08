@@ -28,7 +28,7 @@
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Laravel Security Checklist 2026 — Hardening PHP Apps &amp; Servers" property="og:image:alt"/>
+<meta content="Checklist de sécurité Laravel 2026 — durcir vos applications PHP et vos serveurs" property="og:image:alt"/>
 <meta content="fr_FR" property="og:locale"/>
 <meta content="en_US" property="og:locale:alternate"/>
 <meta content="de_DE" property="og:locale:alternate"/>
@@ -46,8 +46,8 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Laravel Security Checklist 2026 — Hardening PHP Apps & Servers",
-  "name": "Laravel Security Checklist 2026 — Hardening PHP Apps & Servers",
+  "headline": "Checklist de sécurité Laravel 2026 — durcir vos applications PHP et vos serveurs",
+  "name": "Checklist de sécurité Laravel 2026 — durcir vos applications PHP et vos serveurs",
   "url": "https://cipi.sh/en/guides/laravel-security-checklist",
   "description": "A practical Laravel and PHP security checklist for 2026: server hardening, application settings, dependency scanning, secrets management and incident response — with the tools to automate each step.",
   "inLanguage": "fr",
@@ -391,7 +391,7 @@
                 navire.</li>
 <li><strong>Scannez également de l’extérieur.</strong> Une plateforme comme
                 <a class="inline" href="https://hackly.web.ap.it" target="_blank">Hackly</a> fonctionne de manière récurrente
-                analyse les vulnérabilités sur votre surface publique – la vue de l'attaquant sur votre pile, selon un calendrier.</li>
+                analyse les vulnérabilités sur votre surface publique – la vue de l'attaquant sur votre stack, selon un calendrier.</li>
 </ul>
 <h2 id="secrets">Secrets et protection des données</h2>
 <ul>
@@ -404,8 +404,8 @@
 <li><strong>Portée API jetons</strong> (Capacités du Sanctum) et faites pivoter les informations d'identification lorsque les gens partent.</li>
 <li><strong>Anonymisez les données de production avant de les partager.</strong> Ne confiez jamais les décharges de production à une zone de préparation ou
                 développeurs externes bruts ; le <a class="inline" href="/fr/docs/agent">CipiAgent</a> Le forfait Laravel comprend un
-                anonymiseur de base de données pour exactement ce flux de travail.</li>
-<li><strong>Sauvegardes cryptées hors site</strong> - et testez le chemin de restauration (voir le
+                anonymiseur de base de données pour exactement ce workflow.</li>
+<li><strong>Sauvegardes chiffrées hors site</strong> - et testez le chemin de restauration (voir le
                 <a class="inline" href="/fr/guides/deployer-laravel-sur-vps-ubuntu">guide de déploiement</a> pour la sauvegarde
                 configuration).</li>
 </ul>
@@ -416,26 +416,26 @@
                 suivi des exceptions, de sorte que les charges utiles d'erreur (qui contiennent souvent des données utilisateur) restent sur votre infrastructure.</li>
 <li><strong>Bilans de santé + alertes de disponibilité.</strong> Cipi 5 contrôles de santé de l'application du navire ; associez-les à un
                 moniteur de disponibilité externe pour la vue extérieure.</li>
-<li><strong>Regardez les journaux d'authentification.</strong> Rapports Fail2ban et <code>lastb</code> je te dirai qui frappe.</li>
+<li><strong>Regardez les logs d'authentification.</strong> Rapports Fail2ban et <code>lastb</code> je te dirai qui frappe.</li>
 <li><strong>Ayez un plan d’intervention avant d’en avoir besoin :</strong> isoler la boîte, faire pivoter chaque secret
                 (y compris les implications APP_KEY pour les données chiffrées), restauration à partir d'un instantané connu
-                (<code>cipi backup run</code> couvre les instantanés programmés ; Cipi 5 ajoute des instantanés de base de données avant le déploiement),
+                (<code>cipi backup run</code> couvre les instantanés programmés ; Cipi 5 ajoute des snapshots de base de données avant le déploiement),
                 identifier le point d’entrée, puis rédiger l’autopsie. Ne jamais patcher et prier sur un live compromis
                 hôte.</li>
 </ul>
 <div class="cta-box">
 <h2>Mettez cela en pratique avec Cipi</h2>
 <p>Cipi est le déploiement gratuit open-source CLI référencé tout au long de ce guide : une commande transforme un nouveau
-                Ubuntu VPS dans un serveur de production renforcé pour Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
-                PostgreSQL, files d'attente, planificateur, SSL et déploiements Git sans temps d'arrêt inclus.</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | coup</div>
+                VPS Ubuntu dans un serveur de production renforcé pour Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
+                PostgreSQL, files d'attente, planificateur, SSL et déploiements Git sans interruption inclus.</p>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
-<a class="btn-primary" href="/fr/docs/getting-started">Commencez gratuitement</a>
+<a class="btn-primary" href="/fr/docs/getting-started">Démarrer gratuitement</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Étoile sur GitHub</a>
 <a class="btn-ghost" href="/fr/alternatives">Comparez avec d'autres outils</a>
 </div>
 </div>
-<h2 id="faq">Questions fréquemment posées</h2>
+<h2 id="faq">Questions fréquentes</h2>
 <div class="faq-item"><h3>Laravel est-il sécurisé par défaut ?</h3><p>Le framework propose des valeurs par défaut fortes : protection CSRF, mots de passe hachés, protection contre les injections SQL via le générateur de requêtes et sortie Blade échappée. La plupart des incidents du monde réel proviennent d'erreurs de déploiement : mode débogage activé, fichiers .env exposés, PHP non corrigé, SSH faible. C'est pourquoi le renforcement du serveur est aussi important que le code de l'application.</p></div>
 <div class="faq-item"><h3>Quel est le paramètre de sécurité Laravel le plus important ?</h3><p>APP_DEBUG=false en production. Une page de débogage exposée divulgue des variables d'environnement, des informations d'identification et des chemins, et il s'agit toujours de la violation auto-infligée Laravel la plus courante. Vérifiez-le maintenant, puis automatisez la vérification dans votre pipeline de déploiement.</p></div>
 <div class="faq-item"><h3>À quelle fréquence dois-je mettre à jour PHP et mes dépendances ?</h3><p>Appliquez les correctifs de sécurité dès que possible – automatisez la détection avec l'audit composer dans CI et Renovate ou Dependabot pour les PR de mise à jour. Pour PHP lui-même, utilisez un mécanisme géré plutôt que de la mémoire : Cipi, par exemple, vérifie chaque semaine et applique les correctifs de sécurité PHP via la mise à niveau cipi php.</p></div>
@@ -455,25 +455,25 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Déployez gratuitement open-source Laravel CLI pour Ubuntu VPS — Octane, Horizon, Reverb et des déploiements Git sans temps d'arrêt.</p>
+<p>CLI open-source et gratuite pour déployer Laravel sur un VPS Ubuntu — Octane, Horizon, Reverb et déploiements Git sans interruption.</p>
 <ul class="footer-brand-links">
-<li><a href="/fr/docs/getting-started">Commencez</a></li>
-<li><a href="/fr/docs/">Documents</a></li>
+<li><a href="/fr/docs/getting-started">Démarrer</a></li>
+<li><a href="/fr/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Comparez Cipi avec des alternatives" class="footer-col footer-col--compare">
-<strong>Comparez Cipi</strong>
+<nav aria-label="Comparer Cipi aux alternatives" class="footer-col footer-col--compare">
+<strong>Comparer Cipi</strong>
 <ul>
-<li><a href="/fr/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
-<li><a href="/fr/alternative-to-laravel-cloud">Laravel Alternative au cloud</a></li>
+<li><a href="/fr/alternative-to-laravel-forge">Alternative à Laravel Forge</a></li>
+<li><a href="/fr/alternative-to-laravel-cloud">Alternative à Laravel Cloud</a></li>
 <li><a href="/fr/alternative-to-ploi">Ploi alternative</a></li>
 <li><a href="/fr/alternative-to-coolify">Coolify alternative</a></li>
 <li><a href="/fr/alternative-to-runcloud">RunCloud alternative</a></li>
 <li><a href="/fr/alternative-to-cloudpanel">CloudPanel alternative</a></li>
 <li><a href="/fr/alternative-to-cpanel">cPanel alternative</a></li>
 <li><a href="/fr/alternative-to-plesk">Alternative à Plesk</a></li>
-<li><a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives Forge 2026</a></li>
+<li><a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives à Forge en 2026</a></li>
 <li><a href="/fr/alternatives">Toutes les comparaisons</a></li>
 </ul>
 </nav>
@@ -481,7 +481,7 @@
 <strong>Guides gratuits</strong>
 <ul>
 <li><a href="/fr/guides/gerer-apps-avec-cipi-yml">Gérer les apps avec cipi.yml</a></li>
-<li><a href="/fr/guides/panneau-ui-et-api">Panneau UI et API</a></li>
+<li><a href="/fr/guides/panneau-ui-et-api">Panneau de contrôle et API</a></li>
 <li><a href="/fr/guides/utiliser-cipi-agent-laravel">cipi/agent et MCP de projet</a></li>
 <li><a href="/fr/guides/deployer-wordpress-app-personnalisee">Déployer WordPress sur Cipi</a></li>
 <li><a href="/fr/guides/">Tous les guides</a></li>
@@ -490,7 +490,7 @@
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Réalisé avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+                    Fait avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
 <span class="footer-license"> · Open source, licence MIT</span>
 </div>
 <ul class="footer-links">

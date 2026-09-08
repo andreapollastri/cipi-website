@@ -46,10 +46,10 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Spec-Driven Development with AI Agents — A Laravel Guide (2026)",
-  "name": "Spec-Driven Development with AI Agents — A Laravel Guide (2026)",
+  "headline": "Desarrollo basado en especificaciones con agentes de IA: una guía Laravel (2026)",
+  "name": "Desarrollo basado en especificaciones con agentes de IA: una guía Laravel (2026)",
   "url": "https://cipi.sh/en/guides/spec-driven-development-ai-laravel",
-  "description": "How Laravel teams actually ship with AI in 2026: spec-driven development, MCP (Model Context Protocol) tooling, guardrails that keep agent code safe, and a concrete spec-to-production workflow.",
+  "description": "Cómo los equipos Laravel realmente entregan IA en 2026: desarrollo basado en especificaciones, herramientas MCP (Protocolo de contexto de modelo), barreras de seguridad que mantienen seguro el código del agente y un flujo de trabajo concreto de especificaciones a producción.",
   "inLanguage": "es",
   "image": "https://cipi.sh/og.png",
   "datePublished": "2026-08-04",
@@ -110,7 +110,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Spec-Driven Development & AI",
+      "name": "Desarrollo e IA basados en especificaciones",
       "item": "https://cipi.sh/en/guides/spec-driven-development-ai-laravel"
     }
   ]
@@ -123,42 +123,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What is spec-driven development in one sentence?",
+      "name": "¿Qué es el desarrollo basado en especificaciones en una frase?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Writing versioned specifications — problem, constraints, acceptance criteria — as repository artifacts that AI agents implement against and humans review against, so intent survives longer than any chat session."
+        "text": "Escribir especificaciones versionadas (problemas, restricciones, criterios de aceptación) como artefactos de repositorio que los agentes de IA implementan y los humanos revisan, de modo que la intención sobrevive más que cualquier sesión de chat."
       }
     },
     {
       "@type": "Question",
-      "name": "What is MCP (Model Context Protocol)?",
+      "name": "¿Qué es MCP (Protocolo de contexto modelo)?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "An open protocol that standardizes how AI agents discover and call external tools — databases, browsers, servers, APIs — so any MCP-compatible agent can use any MCP server without custom integrations. Cipi, for example, exposes server management (apps, deploys, SSL, databases) as MCP tools."
+        "text": "Un protocolo abierto que estandariza cómo los agentes de IA descubren y llaman a herramientas externas (bases de datos, navegadores, servidores, API) para que cualquier agente compatible con MCP pueda usar cualquier servidor MCP sin integraciones personalizadas. Cipi, por ejemplo, expone la administración del servidor (aplicaciones, despliegues, SSL, bases de datos) como herramientas MCP."
       }
     },
     {
       "@type": "Question",
-      "name": "Will AI agents replace Laravel developers?",
+      "name": "¿Los agentes de IA reemplazarán a Laravel desarrolladores?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The work is shifting rather than disappearing: less line-by-line typing, more specifying, reviewing, and owning architecture and production. Developers who write clear specs and build strong guardrails get multiplied by agents; the code-only part of the job is what shrinks."
+        "text": "El trabajo está cambiando en lugar de desaparecer: menos escritura línea por línea, más especificación, revisión y apropiación de la arquitectura y la producción. Los desarrolladores que escriben especificaciones claras y construyen barreras de seguridad sólidas se multiplican por los agentes; la parte del trabajo que sólo contiene código es la que se reduce."
       }
     },
     {
       "@type": "Question",
-      "name": "How do I let an AI agent deploy safely?",
+      "name": "¿Cómo permito que un agente de IA se implemente de forma segura?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Never give agents raw SSH or production secrets. Route their access through scoped, revocable interfaces — an MCP server or REST API with explicit permissions, like Cipi's — and gate every change behind CI and the releases pattern, so any deploy is reversible in one command."
+        "text": "Nunca proporcione a los agentes SSH sin procesar o secretos de producción. Enrute su acceso a través de interfaces revocables y con alcance (un servidor MCP o REST API con permisos explícitos, como el de Cipi) y controle cada cambio detrás de CI y el patrón de lanzamiento, de modo que cualquier despliegue sea reversible con un solo comando."
       }
     },
     {
       "@type": "Question",
-      "name": "Does spec-driven development work with existing legacy codebases?",
+      "name": "¿El desarrollo basado en especificaciones funciona con bases de código heredadas existentes?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — start by writing specs for the next change, not the whole system. Each spec documents one slice of intended behavior, and the archive grows into living documentation exactly where agents and new team members need it."
+        "text": "Sí, comience escribiendo las especificaciones para el próximo cambio, no para todo el sistema. Cada especificación documenta una parte del comportamiento previsto y el archivo se convierte en documentación viva exactamente donde los agentes y los nuevos miembros del equipo la necesitan."
       }
     }
   ]
@@ -280,7 +280,7 @@
 
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">ES</summary><div class="lang-menu"><a href="/en/guides/spec-driven-development-ai-laravel" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/spezifikationsgetriebene-ki-entwicklung-laravel" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/developpement-spec-driven-ia-laravel" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/sviluppo-spec-driven-ai-laravel" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a class="active" href="/es/guides/desarrollo-spec-driven-ia-laravel" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/guides/desenvolvimento-spec-driven-ia-laravel" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Alternar tema" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Cambiar tema" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -306,7 +306,7 @@
 </div>
 </nav>
 <main class="cmp">
-<nav aria-label="Miga de pan" class="cmp-breadcrumb">
+<nav aria-label="Ruta de navegación" class="cmp-breadcrumb">
 <a href="/"><svg class="home-ico" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Inicio</a>
 <span class="sep">›</span>
 <a href="/es/guides/">Guías</a>
@@ -358,12 +358,12 @@
 <p>el <strong>Protocolo de contexto modelo</strong> es el USB-C de las herramientas de IA: un protocolo abierto a través del cual
             Los agentes descubren y llaman a herramientas (bases de datos, navegadores, rastreadores de problemas, servidores) en lugar de raspar la pantalla.
             o complementos personalizados. Para un equipo Laravel, los servidores MCP interesantes son los que tocan tu
-            tubería de entrega:</p>
+            pipeline de entrega:</p>
 <ul>
-<li><strong>Su marco:</strong> Introspeccione rutas, esquemas y trabajos para que el agente deje de adivinar.</li>
+<li><strong>Su framework:</strong> Introspeccione rutas, esquemas y trabajos para que el agente deje de adivinar.</li>
 <li><strong>Su infraestructura:</strong> aquí es donde se vuelve real
                 <a class="inline" href="/">Cipi</a> envía un <strong>servidor dual MCP</strong>(global y por aplicación), por lo que
-                un IDE o agente compatible con MCP puede crear aplicaciones, activar implementaciones, administrar SSL y bases de datos en su
+                un IDE o agente compatible con MCP puede crear aplicaciones, activar despliegues, administrar SSL y bases de datos en su
                 VPS a través de un API estructurado y autorizado en lugar de SSH sin formato. el
                 <a class="inline" href="/es/docs/agent">Cipi Paquete de agente</a> agrega un punto final MCP en la aplicación en Laravel
                 lado.</li>
@@ -375,14 +375,14 @@
 <li><strong>Las pruebas son el contrato.</strong> Los agentes envían más rápido de lo que los humanos pueden revisar línea por línea;
                 Las pruebas de aceptación derivadas de la especificación son lo que significa "correcto".</li>
 <li><strong>CI es el árbitro.</strong> Pint, Larastan, Pest y composer realizan auditorías en cada agente PR,
-                sin excepciones - lo mismo <a class="inline" href="/es/guides/ci-cd-flujo-git-laravel">tubería</a>
+                sin excepciones - lo mismo <a class="inline" href="/es/guides/ci-cd-flujo-git-laravel">pipeline</a>
                 los humanos obtienen.</li>
 <li><strong>Mínimo privilegio para los agentes.</strong> API tokens con alcance, MCP servidores con herramienta explícita
                 listas de permitidos y ningún secreto de producción en el entorno del agente. Un agente que se despliega a través de
                 MCP/API de Cipi se pueden implementar, y nada más.</li>
 <li><strong>Revisión humana de la diferencia sensible:</strong>autenticación, pagos, migraciones y cualquier cosa que toque
                 La PII siempre recibe ojos humanos.</li>
-<li><strong>La reversión se mantiene a un comando de distancia</strong> — implementaciones de patrones de lanzamiento e instantáneas previas a la implementación
+<li><strong>La reversión se mantiene a un comando de distancia</strong> — despliegues de patrones de lanzamiento e snapshots previas a la despliegue
                 Significa que un error de agente es un incidente, no una catástrofe.</li>
 </ul>
 <h2 id="workflow">Un bucle concreto entre especificaciones y producción</h2>
@@ -393,7 +393,7 @@
                 y ejecutar pruebas localmente.</li>
 <li><strong>CI recorre toda la puerta</strong> — estilo, análisis estático, pruebas, auditoría de seguridad.</li>
 <li><strong>Un humano revisa según las especificaciones,</strong> no contra las vibraciones.</li>
-<li><strong>Fusionar con main activa la implementación webhook</strong> (tiempo de inactividad cero a través de Cipi), controles de estado
+<li><strong>Fusionar con main activa la despliegue webhook</strong> (tiempo de inactividad cero a través de Cipi), controles de estado
                 confirmar, las excepciones se observan durante los primeros minutos (<a class="inline" href="https://boogle.web.ap.it" target="_blank">Boogle</a> si eres autohospedador).</li>
 <li><strong>La especificación se actualiza</strong> con lo que realmente se decidió: cerrar el ciclo contextual para
                 la siguiente sesión, humano o agente.</li>
@@ -406,18 +406,18 @@
 <tr><td>Especificaciones como artefactos de repositorio versionados</td><td>Bibliotecas rápidas como sustituto de los requisitos</td></tr>
 <tr><td>MCP como estándar de acceso a herramientas</td><td>Agentes con producción SSH libre</td></tr>
 <tr><td>Agentes controlados por CI + revisión humana</td><td>"El agente se revisa a sí mismo"</td></tr>
-<tr><td>Implementaciones reversibles con un solo comando</td><td>Generación de aplicaciones de una sola vez sin plan de mantenimiento</td></tr>
+<tr><td>Despliegues reversibles con un solo comando</td><td>Generación de aplicaciones de una sola vez sin plan de mantenimiento</td></tr>
 </tbody>
 </table>
 </div>
 <p>El patrón detrás de cada artículo duradero: <strong>Los agentes amplifican cualquier proceso que exista.</strong> Buenas especificaciones,
-            las pruebas y la implementación de la automatización se aceleran; su ausencia se amplifica hasta convertirse en caos.</p>
+            las pruebas y la despliegue de la automatización se aceleran; su ausencia se amplifica hasta convertirse en caos.</p>
 <div class="cta-box">
 <h2>Pon esto en práctica con Cipi</h2>
-<p>Cipi es la open-source implementación gratuita CLI a la que se hace referencia en esta guía: un comando se convierte en un nuevo
-                Ubuntu VPS en un servidor de producción reforzado para Laravel — Nginx, PHP-FPM o Octane, MariaDB o
-                PostgreSQL, colas, programador, SSL e implementaciones de Git sin tiempo de inactividad incluidas.</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | fiesta</div>
+<p>Cipi es la open-source despliegue gratuita CLI a la que se hace referencia en esta guía: un comando se convierte en un nuevo
+                VPS Ubuntu en un servidor de producción reforzado para Laravel — Nginx, PHP-FPM o Octane, MariaDB o
+                PostgreSQL, colas, programador, SSL e despliegues de Git sin downtime incluidas.</p>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
 <a class="btn-primary" href="/es/docs/getting-started">Empiece gratis</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Estrella en GitHub</a>
@@ -426,9 +426,9 @@
 </div>
 <h2 id="faq">Preguntas frecuentes</h2>
 <div class="faq-item"><h3>¿Qué es el desarrollo basado en especificaciones en una frase?</h3><p>Escribir especificaciones versionadas (problemas, restricciones, criterios de aceptación) como artefactos de repositorio que los agentes de IA implementan y los humanos revisan, de modo que la intención sobrevive más que cualquier sesión de chat.</p></div>
-<div class="faq-item"><h3>¿Qué es MCP (Protocolo de contexto modelo)?</h3><p>Un protocolo abierto que estandariza cómo los agentes de IA descubren y llaman a herramientas externas (bases de datos, navegadores, servidores, API) para que cualquier agente compatible con MCP pueda usar cualquier servidor MCP sin integraciones personalizadas. Cipi, por ejemplo, expone la administración del servidor (aplicaciones, implementaciones, SSL, bases de datos) como herramientas MCP.</p></div>
+<div class="faq-item"><h3>¿Qué es MCP (Protocolo de contexto modelo)?</h3><p>Un protocolo abierto que estandariza cómo los agentes de IA descubren y llaman a herramientas externas (bases de datos, navegadores, servidores, API) para que cualquier agente compatible con MCP pueda usar cualquier servidor MCP sin integraciones personalizadas. Cipi, por ejemplo, expone la administración del servidor (aplicaciones, despliegues, SSL, bases de datos) como herramientas MCP.</p></div>
 <div class="faq-item"><h3>¿Los agentes de IA reemplazarán a Laravel desarrolladores?</h3><p>El trabajo está cambiando en lugar de desaparecer: menos escritura línea por línea, más especificación, revisión y apropiación de la arquitectura y la producción. Los desarrolladores que escriben especificaciones claras y construyen barreras de seguridad sólidas se multiplican por los agentes; la parte del trabajo que sólo contiene código es la que se reduce.</p></div>
-<div class="faq-item"><h3>¿Cómo permito que un agente de IA se implemente de forma segura?</h3><p>Nunca proporcione a los agentes SSH sin procesar o secretos de producción. Enrute su acceso a través de interfaces revocables y con alcance (un servidor MCP o REST API con permisos explícitos, como el de Cipi) y controle cada cambio detrás de CI y el patrón de lanzamiento, de modo que cualquier implementación sea reversible con un solo comando.</p></div>
+<div class="faq-item"><h3>¿Cómo permito que un agente de IA se implemente de forma segura?</h3><p>Nunca proporcione a los agentes SSH sin procesar o secretos de producción. Enrute su acceso a través de interfaces revocables y con alcance (un servidor MCP o REST API con permisos explícitos, como el de Cipi) y controle cada cambio detrás de CI y el patrón de lanzamiento, de modo que cualquier despliegue sea reversible con un solo comando.</p></div>
 <div class="faq-item"><h3>¿El desarrollo basado en especificaciones funciona con bases de código heredadas existentes?</h3><p>Sí, comience escribiendo las especificaciones para el próximo cambio, no para todo el sistema. Cada especificación documenta una parte del comportamiento previsto y el archivo se convierte en documentación viva exactamente donde los agentes y los nuevos miembros del equipo la necesitan.</p></div>
 <h2>Sigue leyendo</h2>
 <div class="related">
@@ -444,33 +444,33 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Implementación gratuita de open-source Laravel CLI para Ubuntu VPS — Octane, Horizon, Reverb y implementaciones de Git sin tiempo de inactividad.</p>
+<p>CLI open source y gratuita para desplegar Laravel en un VPS Ubuntu — Octane, Horizon, Reverb y despliegues Git sin downtime.</p>
 <ul class="footer-brand-links">
-<li><a href="/es/docs/getting-started">empezar</a></li>
-<li><a href="/es/docs/">Documentos</a></li>
+<li><a href="/es/docs/getting-started">Primeros pasos</a></li>
+<li><a href="/es/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
 <nav aria-label="Comparar Cipi con alternativas" class="footer-col footer-col--compare">
 <strong>Comparar Cipi</strong>
 <ul>
-<li><a href="/es/alternative-to-laravel-forge">Laravel Forge alternativa</a></li>
-<li><a href="/es/alternative-to-laravel-cloud">Laravel Alternativa a la nube</a></li>
+<li><a href="/es/alternative-to-laravel-forge">Alternativa a Laravel Forge</a></li>
+<li><a href="/es/alternative-to-laravel-cloud">Alternativa a Laravel Cloud</a></li>
 <li><a href="/es/alternative-to-ploi">Ploi alternativa</a></li>
 <li><a href="/es/alternative-to-coolify">Coolify alternativa</a></li>
 <li><a href="/es/alternative-to-runcloud">RunCloud alternativa</a></li>
 <li><a href="/es/alternative-to-cloudpanel">CloudPanel alternativa</a></li>
 <li><a href="/es/alternative-to-cpanel">cPanel alternativa</a></li>
 <li><a href="/es/alternative-to-plesk">Alternativa a Plesk</a></li>
-<li><a href="/es/best-laravel-forge-alternatives">Las mejores alternativas Forge 2026</a></li>
+<li><a href="/es/best-laravel-forge-alternatives">Las mejores alternativas a Forge en 2026</a></li>
 <li><a href="/es/alternatives">Todas las comparaciones</a></li>
 </ul>
 </nav>
-<nav aria-label="Guías Laravel gratuitas" class="footer-col">
+<nav aria-label="Guías gratuitas de Laravel" class="footer-col">
 <strong>Guías gratuitas</strong>
 <ul>
 <li><a href="/es/guides/gestionar-apps-con-cipi-yml">Gestionar apps con cipi.yml</a></li>
-<li><a href="/es/guides/panel-ui-y-api">Panel UI y API</a></li>
+<li><a href="/es/guides/panel-ui-y-api">Panel de control y API</a></li>
 <li><a href="/es/guides/usar-cipi-agent-en-laravel">cipi/agent y MCP de proyecto</a></li>
 <li><a href="/es/guides/desplegar-wordpress-app-personalizada">Desplegar WordPress en Cipi</a></li>
 <li><a href="/es/guides/">Todas las guías</a></li>
@@ -483,7 +483,7 @@
 <span class="footer-license"> · Open source, Licencia MIT</span>
 </div>
 <ul class="footer-links">
-<li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">Administrador de conexiones SSH</a></li>
+<li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">Gestor de conexiones SSH</a></li>
 <li><a href="/es/discovery">Descubrimiento</a></li>
 </ul>
 </div>

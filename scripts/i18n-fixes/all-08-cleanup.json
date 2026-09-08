@@ -1,0 +1,136 @@
+{
+ "de": [
+  [
+   "auf eigene Faust (VPS|Ubuntu-VPS)",
+   "auf Ihrem eigenen \\1"
+  ],
+  [
+   "\\bLaravel Wolke\\b",
+   "Laravel Cloud"
+  ],
+  [
+   "Über benutzerdefiniertes Bild",
+   "Über ein eigenes Image"
+  ],
+  [
+   "Sie verwalten Bilder und Container",
+   "Sie verwalten Images und Container"
+  ],
+  [
+   "über\\s+einen\\s+GUI\\s+als\\s+die\\s+Schale",
+   "über eine GUI statt über die Shell"
+  ],
+  [
+   "wenn das systemd-Gerät eingebaut ist",
+   "wenn die systemd-Unit installiert ist"
+  ],
+  [
+   "\\bCipi 4,8\\+",
+   "Cipi 4.8+"
+  ],
+  [
+   "\\bPHP 8,5\\b",
+   "PHP 8.5"
+  ],
+  [
+   "originalgetreuen Schnappschuss",
+   "originalgetreuen Snapshot"
+  ],
+  [
+   "\\bSchnappschuss\\b",
+   "Snapshot"
+  ],
+  [
+   "\\bSchnappschüsse\\b",
+   "Snapshots"
+  ],
+  [
+   "\\bden Planer\\b",
+   "den Scheduler"
+  ],
+  [
+   "\\bder Planer\\b",
+   "der Scheduler"
+  ],
+  [
+   "eine\\s+Verkabelung\\s+Deployer,\\s+Warteschlangen\\s+und\\s+artisan\\s+von\\s+Hand",
+   "Deployer, Queues und artisan von Hand zu verdrahten"
+  ],
+  [
+   "\\bWarteschlangen\\b",
+   "Queues"
+  ],
+  [
+   "\\bWarteschlange\\b",
+   "Queue"
+  ],
+  [
+   "\\bGeheimnisse\\b",
+   "Secrets"
+  ],
+  [
+   "\\bZeichenfolge\\b",
+   "String"
+  ],
+  [
+   "\\bDienstprogramm\\b",
+   "Tool"
+  ],
+  [
+   "nur\\s+a\\s+deployen\\s+möchten\\s+Laravel\\s+App",
+   "nur eine Laravel-App deployen möchten"
+  ],
+  [
+   "Wenn\\s+Sie\\s+nur\\s+deployen\\s+möchten\\s+eine\\s+Laravel\\s+App",
+   "Wenn Sie nur eine Laravel-App deployen möchten"
+  ],
+  [
+   "Tools im Wert von 0 \\$ wünschen",
+   "Tooling für 0 $ wollen"
+  ],
+  [
+   "kostenlos,\\s+offen\\s+Quelle",
+   "kostenlos, Open Source"
+  ],
+  [
+   "mit\\s+einem\\s+CLI\\-erster\\s+Workflow",
+   "mit einem CLI-first-Workflow"
+  ]
+ ],
+ "es": [
+  [
+   "\\bPHP 8,5\\b",
+   "PHP 8.5"
+  ],
+  [
+   "stack de producción completa",
+   "stack de producción completo"
+  ],
+  [
+   "\\bgrupo de PHP-FPM\\b",
+   "pool de PHP-FPM"
+  ],
+  [
+   "\\bgrupo PHP-FPM\\b",
+   "pool PHP-FPM"
+  ],
+  [
+   "\\bgrupo de PHP\\b",
+   "pool de PHP"
+  ],
+  [
+   "\\bgrupo PHP\\b",
+   "pool PHP"
+  ]
+ ],
+ "pt": [
+  [
+   "\\bPHP 8,5\\b",
+   "PHP 8.5"
+  ],
+  [
+   "stack de produção completa",
+   "stack de produção completo"
+  ]
+ ]
+}

@@ -1,0 +1,210 @@
+{
+ "de": {
+  "segments": [
+   [
+    ", MCP log tools (",
+    ", MCP-Log-Tools ("
+   ],
+   [
+    "Backups · S3 · VPS",
+    "Backups · S3 · VPS"
+   ],
+   [
+    "CLI + API + optional GUI",
+    "CLI + API + optionale GUI"
+   ],
+   [
+    "CLI + REST API + optional GUI",
+    "CLI + REST API + optionale GUI"
+   ],
+   [
+    "Cipi Docs — Getting Started",
+    "Cipi Docs – Erste Schritte"
+   ],
+   [
+    "Docs → Deploy → cipi.yml",
+    "Docs → Deploy → cipi.yml"
+   ],
+   [
+    "Nginx access and error logs",
+    "Nginx Access- und Error-Logs"
+   ],
+   [
+    "SSH as the app user",
+    "SSH als App-Benutzer"
+   ],
+   [
+    "Sanctum tokens and granular abilities",
+    "Sanctum-Tokens und feingranulare Abilities"
+   ],
+   [
+    "su to root by cipi",
+    "per cipi zu root wechseln"
+   ]
+  ]
+ },
+ "fr": {
+  "segments": [
+   [
+    "Cipi Docs — CLI Client",
+    "Cipi Docs — Client CLI"
+   ],
+   [
+    "Cipi Docs — Cipi Agent",
+    "Cipi Docs — Cipi Agent"
+   ],
+   [
+    "DIY via Dockerfile / image",
+    "À faire soi-même via Dockerfile / image"
+   ],
+   [
+    "Laravel · MCP · debug",
+    "Laravel · MCP · débogage"
+   ]
+  ]
+ },
+ "es": {
+  "segments": [
+   [
+    "(allow all). Rejected clients get",
+    "(permitir todo). Los clientes rechazados reciben"
+   ],
+   [
+    ") that exposes REST at",
+    ") que expone REST en"
+   ],
+   [
+    ", an MCP server at",
+    ", un servidor MCP en"
+   ],
+   [
+    ". REST equivalents live under",
+    ". Los equivalentes REST están en"
+   ],
+   [
+    "; Claude Desktop goes through",
+    "; Claude Desktop pasa por"
+   ],
+   [
+    "Aliases, WWW, SSL, Basic Auth",
+    "Alias, WWW, SSL, Basic Auth"
+   ],
+   [
+    "Laravel · MCP · debug",
+    "Laravel · MCP · depuración"
+   ],
+   [
+    "List and restart system services.",
+    "Lista y reinicia los servicios del sistema."
+   ],
+   [
+    "No. Cipi is CLI-first. Without",
+    "No. Cipi es CLI-first. Sin"
+   ],
+   [
+    "SSL, 2FA and IP whitelist",
+    "SSL, 2FA y lista blanca de IP"
+   ],
+   [
+    "Validates token and API reachability",
+    "Valida el token y que la API responda"
+   ],
+   [
+    "automation — distinct from the",
+    "automatización, distinta de la"
+   ],
+   [
+    "for the daily soft update;",
+    "para el soft update diario;"
+   ],
+   [
+    "· Open source, MIT Licensed",
+    "· Open source, licencia MIT"
+   ]
+  ]
+ },
+ "pt": {
+  "segments": [
+   [
+    "03 — The new vocabulary",
+    "03 — O novo vocabulário"
+   ],
+   [
+    "Any IP with a token",
+    "Qualquer IP com um token"
+   ],
+   [
+    "Backups · S3 · VPS",
+    "Backups · S3 · VPS"
+   ],
+   [
+    "HTTP 500 after upgrade/soft update",
+    "HTTP 500 depois do upgrade/soft update"
+   ],
+   [
+    "Hand-edit FPM files; CLI ignored",
+    "Editar os arquivos do FPM à mão; a CLI era ignorada"
+   ],
+   [
+    "Landed on a random vhost",
+    "Caía num vhost aleatório"
+   ],
+   [
+    "Manual DNS challenge every renewal",
+    "Desafio DNS manual a cada renovação"
+   ],
+   [
+    "One clone command, database optional",
+    "Um comando de clone, banco de dados opcional"
+   ],
+   [
+    "Recreate by re-editing the repo",
+    "Recriar reeditando o repositório"
+   ],
+   [
+    "Restore the redirect without reissuing.",
+    "Restaura o redirecionamento sem reemitir o certificado."
+   ],
+   [
+    "Show the timestamped deploy log",
+    "Mostrar o log de deploy com timestamp"
+   ],
+   [
+    "What used to be work,",
+    "O que antes dava trabalho,"
+   ],
+   [
+    "What's New in Cipi 5",
+    "O que há de novo no Cipi 5"
+   ],
+   [
+    "and restart from the panel",
+    "e reiniciar pelo painel"
+   ],
+   [
+    "in git, applied on deploy",
+    "no git, aplicado no deploy"
+   ],
+   [
+    "you and all of it.",
+    "você e tudo isso."
+   ],
+   [
+    "— no Composer symlink outside",
+    "— sem symlink do Composer fora"
+   ]
+  ]
+ },
+ "it": {
+  "segments": [
+   [
+    "cybersecurity · PHP & Laravel",
+    "cybersecurity · PHP &amp; Laravel"
+   ],
+   [
+    "free · git push PaaS",
+    "gratuito · PaaS con git push"
+   ]
+  ]
+ }
+}

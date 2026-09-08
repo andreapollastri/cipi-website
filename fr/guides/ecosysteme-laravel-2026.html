@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>L'écosystème Laravel en 2026 — Octane, Horizon, Reverb et au-delà</title>
-<meta content="Un guide pratique de l'écosystème Laravel en 2026 : runtime (Octane, Horizon, Reverb), piles d'interface utilisateur (Livewire, Inertia, Filament), outils de test et de qualité, observabilité et comment héberger le tout - avec des conseils d'adoption honnêtes." name="description"/>
+<meta content="Un guide pratique de l'écosystème Laravel en 2026 : runtime (Octane, Horizon, Reverb), stacks d'interface utilisateur (Livewire, Inertia, Filament), outils de test et de qualité, observabilité et comment héberger le tout - avec des conseils d'adoption honnêtes." name="description"/>
 <meta content="Écosystème laravel, outils laravel 2026, laravel octane, laravel horizon, laravel reverb, filament laravel, livewire vs inertie, packages laravel" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
@@ -24,7 +24,7 @@
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/fr/guides/ecosysteme-laravel-2026" property="og:url"/>
 <meta content="L'écosystème Laravel en 2026 — Octane, Horizon, Reverb et au-delà" property="og:title"/>
-<meta content="Un guide pratique de l'écosystème Laravel en 2026 : runtime (Octane, Horizon, Reverb), piles d'interface utilisateur (Livewire, Inertia, Filament), outils de test et de qualité, observabilité et comment héberger le tout - avec des conseils d'adoption honnêtes." property="og:description"/>
+<meta content="Un guide pratique de l'écosystème Laravel en 2026 : runtime (Octane, Horizon, Reverb), stacks d'interface utilisateur (Livewire, Inertia, Filament), outils de test et de qualité, observabilité et comment héberger le tout - avec des conseils d'adoption honnêtes." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -40,16 +40,16 @@
 <meta content="Guides" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="L'écosystème Laravel en 2026 — Octane, Horizon, Reverb et au-delà" name="twitter:title"/>
-<meta content="Un guide pratique de l'écosystème Laravel en 2026 : runtime (Octane, Horizon, Reverb), piles d'interface utilisateur (Livewire, Inertia, Filament), outils de test et de qualité, observabilité et comment héberger le tout - avec des conseils d'adoption honnêtes." name="twitter:description"/>
+<meta content="Un guide pratique de l'écosystème Laravel en 2026 : runtime (Octane, Horizon, Reverb), stacks d'interface utilisateur (Livewire, Inertia, Filament), outils de test et de qualité, observabilité et comment héberger le tout - avec des conseils d'adoption honnêtes." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "The Laravel Ecosystem in 2026 — Octane, Horizon, Reverb & Beyond",
-  "name": "The Laravel Ecosystem in 2026 — Octane, Horizon, Reverb & Beyond",
+  "headline": "L'écosystème Laravel en 2026 — Octane, Horizon, Reverb et au-delà",
+  "name": "L'écosystème Laravel en 2026 — Octane, Horizon, Reverb et au-delà",
   "url": "https://cipi.sh/en/guides/laravel-ecosystem-2026",
-  "description": "A field guide to the Laravel ecosystem in 2026: runtime (Octane, Horizon, Reverb), UI stacks (Livewire, Inertia, Filament), testing and quality tools, observability, and how to host it all — with honest adoption advice.",
+  "description": "Un guide pratique de l'écosystème Laravel en 2026 : runtime (Octane, Horizon, Reverb), stacks d'interface utilisateur (Livewire, Inertia, Filament), outils de test et de qualité, observabilité et comment héberger le tout - avec des conseils d'adoption honnêtes.",
   "inLanguage": "fr",
   "image": "https://cipi.sh/og.png",
   "datePublished": "2026-08-04",
@@ -123,18 +123,18 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is Laravel still a good choice in 2026?",
+      "name": "Laravel est-il toujours un bon choix en 2026 ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The ecosystem is arguably its strongest asset: first-party solutions for queues (Horizon), WebSockets (Reverb), high-performance runtime (Octane on FrankenPHP), admin panels (Filament) and testing (Pest), plus a mature hosting spectrum from managed PaaS to free self-hosted tools like Cipi."
+        "text": "Oui. L'écosystème est sans doute son atout le plus puissant : des solutions propriétaires pour les files d'attente (Horizon), les WebSockets (Reverb), un environnement d'exécution hautes performances (Octane sur FrankenPHP), des panneaux d'administration (Filament) et des tests (Pest), ainsi qu'un spectre d'hébergement mature allant du PaaS géré aux outils self-hosted gratuits comme Cipi."
       }
     },
     {
       "@type": "Question",
-      "name": "Should I use Laravel Octane or stick with PHP-FPM?",
+      "name": "Dois-je utiliser Laravel Octane ou m'en tenir à PHP-FPM ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Stick with PHP-FPM until throughput or latency is a measured problem. Octane keeps the app booted and can multiply requests per second, but adds state-leak considerations. With Cipi both run side by side, so you can convert a single app with cipi app convert --to=octane when the numbers justify it."
+        "text": "Restez fidèle à PHP-FPM jusqu'à ce que le débit ou la latence soit un problème mesuré. Octane maintient l'application démarrée et peut multiplier les requêtes par seconde, mais ajoute des considérations de fuite d'état. Avec Cipi, les deux fonctionnent côte à côte, vous pouvez donc convertir une seule application avec cipi app convert --to=octane lorsque les chiffres le justifient."
       }
     },
     {
@@ -142,23 +142,23 @@
       "name": "Livewire or Inertia?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Livewire if your team wants to stay in PHP and the app is dashboard-like; Inertia if you want a real Vue or React SPA with Laravel routing and no separate API. Both are first-class in 2026 — team skills should decide, not benchmarks."
+        "text": "Livewire si votre équipe souhaite rester dans PHP et que l'application ressemble à un tableau de bord ; Inertie si vous voulez un vrai Vue ou React SPA avec un routage Laravel et pas de API séparé. Les deux sont de première classe en 2026 : ce sont les compétences d’équipe qui devraient décider, pas les critères de référence."
       }
     },
     {
       "@type": "Question",
-      "name": "Is Filament good enough to replace a custom admin panel?",
+      "name": "Filament est-il suffisamment performant pour remplacer un panneau d'administration personnalisé ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "For internal tools and back-offices, almost always yes: forms, tables, filters and permissions arrive in hours instead of weeks. Public-facing or highly custom UIs still deserve a dedicated frontend."
+        "text": "Pour les outils internes et les back-offices, presque toujours oui : les formulaires, tableaux, filtres et autorisations arrivent en quelques heures au lieu de semaines. Les interfaces utilisateur publiques ou hautement personnalisées méritent toujours une interface dédiée."
       }
     },
     {
       "@type": "Question",
-      "name": "What is the cheapest way to run the full Laravel stack (Octane, Horizon, Reverb)?",
+      "name": "Quel est le moyen le moins cher d'exécuter la stack Laravel complète (Octane, Horizon, Reverb) ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A single Ubuntu VPS managed by a free deploy tool. Cipi installs and manages the entire stack — including Octane on FrankenPHP, Horizon and Reverb — for $0 in tooling; you pay only the VPS bill."
+        "text": "A single VPS Ubuntu managed by a free deploy tool. Cipi installs and manages the entire stack — including Octane on FrankenPHP, Horizon and Reverb — for $0 in tooling; you pay only the VPS bill."
       }
     }
   ]
@@ -304,7 +304,7 @@
 <span class="cmp-eyebrow">Laravel · guide de terrain de l'écosystème</span>
 <h1>Le <em>Écosystème Laravel</em> en 2026 : un guide de terrain</h1>
 <p class="cmp-updated">Par <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Dernière mise à jour : <time datetime="2026-08-04">4 août 2026</time> · lecture gratuite, pas de paywall</p>
-<p class="lead">Laravel a depuis longtemps cessé d'être un simple framework : il s'agit d'une pile de services d'exécution propriétaires, de paradigmes d'interface utilisateur, d'outils de qualité et d'options d'hébergement. Ce guide répertorie les éléments qui comptent en 2026 et, plus important encore, le moment où chacun d’entre eux mérite réellement d’être adopté.</p>
+<p class="lead">Laravel a depuis longtemps cessé d'être un simple framework : il s'agit d'une stack de services d'exécution propriétaires, de paradigmes d'interface utilisateur, d'outils de qualité et d'options d'hébergement. Ce guide répertorie les éléments qui comptent en 2026 et, plus important encore, le moment où chacun d’entre eux mérite réellement d’être adopté.</p>
 <div class="toc">
 <strong>Dans ce guide</strong>
 <ol>
@@ -333,7 +333,7 @@
                 un travail. Horizon ajoute le tableau de bord, les métriques et l'ergonomie des nouvelles tentatives <code>queue:work</code>
                 manque. Il s’agit généralement du premier investissement « d’échelle » qui vaut la peine d’être réalisé.</li>
 <li><strong>Reverb</strong> apporté WebSockets first-party : présence, diffusion et interface utilisateur en temps réel
-                sans service de poussoir tiers - un choix naturel pour les piles self-hosted.</li>
+                sans service de poussoir tiers - un choix naturel pour les stacks self-hosted.</li>
 <li><strong>Planificateur</strong> remplacé l'étalement de crontab il y a des années ; une entrée cron, toute la planification
                 code.</li>
 <li><strong>Cache/sessions sur Valkey</strong> (la fourche compatible open-source Redis) est l'ennuyeuse,
@@ -349,7 +349,7 @@
                 Laravel routage et authentification — pas de couche API distincte à gérer.</li>
 <li><strong>Filaments</strong> est devenu le panneau d'administration de facto : formulaires, tableaux et échafaudage CRUD complet sur
                 Fil en direct. Pour la plupart des outils internes, il remplace des semaines d’interface utilisateur construite à la main. Si vous démarrez des projets greenfield
-                souvent, <a class="inline" href="https://init.web.ap.it" target="_blank">Initialisation</a> fait tourner un
+                souvent, <a class="inline" href="https://init.web.ap.it" target="_blank">Init</a> fait tourner un
                 conteneurisé Laravel + Environnement Filament sur votre Mac en une seule commande - jour zéro, c'est fait.</li>
 </ul>
 <h2 id="quality">Tests et qualité du code</h2>
@@ -374,7 +374,7 @@
                 tracker d'exception conçu exactement pour cela.</li>
 <li><strong>Analyses de produits :</strong>
 <a class="inline" href="https://indiestats.web.ap.it" target="_blank">Indestats</a> est un self-hosted
-                alternative aux analyses traditionnelles : un élément supplémentaire de la pile que vous pouvez posséder au lieu de louer.</li>
+                alternative aux analyses traditionnelles : un élément supplémentaire de la stack que vous pouvez posséder au lieu de louer.</li>
 </ul>
 <h2 id="hosting">Hébergement et déploiement</h2>
 <p>Le spectre 2026, du plus géré au plus possédé :</p>
@@ -384,7 +384,7 @@
 <tbody>
 <tr><td>Laravel Nuage / Vapeur</td><td>PaaS géré / sans serveur</td><td>Aucun appétit opérationnel, la facturation basée sur l'utilisation est acceptable</td></tr>
 <tr><td>Forge, Ploi, Cleavr</td><td>Panel SaaS gérant votre VPS</td><td>Vous souhaitez un tableau de bord et acceptez un abonnement + dépendance tierce</td></tr>
-<tr><td>Cipi</td><td>Gratuit, open-source CLI sur votre VPS</td><td>Vous souhaitez le workflow Forge — Octane, Horizon, Reverb, déploiements sans temps d'arrêt — self-hosted à 0 $</td></tr>
+<tr><td>Cipi</td><td>Gratuit, open-source CLI sur votre VPS</td><td>Vous souhaitez le workflow Forge — Octane, Horizon, Reverb, déploiements sans interruption — self-hosted à 0 $</td></tr>
 <tr><td>Roulé à la main</td><td>Scripts de bricolage</td><td>Apprentissage ou exigences véritablement exotiques</td></tr>
 </tbody>
 </table>
@@ -394,36 +394,36 @@
             plein <a class="inline" href="/fr/alternatives">centre de comparaison</a>.</p>
 <h2 id="starting">Bien démarrer de nouveaux projets</h2>
 <p>L'écosystème couvre désormais l'ensemble du cycle de vie, et les gains les plus importants se situent au début : un échafaudage doté d'un
-            kit de démarrage ou <a class="inline" href="https://init.web.ap.it" target="_blank">Initialisation</a> (Cipi +
+            kit de démarrage ou <a class="inline" href="https://init.web.ap.it" target="_blank">Init</a> (Cipi +
             Filament, conteneurisé, reproductible), définissez le produit comme des spécifications vivantes avant d'inviter un agent d'IA :
             <a class="inline" href="https://larapilot.web.ap.it" target="_blank">Larapilot</a> apporte des spécifications basées sur les spécifications
-            flux de travail du produit directement dans Laravel projets - et déploiement filaire dès le premier jour, pas à la fin
+            workflow du produit directement dans Laravel projets - et déploiement filaire dès le premier jour, pas à la fin
             (<code>cipi app create</code> et vos push Git se déploient). Plus d'informations sur l'IA dans notre
             <a class="inline" href="/fr/guides/developpement-spec-driven-ia-laravel">guide de développement basé sur les spécifications</a>.</p>
 <div class="cta-box">
 <h2>Mettez cela en pratique avec Cipi</h2>
 <p>Cipi est le déploiement gratuit open-source CLI référencé tout au long de ce guide : une commande transforme un nouveau
-                Ubuntu VPS dans un serveur de production renforcé pour Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
-                PostgreSQL, files d'attente, planificateur, SSL et déploiements Git sans temps d'arrêt inclus.</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | coup</div>
+                VPS Ubuntu dans un serveur de production renforcé pour Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
+                PostgreSQL, files d'attente, planificateur, SSL et déploiements Git sans interruption inclus.</p>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
-<a class="btn-primary" href="/fr/docs/getting-started">Commencez gratuitement</a>
+<a class="btn-primary" href="/fr/docs/getting-started">Démarrer gratuitement</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Étoile sur GitHub</a>
 <a class="btn-ghost" href="/fr/alternatives">Comparez avec d'autres outils</a>
 </div>
 </div>
-<h2 id="faq">Questions fréquemment posées</h2>
+<h2 id="faq">Questions fréquentes</h2>
 <div class="faq-item"><h3>Laravel est-il toujours un bon choix en 2026 ?</h3><p>Oui. L'écosystème est sans doute son atout le plus puissant : des solutions propriétaires pour les files d'attente (Horizon), les WebSockets (Reverb), un environnement d'exécution hautes performances (Octane sur FrankenPHP), des panneaux d'administration (Filament) et des tests (Pest), ainsi qu'un spectre d'hébergement mature allant du PaaS géré aux outils self-hosted gratuits comme Cipi.</p></div>
 <div class="faq-item"><h3>Dois-je utiliser Laravel Octane ou m'en tenir à PHP-FPM ?</h3><p>Restez fidèle à PHP-FPM jusqu'à ce que le débit ou la latence soit un problème mesuré. Octane maintient l'application démarrée et peut multiplier les requêtes par seconde, mais ajoute des considérations de fuite d'état. Avec Cipi, les deux fonctionnent côte à côte, vous pouvez donc convertir une seule application avec cipi app convert --to=octane lorsque les chiffres le justifient.</p></div>
 <div class="faq-item"><h3>Livewire ou Inertie ?</h3><p>Livewire si votre équipe souhaite rester dans PHP et que l'application ressemble à un tableau de bord ; Inertie si vous voulez un vrai Vue ou React SPA avec un routage Laravel et pas de API séparé. Les deux sont de première classe en 2026 : ce sont les compétences d’équipe qui devraient décider, pas les critères de référence.</p></div>
 <div class="faq-item"><h3>Filament est-il suffisamment performant pour remplacer un panneau d'administration personnalisé ?</h3><p>Pour les outils internes et les back-offices, presque toujours oui : les formulaires, tableaux, filtres et autorisations arrivent en quelques heures au lieu de semaines. Les interfaces utilisateur publiques ou hautement personnalisées méritent toujours une interface dédiée.</p></div>
-<div class="faq-item"><h3>Quel est le moyen le moins cher d'exécuter la pile Laravel complète (Octane, Horizon, Reverb) ?</h3><p>Un seul Ubuntu VPS géré par un outil de déploiement gratuit. Cipi installe et gère l'intégralité de la pile, y compris Octane sur FrankenPHP, Horizon et Reverb, pour 0 $ d'outillage ; vous ne payez que la facture VPS.</p></div>
+<div class="faq-item"><h3>Quel est le moyen le moins cher d'exécuter la stack Laravel complète (Octane, Horizon, Reverb) ?</h3><p>Un seul VPS Ubuntu géré par un outil de déploiement gratuit. Cipi installe et gère l'intégralité de la stack, y compris Octane sur FrankenPHP, Horizon et Reverb, pour 0 $ d'outillage ; vous ne payez que la facture VPS.</p></div>
 <h2>Continuez à lire</h2>
 <div class="related">
 <a href="/fr/guides/ci-cd-et-workflow-git-laravel">CI/CD pour Laravel</a>
 <a href="/fr/guides/developpement-spec-driven-ia-laravel">Développement basé sur les spécifications avec l'IA</a>
-<a href="/fr/guides/stack-developpeur-self-hosted-2026">La pile de développeurs self-hosted</a>
-<a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives Forge 2026</a>
+<a href="/fr/guides/stack-developpeur-self-hosted-2026">La stack de développeurs self-hosted</a>
+<a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives à Forge en 2026</a>
 <a href="/fr/whats-new">Quoi de neuf dans Cipi 5</a>
 </div>
 </main>
@@ -432,25 +432,25 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Déployez gratuitement open-source Laravel CLI pour Ubuntu VPS — Octane, Horizon, Reverb et des déploiements Git sans temps d'arrêt.</p>
+<p>CLI open-source et gratuite pour déployer Laravel sur un VPS Ubuntu — Octane, Horizon, Reverb et déploiements Git sans interruption.</p>
 <ul class="footer-brand-links">
-<li><a href="/fr/docs/getting-started">Commencez</a></li>
-<li><a href="/fr/docs/">Documents</a></li>
+<li><a href="/fr/docs/getting-started">Démarrer</a></li>
+<li><a href="/fr/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Comparez Cipi avec des alternatives" class="footer-col footer-col--compare">
-<strong>Comparez Cipi</strong>
+<nav aria-label="Comparer Cipi aux alternatives" class="footer-col footer-col--compare">
+<strong>Comparer Cipi</strong>
 <ul>
-<li><a href="/fr/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
-<li><a href="/fr/alternative-to-laravel-cloud">Laravel Alternative au cloud</a></li>
+<li><a href="/fr/alternative-to-laravel-forge">Alternative à Laravel Forge</a></li>
+<li><a href="/fr/alternative-to-laravel-cloud">Alternative à Laravel Cloud</a></li>
 <li><a href="/fr/alternative-to-ploi">Ploi alternative</a></li>
 <li><a href="/fr/alternative-to-coolify">Coolify alternative</a></li>
 <li><a href="/fr/alternative-to-runcloud">RunCloud alternative</a></li>
 <li><a href="/fr/alternative-to-cloudpanel">CloudPanel alternative</a></li>
 <li><a href="/fr/alternative-to-cpanel">cPanel alternative</a></li>
 <li><a href="/fr/alternative-to-plesk">Alternative à Plesk</a></li>
-<li><a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives Forge 2026</a></li>
+<li><a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives à Forge en 2026</a></li>
 <li><a href="/fr/alternatives">Toutes les comparaisons</a></li>
 </ul>
 </nav>
@@ -458,7 +458,7 @@
 <strong>Guides gratuits</strong>
 <ul>
 <li><a href="/fr/guides/gerer-apps-avec-cipi-yml">Gérer les apps avec cipi.yml</a></li>
-<li><a href="/fr/guides/panneau-ui-et-api">Panneau UI et API</a></li>
+<li><a href="/fr/guides/panneau-ui-et-api">Panneau de contrôle et API</a></li>
 <li><a href="/fr/guides/utiliser-cipi-agent-laravel">cipi/agent et MCP de projet</a></li>
 <li><a href="/fr/guides/deployer-wordpress-app-personnalisee">Déployer WordPress sur Cipi</a></li>
 <li><a href="/fr/guides/">Tous les guides</a></li>
@@ -467,7 +467,7 @@
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Réalisé avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+                    Fait avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
 <span class="footer-license"> · Open source, licence MIT</span>
 </div>
 <ul class="footer-links">

@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Cipi Guías: Laravel Implementación, Seguridad, CI/CD y DevOps Tutoriales</title>
-<meta content="Guías prácticas y gratuitas para Laravel desarrolladores: implementación en Ubuntu VPS, refuerzo de seguridad, CI/CD canalizaciones, el ecosistema Laravel, desarrollo asistido por IA y self-hosted herramientas para desarrolladores." name="description"/>
-<meta content="laravel guías, laravel tutoriales, implementación laravel, laravel seguridad, laravel ci/cd, laravel devops, self-hosted herramientas" name="keywords"/>
+<title>Cipi Guías: Laravel Despliegue, Seguridad, CI/CD y DevOps Tutoriales</title>
+<meta content="Guías prácticas y gratuitas para Laravel desarrolladores: despliegue en VPS Ubuntu, refuerzo de seguridad, CI/CD canalizaciones, el ecosistema Laravel, desarrollo asistido por IA y self-hosted herramientas para desarrolladores." name="description"/>
+<meta content="laravel guías, laravel tutoriales, despliegue laravel, laravel seguridad, laravel ci/cd, laravel devops, self-hosted herramientas" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/es/guides/" rel="canonical"/>
@@ -23,8 +23,8 @@
 <meta content="website" property="og:type"/>
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/es/guides/" property="og:url"/>
-<meta content="Cipi Guías: Laravel Implementación, Seguridad, CI/CD y DevOps Tutoriales" property="og:title"/>
-<meta content="Guías prácticas y gratuitas para Laravel desarrolladores: implementación en Ubuntu VPS, refuerzo de seguridad, CI/CD canalizaciones, el ecosistema Laravel, desarrollo asistido por IA y self-hosted herramientas para desarrolladores." property="og:description"/>
+<meta content="Cipi Guías: Laravel Despliegue, Seguridad, CI/CD y DevOps Tutoriales" property="og:title"/>
+<meta content="Guías prácticas y gratuitas para Laravel desarrolladores: despliegue en VPS Ubuntu, refuerzo de seguridad, CI/CD canalizaciones, el ecosistema Laravel, desarrollo asistido por IA y self-hosted herramientas para desarrolladores." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -35,8 +35,8 @@
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="it_IT">
     <meta property="og:locale:alternate" content="pt_PT"><meta content="summary_large_image" name="twitter:card"/>
-<meta content="Cipi Guías: Laravel Implementación, Seguridad, CI/CD y DevOps Tutoriales" name="twitter:title"/>
-<meta content="Guías prácticas y gratuitas para Laravel desarrolladores: implementación en Ubuntu VPS, refuerzo de seguridad, CI/CD canalizaciones, el ecosistema Laravel, desarrollo asistido por IA y self-hosted herramientas para desarrolladores." name="twitter:description"/>
+<meta content="Cipi Guías: Laravel Despliegue, Seguridad, CI/CD y DevOps Tutoriales" name="twitter:title"/>
+<meta content="Guías prácticas y gratuitas para Laravel desarrolladores: despliegue en VPS Ubuntu, refuerzo de seguridad, CI/CD canalizaciones, el ecosistema Laravel, desarrollo asistido por IA y self-hosted herramientas para desarrolladores." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
 {
@@ -75,37 +75,37 @@
     {
       "@type": "ListItem",
       "position": 1,
-      "name": "Deploy Laravel on an Ubuntu VPS",
+      "name": "Deploy Laravel on an VPS Ubuntu",
       "url": "https://cipi.sh/en/guides/deploy-laravel-ubuntu-vps"
     },
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "The Laravel security checklist",
+      "name": "el Laravel seguridad lista de verificación",
       "url": "https://cipi.sh/en/guides/laravel-security-checklist"
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "The Laravel ecosystem in 2026",
+      "name": "el Laravel ecosistema en 2026",
       "url": "https://cipi.sh/en/guides/laravel-ecosystem-2026"
     },
     {
       "@type": "ListItem",
       "position": 4,
-      "name": "CI/CD & Git workflow for Laravel",
+      "name": "CI/CD & flujo de trabajo de git para Laravel",
       "url": "https://cipi.sh/en/guides/laravel-ci-cd-git-workflow"
     },
     {
       "@type": "ListItem",
       "position": 5,
-      "name": "Spec-driven development with AI agents",
+      "name": "Desarrollo basado en especificaciones con Agentes de IA",
       "url": "https://cipi.sh/en/guides/spec-driven-development-ai-laravel"
     },
     {
       "@type": "ListItem",
       "position": 6,
-      "name": "The self-hosted developer stack",
+      "name": "El self-hosted stack de desarrollador",
       "url": "https://cipi.sh/en/guides/laravel-developer-stack-2026"
     },
     {
@@ -129,7 +129,7 @@
     {
       "@type": "ListItem",
       "position": 10,
-      "name": "Panel UI y API de Cipi",
+      "name": "Panel de control y API de Cipi",
       "url": "https://cipi.sh/es/guides/panel-ui-y-api"
     },
     {
@@ -276,7 +276,7 @@
 
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">ES</summary><div class="lang-menu"><a href="/en/guides/" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a class="active" href="/es/guides/" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/guides/" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Alternar tema" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Cambiar tema" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -302,7 +302,7 @@
 </div>
 </nav>
 <main class="cmp">
-<nav aria-label="Miga de pan" class="cmp-breadcrumb">
+<nav aria-label="Ruta de navegación" class="cmp-breadcrumb">
 <a href="/"><svg class="home-ico" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Inicio</a>
 <span class="sep">›</span>
 <span class="current">Guías</span>
@@ -310,15 +310,14 @@
 <span class="cmp-eyebrow">Guías gratuitas · sin muro de pago</span>
 <h1>Guías para personas que <em>enviar Laravel</em></h1>
 <p class="cmp-updated">Por <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Actualizado <time datetime="2026-08-04">4 de agosto de 2026</time></p>
-<p class="lead">Práctico, obstinado y gratuito: todo lo que sabemos sobre la implementación de Laravel en Ubuntu,
+<p class="lead">Práctico, obstinado y gratuito: todo lo que sabemos sobre la despliegue de Laravel en Ubuntu,
             reforzar las aplicaciones PHP, CI/CD, el ecosistema Laravel más amplio, el desarrollo asistido por IA y la creación de un desarrollador
-            pila que realmente posee. Escrito por el autor de <a class="inline" href="/">Cipi</a>, el open-source
-            Laravel implementa CLI.</p>
+            stack que realmente posee. Escrito por el autor de <a class="inline" href="/">Cipi</a>, la CLI open source de despliegue para Laravel.</p>
 <div class="guide-grid">
 <a class="guide-card" href="/es/guides/desplegar-laravel-en-vps-ubuntu">
-<span class="guide-tag">Ubuntu · implementación</span>
-<h2>Implementar Laravel en un <span>Ubuntu VPS</span></h2>
-<p>Se explicó la pila de producción completa, cada paso manual, la alternativa de un solo comando y los hábitos operativos que mantienen los servidores en buen estado.</p>
+<span class="guide-tag">Ubuntu · despliegue</span>
+<h2>Implementar Laravel en un <span>VPS Ubuntu</span></h2>
+<p>Se explicó el stack de producción completo, cada paso manual, la alternativa de un solo comando y los hábitos operativos que mantienen los servidores en buen estado.</p>
 <span class="go">Leer la guía →</span>
 </a>
 <a class="guide-card" href="/es/guides/checklist-seguridad-laravel">
@@ -336,7 +335,7 @@
 <a class="guide-card" href="/es/guides/ci-cd-flujo-git-laravel">
 <span class="guide-tag">CI/CD · Git</span>
 <h2>CI/CD &amp; <span>flujo de trabajo de git</span> para Laravel</h2>
-<p>Un flujo de trabajo de Git que se reduce a un desarrollador, una canalización de acciones de copiar y pegar GitHub y patrones de implementación sin tiempo de inactividad.</p>
+<p>Un flujo de trabajo de Git que se reduce a un desarrollador, una canalización de acciones de copiar y pegar GitHub y patrones de despliegue sin downtime.</p>
 <span class="go">Leer la guía →</span>
 </a>
 <a class="guide-card" href="/es/guides/desarrollo-spec-driven-ia-laravel">
@@ -346,25 +345,25 @@
 <span class="go">Leer la guía →</span>
 </a>
 <a class="guide-card" href="/es/guides/stack-desarrollador-self-hosted-2026">
-<span class="guide-tag">pilas · utilidades</span>
-<h2>El self-hosted <span>pila de desarrollador</span></h2>
-<p>Implementaciones, seguimiento de errores, análisis, almacenamiento, boletines y análisis de seguridad: una pila que posee por el precio de VPS.</p>
+<span class="guide-tag">stacks · utilidades</span>
+<h2>El self-hosted <span>stack de desarrollador</span></h2>
+<p>Despliegues, seguimiento de errores, análisis, almacenamiento, boletines y análisis de seguridad: un stack que posee por el precio de VPS.</p>
 <span class="go">Leer la guía →</span>
 </a>
 <a class="guide-card" href="/es/guides/copias-seguridad-vps-s3">
 <span class="guide-tag">copias · S3 · VPS</span>
-<h2>Copia de seguridad de un VPS a un <span>bucket S3</span></h2>
+<h2>Backup de un VPS a un <span>bucket S3</span></h2>
 <p>Copias Laravel fuera del servidor con Cipi: configura un bucket compatible S3, programa el cron, limpia snapshots antiguos y restaura en un VPS limpio.</p>
 <span class="go">Leer la guía →</span>
 </a>
 <a class="guide-card" href="/es/guides/desplegar-wordpress-app-personalizada">
-<span class="guide-tag">WordPress · custom apps · GitHub</span>
+<span class="guide-tag">WordPress · apps personalizadas · GitHub</span>
 <h2>Desplegar <span>WordPress</span> en Cipi</h2>
 <p>Crea una app custom, MariaDB y SSL, protege uploads y wp-config, y auto-despliega desde GitHub Actions en cada push a main.</p>
 <span class="go">Leer la guía →</span>
 </a>
 <a class="guide-card" href="/es/guides/usar-cipi-agent-en-laravel">
-<span class="guide-tag">Laravel · MCP · debug</span>
+<span class="guide-tag">Laravel · MCP · depuración</span>
 <h2>Usa <span>cipi/agent</span> y el MCP de proyecto</h2>
 <p>Instala el companion Laravel, conecta Cursor al MCP in-app y depura, lanza seeder con nombre y consulta la base — sin SSH.</p>
 <span class="go">Leer la guía →</span>
@@ -385,7 +384,7 @@
 <div class="note">
 <p>Cada guía es práctica y honesta con el proveedor: cuando un SaaS es la mejor opción, lo decimos nosotros. donde un libre,
                 La herramienta self-hosted cubre el trabajo, mostramos los comandos exactos, generalmente comenzando con
-                <code>wget -O - https://cipi.sh/setup.sh | bash</code>. ¿Evaluar herramientas de implementación en su lugar? Empezar
+                <code>wget -O - https://cipi.sh/setup.sh | bash</code>. ¿Evaluar herramientas de despliegue en su lugar? Empezar
                 con el <a class="inline" href="/es/best-laravel-forge-alternatives">mejores Laravel Forge alternativas en
                 2026</a> o el <a class="inline" href="/es/alternatives">centro de comparación completo</a>.</p>
 </div>
@@ -395,33 +394,33 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Implementación gratuita de open-source Laravel CLI para Ubuntu VPS — Octane, Horizon, Reverb y implementaciones de Git sin tiempo de inactividad.</p>
+<p>CLI open source y gratuita para desplegar Laravel en un VPS Ubuntu — Octane, Horizon, Reverb y despliegues Git sin downtime.</p>
 <ul class="footer-brand-links">
-<li><a href="/es/docs/getting-started">empezar</a></li>
-<li><a href="/es/docs/">Documentos</a></li>
+<li><a href="/es/docs/getting-started">Primeros pasos</a></li>
+<li><a href="/es/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
 <nav aria-label="Comparar Cipi con alternativas" class="footer-col footer-col--compare">
 <strong>Comparar Cipi</strong>
 <ul>
-<li><a href="/es/alternative-to-laravel-forge">Laravel Forge alternativa</a></li>
-<li><a href="/es/alternative-to-laravel-cloud">Laravel Alternativa a la nube</a></li>
+<li><a href="/es/alternative-to-laravel-forge">Alternativa a Laravel Forge</a></li>
+<li><a href="/es/alternative-to-laravel-cloud">Alternativa a Laravel Cloud</a></li>
 <li><a href="/es/alternative-to-ploi">Ploi alternativa</a></li>
 <li><a href="/es/alternative-to-coolify">Coolify alternativa</a></li>
 <li><a href="/es/alternative-to-runcloud">RunCloud alternativa</a></li>
 <li><a href="/es/alternative-to-cloudpanel">CloudPanel alternativa</a></li>
 <li><a href="/es/alternative-to-cpanel">cPanel alternativa</a></li>
 <li><a href="/es/alternative-to-plesk">Alternativa a Plesk</a></li>
-<li><a href="/es/best-laravel-forge-alternatives">Las mejores alternativas Forge 2026</a></li>
+<li><a href="/es/best-laravel-forge-alternatives">Las mejores alternativas a Forge en 2026</a></li>
 <li><a href="/es/alternatives">Todas las comparaciones</a></li>
 </ul>
 </nav>
-<nav aria-label="Guías Laravel gratuitas" class="footer-col">
+<nav aria-label="Guías gratuitas de Laravel" class="footer-col">
 <strong>Guías gratuitas</strong>
 <ul>
 <li><a href="/es/guides/gestionar-apps-con-cipi-yml">Gestionar apps con cipi.yml</a></li>
-<li><a href="/es/guides/panel-ui-y-api">Panel UI y API</a></li>
+<li><a href="/es/guides/panel-ui-y-api">Panel de control y API</a></li>
 <li><a href="/es/guides/usar-cipi-agent-en-laravel">cipi/agent y MCP de proyecto</a></li>
 <li><a href="/es/guides/desplegar-wordpress-app-personalizada">Desplegar WordPress en Cipi</a></li>
 <li><a href="/es/guides/">Todas las guías</a></li>
@@ -434,7 +433,7 @@
 <span class="footer-license"> · Open source, Licencia MIT</span>
 </div>
 <ul class="footer-links">
-<li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">Administrador de conexiones SSH</a></li>
+<li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">Gestor de conexiones SSH</a></li>
 <li><a href="/es/discovery">Descubrimiento</a></li>
 </ul>
 </div>

@@ -35,14 +35,14 @@
 <meta content="it_IT" property="og:locale:alternate"/>
 <meta content="es_ES" property="og:locale:alternate"/>
 <meta content="pt_PT" property="og:locale:alternate"/><meta content="summary_large_image" name="twitter:card"/>
-<meta content="Self-Hosted Laravel Alternative au cloud – Cipi" name="twitter:title"/>
+<meta content="Self-Hosted Alternative à Laravel Cloud – Cipi" name="twitter:title"/>
 <meta content="Open-source, self-hosted alternative à Laravel Cloud. Possédez votre VPS, coûts fixes, déploiements CLI, pas de dépendance vis-à-vis d'un fournisseur." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "name": "Self-Hosted Laravel Cloud Alternative — Cipi",
+      "name": "Self-Hosted Alternative à Laravel Cloud – Cipi",
       "url": "https://cipi.sh/en/alternative-to-laravel-cloud",
       "description": "Cipi is a free, open-source, self-hosted alternative to Laravel Cloud. Own your VPS instead of a usage-based PaaS.",
       "inLanguage": "fr",
@@ -75,33 +75,33 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Is there a self-hosted alternative to Laravel Cloud?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Cipi is a free, open-source (MIT) and self-hosted alternative to Laravel Cloud. Instead of a usage-based managed PaaS, you own a VPS at any provider and Cipi installs and manages the full production stack on it." }
+          "name": "Existe-t-il une alternative self-hosted au Laravel Cloud ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oui. Cipi est une alternative gratuite, open-source (MIT) et self-hosted à Laravel Cloud. Au lieu d'un PaaS géré basé sur l'utilisation, vous possédez un VPS chez n'importe quel fournisseur et Cipi y installe et gère la stack de production complète." }
         },
         {
           "@type": "Question",
-          "name": "What is the difference between Cipi and Laravel Cloud?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Laravel Cloud is a fully-managed, usage-based PaaS on AWS where you never get root or SSH access. Cipi runs on your own VPS with full root access and a fixed, predictable cost, is open source, and offers CLI automation, a dual MCP server, and config encryption at rest." }
+          "name": "Quelle est la différence entre Cipi et Laravel Cloud ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Laravel Cloud est un PaaS entièrement géré et basé sur l'utilisation sur AWS, où vous n'obtenez jamais d'accès root ou SSH. Cipi fonctionne seul VPS avec un accès root complet et un coût fixe et prévisible, est open source et offre l'automatisation CLI, un double serveur MCP et un chiffrement de configuration au repos." }
         },
         {
           "@type": "Question",
-          "name": "Is Cipi cheaper than Laravel Cloud?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Cipi itself is free; your only cost is the VPS, at a fixed monthly price. Laravel Cloud is usage-based — compute, databases, cache, bandwidth and storage are billed as you consume them, so costs scale with traffic and can be harder to predict." }
+          "name": "Cipi est-il moins cher que Laravel Cloud ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Cipi lui-même est gratuit ; votre seul coût est le VPS, à un prix mensuel fixe. Laravel Le cloud est basé sur l'utilisation : le calcul, les bases de données, le cache, la bande passante et le stockage sont facturés au fur et à mesure que vous les consommez. Les coûts évoluent donc avec le trafic et peuvent être plus difficiles à prévoir." }
         },
         {
           "@type": "Question",
-          "name": "When should I still choose Laravel Cloud?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Choose Laravel Cloud if you want zero server management, one-click autoscaling and scale-to-zero, managed databases and cache, a global edge network with DDoS protection, and you're comfortable with a usage-based bill." }
+          "name": "Quand dois-je encore choisir Laravel Cloud ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Choisissez Laravel Cloud si vous souhaitez une gestion de serveur nulle, une mise à l'échelle automatique et une mise à l'échelle jusqu'à zéro en un clic, des bases de données et un cache gérés, un réseau périphérique mondial avec protection DDoS et que vous êtes à l'aise avec une facture basée sur l'utilisation." }
         },
         {
           "@type": "Question",
-          "name": "Can I migrate from Laravel Cloud to Cipi?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Since your app is standard Laravel, you can provision an Ubuntu VPS, install Cipi, create the app with cipi app create (add --octane to keep running Octane), restore your database dump, copy your environment values and point DNS. You trade usage-based PaaS billing for a fixed, predictable VPS cost." }
+          "name": "Puis-je migrer de Laravel Cloud vers Cipi ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Since your app is standard Laravel, you can provision an VPS Ubuntu, install Cipi, create the app with cipi app create (add --octane to keep running Octane), restore your database dump, copy your environment values and point DNS. You trade usage-based PaaS billing for a fixed, predictable VPS cost." }
         },
         {
           "@type": "Question",
-          "name": "Does Cipi support Laravel Octane like Laravel Cloud?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Cipi runs Laravel Octane on FrankenPHP natively: create Octane apps with cipi app create --octane or convert existing apps with cipi app convert --to=octane, running alongside classic PHP-FPM apps on the same server." }
+          "name": "Cipi prend-il en charge Laravel Octane comme Laravel Cloud ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oui. Cipi fait tourner Laravel Octane sur FrankenPHP nativement : créez des applications Octane avec cipi app create --octane ou convertissez des applications existantes avec cipi app convert --to=octane, aux côtés des applications PHP-FPM classiques sur le même serveur." }
         }
       ]
     }
@@ -110,7 +110,7 @@
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "How to migrate from Laravel Cloud to Cipi",
+  "name": "Comment migrer de Laravel Cloud vers Cipi",
   "description": "Migrate your Laravel apps from Laravel Cloud to Cipi, the free open-source deploy CLI, with a clean cutover and no code changes.",
   "totalTime": "PT1H",
   "tool": [
@@ -123,26 +123,26 @@
     {
       "@type": "HowToStep",
       "position": 1,
-      "name": "Export your data from Laravel Cloud",
-      "text": "Dump your production database and note the environment variables each app needs (queues, cache, mail, storage) so you can recreate them on your own server."
+      "name": "Exportez vos données depuis Laravel Cloud",
+      "text": "Videz votre base de données de production et notez les variables d'environnement dont chaque application a besoin (files d'attente, cache, courrier, stockage) afin de pouvoir les recréer sur votre propre serveur."
     },
     {
       "@type": "HowToStep",
       "position": 2,
-      "name": "Provision a fresh Ubuntu VPS and install Cipi",
-      "text": "Any provider works (Hetzner, DigitalOcean, Vultr, Linode, AWS). On Ubuntu 24.04/26.04 run the one-command installer (wget -O - https://cipi.sh/setup.sh | bash) and the full production stack — Nginx, PHP, MariaDB, Valkey, Supervisor — is configured in minutes."
+      "name": "Provision a fresh VPS Ubuntu and install Cipi",
+      "text": "N’importe quel fournisseur convient (Hetzner, DigitalOcean, Vultr, Linode, AWS). Sur Ubuntu 24.04/26.04, lancez l’installateur en une commande (wget -O - https://cipi.sh/setup.sh | bash) et toute la stack de production — Nginx, PHP, MariaDB, Valkey, Supervisor — est configurée en quelques minutes."
     },
     {
       "@type": "HowToStep",
       "position": 3,
-      "name": "Recreate each app and connect Git",
-      "text": "cipi app create provisions an isolated app with its own system user, database, PHP pool and Nginx vhost (add --octane for Laravel Octane). Connecting GitHub or GitLab configures deploy keys and webhooks automatically for zero-downtime deploys."
+      "name": "Recréez chaque application et branchez Git",
+      "text": "cipi app create provisionne une application isolée avec son propre utilisateur système, sa base de données, son pool PHP et son vhost Nginx (ajoutez --octane pour Laravel Octane). En connectant GitHub ou GitLab, les clés de déploiement et les webhooks sont configurés automatiquement pour des déploiements sans interruption."
     },
     {
       "@type": "HowToStep",
       "position": 4,
-      "name": "Move data and cut over",
-      "text": "Import your database dump, copy your .env values, issue HTTPS certificates with cipi ssl install, then point DNS at the new server and retire the old setup."
+      "name": "Migrez les données et basculez",
+      "text": "Importez votre dump de base de données, reprenez vos valeurs .env, émettez les certificats HTTPS avec cipi ssl install, puis faites pointer le DNS vers le nouveau serveur et mettez l’ancienne installation hors service."
     }
   ]
 }
@@ -292,15 +292,15 @@
 <span class="vs-sub">basé sur l'utilisation</span>
 </div>
 </div>
-<span class="cmp-eyebrow">Laravel Alternative au cloud</span>
-<h1>Le self-hosted <em>Laravel Alternative au cloud</em></h1>
-<p class="cmp-updated">Dernière mise à jour de la comparaison : <time datetime="2026-08-04">4 août 2026</time> · reflète les tarifs/fonctionnalités actuels de Cipi 5 et de Laravel Cloud</p>
+<span class="cmp-eyebrow">Alternative à Laravel Cloud</span>
+<h1>Le self-hosted <em>Alternative à Laravel Cloud</em></h1>
+<p class="cmp-updated">Comparaison mise à jour le <time datetime="2026-08-04">4 août 2026</time> · reflète les tarifs/fonctionnalités actuels de Cipi 5 et de Laravel Cloud</p>
 <p class="lead">Laravel Cloud supprime le serveur avec un PaaS basé sur l'utilisation sur AWS. Cipi est le contraire :
             vous possédez un VPS chez n'importe quel fournisseur, avec un accès root complet, un coût fixe prévisible et sans dépendance envers un fournisseur - tout en
             je déploie toujours Laravel en quelques minutes. Gratuit, open source et entièrement piloté par CLI.</p>
 <div class="cmp-cta">
-<a class="btn-primary" href="/fr/docs/getting-started">Commencez gratuitement</a>
-<a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Afficher sur GitHub</a>
+<a class="btn-primary" href="/fr/docs/getting-started">Démarrer gratuitement</a>
+<a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Voir sur GitHub</a>
 </div>
 <h2>Cipi vs Laravel Cloud en un coup d'œil</h2>
 <div class="cmp-table-wrap">
@@ -313,15 +313,15 @@
 </tr>
 </thead>
 <tbody>
-<tr><td>Modèle de tarification</td><td class="col-cipi">Gratuit + coût fixe de VPS</td><td>Basé sur l'utilisation (calcul, base de données, bande passante)</td></tr>
+<tr><td>Modèle tarifaire</td><td class="col-cipi">Gratuit + coût fixe du VPS</td><td>Basé sur l'utilisation (calcul, base de données, bande passante)</td></tr>
 <tr><td>Licence</td><td class="col-cipi">Open source (MIT)</td><td>Propriétaire</td></tr>
 <tr><td>Accès racine/SSH</td><td class="col-cipi"><span class="yes">Contrôle total</span></td><td><span class="no">Non – PaaS géré</span></td></tr>
 <tr><td>Posséder l'infrastructure</td><td class="col-cipi"><span class="yes">Oui, n'importe quel fournisseur</span></td><td><span class="no">Non : géré par AWS</span></td></tr>
-<tr><td>Pas de dépendance vis-à-vis du fournisseur</td><td class="col-cipi"><span class="yes">Pile portable</span></td><td><span class="no">Lié à AWS géré</span></td></tr>
-<tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Oui — CLI natif</span></td><td><span class="yes">Oui</span></td></tr>
-<tr><td>CLI et automatisation des pipelines</td><td class="col-cipi"><span class="yes">Oui</span></td><td><span class="partial">API + tableau de bord</span></td></tr>
+<tr><td>Aucun vendor lock-in</td><td class="col-cipi"><span class="yes">Stack portable</span></td><td><span class="no">Lié à AWS géré</span></td></tr>
+<tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Oui — natif en CLI</span></td><td><span class="yes">Oui</span></td></tr>
+<tr><td>CLI et automatisation de pipelines</td><td class="col-cipi"><span class="yes">Oui</span></td><td><span class="partial">API + tableau de bord</span></td></tr>
 <tr><td>Serveur IA / MCP</td><td class="col-cipi"><span class="yes">Double MCP</span></td><td><span class="no">API uniquement</span></td></tr>
-<tr><td>Chiffrement de configuration au repos (AES-256)</td><td class="col-cipi"><span class="yes">Sur votre VPS</span></td><td><span class="partial">Infrastructure gérée</span></td></tr>
+<tr><td>Chiffrement des configurations au repos (AES-256)</td><td class="col-cipi"><span class="yes">Sur votre VPS</span></td><td><span class="partial">Infrastructure gérée</span></td></tr>
 <tr><td>Mise à l'échelle automatique, mise à l'échelle jusqu'à zéro, périphérie/DDoS</td><td class="col-cipi"><span class="no">Non</span></td><td><span class="yes">Oui</span></td></tr>
 <tr><td>Zéro gestion de serveur</td><td class="col-cipi"><span class="no">Vous exécutez le VPS</span></td><td><span class="yes">Entièrement géré</span></td></tr>
 <tr><td>Assistance PostgreSQL</td><td class="col-cipi"><span class="yes">Facultatif</span></td><td><span class="yes">Géré</span></td></tr>
@@ -332,23 +332,23 @@
 <div class="cards">
 <div class="card"><h3>Coût prévisible et fixe</h3><p>Cipi est gratuit ; vous ne payez que le VPS à un prix forfaitaire. Laravel Cloud facture une utilisation qui évolue avec le trafic et peut être difficile à prévoir.</p></div>
 <div class="card"><h3>Vous êtes propriétaire du serveur</h3><p>Root complet et SSH sur n'importe quel fournisseur : Hetzner, OVH, DigitalOcean, AWS ou bare metal. Le cloud ne vous donne jamais la machine sous-jacente.</p></div>
-<div class="card"><h3>Pas de dépendance vis-à-vis du fournisseur</h3><p>Cipi utilise une pile standard et portable Ubuntu + Nginx + PHP-FPM / Laravel Octane + MariaDB (PostgreSQL en option) + Supervisor que vous pouvez reproduire n'importe où.</p></div>
+<div class="card"><h3>Aucun vendor lock-in</h3><p>Cipi utilise une stack standard et portable Ubuntu + Nginx + PHP-FPM / Laravel Octane + MariaDB (PostgreSQL en option) + Supervisor que vous pouvez reproduire n'importe où.</p></div>
 <div class="card"><h3>Aucune dépendance SaaS</h3><p>Cipi vit sur votre VPS et continue de fonctionner indépendamment de tout plan de contrôle externe.</p></div>
 <div class="card"><h3>Open source et IA native</h3><p>Sous licence MIT et auditable, avec un double serveur MCP pour une gestion complète de l'infrastructure basée sur l'IA.</p></div>
 <div class="card"><h3>Chiffrement au repos + souveraineté</h3><p>Toutes les configurations chiffrées avec AES-256-CBC sur un VPS dans la région que vous choisissez : aucune donnée d'infrastructure ne quitte votre machine.</p></div>
-<div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Créez ou convertissez des applications avec <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Exécutez Octane à côté des applications FPM classiques, ainsi que Horizon et Reverb de première classe — aucun panneau SaaS requis.</p></div>
-<div class="card"><h3>Facultatif PostgreSQL</h3><p>MariaDB par défaut ; installez PostgreSQL avec une seule commande et choisissez un moteur par application (<code>cipi db install pgsql</code>).</p></div>
+<div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Créez ou convertissez vos applications avec <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Faites tourner Octane à côté des applications FPM classiques, avec Horizon et Reverb pris en charge nativement — sans aucun panneau SaaS.</p></div>
+<div class="card"><h3>Facultatif PostgreSQL</h3><p>MariaDB par défaut ; installez PostgreSQL en une commande et choisissez le moteur application par application (<code>cipi db install pgsql</code>).</p></div>
 </div>
-<h2>Installez Cipi en une seule commande</h2>
-<p>Lancez un nouveau Ubuntu VPS, puis exécutez :</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | coup</div>
-<p>Cela installe et configure la pile de production complète : Nginx, PHP-FPM / Laravel Octane, MariaDB, en option PostgreSQL, Redis et Supervisor. Voir le
+<h2>Installer Cipi en une seule commande</h2>
+<p>Lancez un VPS Ubuntu neuf, puis exécutez :</p>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
+<p>Cela installe et configure toute la stack de production — Nginx, PHP-FPM / Laravel Octane, MariaDB, PostgreSQL en option, Redis et Supervisor. Voir le
             <a class="inline" href="/fr/docs/getting-started">guide de démarrage</a>.</p>
 <h2>Où Laravel Cloud est le meilleur choix</h2>
 <div class="note">
 <p>Laravel Le cloud gagne en matière de gestion de serveur zéro, de mise à l'échelle automatique en un clic et de mise à l'échelle jusqu'à zéro, bases de données gérées
                 et cache, un réseau périphérique mondial avec protection DDoS, équilibrage de charge automatique et files d'attente gérées —
-                le tout sans jamais toucher à un serveur. Si vous souhaitez une expérience de style sans serveur et que vous ne souhaitez pas posséder ou
+                le tout sans jamais toucher à un serveur. Si vous souhaitez une expérience de style serverless et que vous ne souhaitez pas posséder ou
                 gérer un VPS, Cloud est la meilleure solution.</p>
 </div>
 <h2 id="migrate">Comment migrer de Laravel Cloud vers Cipi</h2>
@@ -357,29 +357,28 @@
             tout se vérifie. Votre base de code Laravel n'a pas besoin d'être modifiée.</p>
 <ol class="migrate-steps">
 <li><strong>Exportez vos données depuis Laravel Cloud.</strong> Videz votre base de données de production et notez les variables d'environnement dont chaque application a besoin (files d'attente, cache, courrier, stockage) afin de pouvoir les recréer sur votre propre serveur.</li>
-<li><strong>Provisionnez un nouveau Ubuntu VPS et installez Cipi.</strong> N'importe quel fournisseur fonctionne (Hetzner, DigitalOcean, Vultr, Linode, AWS). Sur Ubuntu 24.04/26.04 <code>wget -O - https://cipi.sh/setup.sh | bash</code> et la pile de production complète — Nginx, PHP, MariaDB, Valkey, Supervisor — est configurée en quelques minutes.</li>
-<li><strong>Recréez chaque application et connectez Git.</strong> <code>cipi app create</code> provisionne une application isolée avec son propre utilisateur système, sa propre base de données, son pool PHP et son hôte virtuel Nginx (ajouter <code>--octane</code> pour Laravel Octane). La connexion de GitHub ou GitLab configure automatiquement les clés de déploiement et les webhooks pour des déploiements sans temps d'arrêt.</li>
-<li><strong>Déplacez les données et effectuez une transition.</strong> Importez votre dump de base de données, copiez votre <code>.env</code> valeurs, émettez des certificats HTTPS avec <code>cipi ssl install</code>, puis pointez DNS vers le nouveau serveur et retirez l'ancienne configuration.</li>
+<li><strong>Provisionnez un VPS Ubuntu neuf et installez Cipi.</strong> N’importe quel fournisseur convient (Hetzner, DigitalOcean, Vultr, Linode, AWS). Sur Ubuntu 24.04/26.04, lancez <code>wget -O - https://cipi.sh/setup.sh | bash</code> et la stack de production complète — Nginx, PHP, MariaDB, Valkey, Supervisor — est configurée en quelques minutes.</li>
+<li><strong>Recréez chaque application et branchez Git.</strong> <code>cipi app create</code> provisionne une application isolée avec son propre utilisateur système, sa base de données, son pool PHP et son vhost Nginx (ajoutez <code>--octane</code> pour Laravel Octane). La connexion de GitHub ou GitLab configure automatiquement les clés de déploiement et les webhooks pour des déploiements sans interruption.</li>
+<li><strong>Migrez les données et basculez.</strong> Importez votre dump de base de données, reprenez vos <code>.env</code> valeurs, émettez des certificats HTTPS avec <code>cipi ssl install</code>, puis faites pointer le DNS vers le nouveau serveur et mettez l’ancienne installation hors service.</li>
 </ol>
 <div class="note">
-<p>Cipi utilise les conventions standards Nginx, PHP-FPM / Laravel Octane et Deployer, il n'y a donc pas de
-                configuration spécifique au fournisseur pour un déroulement ultérieur. Tous les détails dans le <a class="inline" href="/fr/docs/getting-started">guide de démarrage</a>.</p>
+<p>Cipi s’appuie sur les conventions standard de Nginx, PHP-FPM / Laravel Octane et Deployer : aucune configuration propre à un fournisseur ne restera à défaire plus tard. Tous les détails dans le <a class="inline" href="/fr/docs/getting-started">guide de démarrage</a>.</p>
 </div>
-<h2>Questions fréquemment posées</h2>
-<div class="faq-item"><h3>Existe-t-il une alternative self-hosted au Laravel Cloud ?</h3><p>Oui. Cipi est une alternative gratuite, open-source (MIT) et self-hosted à Laravel Cloud. Au lieu d'un PaaS géré basé sur l'utilisation, vous possédez un VPS chez n'importe quel fournisseur et Cipi y installe et gère la pile de production complète.</p></div>
-<div class="faq-item"><h3>Quelle est la différence entre Cipi et Laravel Cloud ?</h3><p>Laravel Cloud est un PaaS entièrement géré et basé sur l'utilisation sur AWS, où vous n'obtenez jamais d'accès root ou SSH. Cipi fonctionne seul VPS avec un accès root complet et un coût fixe et prévisible, est open source et offre l'automatisation CLI, un double serveur MCP et un cryptage de configuration au repos.</p></div>
+<h2>Questions fréquentes</h2>
+<div class="faq-item"><h3>Existe-t-il une alternative self-hosted au Laravel Cloud ?</h3><p>Oui. Cipi est une alternative gratuite, open-source (MIT) et self-hosted à Laravel Cloud. Au lieu d'un PaaS géré basé sur l'utilisation, vous possédez un VPS chez n'importe quel fournisseur et Cipi y installe et gère la stack de production complète.</p></div>
+<div class="faq-item"><h3>Quelle est la différence entre Cipi et Laravel Cloud ?</h3><p>Laravel Cloud est un PaaS entièrement géré et basé sur l'utilisation sur AWS, où vous n'obtenez jamais d'accès root ou SSH. Cipi fonctionne seul VPS avec un accès root complet et un coût fixe et prévisible, est open source et offre l'automatisation CLI, un double serveur MCP et un chiffrement de configuration au repos.</p></div>
 <div class="faq-item"><h3>Cipi est-il moins cher que Laravel Cloud ?</h3><p>Cipi lui-même est gratuit ; votre seul coût est le VPS, à un prix mensuel fixe. Laravel Le cloud est basé sur l'utilisation : le calcul, les bases de données, le cache, la bande passante et le stockage sont facturés au fur et à mesure que vous les consommez. Les coûts évoluent donc avec le trafic et peuvent être plus difficiles à prévoir.</p></div>
 <div class="faq-item"><h3>Quand dois-je encore choisir Laravel Cloud ?</h3><p>Choisissez Laravel Cloud si vous souhaitez une gestion de serveur nulle, une mise à l'échelle automatique et une mise à l'échelle jusqu'à zéro en un clic, des bases de données et un cache gérés, un réseau périphérique mondial avec protection DDoS et que vous êtes à l'aise avec une facture basée sur l'utilisation.</p></div>
-<div class="faq-item"><h3>Puis-je migrer de Laravel Cloud vers Cipi ?</h3><p>Oui. Étant donné que votre application est standard Laravel, vous pouvez provisionner un Ubuntu VPS, installer Cipi, créer l'application avec cipi app create (ajouter --octane pour continuer à exécuter Octane), restaurer votre dump de base de données, copier les valeurs de votre environnement et pointer DNS. Vous échangez la facturation PaaS basée sur l'utilisation contre un coût VPS fixe et prévisible.</p></div>
-<div class="faq-item"><h3>Cipi prend-il en charge Laravel Octane comme Laravel Cloud ?</h3><p>Oui. Cipi exécute Laravel Octane sur FrankenPHP de manière native : créez des applications Octane avec cipi app create --octane ou convertissez des applications existantes avec cipi app convert --to=octane, fonctionnant aux côtés des applications classiques PHP-FPM sur le même serveur.</p></div>
-<h2>Comparez Cipi avec d'autres outils</h2>
+<div class="faq-item"><h3>Puis-je migrer de Laravel Cloud vers Cipi ?</h3><p>Oui. Étant donné que votre application est standard Laravel, vous pouvez provisionner un VPS Ubuntu, installer Cipi, créer l'application avec cipi app create (ajouter --octane pour continuer à exécuter Octane), restaurer votre dump de base de données, copier les valeurs de votre environnement et pointer DNS. Vous échangez la facturation PaaS basée sur l'utilisation contre un coût VPS fixe et prévisible.</p></div>
+<div class="faq-item"><h3>Cipi prend-il en charge Laravel Octane comme Laravel Cloud ?</h3><p>Oui. Cipi fait tourner Laravel Octane sur FrankenPHP nativement : créez des applications Octane avec cipi app create --octane ou convertissez des applications existantes avec cipi app convert --to=octane, fonctionnant aux côtés des applications classiques PHP-FPM sur le même serveur.</p></div>
+<h2>Comparer Cipi à d’autres outils</h2>
 <div class="related">
-<a href="/fr/alternative-to-laravel-forge">contre Laravel Forge</a>
+<a href="/fr/alternative-to-laravel-forge">vs Laravel Forge</a>
 <a href="/fr/alternative-to-fortrabbit">contre fortrabbit</a>
 <a href="/fr/alternative-to-render">contre Render</a>
 <a href="/fr/alternative-to-20i">contre 20i</a>
 <a href="/fr/alternative-to-sevalla">contre Sevalla</a>
-<a href="/fr/alternative-to-ploi-cloud">contre Ploi Cloud</a>
+<a href="/fr/alternative-to-ploi-cloud">vs Ploi Cloud</a>
 <a href="/fr/alternative-to-ploi">contre Ploi</a>
 <a href="/fr/alternative-to-cleavr">contre Cleavr</a>
 <a href="/fr/alternative-to-moss">contre moss.sh</a>
@@ -387,14 +386,14 @@
 <a href="/fr/alternative-to-dokku">contre Dokku</a>
 <a href="/fr/alternative-to-easypanel">contre Easypanel</a>
 <a href="/fr/alternative-to-coolify">contre Coolify</a>
-<a href="/fr/alternative-to-vito-deploy">vs Vito Déployer</a>
+<a href="/fr/alternative-to-vito-deploy">vs Vito Deploy</a>
 <a href="/fr/alternative-to-runcloud">contre RunCloud</a>
 <a href="/fr/alternative-to-serverpilot">contre ServerPilot</a>
 <a href="/fr/alternative-to-cloudpanel">contre CloudPanel</a>
 <a href="/fr/alternative-to-cpanel">contre cPanel</a>
 <a href="/fr/alternative-to-directadmin">contre DirectAdmin</a>
 <a href="/fr/alternative-to-plesk">contre Plesk</a>
-<a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives Forge 2026</a>
+<a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives à Forge en 2026</a>
 <a href="/fr/docs/about#vs-alternatives">Comparaison complète</a>
 </div>
 </main>
@@ -403,25 +402,25 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Déployez gratuitement open-source Laravel CLI pour Ubuntu VPS — Octane, Horizon, Reverb et des déploiements Git sans temps d'arrêt.</p>
+<p>CLI open-source et gratuite pour déployer Laravel sur un VPS Ubuntu — Octane, Horizon, Reverb et déploiements Git sans interruption.</p>
 <ul class="footer-brand-links">
-<li><a href="/fr/docs/getting-started">Commencez</a></li>
-<li><a href="/fr/docs/">Documents</a></li>
+<li><a href="/fr/docs/getting-started">Démarrer</a></li>
+<li><a href="/fr/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Comparez Cipi avec des alternatives" class="footer-col footer-col--compare">
-<strong>Comparez Cipi</strong>
+<nav aria-label="Comparer Cipi aux alternatives" class="footer-col footer-col--compare">
+<strong>Comparer Cipi</strong>
 <ul>
-<li><a href="/fr/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
-<li><a href="/fr/alternative-to-laravel-cloud">Laravel Alternative au cloud</a></li>
+<li><a href="/fr/alternative-to-laravel-forge">Alternative à Laravel Forge</a></li>
+<li><a href="/fr/alternative-to-laravel-cloud">Alternative à Laravel Cloud</a></li>
 <li><a href="/fr/alternative-to-ploi">Ploi alternative</a></li>
 <li><a href="/fr/alternative-to-coolify">Coolify alternative</a></li>
 <li><a href="/fr/alternative-to-runcloud">RunCloud alternative</a></li>
 <li><a href="/fr/alternative-to-cloudpanel">CloudPanel alternative</a></li>
 <li><a href="/fr/alternative-to-cpanel">cPanel alternative</a></li>
 <li><a href="/fr/alternative-to-plesk">Alternative à Plesk</a></li>
-<li><a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives Forge 2026</a></li>
+<li><a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives à Forge en 2026</a></li>
 <li><a href="/fr/alternatives">Toutes les comparaisons</a></li>
 </ul>
 </nav>
@@ -429,7 +428,7 @@
 <strong>Guides gratuits</strong>
 <ul>
 <li><a href="/fr/guides/gerer-apps-avec-cipi-yml">Gérer les apps avec cipi.yml</a></li>
-<li><a href="/fr/guides/panneau-ui-et-api">Panneau UI et API</a></li>
+<li><a href="/fr/guides/panneau-ui-et-api">Panneau de contrôle et API</a></li>
 <li><a href="/fr/guides/utiliser-cipi-agent-laravel">cipi/agent et MCP de projet</a></li>
 <li><a href="/fr/guides/deployer-wordpress-app-personnalisee">Déployer WordPress sur Cipi</a></li>
 <li><a href="/fr/guides/">Tous les guides</a></li>
@@ -438,7 +437,7 @@
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Réalisé avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+                    Fait avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
 <span class="footer-license"> · Open source, licence MIT</span>
 </div>
 <ul class="footer-links">

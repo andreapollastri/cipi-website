@@ -1,0 +1,120 @@
+{
+ "it": {
+  "segments": [
+   [
+    "Cipi — Deploy Laravel semplici",
+    "Cipi — Deploy Laravel senza complicazioni"
+   ],
+   [
+    "Deploy Laravel su VPS Ubuntu con un comando. CLI open source con Octane, Horizon, Reverb, deploy zero-downtime e SSL — alternativa self-hosted a Forge.",
+    "Fai il deploy di Laravel su qualsiasi VPS Ubuntu con un solo comando. CLI open source e gratuita: Octane, Horizon, Reverb, deploy zero-downtime, SSL. L'alternativa self-hosted a Forge."
+   ],
+   [
+    "Laravel deployment, deploy Laravel on VPS, Laravel Forge alternative, Laravel Octane, FrankenPHP, deploy CLI, Laravel VPS, open source deploy tool, Ubuntu server Laravel, Laravel DevOps, cipi, PHP deployment",
+    "deploy Laravel, deploy Laravel su VPS, alternativa a Laravel Forge, Laravel Octane, FrankenPHP, CLI di deploy, Laravel VPS, tool di deploy open source, server Ubuntu Laravel, Laravel DevOps, cipi, deployment PHP"
+   ],
+   [
+    "Ogni app gira sotto il proprio utente Linux. Filesystem isolato, PHP-FPM o Laravel Octane (FrankenPHP) e database. Un'app compromessa non può toccare le altre.",
+    "Ogni app gira sotto il proprio utente Linux: filesystem isolato, PHP-FPM o Laravel Octane (FrankenPHP) e database dedicato. Un'app compromessa non può raggiungere le altre."
+   ],
+   [
+    "Ban brute-force, firewall, prevenzione escalation dei privilegi.",
+    "Blocco dei tentativi brute-force, firewall, prevenzione dell'escalation dei privilegi."
+   ],
+   [
+    "Backup automatici di DB e storage su storage compatibile S3.",
+    "Backup automatici del database e di storage/ verso storage compatibile con S3."
+   ],
+   [
+    "Ogni comando è una chiamata shell — integra con Ansible, script di provisioning o tooling interno.",
+    "Ogni comando è una semplice chiamata shell — da integrare con Ansible, con i tuoi script di provisioning o con il tuo tooling."
+   ],
+   [
+    "Server MCP integrato — deploy, rollback, backup via linguaggio naturale in Cursor, VS Code, Claude.",
+    "Server MCP integrato — deploy, rollback e backup in linguaggio naturale da Cursor, VS Code o Claude."
+   ],
+   [
+    "Installa un pannello self-hosted quando vuoi una dashboard nel browser. Saltalo e resta CLI puro.",
+    "Installa un pannello self-hosted se vuoi una dashboard nel browser. Oppure lascialo perdere e resta in CLI pura."
+   ],
+   [
+    "Vault AES-256 a riposo, archivi sync crittografati, rotazione log, isolamento completo per app.",
+    "Vault AES-256 per i dati a riposo, archivi di sync crittografati, rotazione dei log, isolamento completo per app."
+   ],
+   [
+    "Database e shared/ su S3 o provider compatibili con schedule cron.",
+    "Database e shared/ verso S3 o provider compatibili, su pianificazione cron."
+   ],
+   [
+    "FrankenPHP Octane, Horizon, Reverb, scheduler, build Node — tooling Laravel di prima classe.",
+    "FrankenPHP Octane, Horizon, Reverb, scheduler, build Node — tooling Laravel di prim'ordine."
+   ],
+   [
+    "Deploy, rollback ed esecuzione migration via linguaggio naturale",
+    "Deploy, rollback ed esecuzione delle migration in linguaggio naturale"
+   ],
+   [
+    "Integra tutti i tuoi server nella pipeline di automazione AI",
+    "Integra tutti i tuoi server nella tua pipeline di automazione AI"
+   ],
+   [
+    "Scopri di più su Cipi API",
+    "Scopri di più sulle API di Cipi"
+   ],
+   [
+    "Il modulo di provisioning WHMCS ufficiale collega il pannello di fatturazione alla REST API di Cipi — quando un cliente ordina un prodotto, l'app viene creata automaticamente. Termina, sospendi, riattiva — tutto fluisce da WHMCS al server senza una singola sessione SSH.",
+    "Il modulo ufficiale di provisioning per WHMCS collega il pannello di fatturazione alla REST API di Cipi: quando un cliente ordina un prodotto, l'app viene creata automaticamente. Termina, sospendi, riattiva — tutto passa da WHMCS al server senza una sola sessione SSH."
+   ],
+   [
+    "Leggi Docs",
+    "Leggi la documentazione"
+   ],
+   [
+    "Test Connection integrato — valida la raggiungibilità API da WHMCS Admin",
+    "Test di connessione integrato — verifica che l'API risponda dall'area amministrativa di WHMCS"
+   ],
+   [
+    "Gestione job asincrona con polling dello stato — nessun timeout HTTP",
+    "Gestione asincrona dei job con polling dello stato — nessun timeout HTTP"
+   ],
+   [
+    "Ciclo di vita completo dell'app — crea, modifica, deploy ed elimina dalla tua macchina",
+    "Ciclo di vita completo dell'app — crea, modifica, fai il deploy ed elimina dalla tua macchina"
+   ],
+   [
+    "Gestione database — crea, backup, restore e rotazione password",
+    "Gestione dei database — creazione, backup, restore e rotazione delle password"
+   ],
+   [
+    "Profili multi-server — un profilo per server, cambia con un prefisso",
+    "Profili multi-server — un profilo per server, si cambia con un prefisso"
+   ],
+   [
+    "Open source, licenza MIT — binari precompilati e build da sorgente",
+    "Open source, licenza MIT — binari precompilati oppure build da sorgente"
+   ]
+  ],
+  "raw": [
+   [
+    "<h1>Deploy Laravel <em>semplici</em>.</h1>",
+    "<h1>Deploy Laravel <em>senza complicazioni</em>.</h1>"
+   ],
+   [
+    "<h2 class=\"section-title\">Un solo VPS diventa una piattaforma di hosting LEMP<br>multi-app</h2>",
+    "<h2 class=\"section-title\">Un solo VPS diventa una piattaforma<br>di hosting LEMP multi-app</h2>"
+   ],
+   [
+    "<h2 class=\"api-headline\">REST API comoda<br>quando ti serve.</h2>",
+    "<h2 class=\"api-headline\">Una REST API comoda,<br>quando ti serve.</h2>"
+   ],
+   [
+    "per creare e gestire più applicazioni nell'infrastruttura da un unico endpoint.",
+    "per creare e gestire più applicazioni in tutta la tua infrastruttura da un unico endpoint."
+   ],
+   [
+    "Ma quando una dashboard nel browser ti si addice meglio, tu o i tuoi clienti, un solo comando installa il pannello di controllo web <strong>opzionale</strong>: un'app Laravel self-hosted che gestisce uno o più server Cipi via la stessa REST API.",
+    "Ma se una dashboard nel browser è più comoda per te o per i tuoi clienti, un solo comando installa il pannello di controllo web <strong>opzionale</strong>: un'app Laravel self-hosted che gestisce uno o più server Cipi attraverso la stessa REST API."
+   ]
+  ]
+ }
+}

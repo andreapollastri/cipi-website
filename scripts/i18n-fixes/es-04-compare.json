@@ -1,0 +1,258 @@
+{
+ "es": {
+  "segments": [
+   [
+    "Las mejores alternativas Forge 2026",
+    "Las mejores alternativas a Forge en 2026"
+   ],
+   [
+    "Laravel Forge alternativa",
+    "Alternativa a Laravel Forge"
+   ],
+   [
+    "Laravel Alternativa a la nube",
+    "Alternativa a Laravel Cloud"
+   ],
+   [
+    "Cipi frente a",
+    "Cipi vs"
+   ],
+   [
+    "Miga de pan",
+    "Ruta de navegación"
+   ],
+   [
+    "Despliegue gratuita de open-source Laravel CLI para VPS Ubuntu — Octane, Horizon, Reverb y despliegues de Git sin downtime.",
+    "CLI open source y gratuita para desplegar Laravel en un VPS Ubuntu — Octane, Horizon, Reverb y despliegues Git sin downtime."
+   ],
+   [
+    "Panel UI y API",
+    "Panel de control y API"
+   ],
+   [
+    "Administrador de conexiones SSH",
+    "Gestor de conexiones SSH"
+   ],
+   [
+    "Comparación actualizada por última vez:",
+    "Comparación actualizada el"
+   ],
+   [
+    "Sí — CLI nativo",
+    "Sí — nativo en la CLI"
+   ],
+   [
+    "Crea o convierte aplicaciones con",
+    "Crea o convierte apps con"
+   ],
+   [
+    "Instale Cipi en un solo comando",
+    "Instalar Cipi con un solo comando"
+   ],
+   [
+    "Ejecute un VPS Ubuntu nuevo y luego ejecute:",
+    "Arranca un VPS Ubuntu nuevo y ejecuta:"
+   ],
+   [
+    "Aprovisione un VPS Ubuntu nuevo e instale Cipi.",
+    "Aprovisiona un VPS Ubuntu nuevo e instala Cipi."
+   ],
+   [
+    "Cualquier proveedor funciona (Hetzner, DigitalOcean, Vultr, Linode, AWS). El Ubuntu 24.04/26.04 ejecutar",
+    "Sirve cualquier proveedor (Hetzner, DigitalOcean, Vultr, Linode, AWS). En Ubuntu 24.04/26.04 ejecuta"
+   ],
+   [
+    "y el stack de producción completa (Nginx, PHP, MariaDB, Valkey, Supervisor) se configura en minutos.",
+    "y el stack de producción completo — Nginx, PHP, MariaDB, Valkey, Supervisor — queda configurado en minutos."
+   ],
+   [
+    "Recrea cada aplicación y conecta Git.",
+    "Recrea cada app y conecta Git."
+   ],
+   [
+    "aprovisiona una aplicación aislada con su propio usuario del sistema, base de datos, grupo PHP y Nginx vhost (agregue",
+    "aprovisiona una app aislada con su propio usuario de sistema, su base de datos, su pool PHP y su vhost de Nginx (añade"
+   ],
+   [
+    "para Laravel Octane). La conexión de GitHub o GitLab configura las claves de despliegue y los webhooks automáticamente para despliegues sin downtime.",
+    "para Laravel Octane). Al conectar GitHub o GitLab, las claves de despliegue y los webhooks se configuran automáticamente para desplegar sin downtime."
+   ],
+   [
+    "Mueve datos y corta.",
+    "Mueve los datos y haz el cambio."
+   ],
+   [
+    "Importe el volcado de su base de datos, copie su",
+    "Importa el dump de tu base de datos, reutiliza tus"
+   ],
+   [
+    "valores, emita HTTPS certificados con",
+    "valores, emite los certificados HTTPS con"
+   ],
+   [
+    ", luego apunte DNS al nuevo servidor y retire la configuración anterior.",
+    ", después apunta el DNS al nuevo servidor y retira la instalación antigua."
+   ],
+   [
+    "Cipi usa las convenciones estándar Nginx, PHP-FPM / Laravel Octane y del implementador, por lo que no hay configuración específica del proveedor para deshacerla más tarde. Detalles completos en el",
+    "Cipi se apoya en las convenciones estándar de Nginx, PHP-FPM / Laravel Octane y Deployer, así que no queda ninguna configuración propia de un proveedor que haya que deshacer más adelante. Todos los detalles en la"
+   ],
+   [
+    "Comparar Cipi con otras herramientas",
+    "Comparar Cipi con otras herramientas"
+   ],
+   [
+    "Eso instala y configura el stack de producción completa: Nginx, PHP-FPM / Laravel Octane, MariaDB, opcional PostgreSQL, Redis y Supervisor. Ver el",
+    "Eso instala y configura el stack de producción completo — Nginx, PHP-FPM / Laravel Octane, MariaDB, PostgreSQL opcional, Redis y Supervisor. Consulta la"
+   ],
+   [
+    "MariaDB por defecto; instale PostgreSQL con un comando y elija un motor por aplicación (",
+    "MariaDB por defecto; instala PostgreSQL con un comando y elige el motor app por app ("
+   ],
+   [
+    ". Ejecute Octane junto a las aplicaciones FPM clásicas, además de Horizon y Reverb de primera clase; no se requiere panel SaaS.",
+    ". Ejecuta Octane junto a las apps FPM clásicas, con Horizon y Reverb soportados de forma nativa — sin panel SaaS."
+   ],
+   [
+    "Servidor AI / MCP",
+    "Servidor de IA / MCP"
+   ],
+   [
+    "Configurar el cifrado en reposo (AES-256)",
+    "Cifrado de configuración en reposo (AES-256)"
+   ],
+   [
+    "CLI + REST API + opcional GUI",
+    "CLI + REST API + GUI opcional"
+   ],
+   [
+    "libre · open source",
+    "gratis · open source"
+   ],
+   [
+    "Laravel-nativo (Implementador, artisan, colas)",
+    "Laravel-nativo (Deployer, artisan, colas)"
+   ],
+   [
+    "Sin dependencia del proveedor",
+    "Sin vendor lock-in"
+   ],
+   [
+    "Sincronización y conmutación por error de servidor a servidor",
+    "Sync entre servidores y failover"
+   ],
+   [
+    "Cifrado en reposo y sincronización del servidor",
+    "Cifrado en reposo y sync entre servidores"
+   ],
+   [
+    "Despliegues de Git sin downtime",
+    "Despliegues Git sin downtime"
+   ],
+   [
+    "Gratis + coste fijo VPS",
+    "Gratis + coste fijo del VPS"
+   ],
+   [
+    "Sí, cualquier proveedor",
+    "Sí — cualquier proveedor"
+   ],
+   [
+    "Servidores MCP globales y por aplicación para una gestión completa de la infraestructura basada en IA desde cualquier agente compatible con MCP.",
+    "Servidores MCP por app y globales, para gestionar toda la infraestructura con IA desde cualquier agente compatible con MCP."
+   ],
+   [
+    "AES-256-CBC Cifrado de bóveda para todas las configuraciones, además de sincronización cifrada integrada de servidor a servidor para replicación de conmutación por error.",
+    "Cifrado Vault AES-256-CBC para todas las configuraciones, más sincronización cifrada entre servidores integrada para replicación de failover."
+   ],
+   [
+    "Gratis, para siempre",
+    "Gratis, para siempre"
+   ],
+   [
+    "frente a fortrabbit",
+    "vs fortrabbit"
+   ],
+   [
+    "frente a Render",
+    "vs Render"
+   ],
+   [
+    "frente a 20i",
+    "vs 20i"
+   ],
+   [
+    "frente a Sevalla",
+    "vs Sevalla"
+   ],
+   [
+    "frente a Ploi Cloud",
+    "vs Ploi Cloud"
+   ],
+   [
+    "frente a cPanel",
+    "vs cPanel"
+   ],
+   [
+    "frente a Laravel Forge",
+    "vs Laravel Forge"
+   ],
+   [
+    "vs Laravel Nube",
+    "vs Laravel Cloud"
+   ],
+   [
+    "frente a Ploi",
+    "vs Ploi"
+   ],
+   [
+    "frente a Cleavr",
+    "vs Cleavr"
+   ],
+   [
+    "frente a moss.sh",
+    "vs moss.sh"
+   ],
+   [
+    "frente a Kamal",
+    "vs Kamal"
+   ],
+   [
+    "frente a Dokku",
+    "vs Dokku"
+   ],
+   [
+    "frente a Easypanel",
+    "vs Easypanel"
+   ],
+   [
+    "frente a Coolify",
+    "vs Coolify"
+   ],
+   [
+    "vs Vito Implementar",
+    "vs Vito Deploy"
+   ],
+   [
+    "frente a RunCloud",
+    "vs RunCloud"
+   ],
+   [
+    "frente a ServerPilot",
+    "vs ServerPilot"
+   ],
+   [
+    "frente a CloudPanel",
+    "vs CloudPanel"
+   ],
+   [
+    "frente a DirectAdmin",
+    "vs DirectAdmin"
+   ],
+   [
+    "frente a Plesk",
+    "vs Plesk"
+   ]
+  ]
+ }
+}

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pannello UI e API di Cipi — tutte le potenzialità delle due estensioni</title>
+    <title>Pannello di controllo e API di Cipi — tutte le potenzialità delle due estensioni</title>
     <meta name="description" content="Guida alle due estensioni opzionali di Cipi: la REST API (cipi/api) e il pannello di controllo web (cipi/gui). REST, MCP, Swagger, dashboard multi-server, server cockpit e automazione — senza abbandonare la CLI.">
     <meta name="keywords" content="cipi api, cipi gui, pannello cipi, rest api laravel, mcp cipi, dashboard cipi, cipi-cli, controllo server laravel">
     <meta name="author" content="Andrea Pollastri">
@@ -25,12 +25,12 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Cipi">
     <meta property="og:url" content="https://cipi.sh/it/guide/pannello-ui-e-api-cipi">
-    <meta property="og:title" content="Pannello UI e API di Cipi — tutte le potenzialità delle due estensioni">
+    <meta property="og:title" content="Pannello di controllo e API di Cipi — tutte le potenzialità delle due estensioni">
     <meta property="og:description" content="Guida alle due estensioni opzionali di Cipi: la REST API (cipi/api) e il pannello di controllo web (cipi/gui). REST, MCP, Swagger, dashboard multi-server, server cockpit e automazione — senza abbandonare la CLI.">
     <meta property="og:image" content="https://cipi.sh/og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Pannello UI e API di Cipi">
+    <meta property="og:image:alt" content="Pannello di controllo e API di Cipi">
             <meta property="og:locale" content="it_IT">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="de_DE">
@@ -42,7 +42,7 @@
     <meta property="article:section" content="Guides">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pannello UI e API di Cipi — tutte le potenzialità delle due estensioni">
+    <meta name="twitter:title" content="Pannello di controllo e API di Cipi — tutte le potenzialità delle due estensioni">
     <meta name="twitter:description" content="Guida alle due estensioni opzionali di Cipi: la REST API (cipi/api) e il pannello di controllo web (cipi/gui). REST, MCP, Swagger, dashboard multi-server, server cockpit e automazione — senza abbandonare la CLI.">
     <meta name="twitter:image" content="https://cipi.sh/og.png">
 
@@ -50,8 +50,8 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Pannello UI e API di Cipi — tutte le potenzialità delle due estensioni",
-  "name": "Pannello UI e API di Cipi — tutte le potenzialità delle due estensioni",
+  "headline": "Pannello di controllo e API di Cipi — tutte le potenzialità delle due estensioni",
+  "name": "Pannello di controllo e API di Cipi — tutte le potenzialità delle due estensioni",
   "url": "https://cipi.sh/it/guide/pannello-ui-e-api-cipi",
   "description": "Guida alle due estensioni opzionali di Cipi: la REST API (cipi/api) e il pannello di controllo web (cipi/gui). REST, MCP, Swagger, dashboard multi-server, server cockpit e automazione — senza abbandonare la CLI.",
   "inLanguage": "it",
@@ -114,7 +114,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Pannello UI e API",
+      "name": "Pannello di controllo e API",
       "item": "https://cipi.sh/it/guide/pannello-ui-e-api-cipi"
     }
   ]
@@ -310,11 +310,11 @@
 
     <main class="cmp">
         <nav class="cmp-breadcrumb" aria-label="Breadcrumb">
-            <a href="/it/"><svg class="home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a> <span class="sep">&rsaquo;</span> <a href="/it/guide/">Guide</a> <span class="sep">&rsaquo;</span> <span class="current">Pannello UI e API</span>
+            <a href="/it/"><svg class="home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a> <span class="sep">&rsaquo;</span> <a href="/it/guide/">Guide</a> <span class="sep">&rsaquo;</span> <span class="current">Pannello di controllo e API</span>
         </nav>
 
         <span class="cmp-eyebrow">GUI · API · MCP</span>
-        <h1>Pannello UI e API di Cipi: tutte le <em>potenzialità</em> delle due estensioni</h1>
+        <h1>Pannello di controllo e API di Cipi: tutte le <em>potenzialità</em> delle due estensioni</h1>
         <p class="cmp-updated">Di <a href="https://web.ap.it" target="_blank" rel="author">Andrea Pollastri</a> · Ultimo aggiornamento: <time datetime="2026-08-22">22 agosto 2026</time> · lettura gratuita, nessun paywall</p>
         <p class="lead"><a class="inline" href="/it/">Cipi</a> è, e resta, CLI-first. Tutto ciò che un server richiede — app, database, SSL, deploy, backup — sta in un comando <code>cipi</code> via SSH. Dalla v4.7.0 puoi aggiungere due package opzionali: <strong>cipi/api</strong> e <strong>cipi/gui</strong>. Questa guida racconta cosa sbloccano insieme, e perché nessuno dei due è obbligatorio.</p>
 
@@ -565,7 +565,7 @@ $ cipi-cli status</code></pre>
                     <li><a href="/it/alternativa-a-cloudpanel">alternativa a CloudPanel</a></li>
                     <li><a href="/it/alternativa-a-cpanel">alternativa a cPanel</a></li>
                     <li><a href="/it/alternativa-a-plesk">alternativa a Plesk</a></li>
-                    <li><a href="/it/migliori-alternative-a-laravel-forge">Migliori alternative a Forge 2026</a></li>
+                    <li><a href="/it/migliori-alternative-a-laravel-forge">Le migliori alternative a Forge nel 2026</a></li>
                     <li><a href="/it/alternative">Tutti i confronti</a></li>
                     </ul>
                 </nav>
@@ -573,7 +573,7 @@ $ cipi-cli status</code></pre>
                     <strong>Guide gratuite</strong>
                     <ul>
                         <li><a href="/it/guide/gestire-app-con-cipi-yml">Gestire le app con cipi.yml</a></li>
-                    <li><a href="/it/guide/pannello-ui-e-api-cipi">Pannello UI e API</a></li>
+                    <li><a href="/it/guide/pannello-ui-e-api-cipi">Pannello di controllo e API</a></li>
                     <li><a href="/it/guide/usare-cipi-agent-in-laravel">cipi/agent e MCP di progetto</a></li>
                     <li><a href="/it/guide/deploy-wordpress-app-custom-github">Deploy WordPress con Cipi</a></li>
                     <li><a href="/it/guide/">Tutte le guide</a></li>

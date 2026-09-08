@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>So verwenden Sie cipi/agent in Laravel – Projekt MCP für Debug und Seeder</title>
-<meta content="Installieren Sie cipi/agent in einem Laravel-Projekt und verwenden Sie die In-App MCP, um die Produktion zu debuggen, Protokolle zu lesen, benannte Seeder auszuführen und die Datenbank vom Cursor aus abzufragen – ohne SSH." name="description"/>
+<meta content="Installieren Sie cipi/agent in einem Laravel-Projekt und verwenden Sie die In-App MCP, um die Produktion zu debuggen, Logs zu lesen, benannte Seeder auszuführen und die Datenbank vom Cursor aus abzufragen – ohne SSH." name="description"/>
 <meta content="cipi Agent, cipi/agent laravel, laravel mcp, Cursor mcp laravel, laravel Seeder mcp, Debug laravel Produktion, artisan mcp" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
@@ -24,7 +24,7 @@
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/de/guides/cipi-agent-in-laravel-nutzen" property="og:url"/>
 <meta content="So verwenden Sie cipi/agent in Laravel – Projekt MCP für Debug und Seeder" property="og:title"/>
-<meta content="Installieren Sie cipi/agent in einem Laravel-Projekt und verwenden Sie die In-App MCP, um die Produktion zu debuggen, Protokolle zu lesen, benannte Seeder auszuführen und die Datenbank vom Cursor aus abzufragen – ohne SSH." property="og:description"/>
+<meta content="Installieren Sie cipi/agent in einem Laravel-Projekt und verwenden Sie die In-App MCP, um die Produktion zu debuggen, Logs zu lesen, benannte Seeder auszuführen und die Datenbank vom Cursor aus abzufragen – ohne SSH." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -40,16 +40,16 @@
 <meta content="Guides" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="So verwenden Sie cipi/agent in Laravel – Projekt MCP für Debug und Seeder" name="twitter:title"/>
-<meta content="Installieren Sie cipi/agent in einem Laravel-Projekt und verwenden Sie die In-App MCP, um die Produktion zu debuggen, Protokolle zu lesen, benannte Seeder auszuführen und die Datenbank vom Cursor aus abzufragen – ohne SSH." name="twitter:description"/>
+<meta content="Installieren Sie cipi/agent in einem Laravel-Projekt und verwenden Sie die In-App MCP, um die Produktion zu debuggen, Logs zu lesen, benannte Seeder auszuführen und die Datenbank vom Cursor aus abzufragen – ohne SSH." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "How to use cipi/agent in Laravel — project MCP for debug and seeders",
-  "name": "How to use cipi/agent in Laravel — project MCP for debug and seeders",
+  "headline": "So verwenden Sie cipi/agent in Laravel – Projekt MCP für Debug und Seeder",
+  "name": "So verwenden Sie cipi/agent in Laravel – Projekt MCP für Debug und Seeder",
   "url": "https://cipi.sh/en/guides/cipi-agent-laravel-mcp",
-  "description": "Install cipi/agent in a Laravel project and use the in-app MCP to debug production, read logs, run named seeders and query the database from Cursor — without SSH.",
+  "description": "Installieren Sie cipi/agent in einem Laravel-Projekt und verwenden Sie die In-App MCP, um die Produktion zu debuggen, Logs zu lesen, benannte Seeder auszuführen und die Datenbank vom Cursor aus abzufragen – ohne SSH.",
   "inLanguage": "de",
   "image": "https://cipi.sh/og.png",
   "datePublished": "2026-08-22",
@@ -123,23 +123,23 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Do I need SSH to use the project MCP?",
+      "name": "Benötige ich SSH, um das Projekt MCP zu nutzen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Once the package is deployed and CIPI_MCP is on, the IDE talks to https://yourdomain.com/cipi/mcp with the Bearer token. That is the point for teammates who should never log in as root."
+        "text": "Nein. Sobald das Paket deployt wurde und CIPI_MCP ist eingeschaltet, die IDE spricht mit https://yourdomain.com/cipi/mcp mit dem Bearer-Token. Das ist der Punkt für Teamkollegen, die sich niemals als Root anmelden sollten."
       }
     },
     {
       "@type": "Question",
-      "name": "What is the difference between the agent MCP and the Cipi API MCP?",
+      "name": "Was ist der Unterschied zwischen dem Agenten MCP und dem Cipi API MCP?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The agent MCP is inside one Laravel app (six tools: health, logs, SQL, Artisan, deploy). The panel API MCP manages the whole VPS — create apps, SSL, databases, PHP. Use the agent for debug and seeders; use the API to provision."
+        "text": "Der Agent MCP befindet sich in einer Laravel-App (sechs Tools: Integrität, Logs, SQL, Artisan, Deployment). Das Panel API MCP verwaltet das gesamte VPS – Apps erstellen, SSL, Datenbanken, PHP. Verwenden Sie den Agenten für Debug und Seeder. Verwende die API zur Versorgung."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I run db:seed on production through MCP?",
+      "name": "Kann ich db:seed bis MCP in der Produktion ausführen?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Technically yes — db:seed is not blocked. Practically, only run a named, reviewed seeder, and never migrate:fresh --seed on live data. Prefer staging, then confirm with db_query."
@@ -147,7 +147,7 @@
     },
     {
       "@type": "Question",
-      "name": "Which Artisan commands are blocked?",
+      "name": "Welche Artisan Befehle sind gesperrt?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "serve, tinker, queue:work, queue:listen, schedule:work, horizon, octane:start, reverb:start. Long-running and interactive processes do not belong on an HTTP tool call."
@@ -155,7 +155,7 @@
     },
     {
       "@type": "Question",
-      "name": "Does cipi/agent work without a Cipi server?",
+      "name": "Funktioniert cipi/agent ohne Cipi-Server?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Health check and MCP yes, on any Laravel 12+ host. Webhook-triggered Deployer deploys and the extra log types expect the Cipi layout under /home/<app>/."
@@ -163,7 +163,7 @@
     },
     {
       "@type": "Question",
-      "name": "How do I rotate a leaked MCP token?",
+      "name": "Wie rotiere ich einen durchgesickerten MCP-Token?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "php artisan cipi:generate-token mcp, restart the app (or reload PHP-FPM / Octane), update ~/.cursor/mcp.json. The old token dies with the .env rewrite."
@@ -177,7 +177,7 @@
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "Use cipi/agent and the project MCP in a Laravel app",
-  "description": "Install cipi/agent in a Laravel project and use the in-app MCP to debug production, read logs, run named seeders and query the database from Cursor — without SSH.",
+  "description": "Installieren Sie cipi/agent in einem Laravel-Projekt und verwenden Sie die In-App MCP, um die Produktion zu debuggen, Logs zu lesen, benannte Seeder auszuführen und die Datenbank vom Cursor aus abzufragen – ohne SSH.",
   "inLanguage": "de",
   "step": [
     {
@@ -310,14 +310,14 @@
 </svg>
 <span>Ci<span style="color:var(--signal)">pi</span></span>
 </a>
-<span class="nav-badge">Führer</span>
+<span class="nav-badge">Guides</span>
 </div>
 <div class="nav-right">
 
 <a href="/de/cipi-yml" class="nav-link">cipi.yml</a>
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">DE</summary><div class="lang-menu"><a href="/en/guides/cipi-agent-laravel-mcp" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a class="active" href="/de/guides/cipi-agent-in-laravel-nutzen" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/utiliser-cipi-agent-laravel" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/usare-cipi-agent-in-laravel" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/usar-cipi-agent-en-laravel" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/guides/usar-cipi-agent-no-laravel" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Thema umschalten" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Theme wechseln" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -346,14 +346,14 @@
 <nav aria-label="Semmelbrösel" class="cmp-breadcrumb">
 <a href="/"><svg class="home-ico" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Zuhause</a>
 <span class="sep">›</span>
-<a href="/de/guides/">Führer</a>
+<a href="/de/guides/">Guides</a>
 <span class="sep">›</span>
 <span class="current">cipi/agent MCP</span>
 </nav>
 <span class="cmp-eyebrow">Laravel · MCP · Debug · Seeder</span>
 <h1>So verwenden Sie <em>cipi/agent</em> in Laravel – Projekt MCP für Debug und Seeder</h1>
 <p class="cmp-updated">Von <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Letzte Aktualisierung: <time datetime="2026-08-22">22. August 2026</time> · Kostenlose Lektüre, keine Paywall</p>
-<p class="lead">SSHing in die Produktion für a <code>migrate:status</code>, ein fehlgeschlagener Job-Peek oder ein Staging-Seeder sind langsam, nicht teilbar und für einen KI-Assistenten nutzlos. Das offizielle Laravel-Paket <a class="inline" href="https://github.com/cipi-sh/agent" rel="noopener" target="_blank"><code>cipi/agent</code></a> stellt Webhooks, Health-Checks und – was am nützlichsten ist – a <strong>Projekt MCP</strong> innerhalb der App, sodass Cursor Protokolle lesen, Artisan ausführen und die Datenbank über HTTPS abfragen kann.</p>
+<p class="lead">SSHing in die Produktion für a <code>migrate:status</code>, ein fehlgeschlagener Job-Peek oder ein Staging-Seeder sind langsam, nicht teilbar und für einen KI-Assistenten nutzlos. Das offizielle Laravel-Paket <a class="inline" href="https://github.com/cipi-sh/agent" rel="noopener" target="_blank"><code>cipi/agent</code></a> stellt Webhooks, Health-Checks und – was am nützlichsten ist – a <strong>Projekt MCP</strong> innerhalb der App, sodass Cursor Logs lesen, Artisan ausführen und die Datenbank über HTTPS abfragen kann.</p>
 <div class="toc">
 <strong>In diesem Ratgeber</strong>
 <ol>
@@ -371,10 +371,10 @@
 </ol>
 </div>
 <h2 id="why">Warum ein Agent in der App?</h2>
-<p><a class="inline" href="/">Cipi</a> besitzt bereits den Server: Nginx, PHP, Datenbanken, SSL, Bereitstellungen ohne Ausfallzeiten. Das ist Infrastruktur. Eine Laravel-App hat immer noch ihre eigene Welt – Eloquent-Modelle, Seeder, Horizon-Warteschlangen, tägliche Protokollrotation, der aktuelle Migrationssatz. Eine KI, die nur die Repo-Vermutungen sieht. Eine KI, die Werkzeuge auf dem aufrufen kann<em>laufen</em> App hört auf zu raten.</p>
-<p>Dafür gibt es das Projekt MCP. Es lebt bei <code>POST /cipi/mcp</code> auf der App-Domäne, spricht MCP 2024-11-05 über HTTPS und stellt sechs Tools vor, auf die es sich bezieht <strong>das</strong> Anwendung. Kein Root-SSH. Kein gemeinsamer Bereitstellungsschlüssel in der IDE. Der Assistent fragt nach Gesundheit, Schwänzen <code>laravel.log</code>, läuft <code>db:seed --class=RoleSeeder</code> beim Staging und überprüft die Zeilenanzahl mit <code>db_query</code>.</p>
+<p><a class="inline" href="/">Cipi</a> besitzt bereits den Server: Nginx, PHP, Datenbanken, SSL, Zero-Downtime-Deployments. Das ist Infrastruktur. Eine Laravel-App hat immer noch ihre eigene Welt – Eloquent-Modelle, Seeder, Horizon-Queues, tägliche Log-Rotation, der aktuelle Migrationssatz. Eine KI, die nur die Repo-Vermutungen sieht. Eine KI, die Tools auf dem aufrufen kann<em>laufen</em> App hört auf zu raten.</p>
+<p>Dafür gibt es das Projekt MCP. Es lebt bei <code>POST /cipi/mcp</code> auf der App-Domain, spricht MCP 2024-11-05 über HTTPS und stellt sechs Tools vor, auf die es sich bezieht <strong>das</strong> Anwendung. Kein Root-SSH. Kein gemeinsamer Deploy-Keys in der IDE. Der Assistent fragt nach Gesundheit, Schwänzen <code>laravel.log</code>, läuft <code>db:seed --class=RoleSeeder</code> beim Staging und überprüft die Zeilenanzahl mit <code>db_query</code>.</p>
 <div class="note">
-<p>Health-Check und MCP funktionieren auf jedem Laravel 12+ Host. Webhook Bereitstellungen und der vollständige Protokollsatz (<code>nginx</code>, <code>php</code>, <code>worker</code>, <code>deploy</code>) erwarten a <a class="inline" href="/de/docs/getting-started">Cipi-verwaltet</a> Umfeld. Die Referenz lebt in der <a class="inline" href="/de/docs/agent">Cipi Agentendokumente</a>.</p>
+<p>Health-Check und MCP funktionieren auf jedem Laravel 12+ Host. Webhook Deployments und der vollständige Protokollsatz (<code>nginx</code>, <code>php</code>, <code>worker</code>, <code>deploy</code>) erwarten a <a class="inline" href="/de/docs/getting-started">Cipi-verwaltet</a> Umfeld. Die Referenz lebt in der <a class="inline" href="/de/docs/agent">Cipi Agentendokumente</a>.</p>
 </div>
 <h2 id="install">Installieren Sie cipi/agent</h2>
 <p>Anforderungen: PHP 8.3+ und Laravel 12 oder 13. Der Dienstanbieter erkennt automatisch – verlassen <code>config/app.php</code> allein.</p>
@@ -388,9 +388,9 @@ $ php artisan cipi:status   <span class="c"># config + live DB connectivity</spa
 <table class="cmp-table">
 <thead><tr><th>Funktion</th><th>Endpunkt</th><th>Wenn Sie es verwenden</th></tr></thead>
 <tbody>
-<tr><td>Webhook bereitstellen</td><td><code>POST /cipi/webhook</code></td><td>GitHub / GitLab Push-Schreibvorgänge <code>.deploy-trigger</code>; Der Deployer wird innerhalb einer Minute als App-Benutzer ausgeführt</td></tr>
+<tr><td>Webhook deployen</td><td><code>POST /cipi/webhook</code></td><td>GitHub / GitLab Push-Schreibvorgänge <code>.deploy-trigger</code>; Der Deployer wird innerhalb einer Minute als App-Benutzer ausgeführt</td></tr>
 <tr><td>Health-Check</td><td><code>GET /cipi/health</code></td><td>UptimeRobot/Grafana: App, Datenbank, Cache, Warteschlangenrückstand, letzter Commit</td></tr>
-<tr><td>Projekt MCP</td><td><code>POST /cipi/mcp</code></td><td>Cursor / VS Code / Claude: Gesundheit, Protokolle, SQL, Artisan, Bereitstellung – dieses Handbuch</td></tr>
+<tr><td>Projekt MCP</td><td><code>POST /cipi/mcp</code></td><td>Cursor / VS Code / Claude: Gesundheit, Logs, SQL, Artisan, Deployment – dieses Handbuch</td></tr>
 <tr><td>DB-Anonymisierer</td><td><code>POST /cipi/db</code></td><td>DSGVO-sichere Dumps für lokale/Qualitätssicherung, Faker-Transformationen, signierter 15-minütiger Download</td></tr>
 </tbody>
 </table>
@@ -422,8 +422,8 @@ $ php artisan cipi:mcp</code></div>
 <h2 id="debug">Debuggen ohne SSH</h2>
 <p>Dies ist der Teil, der den Tagesrhythmus verändert. Sie bleiben in der IDE. Der Assistent spricht mit der Live-App.</p>
 <h3>Gesundheit – geht es überhaupt?</h3>
-<p>Gleiche Nutzlast wie <code>GET /cipi/health</code>: Laravel-Version, <code>APP_DEBUG</code>, Datenbankname, Cache, Warteschlangentreiber, ausstehende Jobs, letzter Bereitstellungs-Commit. Fragen Sie: <em>„Ist die Produktion gesund? Gibt es einen Rückstand in der Warteschlange?“</em> Wenn <code>checks.app.debug</code> ist <code>true</code> Auf einem öffentlichen Host haben Sie gerade ein Problem gefunden, ohne es zu öffnen <code>.env</code>.</p>
-<h3>Protokolle – letzte Fehler, nicht die gesamte Datei</h3>
+<p>Gleiche Nutzlast wie <code>GET /cipi/health</code>: Laravel-Version, <code>APP_DEBUG</code>, Datenbankname, Cache, Warteschlangentreiber, ausstehende Jobs, letzter Bereitstellungs-Commit. Fragen Sie: <em>„Ist die Produktion gesund? Gibt es einen Rückstand in der Queue?“</em> Wenn <code>checks.app.debug</code> ist <code>true</code> Auf einem öffentlichen Host haben Sie gerade ein Problem gefunden, ohne es zu öffnen <code>.env</code>.</p>
+<h3>Logs – letzte Fehler, nicht die gesamte Datei</h3>
 <p>Die <code>logs</code> Das Tool liest die letzten N Zeilen (Standard 50, max. 500) und hält die Stack-Traces intakt. Filter:</p>
 <ul>
 <li><code>type</code> — <code>laravel</code>, <code>nginx</code>, <code>php</code>, <code>worker</code>, <code>deploy</code></li>
@@ -445,7 +445,7 @@ SELECT COUNT(*) FROM users WHERE created_at &gt;= CURRENT_DATE;</code></div>
 <li><em>„Lauf <code>migrate:status</code> zur Inszenierung.“</em></li>
 <li><em>„Nur Seed-Rollen: <code>db:seed --class=RoleSeeder</code>.”</em></li>
 <li><em>„Laden Sie Demo-Bestellungen mit <code>DemoDataSeeder</code>, dann <code>SELECT COUNT(*) FROM orders</code>.”</em></li>
-<li><em>“<code>queue:failed</code> – Gibt es Jobs, die seit der letzten Bereitstellung hängengeblieben sind?“</em></li>
+<li><em>“<code>queue:failed</code> – Gibt es Jobs, die seit der letzten Deployment hängengeblieben sind?“</em></li>
 <li><em>“<code>cache:clear</code> und <code>optimize:clear</code> nach der Konfigurationsänderung.“</em></li>
 </ul>
 <div class="note">
@@ -471,15 +471,15 @@ SELECT COUNT(*) FROM users WHERE created_at &gt;= CURRENT_DATE;</code></div>
           → 4 rows</code></div>
 <p>Keine SSH-Sitzung. Kein Kopieren und Einfügen von <code>storage/logs</code>. Die gleiche Konversation funktioniert für einen Teamkollegen, der den MCP-Token hat und niemals Root auf der Box haben sollte – was der größte Teil des Teams ist.</p>
 <h2 id="two-mcp">Projekt MCP vs. Panel API MCP</h2>
-<p>Cipi Schiffe <strong>zwei</strong> MCP Server. Sie zu verwechseln ist der übliche erste Fehler.</p>
+<p>Cipi Schiffe <strong>zwei</strong> MCP-Server. Sie zu verwechseln ist der übliche erste Fehler.</p>
 <div class="cmp-table-wrap">
 <table class="cmp-table">
 <thead><tr><th></th><th>Projekt MCP (<code>cipi/agent</code>)</th><th>Panel API MCP (<code>cipi/api</code>)</th></tr></thead>
 <tbody>
-<tr><td>Wo</td><td><code>POST /cipi/mcp</code> auf der <em>App</em> Domäne</td><td><code>POST /mcp</code> auf dem API vhost</td></tr>
-<tr><td>Umfang</td><td>Eine Laravel-App: ihre Datenbank, Protokolle, Artisan, Bereitstellungsflag</td><td>Der gesamte Server: Apps, SSL, Datenbanken, PHP, Worker</td></tr>
-<tr><td>Werkzeuge</td><td>6 – Gesundheit, app_info, Bereitstellung, Protokolle, db_query, artisan</td><td>50+ – Apps erstellen, Zertifikate ausstellen, bearbeiten <code>.env</code>, als App-Benutzer ausführen</td></tr>
-<tr><td>Benutze es für</td><td>Debuggen, Seeder, migrate:status, Warteschlangeneinblick</td><td>Bereitstellung, SSL, Auflistung aller Datenbanken, Server-Cockpit</td></tr>
+<tr><td>Wo</td><td><code>POST /cipi/mcp</code> auf der <em>App</em> Domain</td><td><code>POST /mcp</code> auf dem API vhost</td></tr>
+<tr><td>Umfang</td><td>Eine Laravel-App: ihre Datenbank, Logs, Artisan, Bereitstellungsflag</td><td>Der gesamte Server: Apps, SSL, Datenbanken, PHP, Worker</td></tr>
+<tr><td>Tools</td><td>6 – Gesundheit, app_info, Deployment, Logs, db_query, artisan</td><td>50+ – Apps erstellen, Zertifikate ausstellen, bearbeiten <code>.env</code>, als App-Benutzer ausführen</td></tr>
+<tr><td>Benutze es für</td><td>Debuggen, Seeder, migrate:status, Warteschlangeneinblick</td><td>Deployment, SSL, Auflistung aller Datenbanken, Server-Cockpit</td></tr>
 </tbody>
 </table>
 </div>
@@ -490,7 +490,7 @@ SELECT COUNT(*) FROM users WHERE created_at &gt;= CURRENT_DATE;</code></div>
 <li><strong>Aus bedeutet 404.</strong> <code>php artisan cipi:service mcp --disable</code> oder <code>CIPI_MCP=false</code>. Bevorzugen Sie dies in der Produktion, bis Sie tatsächlich eine IDE-Verbindung benötigen.</li>
 <li><strong>Blockiert Artisan:</strong> <code>serve</code>, <code>tinker</code>, <code>queue:work</code>, <code>queue:listen</code>, <code>schedule:work</code>, <code>horizon</code>, <code>octane:start</code>, <code>reverb:start</code>.</li>
 <li><strong>Blockiertes SQL:</strong> <code>DROP</code>, <code>TRUNCATE</code>, <code>GRANT</code>, <code>REVOKE</code>, Datei-E/A.</li>
-<li><strong>Nur HTTPS, kein SSH.</strong> Gut für einen Entwickler, der ohne bereitstellen und prüfen sollte <code>sudo</code>. Immer noch ein privilegierter Kanal – behandeln Sie das Token wie ein Produktionspasswort.</li>
+<li><strong>Nur HTTPS, kein SSH.</strong> Gut für einen Entwickler, der ohne deployen und prüfen sollte <code>sudo</code>. Immer noch ein privilegierter Kanal – behandeln Sie das Token wie ein Produktionspasswort.</li>
 </ul>
 <div class="cta-box">
 <h2>Installieren Sie das Paket und dann den Server</h2>
@@ -503,15 +503,15 @@ SELECT COUNT(*) FROM users WHERE created_at &gt;= CURRENT_DATE;</code></div>
 </div>
 </div>
 <h2 id="faq">Häufig gestellte Fragen</h2>
-<div class="faq-item"><h3>Benötige ich SSH, um das Projekt MCP zu nutzen?</h3><p>Nein. Sobald das Paket bereitgestellt wurde und <code>CIPI_MCP</code> ist eingeschaltet, die IDE spricht mit <code>https://yourdomain.com/cipi/mcp</code> mit dem Bearer-Token. Das ist der Punkt für Teamkollegen, die sich niemals als Root anmelden sollten.</p></div>
-<div class="faq-item"><h3>Was ist der Unterschied zwischen dem Agenten MCP und dem Cipi API MCP?</h3><p>Der Agent MCP befindet sich in einer Laravel-App (sechs Tools: Integrität, Protokolle, SQL, Artisan, Bereitstellung). Das Panel API MCP verwaltet das gesamte VPS – Apps erstellen, SSL, Datenbanken, PHP. Verwenden Sie den Agenten für Debug und Seeder. Verwende die API zur Versorgung.</p></div>
-<div class="faq-item"><h3>Kann ich db:seed bis MCP in der Produktion ausführen?</h3><p>Technisch gesehen ja – <code>db:seed</code> ist nicht blockiert. Betreiben Sie praktisch nur eine benannte, überprüfte Sämaschine und niemals <code>migrate:fresh --seed</code> auf Live-Daten. Bevorzugen Sie die Bereitstellung und bestätigen Sie dann mit <code>db_query</code>.</p></div>
+<div class="faq-item"><h3>Benötige ich SSH, um das Projekt MCP zu nutzen?</h3><p>Nein. Sobald das Paket deployt wurde und <code>CIPI_MCP</code> ist eingeschaltet, die IDE spricht mit <code>https://yourdomain.com/cipi/mcp</code> mit dem Bearer-Token. Das ist der Punkt für Teamkollegen, die sich niemals als Root anmelden sollten.</p></div>
+<div class="faq-item"><h3>Was ist der Unterschied zwischen dem Agenten MCP und dem Cipi API MCP?</h3><p>Der Agent MCP befindet sich in einer Laravel-App (sechs Tools: Integrität, Logs, SQL, Artisan, Deployment). Das Panel API MCP verwaltet das gesamte VPS – Apps erstellen, SSL, Datenbanken, PHP. Verwenden Sie den Agenten für Debug und Seeder. Verwende die API zur Versorgung.</p></div>
+<div class="faq-item"><h3>Kann ich db:seed bis MCP in der Produktion ausführen?</h3><p>Technisch gesehen ja – <code>db:seed</code> ist nicht blockiert. Betreiben Sie praktisch nur eine benannte, überprüfte Sämaschine und niemals <code>migrate:fresh --seed</code> auf Live-Daten. Bevorzugen Sie das Deployment und bestätigen Sie dann mit <code>db_query</code>.</p></div>
 <div class="faq-item"><h3>Welche Artisan Befehle sind gesperrt?</h3><p><code>serve</code>, <code>tinker</code>, <code>queue:work</code>, <code>queue:listen</code>, <code>schedule:work</code>, <code>horizon</code>, <code>octane:start</code>, <code>reverb:start</code>. Lang laufende und interaktive Prozesse gehören nicht zu einem HTTP-Tool-Aufruf.</p></div>
-<div class="faq-item"><h3>Funktioniert cipi/agent ohne Cipi-Server?</h3><p>Health-Check und MCP ja, auf jedem Laravel 12+ Host. Durch Webhook ausgelöste Deployer-Bereitstellungen und die zusätzlichen Protokolltypen erwarten das Cipi-Layout unten <code>/home/&lt;app&gt;/</code>.</p></div>
+<div class="faq-item"><h3>Funktioniert cipi/agent ohne Cipi-Server?</h3><p>Health-Check und MCP ja, auf jedem Laravel 12+ Host. Durch Webhook ausgelöste Deployer-Deployments und die zusätzlichen Protokolltypen erwarten das Cipi-Layout unten <code>/home/&lt;app&gt;/</code>.</p></div>
 <div class="faq-item"><h3>Wie rotiere ich einen durchgesickerten MCP-Token?</h3><p><code>php artisan cipi:generate-token mcp</code>, App neu starten (oder PHP-FPM / Octane neu laden), aktualisieren <code>~/.cursor/mcp.json</code>. Der alte Token stirbt mit dem <code>.env</code> umschreiben.</p></div>
 <h2>Lesen Sie weiter</h2>
 <div class="related">
-<a href="/de/docs/agent">Dokumente: Cipi Agent</a>
+<a href="/de/docs/agent">Docs: Cipi Agent</a>
 <a href="/de/guides/spezifikationsgetriebene-ki-entwicklung-laravel">Spezifikationsgesteuerte KI-Entwicklung</a>
 <a href="/de/guides/ci-cd-git-workflow-fuer-laravel">CI/CD für Laravel</a>
 <a href="/de/guides/laravel-auf-ubuntu-vps-deployen">Setze Laravel auf Ubuntu ein</a>
@@ -523,43 +523,43 @@ SELECT COUNT(*) FROM users WHERE created_at &gt;= CURRENT_DATE;</code></div>
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Kostenlose open-source Laravel Bereitstellung CLI für Ubuntu VPS – Octane, Horizon, Reverb und Git-Bereitstellungen ohne Ausfallzeiten.</p>
+<p>Kostenlose Open-Source-Deploy-CLI für Laravel auf Ubuntu VPS – Octane, Horizon, Reverb und Zero-Downtime-Git-Deploys.</p>
 <ul class="footer-brand-links">
-<li><a href="/de/docs/getting-started">Fangen Sie an</a></li>
-<li><a href="/de/docs/">Dokumente</a></li>
+<li><a href="/de/docs/getting-started">Jetzt starten</a></li>
+<li><a href="/de/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Vergleichen Sie Cipi mit Alternativen" class="footer-col footer-col--compare">
+<nav aria-label="Cipi mit Alternativen vergleichen" class="footer-col footer-col--compare">
 <strong>Vergleiche Cipi</strong>
 <ul>
 <li><a href="/de/alternative-to-laravel-forge">Laravel Forge alternativ</a></li>
-<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud-Alternative</a></li>
+<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud Alternative</a></li>
 <li><a href="/de/alternative-to-ploi">Ploi Alternative</a></li>
 <li><a href="/de/alternative-to-coolify">Coolify Alternative</a></li>
 <li><a href="/de/alternative-to-runcloud">RunCloud Alternative</a></li>
 <li><a href="/de/alternative-to-cloudpanel">CloudPanel Alternative</a></li>
 <li><a href="/de/alternative-to-cpanel">cPanel Alternative</a></li>
-<li><a href="/de/alternative-to-plesk">Plesk-Alternative</a></li>
+<li><a href="/de/alternative-to-plesk">Plesk Alternative</a></li>
 <li><a href="/de/best-laravel-forge-alternatives">Beste Forge Alternativen 2026</a></li>
 <li><a href="/de/alternatives">Alle Vergleiche</a></li>
 </ul>
 </nav>
-<nav aria-label="Kostenlose Reiseführer im Wert von Laravel" class="footer-col">
-<strong>Kostenlose Reiseführer</strong>
+<nav aria-label="Kostenlose Guides im Wert von Laravel" class="footer-col">
+<strong>Kostenlose Guides</strong>
 <ul>
 <li><a href="/de/guides/apps-mit-cipi-yml-verwalten">Apps mit cipi.yml verwalten</a></li>
-<li><a href="/de/guides/gui-panel-und-api">GUI-Panel und API</a></li>
+<li><a href="/de/guides/gui-panel-und-api">Control-Panel und API</a></li>
 <li><a href="/de/guides/cipi-agent-in-laravel-nutzen">cipi/agent und Projekt-MCP</a></li>
-<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi bereitstellen</a></li>
+<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi deployen</a></li>
 <li><a href="/de/guides/">Alle Anleitungen</a></li>
                     </ul>
 </nav>
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Hergestellt mit ❤️ von<a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
-<span class="footer-license"> · Open source, MIT-lizenziert</span>
+                    Mit ❤️ gebaut von<a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+<span class="footer-license"> · Open Source, MIT-lizenziert</span>
 </div>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">SSH-Verbindungsmanager</a></li>

@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Cipi Docs — Déployer et CI/CD</title>
-<meta content="Déploiements sans temps d'arrêt, intégration Git, pipelines CI/CD, notifications et environnements de prévisualisation." name="description"/>
+<meta content="Déploiements sans interruption, intégration Git, pipelines CI/CD, notifications et environnements de prévisualisation." name="description"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/fr/docs/deploy" rel="canonical"/>
@@ -23,7 +23,7 @@
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/fr/docs/deploy" property="og:url"/>
 <meta content="Cipi Docs — Déployer et CI/CD" property="og:title"/>
-<meta content="Déploiements sans temps d'arrêt, intégration Git, pipelines CI/CD, notifications et environnements de prévisualisation." property="og:description"/>
+<meta content="Déploiements sans interruption, intégration Git, pipelines CI/CD, notifications et environnements de prévisualisation." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -35,7 +35,7 @@
     <meta property="og:locale:alternate" content="es_ES">
     <meta property="og:locale:alternate" content="pt_PT"><meta content="summary_large_image" name="twitter:card"/>
 <meta content="Cipi Docs — Déployer et CI/CD" name="twitter:title"/>
-<meta content="Déploiements sans temps d'arrêt, intégration Git, pipelines CI/CD, notifications et environnements de prévisualisation." name="twitter:description"/>
+<meta content="Déploiements sans interruption, intégration Git, pipelines CI/CD, notifications et environnements de prévisualisation." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
     {
@@ -105,7 +105,7 @@
 </svg>
 <span>Ci<span style="color:var(--signal)">pi</span></span>
 </a>
-<span class="nav-badge">Documents</span>
+<span class="nav-badge">Docs</span>
 </div>
 <div class="nav-right">
 
@@ -149,14 +149,14 @@
 <a class="sidebar-link" href="/fr/docs/getting-started#installation">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#requirements">exigences</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#quickstart">démarrage rapide</a>
-<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">pile technologique</a>
+<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">stack technologique</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#app-structure">structure de l'application</a>
 </div>
 <div class="sidebar-group" data-chapter="agent">
 <a class="sidebar-group-label" href="/fr/docs/agent">cipi agent</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-install">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-webhook">webhook</a>
-<a class="sidebar-link" href="/fr/docs/agent#agent-health">bilan de santé</a>
+<a class="sidebar-link" href="/fr/docs/agent#agent-health">health check</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-mcp">serveur MCP</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-anonymizer">anonymiseur de base de données</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-security">sécurité</a>
@@ -255,9 +255,9 @@
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-api"><code>cipi api</code></a>
 <a class="sidebar-link" href="/fr/docs/advanced#whmcs">Module WHMCS</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-sync"><code>cipi sync</code></a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et cryptage</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et chiffrement</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-smtp">notifications par courrier électronique</a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des journaux (RGPD)</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des logs (RGPD)</a>
 <a class="sidebar-link" href="/fr/docs/advanced#valkey">valkey</a>
 <a class="sidebar-link" href="/fr/docs/advanced#self-update">mise à jour automatique</a>
 <a class="sidebar-link" href="/fr/docs/advanced#wildcard-domains">domaines génériques</a>
@@ -281,7 +281,7 @@
 <div class="doc-section" id="cli-deploy">
 <p class="doc-section-label">Déployer et CI/CD</p>
 <h1><code>cipi deploy</code></h1>
-<p>Cipi utilisations <strong>Déployeur</strong> pour tous les déploiements. Chaque déploiement est atomique : une nouvelle version
+<p>Cipi utilisations <strong>Deployer</strong> pour tous les déploiements. Chaque déploiement est atomique : une nouvelle version
                     répertoire est entièrement préparé avant le <code>current</code> le lien symbolique est échangé, donc le trafic n'est jamais
                     interrompu.</p>
 <div class="callout info">
@@ -290,7 +290,7 @@
 <line x1="12" x2="12" y1="8" y2="12"></line>
 <line x1="12" x2="12.01" y1="16" y2="16"></line>
 </svg>
-<div>Depuis <strong>v4.5.4</strong> Cipi lots <strong>Déployeur 8</strong>, ce qui nécessite
+<div>Depuis <strong>v4.5.4</strong> Cipi lots <strong>Deployer 8</strong>, ce qui nécessite
                         <strong>PHP ≥ 8,3</strong>. <code>cipi deploy</code> et <code>cipi deploy --rollback</code>
                         abandonner avec un message de mise à niveau clair <em>avant</em> appeler Deployer lorsqu'une application est toujours épinglée
                         vers une ancienne version PHP — changez-la avec <code>cipi app edit &lt;app&gt; --php=8.3</code> (ou
@@ -303,7 +303,7 @@
                     et le <code>deploy</code> / <code>composer</code> alias dans l'utilisateur de l'application <code>.bashrc</code>.
                 </p>
 <ol>
-<li>Arrêter les travailleurs de file d'attente (<code>cipi worker stop</code>)</li>
+<li>Arrêter les workers de file d'attente (<code>cipi worker stop</code>)</li>
 <li>Cloner le dépôt dans <code>releases/N/</code></li>
 <li>Courir <code>composer install --no-dev</code> (avec le PHP de l'application)</li>
 <li>Lien <code>shared/.env</code> et <code>shared/storage/</code></li>
@@ -311,11 +311,11 @@
 <li>Courir <code>artisan optimize</code></li>
 <li>Courir <code>artisan storage:link</code></li>
 <li>Échange <code>current</code> lien symbolique atomiquement</li>
-<li>Redémarrer les travailleurs de file d'attente</li>
+<li>Redémarrer les workers de file d'attente</li>
 <li>Élaguez les anciennes versions (conservez les 5 dernières)</li>
 </ol>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi deploy myapp              <span class="c"># deploy latest commit</span>
 <span class="p">$</span> cipi deploy myapp --rollback   <span class="c"># instant rollback to previous release</span>
 <span class="p">$</span> cipi deploy myapp --releases   <span class="c"># list releases with date, commit and subject (v5.1.0+)</span>
@@ -333,7 +333,7 @@
 <h3>Savoir si un déploiement a fonctionné (v5.1.0+)</h3>
 <p>Jusqu'à 5.0.x un déploiement défaillant pouvait passer sous silence : la branche défaillante, ses avertissements, le rollback
                     indice et le <code>deploy_fail</code> l'e-mail était un code inaccessible, car une sortie non nulle de
-                    Le déployeur a tué le <code>cipi</code> processus sur place. Depuis <strong>v5.1.0</strong>:</p>
+                    Le Deployer a tué le <code>cipi</code> processus sur place. Depuis <strong>v5.1.0</strong>:</p>
 <ul>
 <li><strong>Les deux chemins envoient des e-mails en cas de succès et d'échec</strong> — le CLI et le Git automatique
                         webhook pareil. Les sujets sont visiblement différents
@@ -353,14 +353,14 @@
                     est horodaté et chaque exécution est encadrée par une bannière nommant le déclencheur (CLI ou webhook), le
                     branche, la sortie et la durée.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi deploy myapp --log=100   <span class="c"># same as tailing /home/myapp/logs/deploy.log</span>
 <span class="p">$</span> cipi deploy myapp --releases  <span class="c"># release number, date, commit, subject</span></pre>
 </div>
 <p>Les répertoires de versions restent numériques - la restauration dépend de cet ordre - donc <code>--releases</code>
                     ajoute les détails humains par-dessus plutôt que de renommer quoi que ce soit.</p>
-<p>Depuis <strong>v5.0</strong>, s'inscrire <strong>pré-déployer des instantanés de base de données</strong> sont disponibles via<code>--snapshot</code> / <code>--snapshot-required</code> ou un paramètre d'application permanent - voir
-                    <a href="#predeploy-snapshot">Pré-déployer des instantanés de base de données</a>. Octane applications utilisent le
+<p>Depuis <strong>v5.0</strong>, s'inscrire <strong>pré-déployer des snapshots de base de données</strong> sont disponibles via<code>--snapshot</code> / <code>--snapshot-required</code> ou un paramètre d'application permanent - voir
+                    <a href="#predeploy-snapshot">Pré-déployer des snapshots de base de données</a>. Octane applications utilisent le
                     <code>laravel-octane.php</code> Modèle de déploiement (recharger/redémarrer Octane lors du déploiement) ; activer le nœud
                     construit avec <code>cipi app edit &lt;app&gt; --node-build='…'</code>.
                 </p>
@@ -370,17 +370,17 @@
 <line x1="12" x2="12" y1="9" y2="13"></line>
 <line x1="12" x2="12.01" y1="17" y2="17"></line>
 </svg>
-<div>Si un déploiement est interrompu (par exemple par une erreur réseau), le déployeur peut laisser un fichier de verrouillage derrière lui.
+<div>Si un déploiement est interrompu (par exemple par une erreur réseau), le Deployer peut laisser un fichier de verrouillage derrière lui.
                         Utiliser <code>cipi deploy myapp --unlock</code> pour le supprimer avant de le redéployer.</div>
 </div>
 </div>
 <div class="doc-section" id="predeploy-snapshot">
-<h2>Pré-déployer des instantanés de base de données</h2>
+<h2>Pré-déployer des snapshots de base de données</h2>
 <p>Depuis <strong>v5.0</strong>, <code>cipi deploy &lt;app&gt;</code> peut vider la base de données
                     <em>avant</em> le pipeline de publication s'exécute. Les instantanés atterrissent sous<code>/var/log/cipi/backups/</code> — le même chemin utilisé par
                     <a href="/fr/docs/infrastructure#cli-db"><code>cipi db backup</code></a>.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi deploy shop --snapshot            <span class="c"># dump first; warn and continue on failure</span>
 <span class="p">$</span> cipi deploy shop --snapshot-required   <span class="c"># dump first; abort deploy if snapshot fails</span></pre>
 </div>
@@ -397,7 +397,7 @@
 <h3>Activer à chaque déploiement</h3>
 <p>Activez-le de manière permanente pour une application afin que chaque déploiement (CLI, webhook ou pipeline) prenne d'abord un instantané :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi app edit shop --predeploy-snapshot</pre>
 </div>
 <div class="callout warning">
@@ -419,7 +419,7 @@
                     <code>apps.json</code> et appliqué en régénérant <code>deploy.php</code> à partir du modèle -
                     une alternative sûre à l'édition de PHP de forme libre.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi app deploy-config myapp
 <span class="p">$</span> cipi app deploy-config myapp --keep-releases=5
 <span class="p">$</span> cipi app deploy-config myapp --migrate --optimize --storage-link
@@ -429,7 +429,7 @@
 <span class="p">$</span> cipi app deploy-config myapp --node-build='npm ci &amp;&amp; npm run build'
 <span class="p">$</span> cipi app deploy-config myapp --predeploy-snapshot</pre>
 </div>
-<p>REPOS : <code>GET|PUT /api/apps/{name}/deploy-config</code> (capacité
+<p>REST : <code>GET|PUT /api/apps/{name}/deploy-config</code> (capacité
                     <code>apps-deploy-config</code>, API <strong>1.14+</strong> / Cipi <strong>5.0.3+</strong>).
                     MCP : <code>AppDeployConfigShow</code>, <code>AppDeployConfigUpdate</code>.</p>
 </div>
@@ -437,13 +437,13 @@
 <h2><code>cipi.yml</code> — configuration qui voyage avec le code</h2>
 <p>Disponible depuis <strong>v5.1.0</strong>. Une application peut transporter un <code>cipi.yml</code> fichier dans son
                     référentiel décrivant l'état attendu : <strong>alias de domaine</strong>, <strong>version PHP
-                        et paramètres</strong>, <strong>bases de données supplémentaires</strong>, <strong>travailleurs de la file d'attente</strong> ou <strong>Horizon</strong>, <strong>Reverb</strong>, le
-                    <strong>planificateur</strong>, c'est <strong>bilan de santé</strong> et son <strong>sauvegarde
+                        et paramètres</strong>, <strong>bases de données supplémentaires</strong>, <strong>workers de la file d'attente</strong> ou <strong>Horizon</strong>, <strong>Reverb</strong>, le
+                    <strong>planificateur</strong>, c'est <strong>health check</strong> et son <strong>sauvegarde
                         stratégie</strong>. Le fichier réside à côté du code, la configuration du serveur est donc revue,
                     versionné et expédié comme tout le reste.</p>
 <h3>Commandes</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi yml generate myapp          <span class="c"># this app's current config, as a cipi.yml</span>
 <span class="p">$</span> cipi yml example myapp           <span class="c"># blank commented template, in myapp's namespace</span>
 <span class="p">$</span> cipi yml validate myapp          <span class="c"># parse and check, change nothing</span>
@@ -459,7 +459,7 @@
                     databases, its queue workers (read back out of Supervisor), the scheduler and the backup profiles it
                     owns — as a ready-to-commit file.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi yml generate myapp &gt; cipi.yml   <span class="c"># then commit it</span>
 <span class="p">$</span> cipi yml plan myapp                  <span class="c"># reports nothing to do</span></pre>
 </div>
@@ -584,18 +584,18 @@ backup:
 <line x1="12" x2="12.01" y1="17" y2="17"></line>
 </svg>
 <div>Une fois <code>yml auto</code> est activé, toute personne pouvant accéder à ce référentiel peut modifier le nom de l'application.
-                        alias, paramètres PHP, travailleurs, contrôle de santé et profils de sauvegarde. C'est le but de
+                        alias, paramètres PHP, workers, contrôle de santé et profils de sauvegarde. C'est le but de
                         configuration-as-code - traite l'accès en écriture au dépôt en conséquence.</div>
 </div>
 </div>
 <div class="doc-section" id="cli-auth">
 <h2><code>auth.json</code></h2>
 <p>Gérer le <code>auth.json</code> fichier pour une application. Ce fichier se trouve à<code>/home/&lt;app&gt;/shared/auth.json</code> et est automatiquement lié symboliquement à chaque version par
-                    Déployeur - exactement comme <code>.env</code>. Utilisez-le pour stocker des données d'identification structurées (par exemple API
+                    Deployer - exactement comme <code>.env</code>. Utilisez-le pour stocker des données d'identification structurées (par exemple API
                     clés, indicateurs de fonctionnalité ou toute charge utile JSON) que votre application Laravel peut lire au moment de l'exécution.
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi auth create myapp   <span class="c"># create auth.json with initial { "users": [] } structure</span>
 <span class="p">$</span> cipi auth edit myapp     <span class="c"># open in $EDITOR (fallback: nano), validate JSON on close</span>
 <span class="p">$</span> cipi auth show myapp     <span class="c"># print contents formatted with jq</span>
@@ -607,7 +607,7 @@ backup:
 <span class="p">$</span> cipi auth show myapp --json
 <span class="p">$</span> cipi auth delete myapp --force</pre>
 </div>
-<p>REPOS : <code>GET|POST|PUT|DELETE /api/apps/{name}/auth</code> (capacité <code>apps-auth</code>, API
+<p>REST : <code>GET|POST|PUT|DELETE /api/apps/{name}/auth</code> (capacité <code>apps-auth</code>, API
                     <strong>1.14+</strong>) — Composer/structuré JSON, distinct de HTTP Basic Auth.
                     MCP : <code>AppAuthJsonShow</code>, <code>AppAuthJsonCreate</code>,
                     <code>AppAuthJsonUpdate</code>, <code>AppAuthJsonDelete</code>.</p>
@@ -646,14 +646,14 @@ backup:
 <tr>
 <td><code>cipi auth delete &lt;app&gt;</code></td>
 <td>Demande une confirmation, puis supprime <code>shared/auth.json</code> et supprime le
-                                                    <code>auth.json</code> entrée de <code>shared_files</code> dans le déployeur de l'application
+                                                    <code>auth.json</code> entrée de <code>shared_files</code> dans le Deployer de l'application
                                                     configuration.
                                                 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<h3>Intégration du déployeur</h3>
+<h3>Intégration du Deployer</h3>
 <p><code>cipi auth create</code> ajoute automatiquement <code>auth.json</code> à la
                     <code>shared_files</code> liste dans <code>/home/&lt;app&gt;/.deployer/deploy.php</code>, et
                     <code>cipi auth delete</code> le supprime. Cela signifie que le fichier est traité exactement comme
@@ -676,10 +676,10 @@ backup:
 <p>Cipi est prêt à travailler avec <strong>GitHub</strong> et <strong>GitLab</strong> mais il prend en charge n'importe quel
                     autre fournisseur Git qui prend en charge les clés de déploiement SSH – pas de dépendance vis-à-vis du fournisseur.</p>
 <p>Pour les serveurs self-hosted ou Git personnalisés, vous devez faire confiance à l'empreinte digitale de l'hôte du serveur avant
-                    Le déployeur peut cloner via SSH. Utilisez le <code>--trust-host</code> drapeau pour ajouter l'empreinte digitale au
+                    Le Deployer peut cloner via SSH. Utilisez le <code>--trust-host</code> drapeau pour ajouter l'empreinte digitale au
                     utilisateur de l'application <code>~/.ssh/known_hosts</code> automatiquement :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># show the deploy key and add it to your Git provider</span>
 <span class="p">$</span> cipi deploy myapp --key
 
@@ -698,7 +698,7 @@ backup:
 </svg>
 <div>Lorsqu'un port non standard est spécifié, Cipi écrit également le
                         <code>Host</code> / <code>Port</code> accès à l'utilisateur de l'application <code>~/.ssh/config</code> donc
-                        ce déployeur peut atteindre le serveur sans aucune configuration supplémentaire.
+                        ce Deployer peut atteindre le serveur sans aucune configuration supplémentaire.
                     </div>
 </div>
 </div>
@@ -709,7 +709,7 @@ backup:
                 </p>
 <h3>Enregistrer un jeton</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># GitHub (fine-grained or classic PAT)</span>
 <span class="p">$</span> cipi git github-token ghp_xxxxxxxxxxxxxxxxxxxx
 
@@ -798,10 +798,10 @@ backup:
 <p>La configuration automatique est ignorée lorsqu'aucun jeton n'est configuré, lorsque l'appel API échoue (autorisations incorrectes,
                     référentiel introuvable, limite de débit), ou lorsque le référentiel est hébergé chez un fournisseur autre que
                     GitHub ou GitLab (par exemple Gitea, Forgejo, Bitbucket). Dans tous ces cas, Cipi revient au
-                    flux de travail manuel et la création de l'application se déroule normalement.</p>
+                    workflow manuel et la création de l'application se déroule normalement.</p>
 <p>Pour configurer manuellement la clé de déploiement et webhook :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># print the SSH deploy key to add to your Git provider</span>
 <span class="p">$</span> cipi deploy myapp --key
 
@@ -872,12 +872,12 @@ after('deploy:symlink', 'notify:slack');</pre>
 <h3 id="cli-deploy-script-npm">Création d'actifs frontend (npm / Vite)</h3>
 <p>Il n'y a pas de dédié <code>cipi</code> CLI indicateur pour les builds frontend (par ex. <code>npm install &amp;&amp; npm run build</code>).
                     <strong>Personnalisation <code>deploy.php</code> est l’approche soutenue et attendue</strong> — définir un
-                    Déployeur <code>task()</code> et accroche-le avec <code>after()</code> ou <code>before()</code>. Vous ne le faites pas
+                    Deployer <code>task()</code> et accroche-le avec <code>after()</code> ou <code>before()</code>. Vous ne le faites pas
                     il faut éviter cela ; l'extension du pipeline est exactement à quoi sert le fichier.</p>
 <p>Cipi installations <strong>Node.js et npm</strong> sur le serveur lors de l'installation. Vérifiez qu'ils sont disponibles comme
                     l'utilisateur de l'application :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> ssh myapp@your-server-ip
 myapp@server:~$ node -v &amp;&amp; npm -v</pre>
 </div>
@@ -928,7 +928,7 @@ after('npm:ci', 'npm:build');</pre>
 </div>
 <p>Modifiez le fichier sur le serveur en tant qu'utilisateur de l'application, puis testez avec <code>cipi deploy myapp</code>:</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> ssh myapp@your-server-ip
 myapp@server:~$ nano ~/.deployer/deploy.php
 <span class="c"># paste the custom tasks at the bottom, save, then as root:</span>
@@ -987,7 +987,7 @@ task('deploy', [
 <h3>Tester vos modifications</h3>
 <p>Après édition <code>deploy.php</code>, effectuez toujours un test de déploiement avant de passer en production :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi deploy myapp
 
 <span class="c"># If something goes wrong, instant rollback:</span>
@@ -1011,7 +1011,7 @@ task('deploy', [
 <div class="doc-section" id="ci-overview">
 <h2>Déployer et CI/CD — Présentation</h2>
 <p>Avec Cipi, <strong>CI</strong> (construire et tester) et <strong>CD</strong> (mise en production) peut
-                    être divisés ou combinés. Chaque déploiement fonctionne finalement de la même manière <a href="#cli-deploy">Déployeur
+                    être divisés ou combinés. Chaque déploiement fonctionne finalement de la même manière <a href="#cli-deploy">Deployer
                         canalisation</a> sur le serveur — cloner, <code>composer install</code>, migrations, échange de liens symboliques,
                     redémarrage du travailleur. Quels sont les changements <em>qu'est-ce qui déclenche</em> ce pipeline.</p>
 <p>Cipi prend en charge deux modèles de déclencheurs. Pour la plupart des applications Laravel, commencez par le webhook + <a href="/fr/docs/agent">Cipi Agent</a>chemin. Passez à un pipeline CI/CD complet lorsque vous avez besoin de portes, de sauvegardes ou
@@ -1113,7 +1113,7 @@ task('deploy', [
 <line x1="12" x2="12.01" y1="17" y2="17"></line>
 </svg>
 <div><strong>Choisissez un déclencheur par application.</strong> Ne laissez pas un webhook de production actif alors que
-                        le pipeline en cours d'exécution se déploie lors du push : deux exécutions simultanées du déployeur sont en conflit sur le fichier de verrouillage. Utiliser
+                        le pipeline en cours d'exécution se déploie lors du push : deux exécutions simultanées du Deployer sont en conflit sur le fichier de verrouillage. Utiliser
                         <code>cipi deploy myapp --unlock</code> si un cadenas coincé est laissé sur place.
                     </div>
 </div>
@@ -1126,11 +1126,11 @@ task('deploy', [
                     le serveur - pas de SSH du coureur CI, non <code>sudo</code>, aucun port entrant ouvert au-delà de HTTPS.
                 </p>
 <h3>Comment fonctionne le flux webhook</h3>
-<p>Le design sépare <strong>acquittement rapide HTTP</strong> de <strong>Déployeur lent
+<p>Le design sépare <strong>acquittement rapide HTTP</strong> de <strong>Deployer lent
                         travail</strong>. Un déploiement peut prendre plusieurs minutes ; Les fournisseurs Git expirent webhook HTTP appels
                     après environ 10 secondes. Cipi résout ce problème avec un fichier d'indicateur et la crontab de l'utilisateur de l'application.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">flux</span></div>
+<div class="code-block-header"><span class="code-block-lang">flow</span></div>
 <pre>  Developer                    Git provider              Your Laravel app (Cipi Agent)           Server (app user cron)
       │                              │                              │                                        │
       │  git push main               │                              │                                        │
@@ -1152,9 +1152,9 @@ task('deploy', [
       │                              │                              │         clone → composer → migrate     │
       │                              │                              │         → symlink swap → workers       │</pre>
 </div>
-<p>Le déployeur s'exécute toujours en tant que <strong>utilisateur de l'application Linux</strong> (par ex. <code>myapp</code>), avec le
+<p>Le Deployer s'exécute toujours en tant que <strong>utilisateur de l'application Linux</strong> (par ex. <code>myapp</code>), avec le
                     corriger les autorisations PHP des binaires et des fichiers — le même contexte qu'un manuel
-                    <code>cipi deploy myapp</code>. Le webhook ne s'adresse jamais directement au déployeur ; ça laisse seulement tomber le
+                    <code>cipi deploy myapp</code>. Le webhook ne s'adresse jamais directement au Deployer ; ça laisse seulement tomber le
                     fichier de déclenchement que la crontab de Cipi surveille déjà.
                 </p>
 <h3>Conditions préalables</h3>
@@ -1195,14 +1195,14 @@ task('deploy', [
 <p><strong>1. Créez l'application et déployez-la une fois manuellement</strong> pour que le serveur puisse cloner votre dépôt :
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi app create --user=myapp --domain=myapp.com \
     --repository=git@github.com:you/myapp.git --branch=main --php=8.5
 <span class="p">$</span> cipi deploy myapp</pre>
 </div>
 <p><strong>2. Installez l'agent Cipi</strong> dans votre Laravel projet localement, validez et poussez :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> composer require cipi/agent
 <span class="p">$</span> git add composer.json composer.lock
 <span class="p">$</span> git commit -m "Add Cipi Agent for webhook deploys"
@@ -1214,7 +1214,7 @@ task('deploy', [
                     <code>cipi git status</code>. Sinon, récupérez l'URL et le secret :
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi deploy myapp --webhook</pre>
 </div>
 <p>Ajoutez le webhook dans votre fournisseur Git :</p>
@@ -1253,7 +1253,7 @@ task('deploy', [
                     recevoir un <code>skipped</code> réponse et aucune exécution de déploiement.</p>
 <p><strong>5. Vérifiez.</strong> Envoyez un petit commit à <code>main</code> et regardez le journal de déploiement :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi app logs myapp --type=deploy
 <span class="c"># or on the server as the app user:</span>
 <span class="p">$</span> tail -f /home/myapp/logs/deploy.log</pre>
@@ -1338,7 +1338,7 @@ task('deploy', [
 <li><strong>Monorepo multi-applications</strong> — déployer <code>frontend</code> et <code>api</code> dans
                         parallèle après un seul travail de test</li>
 </ul>
-<p>Pour ces flux de travail,<strong>désactiver la production webhook</strong> (ou ne jamais en créer un) donc seulement
+<p>Pour ces workflow,<strong>désactiver la production webhook</strong> (ou ne jamais en créer un) donc seulement
                     le pipeline déclenche le déploiement. Vous pouvez toujours utiliser Cipi Agent dans l'application pour les contrôles de santé et MCP.</p>
 <h3>Accès SSH pour CI</h3>
 <div class="callout info">
@@ -1354,7 +1354,7 @@ task('deploy', [
                     </div>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># on your local machine</span>
 <span class="p">$</span> ssh-keygen -t ed25519 -C "ci-deploy" -f ~/.ssh/ci_deploy -N ""
 
@@ -1482,7 +1482,7 @@ deploy:
 </tr>
 <tr>
 <td>Environnements de prévisualisation</td>
-<td>Créer/mettre à jour/supprimer Cipi applications par branche avec le caractère générique DNS + SSL</td>
+<td>Créer/mettre à jour/supprimer Cipi applications par branche avec le wildcard DNS + SSL</td>
 <td><a href="#preview-environments">Environnements de prévisualisation</a></td>
 </tr>
 </tbody>
@@ -1495,10 +1495,10 @@ deploy:
 <div class="doc-section" id="deploy-notifications">
 <h2>Déployer les notifications</h2>
 <p><strong>Cas d'utilisation du pipeline :</strong> le chemin webhook se déploie silencieusement — Git renvoie 200 et l'équipe
-                    ne le découvre que s'ils regardent les journaux. Avec un <a href="#ci-pipeline-ssh">Pipeline SSH</a>, ajouter
+                    ne le découvre que s'ils regardent les logs. Avec un <a href="#ci-pipeline-ssh">Pipeline SSH</a>, ajouter
                     étapes de notification après <code>cipi deploy</code> pour diffuser le succès, l'échec et l'automatique
                     retours vers Slack ou Telegram. Les deux exemples ci-dessous fonctionnent avec GitHub Actions et GitLab CI en utilisant
-                    uniquement des appels HTTP standard — pas de dépendances de plate-forme supplémentaires.</p>
+                    uniquement des appels HTTP standard — pas de dépendances de plateforme supplémentaires.</p>
 <h3>Mou</h3>
 <p>Ajoutez une étape finale qui publie sur un Slack webhook quel que soit le résultat du déploiement. Utiliser
                     <code>if: always()</code> dans GitHub Actions afin que la notification se déclenche à la fois en cas de succès et d'échec.
@@ -1667,10 +1667,10 @@ deploy:
 <p><strong>Cas d'utilisation du pipeline :</strong> un déploiement webhook ne peut pas exécuter une étape de sauvegarde avant de publier le code —
                     l'événement push se déclenche immédiatement. Dans un <a href="#ci-pipeline-ssh">CI/CD canalisation</a>, ajoutez un
                     dédié <code>backup</code> étape qui doit réussir avant <code>deploy</code> démarre. Un
-                    le flux de travail de qualité production doit toujours créer un point de restauration <em>avant</em> le nouveau code va
+                    le workflow de qualité production doit toujours créer un point de restauration <em>avant</em> le nouveau code va
                     vivre. Cipi fournit deux commandes de sauvegarde complémentaires qui correspondent à deux niveaux de sécurité différents :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span></div>
 <pre><span class="c"># local DB snapshot — fast, on-disk, instant rollback</span>
 <span class="p">$</span> cipi db backup myapp
 <span class="c"># → /var/log/cipi/backups/myapp_20260303_143012.sql.gz</span>
@@ -1832,7 +1832,7 @@ deploy:
 <h3>Restaurer à partir d'une sauvegarde locale</h3>
 <p>Si vous devez restaurer la base de données vers l'instantané pris juste avant le déploiement :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># list available local snapshots</span>
 <span class="p">$</span> ls -lh /var/log/cipi/backups/myapp_*.sql.gz
 
@@ -1844,7 +1844,7 @@ deploy:
 </div>
 <h3>Restaurer à partir de la sauvegarde S3</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># list available S3 snapshots for this app</span>
 <span class="p">$</span> cipi backup list myapp
 
@@ -1879,12 +1879,12 @@ deploy:
                     Cipi nouvelles applications par agence. Les environnements de prévisualisation nécessitent un <a href="#ci-pipeline-ssh">CI/CD
                         canalisation</a> qui se connecte en SSH au serveur, calcule un nom d'application déterministe à partir de la branche et
                     court<code>cipi app create</code> ou <code>cipi deploy</code> par conséquent. Chaque non-production
-                    La branche peut obtenir sa propre URL en direct : une application Laravel entièrement déployée avec sa propre base de données, ses propres travailleurs et ses propres ressources.
+                    La branche peut obtenir sa propre URL en direct : une application Laravel entièrement déployée avec sa propre base de données, ses propres workers et ses propres ressources.
                     HTTPS. Ce modèle est parfois appelé « évaluer les applications » ou « environnements éphémères ».</p>
 <p>Le format URL utilise trois slugs séparés par des tirets, afin que chaque environnement soit lisible par l'homme et
                     unique au monde :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">exemples d'URL</span></div>
+<div class="code-block-header"><span class="code-block-lang">example URLs</span></div>
 <pre>https://develop-acmeco-3a1f9c2e.preview.domain.ltd
 https://release-1-2-3-acmeco-3a1f9c2e.preview.domain.ltd
 https://main-acmeco-3a1f9c2e.preview.domain.ltd</pre>
@@ -1892,7 +1892,7 @@ https://main-acmeco-3a1f9c2e.preview.domain.ltd</pre>
 <h3>Comment les identifiants sont générés</h3>
 <p>Trois valeurs sont dérivées lors de l'exécution du pipeline :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># branch name → lowercase, non-alphanum → hyphens, trim edges</span>
 BRANCH_SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' \
   | sed 's/[^a-z0-9]/-/g; s/--*/-/g; s/^-//; s/-$//')
@@ -2171,7 +2171,7 @@ cleanup-preview:
                         <code>if cipi app show</code> La protection empêche la double création dans des conditions normales.<br/><br/>
 <strong>Évitez de courir <code>cipi ssl install</code></strong> sur une application de prévisualisation - ce sera
                         remplacer la configuration du certificat générique par un certificat Let's Encrypt par domaine qui échouera (le
-                        le domaine n'a pas d'enregistrement DNS dédié, seulement le caractère générique).
+                        le domaine n'a pas d'enregistrement DNS dédié, seulement le wildcard).
                     </div>
 </div>
 </div>
@@ -2190,7 +2190,7 @@ cleanup-preview:
 </div>
 <footer>
 <div class="footer-inner">
-<span>Réalisé avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
+<span>Fait avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" target="_blank">Essayez SSH
                         Gestionnaire de connexions avec Cipi</a></li>

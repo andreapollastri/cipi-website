@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Comment déployer Laravel sur un Ubuntu VPS — Guide complet 2026</title>
-<meta content="Guide étape par étape pour déployer Laravel sur un Ubuntu VPS en 2026 : la pile de production complète (Nginx, PHP-FPM/Octane, MariaDB, Valkey), configuration manuelle, alternative à une commande, durcissement et opérations." name="description"/>
+<title>Comment déployer Laravel sur un VPS Ubuntu — Guide complet 2026</title>
+<meta content="Guide étape par étape pour déployer Laravel sur un VPS Ubuntu en 2026 : la stack de production complète (Nginx, PHP-FPM/Octane, MariaDB, Valkey), configuration manuelle, alternative à une commande, durcissement et opérations." name="description"/>
 <meta content="déployer laravel ubuntu, laravel vps configuration, laravel serveur de production, nginx php-fpm laravel, laravel guide de déploiement, ubuntu laravel hébergement" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
@@ -23,8 +23,8 @@
 <meta content="article" property="og:type"/>
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/fr/guides/deployer-laravel-sur-vps-ubuntu" property="og:url"/>
-<meta content="Comment déployer Laravel sur un Ubuntu VPS — Guide complet 2026" property="og:title"/>
-<meta content="Guide étape par étape pour déployer Laravel sur un Ubuntu VPS en 2026 : la pile de production complète (Nginx, PHP-FPM/Octane, MariaDB, Valkey), configuration manuelle, alternative à une commande, durcissement et opérations." property="og:description"/>
+<meta content="Comment déployer Laravel sur un VPS Ubuntu — Guide complet 2026" property="og:title"/>
+<meta content="Guide étape par étape pour déployer Laravel sur un VPS Ubuntu en 2026 : la stack de production complète (Nginx, PHP-FPM/Octane, MariaDB, Valkey), configuration manuelle, alternative à une commande, durcissement et opérations." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -39,17 +39,17 @@
 <meta content="https://web.ap.it" property="article:author"/>
 <meta content="Guides" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="Comment déployer Laravel sur un Ubuntu VPS — Guide complet 2026" name="twitter:title"/>
-<meta content="Guide étape par étape pour déployer Laravel sur un Ubuntu VPS en 2026 : la pile de production complète (Nginx, PHP-FPM/Octane, MariaDB, Valkey), configuration manuelle, alternative à une commande, durcissement et opérations." name="twitter:description"/>
+<meta content="Comment déployer Laravel sur un VPS Ubuntu — Guide complet 2026" name="twitter:title"/>
+<meta content="Guide étape par étape pour déployer Laravel sur un VPS Ubuntu en 2026 : la stack de production complète (Nginx, PHP-FPM/Octane, MariaDB, Valkey), configuration manuelle, alternative à une commande, durcissement et opérations." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "How to Deploy Laravel on an Ubuntu VPS — Complete 2026 Guide",
-  "name": "How to Deploy Laravel on an Ubuntu VPS — Complete 2026 Guide",
+  "headline": "How to Deploy Laravel on an VPS Ubuntu — Complete 2026 Guide",
+  "name": "How to Deploy Laravel on an VPS Ubuntu — Complete 2026 Guide",
   "url": "https://cipi.sh/en/guides/deploy-laravel-ubuntu-vps",
-  "description": "Step-by-step guide to deploying Laravel on an Ubuntu VPS in 2026: the full production stack (Nginx, PHP-FPM/Octane, MariaDB, Valkey), manual setup, the one-command alternative, hardening and operations.",
+  "description": "Step-by-step guide to deploying Laravel on an VPS Ubuntu in 2026: the full production stack (Nginx, PHP-FPM/Octane, MariaDB, Valkey), manual setup, the one-command alternative, hardening and operations.",
   "inLanguage": "fr",
   "image": "https://cipi.sh/og.png",
   "datePublished": "2026-08-04",
@@ -110,7 +110,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Deploy Laravel on Ubuntu",
+      "name": "Déployer Laravel sur Ubuntu",
       "item": "https://cipi.sh/en/guides/deploy-laravel-ubuntu-vps"
     }
   ]
@@ -302,14 +302,14 @@
 <span class="current">Déployer Laravel sur Ubuntu</span>
 </nav>
 <span class="cmp-eyebrow">Ubuntu · Laravel déploiement</span>
-<h1>Comment déployer Laravel sur un<em>Ubuntu VPS</em></h1>
+<h1>Comment déployer Laravel sur un<em>VPS Ubuntu</em></h1>
 <p class="cmp-updated">Par <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Dernière mise à jour : <time datetime="2026-08-04">4 août 2026</time> · lecture gratuite, pas de paywall</p>
-<p class="lead">Un VPS de 5 à 7 $/mois reste le moyen le moins cher et le plus flexible d'exécuter Laravel en production, si vous le configurez correctement. Ce guide présente la pile de production complète, chaque étape manuelle, l'alternative à une seule commande et les habitudes opérationnelles qui maintiennent un serveur en bonne santé pendant des années.</p>
+<p class="lead">Un VPS de 5 à 7 $/mois reste le moyen le moins cher et le plus flexible d'exécuter Laravel en production, si vous le configurez correctement. Ce guide présente la stack de production complète, chaque étape manuelle, l'alternative à une seule commande et les habitudes opérationnelles qui maintiennent un serveur en bonne santé pendant des années.</p>
 <div class="toc">
 <strong>Dans ce guide</strong>
 <ol>
 <li><a href="#why-vps">Pourquoi un VPS (et quand pas)</a></li>
-<li><a href="#stack">La pile de production, expliquée</a></li>
+<li><a href="#stack">La stack de production, expliquée</a></li>
 <li><a href="#manual">La configuration manuelle, étape par étape</a></li>
 <li><a href="#one-command">L'alternative à une seule commande</a></li>
 <li><a href="#operations">Opérations post-déploiement importantes</a></li>
@@ -331,7 +331,7 @@
                 plateforme comme <a class="inline" href="/fr/alternative-to-laravel-cloud">Laravel Nuage</a> est le plus sûr
                 commerce - vous payez pour faire des opérations le problème de quelqu'un d'autre.</li>
 </ul>
-<h2 id="stack">La pile de production, expliquée</h2>
+<h2 id="stack">La stack de production, expliquée</h2>
 <p>Chaque serveur de production Laravel converge vers les mêmes composants. Comprendre ce que fait chaque pièce avant
             vous automatisez tout cela :</p>
 <div class="cmp-table-wrap">
@@ -339,14 +339,14 @@
 <thead><tr><th>Composant</th><th>Rôle</th><th>Remarques</th></tr></thead>
 <tbody>
 <tr><td>Nginx</td><td>Serveur Web/proxy inverse</td><td>Sert des actifs statiques, des proxys PHP requêtes</td></tr>
-<tr><td>PHP-FPM ou Octane</td><td>Durée d'exécution PHP</td><td>FPM est la valeur par défaut fiable ; Octane (FrankenPHP) maintient l'application démarrée pour un débit élevé</td></tr>
+<tr><td>PHP-FPM ou Octane</td><td>Runtime PHP</td><td>FPM est la valeur par défaut fiable ; Octane (FrankenPHP) maintient l'application démarrée pour un débit élevé</td></tr>
 <tr><td>MariaDB / PostgreSQL</td><td>Base de données</td><td>Soit cela fonctionne avec Laravel ; choisir par application</td></tr>
 <tr><td>Valkey (compatible Redis)</td><td>Cache, sessions, files d'attente</td><td>Open-source Redis fourchette ; rendez-vous pour Laravel</td></tr>
 <tr><td>Supervisor</td><td>Gestionnaire de processus</td><td>Garde <code>queue:work</code> et Horizon en vie</td></tr>
 <tr><td>Cron</td><td>Planificateur</td><td>Une entrée : <code>artisan schedule:run</code> chaque minute</td></tr>
 <tr><td>UFW + Fail2ban</td><td>Pare-feu / protection contre la force brute</td><td>Refus par défaut, interdiction des échecs SSH répétés</td></tr>
 <tr><td>Bot certifié</td><td>TLS certificats</td><td>Certificats Let's Encrypt gratuits avec renouvellement automatique</td></tr>
-<tr><td>Versions de style déployeur</td><td>Déploiements sans temps d'arrêt</td><td>Répertoire des versions + échange de lien symbolique</td></tr>
+<tr><td>Versions de style Deployer</td><td>Déploiements sans interruption</td><td>Répertoire des versions + échange de lien symbolique</td></tr>
 </tbody>
 </table>
 </div>
@@ -387,15 +387,15 @@
 <h2 id="one-command">L'alternative à une seule commande</h2>
 <p>Tout dans la section précédente est exactement ce que <a class="inline" href="/">Cipi</a> automatise. Sur un
             frais Ubuntu 24.04/26.04 VPS :</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | coup</div>
-<p>En dix minutes environ, vous obtenez la pile complète : Nginx, PHP, MariaDB, Valkey, Supervisor, UFW, Fail2ban,
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
+<p>En dix minutes environ, vous obtenez la stack complète : Nginx, PHP, MariaDB, Valkey, Supervisor, UFW, Fail2ban,
             Certbot, Deployer — plus un renforcement que vous feriez autrement à la main : connexion root désactivée, SSH avec clé uniquement pour le
             utilisateur admin et un mot de passe root aléatoire stocké dans <code>/etc/cipi/server.json</code>. Alors chaque application en est une
             plus de commande :</p>
 <div class="install-box">cipi création d'application <span class="c"># add --octane for Laravel Octane on FrankenPHP</span></div>
-<p>Cela prévoit un <strong>utilisateur du système isolé, pool PHP-FPM, hôte virtuel Nginx et base de données par application</strong>,
-            connecte GitHub ou GitLab avec des clés de déploiement et des webhooks pour des déploiements Git sans temps d'arrêt et une file d'attente de connexion
-            les travailleurs et le planificateur. SSL est <code>cipi ssl install</code>; PostgreSQL est
+<p>Cela prévoit un <strong>utilisateur du système isolé, pool PHP-FPM, vhost Nginx et base de données par application</strong>,
+            connecte GitHub ou GitLab avec des clés de déploiement et des webhooks pour des déploiements Git sans interruption et une file d'attente de connexion
+            les workers et le planificateur. SSL est <code>cipi ssl install</code>; PostgreSQL est
             <code>cipi db install pgsql</code>. Voir le <a class="inline" href="/fr/docs/getting-started">commencer
             guider</a> pour la présentation complète, ou le <a class="inline" href="/fr/alternatives">centre de comparaison</a> si
             vous l'évaluez par rapport à Forge, Ploi et à vos amis.</p>
@@ -412,8 +412,8 @@
                 faire. <a class="inline" href="https://boogle.web.ap.it" target="_blank">Google</a> est un self-hosted
                 un outil de suivi des exceptions qui conserve les données d'erreur sur votre propre infrastructure - un bon choix si vous avez choisi un VPS
                 pour la propriété des données en premier lieu.</li>
-<li><strong>Bilans de santé et journaux.</strong> Cipi 5 vérifications de l'état de l'application du navire, et
-                <code>cipi app logs</code> termine Laravel, Nginx et déploie les journaux sans gymnastique SSH.</li>
+<li><strong>Bilans de santé et logs.</strong> Cipi 5 vérifications de l'état de l'application du navire, et
+                <code>cipi app logs</code> termine Laravel, Nginx et déploie les logs sans gymnastique SSH.</li>
 <li><strong>Discipline de mise à jour.</strong> Mises à jour de sécurité du système d'exploitation sans surveillance et mise à niveau délibérée de PHP
                 chemin (<code>cipi php upgrade</code> gère PHP correctifs de sécurité avec une vérification hebdomadaire) battre "nous allons
                 mettre à jour quand nous nous en souvenons".</li>
@@ -439,27 +439,27 @@
 <div class="cta-box">
 <h2>Mettez cela en pratique avec Cipi</h2>
 <p>Cipi est le déploiement gratuit open-source CLI référencé tout au long de ce guide : une commande transforme un nouveau
-                Ubuntu VPS dans un serveur de production renforcé pour Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
-                PostgreSQL, files d'attente, planificateur, SSL et déploiements Git sans temps d'arrêt inclus.</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | coup</div>
+                VPS Ubuntu dans un serveur de production renforcé pour Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
+                PostgreSQL, files d'attente, planificateur, SSL et déploiements Git sans interruption inclus.</p>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
-<a class="btn-primary" href="/fr/docs/getting-started">Commencez gratuitement</a>
+<a class="btn-primary" href="/fr/docs/getting-started">Démarrer gratuitement</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Étoile sur GitHub</a>
 <a class="btn-ghost" href="/fr/alternatives">Comparez avec d'autres outils</a>
 </div>
 </div>
-<h2 id="faq">Questions fréquemment posées</h2>
-<div class="faq-item"><h3>Quelle est la configuration minimale requise pour Laravel en production ?</h3><p>Un seul processeur virtuel avec 2 Go de RAM exécute confortablement une application Laravel typique avec une base de données, un cache et un gestionnaire de file d'attente ; ajoutez un swap en dessous de 4 Go. Octane, Horizon et les étapes de construction lourdes bénéficient de 4 Go. Cipi installe sa pile complète sur n'importe quel nouveau Ubuntu 24.04/26.04 VPS.</p></div>
+<h2 id="faq">Questions fréquentes</h2>
+<div class="faq-item"><h3>Quelle est la configuration minimale requise pour Laravel en production ?</h3><p>Un seul processeur virtuel avec 2 Go de RAM exécute confortablement une application Laravel typique avec une base de données, un cache et un gestionnaire de file d'attente ; ajoutez un swap en dessous de 4 Go. Octane, Horizon et les étapes de construction lourdes bénéficient de 4 Go. Cipi installe sa stack complète sur n'importe quel nouveau Ubuntu 24.04/26.04 VPS.</p></div>
 <div class="faq-item"><h3>Puis-je héberger plusieurs applications Laravel sur un seul VPS ?</h3><p>Oui, et c’est généralement la configuration la plus rentable. La clé est l'isolement : chaque application doit avoir son propre utilisateur système, son pool PHP-FPM et ses informations d'identification de base de données afin qu'une application compromise ou qui se comporte mal ne puisse pas toucher les autres. Cipi prévoit exactement cette isolation automatiquement avec la création de l'application cipi.</p></div>
 <div class="faq-item"><h3>Dois-je utiliser PHP-FPM ou Laravel Octane ?</h3><p>PHP-FPM est la valeur par défaut ennuyeuse et fiable et convient à la plupart des applications. Octane maintient le framework démarré entre les requêtes et brille sur les API à fort trafic et les points de terminaison sensibles à la latence. Avec Cipi, vous pouvez exécuter les deux sur le même serveur et créer Octane applications avec cipi app create --octane.</p></div>
 <div class="faq-item"><h3>Comment puis-je tenir PHP informé du Ubuntu ?</h3><p>Suivez un référentiel PHP maintenu et appliquez les correctifs de sécurité rapidement plutôt que d'attendre les mises à niveau de la distribution. Cipi gère lui-même les correctifs de sécurité PHP avec une vérification hebdomadaire (mise à niveau cipi php), afin que les serveurs ne prennent pas de retard en silence.</p></div>
-<div class="faq-item"><h3>Ai-je toujours besoin de Laravel Forge si je gère mon propre VPS ?</h3><p>Non. Forge est un SaaS payant qui automatise la même pile décrite dans ce guide. Si vous souhaitez cette automatisation sans abonnement ni dépendance tierce, Cipi couvre le même flux de travail gratuitement et open source — voir la comparaison détaillée Cipi vs Forge.</p></div>
+<div class="faq-item"><h3>Ai-je toujours besoin de Laravel Forge si je gère mon propre VPS ?</h3><p>Non. Forge est un SaaS payant qui automatise la même stack décrite dans ce guide. Si vous souhaitez cette automatisation sans abonnement ni dépendance tierce, Cipi couvre le même workflow gratuitement et open source — voir la comparaison détaillée Cipi vs Forge.</p></div>
 <h2>Continuez à lire</h2>
 <div class="related">
 <a href="/fr/guides/checklist-securite-laravel">Laravel liste de contrôle de sécurité</a>
 <a href="/fr/guides/ci-cd-et-workflow-git-laravel">CI/CD pour Laravel</a>
-<a href="/fr/guides/stack-developpeur-self-hosted-2026">La pile de développeurs self-hosted</a>
-<a href="/fr/alternative-to-laravel-forge">Cipi contre Laravel Forge</a>
+<a href="/fr/guides/stack-developpeur-self-hosted-2026">La stack de développeurs self-hosted</a>
+<a href="/fr/alternative-to-laravel-forge">Cipi vs Laravel Forge</a>
 <a href="/fr/docs/getting-started">Cipi documents : pour commencer</a>
 </div>
 </main>
@@ -468,25 +468,25 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Déployez gratuitement open-source Laravel CLI pour Ubuntu VPS — Octane, Horizon, Reverb et des déploiements Git sans temps d'arrêt.</p>
+<p>CLI open-source et gratuite pour déployer Laravel sur un VPS Ubuntu — Octane, Horizon, Reverb et déploiements Git sans interruption.</p>
 <ul class="footer-brand-links">
-<li><a href="/fr/docs/getting-started">Commencez</a></li>
-<li><a href="/fr/docs/">Documents</a></li>
+<li><a href="/fr/docs/getting-started">Démarrer</a></li>
+<li><a href="/fr/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Comparez Cipi avec des alternatives" class="footer-col footer-col--compare">
-<strong>Comparez Cipi</strong>
+<nav aria-label="Comparer Cipi aux alternatives" class="footer-col footer-col--compare">
+<strong>Comparer Cipi</strong>
 <ul>
-<li><a href="/fr/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
-<li><a href="/fr/alternative-to-laravel-cloud">Laravel Alternative au cloud</a></li>
+<li><a href="/fr/alternative-to-laravel-forge">Alternative à Laravel Forge</a></li>
+<li><a href="/fr/alternative-to-laravel-cloud">Alternative à Laravel Cloud</a></li>
 <li><a href="/fr/alternative-to-ploi">Ploi alternative</a></li>
 <li><a href="/fr/alternative-to-coolify">Coolify alternative</a></li>
 <li><a href="/fr/alternative-to-runcloud">RunCloud alternative</a></li>
 <li><a href="/fr/alternative-to-cloudpanel">CloudPanel alternative</a></li>
 <li><a href="/fr/alternative-to-cpanel">cPanel alternative</a></li>
 <li><a href="/fr/alternative-to-plesk">Alternative à Plesk</a></li>
-<li><a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives Forge 2026</a></li>
+<li><a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives à Forge en 2026</a></li>
 <li><a href="/fr/alternatives">Toutes les comparaisons</a></li>
 </ul>
 </nav>
@@ -494,7 +494,7 @@
 <strong>Guides gratuits</strong>
 <ul>
 <li><a href="/fr/guides/gerer-apps-avec-cipi-yml">Gérer les apps avec cipi.yml</a></li>
-<li><a href="/fr/guides/panneau-ui-et-api">Panneau UI et API</a></li>
+<li><a href="/fr/guides/panneau-ui-et-api">Panneau de contrôle et API</a></li>
 <li><a href="/fr/guides/utiliser-cipi-agent-laravel">cipi/agent et MCP de projet</a></li>
 <li><a href="/fr/guides/deployer-wordpress-app-personnalisee">Déployer WordPress sur Cipi</a></li>
 <li><a href="/fr/guides/">Tous les guides</a></li>
@@ -503,7 +503,7 @@
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Réalisé avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+                    Fait avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
 <span class="footer-license"> · Open source, licence MIT</span>
 </div>
 <ul class="footer-links">

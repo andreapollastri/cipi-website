@@ -46,7 +46,7 @@
       "headline": "Cipi Docs — About Cipi",
       "name": "About Cipi",
       "url": "https://cipi.sh/en/docs/about",
-      "description": "History, security model, design decisions, and comparison with alternatives.",
+      "description": "Historique, modèle de sécurité, décisions de conception et comparaison avec des alternatives.",
       "inLanguage": "fr",
       "image": "https://cipi.sh/og.png",
       "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/" },
@@ -105,7 +105,7 @@
 </svg>
 <span>Ci<span style="color:var(--signal)">pi</span></span>
 </a>
-<span class="nav-badge">Documents</span>
+<span class="nav-badge">Docs</span>
 </div>
 <div class="nav-right">
 
@@ -149,14 +149,14 @@
 <a class="sidebar-link" href="/fr/docs/getting-started#installation">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#requirements">exigences</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#quickstart">démarrage rapide</a>
-<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">pile technologique</a>
+<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">stack technologique</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#app-structure">structure de l'application</a>
 </div>
 <div class="sidebar-group" data-chapter="agent">
 <a class="sidebar-group-label" href="/fr/docs/agent">cipi agent</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-install">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-webhook">webhook</a>
-<a class="sidebar-link" href="/fr/docs/agent#agent-health">bilan de santé</a>
+<a class="sidebar-link" href="/fr/docs/agent#agent-health">health check</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-mcp">serveur MCP</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-anonymizer">anonymiseur de base de données</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-security">sécurité</a>
@@ -255,9 +255,9 @@
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-api"><code>cipi api</code></a>
 <a class="sidebar-link" href="/fr/docs/advanced#whmcs">Module WHMCS</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-sync"><code>cipi sync</code></a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et cryptage</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et chiffrement</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-smtp">notifications par courrier électronique</a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des journaux (RGPD)</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des logs (RGPD)</a>
 <a class="sidebar-link" href="/fr/docs/advanced#valkey">valkey</a>
 <a class="sidebar-link" href="/fr/docs/advanced#self-update">mise à jour automatique</a>
 <a class="sidebar-link" href="/fr/docs/advanced#wildcard-domains">domaines génériques</a>
@@ -297,7 +297,7 @@
 <span class="timeline-date">juin 2019</span>
 <h3 class="timeline-title">L'idée</h3>
 <p>Une collection de scripts shell pour automatiser les parties fastidieuses de la configuration d'un Laravel
-                                serveur sur un nouveau Ubuntu VPS — Nginx, PHP, MariaDB, Supervisor. Pas d'interface utilisateur Web, pas de package.
+                                serveur sur un nouveau VPS Ubuntu — Nginx, PHP, MariaDB, Supervisor. Pas d'interface utilisateur Web, pas de package.
                                 Frappez simplement.</p>
 </div>
 </div>
@@ -331,7 +331,7 @@
 <span class="timeline-version">v3.0</span>
 <span class="timeline-date">mars 2021</span>
 <h3 class="timeline-title">Le grand pas : API, PHP 8, interface utilisateur en temps réel</h3>
-<p>Construit sur <strong>Laravel 8</strong>, la v3 a introduit un système entièrement documenté <strong>REPOS
+<p>Construit sur <strong>Laravel 8</strong>, la v3 a introduit un système entièrement documenté <strong>REST
                                     API</strong> (Swagger / OA), <strong>PHP 8</strong> support, CPU/RAM en temps réel
                                 des graphiques, un éditeur Cronjob, une gestion Supervisor, un gestionnaire de référentiel GitHub, Node 15,
                                 Composer 2 et authentification JWT. Cipi pouvait désormais gérer le même serveur sur lequel il fonctionnait. Le
@@ -344,7 +344,7 @@
 <span class="timeline-version">v3.1</span>
 <span class="timeline-date">décembre 2021</span>
 <h3 class="timeline-title">La dernière interface utilisateur Web – et une question</h3>
-<p><strong>PHP 8.1</strong> est devenue la version par défaut. Le nœud a été mis à niveau vers la v16, Certbot
+<p><strong>PHP 8.1</strong> est devenue la version par défaut. Node a été mis à jour en la v16, Certbot
                                 a été actualisé et la gestion des alias de domaine a été corrigée. La série v3.1.x était la plus
                                 version raffinée de l'ère de l'interface utilisateur Web et de nombreuses équipes l'ont fait fonctionner en production pendant
                                 années.</p>
@@ -361,20 +361,20 @@
 <div class="timeline-body">
 <span class="timeline-version">v4.x</span>
 <span class="timeline-date">mars 2026</span>
-<h3 class="timeline-title">La réécriture — CLI-première, Laravel-exclusive</h3>
+<h3 class="timeline-title">La réécriture — CLI-first, Laravel-exclusive</h3>
 <p>Après des années de maintenance d'une application Web Laravel complète comme plan de contrôle, la v4 a été créée.
                                 la décision la plus audacieuse à ce jour : <strong>abandonnez complètement l'interface utilisateur Web</strong>. Cipi est devenu un pur
                                 CLI outil exploité via SSH. La portée s’est également réduite du générique PHP au <strong>Laravel
-                                    exclusivement</strong>, permettant à chaque partie de la pile d'être optimisée pour un
+                                    exclusivement</strong>, permettant à chaque partie de la stack d'être optimisée pour un
                                 cadre. MySQL a été remplacé par <strong>MariaDB 11.4</strong>, <code>git pull</code>
-                                a été remplacé par <strong>Versions de déploiement sans temps d'arrêt</strong>, clés de déploiement partagées
-                                est devenu par application <code>ed25519</code> clés, et <strong>S3 sauvegardes automatisées</strong> et
+                                a été remplacé par <strong>Versions de déploiement sans interruption</strong>, clés de déploiement partagées
+                                est devenu par application <code>ed25519</code> clés, et <strong>Sauvegardes S3 automatiques</strong> et
                                 La prise en charge native webhook pour GitHub et GitLab a été ajoutée dès le premier jour. la v4 a également été introduite
-                                un complet <strong>REPOS API</strong> pour la gestion programmatique des hôtes et
+                                un complet <strong>API REST</strong> pour la gestion programmatique des hôtes et
                                 applications, intégration native avec <strong>GitHub et GitLab</strong> git providers,
                                 a groundbreaking <strong>double serveur MCP</strong> architecture – une par application et une
                                 global — permettant une gestion complète de l'infrastructure basée sur l'IA directement depuis n'importe quel
-                                Agent IDE ou AI compatible MCP, <strong>synchronisation du serveur crypté</strong> pour
+                                Agent IDE ou AI compatible MCP, <strong>synchronisation du serveur chiffré</strong> pour
                                 migration d'applications entre VPS instances et un outil intégré <strong>base de données
                                     anonymiseur</strong> pour des exportations de données sécurisées par le RGPD.</p>
 <div class="callout info" style="margin-top:16px;">
@@ -459,7 +459,7 @@
                                     API <strong>1.15+</strong>), Laravel Octane en option lors de la création de l'application
                                     (<code>octane</code> / <code>octane_port</code>, 1.13+), bases de données multimoteurs et www
                                     redirections (1.12+), <code>GET /api/status</code>, MCP outils pour les sondages d'emploi
-                                    (<code>JobShow</code>), les journaux des applications et du panneau, Artisan et la surveillance du serveur
+                                    (<code>JobShow</code>), les logs des applications et du panneau, Artisan et la surveillance du serveur
                                     (<code>ServerStatus</code>, <code>ServiceList</code>), plus
                                     <code>mcp-access</code>-uniquement autorisation sur <code>/mcp</code> et journal de production
                                     rédaction. Nouvelles installations via<code>setup.sh</code> accepter <strong>Ubuntu 24.04 ou 26.04 uniquement</strong> (exactement
@@ -477,7 +477,7 @@
                                     migration automatique et auto-réparatrice Redis → Valkey sur <code>self-update</code>.
                                     La v4.5.5 a ajouté le global<code>cipi domains</code> map (chaque domaine et alias de toutes les applications dans une seule table)
                                     et un <code>ll</code> alias shell pour les utilisateurs de l'application. v4.5.4 fourni
-                                    <strong>Déployeur 8</strong>, les nouvelles installations PHP sont donc limitées à
+                                    <strong>Deployer 8</strong>, les nouvelles installations PHP sont donc limitées à
                                     <strong>8.3, 8.4 et 8.5</strong> (avec une protection du temps de déploiement pour les applications toujours épinglées sur
                                     anciennes versions). Des versions ponctuelles récentes ont également été ajoutées <strong>HTTP authentification de base pour
                                     applications</strong> (<code>cipi basicauth enable/disable/status</code>, 4.5.2) et durci
@@ -494,7 +494,7 @@
 <span class="timeline-date">juillet 2026</span>
 <h3 class="timeline-title">Le GUI revient — cette fois, facultatif</h3>
 <p>Abandonner l'interface utilisateur Web dans la version 4 était la bonne décision : cela rendait l'interface utilisateur simple, scriptable et
-                                Natif de l'IA. Mais la question de l’ère v3.1 n’a jamais été complètement résolue : certaines équipes et
+                                Nativement IA. Mais la question de l’ère v3.1 n’a jamais été complètement résolue : certaines équipes et
                                 les agences voulaient réellement un tableau de bord de navigateur, pour elles-mêmes et pour leurs clients.
                                 La v4.7 y a répondu sans revenir sur un seul principe : un <strong>facultatif</strong>
                                 panneau de contrôle Web, installé avec une seule commande (<code>cipi gui &lt;domain&gt;</code>) et
@@ -542,11 +542,11 @@
                                 <strong>5.0.3+</strong>). Première classe
                                 <strong>Laravel Horizon</strong>
                                 (<code>cipi worker horizon</code>, <strong>Laravel Reverb</strong>
-<code>cipi app reverb</code>, planificateur CLI, builds de nœuds lors du déploiement, clonage d'application pour
-                                préparation, instantanés de base de données de pré-déploiement, limites de ressources par application, Cloudflare DNS-01/caractère générique
-                                Les bilans de santé SSL et HTTP complètent la version. Voir<a href="/fr/docs/apps#cli-app-octane">Laravel Octane</a>,
+<code>cipi app reverb</code>, planificateur CLI, builds Node lors du déploiement, clonage d'application pour
+                                préparation, snapshots de base de données de pré-déploiement, limites de ressources par application, Cloudflare DNS-01/wildcard
+                                Les health checks SSL et HTTP complètent la version. Voir<a href="/fr/docs/apps#cli-app-octane">Laravel Octane</a>,
                                 <a href="/fr/docs/apps#cli-app-run">exécution de l'application</a>,
-                                <a href="/fr/docs/infrastructure#cli-workers">ouvriers / Horizon</a>, et
+                                <a href="/fr/docs/infrastructure#cli-workers">workers / Horizon</a>, et
                                 <a href="/fr/docs/infrastructure#cli-ssl">SSL DNS-01</a>.</p>
 </div>
 </div>
@@ -557,12 +557,12 @@
 <span class="timeline-date">septembre 2026</span>
 <h3 class="timeline-title">Profils de sauvegarde, cipi.yml, php.ini et déploiements honnêtes</h3>
 <p>La v5.1 est la version opérationnelle. Les sauvegardes deviennent <strong>profils</strong>— quoi, à quelle fréquence,
-                                où, combien de temps - donc une copie de la base de données de 30 minutes sur le disque se trouve à côté d'une copie nocturne cryptée
+                                où, combien de temps - donc une copie de la base de données de 30 minutes sur le disque se trouve à côté d'une copie nocturne chiffrée
                                 la copie complète sur S3 et les bases de données de locataires créées au moment de l'exécution sont découvertes à partir du moteur.
                                 Une application peut transporter un<code>cipi.yml</code> dans son référentiel (alias, PHP, extra
-                                bases de données, travailleurs, bilan de santé, sauvegardes) et inscrivez-vous avec
+                                bases de données, workers, health check, sauvegardes) et inscrivez-vous avec
                                 <code>cipi yml auto on</code>. <code>cipi ini</code> modifie php.ini pour FPM et CLI.
-                                Les déploiements signalent enfin l'échec par e-mail et par code de sortie, horodatent leurs journaux, vérifient
+                                Les déploiements signalent enfin l'échec par e-mail et par code de sortie, horodatent leurs logs, vérifient
                                 la version live et peut la restaurer. Nginx revendique des hôtes HTTPS inégalés. Caractère générique
                                 les alias fonctionnent. Voir<a href="/fr/docs/infrastructure#cli-backup">profils de sauvegarde</a>,
                                 <a href="/fr/docs/deploy#cli-yml"><code>cipi.yml</code></a>,
@@ -694,7 +694,7 @@
                     pas toutes les applications sur le serveur.</p>
 <h3>Webhook sécurité</h3>
 <p>GitHub webhooks sont vérifiés à l’aide des signatures HMAC-SHA256. Les webhooks GitLab utilisent la comparaison de jetons. Le
-                    Le gestionnaire webhook dans l'agent cipi renvoie 200 immédiatement et écrit un fichier d'indicateur — Le déployeur s'exécute
+                    Le gestionnaire webhook dans l'agent cipi renvoie 200 immédiatement et écrit un fichier d'indicateur — Le Deployer s'exécute
                     séparément en tant qu'utilisateur de l'application sans privilèges élevés.</p>
 <h3>Chiffrement de la configuration (Coffre-fort)</h3>
 <p>Tous les Cipi fichiers de configuration — <code>server.json</code>, <code>apps.json</code>,
@@ -705,17 +705,17 @@
                     les mots de passe de la base de données, les jetons API et les informations d'identification sont illisibles sans les privilèges root. Voir
                     <a href="/fr/docs/advanced#cipi-vault">Coffre-fort et chiffrement</a> pour l'architecture complète.
                 </p>
-<h3>Archives de synchronisation cryptées</h3>
+<h3>Archives de synchronisation chiffrées</h3>
 <p>Lors du transfert d'applications entre serveurs via <code>cipi sync</code>, l'intégralité des archives —
                     y compris <code>.env</code> fichiers, clés SSH, sauvegardes de base de données et configuration - est chiffré avec
                     AES-256-CBC en utilisant une phrase secrète fournie par l'utilisateur. Les archives utilisent le <code>.tar.gz.enc</code>rallonge
                     et ne peut pas être lu sans la phrase secrète. Cela protège les données sensibles à la fois au repos (sur le disque) et
                     en transit (pendant le transfert rsync/scp). Voir <a href="/fr/docs/advanced#cipi-sync">Synchroniser</a> pour plus de détails.</p>
-<h3>Conservation des journaux conforme au RGPD</h3>
+<h3>Conservation des logs conforme au RGPD</h3>
 <p>Cipi applique la rotation automatique des logs : les logs des applications et de sécurité sont conservés pendant 12 mois,
-                    tandis que les journaux HTTP/navigation (qui contiennent des adresses IP – données personnelles selon le RGPD) sont conservés pour
+                    tandis que les logs HTTP/navigation (qui contiennent des adresses IP – données personnelles selon le RGPD) sont conservés pour
                     90 jours. Cela satisfait au principe de minimisation des données du RGPD tout en préservant suffisamment d'historique pour
-                    débogage et pistes d’audit. Voir <a href="/fr/docs/advanced#cipi-log-retention">Conservation des journaux</a> pour le complet
+                    débogage et pistes d’audit. Voir <a href="/fr/docs/advanced#cipi-log-retention">Conservation des logs</a> pour le complet
                     politique.</p>
 <h3>Notifications d'authentification et de clé</h3>
 <p>Cipi surveille les événements d'authentification privilégiée via PAM (<code>pam_exec.so</code>) et envoie
@@ -736,8 +736,8 @@
                     <a href="/fr/docs/gui">panneau de contrôle Web</a> est strictement opt-in : installez-le uniquement si vous souhaitez un navigateur
                     tableau de bord. Lorsque vous le faites, elle s'exécute comme une application self-hosted Laravel isolée, confinée à
                     <code>open_basedir</code>; laissez-le de côté et il n'y a aucune surface Web du tout.</p>
-<h3>Nginx hôte virtuel par défaut</h3>
-<p>L'hôte virtuel par défaut Nginx utilise un <code>rewrite</code> règle pour servir une page "Serveur Up" minimale
+<h3>Nginx vhost par défaut</h3>
+<p>L'vhost par défaut Nginx utilise un <code>rewrite</code> règle pour servir une page "Serveur Up" minimale
                     pour toutes les demandes vers des domaines non configurés ou un accès IP direct. Ce fourre-tout fiable empêche Nginx
                     d'exposer son numéro de version dans les pages d'erreur par défaut.</p>
 <h3>Réseau</h3>
@@ -757,7 +757,7 @@
                     <a href="/fr/docs/infrastructure#cli-php">PHP gestion</a>.</p>
 <p>Vous pouvez vérifier et gérer la configuration à tout moment :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># check unattended-upgrades status</span>
 <span class="p">$</span> systemctl status unattended-upgrades
 
@@ -781,7 +781,7 @@
 </div>
 <div class="doc-section" id="why-not-local">
 <h2>Pourquoi pas local ?</h2>
-<p>Cipi est un <strong>approvisionneur de serveur de production</strong>. Il est conçu pour transformer un nouveau Ubuntu VPS
+<p>Cipi est un <strong>approvisionneur de serveur de production</strong>. Il est conçu pour transformer un nouveau VPS Ubuntu
                     dans un hôte Laravel en direct, connecté à Internet — pour ne pas fonctionner sur votre ordinateur portable, dans un hôte Docker local
                     conteneur, ou derrière un NAT domestique.</p>
 <p>Ceci est explicite dans le <a href="/fr/docs/getting-started#requirements">exigences</a> et ce n'est pas un bug ou
@@ -792,7 +792,7 @@
 <li><strong>Fonctionnant sur du matériel réel ou sur KVM complet</strong> - pas sur la virtualisation à noyau partagé
                         (OpenVZ, LXC) ou des environnements d'exécution de conteneurs de bureau qui émulent une machine virtuelle Linux sur votre machine</li>
 <li><strong>Accessible sur les ports 22, 80 et 443</strong> — Let's Encrypt HTTP validation, Nginx
-                        les hôtes virtuels et les workflows de déploiement SSH supposent tous que le trafic entrant peut atteindre l'hôte</li>
+                        les vhosts et les workflows de déploiement SSH supposent tous que le trafic entrant peut atteindre l'hôte</li>
 </ul>
 <h3>Non compatible avec la dockérisation locale</h3>
 <p><strong>Cipi n'est pas compatible avec les environnements dockerisés locaux.</strong>Des outils comme Docker
@@ -814,7 +814,7 @@
 <line x1="12" x2="12.01" y1="17" y2="17"></line>
 </svg>
 <div>N'installez pas Cipi dans Docker, OrbStack, WSL ou une VM locale en attendant un fonctionnement
-                        pile de production. Utilisez un vrai VPS — même une instance à 4 €/mois suffit pour le développement et
+                        stack de production. Utilisez un vrai VPS — même une instance à 4 €/mois suffit pour le développement et
                         mise en scène.</div>
 </div>
 <h3>Contrainte standard de l'industrie</h3>
@@ -867,7 +867,7 @@
 <li><strong>Prévisible pour le SaaS et les agences</strong> — auto-hébergement MariaDB sur vos VPS conserves
                         licence de base de données simple : vous exécutez open-source le logiciel sur le matériel que vous contrôlez, sans MySQL
                         Portes de fonctionnalités d'entreprise ou révisions surprises des licences.</li>
-<li><strong>Aligné sur la philosophie MIT de Cipi</strong>— pile ouverte, pas de dépendance vis-à-vis du fournisseur, non
+<li><strong>Aligné sur la philosophie MIT de Cipi</strong>— stack ouverte, pas de dépendance vis-à-vis du fournisseur, non
                         SKU de base de données payant requis pour les fonctionnalités de performances de production telles que le pool de threads.</li>
 </ul>
 <h3>Compatibilité MySQL sans le bagage</h3>
@@ -879,7 +879,7 @@
                         <code>mariadb</code>/<code>mysql</code> CLI les clients se connectent de la même manière ; Cipi expose toujours un
                         prêt <code>mariadb+ssh://</code> URL après l'installation.</li>
 <li><strong>Natif sur Ubuntu</strong> — s'installe depuis MariaDB.org / Ubuntu packaging sans inventer
-                        une pile de base de données personnalisée ; Cipi câble les utilisateurs, les sauvegardes et les informations d'identification du coffre-fort par-dessus.</li>
+                        une stack de base de données personnalisée ; Cipi câble les utilisateurs, les sauvegardes et les informations d'identification du coffre-fort par-dessus.</li>
 <li><strong>Testé au combat pour le monde LAMP/LEMP</strong> — des décennies de compatibilité MySQL
                         applications, documents et familiarité avec le recrutement, avec un moteur qui reste axé sur la communauté.</li>
 </ul>
@@ -890,7 +890,7 @@
                     (port <code>5432</code>). Installez-le avec <code>cipi db install pgsql</code>, puis créez des applications ou
                     bases de données avec <code>--engine=pgsql</code> — voir <a href="/fr/docs/infrastructure#cli-db">cipi dB</a>. Garder
                     MariaDB par défaut pour les charges de travail classiques Laravel MySQL, ou choisissez Postgres lorsque vous avez besoin de fonctionnalités plus riches.
-                    SQL, des garanties de concurrence plus fortes ou une pile qui évolue vers l'analyse et l'IA.</p>
+                    SQL, des garanties de concurrence plus fortes ou une stack qui évolue vers l'analyse et l'IA.</p>
 <h3>Des fonctionnalités au-delà des « simples tables »</h3>
 <ul>
 <li><strong>SQL riche et types de données</strong> — JSON/JSONB, tableaux, plages, UUID, recherche en texte intégral,
@@ -925,7 +925,7 @@
                     </li>
 <li><strong>SQL axé sur les standards</strong> — plus proche de l'ANSI SQL que des dialectes MySQL, ce qui réduit
                         surprenez lorsque vous partagez des requêtes entre des outils, des ORM et des entrepôts.</li>
-<li><strong>Fonctionne avec la pile de données plus large</strong> — Outils BI, ORM, ETL et systèmes CDC presque
+<li><strong>Fonctionne avec la stack de données plus large</strong> — Outils BI, ORM, ETL et systèmes CDC presque
                         parlez toujours Postgres; votre base de données hébergée par Cipi n'est pas une impasse.</li>
 <li><strong>Côte à côte avec MariaDB sur Cipi</strong> — les deux moteurs peuvent fonctionner sur le même serveur
                         (3306 + 5432). Choisissez par application : style WordPress ou classique Laravel MySQL sur MariaDB ; produit,
@@ -966,7 +966,7 @@
                         créé après que Redis Inc. soit passé au SSPL / RSALv2 disponible en source en 2024.</li>
 <li><strong>Natif sur Ubuntu</strong> — livré dans le dépôt Universe de Ubuntu 24.04
                         (<code>valkey-server</code> + <code>valkey-tools</code>) sans PPA tiers.</li>
-<li><strong>Pas de dépendance vis-à-vis du fournisseur</strong> — s'aligne sur la philosophie MIT et self-hosted de Cipi : gratuité
+<li><strong>Aucun vendor lock-in</strong> — s'aligne sur la philosophie MIT et self-hosted de Cipi : gratuité
                         pour toujours, soutenu par AWS, Google Cloud, Oracle et une large communauté.</li>
 <li><strong>Migré automatiquement</strong> — les serveurs existants passent automatiquement de Redis à Valkey
                         <code>cipi self-update</code>, en réutilisant le même mot de passe et le même ensemble de données sans aucune modification d'application.
@@ -982,7 +982,7 @@
 <p>Laravel donne aux développeurs une longueur d'avance extraordinaire. Authentification, files d'attente, tâches planifiées, fichier
                     stockage, courrier électronique, notifications, ressources API, migrations de bases de données — tout cela est intégré,
                     cohérents et documentés. Une équipe peut passer d'un projet vide à une application prête pour la production en
-                    une fraction du temps que cela prendrait avec une pile de niveau inférieur. Pour Cipi, cela signifie que chaque
+                    une fraction du temps que cela prendrait avec une stack de niveau inférieur. Pour Cipi, cela signifie que chaque
                     hypothèse de déploiement - disposition du répertoire,<code>.env</code> la gestion, les files d'attente, le planificateur -
                     correspond proprement à une structure connue. Il n’y a aucune hypothèse.</p>
 <h3>Une communauté open-source florissante</h3>
@@ -995,7 +995,7 @@
                 </p>
 <h3>Sécurité par défaut</h3>
 <p>Laravel prend la sécurité très au sérieux dès le départ. Protection CSRF, prévention des injections SQL via
-                    le générateur de requêtes, l'atténuation XSS via l'échappement automatique de Blade, la limitation de débit, les URL signées, cryptées
+                    le générateur de requêtes, l'atténuation XSS via l'échappement automatique de Blade, la limitation de débit, les URL signées, chiffrées
                     cookies - ce ne sont pas des modules complémentaires que vous connectez ensemble, ce sont les valeurs par défaut. La sortie du framework
                     Le cycle comprend des correctifs de sécurité rapides et l'équipe publie des guides de mise à niveau clairs. Pour la production
                     applications qui gèrent de vrais utilisateurs et des données réelles, cette fiabilité est extrêmement importante.</p>
@@ -1051,7 +1051,7 @@
 <line x1="12" x2="12.01" y1="16" y2="16"></line>
 </svg>
 <div>Cipi est construit <em>pour</em> Laravel et <em>avec</em> Laravel. L'installateur, le déploiement
-                        pipeline, le package d'agent, la configuration cron, la gestion des travailleurs - chaque décision a été prise
+                        pipeline, le package d'agent, la configuration cron, la gestion des workers - chaque décision a été prise
                         avec une application Laravel en tête. Si vous aimez le cadre, vous vous sentirez comme chez vous.</div>
 </div>
 </div>
@@ -1104,11 +1104,11 @@
                     ce paysage et pourquoi vous pourriez – ou non – le choisir dans chaque catégorie. La comparaison est
                     axé sur huit axes : <strong>Intégration de l'IA (double serveur MCP — par application et global)</strong>,
                     <strong>Laravel Octane (FrankenPHP) + Horizon + Reverb</strong>,
-                    <strong>déploiement Git natif (GitHub &amp; GitLab)</strong>, <strong>REPOS API</strong>,
+                    <strong>déploiement Git natif (GitHub &amp; GitLab)</strong>, <strong>API REST</strong>,
                     <strong>CLI première automatisation</strong>, <strong>chiffrement au repos (Vault)</strong>,
                     <strong>Conformité RGPD</strong>, et <strong>coût total de possession</strong>.
                 </p>
-<p>Vous recherchez un face-à-face spécifique ? Voir les pages de comparaison dédiées : <a href="/fr/alternative-to-laravel-forge">Laravel Forge alternative</a>, <a href="/fr/alternative-to-laravel-cloud">Laravel Alternative au cloud</a>, <a href="/fr/alternative-to-fortrabbit">fortrabbit alternative</a>, <a href="/fr/alternative-to-render">Render alternative</a>, <a href="/fr/alternative-to-20i">20i alternative</a>, <a href="/fr/alternative-to-sevalla">Sevalla alternative</a>, <a href="/fr/alternative-to-ploi-cloud">Ploi Cloud alternative</a>, <a href="/fr/alternative-to-ploi">Ploi alternative</a>, <a href="/fr/alternative-to-cleavr">Cleavr alternative</a>, <a href="/fr/alternative-to-moss">Alternative moss.sh</a>, <a href="/fr/alternative-to-kamal">Kamal alternative</a>, <a href="/fr/alternative-to-runcloud">RunCloud alternative</a>, <a href="/fr/alternative-to-serverpilot">ServerPilot alternative</a>, <a href="/fr/alternative-to-cloudpanel">CloudPanel alternative</a>, <a href="/fr/alternative-to-coolify">Coolify alternative</a>, <a href="/fr/alternative-to-dokku">Dokku alternative</a>, <a href="/fr/alternative-to-easypanel">Easypanel alternative</a>, <a href="/fr/alternative-to-vito-deploy">Vito Déployer une alternative</a>, <a href="/fr/alternative-to-cpanel">cPanel alternative</a>, <a href="/fr/alternative-to-directadmin">DirectAdmin alternative</a>, <a href="/fr/alternative-to-plesk">Alternative à Plesk</a>, ainsi que des sections approfondies sur <a href="/fr/docs/about#vs-hestiacp">HestiaCP et VestaCP</a>, <a href="/fr/docs/about#vs-aapanel">aaPanneau</a>, et <a href="/fr/docs/about#vs-gridpane">GridPane, xCloud et ServerAvatar</a> - ou parcourez-les tous sur le <a href="/fr/alternatives">aperçu des alternatives</a>.</p>
+<p>Vous recherchez un face-à-face spécifique ? Voir les pages de comparaison dédiées : <a href="/fr/alternative-to-laravel-forge">Alternative à Laravel Forge</a>, <a href="/fr/alternative-to-laravel-cloud">Alternative à Laravel Cloud</a>, <a href="/fr/alternative-to-fortrabbit">fortrabbit alternative</a>, <a href="/fr/alternative-to-render">Render alternative</a>, <a href="/fr/alternative-to-20i">20i alternative</a>, <a href="/fr/alternative-to-sevalla">Sevalla alternative</a>, <a href="/fr/alternative-to-ploi-cloud">Ploi Cloud alternative</a>, <a href="/fr/alternative-to-ploi">Ploi alternative</a>, <a href="/fr/alternative-to-cleavr">Cleavr alternative</a>, <a href="/fr/alternative-to-moss">Alternative moss.sh</a>, <a href="/fr/alternative-to-kamal">Kamal alternative</a>, <a href="/fr/alternative-to-runcloud">RunCloud alternative</a>, <a href="/fr/alternative-to-serverpilot">ServerPilot alternative</a>, <a href="/fr/alternative-to-cloudpanel">CloudPanel alternative</a>, <a href="/fr/alternative-to-coolify">Coolify alternative</a>, <a href="/fr/alternative-to-dokku">Dokku alternative</a>, <a href="/fr/alternative-to-easypanel">Easypanel alternative</a>, <a href="/fr/alternative-to-vito-deploy">Vito Déployer une alternative</a>, <a href="/fr/alternative-to-cpanel">cPanel alternative</a>, <a href="/fr/alternative-to-directadmin">DirectAdmin alternative</a>, <a href="/fr/alternative-to-plesk">Alternative à Plesk</a>, ainsi que des sections approfondies sur <a href="/fr/docs/about#vs-hestiacp">HestiaCP et VestaCP</a>, <a href="/fr/docs/about#vs-aapanel">aaPanel</a>, et <a href="/fr/docs/about#vs-gridpane">GridPane, xCloud et ServerAvatar</a> - ou parcourez-les tous sur le <a href="/fr/alternatives">aperçu des alternatives</a>.</p>
 <div class="callout info">
 <svg class="callout-icon" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
 <circle cx="12" cy="12" r="10"></circle>
@@ -1116,9 +1116,9 @@
 <line x1="12" x2="12.01" y1="16" y2="16"></line>
 </svg>
 <div>La proposition centrale de Cipi : <strong>gratuit pour toujours, MIT open source, Laravel-premier (avec application personnalisée
-                            support), CLI-premier,
+                            support), CLI-first,
                             Prêt pour l'IA avec double serveur MCP, intégration native GitHub et GitLab, REST complet API,
-                            Chiffrement AES-256-CBC au repos, conservation des journaux conforme au RGPD,
+                            Chiffrement AES-256-CBC au repos, conservation des logs conforme au RGPD,
                             autonome sur votre VPS</strong>. Il fait une chose et le fait bien : il n'essaie pas de
                         être un panneau d'hébergement générique, une plateforme SaaS ou un outil multi-stack. En plus de Laravel,
                         Cipi prend en charge <a href="/fr/docs/apps#cli-app-custom">applications personnalisées</a> (sites statiques, SPA,
@@ -1126,7 +1126,7 @@
                         intégration de déploiement avec GitHub et GitLab, un REST API complet pour la gestion des hôtes et
                         applications par programmation, une architecture de serveur double MCP pour une gestion basée sur l'IA, intégrée
                         Chiffrement du coffre-fort pour tous les fichiers de configuration et archives de synchronisation, et automatique conforme au RGPD
-                        rotation des journaux. Aucune information d'identification, clé SSH ou donnée sensible n'est jamais stockée en texte brut - et aucun
+                        rotation des logs. Aucune information d'identification, clé SSH ou donnée sensible n'est jamais stockée en texte brut - et aucun
                         les données d'infrastructure quittent toujours votre VPS.</div>
 </div>
 <!-- Quick overview table -->
@@ -1610,7 +1610,7 @@
 </svg></td>
 </tr>
 <tr style="border-bottom:1px solid var(--border);">
-<td style="padding:0.55rem 1rem;">aaPanneau</td>
+<td style="padding:0.55rem 1rem;">aaPanel</td>
 <td style="text-align:center;padding:0.55rem 0.5rem;"><svg fill="none" height="16" stroke="#94a3b8" stroke-linecap="round" stroke-width="1.5" viewbox="0 0 16 16" width="16">
 <circle cx="8" cy="8" r="6.25"></circle>
 <line x1="5.5" x2="10.5" y1="5.5" y2="10.5"></line>
@@ -1678,10 +1678,10 @@
 </table>
 </div>
 <!-- Laravel Cloud -->
-<h3>Cipi contre Laravel Cloud</h3>
+<h3>Cipi vs Laravel Cloud</h3>
 <p><a href="https://laravel.com/cloud" target="_blank">Laravel Nuage</a> est celui de l'équipe Laravel
-                    plate-forme de déploiement entièrement gérée : une plate-forme en tant que service qui exécute votre application sur un site dédié.
-                    Infrastructure AWS avec autoscaling en un clic, bases de données gérées (MySQL / Postgres sans serveur),
+                    plateforme de déploiement entièrement gérée : une plateforme en tant que service qui exécute votre application sur un site dédié.
+                    Infrastructure AWS avec autoscaling en un clic, bases de données gérées (MySQL / Postgres serverless),
                     Cache Valkey, stockage d'objets, réseau périphérique avec protection DDoS, SSL automatique et mise à l'échelle jusqu'à zéro
                     calculer. Vous connectez un fournisseur Git, choisissez un dépôt et déployez en moins de 60 secondes, sans serveur
                     à gérer. C'est l'extrémité opposée du spectre de Cipi : où Cipi vous donne la pleine propriété de
@@ -1695,17 +1695,17 @@
 <li><strong>Vous êtes propriétaire du serveur</strong> — Le cloud fonctionne sur une infrastructure entièrement gérée par Laravel
                         sur AWS ; vous n'obtenez jamais root, SSH ou contrôle sur la machine sous-jacente. Cipi fonctionne tout seul
                         VPS chez n'importe quel fournisseur (Hetzner, OVH, DigitalOcean, AWS, bare metal) avec un accès root complet et
-                        contrôle total sur la pile.</li>
+                        contrôle total sur la stack.</li>
 <li><strong>Aucune dépendance SaaS</strong> — Le Cloud est une plateforme hébergée : si vous arrêtez de payer, vos applications
                         cesse de fonctionner et la gestion dépend d'un cloud.laravel.com accessible. Cipi vit entièrement de
                         votre VPS et fonctionne indépendamment de tout service externe.</li>
-<li><strong>Pas de dépendance vis-à-vis du fournisseur</strong> — Le cloud lie votre déploiement, vos bases de données, vos files d'attente et votre stockage
+<li><strong>Aucun vendor lock-in</strong> — Le cloud lie votre déploiement, vos bases de données, vos files d'attente et votre stockage
                         à son environnement AWS géré. Migrer signifie repenser votre infrastructure. Cipi
                         utilise les normes Ubuntu, Nginx, PHP-FPM / Laravel Octane, MariaDB (en option PostgreSQL) et
-                        Supervisor — une pile portable que vous pouvez déplacer ou reproduire n'importe où.</li>
+                        Supervisor — une stack portable que vous pouvez déplacer ou reproduire n'importe où.</li>
 <li><strong>Open source</strong> — Cipi est sous licence MIT ; vous pouvez lire, auditer, fork et modifier chaque
                         ligne. Laravel Cloud est une plateforme propriétaire et fermée.</li>
-<li><strong>CLI et automatisation des pipelines</strong>— Cipi est entièrement exploitable via SSH avec
+<li><strong>CLI et automatisation de pipelines</strong>— Cipi est entièrement exploitable via SSH avec
                         des commandes shell composables qui peuvent être scriptées, chaînées dans un pipeline, déclenchées par un webhook,
                         ou exécuter une action GitHub. Cloud expose un Cloud API et déploie des hooks, mais au quotidien
                         la gestion est centrée sur le tableau de bord.</li>
@@ -1720,7 +1720,7 @@
                         et aucune donnée d'infrastructure ne quitte votre machine. Laravel Le Cloud est exploité par une société américaine sur AWS
                         et traite vos données d'application et d'infrastructure en tant que processeur tiers, ce qui nécessite un
                         DPA et sélection minutieuse des régions pour la conformité au RGPD.</li>
-<li><strong>Synchronisation et réplication du serveur</strong> — Synchronisation cryptée de serveur à serveur intégrée avec
+<li><strong>Synchronisation et réplication du serveur</strong> — Synchronisation chiffrée de serveur à serveur intégrée avec
                         <code>cipi sync push</code> permet une réplication de basculement automatisée via cron entre deux
                         VPS instances. Le cloud n'a pas de synchronisation autogérée équivalente.</li>
 <li><strong>PostgreSQL en option sur votre VPS</strong> — conserver MariaDB par défaut ou installer
@@ -1730,9 +1730,9 @@
 <p><strong>Où Laravel Cloud gagne :</strong> zéro gestion de serveur, mise à l'échelle automatique en un clic et
                     mise à l'échelle jusqu'à zéro, bases de données et cache gérés, réseau périphérique mondial avec protection DDoS, automatique
                     SSL et équilibrage de charge, files d'attente gérées et tableau de bord soigné, le tout sans jamais toucher à un
-                    serveur. Si vous souhaitez vivre une véritable expérience sans serveur, ne souhaitez pas gérer ou posséder un VPS et êtes
+                    serveur. Si vous souhaitez vivre une véritable expérience serverless, ne souhaitez pas gérer ou posséder un VPS et êtes
                     À l'aise avec une facture basée sur l'utilisation, le Cloud est le meilleur choix. Cipi est destiné aux équipes qui souhaitent posséder
-                    leur infrastructure, contrôler les coûts et automatiser tout dès le CLI.</p>
+                    leur infrastructure, contrôler les coûts et automatiser tout depuis le CLI.</p>
 <!-- fortrabbit -->
 <h3 id="vs-fortrabbit">Cipi contre fortrabbit</h3>
 <p><a href="https://www.fortrabbit.com/" target="_blank">fortrabbit</a> est un cloud PHP géré (Irlande et Virginie) avec déploiements GitHub, commandes de build, SSH/SFTP, stockage persistant, MySQL, sauvegardes, un tableau de bord développeur, plus MCP, CLI, API et compétences d’agent — à partir d’environ 4,50 €/mois après un essai de 7 jours. Il est spécialisé PHP (Craft, Statamic, Kirby, Laravel, Symfony, WordPress), pas un PaaS multi-langages générique.</p>
@@ -1740,25 +1740,25 @@
 <!-- Render -->
 <h3 id="vs-render">Cipi contre Render</h3>
 <p><a href="https://render.com/" target="_blank">Render</a> est un cloud généraliste pour services web, sites statiques, workers, cron, Postgres, Redis et Docker — avec autoscaling, environnements de prévisualisation par pull request, réseau privé, CLI, MCP et options de conformité (SOC 2, HIPAA, ISO 27001). La facturation est basée sur l’utilisation.</p>
-<p>Render traite Laravel comme un service de plus. Cipi est Laravel-first sur une pile LEMP / Octane native que vous contrôlez, sans facture à l’usage et sans dépendance vis-à-vis d’un fournisseur. Render gagne si vous avez besoin de déploiements multi-langages, d’autoscaling, d’apps de prévisualisation ou de stores de données gérés sans toucher un VPS. Voir la comparaison dédiée <a href="/fr/alternative-to-render">Cipi contre Render</a>.</p>
+<p>Render traite Laravel comme un service de plus. Cipi est Laravel-first sur une stack LEMP / Octane native que vous contrôlez, sans facture à l’usage et sans dépendance vis-à-vis d’un fournisseur. Render gagne si vous avez besoin de déploiements multi-langages, d’autoscaling, d’apps de prévisualisation ou de stores de données gérés sans toucher un VPS. Voir la comparaison dédiée <a href="/fr/alternative-to-render">Cipi contre Render</a>.</p>
 <!-- 20i -->
 <h3 id="vs-20i">Cipi contre 20i</h3>
 <p><a href="https://www.20i.com/us" target="_blank">20i</a> est une société d’hébergement — offres revendeur, cloud géré (20iCloud, AWS, Google Cloud), WordPress, VPS, domaines et e-mail — opérée via My20i / StackCP, avec un CDN gratuit, des migrations, plus de 60 centres de données et un support 24×7. Ils vendent aussi de l’hébergement Laravel géré, mais le produit est une plateforme d’hébergement, pas un CLI de déploiement Laravel.</p>
-<p>Cipi ne remplace pas 20i si vous avez besoin de marque revendeur, de mail, de domaines ou de WordPress à grande échelle. Il remplace 20i lorsque le travail est « déployer Laravel sur un VPS que je possède déjà » : outillage MIT gratuit, Octane, double MCP, API REST, et pas de verrouillage de panneau. 20i gagne sur le support humain et un catalogue d’hébergement complet. Voir la comparaison dédiée <a href="/fr/alternative-to-20i">Cipi contre 20i</a>.</p>
+<p>Cipi ne remplace pas 20i si vous avez besoin de marque revendeur, de mail, de domaines ou de WordPress à grande échelle. Il remplace 20i lorsque le travail est « déployer Laravel sur un VPS que je possède déjà » : outillage MIT gratuit, Octane, double MCP, API REST, et pas de lock-in de panneau. 20i gagne sur le support humain et un catalogue d’hébergement complet. Voir la comparaison dédiée <a href="/fr/alternative-to-20i">Cipi contre 20i</a>.</p>
 <!-- Sevalla -->
 <h3 id="vs-sevalla">Cipi contre Sevalla</h3>
 <p><a href="https://sevalla.com/" target="_blank">Sevalla</a> est la plateforme d’applications de Kinsta : apps, bases gérées, stockage objet compatible S3 et sites statiques, MCP pour les agents, 25 centres de données et une tarification à la ressource (sans forfaits). Vous poussez Git ou Docker ; ils font tourner le cluster.</p>
 <p>Cipi est l’opposé self-hosted — Laravel natif sur votre VPS Ubuntu, coût fixe, root complet, Octane/Horizon/Reverb, double MCP et chiffrement Vault. Sevalla gagne si vous voulez abandonner le cloud DIY et garder apps, bases et stockage dans une seule facture gérée. Voir la comparaison dédiée <a href="/fr/alternative-to-sevalla">Cipi contre Sevalla</a>.</p>
 <!-- Ploi Cloud -->
-<h3 id="vs-ploi-cloud">Cipi contre Ploi Cloud</h3>
+<h3 id="vs-ploi-cloud">Cipi vs Ploi Cloud</h3>
 <p><a href="https://ploi.cloud/" target="_blank">Ploi Cloud</a> (ploi.cloud) est un PaaS Laravel/PHP/Node européen avec une tarification à la mémoire (13,88 €/Go), des régions à Amsterdam, Londres et Chicago, des déploiements git-push, l’autoscaling, des bases gérées, MCP et un CLI. Ce n’est <strong>pas</strong> le même produit que <a href="https://ploi.io/" target="_blank">Ploi.io</a>, le panneau serveur SaaS — voir <a href="/fr/alternative-to-ploi">Cipi contre Ploi</a> pour cette comparaison.</p>
-<p>Cipi est l’alternative self-hosted : vous possédez le VPS, payez une facture fournisseur fixe, et obtenez l’automatisation CLI Laravel-first, un double MCP et le chiffrement au repos. Ploi Cloud gagne sur la gestion de serveur nulle avec un hébergement UE orienté RGPD. Voir la comparaison dédiée <a href="/fr/alternative-to-ploi-cloud">Cipi contre Ploi Cloud</a>.</p>
+<p>Cipi est l’alternative self-hosted : vous possédez le VPS, payez une facture fournisseur fixe, et obtenez l’automatisation CLI Laravel-first, un double MCP et le chiffrement au repos. Ploi Cloud gagne sur la gestion de serveur nulle avec un hébergement UE orienté RGPD. Voir la comparaison dédiée <a href="/fr/alternative-to-ploi-cloud">Cipi vs Ploi Cloud</a>.</p>
 <!-- Laravel Forge -->
-<h3>Cipi contre Laravel Forge</h3>
+<h3>Cipi vs Laravel Forge</h3>
 <p><a href="https://forge.laravel.com/" target="_blank">Forge</a>est le
                     concurrent le plus direct et la référence dans le domaine — il est construit par l'équipe Laravel, mature,
                     peaufiné et testé à grande échelle (plus de 970 000 serveurs, plus de 56 millions de déploiements). Il dispose d'un GUI propre,
-                    déploiements sans temps d'arrêt, surveillance des serveurs, battements de cœur, vérifications de l'état et intégration avec tous
+                    déploiements sans interruption, surveillance des serveurs, battements de cœur, vérifications de l'état et intégration avec tous
                     principaux fournisseurs de cloud (AWS, DigitalOcean, Hetzner, Vultr et autres).</p>
 <p><strong>Où Cipi gagne :</strong></p>
 <ul>
@@ -1768,7 +1768,7 @@
                         forge.laravel.com pour gérer vos serveurs. Si le service subit un temps d'arrêt ou si vous annulez, vous perdez
                         l'interface de gestion. Cipi vit entièrement de votre VPS — il fonctionne indépendamment de tout
                         prestation externe.</li>
-<li><strong>CLI et automatisation des pipelines</strong>— Cipi est entièrement exploitable via SSH avec
+<li><strong>CLI et automatisation de pipelines</strong>— Cipi est entièrement exploitable via SSH avec
                         commandes shell composables. Chaque opération peut être scriptée, chaînée dans un pipeline, déclenchée par
                         une action webhook, ou exécuter une action GitHub. L'automatisation du Forge repose principalement sur ses GUI et
                         scripts de déploiement.</li>
@@ -1777,10 +1777,10 @@
 <li><strong>Simplicité</strong> — Forge est devenu une plateforme riche en fonctionnalités. Cipi a un
                         surface délibérément petite – un binaire, une poignée de commandes, zéro GUI.</li>
 <li><strong>Déploiement Git natif (GitHub &amp; GitLab)</strong> — Cipi permet un déploiement automatique
-                        intégration avec GitHub et GitLab prêtes à l'emploi, avec temps d'arrêt nul piloté par webhook
+                        intégration avec GitHub et GitLab prêtes à l'emploi, avec zéro interruption piloté par webhook
                         versions configurées dans une seule commande.</li>
-<li><strong>REPOS API</strong> — Cipi expose un REST API complet pour la gestion des hôtes et des applications
-                        par programmation, permettant l'intégration avec des outils externes, des tableaux de bord et des flux de travail personnalisés.
+<li><strong>API REST</strong> — Cipi expose un REST API complet pour la gestion des hôtes et des applications
+                        par programmation, permettant l'intégration avec des outils externes, des tableaux de bord et des workflow personnalisés.
                     </li>
 <li><strong>Serveur double MCP</strong> — Cipi est le seul panel serveur doté d'une double architecture MCP : un
                         un serveur MCP par application pour la gestion d'une seule application et un serveur MCP global pour la création,
@@ -1788,13 +1788,13 @@
                         serveur. Cela permet une gestion complète de l'infrastructure basée sur l'IA à partir de n'importe quel IDE ou IDE compatible MCP.
                         mandataire.</li>
 <li><strong>Chiffrement au repos</strong> — Tous les Cipi fichiers de configuration (mots de passe, tokens, clés SSH)
-                        sont cryptés avec AES-256-CBC via le système Vault. Forge stocke les informations d'identification du serveur sur son
-                        posséder une infrastructure SaaS ; Cipi garde tout crypté sur votre VPS.</li>
+                        sont chiffrés avec AES-256-CBC via le système Vault. Forge stocke les informations d'identification du serveur sur son
+                        posséder une infrastructure SaaS ; Cipi garde tout chiffré sur votre VPS.</li>
 <li><strong>RGPD / souveraineté des données</strong> — Cipi fonctionne entièrement sur votre serveur. Aucune infrastructure
                         les données sont transmises à un tiers. Forge est exploité par une société américaine et traite votre serveur
                         métadonnées en vertu de la loi américaine – exigeant un DPA pour la conformité au RGPD. Avec Cipi, il n'y a pas de tiers
                         processeur de données à gérer.</li>
-<li><strong>Synchronisation et réplication du serveur</strong> — Synchronisation cryptée de serveur à serveur intégrée avec
+<li><strong>Synchronisation et réplication du serveur</strong> — Synchronisation chiffrée de serveur à serveur intégrée avec
                         <code>cipi sync push</code> permet une réplication de basculement automatisée via cron. Forge n'a pas
                         fonctionnalité équivalente.
                     </li>
@@ -1842,24 +1842,24 @@
                     panneau open-source gratuit prenant en charge PHP, Node.js, Python et les sites statiques. Il est bien entretenu,
                     a une interface utilisateur raffinée et comprend un CLI. C'est une très bonne option pour les équipes qui doivent organiser un
                     mélange de types d'applications sur le même serveur.</p>
-<p>La principale différence réside dans la focalisation : CloudPanel est un panneau multi-pile générique ; Cipi est un outil uniquement Laravel.
+<p>La principale différence réside dans la focalisation : CloudPanel est un panneau multi-stack générique ; Cipi est un outil uniquement Laravel.
                     CloudPanel n'a pas d'intégration Deployer, pas de commandes artisan, pas de configuration automatique de file d'attente et aucun
                     Système de déploiement webhook conçu pour Laravel. Les CloudPanel CLI couvrent l'administration du serveur mais pas
                     Laravel gestion du cycle de vie des applications. Si vous déployez uniquement Laravel, l'approche avisée de Cipi
                     vous offre une expérience plus rapide et plus propre. Si vous devez également héberger Node.js, Python ou WordPress
                     à côté de Laravel, CloudPanel est le choix le plus approprié.</p>
 <!-- Vito Deploy -->
-<h3>Cipi vs Vito Déployer</h3>
+<h3>Cipi vs Vito Deploy</h3>
 <p><a href="https://vitodeploy.com/" target="_blank">Vito Déployer</a>est gratuit,
                     Outil de gestion de serveur open-source, self-hosted avec un tableau de bord GUI épuré, construit avec Laravel et
                     htmx. Il prend en charge PHP (y compris Laravel et WordPress), MySQL, MariaDB et PostgreSQL, et
-                    comprend la gestion SSL, la configuration du pare-feu, les travailleurs en arrière-plan, les tâches cron, la surveillance du serveur,
-                    collaboration d'équipe, flux de travail personnalisés, plugins et un API. Cipi prend également en charge MariaDB en
+                    comprend la gestion SSL, la configuration du pare-feu, les workers en arrière-plan, les tâches cron, la surveillance du serveur,
+                    collaboration d'équipe, workflow personnalisés, plugins et un API. Cipi prend également en charge MariaDB en
                     par défaut avec PostgreSQL en option depuis la v4.8.0.</p>
 <p>Vito Deploy et Cipi partagent la même philosophie : gratuit, open source et self-hosted — pas de SaaS
                     dépendance. Les principales différences résident dans l’approche et la profondeur :</p>
 <ul>
-<li><strong>GUI contre CLI</strong> — Vito Le déploiement est GUI-premier avec un tableau de bord Web ; Cipi est CLI-premier
+<li><strong>GUI contre CLI</strong> — Vito Le déploiement est GUI-premier avec un tableau de bord Web ; Cipi est CLI-first
                         sans GUI. Si votre équipe préfère une interface visuelle, Vito Deploy est un choix idéal. Si tu as besoin
                         Automatisation scriptable et prête pour le pipeline, Cipi est le meilleur choix.</li>
 <li><strong>Intégration de l'IA</strong> — Cipi fournit un double serveur MCP (par application et global) pour
@@ -1873,7 +1873,7 @@
 <li><strong>Chiffrement au repos</strong> — Tous les Cipi fichiers de configuration sont chiffrés avec
                         AES-256-CBC
                         via le système Vault. Vito Deploy n'annonce pas le chiffrement de la configuration au repos.</li>
-<li><strong>Synchronisation du serveur</strong> — Cipi inclut une synchronisation cryptée de serveur à serveur intégrée avec
+<li><strong>Synchronisation du serveur</strong> — Cipi inclut une synchronisation chiffrée de serveur à serveur intégrée avec
                         <code>cipi sync push</code> pour une réplication de basculement automatisée. Vito Deploy n’a pas d’équivalent
                         fonctionnalité.
                     </li>
@@ -1883,7 +1883,7 @@
                         serveur supplémentaire, pas de base de données séparée, pas d'infrastructure supplémentaire à maintenir ou à sécuriser.</li>
 <li><strong>Bases de données multimoteurs</strong> — Les deux prennent en charge MySQL/MariaDB/PostgreSQL. Cipi navires
                         MariaDB comme valeur native par défaut et PostgreSQL en option via <code>cipi db install pgsql</code>,
-                        avec sélection de moteur par application et informations d'identification cryptées par Vault.</li>
+                        avec sélection de moteur par application et informations d'identification chiffrées par Vault.</li>
 </ul>
 <p>Vito Deploy est une très bonne alternative dans l'espace libre/OSS self-hosted. Si vous voulez un GUI
                     tableau de bord avec collaboration et surveillance d'équipe, et ne nécessite pas d'automatisation ni d'IA
@@ -1898,17 +1898,17 @@
 <p>Coolify et Cipi partagent le même socle : gratuit, open source, self-hosted, pas d'abonnement SaaS.
                     Les principales différences résident dans le modèle et l'orientation du déploiement :</p>
 <ul>
-<li><strong>Docker vs pile native</strong> — Coolify est le conteneur d'abord : chaque application s'exécute dans
+<li><strong>Docker vs stack native</strong> — Coolify est le conteneur d'abord : chaque application s'exécute dans
                         Docker avec Traefik ou similaire comme proxy inverse. Cipi installe un Nginx natif + PHP-FPM /
                         Laravel Octane + MariaDB (en option PostgreSQL) + Supervisor s'empilent directement sur Ubuntu. Pour
                         applications Laravel standard, Cipi évite la surcharge du conteneur, simplifie le débogage et supprime une couche
                         d'abstraction - avec Octane, Horizon et Reverb de première classe.</li>
 <li><strong>GUI contre CLI</strong> — Coolify est le GUI-premier avec un tableau de bord Web pour chaque opération.
-                        Cipi est CLI-premier sans GUI. Si votre équipe préfère une interface visuelle et un service en un clic
+                        Cipi est CLI-first sans GUI. Si votre équipe préfère une interface visuelle et un service en un clic
                         l’approvisionnement, Coolify est un bon choix. Si vous avez besoin d'une automatisation scriptable et prête pour le pipeline, Cipi
                         est le meilleur choix.</li>
-<li><strong>Laravel profondeur</strong> — Cipi est le Laravel-premier : intégration du déployeur, artisan raccourcis,
-                        configuration automatique du gestionnaire de file d'attente, versions sans temps d'arrêt pilotées par webhook et version partagée
+<li><strong>Laravel profondeur</strong> — Cipi est le Laravel-premier : intégration du Deployer, artisan raccourcis,
+                        configuration automatique du gestionnaire de file d'attente, releases sans interruption pilotées par webhook et version partagée
                         La structure des répertoires est entièrement intégrée. Coolify peut héberger Laravel, mais le traite comme un PHP générique.
                         application sans gestion du cycle de vie spécifique à Laravel.</li>
 <li><strong>Intégration de l'IA</strong> — Cipi fournit un double serveur MCP (par application et global) pour
@@ -1916,12 +1916,12 @@
                         Intégration de l'IA.</li>
 <li><strong>Chiffrement au repos</strong> — Tous les Cipi fichiers de configuration sont chiffrés avec
                         AES-256-CBC via le système Vault. Coolify n'annonce pas le chiffrement de la configuration au repos.</li>
-<li><strong>Synchronisation du serveur</strong> — Cipi inclut une synchronisation cryptée de serveur à serveur intégrée avec
+<li><strong>Synchronisation du serveur</strong> — Cipi inclut une synchronisation chiffrée de serveur à serveur intégrée avec
                         <code>cipi sync push</code> pour une réplication de basculement automatisée. Coolify n’a pas d’équivalent
                         fonctionnalité.</li>
 </ul>
 <p>Coolify est un excellent choix si vous souhaitez un PaaS self-hosted avec un système Web GUI, Docker.
-                    déploiements et la flexibilité d'héberger de nombreuses piles différentes sur la même plate-forme. Si vous déployez
+                    déploiements et la flexibilité d'héberger de nombreuses stacks différentes sur la même plateforme. Si vous déployez
                     Laravel exclusivement et souhaitent une automatisation CLI-first, des performances natives PHP et des fonctionnalités spécifiques au Laravel.
                     l'outillage, Cipi est l'option la plus ciblée. Voir le dédié <a href="/fr/alternative-to-coolify">Comparaison Cipi vs Coolify</a>.</p>
 <!-- Kamal -->
@@ -1929,22 +1929,22 @@
 <p><a href="https://kamal-deploy.org/" target="_blank">Kamal</a> (anciennement MRSK) est un logiciel gratuit,
                     Outil open-source (MIT) CLI de l'équipe 37signals/Basecamp pour déployer des applications sur n'importe quel
                     serveur via SSH et Docker. Il est populaire dans les communautés Laravel et Ruby on Rails pour
-                    Le déploiement sans temps d'arrêt basé sur des conteneurs se déroule sans panneau d'hébergement. Kamal et Cipi partagent un CLI-premier
+                    Le déploiement sans interruption basé sur des conteneurs se déroule sans panneau d'hébergement. Kamal et Cipi partagent un CLI-first
                     philosophie - mais ils résolvent des problèmes différents :</p>
 <ul>
 <li><strong>Outil de déploiement vs panneau de serveur complet</strong> — Kamal déploie des conteneurs sur les serveurs que vous
                         déjà provisionné ; il n'installe pas Nginx, PHP, MariaDB, les règles de pare-feu, SSL, les sauvegardes ou
-                        travailleurs de la file d'attente. Cipi est un logiciel complet de gestion de serveur CLI qui fournit l'ensemble de la production
+                        workers de la file d'attente. Cipi est un logiciel complet de gestion de serveur CLI qui fournit l'ensemble de la production
                         stack et gère l’ensemble du cycle de vie des applications Laravel.</li>
-<li><strong>Docker vs pile native</strong> — Kamal est le conteneur en premier. Cipi exécute un Nginx natif +
-                        PHP-FPM / Laravel Octane + MariaDB (en option PostgreSQL) + Supervisor pile sur Ubuntu — inférieur
+<li><strong>Docker vs stack native</strong> — Kamal est le conteneur en premier. Cipi exécute un Nginx natif +
+                        PHP-FPM / Laravel Octane + MariaDB (en option PostgreSQL) + Supervisor stack sur Ubuntu — inférieur
                         surcharge et débogage plus simple pour les applications Laravel standard.</li>
 <li><strong>Laravel profondeur</strong> — Cipi inclut l'intégration de Deployer, Laravel Octane, Horizon,
                         Raccourcis Reverb, artisan,
-                        les files d'attente automatiques, les déploiements Git sans temps d'arrêt pilotés par webhook et la version partagée
+                        les files d'attente automatiques, les déploiements Git sans interruption pilotés par webhook et la version partagée
                         structure des répertoires. Kamal peut déployer Laravel en Docker, mais sans cycle de vie spécifique à Laravel
                         gestion.</li>
-<li><strong>Intégration de l'IA, cryptage, synchronisation</strong>— Cipi ajoute un double serveur MCP, AES-256-CBC
+<li><strong>Intégration de l'IA, chiffrement, synchronisation</strong>— Cipi ajoute un double serveur MCP, AES-256-CBC
                         Chiffrement du coffre-fort au repos, synchronisation chiffrée de serveur à serveur et REST API complet. Kamal n'en a pas
                         de ceux-ci.</li>
 </ul>
@@ -1955,12 +1955,11 @@
 <!-- Cleavr -->
 <h3>Cipi contre Cleavr</h3>
 <p><a href="https://cleavr.io/" target="_blank">Cleavr</a>est un panneau de gestion de serveur SaaS avec
-                    prise en charge solide de Laravel : déploiements sans temps d'arrêt, files d'attente, SSL, gestion de bases de données et un
+                    prise en charge solide de Laravel : déploiements sans interruption, files d'attente, SSL, gestion de bases de données et un
                     toile polie GUI. Il fait partie de la même catégorie que Forge et Ploi : vous connectez votre VPS à celui de Cleavr.
                     contrôlez le plan et gérez tout via un tableau de bord de navigateur, à partir d'environ 8 $/mois par
                     serveur.</p>
-<p>Cipi échange les GUI et les frais mensuels contre un coût nul, MIT open source, un contrôle total CLI, un double MCP
-                    serveur, cryptage de configuration AES-256 au repos et synchronisation de serveur à serveur cryptée intégrée. Cleavr
+<p>Cipi échange les GUI et les frais mensuels contre un coût nul, MIT open source, un contrôle total CLI, un double serveur MCP, chiffrement de configuration AES-256 au repos et synchronisation de serveur à serveur chiffrée intégrée. Cleavr
                     reste le meilleur choix si votre équipe préfère une interface visuelle et n'a pas besoin de CLI-first
                     automatisation des pipelines ou intégration de l’IA. Voir le<a href="/fr/alternative-to-cleavr">Cipi contre Cleavr
                         comparaison</a>.</p>
@@ -1971,17 +1970,17 @@
                     construit et exécute Docker conteneurs, avec un riche écosystème de plugins pour les bases de données, SSL et la planification.
                     Il est orienté CLI et self-hosted, sans dépendance SaaS.</p>
 <p>La comparaison avec Cipi reflète Coolify avec un poids plus léger : Dokku est git-push + containers ; Cipi
-                    est Laravel-premier sur une pile LEMP native avec provisionnement complet du serveur, déploiement, artisan, files d'attente,
-                    double MCP, cryptage Vault et synchronisation du serveur. Dokku victoires sur la simplicité et le conteneur de git-push
+                    est Laravel-premier sur une stack LEMP native avec provisionnement complet du serveur, déploiement, artisan, files d'attente,
+                    double MCP, chiffrement Vault et synchronisation du serveur. Dokku victoires sur la simplicité et le conteneur de git-push
                     isolement pour les équipes déjà engagées en Docker. Cipi gagne sur l'automatisation spécifique au Laravel sans
-                    frais généraux du conteneur. Voir le <a href="/fr/alternative-to-dokku">Comparaison Cipi vs Dokku</a>.</p>
+                    overhead du conteneur. Voir le <a href="/fr/alternative-to-dokku">Comparaison Cipi vs Dokku</a>.</p>
 <!-- Easypanel -->
 <h3>Cipi contre Easypanel</h3>
 <p><a href="https://easypanel.io/" target="_blank">Easypanel</a> est un libre, open-source, self-hosted
                     Docker PaaS avec un Web GUI — de portée similaire à Coolify. Il déploie des applications sous forme de conteneurs,
-                    prend en charge de nombreuses piles et fournit des bases de données et des services en un clic via un tableau de bord.</p>
+                    prend en charge de nombreuses stacks et fournit des bases de données et des services en un clic via un tableau de bord.</p>
 <p>Easypanel et Cipi diffèrent sur les mêmes axes que Coolify : GUI + Docker PaaS vs CLI + natif Laravel
-                    pile. Si vous souhaitez un PaaS visuel self-hosted avec des workflows de conteneurs, Easypanel vaut la peine
+                    stack. Si vous souhaitez un PaaS visuel self-hosted avec des workflows de conteneurs, Easypanel vaut la peine
                     évaluer. Si vous déployez Laravel exclusivement et souhaitez une première automatisation CLI sans Docker, Cipi
                     est l’option la plus ciblée. Voir le <a href="/fr/alternative-to-easypanel">Cipi contre Easypanel
                         comparaison</a>.</p>
@@ -1992,13 +1991,13 @@
                     serveurs, avec des forfaits de 9 $ à 49 $/mois et un niveau gratuit limité plafonné à 25 déploiements git par mois.
                 </p>
 <p>Moss et Cipi ciblent des charges de travail similaires mais des philosophies opposées : Moss est le GUI-premier SaaS avec déploiement
-                    quotas sur le niveau gratuit ; Cipi est CLI-premier, gratuit pour toujours, self-hosted, sans limite de déploiement, double
-                    MCP, chiffrement du coffre-fort et synchronisation du serveur. Moss n'est pas exclusif à Laravel : aucun déployeur ou
+                    quotas sur le niveau gratuit ; Cipi est CLI-first, gratuit pour toujours, self-hosted, sans limite de déploiement, double
+                    MCP, chiffrement du coffre-fort et synchronisation du serveur. Moss n'est pas exclusif à Laravel : aucun Deployer ou
                     artisan raccourcis. Voir le <a href="/fr/alternative-to-moss">Comparaison Cipi vs moss.sh</a>.</p>
 <!-- ServerPilot -->
 <h3>Cipi contre ServerPilot</h3>
 <p>ServerPilot est un panel SaaS axé sur PHP/WordPress (12 à 49 $/mois) qui automatise les opérations PHP-FPM et Nginx
-                    configuration. Il ne dispose pas d'outils spécifiques au Laravel, ni de CLI pour la gestion des applications, ni de temps d'arrêt nul.
+                    configuration. Il ne dispose pas d'outils spécifiques au Laravel, ni de CLI pour la gestion des applications, ni de zéro interruption.
                     déployer le système. Il s'adresse principalement aux développeurs WordPress qui souhaitent des mises à jour PHP automatisées sans
                     penser aux composants internes du serveur. Pour les développeurs Laravel, il offre peu de valeur au-dessus de Cipi à
                     coût permanent important.</p>
@@ -2015,7 +2014,7 @@
                     gérez les comptes de messagerie, FTP, les zones DNS, les bases de données et plusieurs sites Web clients sur une seule machine.
                     Ils sont chers (cPanel commence à 20$+/mois par serveur, Plesk de la même manière), GUI seulement, construits autour
                     Apache par défaut, et comportent une énorme complexité - dont la plupart n'ont pas d'importance lors du déploiement d'un
-                    application Laravel à pile unique.</p>
+                    application Laravel à stack unique.</p>
 <p>Ils constituent le bon outil pour les fournisseurs d'hébergement qui vendent des comptes d'hébergement partagé à des non-techniciens.
                     clients. Ce n'est pas le bon outil pour une équipe de développement qui possède son propre VPS et déploie Laravel
                     applications. Cipi est spécialement conçu pour ce dernier scénario, à un coût nul. Pour un panneau propriétaire plus léger dans
@@ -2030,8 +2029,8 @@
                     et des licences échelonnées d'environ 2 $ à 29 $ par mois en fonction des limites du compte.</p>
 <p>DirectAdmin et Cipi ciblent des cas d’utilisation opposés. DirectAdmin est destiné aux hébergeurs qui revendent
                     hébergement partagé; Cipi est destiné aux équipes de développement déployant Laravel sur un VPS dédié. DirectAdmin a
-                    pas d'intégration de Deployer, pas de commandes artisan, pas de gestionnaires de file d'attente automatiques et pas de commandes pilotées par webhook
-                    système de déploiement sans temps d'arrêt. Il peut héberger PHP/Laravel manuellement, mais n'offre aucun système spécifique à Laravel.
+                    pas d'intégration de Deployer, pas de commandes artisan, pas de workers de queue automatiques et pas de commandes pilotées par webhook
+                    système de déploiement sans interruption. Il peut héberger PHP/Laravel manuellement, mais n'offre aucun système spécifique à Laravel.
                     gestion du cycle de vie.</p>
 <p>DirectAdmin est un choix raisonnable si vous dirigez une petite entreprise d'hébergement et avez besoin d'un GUI pour un hébergement multi-locataire.
                     e-mail, DNS et administration de sites Web à un coût inférieur à cPanel. Pour une équipe qui possède son propre serveur
@@ -2047,10 +2046,10 @@
                     vous permet <em>déployer et gérer Laravel applications</em> sur un serveur. Ils ne sont pas mutuellement
                     exclusif — vous pourriez techniquement exécuter les deux sur la même machine — mais le CLI de Cipi remplace tout besoin
                     pour une console d'administration basée sur GUI pour les tâches qu'elle couvre (création d'applications, déploiements, gestion PHP,
-                    pare-feu, SSL, sauvegardes). Webmin n'a pas de conscience Laravel : pas de déployeur, pas de artisan, pas de file d'attente,
-                    pas de gestion des versions sans temps d'arrêt.</p>
+                    pare-feu, SSL, sauvegardes). Webmin n'a pas de conscience Laravel : pas de Deployer, pas de artisan, pas de file d'attente,
+                    pas de gestion des releases sans interruption.</p>
 <p>Si votre équipe a besoin d'une interface pointer-cliquer pour la maintenance générale du serveur (édition
-                    <code>/etc/hosts</code>, gestion des utilisateurs du système, examen visuel des journaux), Webmin est une solution raisonnable
+                    <code>/etc/hosts</code>, gestion des utilisateurs du système, examen visuel des logs), Webmin est une solution raisonnable
                     outil complémentaire. Pour les déploiements Laravel spécifiquement, Cipi est plus performant et ne nécessite aucun
                     navigateur ou session active.
                 </p>
@@ -2058,7 +2057,7 @@
 <h3>Cipi contre Virtualmin, ISPConfig, Froxlor, Ajenti</h3>
 <p>Il s'agit de panneaux d'hébergement gratuits et open-source conçus pour les FAI, les revendeurs d'hébergement et les systèmes
                     administrateurs gérant de nombreux locataires sur une seule machine. Ils partagent tous des caractéristiques similaires :
-                    serveurs de messagerie (Postfix/Dovecot), DNS (BIND), FTP (ProFTPD/vsftpd), gestion de plusieurs hôtes virtuels,
+                    serveurs de messagerie (Postfix/Dovecot), DNS (BIND), FTP (ProFTPD/vsftpd), gestion de plusieurs vhosts,
                     et des autorisations multi-utilisateurs complexes. Ils sont puissants mais ont des courbes d'apprentissage abruptes et sont
                     conçu pour des environnements bien plus complexes qu'un serveur d'applications dédié Laravel.</p>
 <p>Aucun d’entre eux ne dispose d’outillage spécifique à Laravel. Aucun d’entre eux ne s’intègre à Deployer. Aucun d'entre eux n'est
@@ -2069,13 +2068,13 @@
 <p>VestaCP a été effectivement abandonné depuis 2019. HestiaCP est son fork communautaire actif – gratuit et ouvert.
                     source et entretenue. C'est une alternative plus légère à cPanel pour l'hébergement générique (email, FTP, DNS,
                     plusieurs versions PHP). Comme les autres panneaux traditionnels, il ne dispose pas d'outillage spécifique Laravel : non
-                    Déployeur, pas de files d'attente gérés automatiquement, pas d'intégration artisan. Son public principal est
+                    Deployer, pas de files d'attente gérés automatiquement, pas d'intégration artisan. Son public principal est
                     petites entreprises d'hébergement ou particuliers qui souhaitent un GUI pour gérer plusieurs sites Web sur un seul serveur
-                    sur plusieurs piles. Si vous déployez uniquement Laravel, Cipi est l'option la plus ciblée et la plus simple.</p>
+                    sur plusieurs stacks. Si vous déployez uniquement Laravel, Cipi est l'option la plus ciblée et la plus simple.</p>
 <!-- aaPanel -->
 <h3 id="vs-aapanel">Cipi contre aaPanel</h3>
 <p>aaPanel (également connu sous le nom de BaoTa Panel) est un panel gratuit d'origine chinoise, largement utilisé dans le
-                    Région Asie-Pacifique. Il prend en charge les piles LNMP/LAMP, Node.js, Docker et divers moteurs de base de données
+                    Région Asie-Pacifique. Il prend en charge les stacks LNMP/LAMP, Node.js, Docker et divers moteurs de base de données
                     via un système de plugins. Il est véritablement performant et dispose d’une large base d’utilisateurs, mais il s’agit d’un produit générique.
                     outil multi-stack avec une philosophie centrée sur GUI et sans automatisation Laravel native. Serveur
                     la communication est gérée par le propre agent du panel, créant une dépendance vis-à-vis du panel.
@@ -2116,7 +2115,7 @@
 <li><strong>RunCloud, ServerPilot, GridPane, ServerAvatar, xCloud</strong> sont principalement américains ou
                         entreprises non communautaires. La résidence de leurs données et la disponibilité du DPA varient ; vérifiez celui de chaque fournisseur
                         politique de confidentialité et statut DPA avant de les utiliser avec des données soumises au RGPD.</li>
-<li><strong>aaPanneau</strong>est d'origine chinoise. Sa politique de confidentialité et le traitement des données sont soumis
+<li><strong>aaPanel</strong>est d'origine chinoise. Sa politique de confidentialité et le traitement des données sont soumis
                         à la loi chinoise, y compris la loi sur la protection des informations personnelles (PIPL) et la sécurité des données
                         Loi (DSL), qui dans certaines circonstances permet au gouvernement chinois d'accéder aux données stockées sur
                         Systèmes exploités par la Chine. Pour les équipes de l’UE ou les équipes traitant des données sensibles, il s’agit d’un avantage non négligeable.
@@ -2172,9 +2171,9 @@
 <li>Vous avez besoin <strong>CLI complète et automatisation du pipeline</strong> — chaque Cipi opération est scriptable
                         via SSH.</li>
 <li>Vous avez besoin <strong>déploiement Git natif</strong> — intégration du déploiement automatique avec GitHub et
-                        GitLab, avec des versions sans temps d'arrêt pilotées par webhook.</li>
-<li>Vous avez besoin <strong>un REPOS API</strong> — contrôle programmatique complet sur les hôtes et les applications pour
-                        intégration avec des outils externes, des tableaux de bord et des flux de travail personnalisés.</li>
+                        GitLab, avec des releases sans interruption pilotées par webhook.</li>
+<li>Vous avez besoin <strong>un API REST</strong> — contrôle programmatique complet sur les hôtes et les applications pour
+                        intégration avec des outils externes, des tableaux de bord et des workflow personnalisés.</li>
 <li>Vous avez besoin <strong>Gestion basée sur l'IA</strong> — Le double serveur MCP de Cipi (par application et global)
                         permet de créer, déployer, modifier, supprimer et gérer SSL des certificats sur tous
                         applications à partir de n'importe quel IDE ou agent AI compatible MCP.</li>
@@ -2186,10 +2185,10 @@
                         votre VPS, aucun processeur de données tiers, aucun DPA requis.</li>
 <li>Vous avez besoin <strong>chiffrement au repos</strong>- tous les fichiers de configuration, les informations d'identification et SSH
                         clés
-                        sont cryptés avec AES-256-CBC via le système Vault. Les archives de synchronisation sont également cryptées avec un
+                        sont chiffrés avec AES-256-CBC via le système Vault. Les archives de synchronisation sont également chiffrées avec un
                         phrase secrète définie par l'utilisateur.</li>
 <li>Vous avez besoin <strong>synchronisation et réplication de serveur à serveur</strong> — <code>cipi sync push</code>
-                        permet une réplication de basculement automatisée via cron, avec transfert crypté et incrémentiel
+                        permet une réplication de basculement automatisée via cron, avec transfert chiffré et incrémentiel
                         mises à jour.</li>
 <li>Vous avez besoin <strong>MariaDB et PostgreSQL en option</strong> — MariaDB par défaut, PostgreSQL
                         via <code>cipi db install pgsql</code>, avec sélection de moteur par application.</li>
@@ -2205,7 +2204,7 @@
 </div>
 <footer>
 <div class="footer-inner">
-<span>Réalisé avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
+<span>Fait avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" target="_blank">Essayez SSH
                         Gestionnaire de connexions avec Cipi</a></li>

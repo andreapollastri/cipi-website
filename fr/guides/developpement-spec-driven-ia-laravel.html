@@ -5,8 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Développement basé sur les spécifications avec des agents IA — Un guide Laravel (2026)</title>
-<meta content="Comment les équipes Laravel utilisent réellement l'IA en 2026 : développement basé sur les spécifications, outils MCP (Model Context Protocol), garde-fous qui assurent la sécurité du code des agents et un flux de travail concret de la spécification à la production." name="description"/>
-<meta content="Développement basé sur les spécifications, agents de codage IA, protocole de contexte de modèle MCP, flux de travail de développement IA, agents laravel IA, codage d'ambiance par rapport aux spécifications" name="keywords"/>
+<meta content="Comment les équipes Laravel utilisent réellement l'IA en 2026 : développement basé sur les spécifications, outils MCP (Model Context Protocol), garde-fous qui assurent la sécurité du code des agents et un workflow concret de la spécification à la production." name="description"/>
+<meta content="Développement basé sur les spécifications, agents de codage IA, protocole de contexte de modèle MCP, workflow de développement IA, agents laravel IA, codage d'ambiance par rapport aux spécifications" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/fr/guides/developpement-spec-driven-ia-laravel" rel="canonical"/>
@@ -24,7 +24,7 @@
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/fr/guides/developpement-spec-driven-ia-laravel" property="og:url"/>
 <meta content="Développement basé sur les spécifications avec des agents IA — Un guide Laravel (2026)" property="og:title"/>
-<meta content="Comment les équipes Laravel utilisent réellement l'IA en 2026 : développement basé sur les spécifications, outils MCP (Model Context Protocol), garde-fous qui assurent la sécurité du code des agents et un flux de travail concret de la spécification à la production." property="og:description"/>
+<meta content="Comment les équipes Laravel utilisent réellement l'IA en 2026 : développement basé sur les spécifications, outils MCP (Model Context Protocol), garde-fous qui assurent la sécurité du code des agents et un workflow concret de la spécification à la production." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -40,16 +40,16 @@
 <meta content="Guides" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Développement basé sur les spécifications avec des agents IA — Un guide Laravel (2026)" name="twitter:title"/>
-<meta content="Comment les équipes Laravel utilisent réellement l'IA en 2026 : développement basé sur les spécifications, outils MCP (Model Context Protocol), garde-fous qui assurent la sécurité du code des agents et un flux de travail concret de la spécification à la production." name="twitter:description"/>
+<meta content="Comment les équipes Laravel utilisent réellement l'IA en 2026 : développement basé sur les spécifications, outils MCP (Model Context Protocol), garde-fous qui assurent la sécurité du code des agents et un workflow concret de la spécification à la production." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Spec-Driven Development with AI Agents — A Laravel Guide (2026)",
-  "name": "Spec-Driven Development with AI Agents — A Laravel Guide (2026)",
+  "headline": "Développement basé sur les spécifications avec des agents IA — Un guide Laravel (2026)",
+  "name": "Développement basé sur les spécifications avec des agents IA — Un guide Laravel (2026)",
   "url": "https://cipi.sh/en/guides/spec-driven-development-ai-laravel",
-  "description": "How Laravel teams actually ship with AI in 2026: spec-driven development, MCP (Model Context Protocol) tooling, guardrails that keep agent code safe, and a concrete spec-to-production workflow.",
+  "description": "Comment les équipes Laravel utilisent réellement l'IA en 2026 : développement basé sur les spécifications, outils MCP (Model Context Protocol), garde-fous qui assurent la sécurité du code des agents et un workflow concret de la spécification à la production.",
   "inLanguage": "fr",
   "image": "https://cipi.sh/og.png",
   "datePublished": "2026-08-04",
@@ -110,7 +110,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Spec-Driven Development & AI",
+      "name": "Développement piloté par les spécifications et IA",
       "item": "https://cipi.sh/en/guides/spec-driven-development-ai-laravel"
     }
   ]
@@ -123,42 +123,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What is spec-driven development in one sentence?",
+      "name": "Qu’est-ce que le développement axé sur les spécifications en une phrase ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Writing versioned specifications — problem, constraints, acceptance criteria — as repository artifacts that AI agents implement against and humans review against, so intent survives longer than any chat session."
+        "text": "Rédaction de spécifications versionnées (problème, contraintes, critères d'acceptation) en tant qu'artefacts de référentiel que les agents d'IA implémentent et que les humains examinent, de sorte que l'intention survit plus longtemps que n'importe quelle session de discussion."
       }
     },
     {
       "@type": "Question",
-      "name": "What is MCP (Model Context Protocol)?",
+      "name": "Qu'est-ce que MCP (Modèle Context Protocol) ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "An open protocol that standardizes how AI agents discover and call external tools — databases, browsers, servers, APIs — so any MCP-compatible agent can use any MCP server without custom integrations. Cipi, for example, exposes server management (apps, deploys, SSL, databases) as MCP tools."
+        "text": "Un protocole ouvert qui standardise la manière dont les agents IA découvrent et appellent des outils externes (bases de données, navigateurs, serveurs, API) afin que tout agent compatible MCP puisse utiliser n'importe quel serveur MCP sans intégrations personnalisées. Cipi, par exemple, expose la gestion du serveur (applications, déploiements, SSL, bases de données) en tant qu'outils MCP."
       }
     },
     {
       "@type": "Question",
-      "name": "Will AI agents replace Laravel developers?",
+      "name": "Les agents IA remplaceront-ils les développeurs Laravel ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The work is shifting rather than disappearing: less line-by-line typing, more specifying, reviewing, and owning architecture and production. Developers who write clear specs and build strong guardrails get multiplied by agents; the code-only part of the job is what shrinks."
+        "text": "Le travail évolue plutôt que de disparaître : moins de saisie ligne par ligne, plus de spécification, de révision et de propriété de l'architecture et de la production. Les développeurs qui rédigent des spécifications claires et construisent des garde-fous solides sont multipliés par des agents ; la partie code uniquement du travail est ce qui rétrécit."
       }
     },
     {
       "@type": "Question",
-      "name": "How do I let an AI agent deploy safely?",
+      "name": "Comment laisser un agent IA se déployer en toute sécurité ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Never give agents raw SSH or production secrets. Route their access through scoped, revocable interfaces — an MCP server or REST API with explicit permissions, like Cipi's — and gate every change behind CI and the releases pattern, so any deploy is reversible in one command."
+        "text": "Ne donnez jamais aux agents des secrets SSH ou de production bruts. Acheminez leur accès via des interfaces limitées et révocables - un serveur MCP ou REST API avec des autorisations explicites, comme celles de Cipi - et contrôlez chaque modification derrière CI et le modèle de versions, de sorte que tout déploiement soit réversible en une seule commande."
       }
     },
     {
       "@type": "Question",
-      "name": "Does spec-driven development work with existing legacy codebases?",
+      "name": "Le développement basé sur les spécifications fonctionne-t-il avec les bases de code existantes ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — start by writing specs for the next change, not the whole system. Each spec documents one slice of intended behavior, and the archive grows into living documentation exactly where agents and new team members need it."
+        "text": "Oui, commencez par rédiger les spécifications du prochain changement, pas de l'ensemble du système. Chaque spécification documente une tranche du comportement prévu, et l'archive se transforme en une documentation vivante exactement là où les agents et les nouveaux membres de l'équipe en ont besoin."
       }
     }
   ]
@@ -338,7 +338,7 @@
                 lit l'intention, les contraintes et les décisions en un seul endroit.</li>
 </ul>
 <p>Dans le monde Laravel, <a class="inline" href="https://larapilot.web.ap.it" target="_blank">Larapilot</a>
-            présente cela sous la forme d'un flux de travail de produit basé sur les spécifications qui vit dans votre projet Laravel - spécifications, décisions
+            présente cela sous la forme d'un workflow de produit basé sur les spécifications qui vit dans votre projet Laravel - spécifications, décisions
             et la livraison des artefacts dans le dépôt, où les agents et les humains les trouvent tous deux. Pour un argument plus profond sur
             pourquoi le contexte dans le dépôt est ce qui maintient un produit en vie au cours de la première année, essai d'Andrea Pollastri
             <a class="inline" href="https://web.ap.it/blog/building-a-saas-that-survives-its-second-year" target="_blank">"Construire un SaaS qui survit à sa deuxième année"</a> vaut votre temps.</p>
@@ -403,16 +403,16 @@
 <div class="cta-box">
 <h2>Mettez cela en pratique avec Cipi</h2>
 <p>Cipi est le déploiement gratuit open-source CLI référencé tout au long de ce guide : une commande transforme un nouveau
-                Ubuntu VPS dans un serveur de production renforcé pour Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
-                PostgreSQL, files d'attente, planificateur, SSL et déploiements Git sans temps d'arrêt inclus.</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | coup</div>
+                VPS Ubuntu dans un serveur de production renforcé pour Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
+                PostgreSQL, files d'attente, planificateur, SSL et déploiements Git sans interruption inclus.</p>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
-<a class="btn-primary" href="/fr/docs/getting-started">Commencez gratuitement</a>
+<a class="btn-primary" href="/fr/docs/getting-started">Démarrer gratuitement</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Étoile sur GitHub</a>
 <a class="btn-ghost" href="/fr/alternatives">Comparez avec d'autres outils</a>
 </div>
 </div>
-<h2 id="faq">Questions fréquemment posées</h2>
+<h2 id="faq">Questions fréquentes</h2>
 <div class="faq-item"><h3>Qu’est-ce que le développement axé sur les spécifications en une phrase ?</h3><p>Rédaction de spécifications versionnées (problème, contraintes, critères d'acceptation) en tant qu'artefacts de référentiel que les agents d'IA implémentent et que les humains examinent, de sorte que l'intention survit plus longtemps que n'importe quelle session de discussion.</p></div>
 <div class="faq-item"><h3>Qu'est-ce que MCP (Modèle Context Protocol) ?</h3><p>Un protocole ouvert qui standardise la manière dont les agents IA découvrent et appellent des outils externes (bases de données, navigateurs, serveurs, API) afin que tout agent compatible MCP puisse utiliser n'importe quel serveur MCP sans intégrations personnalisées. Cipi, par exemple, expose la gestion du serveur (applications, déploiements, SSL, bases de données) en tant qu'outils MCP.</p></div>
 <div class="faq-item"><h3>Les agents IA remplaceront-ils les développeurs Laravel ?</h3><p>Le travail évolue plutôt que de disparaître : moins de saisie ligne par ligne, plus de spécification, de révision et de propriété de l'architecture et de la production. Les développeurs qui rédigent des spécifications claires et construisent des garde-fous solides sont multipliés par des agents ; la partie code uniquement du travail est ce qui rétrécit.</p></div>
@@ -423,7 +423,7 @@
 <a href="/fr/guides/ci-cd-et-workflow-git-laravel">CI/CD pour Laravel</a>
 <a href="/fr/guides/ecosysteme-laravel-2026">L’écosystème Laravel en 2026</a>
 <a href="/fr/docs/agent">Cipi Agent : MCP pour Laravel applications</a>
-<a href="https://larapilot.web.ap.it">Larapilot — flux de travail basé sur les spécifications</a>
+<a href="https://larapilot.web.ap.it">Larapilot — workflow basé sur les spécifications</a>
 <a href="https://web.ap.it/blog">Le blog d'Andrea Pollastri</a>
 </div>
 </main>
@@ -432,25 +432,25 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Déployez gratuitement open-source Laravel CLI pour Ubuntu VPS — Octane, Horizon, Reverb et des déploiements Git sans temps d'arrêt.</p>
+<p>CLI open-source et gratuite pour déployer Laravel sur un VPS Ubuntu — Octane, Horizon, Reverb et déploiements Git sans interruption.</p>
 <ul class="footer-brand-links">
-<li><a href="/fr/docs/getting-started">Commencez</a></li>
-<li><a href="/fr/docs/">Documents</a></li>
+<li><a href="/fr/docs/getting-started">Démarrer</a></li>
+<li><a href="/fr/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Comparez Cipi avec des alternatives" class="footer-col footer-col--compare">
-<strong>Comparez Cipi</strong>
+<nav aria-label="Comparer Cipi aux alternatives" class="footer-col footer-col--compare">
+<strong>Comparer Cipi</strong>
 <ul>
-<li><a href="/fr/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
-<li><a href="/fr/alternative-to-laravel-cloud">Laravel Alternative au cloud</a></li>
+<li><a href="/fr/alternative-to-laravel-forge">Alternative à Laravel Forge</a></li>
+<li><a href="/fr/alternative-to-laravel-cloud">Alternative à Laravel Cloud</a></li>
 <li><a href="/fr/alternative-to-ploi">Ploi alternative</a></li>
 <li><a href="/fr/alternative-to-coolify">Coolify alternative</a></li>
 <li><a href="/fr/alternative-to-runcloud">RunCloud alternative</a></li>
 <li><a href="/fr/alternative-to-cloudpanel">CloudPanel alternative</a></li>
 <li><a href="/fr/alternative-to-cpanel">cPanel alternative</a></li>
 <li><a href="/fr/alternative-to-plesk">Alternative à Plesk</a></li>
-<li><a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives Forge 2026</a></li>
+<li><a href="/fr/best-laravel-forge-alternatives">Meilleures alternatives à Forge en 2026</a></li>
 <li><a href="/fr/alternatives">Toutes les comparaisons</a></li>
 </ul>
 </nav>
@@ -458,7 +458,7 @@
 <strong>Guides gratuits</strong>
 <ul>
 <li><a href="/fr/guides/gerer-apps-avec-cipi-yml">Gérer les apps avec cipi.yml</a></li>
-<li><a href="/fr/guides/panneau-ui-et-api">Panneau UI et API</a></li>
+<li><a href="/fr/guides/panneau-ui-et-api">Panneau de contrôle et API</a></li>
 <li><a href="/fr/guides/utiliser-cipi-agent-laravel">cipi/agent et MCP de projet</a></li>
 <li><a href="/fr/guides/deployer-wordpress-app-personnalisee">Déployer WordPress sur Cipi</a></li>
 <li><a href="/fr/guides/">Tous les guides</a></li>
@@ -467,7 +467,7 @@
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Réalisé avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+                    Fait avec ❤️ par <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
 <span class="footer-license"> · Open source, licence MIT</span>
 </div>
 <ul class="footer-links">

@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Self-Hosted fortrabbit-Alternative (2026) – Cipi, kostenlos &amp; Open Source</title>
 <meta content="Cipi ist eine kostenlose open-source, self-hosted Alternative zu fortrabbit. Besitzen Sie Ihr VPS anstelle eines verwalteten PHP-PaaS – feste Kosten, vollständiger Root-Zugriff, Laravel-first CLI, keine Anbieterbindung." name="description"/>
-<meta content="fortrabbit-Alternative, self-hosted fortrabbit-Alternative, open source fortrabbit-Alternative, fortrabbit vs. Cipi, PHP-PaaS-Alternative, Laravel Bereitstellung CLI" name="keywords"/>
+<meta content="fortrabbit-Alternative, self-hosted fortrabbit-Alternative, open source fortrabbit-Alternative, fortrabbit vs. Cipi, PHP-PaaS-Alternative, Laravel Deployment CLI" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/de/alternative-to-fortrabbit" rel="canonical"/>
@@ -81,7 +81,7 @@
         {
           "@type": "Question",
           "name": "Was ist der Unterschied zwischen Cipi und fortrabbit?",
-          "acceptedAnswer": { "@type": "Answer", "text": "fortrabbit ist eine verwaltete PHP-Cloud mit Dashboard, SSH/SFTP, Git-Bereitstellungen, MCP und einer CLI, ab etwa 4,50 €/Monat. Cipi läuft auf Ihrem eigenen VPS mit vollem Root-Zugriff und festen Kosten, ist open source und Laravel-first (Octane, Horizon, Reverb) mit dualem MCP-Server und Konfigurationsverschlüsselung im Ruhezustand." }
+          "acceptedAnswer": { "@type": "Answer", "text": "fortrabbit ist eine verwaltete PHP-Cloud mit Dashboard, SSH/SFTP, Git-Deployments, MCP und einer CLI, ab etwa 4,50 €/Monat. Cipi läuft auf Ihrem eigenen VPS mit vollem Root-Zugriff und festen Kosten, ist open source und Laravel-first (Octane, Horizon, Reverb) mit dualem MCP-Server und Konfigurationsverschlüsselung im Ruhezustand." }
         },
         {
           "@type": "Question",
@@ -130,13 +130,13 @@
       "@type": "HowToStep",
       "position": 2,
       "name": "Stellen Sie ein neues Ubuntu VPS bereit und installieren Sie Cipi",
-      "text": "Jeder Anbieter funktioniert (Hetzner, DigitalOcean, Vultr, Linode, AWS). Auf Ubuntu 24.04/26.04 führen Sie den Ein-Befehl-Installer aus (wget -O - https://cipi.sh/setup.sh | bash) und der gesamte Produktionsstapel – Nginx, PHP, MariaDB, Valkey, Supervisor – ist in wenigen Minuten konfiguriert."
+      "text": "Jeder Anbieter funktioniert (Hetzner, DigitalOcean, Vultr, Linode, AWS). Auf Ubuntu 24.04/26.04 führen Sie den Ein-Befehl-Installer aus (wget -O - https://cipi.sh/setup.sh | bash) und der gesamte Produktions-Stack – Nginx, PHP, MariaDB, Valkey, Supervisor – ist in wenigen Minuten konfiguriert."
     },
     {
       "@type": "HowToStep",
       "position": 3,
       "name": "Erstellen Sie jede App neu und verbinden Sie Git",
-      "text": "cipi app create stellt eine isolierte App mit eigenem Systembenutzer, eigener Datenbank, PHP-Pool und Nginx-vhost bereit (fügen Sie --octane für Laravel Octane hinzu). Die Verbindung von GitHub oder GitLab konfiguriert Deploy-Keys und Webhooks automatisch für Bereitstellungen ohne Ausfallzeiten."
+      "text": "cipi app create stellt eine isolierte App mit eigenem Systembenutzer, eigener Datenbank, PHP-Pool und Nginx-vhost bereit (fügen Sie --octane für Laravel Octane hinzu). Die Verbindung von GitHub oder GitLab konfiguriert Deploy-Keys und Webhooks automatisch für Zero-Downtime-Deployments."
     },
     {
       "@type": "HowToStep",
@@ -244,7 +244,7 @@
 <div class="nav-right">
 <a href="/de/cipi-yml" class="nav-link">cipi.yml</a>
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">DE</summary><div class="lang-menu"><a href="/en/alternative-to-fortrabbit" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a class="active" href="/de/alternative-to-fortrabbit" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/alternative-to-fortrabbit" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/alternativa-a-fortrabbit" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/alternative-to-fortrabbit" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/alternative-to-fortrabbit" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Thema umschalten" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Theme wechseln" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -293,9 +293,9 @@
 <span class="cmp-eyebrow">fortrabbit-Alternative</span>
 <h1>Die self-hosted <em>fortrabbit-Alternative</em></h1>
 <p class="cmp-updated">Vergleich zuletzt aktualisiert: <time datetime="2026-09-07">7. September 2026</time> · spiegelt Cipi 5 und aktuelle fortrabbit-Preise/-Funktionen wider</p>
-<p class="lead">fortrabbit ist eine verwaltete PHP-Cloud – Git-Bereitstellungen, SSH/SFTP, MySQL, MCP, CLI und ein Entwickler-Dashboard, ab 4,50 €/Monat in Irland oder Virginia. Cipi ist das Gegenteil: Sie besitzen ein VPS bei jedem Anbieter, mit vollem Root-Zugriff, festen, vorhersehbaren Kosten und Laravel-first-Werkzeugen – während die Bereitstellung weiterhin in wenigen Minuten erfolgt. Kostenlos, open source und vollständig CLI-gesteuert.</p>
+<p class="lead">fortrabbit ist eine verwaltete PHP-Cloud – Git-Deployments, SSH/SFTP, MySQL, MCP, CLI und ein Entwickler-Dashboard, ab 4,50 €/Monat in Irland oder Virginia. Cipi ist das Gegenteil: Sie besitzen ein VPS bei jedem Anbieter, mit vollem Root-Zugriff, festen, vorhersehbaren Kosten und Laravel-first-Tools – während das Deployment weiterhin in wenigen Minuten erfolgt. Kostenlos, open source und vollständig CLI-gesteuert.</p>
 <div class="cmp-cta">
-<a class="btn-primary" href="/de/docs/getting-started">Starten Sie kostenlos durch</a>
+<a class="btn-primary" href="/de/docs/getting-started">Kostenlos starten</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Auf GitHub ansehen</a>
 </div>
 <h2>Cipi vs fortrabbit auf einen Blick</h2>
@@ -313,13 +313,13 @@
 <tr><td>Lizenz</td><td class="col-cipi">Open source (MIT)</td><td>Proprietär</td></tr>
 <tr><td>Root-/SSH-Zugriff</td><td class="col-cipi"><span class="yes">Voller Root auf Ihrem VPS</span></td><td><span class="partial">SSH/SFTP auf verwalteter App</span></td></tr>
 <tr><td>Besitzen Sie die Infrastruktur</td><td class="col-cipi"><span class="yes">Ja – jeder Anbieter</span></td><td><span class="no">Nein – AWS verwaltet</span></td></tr>
-<tr><td>Keine Lieferantenbindung</td><td class="col-cipi"><span class="yes">Tragbarer Stapel</span></td><td><span class="no">An fortrabbit-PaaS gebunden</span></td></tr>
-<tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Ja – CLI nativ</span></td><td><span class="partial">PHP-PaaS, nicht Octane-first</span></td></tr>
+<tr><td>Keine Lieferantenbindung</td><td class="col-cipi"><span class="yes">Portabler Stack</span></td><td><span class="no">An fortrabbit-PaaS gebunden</span></td></tr>
+<tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Ja – nativ in der CLI</span></td><td><span class="partial">PHP-PaaS, nicht Octane-first</span></td></tr>
 <tr><td>CLI &amp; Pipeline-Automatisierung</td><td class="col-cipi"><span class="yes">Ja</span></td><td><span class="yes">frbit CLI + API</span></td></tr>
-<tr><td>AI / MCP Server</td><td class="col-cipi"><span class="yes">Dual MCP</span></td><td><span class="yes">MCP + Agent-Skills</span></td></tr>
+<tr><td>KI / MCP-Server</td><td class="col-cipi"><span class="yes">Dual MCP</span></td><td><span class="yes">MCP + Agent-Skills</span></td></tr>
 <tr><td>Fokus</td><td class="col-cipi">Laravel-first auf Ubuntu</td><td>Verwaltetes PHP (Craft, Statamic, Kirby, Laravel, WP)</td></tr>
 <tr><td>Zusammenarbeit / Abrechnung</td><td class="col-cipi"><span class="partial">Optionales self-hosted GUI</span></td><td><span class="yes">Teams, Kunden, Zahlungsmethoden</span></td></tr>
-<tr><td>Verschlüsselung im Ruhezustand konfigurieren (AES-256)</td><td class="col-cipi"><span class="yes">Auf Ihrem VPS</span></td><td><span class="partial">Verwaltete Infrastruktur</span></td></tr>
+<tr><td>Konfigurationsverschlüsselung im Ruhezustand (AES-256)</td><td class="col-cipi"><span class="yes">Auf Ihrem VPS</span></td><td><span class="partial">Verwaltete Infrastruktur</span></td></tr>
 <tr><td>Keine Serververwaltung</td><td class="col-cipi"><span class="no">Sie führen VPS aus.</span></td><td><span class="yes">Vollständig verwaltet</span></td></tr>
 </tbody>
 </table>
@@ -332,25 +332,25 @@
 <div class="card"><h3>Laravel-first-Tiefe</h3><p>Octane auf FrankenPHP, Horizon, Reverb, Deployer, artisan-Kurzbefehle und Queue-Worker sind erstklassige CLI-Funktionen – kein generisches PHP-Runtime, das Sie selbst konfigurieren.</p></div>
 <div class="card"><h3>Open source &amp; KI-nativ</h3><p>MIT-lizenziert und überprüfbar, mit einem dualen MCP-Server (pro App und global). fortrabbit liefert ebenfalls MCP und Agent-Skills, aber die Steuerungsebene bleibt bei ihnen.</p></div>
 <div class="card"><h3>Verschlüsselung im Ruhezustand + Souveränität</h3><p>Alle Konfigurationen werden mit AES-256-CBC auf einem VPS in der von Ihnen gewählten Region verschlüsselt – keine Infrastrukturdaten verlassen Ihren Computer.</p></div>
-<div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Erstellen oder konvertieren Sie Apps mit <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Führen Sie Octane neben klassischen FPM-Apps sowie erstklassige Horizon und Reverb aus.</p></div>
-<div class="card"><h3>Optional PostgreSQL</h3><p>MariaDB standardmäßig; Installieren Sie PostgreSQL mit einem Befehl und wählen Sie eine Engine pro App aus (<code>cipi db install pgsql</code>).</p></div>
+<div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Apps erstellen oder konvertieren mit <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Führen Sie Octane neben klassischen FPM-Apps sowie erstklassige Horizon und Reverb aus.</p></div>
+<div class="card"><h3>Optional PostgreSQL</h3><p>MariaDB standardmäßig; PostgreSQL installieren Sie mit einem Befehl und wählen die Engine pro App (<code>cipi db install pgsql</code>).</p></div>
 </div>
-<h2>Installieren Sie Cipi in einem Befehl</h2>
-<p>Starten Sie ein neues Ubuntu VPS und führen Sie dann Folgendes aus:</p>
+<h2>Cipi mit einem Installationsbefehl</h2>
+<p>Starten Sie einen frischen Ubuntu VPS und führen Sie dann aus:</p>
 <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
-<p>Dadurch wird der gesamte Produktionsstapel installiert und konfiguriert – Nginx, PHP-FPM / Laravel Octane, MariaDB, optional PostgreSQL, Redis und Supervisor. Siehe die
+<p>Dadurch wird der gesamte Produktions-Stack installiert und konfiguriert – Nginx, PHP-FPM / Laravel Octane, MariaDB, optional PostgreSQL, Redis und Supervisor. Siehe die
             <a class="inline" href="/de/docs/getting-started">Leitfaden für den Einstieg</a>.</p>
 <h2>Wobei fortrabbit die bessere Wahl ist</h2>
 <div class="note">
-<p>fortrabbit überzeugt als poliertes PHP-only-PaaS: GitHub-Bereitstellungen und Build-Befehle, persistenter Speicher mit SSH/SFTP, Zusammenarbeit (Teams, Kunden, Zahlungsmethoden), integriertes MySQL und Backups, Regionen in Irland (EU) und Virginia (US) sowie vierzehn Jahre PHP-Hosting. Wenn Sie eine verwaltete PHP-Cloud ohne eigenes VPS wollen – und Dashboard, MCP und CLI schätzen – ist fortrabbit eine starke Wahl. Cipi ist für Teams, die die Maschine besitzen, die Rechnung fixieren und Laravel über die CLI automatisieren wollen.</p>
+<p>fortrabbit überzeugt als poliertes PHP-only-PaaS: GitHub-Deployments und Build-Befehle, persistenter Speicher mit SSH/SFTP, Zusammenarbeit (Teams, Kunden, Zahlungsmethoden), integriertes MySQL und Backups, Regionen in Irland (EU) und Virginia (US) sowie vierzehn Jahre PHP-Hosting. Wenn Sie eine verwaltete PHP-Cloud ohne eigenes VPS wollen – und Dashboard, MCP und CLI schätzen – ist fortrabbit eine starke Wahl. Cipi ist für Teams, die die Maschine besitzen, die Rechnung fixieren und Laravel über die CLI automatisieren wollen.</p>
 </div>
 <h2 id="migrate">So migrieren Sie von fortrabbit zu Cipi</h2>
 <p>Der Wechsel von fortrabbit zu Cipi ist eher eine saubere Umstellung als eine direkte Konvertierung: Sie stellen einen neuen Server neben Ihrem aktuellen Setup auf, deployen aus demselben Git-Repository und wechseln DNS, wenn alles passt. Ihre Laravel- (oder PHP-)Codebasis muss nicht geändert werden.</p>
 <ol class="migrate-steps">
 <li><strong>Exportieren Sie Ihre Daten aus fortrabbit.</strong> Sichern Sie MySQL, synchronisieren Sie persistente Dateien per SFTP/rsync und notieren Sie Umgebungsvariablen, Build-Befehle sowie Queue-/Job-Einstellungen, damit Sie sie auf Ihrem VPS neu erstellen können.</li>
-<li><strong>Stellen Sie ein neues Ubuntu VPS bereit und installieren Sie Cipi.</strong> Jeder Anbieter funktioniert (Hetzner, DigitalOcean, Vultr, Linode, AWS). Auf Ubuntu 24.04/26.04 führen Sie <code>wget -O - https://cipi.sh/setup.sh | bash</code> aus und der gesamte Produktionsstapel – Nginx, PHP, MariaDB, Valkey, Supervisor – ist in wenigen Minuten konfiguriert.</li>
-<li><strong>Erstellen Sie jede App neu und verbinden Sie Git.</strong> <code>cipi app create</code> stellt eine isolierte App mit eigenem Systembenutzer, eigener Datenbank, PHP-Pool und Nginx-vhost bereit (fügen Sie <code>--octane</code> für Laravel Octane hinzu). Durch die Verbindung von GitHub oder GitLab werden Bereitstellungsschlüssel und Webhooks automatisch für Bereitstellungen ohne Ausfallzeiten konfiguriert.</li>
-<li><strong>Daten verschieben und umschneiden.</strong> Importieren Sie Ihren Datenbank-Dump, kopieren Sie Ihre <code>.env</code>-Werte, stellen Sie HTTPS-Zertifikate mit <code>cipi ssl install</code> aus und richten Sie dann DNS auf den neuen Server.</li>
+<li><strong>Einen frischen Ubuntu VPS provisionieren und Cipi installieren.</strong> Jeder Anbieter funktioniert (Hetzner, DigitalOcean, Vultr, Linode, AWS). Auf Ubuntu 24.04/26.04 führen Sie <code>wget -O - https://cipi.sh/setup.sh | bash</code> aus und der gesamte Produktions-Stack – Nginx, PHP, MariaDB, Valkey, Supervisor – ist in wenigen Minuten konfiguriert.</li>
+<li><strong>Jede App neu anlegen und Git verbinden.</strong> <code>cipi app create</code> stellt eine isolierte App mit eigenem Systembenutzer, eigener Datenbank, PHP-Pool und Nginx-vhost bereit (fügen Sie <code>--octane</code> für Laravel Octane hinzu). Durch die Verbindung von GitHub oder GitLab werden Deploy-Keys und Webhooks automatisch für Zero-Downtime-Deployments konfiguriert.</li>
+<li><strong>Daten migrieren und umschalten.</strong> Importieren Sie Ihren Datenbank-Dump, kopieren Sie Ihre <code>.env</code>-Werte, stellen Sie HTTPS-Zertifikate mit <code>cipi ssl install</code> aus und richten Sie dann DNS auf den neuen Server.</li>
 </ol>
 <div class="note">
 <p>Cipi verwendet die Standardkonventionen Nginx, PHP-FPM / Laravel Octane und Deployer, daher gibt es keine
@@ -358,14 +358,14 @@
 </div>
 <h2>Häufig gestellte Fragen</h2>
 <div class="faq-item"><h3>Gibt es eine self-hosted Alternative zu fortrabbit?</h3><p>Ja. Cipi ist eine kostenlose open-source (MIT) und self-hosted Alternative zu fortrabbit. Anstelle eines verwalteten PHP-PaaS auf AWS besitzen Sie ein VPS bei einem beliebigen Anbieter und Cipi installiert und verwaltet den gesamten Produktionsstack darauf.</p></div>
-<div class="faq-item"><h3>Was ist der Unterschied zwischen Cipi und fortrabbit?</h3><p>fortrabbit ist eine verwaltete PHP-Cloud mit Dashboard, SSH/SFTP, Git-Bereitstellungen, MCP und einer CLI, ab etwa 4,50 €/Monat. Cipi läuft auf Ihrem eigenen VPS mit vollem Root-Zugriff und festen Kosten, ist open source und Laravel-first (Octane, Horizon, Reverb) mit dualem MCP-Server und Konfigurationsverschlüsselung im Ruhezustand.</p></div>
+<div class="faq-item"><h3>Was ist der Unterschied zwischen Cipi und fortrabbit?</h3><p>fortrabbit ist eine verwaltete PHP-Cloud mit Dashboard, SSH/SFTP, Git-Deployments, MCP und einer CLI, ab etwa 4,50 €/Monat. Cipi läuft auf Ihrem eigenen VPS mit vollem Root-Zugriff und festen Kosten, ist open source und Laravel-first (Octane, Horizon, Reverb) mit dualem MCP-Server und Konfigurationsverschlüsselung im Ruhezustand.</p></div>
 <div class="faq-item"><h3>Ist Cipi günstiger als fortrabbit?</h3><p>Cipi selbst ist kostenlos; Ihre einzigen Kosten sind das VPS, zu einem festen monatlichen Preis. fortrabbit ist für ein PaaS günstig, bleibt aber eine wiederkehrende Anbieterrechnung zusätzlich zum bereitgestellten Hosting.</p></div>
 <div class="faq-item"><h3>Wann sollte ich mich noch für fortrabbit entscheiden?</h3><p>Wählen Sie fortrabbit, wenn Sie verwaltetes PHP-Hosting ohne eigenes VPS wollen, ihr Zusammenarbeitsmodell (Teams, Kunden, Abrechnung) schätzen, SSH/SFTP mit persistentem Speicher brauchen und mit Irland oder Virginia zufrieden sind.</p></div>
 <div class="faq-item"><h3>Kann ich von fortrabbit zu Cipi migrieren?</h3><p>Ja. Stellen Sie ein Ubuntu VPS bereit, installieren Sie Cipi, erstellen Sie jede App mit cipi app create neu, stellen Sie die Datenbank wieder her, kopieren Sie Umgebungswerte und Assets und richten Sie DNS ein. Sie tauschen ein verwaltetes PHP-PaaS gegen feste VPS-Kosten und vollen Root.</p></div>
 <div class="faq-item"><h3>Unterstützt Cipi Laravel Octane wie ein modernes PHP-Hosting?</h3><p>Ja. Cipi führt Laravel Octane nativ auf FrankenPHP aus: Erstellen Sie Octane-Apps mit cipi app create --octane oder konvertieren Sie vorhandene Apps mit cipi app convert --to=octane, parallel zu klassischen PHP-FPM-Apps auf demselben Server.</p></div>
-<h2>Vergleichen Sie Cipi mit anderen Tools</h2>
+<h2>Cipi im Vergleich mit anderen Tools</h2>
 <div class="related">
-<a href="/de/alternative-to-laravel-forge">vs Laravel Forge</a>
+<a href="/de/alternative-to-laravel-forge">vs. Laravel Forge</a>
 <a href="/de/alternative-to-laravel-cloud">vs. Laravel Cloud</a>
 <a href="/de/alternative-to-fortrabbit">vs. fortrabbit</a>
 <a href="/de/alternative-to-render">vs. Render</a>
@@ -395,43 +395,43 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Kostenlose open-source Laravel Bereitstellung CLI für Ubuntu VPS – Octane, Horizon, Reverb und Git-Bereitstellungen ohne Ausfallzeiten.</p>
+<p>Kostenlose Open-Source-Deploy-CLI für Laravel auf Ubuntu VPS – Octane, Horizon, Reverb und Zero-Downtime-Git-Deploys.</p>
 <ul class="footer-brand-links">
-<li><a href="/de/docs/getting-started">Fangen Sie an</a></li>
-<li><a href="/de/docs/">Dokumente</a></li>
+<li><a href="/de/docs/getting-started">Jetzt starten</a></li>
+<li><a href="/de/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Vergleichen Sie Cipi mit Alternativen" class="footer-col footer-col--compare">
-<strong>Vergleichen Sie Cipi</strong>
+<nav aria-label="Cipi mit Alternativen vergleichen" class="footer-col footer-col--compare">
+<strong>Cipi vergleichen</strong>
 <ul>
 <li><a href="/de/alternative-to-laravel-forge">Laravel Forge Alternative</a></li>
-<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud-Alternative</a></li>
+<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud Alternative</a></li>
 <li><a href="/de/alternative-to-ploi">Ploi Alternative</a></li>
 <li><a href="/de/alternative-to-coolify">Coolify Alternative</a></li>
 <li><a href="/de/alternative-to-runcloud">RunCloud Alternative</a></li>
 <li><a href="/de/alternative-to-cloudpanel">CloudPanel Alternative</a></li>
 <li><a href="/de/alternative-to-cpanel">cPanel Alternative</a></li>
-<li><a href="/de/alternative-to-plesk">Plesk-Alternative</a></li>
+<li><a href="/de/alternative-to-plesk">Plesk Alternative</a></li>
 <li><a href="/de/best-laravel-forge-alternatives">Beste Forge-Alternativen 2026</a></li>
 <li><a href="/de/alternatives">Alle Vergleiche</a></li>
 </ul>
 </nav>
 <nav aria-label="Kostenlose Laravel-Anleitungen" class="footer-col">
-<strong>Kostenlose Reiseführer</strong>
+<strong>Kostenlose Guides</strong>
 <ul>
 <li><a href="/de/guides/apps-mit-cipi-yml-verwalten">Apps mit cipi.yml verwalten</a></li>
-<li><a href="/de/guides/gui-panel-und-api">GUI-Panel und API</a></li>
+<li><a href="/de/guides/gui-panel-und-api">Control-Panel und API</a></li>
 <li><a href="/de/guides/cipi-agent-in-laravel-nutzen">cipi/agent und Projekt-MCP</a></li>
-<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi bereitstellen</a></li>
+<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi deployen</a></li>
 <li><a href="/de/guides/">Alle Anleitungen</a></li>
                     </ul>
 </nav>
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Hergestellt mit ❤️ von <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
-<span class="footer-license"> · Open source, MIT-lizenziert</span>
+                    Mit ❤️ gebaut von <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+<span class="footer-license"> · Open Source, MIT-lizenziert</span>
 </div>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">SSH-Verbindungsmanager</a></li>

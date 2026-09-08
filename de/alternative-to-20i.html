@@ -5,8 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Self-Hosted 20i-Alternative für Laravel (2026) – Cipi, kostenlos &amp; Open Source</title>
-<meta content="Cipi ist eine kostenlose open-source, self-hosted Alternative zu 20i für Laravel-Teams. Besitzen Sie Ihr VPS anstelle eines verwalteten Hosting-Panels – CLI-Bereitstellungen, Octane, keine Reseller-Bindung." name="description"/>
-<meta content="20i-Alternative, 20i vs. Cipi, self-hosted 20i-Alternative, Laravel-Hosting-Alternative zu 20i, My20i-Alternative, Laravel Bereitstellung CLI" name="keywords"/>
+<meta content="Cipi ist eine kostenlose open-source, self-hosted Alternative zu 20i für Laravel-Teams. Besitzen Sie Ihr VPS anstelle eines verwalteten Hosting-Panels – CLI-Deployments, Octane, keine Reseller-Bindung." name="description"/>
+<meta content="20i-Alternative, 20i vs. Cipi, self-hosted 20i-Alternative, Laravel-Hosting-Alternative zu 20i, My20i-Alternative, Laravel Deployment CLI" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/de/alternative-to-20i" rel="canonical"/>
@@ -24,7 +24,7 @@
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/de/alternative-to-20i" property="og:url"/>
 <meta content="Self-Hosted 20i-Alternative für Laravel (2026) – Cipi, kostenlos &amp; Open Source" property="og:title"/>
-<meta content="Cipi ist eine kostenlose open-source, self-hosted Alternative zu 20i für Laravel. Besitzen Sie Ihr VPS – CLI-Bereitstellungen, Octane, keine Hosting-Panel-Bindung." property="og:description"/>
+<meta content="Cipi ist eine kostenlose open-source, self-hosted Alternative zu 20i für Laravel. Besitzen Sie Ihr VPS – CLI-Deployments, Octane, keine Hosting-Panel-Bindung." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -36,7 +36,7 @@
     <meta property="og:locale:alternate" content="es_ES">
     <meta property="og:locale:alternate" content="pt_PT"><meta content="summary_large_image" name="twitter:card"/>
 <meta content="Self-Hosted 20i-Alternative – Cipi" name="twitter:title"/>
-<meta content="Open-source, self-hosted Alternative zu 20i für Laravel. Besitzen Sie Ihr VPS, CLI-Bereitstellungen, keine Hosting-Panel-Bindung." name="twitter:description"/>
+<meta content="Open-source, self-hosted Alternative zu 20i für Laravel. Besitzen Sie Ihr VPS, CLI-Deployments, keine Hosting-Panel-Bindung." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
     {
@@ -76,7 +76,7 @@
         {
           "@type": "Question",
           "name": "Ist Cipi eine Alternative zu 20i?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Für Laravel-Application-Hosting ja. Cipi ist eine kostenlose open-source Deploy-CLI, die Sie auf Ihrem eigenen Ubuntu-VPS installieren. 20i ist ein Hosting-Unternehmen mit Reseller-, WordPress-, Cloud- und VPS-Produkten – eine andere Kategorie, wenn Sie Domains, E-Mail oder White-Label-Hosting brauchen." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Für Laravel-Application-Hosting ja. Cipi ist eine kostenlose open-source Deploy-CLI, die Sie auf Ihrem eigenen Ubuntu VPS installieren. 20i ist ein Hosting-Unternehmen mit Reseller-, WordPress-, Cloud- und VPS-Produkten – eine andere Kategorie, wenn Sie Domains, E-Mail oder White-Label-Hosting brauchen." }
         },
         {
           "@type": "Question",
@@ -96,7 +96,7 @@
         {
           "@type": "Question",
           "name": "Kann ich von 20i zu Cipi migrieren?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ja für Laravel- (und andere PHP-)Apps. Stellen Sie ein Ubuntu-VPS bereit, installieren Sie Cipi, erstellen Sie jede Site neu, importieren Sie Datenbank und Dateien und richten Sie DNS ein. Behalten Sie 20i für Mail oder Domains, wenn Sie diese Produkte noch brauchen." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja für Laravel- (und andere PHP-)Apps. Stellen Sie ein Ubuntu VPS bereit, installieren Sie Cipi, erstellen Sie jede Site neu, importieren Sie Datenbank und Dateien und richten Sie DNS ein. Behalten Sie 20i für Mail oder Domains, wenn Sie diese Produkte noch brauchen." }
         },
         {
           "@type": "Question",
@@ -130,13 +130,13 @@
       "@type": "HowToStep",
       "position": 2,
       "name": "Stellen Sie ein neues Ubuntu VPS bereit und installieren Sie Cipi",
-      "text": "Jeder Anbieter funktioniert (Hetzner, DigitalOcean, Vultr, Linode, AWS). Auf Ubuntu 24.04/26.04 führen Sie den Ein-Befehl-Installer aus (wget -O - https://cipi.sh/setup.sh | bash) und der gesamte Produktionsstapel – Nginx, PHP, MariaDB, Valkey, Supervisor – ist in wenigen Minuten konfiguriert."
+      "text": "Jeder Anbieter funktioniert (Hetzner, DigitalOcean, Vultr, Linode, AWS). Auf Ubuntu 24.04/26.04 führen Sie den Ein-Befehl-Installer aus (wget -O - https://cipi.sh/setup.sh | bash) und der gesamte Produktions-Stack – Nginx, PHP, MariaDB, Valkey, Supervisor – ist in wenigen Minuten konfiguriert."
     },
     {
       "@type": "HowToStep",
       "position": 3,
       "name": "Erstellen Sie jede App neu und verbinden Sie Git",
-      "text": "cipi app create stellt eine isolierte App mit eigenem Systembenutzer, eigener Datenbank, PHP-Pool und Nginx-vhost bereit (fügen Sie --octane für Laravel Octane hinzu). Die Verbindung von GitHub oder GitLab konfiguriert Deploy-Keys und Webhooks automatisch für Bereitstellungen ohne Ausfallzeiten."
+      "text": "cipi app create stellt eine isolierte App mit eigenem Systembenutzer, eigener Datenbank, PHP-Pool und Nginx-vhost bereit (fügen Sie --octane für Laravel Octane hinzu). Die Verbindung von GitHub oder GitLab konfiguriert Deploy-Keys und Webhooks automatisch für Zero-Downtime-Deployments."
     },
     {
       "@type": "HowToStep",
@@ -244,7 +244,7 @@
 <div class="nav-right">
 <a href="/de/cipi-yml" class="nav-link">cipi.yml</a>
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">DE</summary><div class="lang-menu"><a href="/en/alternative-to-20i" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a class="active" href="/de/alternative-to-20i" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/alternative-to-20i" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/alternativa-a-20i" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/alternative-to-20i" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/alternative-to-20i" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Thema umschalten" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Theme wechseln" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -293,9 +293,9 @@
 <span class="cmp-eyebrow">20i-Alternative</span>
 <h1>Die self-hosted <em>20i-Alternative</em> für Laravel</h1>
 <p class="cmp-updated">Vergleich zuletzt aktualisiert: <time datetime="2026-09-07">7. September 2026</time> · spiegelt Cipi 5 und aktuelle 20i-Produkte wider</p>
-<p class="lead">20i ist ein vollständiges Hosting-Unternehmen – Reseller-Tarife, Managed Cloud, WordPress, VPS, Domains und das My20i-Panel, mit über 60 Rechenzentren und 24×7-Support. Cipi ist kein Hosting-Unternehmen: Sie bringen jedes Ubuntu-VPS mit, erhalten eine Laravel-first Deploy-CLI, vollen Root und eine feste Rechnung. Kostenlos, open source und gebaut für Entwickler, die den Server bereits besitzen.</p>
+<p class="lead">20i ist ein vollständiges Hosting-Unternehmen – Reseller-Tarife, Managed Cloud, WordPress, VPS, Domains und das My20i-Panel, mit über 60 Rechenzentren und 24×7-Support. Cipi ist kein Hosting-Unternehmen: Sie bringen jedes Ubuntu VPS mit, erhalten eine Laravel-first Deploy-CLI, vollen Root und eine feste Rechnung. Kostenlos, open source und gebaut für Entwickler, die den Server bereits besitzen.</p>
 <div class="cmp-cta">
-<a class="btn-primary" href="/de/docs/getting-started">Starten Sie kostenlos durch</a>
+<a class="btn-primary" href="/de/docs/getting-started">Kostenlos starten</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Auf GitHub ansehen</a>
 </div>
 <h2>Cipi vs 20i auf einen Blick</h2>
@@ -313,14 +313,14 @@
 <tr><td>Lizenz</td><td class="col-cipi">Open source (MIT)</td><td>Proprietär</td></tr>
 <tr><td>Root-/SSH-Zugriff</td><td class="col-cipi"><span class="yes">Volle Kontrolle</span></td><td><span class="partial">Abhängig vom Produkt (VPS vs. Shared/Cloud)</span></td></tr>
 <tr><td>Besitzen Sie die Infrastruktur</td><td class="col-cipi"><span class="yes">Ja – jeder Anbieter</span></td><td><span class="no">20i / AWS / GCP Hosting</span></td></tr>
-<tr><td>Keine Lieferantenbindung</td><td class="col-cipi"><span class="yes">Tragbarer Stapel</span></td><td><span class="no">My20i- / StackCP-Ökosystem</span></td></tr>
-<tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Ja – CLI nativ</span></td><td><span class="partial">Verwaltetes Laravel-Hosting, nicht Octane-first</span></td></tr>
+<tr><td>Keine Lieferantenbindung</td><td class="col-cipi"><span class="yes">Portabler Stack</span></td><td><span class="no">My20i- / StackCP-Ökosystem</span></td></tr>
+<tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Ja – nativ in der CLI</span></td><td><span class="partial">Verwaltetes Laravel-Hosting, nicht Octane-first</span></td></tr>
 <tr><td>CLI &amp; Pipeline-Automatisierung</td><td class="col-cipi"><span class="yes">Ja</span></td><td><span class="partial">Git + Panel</span></td></tr>
-<tr><td>AI / MCP Server</td><td class="col-cipi"><span class="yes">Dual MCP</span></td><td><span class="no">Nein</span></td></tr>
+<tr><td>KI / MCP-Server</td><td class="col-cipi"><span class="yes">Dual MCP</span></td><td><span class="no">Nein</span></td></tr>
 <tr><td>Fokus</td><td class="col-cipi">Laravel Deploy-CLI</td><td>Reseller, WordPress, Ecommerce, VPS, Domains</td></tr>
 <tr><td>CDN, E-Mail, Domains</td><td class="col-cipi"><span class="no">Bringen Sie Ihr Eigenes mit</span></td><td><span class="yes">Gebündelte Plattform</span></td></tr>
 <tr><td>24×7 gehosteter Support</td><td class="col-cipi"><span class="no">Community / GitHub</span></td><td><span class="yes">Eigener Support</span></td></tr>
-<tr><td>Verschlüsselung im Ruhezustand konfigurieren (AES-256)</td><td class="col-cipi"><span class="yes">Auf Ihrem VPS</span></td><td><span class="partial">Verwaltetes Panel</span></td></tr>
+<tr><td>Konfigurationsverschlüsselung im Ruhezustand (AES-256)</td><td class="col-cipi"><span class="yes">Auf Ihrem VPS</span></td><td><span class="partial">Verwaltetes Panel</span></td></tr>
 </tbody>
 </table>
 </div>
@@ -332,40 +332,40 @@
 <div class="card"><h3>CLI, API und duales MCP</h3><p>Alles ist über SSH skriptbar. 20i ist Panel-first (My20i / StackCP) mit Git – keine KI-native, Pipeline-first Laravel-CLI.</p></div>
 <div class="card"><h3>Open source &amp; keine Panel-Bindung</h3><p>MIT-lizenziert und überprüfbar. 20i zu verlassen heißt, ihr Control Panel, CDN und Reseller-Tooling zu verlassen; Cipi zu verlassen hinterlässt eine Standard-LEMP-Box.</p></div>
 <div class="card"><h3>Verschlüsselung im Ruhezustand + Souveränität</h3><p>Alle Konfigurationen werden mit AES-256-CBC auf einem VPS in der von Ihnen gewählten Region verschlüsselt – keine Infrastrukturdaten verlassen Ihren Computer.</p></div>
-<div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Erstellen oder konvertieren Sie Apps mit <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Führen Sie Octane neben klassischen FPM-Apps auf demselben Server aus.</p></div>
-<div class="card"><h3>Optional PostgreSQL</h3><p>MariaDB standardmäßig; Installieren Sie PostgreSQL mit einem Befehl und wählen Sie eine Engine pro App aus (<code>cipi db install pgsql</code>).</p></div>
+<div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Apps erstellen oder konvertieren mit <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Führen Sie Octane neben klassischen FPM-Apps auf demselben Server aus.</p></div>
+<div class="card"><h3>Optional PostgreSQL</h3><p>MariaDB standardmäßig; PostgreSQL installieren Sie mit einem Befehl und wählen die Engine pro App (<code>cipi db install pgsql</code>).</p></div>
 </div>
-<h2>Installieren Sie Cipi in einem Befehl</h2>
-<p>Starten Sie ein neues Ubuntu VPS und führen Sie dann Folgendes aus:</p>
+<h2>Cipi mit einem Installationsbefehl</h2>
+<p>Starten Sie einen frischen Ubuntu VPS und führen Sie dann aus:</p>
 <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
-<p>Dadurch wird der gesamte Produktionsstapel installiert und konfiguriert – Nginx, PHP-FPM / Laravel Octane, MariaDB, optional PostgreSQL, Redis und Supervisor. Siehe die
+<p>Dadurch wird der gesamte Produktions-Stack installiert und konfiguriert – Nginx, PHP-FPM / Laravel Octane, MariaDB, optional PostgreSQL, Redis und Supervisor. Siehe die
             <a class="inline" href="/de/docs/getting-started">Leitfaden für den Einstieg</a>.</p>
 <h2>Wobei 20i die bessere Wahl ist</h2>
 <div class="note">
 <p>20i überzeugt als Hosting-Unternehmen: 24×7 menschlicher Support, ein kostenloses CDN, One-Click-Migrationen, über 60 Rechenzentren, Reseller-/StackCP-Branding, Domains, E-Mail, WordPress Manager, Agency Hub und Angaben zu grüner Energie. Wenn Sie Hosting verkaufen, WordPress in großem Maßstab brauchen oder einen einzigen Anbieter für Sites, Mail und DNS wollen, ist 20i die bessere Lösung. Cipi ist für Entwickler, die bereits ein VPS haben und Laravel-Deploys ohne Hosting-Panel wollen.</p>
 </div>
 <h2 id="migrate">So migrieren Sie von 20i zu Cipi</h2>
-<p>Der Wechsel von 20i zu Cipi ist eine saubere Umstellung: Sie stellen ein neues Ubuntu-VPS auf, deployen aus demselben Git-Repository, importieren Daten und wechseln DNS, wenn alles passt. Ihre Laravel-Codebasis muss nicht geändert werden.</p>
+<p>Der Wechsel von 20i zu Cipi ist eine saubere Umstellung: Sie stellen ein neues Ubuntu VPS auf, deployen aus demselben Git-Repository, importieren Daten und wechseln DNS, wenn alles passt. Ihre Laravel-Codebasis muss nicht geändert werden.</p>
 <ol class="migrate-steps">
 <li><strong>Exportieren Sie Ihre Daten aus 20i.</strong> Nutzen Sie ihr Migration Center oder erstellen Sie einen Datenbank-Dump und eine Dateikopie aus My20i. Notieren Sie PHP-Version, Cron, Mail und DNS, damit Sie unterscheiden können, was Cipi übernehmen soll und was Sie woanders behalten.</li>
-<li><strong>Stellen Sie ein neues Ubuntu VPS bereit und installieren Sie Cipi.</strong> Jeder Anbieter funktioniert (Hetzner, DigitalOcean, Vultr, Linode, AWS). Auf Ubuntu 24.04/26.04 führen Sie <code>wget -O - https://cipi.sh/setup.sh | bash</code> aus und der gesamte Produktionsstapel – Nginx, PHP, MariaDB, Valkey, Supervisor – ist in wenigen Minuten konfiguriert.</li>
-<li><strong>Erstellen Sie jede App neu und verbinden Sie Git.</strong> <code>cipi app create</code> stellt eine isolierte App mit eigenem Systembenutzer, eigener Datenbank, PHP-Pool und Nginx-vhost bereit (fügen Sie <code>--octane</code> für Laravel Octane hinzu). Durch die Verbindung von GitHub oder GitLab werden Bereitstellungsschlüssel und Webhooks automatisch für Bereitstellungen ohne Ausfallzeiten konfiguriert.</li>
-<li><strong>Daten verschieben und umschneiden.</strong> Importieren Sie Ihren Datenbank-Dump, kopieren Sie Ihre <code>.env</code>-Werte, stellen Sie HTTPS-Zertifikate mit <code>cipi ssl install</code> aus und richten Sie dann DNS auf den neuen Server.</li>
+<li><strong>Einen frischen Ubuntu VPS provisionieren und Cipi installieren.</strong> Jeder Anbieter funktioniert (Hetzner, DigitalOcean, Vultr, Linode, AWS). Auf Ubuntu 24.04/26.04 führen Sie <code>wget -O - https://cipi.sh/setup.sh | bash</code> aus und der gesamte Produktions-Stack – Nginx, PHP, MariaDB, Valkey, Supervisor – ist in wenigen Minuten konfiguriert.</li>
+<li><strong>Jede App neu anlegen und Git verbinden.</strong> <code>cipi app create</code> stellt eine isolierte App mit eigenem Systembenutzer, eigener Datenbank, PHP-Pool und Nginx-vhost bereit (fügen Sie <code>--octane</code> für Laravel Octane hinzu). Durch die Verbindung von GitHub oder GitLab werden Deploy-Keys und Webhooks automatisch für Zero-Downtime-Deployments konfiguriert.</li>
+<li><strong>Daten migrieren und umschalten.</strong> Importieren Sie Ihren Datenbank-Dump, kopieren Sie Ihre <code>.env</code>-Werte, stellen Sie HTTPS-Zertifikate mit <code>cipi ssl install</code> aus und richten Sie dann DNS auf den neuen Server.</li>
 </ol>
 <div class="note">
 <p>Cipi verwendet die Standardkonventionen Nginx, PHP-FPM / Laravel Octane und Deployer, daher gibt es keine
                 herstellerspezifische Konfiguration zum späteren Abwickeln. Ausführliche Informationen finden Sie in der <a class="inline" href="/de/docs/getting-started">Leitfaden für den Einstieg</a>.</p>
 </div>
 <h2>Häufig gestellte Fragen</h2>
-<div class="faq-item"><h3>Ist Cipi eine Alternative zu 20i?</h3><p>Für Laravel-Application-Hosting ja. Cipi ist eine kostenlose open-source Deploy-CLI, die Sie auf Ihrem eigenen Ubuntu-VPS installieren. 20i ist ein Hosting-Unternehmen mit Reseller-, WordPress-, Cloud- und VPS-Produkten – eine andere Kategorie, wenn Sie Domains, E-Mail oder White-Label-Hosting brauchen.</p></div>
+<div class="faq-item"><h3>Ist Cipi eine Alternative zu 20i?</h3><p>Für Laravel-Application-Hosting ja. Cipi ist eine kostenlose open-source Deploy-CLI, die Sie auf Ihrem eigenen Ubuntu VPS installieren. 20i ist ein Hosting-Unternehmen mit Reseller-, WordPress-, Cloud- und VPS-Produkten – eine andere Kategorie, wenn Sie Domains, E-Mail oder White-Label-Hosting brauchen.</p></div>
 <div class="faq-item"><h3>Was ist der Unterschied zwischen Cipi und 20i?</h3><p>20i verkauft verwaltetes Hosting über My20i, mit CDN, Migrationen und 24×7-Support. Cipi verkauft kein Hosting: Es richtet einen Laravel-Produktionsstack auf einem VPS ein, das Sie bereits besitzen, mit CLI, REST API, dualem MCP und AES-256-Konfigurationsverschlüsselung.</p></div>
 <div class="faq-item"><h3>Ist Cipi günstiger als 20i?</h3><p>Cipi selbst ist kostenlos; Sie zahlen nur das VPS. 20i-Preise hängen vom Produkt ab (Reseller, Managed Cloud ab etwa 10,99 $/Monat, WordPress, VPS). Vergleichen Sie VPS plus Cipi mit dem 20i-Tarif, der zu Ihren Sites passt.</p></div>
 <div class="faq-item"><h3>Wann sollte ich mich noch für 20i entscheiden?</h3><p>Wählen Sie 20i, wenn Sie einen Hosting-Anbieter mit 24×7-Support, Reseller-Branding, WordPress-Tooling, Domains, E-Mail und einem globalen CDN wollen – nicht eine Do-it-yourself-Laravel-CLI auf einem nackten VPS.</p></div>
-<div class="faq-item"><h3>Kann ich von 20i zu Cipi migrieren?</h3><p>Ja für Laravel- (und andere PHP-)Apps. Stellen Sie ein Ubuntu-VPS bereit, installieren Sie Cipi, erstellen Sie jede Site neu, importieren Sie Datenbank und Dateien und richten Sie DNS ein. Behalten Sie 20i für Mail oder Domains, wenn Sie diese Produkte noch brauchen.</p></div>
+<div class="faq-item"><h3>Kann ich von 20i zu Cipi migrieren?</h3><p>Ja für Laravel- (und andere PHP-)Apps. Stellen Sie ein Ubuntu VPS bereit, installieren Sie Cipi, erstellen Sie jede Site neu, importieren Sie Datenbank und Dateien und richten Sie DNS ein. Behalten Sie 20i für Mail oder Domains, wenn Sie diese Produkte noch brauchen.</p></div>
 <div class="faq-item"><h3>Enthält Cipi ein Control Panel wie My20i?</h3><p>Optional. Mit cipi gui yourdomain.com installieren Sie ein kostenloses, self-hosted Web-Panel. Anders als My20i ist es opt-in und läuft auf Ihrer Infrastruktur; Cipi bleibt allein über die CLI voll nutzbar.</p></div>
-<h2>Vergleichen Sie Cipi mit anderen Tools</h2>
+<h2>Cipi im Vergleich mit anderen Tools</h2>
 <div class="related">
-<a href="/de/alternative-to-laravel-forge">vs Laravel Forge</a>
+<a href="/de/alternative-to-laravel-forge">vs. Laravel Forge</a>
 <a href="/de/alternative-to-laravel-cloud">vs. Laravel Cloud</a>
 <a href="/de/alternative-to-fortrabbit">vs. fortrabbit</a>
 <a href="/de/alternative-to-render">vs. Render</a>
@@ -395,43 +395,43 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Kostenlose open-source Laravel Bereitstellung CLI für Ubuntu VPS – Octane, Horizon, Reverb und Git-Bereitstellungen ohne Ausfallzeiten.</p>
+<p>Kostenlose Open-Source-Deploy-CLI für Laravel auf Ubuntu VPS – Octane, Horizon, Reverb und Zero-Downtime-Git-Deploys.</p>
 <ul class="footer-brand-links">
-<li><a href="/de/docs/getting-started">Fangen Sie an</a></li>
-<li><a href="/de/docs/">Dokumente</a></li>
+<li><a href="/de/docs/getting-started">Jetzt starten</a></li>
+<li><a href="/de/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Vergleichen Sie Cipi mit Alternativen" class="footer-col footer-col--compare">
-<strong>Vergleichen Sie Cipi</strong>
+<nav aria-label="Cipi mit Alternativen vergleichen" class="footer-col footer-col--compare">
+<strong>Cipi vergleichen</strong>
 <ul>
 <li><a href="/de/alternative-to-laravel-forge">Laravel Forge Alternative</a></li>
-<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud-Alternative</a></li>
+<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud Alternative</a></li>
 <li><a href="/de/alternative-to-ploi">Ploi Alternative</a></li>
 <li><a href="/de/alternative-to-coolify">Coolify Alternative</a></li>
 <li><a href="/de/alternative-to-runcloud">RunCloud Alternative</a></li>
 <li><a href="/de/alternative-to-cloudpanel">CloudPanel Alternative</a></li>
 <li><a href="/de/alternative-to-cpanel">cPanel Alternative</a></li>
-<li><a href="/de/alternative-to-plesk">Plesk-Alternative</a></li>
+<li><a href="/de/alternative-to-plesk">Plesk Alternative</a></li>
 <li><a href="/de/best-laravel-forge-alternatives">Beste Forge-Alternativen 2026</a></li>
 <li><a href="/de/alternatives">Alle Vergleiche</a></li>
 </ul>
 </nav>
 <nav aria-label="Kostenlose Laravel-Anleitungen" class="footer-col">
-<strong>Kostenlose Reiseführer</strong>
+<strong>Kostenlose Guides</strong>
 <ul>
 <li><a href="/de/guides/apps-mit-cipi-yml-verwalten">Apps mit cipi.yml verwalten</a></li>
-<li><a href="/de/guides/gui-panel-und-api">GUI-Panel und API</a></li>
+<li><a href="/de/guides/gui-panel-und-api">Control-Panel und API</a></li>
 <li><a href="/de/guides/cipi-agent-in-laravel-nutzen">cipi/agent und Projekt-MCP</a></li>
-<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi bereitstellen</a></li>
+<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi deployen</a></li>
 <li><a href="/de/guides/">Alle Anleitungen</a></li>
                     </ul>
 </nav>
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Hergestellt mit ❤️ von <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
-<span class="footer-license"> · Open source, MIT-lizenziert</span>
+                    Mit ❤️ gebaut von <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+<span class="footer-license"> · Open Source, MIT-lizenziert</span>
 </div>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">SSH-Verbindungsmanager</a></li>

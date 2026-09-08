@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Cipi Documents — Infrastructure</title>
-<meta content="PHP, bases de données, SSL, sauvegardes, travailleurs, pare-feu et gestion des serveurs avec Cipi CLI." name="description"/>
+<title>Cipi Docs — Infrastructure</title>
+<meta content="PHP, bases de données, SSL, sauvegardes, workers, pare-feu et gestion des serveurs avec Cipi CLI." name="description"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/fr/docs/infrastructure" rel="canonical"/>
@@ -22,8 +22,8 @@
 <meta content="website" property="og:type"/>
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/fr/docs/infrastructure" property="og:url"/>
-<meta content="Cipi Documents — Infrastructure" property="og:title"/>
-<meta content="PHP, bases de données, SSL, sauvegardes, travailleurs, pare-feu et gestion des serveurs avec Cipi CLI." property="og:description"/>
+<meta content="Cipi Docs — Infrastructure" property="og:title"/>
+<meta content="PHP, bases de données, SSL, sauvegardes, workers, pare-feu et gestion des serveurs avec Cipi CLI." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -34,8 +34,8 @@
     <meta property="og:locale:alternate" content="it_IT">
     <meta property="og:locale:alternate" content="es_ES">
     <meta property="og:locale:alternate" content="pt_PT"><meta content="summary_large_image" name="twitter:card"/>
-<meta content="Cipi Documents — Infrastructure" name="twitter:title"/>
-<meta content="PHP, bases de données, SSL, sauvegardes, travailleurs, pare-feu et gestion des serveurs avec Cipi CLI." name="twitter:description"/>
+<meta content="Cipi Docs — Infrastructure" name="twitter:title"/>
+<meta content="PHP, bases de données, SSL, sauvegardes, workers, pare-feu et gestion des serveurs avec Cipi CLI." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
     {
@@ -105,7 +105,7 @@
 </svg>
 <span>Ci<span style="color:var(--signal)">pi</span></span>
 </a>
-<span class="nav-badge">Documents</span>
+<span class="nav-badge">Docs</span>
 </div>
 <div class="nav-right">
 
@@ -149,14 +149,14 @@
 <a class="sidebar-link" href="/fr/docs/getting-started#installation">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#requirements">exigences</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#quickstart">démarrage rapide</a>
-<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">pile technologique</a>
+<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">stack technologique</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#app-structure">structure de l'application</a>
 </div>
 <div class="sidebar-group" data-chapter="agent">
 <a class="sidebar-group-label" href="/fr/docs/agent">cipi agent</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-install">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-webhook">webhook</a>
-<a class="sidebar-link" href="/fr/docs/agent#agent-health">bilan de santé</a>
+<a class="sidebar-link" href="/fr/docs/agent#agent-health">health check</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-mcp">serveur MCP</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-anonymizer">anonymiseur de base de données</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-security">sécurité</a>
@@ -255,9 +255,9 @@
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-api"><code>cipi api</code></a>
 <a class="sidebar-link" href="/fr/docs/advanced#whmcs">Module WHMCS</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-sync"><code>cipi sync</code></a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et cryptage</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et chiffrement</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-smtp">notifications par courrier électronique</a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des journaux (RGPD)</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des logs (RGPD)</a>
 <a class="sidebar-link" href="/fr/docs/advanced#valkey">valkey</a>
 <a class="sidebar-link" href="/fr/docs/advanced#self-update">mise à jour automatique</a>
 <a class="sidebar-link" href="/fr/docs/advanced#wildcard-domains">domaines génériques</a>
@@ -291,14 +291,14 @@
 <line x1="12" x2="12" y1="8" y2="12"></line>
 <line x1="12" x2="12.01" y1="16" y2="16"></line>
 </svg>
-<div>Depuis <strong>v4.5.4</strong> Cipi lots <strong>Déployeur 8</strong>, ce qui nécessite
+<div>Depuis <strong>v4.5.4</strong> Cipi lots <strong>Deployer 8</strong>, ce qui nécessite
                         <strong>PHP ≥ 8,3</strong>. <code>cipi php install</code>, <code>cipi php switch</code>,
                         <code>cipi app create</code> et <code>cipi app edit</code> donc n'acceptez que
                         <strong>8.3, 8.4 et 8.5</strong>. Les anciennes versions (7.4 à 8.2) restent détectables et amovibles.
                         vous pouvez toujours nettoyer un serveur antérieur à 4.5.4 avec<code>cipi php remove &lt;old-version&gt;</code>.</div>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi php list              <span class="c"># list installed versions, status, and system default</span>
 <span class="p">$</span> cipi php install 8.4       <span class="c"># install an additional PHP version (8.3–8.5)</span>
 <span class="p">$</span> cipi php switch 8.4        <span class="c"># set system default (root/cipi, API pool)</span>
@@ -328,30 +328,30 @@
                     <code>update-alternatives</code> succès, remonte les racines en lecture seule lorsque cela est nécessaire et conserve API/GUI
                     Pools FPM sur la version cible pour éviter nginx 502.
                 </p>
-<p>REPOS : <code>GET /api/php</code>, <code>POST /api/php/install</code>,
+<p>REST : <code>GET /api/php</code>, <code>POST /api/php/install</code>,
                     <code>DELETE /api/php/{version}</code>, <code>PUT /api/php/default</code> (API
                     <strong>1.15.0+</strong> / Cipi <strong>5.0.6+</strong>). CLI JSON :
                     <code>cipi php list --json</code> (depuis <strong>5.0.6</strong>).</p>
 <p>Chaque application a son <strong>posséder</strong> version PHP (réglée à <code>app create</code> ou via
-                    <code>cipi app edit --php=</code>). Déployeur, Composer, déclencheurs de déploiement crontab et
+                    <code>cipi app edit --php=</code>). Deployer, Composer, déclencheurs de déploiement crontab et
                     <code>cipi sync import</code> exécutez toujours avec le PHP configuré de l'application — jamais avec la valeur par défaut du système.
                 </p>
 <p>Pour basculer une application existante vers une version différente :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi app edit myapp --php=8.5</pre>
 </div>
-<p>Cela remplace à chaud la version PHP sans temps d'arrêt : met à jour le pool FPM, le socket Nginx, Supervisor
-                    Workers, crontab, configuration du déployeur et <code>.env</code> en une seule opération atomique.</p>
+<p>Cela remplace à chaud la version PHP sans interruption : met à jour le pool FPM, le socket Nginx, Supervisor
+                    Workers, crontab, configuration du Deployer et <code>.env</code> en une seule opération atomique.</p>
 </div>
 <div class="doc-section" id="cli-ini">
 <h2><code>cipi ini</code></h2>
 <p>Disponible depuis <strong>v5.1.0</strong>. Une manière guidée de modifier les paramètres PHP sans chercher le
                     à droite <code>php.ini</code>. Chaque changement à l'échelle du serveur atteint <strong>les deux SAPI</strong> — PHP-FPM
-                    <em>et</em> CLI — donc ce que voient vos requêtes Web est également ce que voient les gestionnaires de file d'attente, <code>artisan</code>
+                    <em>et</em> CLI — donc ce que voient vos requêtes Web est également ce que voient les workers de queue, <code>artisan</code>
                     et cron voyez.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi ini list                                <span class="c"># effective values and which layer set them</span>
 <span class="p">$</span> cipi ini list --app=shop                     <span class="c"># as seen by one app</span>
 <span class="p">$</span> cipi ini get memory_limit                    <span class="c"># one setting</span>
@@ -409,7 +409,7 @@
                 </p>
 <h3>Moteurs (v4.8.0+)</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi db install pgsql              <span class="c"># install optional PostgreSQL</span>
 <span class="p">$</span> cipi db uninstall pgsql|mariadb    <span class="c"># remove a non-default engine (destroys data)</span>
 <span class="p">$</span> cipi db default mariadb|pgsql      <span class="c"># server-wide default when --engine is omitted</span>
@@ -417,7 +417,7 @@
 </div>
 <h3>Cycle de vie de la base de données</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi db create                              <span class="c"># interactive</span>
 <span class="p">$</span> cipi db create --name=analytics             <span class="c"># non-interactive (default engine)</span>
 <span class="p">$</span> cipi db create --name=analytics --engine=pgsql
@@ -442,7 +442,7 @@
                     et réapplique SSL avec <code>certbot install --redirect</code> donc HTTPS n'est pas supprimé.
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi alias add myapp www.myapp.com
 <span class="p">$</span> cipi alias add myapp myapp.it
 <span class="p">$</span> cipi alias add myapp <span class="s">'*.monapp.com'</span>   <span class="c"># wildcard (v5.1.0+) — quote it</span>
@@ -450,11 +450,11 @@
 <span class="p">$</span> cipi alias remove myapp myapp.it</pre>
 </div>
 <p>Depuis <strong>v5.1.0</strong>, <strong>alias génériques</strong> comme
-                    <code>*.example.com</code> sont acceptés — Nginx correspond à un caractère générique <code>server_name</code>
+                    <code>*.example.com</code> sont acceptés — Nginx correspond à un wildcard <code>server_name</code>
                     de manière native, et les applications multi-locataires en ont besoin. Citez le motif pour que le shell ne le développe pas, et
                     délivrer le certificat avec
                     <code>cipi ssl install myapp --dns=cloudflare --wildcard</code>: HTTP-01 ne peut pas valider un
-                    caractère générique.</p>
+                    wildcard.</p>
 <p>Pour les redirections canoniques www ↔ apex, préférez <a href="/fr/docs/infrastructure#cli-www"><code>cipi www</code></a>
                     au lieu de gérer manuellement l'hôte homologue.</p>
 </div>
@@ -466,7 +466,7 @@
                     via<code>certbot install --redirect</code>.
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi www add myapp              <span class="c"># add counterpart host (www ↔ apex)</span>
 <span class="p">$</span> cipi www force-to-root myapp    <span class="c"># 301 www.domain → domain</span>
 <span class="p">$</span> cipi www force-from-root myapp  <span class="c"># 301 domain → www.domain</span>
@@ -483,7 +483,7 @@
                     mappage domaine-application ou détection d'un domaine pour lequel il manque toujours un certificat.
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi domains   <span class="c"># list all domains and aliases across every app</span></pre>
 </div>
 <p>Chaque ligne affiche les colonnes suivantes :</p>
@@ -528,7 +528,7 @@
 <td><strong>DERNIER DÉPLOIEMENT</strong></td>
 <td>Âge relatif à l'homme (<code>just now</code>, <code>10m ago</code>, <code>2h ago</code>,
                                                     <code>3d ago</code>, <code>2w ago</code>, <code>2mo ago</code>, <code>2y ago</code>) —
-                                                    dérivé de l'heure mtime de l'application <code>current</code> lien symbolique, quel déployeur
+                                                    dérivé de l'heure mtime de l'application <code>current</code> lien symbolique, quel Deployer
                                                     repointe atomiquement chaque déploiement réussi. Spectacles <code>-</code> quand l'application était
                                                     jamais déployé.</td>
 </tr>
@@ -558,7 +558,7 @@
                     <code>cipi ssl status</code> affiche les dates d'expiration avec des avertissements de couleur : vert (&gt; 30 jours), jaune
                     (14 à 30 jours), rouge (&lt;14 jours).</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi ssl install myapp   <span class="c"># provision / renew — includes all aliases (SAN)</span>
 <span class="p">$</span> cipi ssl force myapp     <span class="c"># re-apply HTTP→HTTPS redirect (no new issuance)</span>
 <span class="p">$</span> cipi ssl renew            <span class="c"># force renewal of all certificates</span>
@@ -597,7 +597,7 @@
 <p>Disponible depuis <strong>v5.1.0</strong>. Réclamations, quel que soit le cas <code>:80</code> / <code>:443</code>
                     n'a pas de serveur par défaut et ferme les requêtes sans correspondance avec une réponse vide (<strong>444</strong>).</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi nginx default-server status
 <span class="p">$</span> cipi nginx default-server on
 <span class="p">$</span> cipi nginx default-server off</pre>
@@ -619,7 +619,7 @@
                     travail de nuit codé en dur. Un profil répond à quatre questions : <strong>quoi</strong> ça prend,
                     <strong>à quelle fréquence</strong> ça roule, <strong>où</strong> ça va et <strong>combien de temps</strong> il
                     est conservé - et les profils sont indépendants, donc une copie de 30 minutes de la base de données uniquement conservée sur le disque est heureuse
-                    à côté d'une copie complète nocturne cryptée sur S3.</p>
+                    à côté d'une copie complète nocturne chiffrée sur S3.</p>
 <div class="callout info">
 <svg class="callout-icon" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
 <circle cx="12" cy="12" r="10"></circle>
@@ -636,7 +636,7 @@
                     <strong>v5.1.0</strong> tu peux quitter le seau <strong>vide</strong> pour les sauvegardes locales uniquement,
                     sous quelle terre <code>/var/backups/cipi</code>.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi backup configure
 <span class="c"># → AWS Access Key ID
 # → AWS Secret Access Key
@@ -690,7 +690,7 @@
 <h3>2 — Profils de sauvegarde</h3>
 <p>Créez un profil une fois ; il fonctionne ensuite selon son propre horaire. Deux typiques :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># Every 30 minutes — databases only, kept on the server, last 48 runs</span>
 <span class="p">$</span> cipi backup profile add hourly-db --scope=db \
       --databases=<span class="s">'boutique,locataire_*'</span> --exclude-tables=<span class="s">'*.jobs,*.télescope_*'</span> \
@@ -701,7 +701,7 @@
       --cron=<span class="s">'0 2 * * *'</span> --keep-days=14 --dest=s3 --encrypt</pre>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi backup profile list                 <span class="c"># all profiles</span>
 <span class="p">$</span> cipi backup profile show nightly         <span class="c"># one profile in detail</span>
 <span class="p">$</span> cipi backup profile edit nightly --keep-days=30
@@ -730,7 +730,7 @@
                         <code>--keep-weeks=N</code><span>Rétention — <strong>au moins un est obligatoire</strong>. Un
                             le profil qui grandirait sans limite est refusé.</span></div>
 <div class="option-item"><code>--encrypt</code> / <code>--no-encrypt</code><span>Côté client AES-256
-                            cryptage avant que quoi que ce soit ne quitte le serveur.</span></div>
+                            chiffrement avant que quoi que ce soit ne quitte le serveur.</span></div>
 </div>
 <div class="callout info">
 <svg class="callout-icon" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
@@ -744,11 +744,11 @@
                         schémas système) et sont sélectionnés avec des modèles globaux.</div>
 </div>
 <h3>3 — Chiffrement</h3>
-<p>Avec <code>--encrypt</code> l'archive est cryptée avec <strong>AES-256 sur le serveur</strong>,
+<p>Avec <code>--encrypt</code> l'archive est chiffrée avec <strong>AES-256 sur le serveur</strong>,
                     avant qu'il ne soit téléchargé, de sorte que l'opérateur du compartiment ne conserve jamais de données lisibles. Le manifeste reste lisible
                     donc une course peut toujours être identifiée.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi backup key show      <span class="c"># print the key — store it off-server</span>
 <span class="p">$</span> cipi backup key rotate    <span class="c"># new key for future runs</span></pre>
 </div>
@@ -764,7 +764,7 @@
 </div>
 <h3>4 — Exécuter, vérifier et restaurer</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi backup run                          <span class="c"># run every enabled profile now</span>
 <span class="p">$</span> cipi backup run --profile=nightly        <span class="c"># run one profile now</span>
 <span class="p">$</span> cipi backup run --dry-run                <span class="c"># show what it would take, take nothing</span>
@@ -790,7 +790,7 @@
 </ul>
 <p>Pour restaurer, récupérez le run et réinjectez les pièces :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi backup fetch nightly 2026-09-02_020000 --dest=/root/restore
 <span class="p">$</span> cipi db restore myapp /root/restore/databases/mariadb/myapp.sql.gz
 <span class="p">$</span> tar -tzf /root/restore/apps/myapp/files.tar.gz</pre>
@@ -800,7 +800,7 @@
                     un profil de base de données uniquement ne coûte rien et une base de données peut être restaurée sans décompresser un fichier.
                     application.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">texte</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">text</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>&lt;root&gt;/&lt;profile&gt;/&lt;YYYY-MM-DD_HHMMSS&gt;/
 ├── manifest.json
 ├── apps/
@@ -848,7 +848,7 @@
 <h2>Crontab utilisateur</h2>
 <p>Cipi ajoute automatiquement une entrée crontab pour le planificateur Laravel lorsqu'une application est créée :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># installed automatically by cipi app create</span>
 * * * * * /usr/bin/php8.5 /home/myapp/current/artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1</pre>
 </div>
@@ -858,7 +858,7 @@
                 </p>
 <h3>Affichage de la crontab actuelle</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># as root — view the app user's crontab</span>
 <span class="p">$</span> crontab -u myapp -l
 
@@ -870,13 +870,13 @@ myapp@server:~$ crontab -l</pre>
 <p>Vous pouvez ajouter cron tâches supplémentaires à la crontab de l'utilisateur de l'application. Basculez d'abord vers l'utilisateur de l'application pour garantir les emplois
                     exécuter avec le contexte utilisateur et les autorisations de fichier corrects :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> su - myapp
 myapp@server:~$ crontab -e</pre>
 </div>
 <p>Exemples d'entrées que vous pourriez ajouter :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span></div>
 <pre><span class="c"># existing Laravel scheduler (do not remove)</span>
 * * * * * /usr/bin/php8.5 /home/myapp/current/artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
 
@@ -912,7 +912,7 @@ myapp@server:~$ crontab -e</pre>
 </div>
 <h3>Vérifier si cron fonctionne</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># check system cron log</span>
 <span class="p">$</span> grep CRON /var/log/syslog | grep myapp | tail -20
 
@@ -927,7 +927,7 @@ myapp@server:~$ crontab -e</pre>
                     <code>apps.json</code>).
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi schedule on myapp
 <span class="p">$</span> cipi schedule off myapp
 <span class="p">$</span> cipi schedule status myapp</pre>
@@ -938,7 +938,7 @@ myapp@server:~$ crontab -e</pre>
 <p>Chaque application reçoit un travailleur Supervisor par défaut pour le <code>default</code> file d'attente. Vous pouvez ajouter des
                     files d'attente avec des décomptes de processus et des délais d'attente personnalisés.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi worker add myapp --queue=emails --processes=3
 <span class="p">$</span> cipi worker add myapp --queue=exports --processes=1 --timeout=7200
 <span class="p">$</span> cipi worker list myapp
@@ -953,7 +953,7 @@ myapp@server:~$ crontab -e</pre>
 <span class="p">$</span> cipi worker horizon disable myapp</pre>
 </div>
 <p>Avec <strong>Horizon</strong> activé, déploiement d'exécutions <code>horizon:terminate</code> et redémarre
-                    les travailleurs via <code>cipi-worker</code>. Vous ne pouvez pas exécuter Classic <code>queue:work</code> les travailleurs et
+                    les workers via <code>cipi-worker</code>. Vous ne pouvez pas exécuter Classic <code>queue:work</code> les workers et
                     Horizon sur la même application en même temps.</p>
 <div class="callout info">
 <svg class="callout-icon" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
@@ -968,7 +968,7 @@ myapp@server:~$ crontab -e</pre>
                         faire apparaître toute dérive entre les deux. Si tu frappes ça, cours <code>cipi self-update</code> et activer
                         encore une fois.</div>
 </div>
-<p>Les travailleurs de file d'attente peuvent également être déclarés dans le référentiel de l'application — voir
+<p>Les workers de file d'attente peuvent également être déclarés dans le référentiel de l'application — voir
                     <a href="/fr/docs/deploy#cli-yml"><code>cipi.yml</code></a>.</p>
 <div class="table-scroll">
 <table class="cmd-table">
@@ -996,16 +996,16 @@ myapp@server:~$ crontab -e</pre>
 </tbody>
 </table>
 </div>
-<p>Les travailleurs sont arrêtés avant l'échange de lien symbolique et redémarrés après chaque déploiement, empêchant ainsi
+<p>Les workers sont arrêtés avant l'échange de lien symbolique et redémarrés après chaque déploiement, empêchant ainsi
                     Supervisor provenant du ramassage des <code>artisan</code> chemins. Supervisor est configuré avec
-                    <code>autorestart=unexpected</code> afin que les travailleurs redémarrent uniquement lors de sorties inattendues, et non lors de sorties gracieuses.
+                    <code>autorestart=unexpected</code> afin que les workers redémarrent uniquement lors de sorties inattendues, et non lors de sorties gracieuses.
                     s'arrête.
                 </p>
 <h3>Assistant utilisateur de l'application : <code>cipi-worker</code></h3>
-<p>Chaque utilisateur de l'application peut redémarrer, arrêter ou vérifier les travailleurs sans root - via un assistant sudo restreint
+<p>Chaque utilisateur de l'application peut redémarrer, arrêter ou vérifier les workers sans root - via un assistant sudo restreint
                     installé à <code>/usr/local/bin/cipi-worker</code>:</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># run as the app user (SSH or sudo su - myapp)</span>
 <span class="p">$</span> sudo cipi-worker status myapp
 <span class="p">$</span> sudo cipi-worker stop myapp      <span class="c"># used by Deployer before symlink swap</span>
@@ -1045,7 +1045,7 @@ myapp@server:~$ crontab -e</pre>
 </table>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi health set myapp --url=https://myapp.com/up --expect=200
 <span class="p">$</span> cipi health check myapp
 <span class="p">$</span> cipi health list
@@ -1064,7 +1064,7 @@ myapp@server:~$ crontab -e</pre>
                     le dit et vous remet la commande de restauration. L'e-mail de réussite est envoyé <em>après</em> vérification,
                     il ne peut donc jamais annoncer un déploiement réussi alors que le site renvoie 500.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi health postdeploy myapp             <span class="c"># run the post-deploy verification now</span>
 <span class="p">$</span> cipi health set myapp --grace=15         <span class="c"># give the release longer to warm up (max 120)</span>
 <span class="p">$</span> cipi health set myapp --no-postdeploy    <span class="c"># turn the post-deploy check off for this app</span></pre>
@@ -1075,7 +1075,7 @@ myapp@server:~$ crontab -e</pre>
                     décrit toute la séquence : ce qui a été publié, ce à quoi elle a répondu, ce à quoi elle a été annulée et
                     si cela a résolu le problème.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi health set myapp --rollback-on-unhealthy   <span class="c"># permanent, per app</span>
 <span class="p">$</span> cipi deploy myapp --rollback-on-unhealthy       <span class="c"># just this deploy</span></pre>
 </div>
@@ -1094,9 +1094,9 @@ myapp@server:~$ crontab -e</pre>
                         le code est annulé. Activez-le uniquement pour les applications dont les déploiements ne migrent pas ou pour lesquelles vous savez
                         les migrations sont rétrocompatibles.</div>
 </div>
-<p>REPOS : <code>GET /api/health</code>, <code>GET|PUT|DELETE /api/apps/{name}/health</code>,
+<p>REST : <code>GET /api/health</code>, <code>GET|PUT|DELETE /api/apps/{name}/health</code>,
                     <code>POST /api/apps/{name}/health/check</code> (API <strong>1.15.0+</strong> / Cipi
-                    <strong>5.0.6+</strong>). Une application peut également déclarer son bilan de santé dans son référentiel — voir
+                    <strong>5.0.6+</strong>). Une application peut également déclarer son health check dans son référentiel — voir
                     <a href="/fr/docs/deploy#cli-yml"><code>cipi.yml</code></a>.</p>
 </div>
 <div class="doc-section" id="cli-firewall">
@@ -1104,7 +1104,7 @@ myapp@server:~$ crontab -e</pre>
 <p>Cipi installe UFW avec les ports 22, 80 et 443 ouverts par défaut. Utilisez les commandes du pare-feu pour gérer
                     règles supplémentaires sans toucher directement à UFW.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi firewall allow 3306                  <span class="c"># open a port</span>
 <span class="p">$</span> cipi firewall allow 3306 --from=10.0.0.5  <span class="c"># allow from specific IP</span>
 <span class="p">$</span> cipi firewall allow 3306 --from=10.0.0.0/24 <span class="c"># allow from subnet</span>
@@ -1119,7 +1119,7 @@ myapp@server:~$ crontab -e</pre>
                     réduit à 3. Un dédié<code>recidive</code> la prison interdit les récidivistes pendant 7 jours après 3 interdictions
                     dans les 24 heures.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi ban list                        <span class="c"># list all banned IPs, grouped by jail</span>
 <span class="p">$</span> cipi ban unban 203.0.113.42           <span class="c"># unban a specific IP from all jails</span></pre>
 </div>
@@ -1397,7 +1397,7 @@ myapp@server:~$ crontab -e</pre>
 <p>Vérifiez et contrôlez les services système qui alimentent le Cipi directement à partir du CLI. Nginx utilise un gracieux
                     recharger (zéro temps d'arrêt) au lieu d'un redémarrage complet.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi service list                    <span class="c"># status of all services</span>
 <span class="p">$</span> cipi service list nginx              <span class="c"># status of a specific service</span>
 <span class="p">$</span> cipi service restart                 <span class="c"># restart all services</span>
@@ -1409,7 +1409,7 @@ myapp@server:~$ crontab -e</pre>
 <span class="c"># Structured output (v5.0.6+) — panel API</span>
 <span class="p">$</span> cipi service list --json</pre>
 </div>
-<p>REPOS : <code>GET /api/services</code>, <code>POST /api/services/{name}/restart</code> (API
+<p>REST : <code>GET /api/services</code>, <code>POST /api/services/{name}/restart</code> (API
                     <strong>1.15.0+</strong> / Cipi <strong>5.0.6+</strong>; capacités
                     <code>services-view</code> / <code>services-manage</code>).</p>
 <p>Noms de services pris en charge : <code>nginx</code>, <code>mariadb</code>, <code>postgresql</code>
@@ -1421,7 +1421,7 @@ myapp@server:~$ crontab -e</pre>
                     <code>redis-server</code>, <code>redis</code>, et <code>valkey</code>sont acceptés comme pseudonymes de
                     <code>valkey-server</code>.
                 </p>
-<p>Valkey — le fork sous licence BSD et compatible Redis — est inclus dans la pile par défaut et remplace
+<p>Valkey — le fork sous licence BSD et compatible Redis — est inclus dans la stack par défaut et remplace
                     <code>redis-server</code> depuis Cipi 4.5.6. Il est installé avec un mot de passe, lié à
                     <code>localhost</code> uniquement, et ses informations d'identification (utilisateur, mot de passe) sont enregistrées dans
                     <code>/etc/cipi/server.json</code> et montré à la fin de l'installation.
@@ -1439,7 +1439,7 @@ myapp@server:~$ crontab -e</pre>
                 </p>
 <h3>Commandes</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi ssh list                 <span class="c"># list all authorized keys with fingerprint, comment, and current-session marker</span>
 <span class="p">$</span> cipi ssh add [key]             <span class="c"># add a new SSH public key (validates format, prevents duplicates)</span>
 <span class="p">$</span> cipi ssh remove [n]            <span class="c"># remove a key by number</span>
@@ -1448,7 +1448,7 @@ myapp@server:~$ crontab -e</pre>
 <span class="c"># Structured output (v5.0.6+) — panel API</span>
 <span class="p">$</span> cipi ssh list --json</pre>
 </div>
-<p>REPOS : <code>GET|POST /api/ssh/keys</code>, <code>DELETE /api/ssh/keys/{n}</code> (API
+<p>REST : <code>GET|POST /api/ssh/keys</code>, <code>DELETE /api/ssh/keys/{n}</code> (API
                     <strong>1.15.0+</strong> / Cipi <strong>5.0.6+</strong>).</p>
 <h3>Mécanismes de sécurité</h3>
 <p><code>cipi ssh remove</code> comprend deux mesures de protection pour éviter le verrouillage :</p>
@@ -1461,7 +1461,7 @@ myapp@server:~$ crontab -e</pre>
 <p>Les clés SSH sont stockées avec leurs commentaires d'origine intacts, ce qui facilite l'identification de l'identité de chaque clé.
                     appartient à. Utiliser <code>cipi ssh rename</code> pour modifier le nom d'affichage d'une touche :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># list keys to find the number</span>
 <span class="p">$</span> cipi ssh list
 
@@ -1477,7 +1477,7 @@ myapp@server:~$ crontab -e</pre>
 <h2><code>cipi</code> — Serveur et mise à jour automatique</h2>
 <p>Commandes de niveau supérieur pour l'état du serveur et l'autogestion Cipi.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi status              <span class="c"># CPU, RAM, disk, services, PHP versions, apps</span>
 <span class="p">$</span> cipi version             <span class="c"># show installed Cipi version</span>
 <span class="p">$</span> cipi self-update         <span class="c"># update Cipi to the latest version</span>
@@ -1485,11 +1485,11 @@ myapp@server:~$ crontab -e</pre>
 </div>
 <h3>Réinitialisation du mot de passe et des informations d'identification</h3>
 <p>Cipi fournit des commandes pour régénérer les mots de passe au niveau du serveur. Les nouveaux mots de passe sont stockés dans
-                    <code>/etc/cipi/server.json</code> (crypté via Vault) et affiché à l'écran.
+                    <code>/etc/cipi/server.json</code> (chiffré via Vault) et affiché à l'écran.
                     <strong>Enregistrez-les immédiatement</strong> — ils ne sont affichés qu'une seule fois.
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi reset root-password              <span class="c"># regenerate the root Linux user SSH password</span>
 <span class="p">$</span> cipi reset db-password [--engine=…]   <span class="c"># regenerate root password (default or chosen engine)</span>
 <span class="p">$</span> cipi reset valkey-password           <span class="c"># regenerate the Valkey password and restart the service</span></pre>
@@ -1521,7 +1521,7 @@ myapp@server:~$ crontab -e</pre>
 </div>
 <footer>
 <div class="footer-inner">
-<span>Réalisé avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
+<span>Fait avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" target="_blank">Essayez SSH
                         Gestionnaire de connexions avec Cipi</a></li>

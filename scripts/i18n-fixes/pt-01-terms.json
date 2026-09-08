@@ -1,0 +1,276 @@
+{
+ "pt": [
+  [
+   "\\bDESCANSO\\b",
+   "REST"
+  ],
+  [
+   "\\bLaravel-primeiro\\b",
+   "Laravel-first"
+  ],
+  [
+   "\\bCLI-primeiro\\b",
+   "CLI-first"
+  ],
+  [
+   "\\bmultipilha\\b",
+   "multi-stack"
+  ],
+  [
+   "\\bpilha portátil\\b",
+   "stack portátil"
+  ],
+  [
+   "\\bPilha portátil\\b",
+   "Stack portátil"
+  ],
+  [
+   "\\buma pilha nativa\\b",
+   "um stack nativo"
+  ],
+  [
+   "\\bpilha nativa\\b",
+   "stack nativo"
+  ],
+  [
+   "\\bPilha nativa\\b",
+   "Stack nativo"
+  ],
+  [
+   "\\ba pilha completa\\b",
+   "o stack completo"
+  ],
+  [
+   "\\bpilha completa\\b",
+   "stack completo"
+  ],
+  [
+   "\\bpilha limpa\\b",
+   "stack limpo"
+  ],
+  [
+   "\\bpilha única\\b",
+   "stack único"
+  ],
+  [
+   "\\bpilhas genéricas\\b",
+   "stacks genéricos"
+  ],
+  [
+   "\\bmuitas pilhas\\b",
+   "muitos stacks"
+  ],
+  [
+   "\\boutras pilhas\\b",
+   "outros stacks"
+  ],
+  [
+   "\\bda pilha\\b",
+   "do stack"
+  ],
+  [
+   "\\bna pilha\\b",
+   "no stack"
+  ],
+  [
+   "\\bA pilha\\b",
+   "O stack"
+  ],
+  [
+   "\\ba pilha\\b",
+   "o stack"
+  ],
+  [
+   "\\buma pilha\\b",
+   "um stack"
+  ],
+  [
+   "\\bpilhas\\b",
+   "stacks"
+  ],
+  [
+   "\\bPilhas\\b",
+   "Stacks"
+  ],
+  [
+   "\\bpilha\\b",
+   "stack"
+  ],
+  [
+   "\\bPilha\\b",
+   "Stack"
+  ],
+  [
+   "\\bimplantador\\b",
+   "Deployer"
+  ],
+  [
+   "\\bImplantador\\b",
+   "Deployer"
+  ],
+  [
+   "\\bdas implantações\\b",
+   "dos deploys"
+  ],
+  [
+   "\\bnas implantações\\b",
+   "nos deploys"
+  ],
+  [
+   "\\bas implantações\\b",
+   "os deploys"
+  ],
+  [
+   "\\bAs implantações\\b",
+   "Os deploys"
+  ],
+  [
+   "\\bda implantação\\b",
+   "do deploy"
+  ],
+  [
+   "\\bna implantação\\b",
+   "no deploy"
+  ],
+  [
+   "\\bà implantação\\b",
+   "ao deploy"
+  ],
+  [
+   "\\bA implantação\\b",
+   "O deploy"
+  ],
+  [
+   "\\ba implantação\\b",
+   "o deploy"
+  ],
+  [
+   "\\bUma implantação\\b",
+   "Um deploy"
+  ],
+  [
+   "\\buma implantação\\b",
+   "um deploy"
+  ],
+  [
+   "\\bimplantações\\b",
+   "deploys"
+  ],
+  [
+   "\\bImplantações\\b",
+   "Deploys"
+  ],
+  [
+   "\\bimplantação\\b",
+   "deploy"
+  ],
+  [
+   "\\bImplantação\\b",
+   "Deploy"
+  ],
+  [
+   "\\bsem tempo de inatividade\\b",
+   "sem downtime"
+  ],
+  [
+   "\\bAcesso raiz\\b",
+   "Acesso root"
+  ],
+  [
+   "\\bcomo raiz\\b",
+   "como root"
+  ],
+  [
+   "\\busuário raiz\\b",
+   "usuário root"
+  ],
+  [
+   "\\btrabalhadores\\b",
+   "workers"
+  ],
+  [
+   "\\bTrabalhadores\\b",
+   "Workers"
+  ],
+  [
+   "\\bEstrutura\\b",
+   "Framework"
+  ],
+  [
+   "\\bestrutura\\b",
+   "framework"
+  ],
+  [
+   "\\bRegistros\\b",
+   "Logs"
+  ],
+  [
+   "\\bregistros\\b",
+   "logs"
+  ],
+  [
+   "\\binstantâneos\\b",
+   "snapshots"
+  ],
+  [
+   "\\binstantâneo\\b",
+   "snapshot"
+  ],
+  [
+   "\\bInstantâneos\\b",
+   "Snapshots"
+  ],
+  [
+   "\\bInstantâneo\\b",
+   "Snapshot"
+  ],
+  [
+   "\\bcuringa\\b",
+   "wildcard"
+  ],
+  [
+   "\\bCuringa\\b",
+   "Wildcard"
+  ],
+  [
+   "\\bverificação de saúde\\b",
+   "health check"
+  ],
+  [
+   "\\bverificações de saúde\\b",
+   "health checks"
+  ],
+  [
+   "\\bPreparação\\b",
+   "Staging"
+  ],
+  [
+   "\\bpreparação\\b",
+   "staging"
+  ],
+  [
+   "\\bsem servidor\\b",
+   "serverless"
+  ],
+  [
+   "\\bpeixe\\b",
+   "fish"
+  ],
+  [
+   "\\bhost virtual\\b",
+   "vhost"
+  ],
+  [
+   "\\bhosts virtuais\\b",
+   "vhosts"
+  ],
+  [
+   "\\bDocumentos\\b",
+   "Docs"
+  ],
+  [
+   "\\bUbuntu VPS\\b",
+   "VPS Ubuntu"
+  ]
+ ]
+}

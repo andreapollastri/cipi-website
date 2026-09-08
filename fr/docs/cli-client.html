@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Cipi Documents — CLI Client</title>
+<title>Cipi Docs — Client CLI</title>
 <meta content="cipi-cli — gérez vos serveurs Cipi à distance depuis le terminal. Applications, bases de données, SSL, déploiements et bien plus encore via REST API." name="description"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
@@ -22,19 +22,19 @@
 <meta content="website" property="og:type"/>
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/fr/docs/cli-client" property="og:url"/>
-<meta content="Cipi Documents — CLI Client" property="og:title"/>
+<meta content="Cipi Docs — Client CLI" property="og:title"/>
 <meta content="cipi-cli — gérez vos serveurs Cipi à distance depuis le terminal. Applications, bases de données, SSL, déploiements et bien plus encore via REST API." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Cipi Docs — CLI Client" property="og:image:alt"/>
+<meta content="Cipi Docs — Client CLI" property="og:image:alt"/>
         <meta property="og:locale" content="fr_FR">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="de_DE">
     <meta property="og:locale:alternate" content="it_IT">
     <meta property="og:locale:alternate" content="es_ES">
     <meta property="og:locale:alternate" content="pt_PT"><meta content="summary_large_image" name="twitter:card"/>
-<meta content="Cipi Documents — CLI Client" name="twitter:title"/>
+<meta content="Cipi Docs — Client CLI" name="twitter:title"/>
 <meta content="cipi-cli — gérez vos serveurs Cipi à distance depuis le terminal. Applications, bases de données, SSL, déploiements et bien plus encore via REST API." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
@@ -43,10 +43,10 @@
       "@type": "TechArticle",
       "datePublished": "2026-06-03",
       "dateModified": "2026-08-04",
-      "headline": "Cipi Docs — CLI Client",
+      "headline": "Cipi Docs — Client CLI",
       "name": "CLI Client",
       "url": "https://cipi.sh/en/docs/cli-client",
-      "description": "cipi-cli — manage your Cipi servers remotely from the terminal. Apps, databases, SSL, deploys, and more via the REST API.",
+      "description": "cipi-cli — gérez vos serveurs Cipi à distance depuis le terminal. Applications, bases de données, SSL, déploiements et bien plus encore via REST API.",
       "inLanguage": "fr",
       "image": "https://cipi.sh/og.png",
       "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/" },
@@ -105,7 +105,7 @@
 </svg>
 <span>Ci<span style="color:var(--signal)">pi</span></span>
 </a>
-<span class="nav-badge">Documents</span>
+<span class="nav-badge">Docs</span>
 </div>
 <div class="nav-right">
 
@@ -149,14 +149,14 @@
 <a class="sidebar-link" href="/fr/docs/getting-started#installation">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#requirements">exigences</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#quickstart">démarrage rapide</a>
-<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">pile technologique</a>
+<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">stack technologique</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#app-structure">structure de l'application</a>
 </div>
 <div class="sidebar-group" data-chapter="agent">
 <a class="sidebar-group-label" href="/fr/docs/agent">cipi agent</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-install">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-webhook">webhook</a>
-<a class="sidebar-link" href="/fr/docs/agent#agent-health">bilan de santé</a>
+<a class="sidebar-link" href="/fr/docs/agent#agent-health">health check</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-mcp">serveur MCP</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-anonymizer">anonymiseur de base de données</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-security">sécurité</a>
@@ -255,9 +255,9 @@
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-api"><code>cipi api</code></a>
 <a class="sidebar-link" href="/fr/docs/advanced#whmcs">Module WHMCS</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-sync"><code>cipi sync</code></a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et cryptage</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et chiffrement</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-smtp">notifications par courrier électronique</a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des journaux (RGPD)</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des logs (RGPD)</a>
 <a class="sidebar-link" href="/fr/docs/advanced#valkey">valkey</a>
 <a class="sidebar-link" href="/fr/docs/advanced#self-update">mise à jour automatique</a>
 <a class="sidebar-link" href="/fr/docs/advanced#wildcard-domains">domaines génériques</a>
@@ -299,13 +299,13 @@
 <p>Téléchargez la dernière version pour votre plateforme à partir du
                     <a href="https://github.com/cipi-sh/cli/releases" target="_blank">Page des versions</a>, alors :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>chmod +x cipi-cli-*
 sudo mv cipi-cli-* /usr/local/bin/cipi-cli</pre>
 </div>
 <h3>Construire à partir des sources</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre>git clone https://github.com/cipi-sh/cli.git
 cd cli
 make build
@@ -313,7 +313,7 @@ sudo make install</pre>
 </div>
 <h3>Vérifier l'installation</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli version
 <span class="c">cipi-cli v1.2.5 (linux/amd64)</span></pre>
 </div>
@@ -334,11 +334,11 @@ sudo make install</pre>
 <p>Recommandé : stockez le jeton avec <code>api token add</code>. Les aides équivalentes sont
                     <code>configure --profile</code> et <code>profiles add</code>:</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli api token add prod
 <span class="c">Cipi API point de terminaison : https://api.example.com</span>
 <span class="c">API jeton : 1|votre jeton...</span>
-<span class="s">Profil de serveur "prod" enregistré → ~/.cipi/config.json</span>
+<span class="s">Server profile "prod" saved → ~/.cipi/config.json</span>
 
 <span class="p">$</span> cipi-cli api token add staging
 <span class="c">Cipi API point de terminaison : https://staging-api.example.com</span>
@@ -351,7 +351,7 @@ sudo make install</pre>
 </div>
 <h3>Configuration non interactive</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli api token add prod \
     --endpoint https://api.example.com --token "1|yourtoken..."
 
@@ -360,7 +360,7 @@ sudo make install</pre>
 </div>
 <h3>Afficher la configuration</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli profiles show prod
 <span class="c">Profil : prod</span>
 <span class="c">Point de terminaison : https://api.example.com</span>
@@ -381,7 +381,7 @@ sudo make install</pre>
                     <code>server</code> fonctionne de la même manière que <code>profiles</code>.</p>
 <h3>Cibler un serveur</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli prod apps list
 <span class="p">$</span> cipi-cli staging apps show myapp
 <span class="p">$</span> cipi-cli prod deploy myapp
@@ -389,7 +389,7 @@ sudo make install</pre>
 </div>
 <p>Avec un serveur par défaut défini, vous pouvez exécuter des commandes sans le préfixe :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli profiles use prod
 <span class="s">Profil par défaut défini sur "prod"</span>
 
@@ -499,8 +499,8 @@ sudo make install</pre>
 <td>Restaurer une application suspendue au service normal</td>
 </tr>
 <tr>
-<td>cipi-cli journaux d'applications &lt;nom&gt; [drapeaux]</td>
-<td>Lire les journaux d'applications paginés (nginx, PHP-FPM, Laravel, travailleur, déploiement)</td>
+<td>cipi-cli logs d'applications &lt;nom&gt; [drapeaux]</td>
+<td>Lire les logs d'applications paginés (nginx, PHP-FPM, Laravel, travailleur, déploiement)</td>
 </tr>
 </tbody>
 </table>
@@ -533,7 +533,7 @@ sudo make install</pre>
 </div>
 <div class="option-item">
 <code>--docroot</code>
-<span>Racine du document par rapport à <code>htdocs</code> (applications personnalisées uniquement)</span>
+<span>root du document par rapport à <code>htdocs</code> (applications personnalisées uniquement)</span>
 </div>
 </div>
 <h3>Modifier les drapeaux</h3>
@@ -556,7 +556,7 @@ sudo make install</pre>
                             <strong>1.9.0+</strong>)</span>
 </div>
 </div>
-<h3>Indicateurs de journaux</h3>
+<h3>Indicateurs de logs</h3>
 <div class="options-list">
 <div class="option-item">
 <code>--type</code>
@@ -576,7 +576,7 @@ sudo make install</pre>
 </div>
 <h3>Exemples</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># List all apps</span>
 <span class="p">$</span> cipi-cli apps list
 
@@ -629,7 +629,7 @@ sudo make install</pre>
 </table>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli domains
 <span class="c">  TYPE D'APPLICATION DE DOMAINE PHP SSL</span>
 <span class="c">api.myapp.com alias myapp Laravel 8.5 ✓</span>
@@ -666,7 +666,7 @@ sudo make install</pre>
 <tbody>
 <tr>
 <td>cipi-cli déployer &lt;app&gt;</td>
-<td>Déclenchez un déploiement sans temps d'arrêt</td>
+<td>Déclenchez un déploiement sans interruption</td>
 </tr>
 <tr>
 <td>cipi-cli déployer la restauration &lt;app&gt; [-y]</td>
@@ -680,11 +680,11 @@ sudo make install</pre>
 </table>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli deploy myapp
-<span class="c">Déploiement de monapplication...</span>
+<span class="c">Deploying myapp...</span>
 <span class="c">Travail de sondage n°42...</span> <span class="s">terminé</span>
-<span class="s">Déployé vers la version #14. Zéro temps d'arrêt.</span>
+<span class="s">Deployed to release #14. Zero downtime.</span>
 
 <span class="p">$</span> cipi-cli deploy rollback myapp
 <span class="s">Retour à la version n°13.</span></pre>
@@ -713,9 +713,9 @@ sudo make install</pre>
 </table>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli ssl install myapp
-<span class="s">Certificat fourni pour myapp.com</span></pre>
+<span class="s">Certificate provisioned for myapp.com</span></pre>
 </div>
 </div>
 <hr class="doc-divider"/>
@@ -749,7 +749,7 @@ sudo make install</pre>
 </table>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli aliases add myapp www.myapp.com
 <span class="s">Alias www.myapp.com ajouté à myapp.</span>
 
@@ -804,10 +804,10 @@ sudo make install</pre>
 </table>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli db list
 <span class="c">  TAILLE DU NOM</span>
-<span class="c">  monapplication 24,5 Mo</span>
+<span class="c">  myapp 24,5 Mo</span>
 <span class="c">  blog 8,2 Mo</span>
 
 <span class="p">$</span> cipi-cli db backup myapp
@@ -835,7 +835,7 @@ sudo make install</pre>
 </thead>
 <tbody>
 <tr>
-<td>Statut cipi-cli</td>
+<td>cipi-cli status</td>
 <td>Aperçu global : une ligne par serveur (alias : <code>status all</code>)</td>
 </tr>
 <tr>
@@ -853,7 +853,7 @@ sudo make install</pre>
                     <code>HDD</code>, <code>APPS</code>, <code>SVC</code>, <code>CIPI</code>. Le profil par défaut est
                     marqué avec <code>*</code>.</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli status
 <span class="c">  NOM IP CPU RAM HDD APPLICATIONS SVC CIPI</span>
 <span class="c">  prod* 203.0.113.10 12 % 48 % (3840M) 42G/80G 53 % 3 8/8 ok 4.6.3</span>
@@ -915,7 +915,7 @@ sudo make install</pre>
 </table>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli jobs show 42
 <span class="c">Tâche n°42 : déployer myapp – terminé</span>
 
@@ -930,7 +930,7 @@ sudo make install</pre>
 <h2><code>update</code></h2>
 <p>Mise à jour <code>cipi-cli</code> à la dernière version de GitHub. La commande sélectionne le
                     <strong>semver le plus élevé</strong> parmi les versions publiées (pas le drapeau « dernière » de GitHub, qui peut
-                    pointez sur une balise plus ancienne), télécharge le binaire correspondant à votre plate-forme, vérifie son SHA-256
+                    pointez sur une balise plus ancienne), télécharge le binaire correspondant à votre plateforme, vérifie son SHA-256
                     somme de contrôle et remplace le binaire en cours d'exécution en place. Alias : <code>self-update</code>,
                     <code>upgrade</code>.</p>
 <div class="table-scroll">
@@ -954,7 +954,7 @@ sudo make install</pre>
 </table>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli update
 <span class="s">Téléchargement de cipi-cli v1.2.5...</span>
 <span class="s">Somme de contrôle vérifiée. Mis à jour vers la v1.2.5.</span>
@@ -1009,7 +1009,7 @@ sudo make install</pre>
 </table>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi-cli completion install
 <span class="c">Installation de l'achèvement de zsh...</span>
 <span class="s">Achèvement installé → ~/.cipi/completions/cipi-cli.zsh</span>
@@ -1043,14 +1043,14 @@ sudo make install</pre>
 </div>
 </div>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="c"># JSON output for scripting</span>
 <span class="p">$</span> cipi-cli apps list --json
-<span class="c">[{"name": "monapplication", "domaine": "monapplication.com", "php": "8.5"}, ...]</span>
+<span class="c">[{"name": "myapp", "domain": "myapp.com", "php": "8.5"}, ...]</span>
 
 <span class="c"># Pipe to jq for filtering</span>
 <span class="p">$</span> cipi-cli apps list --json | jq '.[].name'
-<span class="s">"monapplication"</span>
+<span class="s">"myapp"</span>
 <span class="s">"blog"</span>
 
 <span class="c"># Help for a specific command</span>
@@ -1071,7 +1071,7 @@ sudo make install</pre>
 <p>Le serveur Cipi doit avoir le <a href="/fr/docs/advanced#cipi-api">Forfait API</a> installé et configuré
                     avant d'utiliser <code>cipi-cli</code>:</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi api &lt;domain&gt;
 <span class="p">$</span> cipi api ssl
 <span class="p">$</span> cipi api token create</pre>
@@ -1099,7 +1099,7 @@ sudo make install</pre>
 <td>1.9.0</td>
 </tr>
 <tr>
-<td>Journaux d'applications (<code>apps logs</code>)</td>
+<td>Logs d'applications (<code>apps logs</code>)</td>
 <td>—</td>
 <td>1.11.9</td>
 </tr>
@@ -1131,7 +1131,7 @@ sudo make install</pre>
 </div>
 <footer>
 <div class="footer-inner">
-<span>Réalisé avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
+<span>Fait avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" target="_blank">Essayez SSH
                         Gestionnaire de connexions avec Cipi</a></li>

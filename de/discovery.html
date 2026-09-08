@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Cipi Discovery – Vollständiger Rundgang durch die Open-Source Laravel Deployment CLI</title>
-<meta content="Alles, was Cipi kann, auf einer Seite. Null-Ausfallzeit-Bereitstellungen, Laravel Octane, cipi.yml, MCP für KI, REST API, S3 Backups, verstärkte Sicherheit – der vollständige Rundgang durch die open-source Laravel Bereitstellung CLI." name="description"/>
+<meta content="Alles, was Cipi kann, auf einer Seite. Null-Ausfallzeit-Deployments, Laravel Octane, cipi.yml, MCP für KI, REST API, S3 Backups, verstärkte Sicherheit – der vollständige Rundgang durch die open-source Laravel Deployment CLI." name="description"/>
 <meta content="Cipi Funktionen, Laravel Bereitstellungstour, cipi Entdeckung, Laravel VPS Funktionen, PHP Serverplattform" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
@@ -24,7 +24,7 @@
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/de/discovery" property="og:url"/>
 <meta content="Cipi Discovery – Vollständiger Rundgang durch die Open-Source Laravel Deployment CLI" property="og:title"/>
-<meta content="Alles, was Cipi kann, auf einer Seite. Bereitstellung ohne Ausfallzeiten, Laravel Octane, cipi.yml, MCP für KI, REST API, S3 Backups, verstärkte Sicherheit – die vollständige Tour." property="og:description"/>
+<meta content="Alles, was Cipi kann, auf einer Seite. Zero-Downtime-Deploys, Laravel Octane, cipi.yml, MCP für KI, REST API, S3 Backups, verstärkte Sicherheit – die vollständige Tour." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -35,8 +35,8 @@
     <meta property="og:locale:alternate" content="it_IT">
     <meta property="og:locale:alternate" content="es_ES">
     <meta property="og:locale:alternate" content="pt_PT"><meta content="summary_large_image" name="twitter:card"/>
-<meta content="Cipi Entdeckung – Vollständiger Rundgang durch die Laravel Bereitstellung von CLI" name="twitter:title"/>
-<meta content="Alles, was Cipi kann, auf einer Seite. Bereitstellung ohne Ausfallzeiten, Laravel Octane, cipi.yml, MCP für KI, REST API, S3 Backups, verstärkte Sicherheit – die vollständige Tour." name="twitter:description"/>
+<meta content="Cipi Entdeckung – Vollständiger Rundgang durch die Laravel Deployment von CLI" name="twitter:title"/>
+<meta content="Alles, was Cipi kann, auf einer Seite. Zero-Downtime-Deploys, Laravel Octane, cipi.yml, MCP für KI, REST API, S3 Backups, verstärkte Sicherheit – die vollständige Tour." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
     {
@@ -1135,12 +1135,12 @@
 </div>
 <div class="nav-right">
 <a class="nav-link" href="/">Zuhause</a>
-<a class="nav-link hide-mobile" href="/de/docs/">Dokumente</a>
+<a class="nav-link hide-mobile" href="/de/docs/">Docs</a>
 <div class="nav-actions">
 <a class="nav-link" href="/de/cipi-yml">cipi.yml</a>
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">DE</summary><div class="lang-menu"><a href="/en/discovery" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a class="active" href="/de/discovery" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/discovery" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/discovery" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/discovery" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/discovery" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Thema umschalten" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Theme wechseln" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -1187,7 +1187,7 @@
 <line x1="12" x2="12" y1="5" y2="19"></line>
 <polyline points="19 12 12 19 5 12"></polyline>
 </svg></a>
-<a class="btn-hero btn-secondary" href="/de/docs/getting-started#installation">Lesen Sie die Dokumente</a>
+<a class="btn-hero btn-secondary" href="/de/docs/getting-started#installation">Zur Dokumentation</a>
 </div>
 <div class="hero-install">
 <code><span class="prompt">$</span> wget -O - https://cipi.sh/setup.sh | bash</code>
@@ -1206,7 +1206,7 @@
 <div aria-hidden="true" class="marquee-band" id="marquee">
 <div class="marquee">
 <div class="marquee-track">
-<span class="marquee-item">Bereitstellung ohne Ausfallzeiten</span>
+<span class="marquee-item">Zero-Downtime-Deploys</span>
 <span class="marquee-item ghost">FrankenPHP</span>
 <span class="marquee-item">git push = deployed</span>
 <span class="marquee-item ghost">Laravel Octane</span>
@@ -1214,12 +1214,12 @@
 <span class="marquee-item ghost">Auto SSL</span>
 <span class="marquee-item">S3 Backups</span>
 <span class="marquee-item ghost">cipi.yml</span>
-<span class="marquee-item">RUHE API</span>
+<span class="marquee-item">REST API</span>
 <span class="marquee-item ghost">Valkey Cache</span>
 <span class="marquee-item">Fail2ban</span>
 </div>
 <div class="marquee-track">
-<span class="marquee-item">Bereitstellung ohne Ausfallzeiten</span>
+<span class="marquee-item">Zero-Downtime-Deploys</span>
 <span class="marquee-item ghost">FrankenPHP</span>
 <span class="marquee-item">git push = deployed</span>
 <span class="marquee-item ghost">Laravel Octane</span>
@@ -1227,7 +1227,7 @@
 <span class="marquee-item ghost">Auto SSL</span>
 <span class="marquee-item">S3 Backups</span>
 <span class="marquee-item ghost">cipi.yml</span>
-<span class="marquee-item">RUHE API</span>
+<span class="marquee-item">REST API</span>
 <span class="marquee-item ghost">Valkey Cache</span>
 <span class="marquee-item">Fail2ban</span>
 </div>
@@ -1241,9 +1241,9 @@
 <span class="marquee-item ghost">Horizon &amp; Reverb</span>
 <span class="marquee-item">AES-256 Tresor</span>
 <span class="marquee-item ghost">Terminplaner &amp; cron</span>
-<span class="marquee-item">Gehen Sie CLI Kunde</span>
+<span class="marquee-item">Go CLI-Client</span>
 <span class="marquee-item ghost">DSGVO-Anonymisierer</span>
-<span class="marquee-item">Gesundheitschecks</span>
+<span class="marquee-item">Health-Checks</span>
 </div>
 <div class="marquee-track">
 <span class="marquee-item ghost">WHMCS-Abrechnung</span>
@@ -1253,9 +1253,9 @@
 <span class="marquee-item ghost">Horizon &amp; Reverb</span>
 <span class="marquee-item">AES-256 Tresor</span>
 <span class="marquee-item ghost">Terminplaner &amp; cron</span>
-<span class="marquee-item">Gehen Sie CLI Kunde</span>
+<span class="marquee-item">Go CLI-Client</span>
 <span class="marquee-item ghost">DSGVO-Anonymisierer</span>
-<span class="marquee-item">Gesundheitschecks</span>
+<span class="marquee-item">Health-Checks</span>
 </div>
 </div>
 </div>
@@ -1297,7 +1297,7 @@
 <p>Jede App wählt ihre Engine mit einem einzigen Flag aus: Laravel Octane läuft auf FrankenPHP und behält Ihre
                 Die Anwendung wird im Speicher gestartet und verarbeitet Tausende von Anfragen pro Sekunde – oder entscheiden Sie sich für absolut solide
                 PHP-FPM, wenn klassisch das ist, was Sie brauchen. Dahinter verbergen sich MariaDB bzw. PostgreSQL pro App und Valkey Portion
-                Cache, Sitzungen und Warteschlangen direkt aus dem Speicher. Leistung ist hier keine kostenpflichtige Stufe. Es ist die Installation
+                Cache, Sitzungen und Queues direkt aus dem Speicher. Leistung ist da keine kostenpflichtige Stufe. Es ist die Installation
                 Skript.</p>
 <div class="chips">
 <span class="chip">FrankenPHP</span>
@@ -1321,17 +1321,17 @@
 <div class="statement-inner reveal">
 <div class="statement-kicker">Schiff</div>
 <h2><em>git push.</em><br/>Das ist die ganze Pipeline.</h2>
-<p>Verbinden Sie GitHub oder GitLab einmal und Cipi erledigt den Rest: Bereitstellung generierter und injizierter Schlüssel, Webhooks
-                erstellt, jede App wird mit einem eigenen Linux-Benutzer, einer eigenen Datenbank, einem eigenen Vhost und einem eigenen PHP-FPM-Pool bereitgestellt. Drücken Sie zu Ihrem
-                Branch und eine signaturverifizierte Bereitstellung ohne Ausfallzeiten werden im Hintergrund ausgeführt – mit nur einem Befehl
+<p>Verbinden Sie GitHub oder GitLab einmal und Cipi erledigt den Rest: Deployment generierter und injizierter Schlüssel, Webhooks
+                erstellt, jede App wird mit einem eigenen Linux-Benutzer, einer eigenen Datenbank, einem eigenen Vhost und einem eigenen PHP-FPM-Pool deployt. Drücken Sie zu Ihrem
+                Branch und eine signaturverifizierte Zero-Downtime-Deploys werden im Hintergrund ausgeführt – mit nur einem Befehl
                 Rollback, falls Sie es jemals brauchen. Es müssen keine CI/CD gewartet werden. Keine Pipeline YAML zum Weinen.</p>
 <div class="chips">
-<span class="chip">Schlüssel automatisch bereitstellen</span>
+<span class="chip">Schlüssel automatisch deployen</span>
 <span class="chip">HMAC-Webhooks</span>
 <span class="chip">Releases ohne Ausfallzeiten</span>
 <span class="chip">sofortiges Rollback</span>
 </div>
-<a class="deep-link" href="/de/docs/deploy#git-providers">So funktionieren Bereitstellungen <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
+<a class="deep-link" href="/de/docs/deploy#git-providers">So funktionieren Deployments <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
 <polyline points="12 5 19 12 12 19"></polyline>
 </svg></a>
@@ -1368,8 +1368,8 @@
 <div class="statement-watermark">Lebe</div>
 <div class="statement-inner reveal">
 <div class="statement-kicker">Immer an</div>
-<h2>Warteschlangen, Websockets, cron.<br/><em>Läuft bereits.</em></h2>
-<p>Horizon oder einfache Warteschlangenarbeiter laufen unter Supervisor und werden bei jeder Bereitstellung automatisch neu gestartet. Laravel
+<h2>Queues, Websockets, cron.<br/><em>Läuft bereits.</em></h2>
+<p>Horizon oder einfache Queue-Worker laufen unter Supervisor und werden bei jedem Deployment automatisch neu gestartet. Laravel
                 Reverb pusht Echtzeit-Websockets über Nginx mit SSL. Der Zeitplaner ist aktuell in cron verkabelt
                 Die App wird erstellt. Hintergrundjobs, Übertragungen und geplante Aufgaben sind kein nachträglicher Einfall – sie sind es
                 Teil der Versorgung.</p>
@@ -1380,7 +1380,7 @@
 <span class="chip">Planer</span>
 <span class="chip">Supervisor</span>
 </div>
-<a class="deep-link" href="/de/docs/infrastructure#cli-workers">Arbeiter und Planer <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
+<a class="deep-link" href="/de/docs/infrastructure#cli-workers">Worker und Planer <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
 <polyline points="12 5 19 12 12 19"></polyline>
 </svg></a>
@@ -1395,16 +1395,16 @@
 <div class="statement-kicker">KI-nativ</div>
 <h2>Ihre KI hat eine <em>Hotline</em> zur Produktion.</h2>
 <p>Der integrierte MCP-Server verbindet Cursor, VS Code oder Claude Desktop direkt mit Ihrer Live-App
-                HTTPS. Stellen Sie Fragen in natürlicher Sprache: Protokolle lesen, SQL-Abfragen ausführen, artisan Befehle ausführen, auslösen
-                entfaltet sich. Destruktive Anweisungen werden blockiert, es wird nie eine SSH-Sitzung geöffnet und Sie fügen niemals einen Stapel ein
+                HTTPS. Stellen Sie Fragen in natürlicher Sprache: Logs lesen, SQL-Abfragen ausführen, artisan Befehle ausführen, auslösen
+                entfaltet sich. Destruktive Anweisungen werden blockiert, es wird nie eine SSH-Sitzung geöffnet und Sie fügen niemals einen Stack ein
                 Trace erneut in ein Chatfenster.</p>
 <div class="chips">
 <span class="chip">Gesundheit</span>
 <span class="chip">app_info</span>
-<span class="chip">Protokolle</span>
+<span class="chip">Logs</span>
 <span class="chip">db_query</span>
 <span class="chip">artisan</span>
-<span class="chip">bereitstellen</span>
+<span class="chip">deployen</span>
 </div>
 <a class="deep-link" href="/de/docs/agent#agent-mcp">Lernen Sie den MCP-Server kennen <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1421,9 +1421,9 @@
 <div class="statement-kicker">Festung</div>
 <h2>Gehärtet vor Ihrem <em>Erster Login.</em></h2>
 <p>Nur-SSH-Schlüsselauthentifizierung, Fail2ban mit progressivem Sperren, UFW-Firewall, unbeaufsichtigte Sicherheit
-                Upgrades, ein AES-256-Tresor für alle Anmeldeinformationen, DSGVO-konforme Protokollaufbewahrung und vollwertiger Linux-Benutzer
+                Upgrades, ein AES-256-Tresor für alle Anmeldeinformationen, DSGVO-konforme Log-Aufbewahrung und vollwertiger Linux-Benutzer
                 Isolation pro App. E-Mail-Benachrichtigungen werden bei Einbruchsversuchen, sudo-Erhöhungen, SSH-Schlüsseländerungen usw. ausgelöst
-                fehlgeschlagene Bereitstellungen – während alles in einem manipulationssicheren Ereignisprotokoll landet. Sicherheit ist für Sie kein Merkmal
+                fehlgeschlagene Deployments – während alles in einem manipulationssicheren Ereignisprotokoll landet. Sicherheit ist für Sie kein Merkmal
                 aktivieren. Es handelt sich um die Standardeinstellung, an deren Entfernung Sie arbeiten müssten.</p>
 <div class="chips">
 <span class="chip">Nur SSH-Schlüssel</span>
@@ -1476,13 +1476,13 @@
 <div class="index-group">
 <div class="index-group-label reveal">
 <span class="num">A</span>
-<h3>Bereitstellung &amp; Leistung</h3>
+<h3>Deployment &amp; Leistung</h3>
 <span class="rule"></span>
 </div>
 <div class="feature-grid reveal-stagger reveal">
 <a class="tour-card" href="/de/docs/getting-started#installation">
 <h4>Installation mit nur einem Befehl</h4>
-<p>Ein einziges Skript verwandelt einen frischen Ubuntu VPS in einen kompletten Produktionsstapel: Nginx, PHP 8,5,
+<p>Ein einziges Skript verwandelt einen frischen Ubuntu VPS in einen kompletten Produktions-Stack: Nginx, PHP 8.5,
                         MariaDB oder PostgreSQL, Valkey, Supervisor, Deployer, Certbot.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1508,8 +1508,8 @@
 </svg></span>
 </a>
 <a class="tour-card" href="/de/docs/advanced#valkey">
-<h4>Valkey Cache und Warteschlangen</h4>
-<p>Ein Redis-kompatibler In-Memory-Speicher für Cache, Sitzungen und Warteschlangen – installiert, gesichert und
+<h4>Valkey Cache und Queues</h4>
+<p>Ein Redis-kompatibler In-Memory-Speicher für Cache, Sitzungen und Queues – installiert, gesichert und
                         sofort in jede App integriert.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1518,7 +1518,7 @@
 </a>
 <a class="tour-card" href="/de/docs/apps#cli-app-reverb">
 <h4>Horizon &amp; Reverb</h4>
-<p>Laravel Horizon Beobachten Sie Ihre Warteschlangen und Reverb Websockets hinter Nginx mit SSL – bereitgestellt
+<p>Laravel Horizon Beobachten Sie Ihre Queues und Reverb Websockets hinter Nginx mit SSL – deployt
                         und betreut für Sie.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1535,7 +1535,7 @@
 </svg></span>
 </a>
 <a class="tour-card" href="/de/docs/deploy#cli-deploy">
-<h4>Bereitstellung ohne Ausfallzeiten</h4>
+<h4>Zero-Downtime-Deploys</h4>
 <p>Deployer-basierte atomare Releases mit Symlink-Umschaltung und Rollback mit einem Befehl. Ihre Benutzer niemals
                         siehe eine Wartungsseite.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
@@ -1563,7 +1563,7 @@
 </a>
 <a class="tour-card" href="/de/docs/infrastructure#cli-ssl">
 <h4>Automatisch SSL</h4>
-<p>Let's Encrypt Zertifikate werden automatisch installiert und erneuert – Wildcard-Domänen werden unterstützt.
+<p>Let's Encrypt Zertifikate werden automatisch installiert und erneuert – Wildcard-Domains werden unterstützt.
                         HTTPS ist ein Befehl, dann ist er für immer.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1591,7 +1591,7 @@
 </a>
 <a class="tour-card" href="/de/docs/deploy#git-providers">
 <h4>GitHub &amp; GitLab nativ</h4>
-<p>Fügen Sie einmal einen Token hinzu. Bereitstellungsschlüssel und Push-Webhooks werden automatisch für jede App erstellt –
+<p>Fügen Sie einmal einen Token hinzu. Deploy-Keys und Push-Webhooks werden automatisch für jede App erstellt –
                         self-hosted GitLab inklusive.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1599,8 +1599,8 @@
 </svg></span>
 </a>
 <a class="tour-card" href="/de/docs/advanced#cipi-api">
-<h4>RUHE API</h4>
-<p>Jeder CLI-Befehl ist auch ein HTTP-Endpunkt. Token-Authentifizierung mit fein abgestuften Fähigkeiten, JSON
+<h4>REST API</h4>
+<p>Jeder CLI-Befehl ist auch ein HTTP-Endpunkt. Token-Authentifizierung mit fein abgestuften Abilities, JSON
                         Antworten und asynchrone Jobs mit Statusabfrage.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1608,8 +1608,8 @@
 </svg></span>
 </a>
 <a class="tour-card" href="/de/docs/cli-client#cli-install">
-<h4>Gehen Sie CLI Kunde</h4>
-<p>Die cipi-cli-Binärdatei verwaltet Apps, SSL, Bereitstellungen und Datenbanken von Ihrem Laptop aus – mit
+<h4>Go CLI-Client</h4>
+<p>Die cipi-cli-Binärdatei verwaltet Apps, SSL, Deployments und Datenbanken von Ihrem Laptop aus – mit
                         Multi-Server-Profile und eine globale Statusübersicht.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1646,7 +1646,7 @@
 <div class="feature-grid reveal-stagger reveal">
 <a class="tour-card" href="/de/docs/agent#agent-install">
 <h4>Cipi Agent</h4>
-<p>Eine composer-Anforderung in Ihrer Laravel-App schaltet webhook Bereitstellungen, Gesundheitsprüfungen, MCP und vieles mehr frei
+<p>Eine composer-Anforderung in Ihrer Laravel-App schaltet webhook Deployments, Gesundheitsprüfungen, MCP und vieles mehr frei
                         Anonymisierung. Automatisch erkannt, keine Konfiguration.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1654,8 +1654,8 @@
 </svg></span>
 </a>
 <a class="tour-card" href="/de/docs/agent#agent-mcp">
-<h4>MCP Server für KI</h4>
-<p>Mit sechs Tools können Cursor, VS Code oder Claude Protokolle lesen, die Datenbank abfragen, artisan ausführen und bereitstellen
+<h4>MCP-Server für KI</h4>
+<p>Mit sechs Tools können Cursor, VS Code oder Claude Logs lesen, die Datenbank abfragen, artisan ausführen und deployen
                         – über HTTPS, mit blockiertem destruktiven SQL.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1664,7 +1664,7 @@
 </a>
 <a class="tour-card" href="/de/docs/agent#agent-health">
 <h4>Gesundheitsendpunkt</h4>
-<p>Ein JSON-Endpunkt, der PHP-Version, Datenbank, Cache, Warteschlange und Datenträgervitalitäten meldet. Stecken Sie es ein
+<p>Ein JSON-Endpunkt, der PHP-Version, Datenbank, Cache, Queue und Datenträgervitalitäten meldet. Stecken Sie es ein
                         UptimeRobot, Pingdom oder Ihre eigenen Monitore.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1690,9 +1690,9 @@
 </svg></span>
 </a>
 <a class="tour-card" href="/de/docs/infrastructure#cli-workers">
-<h4>Jobs, Arbeiter und Planer</h4>
-<p>Horizon oder einfache Warteschlangenarbeiter unter Supervisor, und der Laravel-Planer ist mit cron verbunden –
-                        pro App verwaltet und bei jeder Bereitstellung neu gestartet.</p>
+<h4>Jobs, Worker und Planer</h4>
+<p>Horizon oder einfache Queue-Worker unter Supervisor, und der Laravel-Planer ist mit cron verbunden –
+                        pro App verwaltet und bei jedem Deployment neu gestartet.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
 <polyline points="12 5 19 12 12 19"></polyline>
@@ -1709,7 +1709,7 @@
 </div>
 <div class="feature-grid reveal-stagger reveal">
 <a class="tour-card" href="/de/docs/infrastructure#cli-backup">
-<h4>DB-Sicherung und -Wiederherstellung</h4>
+<h4>DB-Backup und -Wiederherstellung</h4>
 <p>Komprimierte Datenbank-Dumps und -Wiederherstellungen in jeweils einem Befehl. Planen Sie sie in cron ein und vergessen Sie es
                         mysqldump-Syntax für immer.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
@@ -1746,7 +1746,7 @@
 </a>
 <a class="tour-card" href="/de/docs/advanced#cipi-vault">
 <h4>AES-256 Tresor</h4>
-<p>Alle von Cipi erstellten Anmeldeinformationen – Datenbankkennwörter, Token, Root-Geheimnisse – werden im Ruhezustand verschlüsselt
+<p>Alle von Cipi erstellten Anmeldeinformationen – Datenbankkennwörter, Token, Root-Secrets – werden im Ruhezustand verschlüsselt
                         in einem lokalen Tresor. Nichts steht im Klartext.</p>
 <span class="card-link">Tiefer Tauchgang <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
@@ -1770,10 +1770,10 @@
 <!-- ════════════════════════════════════════ -->
 <section class="cta-bottom">
 <h2 class="reveal">Lesen Sie noch?<br/>Ihr Server könnte es bereits sein <em>live.</em></h2>
-<p class="reveal">Ein Befehl zur Installation.<br/>Ein Befehl zum Bereitstellen. Keine Bindung, für immer kostenlos, MIT-lizenziert.
+<p class="reveal">Ein Befehl zur Installation.<br/>Ein Befehl zum Deploy. Keine Bindung, für immer kostenlos, MIT-lizenziert.
         </p>
 <div class="cta-actions reveal">
-<a class="btn-hero btn-primary" href="/de/docs/getting-started#installation">Lesen Sie die Dokumente <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="16">
+<a class="btn-hero btn-primary" href="/de/docs/getting-started#installation">Zur Dokumentation <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="16">
 <line x1="5" x2="19" y1="12" y2="12"></line>
 <polyline points="12 5 19 12 12 19"></polyline>
 </svg></a>
@@ -1789,7 +1789,7 @@
 <!-- Footer -->
 <footer>
 <div class="footer-inner">
-<span>Hergestellt mit ❤️ von <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, MIT-lizenziert</span></span>
+<span>Mit ❤️ gebaut von <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, MIT-lizenziert</span></span>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" target="_blank">Probieren Sie SSH Connection Manager mit Cipi aus</a></li>
 </ul>

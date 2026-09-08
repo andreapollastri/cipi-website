@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Was ist neu in Cipi 5</title>
 <meta content="Cipi 5.2 ist da: optionales CrowdSec mit registriertem Firewall-Bouncer, ein Notausgangs-Rescue-Listener, nächtliche Integritätsprüfung mit ClamAV und Shell-Tab-Vervollständigung, die für Sie installiert wird — zusätzlich zu allem, was Cipi 5.0 und 5.1 gebracht haben." name="description"/>
-<meta content="Cipi 5.2, CrowdSec, cipi scan, Cipi 5.1, Cipi 5, Cipi Release, Backup-Profile, cipi.yml, Laravel Octane FrankenPHP, Laravel Horizon, PostgreSQL Laravel bereitstellen, Cipi Was ist neu?" name="keywords"/>
+<meta content="Cipi 5.2, CrowdSec, cipi scan, Cipi 5.1, Cipi 5, Cipi Release, Backup-Profile, cipi.yml, Laravel Octane FrankenPHP, Laravel Horizon, PostgreSQL Laravel deployen, Cipi Was ist neu?" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/de/whats-new" rel="canonical"/>
@@ -24,7 +24,7 @@
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/de/whats-new" property="og:url"/>
 <meta content="Was ist neu in Cipi 5" property="og:title"/>
-<meta content="Cipi 5.1: Sicherungsprofile, cipi.yml, geführte php.ini und Rollback nach der Bereitstellung. Plus alles von 5,0 – Octane, Horizon, Reverb, PostgreSQL." property="og:description"/>
+<meta content="Cipi 5.1: Backup-Profile, cipi.yml, geführte php.ini und Rollback nach dem Deployment. Plus alles von 5,0 – Octane, Horizon, Reverb, PostgreSQL." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -36,7 +36,7 @@
 <meta content="es_ES" property="og:locale:alternate"/>
 <meta content="pt_PT" property="og:locale:alternate"/><meta content="summary_large_image" name="twitter:card"/>
 <meta content="Was ist neu in Cipi 5" name="twitter:title"/>
-<meta content="Cipi 5.1: Sicherungsprofile, cipi.yml, geführte php.ini und Rollback nach der Bereitstellung. Plus alles von 5,0 – Octane, Horizon, Reverb, PostgreSQL." name="twitter:description"/>
+<meta content="Cipi 5.1: Backup-Profile, cipi.yml, geführte php.ini und Rollback nach dem Deployment. Plus alles von 5,0 – Octane, Horizon, Reverb, PostgreSQL." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
     {
@@ -1526,7 +1526,7 @@
                 <a href="/de/cipi-yml" class="hide-sm">cipi.yml</a>
 <div class="nav-actions">
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=&gt;{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=&gt;document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">DE</summary><div class="lang-menu"><a href="/en/whats-new" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a class="active" href="/de/whats-new" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/whats-new" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/novita" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/whats-new" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/whats-new" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Thema umschalten" class="theme-btn" onclick="toggleTheme()" type="button">
+<button aria-label="Theme wechseln" class="theme-btn" onclick="toggleTheme()" type="button">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -1618,7 +1618,7 @@
 <span class="idx">01 — Die Schlagzeilen</span>
 <h2>Vierundzwanzig Gründe,<br/><em>heute Abend zu aktualisieren.</em></h2>
 </div>
-<p>Alles Cipi 5 addiert auf einen Blick. Kacheln getaggt <em>since 5.0</em> versandt mit Cipi 5; <em>since 5.2</em> ist neu in dieser Version. Tippen Sie auf eine beliebige Kachel, um zu den Dokumenten zu springen.</p>
+<p>Alles Cipi 5 addiert auf einen Blick. Kacheln getaggt <em>since 5.0</em> versandt mit Cipi 5; <em>since 5.2</em> ist neu in dieser Version. Tippen Sie auf eine beliebige Kachel, um zu den Docs zu springen.</p>
 </div>
 <div class="bento stagger rise">
 <a class="tile dark w2 h2" href="/de/docs/apps#cli-app-octane">
@@ -1628,7 +1628,7 @@
 <h3>Laravel Octane<br/>auf FrankenPHP.</h3>
 <p>Starten Sie das Framework einmal und behalten Sie es im Speicher. Es laufen Octane-Apps und klassische PHP-FPM-Apps
                             Seite an Seite auf demselben Server – Nginx stellt einen Proxy für den Octane-Prozess dar, Supervisor behält ihn
-                            lebendig, jede Bereitstellung lädt es sauber neu.</p>
+                            lebendig, jedes Deployment lädt es sauber neu.</p>
 </div>
 <div class="cmd">cipi app create myapp --domain=myapp.com --octane</div>
 <span class="go"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
@@ -1653,7 +1653,7 @@
 <div>
 <div class="n">03 <span class="since">since 5.0</span></div>
 <h3>Laravel Horizon</h3>
-<p>Überwacht und bei jeder Veröffentlichung neu gestartet.</p>
+<p>Überwacht und bei jedem Release neu gestartet.</p>
 </div>
 <div class="cmd">cipi worker horizon enable</div>
 <span class="go"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
@@ -1713,8 +1713,8 @@
 <a class="tile w2" href="/de/docs/deploy#safe-deploy">
 <div>
 <div class="n">08 <span class="since">since 5.0</span></div>
-<h3>Ein Schnappschuss vor jeder riskanten Migration</h3>
-<p>Melden Sie sich pro App oder pro Bereitstellung an und sichern Sie die Datenbank für Cipi, bevor die Veröffentlichung herauskommt. Ein schlechtes
+<h3>Ein Snapshot vor jeder riskanten Migration</h3>
+<p>Melden Sie sich pro App oder pro Deployment an und sichern Sie die Datenbank für Cipi, bevor das Release herauskommt. Ein schlechtes
                             Die Migration wird wiederherstellbar statt tödlich.</p>
 </div>
 <div class="cmd">cipi deploy myapp --snapshot-required</div>
@@ -1727,7 +1727,7 @@
 <div>
 <div class="n">09 <span class="since">since 5.0</span></div>
 <h3>Sofortige Inszenierung</h3>
-<p>Klonen Sie eine Produktions-App auf eine neue Domäne.</p>
+<p>Klonen Sie eine Produktions-App auf eine neue Domain.</p>
 </div>
 <div class="cmd">cipi app clone myapp --domain=stage.myapp.com</div>
 <span class="go"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
@@ -1763,7 +1763,7 @@
 <a class="tile" href="/de/docs/infrastructure#cli-health">
 <div>
 <div class="n">12 <span class="since">since 5.0</span></div>
-<h3>Gesundheitschecks</h3>
+<h3>Health-Checks</h3>
 <p>Alle 5 Minuten. E-Mail nach 3 Fehlern.</p>
 </div>
 <div class="cmd">cipi health set myapp --url=…</div>
@@ -1799,7 +1799,7 @@
 <a class="tile lime w2" href="/de/docs/infrastructure#cli-backup">
 <div>
 <div class="n">15 <span class="since">since 5.1</span></div>
-<h3>Sicherungsprofile, kein fest codierter Auftrag</h3>
+<h3>Backup-Profile, kein fest codierter Auftrag</h3>
 <p>Umfang, Zeitplan, Ziel und Aufbewahrung pro Profil. Als nächstes folgt eine 30-minütige Kopie der lokalen Datenbank
                             zu einer verschlüsselten nächtlichen Vollkopie am S3. Getrennt gespeicherte Dateien und Datenbanken; Mieter
                             Von der Engine erkannte Datenbanken. Die Aufbewahrung ist Pflicht.</p>
@@ -1853,8 +1853,8 @@
 <a class="tile" href="/de/docs/infrastructure#cli-health">
 <div>
 <div class="n">19 <span class="since">since 5.1</span></div>
-<h3>Zustand nach der Bereitstellung, optionales Rollback</h3>
-<p>Die Veröffentlichung, die gerade online gegangen ist, wird sofort geprüft – nicht nach drei fünf Minuten
+<h3>Zustand nach dem Deployment, optionales Rollback</h3>
+<p>Das Release, die gerade online gegangen ist, wird sofort geprüft – nicht nach drei fünf Minuten
                             Misserfolge. Aktivieren Sie die automatische Wiederherstellung. Migrationen werden nicht rückgängig gemacht; heißt es in der E-Mail
                             also.</p>
 </div>
@@ -1953,7 +1953,7 @@
 <h2>Was früher Arbeit war,<br/><em>ist jetzt eine Flagge.</em></h2>
 </div>
 <p>Das ehrliche Vorher und Nachher. Links ist, was der Betrieb dieser Dinge Sie früher gekostet hat. Rechts ist Cipi 5,
-                    markiert nach Veröffentlichung.
+                    markiert nach Release.
                 </p>
 </div>
 <div class="ba stagger rise">
@@ -1964,8 +1964,8 @@
 <span class="ba-after">FPM <span>oder</span> Octane auf FrankenPHP, wählbar pro App</span>
 </div>
 <div class="ba-row">
-<span class="ba-topic">Warteschlangen <span class="since">since 5.0</span></span>
-<span class="ba-before">Nackte Warteschlangenarbeiter, manuell neu gestartet</span>
+<span class="ba-topic">Queues <span class="since">since 5.0</span></span>
+<span class="ba-before">Nackte Queue-Worker, manuell neu gestartet</span>
 <span class="ba-arrow">→</span>
 <span class="ba-after">Horizon unter Supervisor, bereitstellungsfähig</span>
 </div>
@@ -1985,13 +1985,13 @@
 <span class="ba-topic">Frontend <span class="since">since 5.0</span></span>
 <span class="ba-before">Übertragen Sie kompilierte Assets oder integrieren Sie CI</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after">Der Knotenaufbau wird innerhalb der Version ausgeführt, bei Fail-Closed</span>
+<span class="ba-after">Der Node-Build wird innerhalb der Version ausgeführt, bei Fail-Closed</span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">Migrationen <span class="since">since 5.0</span></span>
-<span class="ba-before">Bereitstellen und hoffen</span>
+<span class="ba-before">Deploy und hoffen</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after">Automatischer Snapshot vor Erscheinen der Veröffentlichung</span>
+<span class="ba-after">Automatischer Snapshot vor Erscheinen des Releases</span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">Inszenierung <span class="since">since 5.0</span></span>
@@ -2009,13 +2009,13 @@
 <span class="ba-topic">Überwachung <span class="since">since 5.0</span></span>
 <span class="ba-before">Eine Dienstleistung eines Drittanbieters und deren Rechnung</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after">Gesundheitschecks alle fünf Minuten, integriert</span>
+<span class="ba-after">Health-Checks alle fünf Minuten, integriert</span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">Laute Apps <span class="since">since 5.0</span></span>
 <span class="ba-before">Eine App könnte den Server lahmlegen</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after">Harte Obergrenzen für Arbeiter, Kinder und Erinnerung</span>
+<span class="ba-after">Harte Obergrenzen für Worker, Kinder und Erinnerung</span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">Backups <span class="since">since 5.1</span></span>
@@ -2033,7 +2033,7 @@
 <span class="ba-topic">App-Konfiguration <span class="since">since 5.1</span></span>
 <span class="ba-before">Per SSH auf jedem Server neu erstellen</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after"><code>cipi.yml</code> in Git, bei der Bereitstellung angewendet</span>
+<span class="ba-after"><code>cipi.yml</code> in Git, beim Deployment angewendet</span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">Unbekannter Host <span class="since">since 5.1</span></span>
@@ -2042,10 +2042,10 @@
 <span class="ba-after">Leerer 444-Standardserver</span>
 </div>
 <div class="ba-row">
-<span class="ba-topic">Defekte Bereitstellung <span class="since">since 5.1</span></span>
+<span class="ba-topic">Defektes Deployment <span class="since">since 5.1</span></span>
 <span class="ba-before">Warten Sie fünfzehn Minuten auf eine Gesundheits-E-Mail</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after">Sofortige Prüfung nach der Bereitstellung, optionales Rollback</span>
+<span class="ba-after">Sofortige Prüfung nach dem Deployment, optionales Rollback</span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">Aliase <span class="since">since 5.1</span></span>
@@ -2092,26 +2092,26 @@
                     <em>since 5.0</em>, <em>since 5.1</em> oder <em>since 5.2</em>.</p>
 </div>
 <div class="cmds stagger rise">
-<div class="cmd-row"><code>cipi app create --octane</code><span>Erstellen Sie eine Laravel-App, die von Octane bereitgestellt wird
+<div class="cmd-row"><code>cipi app create --octane</code><span>Erstellen Sie eine Laravel-App, die von Octane deployt wird
                         auf FrankenPHP <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi app convert &lt;app&gt; --to=octane|fpm</code><span>Verschieben Sie eine vorhandene App
                         zwischen den Laufzeiten <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi app reverb enable|disable|status</code><span>Echtzeit-Websockets für eine
                         App <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi worker horizon enable|disable|status</code><span>Horizon statt
-                        einfache Warteschlangenarbeiter <em class="since">since 5.0</em></span></div>
+                        einfache Queue-Worker <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi schedule on|off|status &lt;app&gt;</code><span>Schalten Sie Laravel um
                         Planer pro App <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi app edit --node-build='…'</code><span>Führen Sie auf jedem einen Frontend-Build aus
-                        bereitstellen <em class="since">since 5.0</em></span></div>
+                        deployen <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi app edit --no-node-build</code><span>Entfernen Sie den Build-Schritt
                         wieder <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi app clone &lt;app&gt; --domain=…</code><span>Sofortige Staging-Kopie von a
                         Produktions-App <em class="since">since 5.0</em></span></div>
-<div class="cmd-row"><code>cipi deploy --snapshot</code><span>Sichern Sie die Datenbank, bevor die Veröffentlichung erfolgt
+<div class="cmd-row"><code>cipi deploy --snapshot</code><span>Sichern Sie die Datenbank, bevor das Release erfolgt
                         raus <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi app limits &lt;app&gt;</code><span>Cap FPM Kinder, Speicher, Octane und
-                        Warteschlangenarbeiter <em class="since">since 5.0</em></span></div>
+                        Queue-Worker <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi db install|uninstall pgsql</code><span>PostgreSQL daneben hinzufügen oder entfernen
                         MariaDB <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi db default mariadb|pgsql</code><span>Wählen Sie den Motor aus, den Sie verwenden möchten
@@ -2137,7 +2137,7 @@
 <div class="cmd-row"><code>cipi ini list|set|unset</code><span>php.ini für FPM und CLI, serverweit oder pro App <em class="since">since 5.1</em></span></div>
 <div class="cmd-row"><code>cipi yml generate|plan|apply|auto</code><span>Pro Projekt cipi.yml, das mit dem Code übertragen wird <em class="since">since 5.1</em></span></div>
 <div class="cmd-row"><code>cipi nginx default-server on|off</code><span>Schließen Sie nicht übereinstimmende Host-Anfragen mit 444 <em class="since">since 5.1</em></span></div>
-<div class="cmd-row"><code>cipi health set --rollback-on-unhealthy</code><span>Machen Sie eine Version rückgängig, deren Prüfung nach der Bereitstellung fehlschlägt <em class="since">since 5.1</em></span></div>
+<div class="cmd-row"><code>cipi health set --rollback-on-unhealthy</code><span>Machen Sie eine Version rückgängig, deren Prüfung nach dem Deployment fehlschlägt <em class="since">since 5.1</em></span></div>
 <div class="cmd-row"><code>cipi health postdeploy &lt;app&gt;</code><span>Führen Sie den Post-Deployment-Test bei Bedarf aus <em class="since">since 5.1</em></span></div>
 <div class="cmd-row"><code>cipi deploy --log[=N]</code><span>Zeigen Sie das Bereitstellungsprotokoll mit Zeitstempel an <em class="since">since 5.1</em></span></div>
 <div class="cmd-row"><code>cipi alias add &lt;app&gt; '*.example.com'</code><span>Platzhalter-Domain-Aliase <em class="since">since 5.1</em></span></div>
@@ -2179,13 +2179,13 @@
 <span class="ba-topic">Dienstleistungen</span>
 <span class="ba-before">Manuelle Systemsteuerung</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after"><code>GET /api/services</code> und starten Sie vom Bedienfeld aus neu</span>
+<span class="ba-after"><code>GET /api/services</code> und starten Sie vom Panel aus neu</span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">SMTP</span>
 <span class="ba-before">Nur interaktiver Assistent</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after">RUHE + <code>cipi smtp configure --host=…</code></span>
+<span class="ba-after">REST + <code>cipi smtp configure --host=…</code></span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">Gesundheit</span>
@@ -2252,7 +2252,7 @@
 </li>
 </ul>
 <div class="finale-actions">
-<a class="btn-ink" href="/de/docs/getting-started#installation">Lesen Sie die Dokumente
+<a class="btn-ink" href="/de/docs/getting-started#installation">Zur Dokumentation
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewbox="0 0 24 24">
 <line x1="5" x2="19" y1="12" y2="12"></line>
 <polyline points="12 5 19 12 12 19"></polyline>
@@ -2277,7 +2277,7 @@
 </section>
 <footer>
 <div class="wrap foot-inner">
-<span>Hergestellt mit ❤️ von <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> —
+<span>Mit ❤️ gebaut von <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> —
                 open source, MIT-lizenziert</span>
 <ul class="foot-links">
 <li><a href="https://github.com/cipi-sh/cipi/blob/master/CHANGELOG.md" target="_blank">Voll

@@ -5,8 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Self-Hosted Alternativa ao Render (2026) — Cipi, gratuito e Open Source</title>
-<meta content="Cipi é uma alternativa gratuita, open-source, self-hosted ao Render para Laravel. Tenha seu VPS em vez de um PaaS baseado no uso — custos fixos, acesso root completo, implantações CLI, sem dependência de fornecedor." name="description"/>
-<meta content="Render alternativa, self-hosted Render alternativa, open source Render alternativa, Render vs Cipi, Laravel no Render alternativa, Laravel implantação CLI" name="keywords"/>
+<meta content="Cipi é uma alternativa gratuita, open-source, self-hosted ao Render para Laravel. Tenha seu VPS em vez de um PaaS baseado no uso — custos fixos, acesso root completo, deploys CLI, sem dependência de fornecedor." name="description"/>
+<meta content="Render alternativa, self-hosted Render alternativa, open source Render alternativa, Render vs Cipi, Laravel no Render alternativa, Laravel deploy CLI" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/pt/alternative-to-render" rel="canonical"/>
@@ -36,7 +36,7 @@
 <meta content="it_IT" property="og:locale:alternate"/>
 <meta content="es_ES" property="og:locale:alternate"/><meta content="summary_large_image" name="twitter:card"/>
 <meta content="Self-Hosted Alternativa ao Render — Cipi" name="twitter:title"/>
-<meta content="Open-source, self-hosted alternativa ao Render para Laravel. Tenha VPS, custos fixos, implantações CLI, sem dependência de fornecedor." name="twitter:description"/>
+<meta content="Open-source, self-hosted alternativa ao Render para Laravel. Tenha VPS, custos fixos, deploys CLI, sem dependência de fornecedor." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
     {
@@ -76,12 +76,12 @@
         {
           "@type": "Question",
           "name": "Existe uma alternativa self-hosted ao Render para Laravel?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Cipi é uma alternativa gratuita, open-source (MIT) e self-hosted ao Render para equipes Laravel. Em vez de um PaaS multi-stack baseado no uso, você possui um VPS em qualquer provedor e Cipi instala e gerencia toda a pilha de produção nele." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Cipi é uma alternativa gratuita, open-source (MIT) e self-hosted ao Render para equipes Laravel. Em vez de um PaaS multi-stack baseado no uso, você possui um VPS em qualquer provedor e Cipi instala e gerencia toda o stack de produção nele." }
         },
         {
           "@type": "Question",
           "name": "Qual é a diferença entre Cipi e Render?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Render é uma nuvem totalmente gerenciada e baseada no uso para várias linguagens, Docker, Postgres e escalonamento automático. Cipi é executado no seu próprio VPS com acesso root completo e um custo fixo, é open source e é Laravel-primeiro com Octane, um servidor MCP duplo e criptografia de configuração em repouso." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Render é uma nuvem totalmente gerenciada e baseada no uso para várias linguagens, Docker, Postgres e escalonamento automático. Cipi é executado no seu próprio VPS com acesso root completo e um custo fixo, é open source e é Laravel-first com Octane, um servidor MCP duplo e criptografia de configuração em repouso." }
         },
         {
           "@type": "Question",
@@ -96,7 +96,7 @@
         {
           "@type": "Question",
           "name": "Posso migrar do Render para Cipi?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Como um aplicativo Laravel é PHP padrão, você pode provisionar um Ubuntu VPS, instalar Cipi, criar o aplicativo com cipi app create (adicione --octane para continuar executando Octane), restaurar o dump do banco, copiar valores de ambiente e apontar o DNS." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Como um aplicativo Laravel é PHP padrão, você pode provisionar um VPS Ubuntu, instalar Cipi, criar o aplicativo com cipi app create (adicione --octane para continuar executando Octane), restaurar o dump do banco, copiar valores de ambiente e apontar o DNS." }
         },
         {
           "@type": "Question",
@@ -111,7 +111,7 @@
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "Como migrar do Render para Cipi",
-  "description": "Migre seus aplicativos Laravel do Render para Cipi, a CLI de implantação gratuita e open-source, com um cutover limpo e sem alterações de código.",
+  "description": "Migre seus aplicativos Laravel do Render para Cipi, a CLI de deploy gratuita e open-source, com um cutover limpo e sem alterações de código.",
   "totalTime": "PT1H",
   "tool": [
     {
@@ -129,14 +129,14 @@
     {
       "@type": "HowToStep",
       "position": 2,
-      "name": "Provisione um Ubuntu VPS novo e instale Cipi",
-      "text": "Qualquer provedor funciona (Hetzner, DigitalOcean, Vultr, Linode, AWS). Em Ubuntu 24.04/26.04 execute o instalador de um comando (wget -O - https://cipi.sh/setup.sh | bash) e a pilha de produção completa — Nginx, PHP, MariaDB, Valkey, Supervisor — é configurada em minutos."
+      "name": "Provisione um VPS Ubuntu novo e instale Cipi",
+      "text": "Qualquer provedor funciona (Hetzner, DigitalOcean, Vultr, Linode, AWS). Em Ubuntu 24.04/26.04 execute o instalador de um comando (wget -O - https://cipi.sh/setup.sh | bash) e o stack de produção completo — Nginx, PHP, MariaDB, Valkey, Supervisor — fica configurado em minutos."
     },
     {
       "@type": "HowToStep",
       "position": 3,
       "name": "Recrie cada aplicativo e conecte o Git",
-      "text": "cipi app create provisiona um aplicativo isolado com seu próprio usuário de sistema, banco de dados, pool PHP e vhost Nginx (adicione --octane para Laravel Octane). Conectar GitHub ou GitLab configura chaves de implantação e webhooks automaticamente para implantações com tempo de inatividade zero."
+      "text": "cipi app create provisiona um aplicativo isolado com seu próprio usuário de sistema, banco de dados, pool PHP e vhost Nginx (adicione --octane para Laravel Octane). Ao conectar GitHub ou GitLab, as deploy keys e os webhooks são configurados automaticamente para deploys sem downtime."
     },
     {
       "@type": "HowToStep",
@@ -246,7 +246,7 @@
 <a href="/pt/cipi-yml" class="nav-link">cipi.yml</a>
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">PT</summary><div class="lang-menu"><a href="/en/alternative-to-render" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/alternative-to-render" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/alternative-to-render" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/alternativa-a-render" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/alternative-to-render" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a class="active" href="/pt/alternative-to-render" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Alternar tema" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Mudar tema" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -294,11 +294,11 @@
 </div>
 <span class="cmp-eyebrow">Render alternativa</span>
 <h1>A self-hosted <em>alternativa ao Render</em> para Laravel</h1>
-<p class="cmp-updated">Última atualização da comparação: <time datetime="2026-09-07">7 de setembro de 2026</time> · reflete Cipi 5 e preços/recursos atuais do Render</p>
+<p class="cmp-updated">Comparação atualizada em <time datetime="2026-09-07">7 de setembro de 2026</time> · reflete Cipi 5 e preços/recursos atuais do Render</p>
 <p class="lead">Render é uma nuvem de propósito geral: serviços web, workers, cron, Postgres, Redis, ambientes de preview e escalonamento automático, com CLI e MCP. Cipi é o oposto para equipes Laravel: você possui um VPS em qualquer provedor, com acesso root completo, um custo fixo previsível e sem dependência de fornecedor — ainda implantando Laravel em minutos. Gratuito, open source e totalmente orientado para CLI.</p>
 <div class="cmp-cta">
 <a class="btn-primary" href="/pt/docs/getting-started">Comece gratuitamente</a>
-<a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Ver em GitHub</a>
+<a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Ver no GitHub</a>
 </div>
 <h2>Cipi vs Render em resumo</h2>
 <div class="cmp-table-wrap">
@@ -313,13 +313,13 @@
 <tbody>
 <tr><td>Modelo de preços</td><td class="col-cipi">Custo gratuito + fixo VPS</td><td>Baseado no uso (computação, banco de dados, largura de banda)</td></tr>
 <tr><td>Licença</td><td class="col-cipi">Open source (MIT)</td><td>Proprietário</td></tr>
-<tr><td>Acesso raiz/SSH</td><td class="col-cipi"><span class="yes">Controle total</span></td><td><span class="no">Não — PaaS gerenciado</span></td></tr>
+<tr><td>Acesso root/SSH</td><td class="col-cipi"><span class="yes">Controle total</span></td><td><span class="no">Não — PaaS gerenciado</span></td></tr>
 <tr><td>Possuir a infraestrutura</td><td class="col-cipi"><span class="yes">Sim – qualquer provedor</span></td><td><span class="no">Não — gerenciado pelo Render</span></td></tr>
-<tr><td>Sem dependência de fornecedor</td><td class="col-cipi"><span class="yes">Pilha portátil</span></td><td><span class="no">Vinculado aos serviços Render</span></td></tr>
-<tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Sim — CLI nativo</span></td><td><span class="partial">Faça você mesmo em um web service / Docker</span></td></tr>
+<tr><td>Sem vendor lock-in</td><td class="col-cipi"><span class="yes">Stack portátil</span></td><td><span class="no">Vinculado aos serviços Render</span></td></tr>
+<tr><td>Laravel Octane (FrankenPHP)</td><td class="col-cipi"><span class="yes">Sim — nativo na CLI</span></td><td><span class="partial">Faça você mesmo em um web service / Docker</span></td></tr>
 <tr><td>CLI e automação de pipeline</td><td class="col-cipi"><span class="yes">Sim</span></td><td><span class="yes">Render CLI + API</span></td></tr>
 <tr><td>Servidor AI/MCP</td><td class="col-cipi"><span class="yes">Dupla MCP</span></td><td><span class="yes">Render MCP</span></td></tr>
-<tr><td>Foco da pilha</td><td class="col-cipi">LEMP nativo Laravel-primeiro</td><td>Multilinguagem + Docker</td></tr>
+<tr><td>Foco do stack</td><td class="col-cipi">LEMP nativo Laravel-first</td><td>Multilinguagem + Docker</td></tr>
 <tr><td>Escalonamento automático e previews de PR</td><td class="col-cipi"><span class="no">Não</span></td><td><span class="yes">Sim</span></td></tr>
 <tr><td>Postgres / Redis gerenciados</td><td class="col-cipi"><span class="partial">No seu VPS</span></td><td><span class="yes">Add-ons gerenciados</span></td></tr>
 <tr><td>Gerenciamento zero de servidor</td><td class="col-cipi"><span class="no">Você executa o VPS</span></td><td><span class="yes">Totalmente gerenciado</span></td></tr>
@@ -330,28 +330,28 @@
 <div class="cards">
 <div class="card"><h3>Custo previsível e fixo</h3><p>Cipi é gratuito; você paga apenas pelo VPS por um preço fixo. O Render fatura serviços, bancos de dados, largura de banda e extras conforme você cresce — os custos podem surpreender após um pico de tráfego.</p></div>
 <div class="card"><h3>Você possui o servidor</h3><p>Root completo e SSH em qualquer provedor. O Render nunca entrega a máquina; você opera serviços na nuvem deles.</p></div>
-<div class="card"><h3>Sem dependência de fornecedor</h3><p>Cipi usa uma pilha padrão portátil Ubuntu + Nginx + PHP-FPM / Laravel Octane + MariaDB (opcional PostgreSQL) + Supervisor que você pode reproduzir em qualquer lugar.</p></div>
+<div class="card"><h3>Sem vendor lock-in</h3><p>Cipi usa um stack padrão portátil Ubuntu + Nginx + PHP-FPM / Laravel Octane + MariaDB (opcional PostgreSQL) + Supervisor que você pode reproduzir em qualquer lugar.</p></div>
 <div class="card"><h3>Nativo de Laravel, não genérico</h3><p>O Render trata Laravel como mais um web service. Cipi envia Deployer, Octane, Horizon, Reverb, atalhos artisan e workers de fila como recursos CLI de primeira classe.</p></div>
 <div class="card"><h3>Open source e nativo de IA</h3><p>Licenciado pelo MIT e auditável, com um servidor duplo MCP. O Render também tem CLI e MCP, mas a plataforma continua fechada e hospedada.</p></div>
 <div class="card"><h3>Criptografia em repouso + soberania</h3><p>Todas as configurações criptografadas com AES-256-CBC em um VPS na região que você escolher — nenhum dado de infraestrutura sai da sua máquina.</p></div>
-<div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Crie ou converta aplicativos com <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Execute Octane ao lado de aplicativos FPM clássicos sem uma imagem Docker personalizada.</p></div>
-<div class="card"><h3>Opcional PostgreSQL</h3><p>MariaDB por padrão; instale PostgreSQL com um comando e escolha um mecanismo por aplicativo (<code>cipi db install pgsql</code>) — sem fatura de banco gerenciado.</p></div>
+<div class="card"><h3>Laravel Octane (FrankenPHP)</h3><p>Crie ou converta apps com <code>cipi app create --octane</code> / <code>cipi app convert --to=octane</code>. Execute Octane ao lado de aplicativos FPM clássicos sem uma imagem Docker personalizada.</p></div>
+<div class="card"><h3>Opcional PostgreSQL</h3><p>MariaDB por padrão; instale o PostgreSQL com um comando e escolha o engine app por app (<code>cipi db install pgsql</code>) — sem fatura de banco gerenciado.</p></div>
 </div>
-<h2>Instale Cipi em um comando</h2>
-<p>Crie um novo Ubuntu VPS e execute:</p>
+<h2>Instalar o Cipi com um comando</h2>
+<p>Suba um VPS Ubuntu novo e rode:</p>
 <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
-<p>Isso instala e configura a pilha de produção completa — Nginx, PHP-FPM / Laravel Octane, MariaDB, opcional PostgreSQL, Redis e Supervisor. Veja o
+<p>Isso instala e configura o stack de produção completo — Nginx, PHP-FPM / Laravel Octane, MariaDB, PostgreSQL opcional, Redis e Supervisor. Veja o
             <a class="inline" href="/pt/docs/getting-started">guia de primeiros passos</a>.</p>
 <h2>Onde Render é a melhor escolha</h2>
 <div class="note">
-<p>O Render vence em operações zero para pilhas mistas: escalonamento automático, ambientes de preview para cada pull request, Postgres e Redis gerenciados, rede privada, Docker, cron e workers em segundo plano, IaC via YAML e conformidade (SOC 2, HIPAA, ISO 27001). Se você executa mais do que Laravel — ou quer escala no estilo serverless sem tocar em um VPS — o Render é a melhor opção. Cipi é para equipes Laravel que querem possuir a infraestrutura, controlar custos e automatizar a partir da CLI.</p>
+<p>O Render vence em operações zero para stacks mistas: escalonamento automático, ambientes de preview para cada pull request, Postgres e Redis gerenciados, rede privada, Docker, cron e workers em segundo plano, IaC via YAML e conformidade (SOC 2, HIPAA, ISO 27001). Se você executa mais do que Laravel — ou quer escala no estilo serverless sem tocar em um VPS — o Render é a melhor opção. Cipi é para equipes Laravel que querem possuir a infraestrutura, controlar custos e automatizar a partir da CLI.</p>
 </div>
 <h2 id="migrate">Como migrar do Render para Cipi</h2>
 <p>Mudar do Render para Cipi é uma transição limpa, em vez de uma conversão no local: você levanta um novo servidor ao lado da configuração atual, implanta a partir do mesmo repositório Git e altera o DNS quando tudo confere. Sua base de código Laravel não precisa ser alterada.</p>
 <ol class="migrate-steps">
 <li><strong>Exporte seus dados do Render.</strong> Faça dump do Render Postgres (ou do seu banco), anote grupos de ambiente, cron jobs, workers e montagens de disco para recriá-los no seu VPS.</li>
-                    <li><strong>Provisione um novo Ubuntu VPS e instale Cipi.</strong> Qualquer provedor funciona (Hetzner, DigitalOcean, Vultr, Linode, AWS). Em Ubuntu 24.04/26.04, execute <code>wget -O - https://cipi.sh/setup.sh | bash</code> e a pilha de produção completa — Nginx, PHP, MariaDB, Valkey, Supervisor — é configurada em minutos.</li>
-                    <li><strong>Recrie cada aplicativo e conecte o Git.</strong> <code>cipi app create</code> provisiona um aplicativo isolado com seu próprio usuário de sistema, banco de dados, pool PHP e vhost Nginx (adicionar <code>--octane</code> para Laravel Octane). Conectar GitHub ou GitLab configura chaves de implantação e webhooks automaticamente para implantações com tempo de inatividade zero.</li>
+                    <li><strong>Provisione um VPS Ubuntu novo e instale o Cipi.</strong> Serve qualquer provedor (Hetzner, DigitalOcean, Vultr, Linode, AWS). No Ubuntu 24.04/26.04, rode <code>wget -O - https://cipi.sh/setup.sh | bash</code> e o stack de produção completo — Nginx, PHP, MariaDB, Valkey, Supervisor — fica configurado em minutos.</li>
+                    <li><strong>Recrie cada app e conecte o Git.</strong> <code>cipi app create</code> provisiona uma app isolada com o seu próprio usuário de sistema, banco de dados, pool PHP e vhost Nginx (adicione <code>--octane</code> para Laravel Octane). Ao conectar GitHub ou GitLab, as deploy keys e os webhooks são configurados automaticamente para deploys sem downtime.</li>
                     <li><strong>Mova os dados e faça o cutover.</strong> Importe seu dump de banco de dados, copie seus valores <code>.env</code>, emita certificados HTTPS com <code>cipi ssl install</code>, aponte o DNS para o novo servidor e desative a configuração antiga.</li>
 </ol>
 <div class="note">
@@ -359,16 +359,16 @@
                 configuração específica do fornecedor para desfazer depois. Detalhes completos no <a class="inline" href="/pt/docs/getting-started">guia de primeiros passos</a>.</p>
 </div>
 <h2>Perguntas frequentes</h2>
-<div class="faq-item"><h3>Existe uma alternativa self-hosted ao Render para Laravel?</h3><p>Sim. Cipi é uma alternativa gratuita, open-source (MIT) e self-hosted ao Render para equipes Laravel. Em vez de um PaaS multi-stack baseado no uso, você possui um VPS em qualquer provedor e Cipi instala e gerencia toda a pilha de produção nele.</p></div>
-<div class="faq-item"><h3>Qual é a diferença entre Cipi e Render?</h3><p>Render é uma nuvem totalmente gerenciada e baseada no uso para várias linguagens, Docker, Postgres e escalonamento automático. Cipi é executado no seu próprio VPS com acesso root completo e um custo fixo, é open source e é Laravel-primeiro com Octane, um servidor MCP duplo e criptografia de configuração em repouso.</p></div>
+<div class="faq-item"><h3>Existe uma alternativa self-hosted ao Render para Laravel?</h3><p>Sim. Cipi é uma alternativa gratuita, open-source (MIT) e self-hosted ao Render para equipes Laravel. Em vez de um PaaS multi-stack baseado no uso, você possui um VPS em qualquer provedor e Cipi instala e gerencia toda o stack de produção nele.</p></div>
+<div class="faq-item"><h3>Qual é a diferença entre Cipi e Render?</h3><p>Render é uma nuvem totalmente gerenciada e baseada no uso para várias linguagens, Docker, Postgres e escalonamento automático. Cipi é executado no seu próprio VPS com acesso root completo e um custo fixo, é open source e é Laravel-first com Octane, um servidor MCP duplo e criptografia de configuração em repouso.</p></div>
 <div class="faq-item"><h3>Cipi é mais barato que o Render?</h3><p>Cipi em si é gratuito; seu único custo é o VPS, a um preço mensal fixo. O Render é baseado no uso — computação, bancos de dados, largura de banda e add-ons aumentam com o tráfego e podem ser mais difíceis de prever.</p></div>
 <div class="faq-item"><h3>Quando ainda devo escolher o Render?</h3><p>Escolha o Render se quiser gerenciamento zero de servidor, escalonamento automático, ambientes de preview, Postgres/Redis gerenciados, Docker e uma plataforma multilinguagem, e se sentir confortável com uma fatura baseada no uso.</p></div>
-<div class="faq-item"><h3>Posso migrar do Render para Cipi?</h3><p>Sim. Como um aplicativo Laravel é PHP padrão, você pode provisionar um Ubuntu VPS, instalar Cipi, criar o aplicativo com cipi app create (adicione --octane para continuar executando Octane), restaurar o dump do banco, copiar valores de ambiente e apontar o DNS.</p></div>
+<div class="faq-item"><h3>Posso migrar do Render para Cipi?</h3><p>Sim. Como um aplicativo Laravel é PHP padrão, você pode provisionar um VPS Ubuntu, instalar Cipi, criar o aplicativo com cipi app create (adicione --octane para continuar executando Octane), restaurar o dump do banco, copiar valores de ambiente e apontar o DNS.</p></div>
 <div class="faq-item"><h3>Cipi suporta Laravel Octane como eu faria no Render?</h3><p>Sim — e de forma mais nativa. Cipi executa Laravel Octane no FrankenPHP: crie aplicativos Octane com cipi app create --octane ou converta aplicativos existentes com cipi app convert --to=octane, sem um container personalizado.</p></div>
 <h2>Compare Cipi com outras ferramentas</h2>
 <div class="related">
-<a href="/pt/alternative-to-laravel-forge">versus Laravel Forge</a>
-<a href="/pt/alternative-to-laravel-cloud">vs Laravel Nuvem</a>
+<a href="/pt/alternative-to-laravel-forge">vs Laravel Forge</a>
+<a href="/pt/alternative-to-laravel-cloud">vs Laravel Cloud</a>
 <a href="/pt/alternative-to-fortrabbit">vs fortrabbit</a>
 <a href="/pt/alternative-to-render">vs Render</a>
 <a href="/pt/alternative-to-20i">vs 20i</a>
@@ -381,14 +381,14 @@
 <a href="/pt/alternative-to-dokku">versus Dokku</a>
 <a href="/pt/alternative-to-easypanel">versus Easypanel</a>
 <a href="/pt/alternative-to-coolify">versus Coolify</a>
-<a href="/pt/alternative-to-vito-deploy">vs Vito Implantar</a>
+<a href="/pt/alternative-to-vito-deploy">vs Vito Deploy</a>
 <a href="/pt/alternative-to-runcloud">versus RunCloud</a>
 <a href="/pt/alternative-to-serverpilot">versus ServerPilot</a>
 <a href="/pt/alternative-to-cloudpanel">versus CloudPanel</a>
 <a href="/pt/alternative-to-cpanel">versus cPanel</a>
 <a href="/pt/alternative-to-directadmin">versus DirectAdmin</a>
 <a href="/pt/alternative-to-plesk">versus Plesk</a>
-<a href="/pt/best-laravel-forge-alternatives">Melhores alternativas de Forge 2026</a>
+<a href="/pt/best-laravel-forge-alternatives">Melhores alternativas ao Forge em 2026</a>
 <a href="/pt/docs/about#vs-alternatives">Comparação completa</a>
 </div>
 </main>
@@ -397,18 +397,18 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Implantação gratuita de open-source Laravel CLI para Ubuntu VPS — Octane, Horizon, Reverb e implantações Git com tempo de inatividade zero.</p>
+<p>CLI open source e gratuita para fazer deploy de Laravel num VPS Ubuntu — Octane, Horizon, Reverb e deploys Git sem downtime.</p>
 <ul class="footer-brand-links">
-<li><a href="/pt/docs/getting-started">Comece</a></li>
-<li><a href="/pt/docs/">Documentos</a></li>
+<li><a href="/pt/docs/getting-started">Primeiros passos</a></li>
+<li><a href="/pt/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
 <nav aria-label="Compare Cipi com alternativas" class="footer-col footer-col--compare">
 <strong>Comparar Cipi</strong>
 <ul>
-<li><a href="/pt/alternative-to-laravel-forge">Laravel Forge alternativa</a></li>
-<li><a href="/pt/alternative-to-laravel-cloud">Laravel Alternativa de nuvem</a></li>
+<li><a href="/pt/alternative-to-laravel-forge">Alternativa ao Laravel Forge</a></li>
+<li><a href="/pt/alternative-to-laravel-cloud">Alternativa ao Laravel Cloud</a></li>
 <li><a href="/pt/alternative-to-render">Render alternativa</a></li>
 <li><a href="/pt/alternative-to-ploi">Ploi alternativa</a></li>
 <li><a href="/pt/alternative-to-coolify">Coolify alternativa</a></li>
@@ -416,17 +416,17 @@
 <li><a href="/pt/alternative-to-cloudpanel">CloudPanel alternativa</a></li>
 <li><a href="/pt/alternative-to-cpanel">cPanel alternativa</a></li>
 <li><a href="/pt/alternative-to-plesk">Alternativa Plesk</a></li>
-<li><a href="/pt/best-laravel-forge-alternatives">Melhores alternativas de Forge 2026</a></li>
+<li><a href="/pt/best-laravel-forge-alternatives">Melhores alternativas ao Forge em 2026</a></li>
 <li><a href="/pt/alternatives">Todas as comparações</a></li>
 </ul>
 </nav>
-<nav aria-label="Guias Laravel gratuitos" class="footer-col">
+<nav aria-label="Guias gratuitos de Laravel" class="footer-col">
 <strong>Guias gratuitos</strong>
 <ul>
 <li><a href="/pt/guides/gerenciar-apps-com-cipi-yml">Gerenciar apps com cipi.yml</a></li>
-<li><a href="/pt/guides/painel-ui-e-api">Painel UI e API</a></li>
+<li><a href="/pt/guides/painel-ui-e-api">Painel de controle e API</a></li>
 <li><a href="/pt/guides/usar-cipi-agent-no-laravel">cipi/agent e MCP do projeto</a></li>
-<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Implantar WordPress no Cipi</a></li>
+<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Deploy de WordPress no Cipi</a></li>
 <li><a href="/pt/guides/">Todos os guias</a></li>
                     </ul>
 </nav>

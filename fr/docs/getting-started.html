@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Cipi Docs — Pour commencer</title>
-<meta content="Installation, configuration requise, démarrage rapide, pile technologique et structure de l'application pour Cipi." name="description"/>
+<meta content="Installation, configuration requise, démarrage rapide, stack technologique et structure de l'application pour Cipi." name="description"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/fr/docs/getting-started" rel="canonical"/>
@@ -23,7 +23,7 @@
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/fr/docs/getting-started" property="og:url"/>
 <meta content="Cipi Docs — Pour commencer" property="og:title"/>
-<meta content="Installation, configuration requise, démarrage rapide, pile technologique et structure de l'application pour Cipi." property="og:description"/>
+<meta content="Installation, configuration requise, démarrage rapide, stack technologique et structure de l'application pour Cipi." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -35,7 +35,7 @@
     <meta property="og:locale:alternate" content="es_ES">
     <meta property="og:locale:alternate" content="pt_PT"><meta content="summary_large_image" name="twitter:card"/>
 <meta content="Cipi Docs — Pour commencer" name="twitter:title"/>
-<meta content="Installation, configuration requise, démarrage rapide, pile technologique et structure de l'application pour Cipi." name="twitter:description"/>
+<meta content="Installation, configuration requise, démarrage rapide, stack technologique et structure de l'application pour Cipi." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
     {
@@ -43,10 +43,10 @@
       "@type": "TechArticle",
       "datePublished": "2026-06-03",
       "dateModified": "2026-08-04",
-      "headline": "Cipi Docs — Getting Started",
+      "headline": "Cipi Docs — Pour commencer",
       "name": "Getting Started",
       "url": "https://cipi.sh/en/docs/getting-started",
-      "description": "Installation, requirements, quick start, tech stack, and app structure for Cipi.",
+      "description": "Installation, configuration requise, démarrage rapide, stack technologique et structure de l'application pour Cipi.",
       "inLanguage": "fr",
       "image": "https://cipi.sh/og.png",
       "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/" },
@@ -105,7 +105,7 @@
 </svg>
 <span>Ci<span style="color:var(--signal)">pi</span></span>
 </a>
-<span class="nav-badge">Documents</span>
+<span class="nav-badge">Docs</span>
 </div>
 <div class="nav-right">
 
@@ -145,14 +145,14 @@
 <a class="sidebar-link" href="/fr/docs/getting-started#installation">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#requirements">exigences</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#quickstart">démarrage rapide</a>
-<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">pile technologique</a>
+<a class="sidebar-link" href="/fr/docs/getting-started#tech-stack">stack technologique</a>
 <a class="sidebar-link" href="/fr/docs/getting-started#app-structure">structure de l'application</a>
 </div>
 <div class="sidebar-group" data-chapter="agent">
 <a class="sidebar-group-label" href="/fr/docs/agent">cipi agent</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-install">mise en place</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-webhook">webhook</a>
-<a class="sidebar-link" href="/fr/docs/agent#agent-health">bilan de santé</a>
+<a class="sidebar-link" href="/fr/docs/agent#agent-health">health check</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-mcp">serveur MCP</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-anonymizer">anonymiseur de base de données</a>
 <a class="sidebar-link" href="/fr/docs/agent#agent-security">sécurité</a>
@@ -251,9 +251,9 @@
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-api"><code>cipi api</code></a>
 <a class="sidebar-link" href="/fr/docs/advanced#whmcs">Module WHMCS</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-sync"><code>cipi sync</code></a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et cryptage</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-vault">coffre-fort et chiffrement</a>
 <a class="sidebar-link" href="/fr/docs/advanced#cipi-smtp">notifications par courrier électronique</a>
-<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des journaux (RGPD)</a>
+<a class="sidebar-link" href="/fr/docs/advanced#cipi-log-retention">conservation des logs (RGPD)</a>
 <a class="sidebar-link" href="/fr/docs/advanced#valkey">valkey</a>
 <a class="sidebar-link" href="/fr/docs/advanced#self-update">mise à jour automatique</a>
 <a class="sidebar-link" href="/fr/docs/advanced#wildcard-domains">domaines génériques</a>
@@ -275,16 +275,16 @@
 </aside>
 <main class="docs-content" id="docsContent">
 <div class="doc-section" id="installation">
-<p class="doc-section-label">Commencer</p>
+<p class="doc-section-label">Premiers pas</p>
 <h1>Installation de Cipi</h1>
-<p>Cipi installe une pile de production complète prête pour Laravel sur Ubuntu 24.04 ou 26.04 avec un seul
+<p>Cipi installe une stack de production complète prête pour Laravel sur Ubuntu 24.04 ou 26.04 avec un seul
                     commande. Le programme d'installation prend environ 10 minutes et configure Nginx, MariaDB, PHP, Valkey
                     (en option PostgreSQL via<code>cipi db install pgsql</code> après l'installation),
                     Supervisor, Fail2ban, UFW, Certbot, Deployer et le <code>cipi</code> CLI lui-même.</p>
 <h3>De zéro à la production en trois étapes</h3>
 <div class="code-block">
 <div class="code-block-header">
-<span class="code-block-lang">coup</span>
+<span class="code-block-lang">bash</span>
 <button class="code-copy-btn" onclick="copyCode(this)">Copier</button>
 </div>
 <pre><span class="c"># 1 — on a fresh Ubuntu 24.04 / 26.04 VPS, over SSH, as a user with sudo</span>
@@ -312,13 +312,11 @@ cipi ssl install myapp</pre>
 </div>
 <h3>Créez une clé SSH sur votre ordinateur</h3>
 <p>Fais ceci <strong>sur votre ordinateur portable ou votre poste de travail</strong>, pas sur le VPS. L'installateur a besoin du
-                    <strong>publique</strong> la moitié de la clé pour qu'il puisse verrouiller le serveur : après la configuration, vous vous connectez en SSH en tant que
-                    le <code>cipi</code> utilisateur avec cette clé. La connexion racine SSH est désactivée. Ne collez jamais le privé
-                    clé.</p>
+                    <strong>publique</strong> la moitié de la clé pour qu'il puisse verrouiller le serveur : après la configuration, vous vous connectez en SSH avec l’utilisateur <code>cipi</code> et cette clé. La connexion SSH en root est désactivée. Ne collez jamais la clé privée.</p>
 <p>Vérifiez si vous en avez déjà un :</p>
 <div class="code-block">
 <div class="code-block-header">
-<span class="code-block-lang">coup</span>
+<span class="code-block-lang">bash</span>
 <button class="code-copy-btn" onclick="copyCode(this)">Copier</button>
 </div>
 <pre>ls ~/.ssh/*.pub</pre>
@@ -328,7 +326,7 @@ cipi ssl install myapp</pre>
                     erreurs, créez une nouvelle clé Ed25519 :</p>
 <div class="code-block">
 <div class="code-block-header">
-<span class="code-block-lang">coup</span>
+<span class="code-block-lang">bash</span>
 <button class="code-copy-btn" onclick="copyCode(this)">Copier</button>
 </div>
 <pre>ssh-keygen -t ed25519 -C "you@example.com"</pre>
@@ -338,7 +336,7 @@ cipi ssl install myapp</pre>
 <p>Afficher la clé publique : il s'agit de la ligne unique que vous collerez lorsque le programme d'installation vous demandera :</p>
 <div class="code-block">
 <div class="code-block-header">
-<span class="code-block-lang">coup</span>
+<span class="code-block-lang">bash</span>
 <button class="code-copy-btn" onclick="copyCode(this)">Copier</button>
 </div>
 <pre>cat ~/.ssh/id_ed25519.pub</pre>
@@ -362,10 +360,10 @@ cipi ssl install myapp</pre>
                         dans le programme d'installation ou envoyez-le au serveur.</div>
 </div>
 <h3>Exécutez le programme d'installation sur le serveur</h3>
-<p>SSH dans le nouveau Ubuntu VPS en tant qu'utilisateur avec <code>sudo</code>, alors :</p>
+<p>SSH dans le nouveau VPS Ubuntu en tant qu'utilisateur avec <code>sudo</code>, alors :</p>
 <div class="code-block">
 <div class="code-block-header">
-<span class="code-block-lang">coup</span>
+<span class="code-block-lang">bash</span>
 <button class="code-copy-btn" onclick="copyCode(this)">Copier</button>
 </div>
 <pre>wget -O - https://cipi.sh/setup.sh | bash</pre>
@@ -387,7 +385,7 @@ cipi ssl install myapp</pre>
                     pour ignorer l'invite interactive :</p>
 <div class="code-block">
 <div class="code-block-header">
-<span class="code-block-lang">coup</span>
+<span class="code-block-lang">bash</span>
 <button class="code-copy-btn" onclick="copyCode(this)">Copier</button>
 </div>
 <pre>SSH_PUBKEY="ssh-ed25519 AAAA..." wget -O - https://cipi.sh/setup.sh | bash</pre>
@@ -395,7 +393,7 @@ cipi ssl install myapp</pre>
 <h3>AWS (connexion root désactivée par défaut)</h3>
 <div class="code-block">
 <div class="code-block-header">
-<span class="code-block-lang">coup</span>
+<span class="code-block-lang">bash</span>
 <button class="code-copy-btn" onclick="copyCode(this)">Copier</button>
 </div>
 <pre><span class="p">$</span> ssh ubuntu@your-server-ip
@@ -409,9 +407,9 @@ cipi ssl install myapp</pre>
                     <strong>chiffré au repos</strong> en utilisant AES-256-CBC via le <a href="/fr/docs/advanced#cipi-vault">Coffre-fort</a>
                     système. Identifiants, clés SSH, <code>.env</code> les fichiers et les sauvegardes de base de données sont protégés à la fois sur
                     disque
-                    et pendant le transfert (via <a href="/fr/docs/advanced#cipi-sync">Synchroniser</a> archives cryptées). Cipi applique également
-                    <strong>Conservation des journaux conforme au RGPD</strong> avec des politiques de rotation automatique pour les candidatures,
-                    sécurité et HTTP journaux — voir <a href="/fr/docs/advanced#cipi-log-retention">Conservation des journaux</a> pour plus de détails.
+                    et pendant le transfert (via <a href="/fr/docs/advanced#cipi-sync">Synchroniser</a> archives chiffrées). Cipi applique également
+                    <strong>Conservation des logs conforme au RGPD</strong> avec des politiques de rotation automatique pour les candidatures,
+                    sécurité et HTTP logs — voir <a href="/fr/docs/advanced#cipi-log-retention">Conservation des logs</a> pour plus de détails.
                 </p>
 <div class="callout warning">
 <svg class="callout-icon" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
@@ -421,7 +419,7 @@ cipi ssl install myapp</pre>
 </svg>
 <div><strong>Enregistrez les détails d'accès SSH, le mot de passe root et le mot de passe root MariaDB.</strong> Montré
                         une seule fois pendant
-                        mise en place. Les informations d'identification sont stockées cryptées sur <code>/etc/cipi/server.json</code>.</div>
+                        mise en place. Les informations d'identification sont stockées chiffrées sur <code>/etc/cipi/server.json</code>.</div>
 </div>
 <h3>Accès post-installation</h3>
 <p>Après l'installation, <strong>accès administrateur</strong> utilise l'authentification par clé publique comme
@@ -432,7 +430,7 @@ cipi ssl install myapp</pre>
                 </p>
 <div class="code-block">
 <div class="code-block-header">
-<span class="code-block-lang">coup</span>
+<span class="code-block-lang">bash</span>
 <button class="code-copy-btn" onclick="copyCode(this)">Copier</button>
 </div>
 <pre><span class="c"># 1. connect to the server (key-based auth only)</span>
@@ -455,7 +453,7 @@ root@server:~# su - myapp</pre>
 <li>Ubuntu 24.04 ou 26.04 LTS (nouvelles installations uniquement ; les versions intermédiaires ne sont pas prises en charge)</li>
 <li>Accès root (ou <code>sudo -s</code> sur AWS)</li>
 <li>Ports 22, 80 et 443 ouverts</li>
-<li>Un serveur propre — n'installez pas Cipi sur un serveur avec une pile Web existante</li>
+<li>Un serveur propre — n'installez pas Cipi sur un serveur avec une stack Web existante</li>
 <li>A <strong>serveur public accessible sur Internet</strong> avec un routable <strong>IPv4 publique
                             adresse</strong>— NAT uniquement VPS, réseaux domestiques derrière un routeur et hôtes inaccessibles depuis
                         Internet n'est pas pris en charge</li>
@@ -489,13 +487,13 @@ root@server:~# su - myapp</pre>
                     <code>--octane</code> — voir <a href="/fr/docs/apps#cli-app-octane">Laravel Octane</a>.
                 </p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi app create
 <span class="p">$</span> cipi app create --octane   <span class="c"># Laravel Octane (FrankenPHP)</span></pre>
 </div>
 <p>Ou passez tous les indicateurs directement pour ignorer le mode interactif :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi app create \
     --user=myapp \
     --domain=myapp.com \
@@ -522,7 +520,7 @@ root@server:~# su - myapp</pre>
 <p>Cipi utilise le pilote de base de données pour le cache, les sessions et les files d'attente. Exécutez-les une fois dans votre Laravel
                     projetez, validez et poussez les migrations générées :</p>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> php artisan cache:table
 <span class="p">$</span> php artisan session:table
 <span class="p">$</span> php artisan queue:table
@@ -539,17 +537,17 @@ root@server:~# su - myapp</pre>
 </div>
 <h3>4. Déployer</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi deploy myapp</pre>
 </div>
-<p>Le déployeur clone votre dépôt dans un nouveau <code>releases/N/</code> répertoire, s'exécute
+<p>Le Deployer clone votre dépôt dans un nouveau <code>releases/N/</code> répertoire, s'exécute
                     <code>composer install --no-dev</code>, liens <code>.env</code> et <code>storage/</code>, court
                     migrations, exécutions <code>artisan optimize</code>, crée <code>storage:link</code>, échange le
-                    <code>current</code>lien symbolique de manière atomique et redémarre les travailleurs de file d'attente. Zéro temps d'arrêt.
+                    <code>current</code>lien symbolique de manière atomique et redémarre les workers de file d'attente. Zéro temps d'arrêt.
                 </p>
 <h3>5. Installez SSL</h3>
 <div class="code-block">
-<div class="code-block-header"><span class="code-block-lang">coup</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
 <pre><span class="p">$</span> cipi ssl install myapp</pre>
 </div>
 <p>Certbot fournit un certificat Let's Encrypt, configure Nginx pour HTTPS et met à jour
@@ -558,8 +556,8 @@ root@server:~# su - myapp</pre>
                 </p>
 </div>
 <div class="doc-section" id="tech-stack">
-<h2>Pile technologique</h2>
-<p>Cipi apporte une pile complète et prête pour la production à votre serveur Ubuntu. Voici tout ce qui obtient
+<h2>Stack technologique</h2>
+<p>Cipi apporte une stack complète et prête pour la production à votre serveur Ubuntu. Voici tout ce qui obtient
                     installé et configuré :</p>
 <div class="table-scroll">
 <table class="cmd-table">
@@ -606,8 +604,8 @@ root@server:~# su - myapp</pre>
 <td>Gestionnaire de processus pour Laravel files d'attente, Octane, Horizon et Reverb</td>
 </tr>
 <tr>
-<td><strong>Déployeur</strong></td>
-<td>Outil de déploiement sans temps d'arrêt</td>
+<td><strong>Deployer</strong></td>
+<td>Outil de déploiement sans interruption</td>
 </tr>
 <tr>
 <td><strong>Bot certifié</strong></td>
@@ -641,7 +639,7 @@ root@server:~# su - myapp</pre>
                     déploie, sa propre base de données, ses Workers, son planificateur et webhook — éventuellement servis par
                     <strong>Octane (FrankenPHP)</strong> au lieu de PHP-FPM. <code>--custom</code> est pour les sites simples
                     (WordPress, static + PHP) : un déploiement classique dans <code>htdocs</code>, un docroot configurable, non
-                    base de données, non <code>.env</code>, pas de cron, pas de travailleurs.</p>
+                    base de données, non <code>.env</code>, pas de cron, pas de workers.</p>
 <div class="table-scroll">
 <table class="cmd-table">
 <thead>
@@ -653,7 +651,7 @@ root@server:~# su - myapp</pre>
 <tbody>
 <tr>
 <td><strong>Serveur Web</strong></td>
-<td>Nginx avec un hôte virtuel par application — PHP-FPM ou Octane via <code>proxy_pass</code>,
+<td>Nginx avec un vhost par application — PHP-FPM ou Octane via <code>proxy_pass</code>,
                                     réglé pour Laravel</td>
 </tr>
 <tr>
@@ -674,7 +672,7 @@ root@server:~# su - myapp</pre>
 </tr>
 <tr>
 <td><strong>Déploiements</strong></td>
-<td>Déployeur - lien symbolique atomique, 5 versions, restauration, construction de nœud facultative ; clone classique
+<td>Deployer - lien symbolique atomique, 5 versions, restauration, construction de nœud facultative ; clone classique
                                     dans <code>htdocs</code> pour les applications personnalisées</td>
 </tr>
 <tr>
@@ -696,12 +694,12 @@ root@server:~# su - myapp</pre>
 <tr>
 <td><strong>Sauvegardes</strong></td>
 <td><a href="/fr/docs/infrastructure#cli-backup">Profils de sauvegarde</a> — quoi, à quelle fréquence,
-                                    où, combien de temps — compatible S3 / S3 / local, avec cryptage côté client</td>
+                                    où, combien de temps — compatible S3 / S3 / local, avec chiffrement côté client</td>
 </tr>
 <tr>
 <td><strong>Configuration</strong></td>
 <td>Facultatif par projet <a href="/fr/docs/deploy#cli-yml"><code>cipi.yml</code></a> pour
-                                    alias, bases de données, travailleurs, contrôle de santé et sauvegardes</td>
+                                    alias, bases de données, workers, contrôle de santé et sauvegardes</td>
 </tr>
 </tbody>
 </table>
@@ -732,12 +730,12 @@ root@server:~# su - myapp</pre>
     ├── worker-default.log
     └── deploy.log</pre></div>
 <p>En plus du répertoire personnel, Cipi crée ces fichiers système :</p>
-<div class="tree-block"><pre>PHP-FPM pool: /etc/php/8.5/fpm/pool.d/<span class="tree-accent">monapplication</span>.conf <span class="tree-comment">(user=myapp ; omis pour Octane applications)</span>
-Octane (v5+): Supervisor <span class="tree-accent">monapplication</span>-octane + Nginx proxy_pass → 127.0.0.1:81xx
-Nginx vhost:  /etc/nginx/sites-available/<span class="tree-accent">monapplication</span>
-Supervisor:   /etc/supervisor/conf.d/<span class="tree-accent">monapplication</span>.conf
+<div class="tree-block"><pre>PHP-FPM pool: /etc/php/8.5/fpm/pool.d/<span class="tree-accent">myapp</span>.conf <span class="tree-comment">(user=myapp ; omis pour Octane applications)</span>
+Octane (v5+): Supervisor <span class="tree-accent">myapp</span>-octane + Nginx proxy_pass → 127.0.0.1:81xx
+Nginx vhost:  /etc/nginx/sites-available/<span class="tree-accent">myapp</span>
+Supervisor:   /etc/supervisor/conf.d/<span class="tree-accent">myapp</span>.conf
 Crontab:      * * * * * php artisan schedule:run
-MariaDB:      database '<span class="tree-accent">monapplication</span>', user '<span class="tree-accent">monapplication</span>'@'localhost'</pre></div>
+MariaDB:      database '<span class="tree-accent">myapp</span>', user '<span class="tree-accent">myapp</span>'@'localhost'</pre></div>
 <p>Le <code>.env</code> est automatiquement compilé avec toutes les informations d'identification : nom de la base de données, mot de passe, jeton webhook,
                     et <code>APP_KEY</code>. Vous n'avez jamais besoin de le toucher manuellement, mais vous pouvez toujours le modifier avec
                     <code>cipi app env myapp</code>.
@@ -753,7 +751,7 @@ MariaDB:      database '<span class="tree-accent">monapplication</span>', user '
 </div>
 <footer>
 <div class="footer-inner">
-<span>Réalisé avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
+<span>Fait avec ❤️ par <a href="https://web.ap.it" target="_blank">Andrea Pollastri</a> <span class="footer-license">Open source, licence MIT</span></span>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" target="_blank">Essayez SSH
                         Gestionnaire de connexions avec Cipi</a></li>

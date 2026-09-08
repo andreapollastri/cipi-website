@@ -1,0 +1,74 @@
+{
+ "de": {
+  "raw": [
+   [
+    "<a class=\"inline\" href=\"/\">Vollständiger Vergleich</a>",
+    "<a class=\"inline\" href=\"/\">Cipi</a>"
+   ],
+   [
+    "<a class=\"footer-logo\" href=\"/\">Vollständiger Vergleich</a>",
+    "<a class=\"footer-logo\" href=\"/\">Cipi</a>"
+   ]
+  ],
+  "segments": [
+   [
+    ", der open-source Laravel CLI deployen.",
+    ", der Open-Source-Deploy-CLI für Laravel."
+   ]
+  ]
+ },
+ "fr": {
+  "raw": [
+   [
+    "<a class=\"inline\" href=\"/\">cPanel</a>",
+    "<a class=\"inline\" href=\"/\">Cipi</a>"
+   ],
+   [
+    "<a class=\"footer-logo\" href=\"/\">cPanel</a>",
+    "<a class=\"footer-logo\" href=\"/\">Cipi</a>"
+   ]
+  ],
+  "segments": [
+   [
+    ", le open-source Laravel déploie CLI.",
+    ", la CLI open-source de déploiement Laravel."
+   ]
+  ]
+ },
+ "es": {
+  "raw": [
+   [
+    "<a class=\"inline\" href=\"/\">cPanel</a>",
+    "<a class=\"inline\" href=\"/\">Cipi</a>"
+   ],
+   [
+    "<a class=\"footer-logo\" href=\"/\">cPanel</a>",
+    "<a class=\"footer-logo\" href=\"/\">Cipi</a>"
+   ]
+  ],
+  "segments": [
+   [
+    ", el open-source Laravel implementa CLI.",
+    ", la CLI open source de despliegue para Laravel."
+   ]
+  ]
+ },
+ "pt": {
+  "raw": [
+   [
+    "de<a class=\"inline\" href=\"/\">cPanel</a>",
+    " de <a class=\"inline\" href=\"/\">Cipi</a>"
+   ],
+   [
+    "<a class=\"footer-logo\" href=\"/\">cPanel</a>",
+    "<a class=\"footer-logo\" href=\"/\">Cipi</a>"
+   ]
+  ],
+  "segments": [
+   [
+    ", o open-source Laravel implantar CLI.",
+    ", a CLI open source de deploy para Laravel."
+   ]
+  ]
+ }
+}

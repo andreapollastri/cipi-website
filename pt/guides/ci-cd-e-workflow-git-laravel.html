@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>CI/CD para Laravel — Fluxo de trabalho Git e implantações com tempo de inatividade zero (2026)</title>
-<meta content="Um guia CI/CD pragmático para equipes Laravel: um fluxo de trabalho Git que pode ser reduzido, um pipeline de ações de copiar e colar GitHub (Pint, Larastan, Pest, auditoria composer), opções de implantação com tempo de inatividade zero e estratégias de migração seguras." name="description"/>
-<meta content="laravel ci/cd, laravel github ações, implantação com tempo de inatividade zero laravel, fluxo de trabalho git laravel, pipeline de implantação laravel, laravel integração contínua" name="keywords"/>
+<title>CI/CD para Laravel — Fluxo de trabalho Git e deploys sem downtime (2026)</title>
+<meta content="Um guia CI/CD pragmático para equipes Laravel: um fluxo de trabalho Git que pode ser reduzido, um pipeline de ações de copiar e colar GitHub (Pint, Larastan, Pest, auditoria composer), opções de deploy sem downtime e estratégias de migração seguras." name="description"/>
+<meta content="laravel ci/cd, laravel github ações, deploy sem downtime laravel, fluxo de trabalho git laravel, pipeline de deploy laravel, laravel integração contínua" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/pt/guides/ci-cd-e-workflow-git-laravel" rel="canonical"/>
@@ -23,8 +23,8 @@
 <meta content="article" property="og:type"/>
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/pt/guides/ci-cd-e-workflow-git-laravel" property="og:url"/>
-<meta content="CI/CD para Laravel — Fluxo de trabalho Git e implantações com tempo de inatividade zero (2026)" property="og:title"/>
-<meta content="Um guia CI/CD pragmático para equipes Laravel: um fluxo de trabalho Git que pode ser reduzido, um pipeline de ações de copiar e colar GitHub (Pint, Larastan, Pest, auditoria composer), opções de implantação com tempo de inatividade zero e estratégias de migração seguras." property="og:description"/>
+<meta content="CI/CD para Laravel — Fluxo de trabalho Git e deploys sem downtime (2026)" property="og:title"/>
+<meta content="Um guia CI/CD pragmático para equipes Laravel: um fluxo de trabalho Git que pode ser reduzido, um pipeline de ações de copiar e colar GitHub (Pint, Larastan, Pest, auditoria composer), opções de deploy sem downtime e estratégias de migração seguras." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -39,17 +39,17 @@
 <meta content="https://web.ap.it" property="article:author"/>
 <meta content="Guides" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="CI/CD para Laravel — Fluxo de trabalho Git e implantações com tempo de inatividade zero (2026)" name="twitter:title"/>
-<meta content="Um guia CI/CD pragmático para equipes Laravel: um fluxo de trabalho Git que pode ser reduzido, um pipeline de ações de copiar e colar GitHub (Pint, Larastan, Pest, auditoria composer), opções de implantação com tempo de inatividade zero e estratégias de migração seguras." name="twitter:description"/>
+<meta content="CI/CD para Laravel — Fluxo de trabalho Git e deploys sem downtime (2026)" name="twitter:title"/>
+<meta content="Um guia CI/CD pragmático para equipes Laravel: um fluxo de trabalho Git que pode ser reduzido, um pipeline de ações de copiar e colar GitHub (Pint, Larastan, Pest, auditoria composer), opções de deploy sem downtime e estratégias de migração seguras." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "CI/CD for Laravel — Git Workflow & Zero-Downtime Deploys (2026)",
-  "name": "CI/CD for Laravel — Git Workflow & Zero-Downtime Deploys (2026)",
+  "headline": "CI/CD para Laravel — Fluxo de trabalho Git e deploys sem downtime (2026)",
+  "name": "CI/CD para Laravel — Fluxo de trabalho Git e deploys sem downtime (2026)",
   "url": "https://cipi.sh/en/guides/laravel-ci-cd-git-workflow",
-  "description": "A pragmatic CI/CD guide for Laravel teams: a Git workflow that scales down, a copy-paste GitHub Actions pipeline (Pint, Larastan, Pest, composer audit), zero-downtime deployment options and safe migration strategies.",
+  "description": "Um guia CI/CD pragmático para equipes Laravel: um fluxo de trabalho Git que pode ser reduzido, um pipeline de ações de copiar e colar GitHub (Pint, Larastan, Pest, auditoria composer), opções de deploy sem downtime e estratégias de migração seguras.",
   "inLanguage": "pt",
   "image": "https://cipi.sh/og.png",
   "datePublished": "2026-08-04",
@@ -123,42 +123,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Do I need CI/CD as a solo Laravel developer?",
+      "name": "Preciso de CI/CD como desenvolvedor solo de Laravel?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — arguably more than a team does, because nobody reviews your work. A pipeline that runs Pint, Larastan, Pest and composer audit on every push is a tireless second pair of eyes, and webhook-based deploys mean shipping stops being a manual ritual."
+        "text": "Sim – provavelmente mais do que uma equipe faz, porque ninguém analisa seu trabalho. Um pipeline que executa auditorias Pint, Larastan, Pest e composer em cada push é um segundo par de olhos incansável, e deploys baseadas em webhook significam que o envio deixa de ser um ritual manual."
       }
     },
     {
       "@type": "Question",
-      "name": "How do I get zero-downtime deployments for Laravel?",
+      "name": "Como obtenho deploys sem downtime para Laravel?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Use the releases pattern: build the new version in its own directory, run migrations and caches, then atomically swap a symlink and restart queue workers. Tools like Cipi configure this automatically for GitHub and GitLab pushes, so you get zero-downtime deploys without writing deployment scripts."
+        "text": "Use o padrão de lançamentos: construa a nova versão em seu próprio diretório, execute migrações e caches, depois troque atomicamente um link simbólico e reinicie os workers da fila. Ferramentas como Cipi configuram isso automaticamente para pushes GitHub e GitLab, para que você obtenha deploys sem downtime sem escrever scripts de deploy."
       }
     },
     {
       "@type": "Question",
-      "name": "How long should a Laravel CI pipeline take?",
+      "name": "Quanto tempo deve durar um pipeline de CI Laravel?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Under five minutes for the common case, or developers start bypassing it. Run Pest in parallel, cache Composer dependencies, and move slow browser tests to a nightly job instead of blocking every PR."
+        "text": "Menos de cinco minutos para o caso comum, ou os desenvolvedores começarão a contorná-lo. Execute o Pest em paralelo, armazene em cache as dependências Composer e mova os testes lentos do navegador para um trabalho noturno em vez de bloquear todos os PR."
       }
     },
     {
       "@type": "Question",
-      "name": "Are database migrations safe with zero-downtime deploys?",
+      "name": "As migrações de banco de dados são seguras com deploys sem downtime?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, with the expand/contract pattern: make additive changes first, deploy code that works with both schemas, and remove old columns in a later release. Keep destructive changes in their own deploy, and take a pre-deploy snapshot (automatic in Cipi 5) so mistakes are reversible."
+        "text": "Sim, com o padrão de expansão/contração: faça alterações aditivas primeiro, implante código que funcione com ambos os esquemas e remova colunas antigas em uma versão posterior. Mantenha as alterações destrutivas em sua própria deploy e tire um snapshot pré-deploy (automático em Cipi 5) para que os erros sejam reversíveis."
       }
     },
     {
       "@type": "Question",
-      "name": "Is it safe to deploy on Fridays?",
+      "name": "É seguro implantar às sextas-feiras?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "With small diffs, a green pipeline, health checks and one-command rollback — yes. The Friday fear is a symptom of big-batch, manual deployments; fix the process and the day of the week stops mattering."
+        "text": "Com pequenas diferenças, um pipeline verde, verificações de integridade e reversão com um comando – sim. O medo da sexta-feira é um sintoma de deploys manuais em grandes lotes; conserte o processo e o dia da semana deixa de importar."
       }
     }
   ]
@@ -268,7 +268,7 @@
 <a href="/pt/cipi-yml" class="nav-link">cipi.yml</a>
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">PT</summary><div class="lang-menu"><a href="/en/guides/laravel-ci-cd-git-workflow" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/ci-cd-git-workflow-fuer-laravel" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/ci-cd-et-workflow-git-laravel" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/ci-cd-workflow-git-laravel" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/ci-cd-flujo-git-laravel" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a class="active" href="/pt/guides/ci-cd-e-workflow-git-laravel" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Alternar tema" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Mudar tema" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -302,17 +302,17 @@
 <span class="current">CI/CD para Laravel</span>
 </nav>
 <span class="cmp-eyebrow">CI/CD · Fluxo de trabalho Git</span>
-<h1>CI/CD para Laravel: <em>Fluxo de trabalho Git</em> e implantações com tempo de inatividade zero</h1>
+<h1>CI/CD para Laravel: <em>Fluxo de trabalho Git</em> e deploys sem downtime</h1>
 <p class="cmp-updated">Por <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Última atualização: <time datetime="2026-08-04">4 de agosto de 2026</time> · grátis para ler, sem acesso pago</p>
-<p class="lead">A lacuna entre “funciona na minha máquina” e “é implantada com segurança” é menor do que nunca. Este guia fornece um fluxo de trabalho Git que pode ser reduzido para uma equipe de apenas uma pessoa, um pipeline de CI copiar e colar e os padrões de implantação com tempo de inatividade zero que tornam os lançamentos de sexta-feira enfadonhos.</p>
+<p class="lead">A lacuna entre “funciona na minha máquina” e “é implantada com segurança” é menor do que nunca. Este guia fornece um fluxo de trabalho Git que pode ser reduzido para uma equipe de apenas uma pessoa, um pipeline de CI copiar e colar e os padrões de deploy sem downtime que tornam os lançamentos de sexta-feira enfadonhos.</p>
 <div class="toc">
 <strong>Neste guia</strong>
 <ol>
 <li><a href="#why">Por que os pipelines compensam (mesmo sozinhos)</a></li>
 <li><a href="#git">Um fluxo de trabalho Git que pode ser reduzido</a></li>
 <li><a href="#ci">O pipeline de CI, pronto para copiar e colar</a></li>
-<li><a href="#cd">Opções de implantação com tempo de inatividade zero</a></li>
-<li><a href="#post">Após a implantação</a></li>
+<li><a href="#cd">Opções de deploy sem downtime</a></li>
+<li><a href="#post">Após o deploy</a></li>
 <li><a href="#rollback">Estratégia de migrações e reversão</a></li>
 <li><a href="#faq">Perguntas frequentes</a></li>
 </ol>
@@ -321,7 +321,7 @@
 <p>CI/CD não é uma cerimônia empresarial – é o seguro mais barato que uma base de código pode comprar:</p>
 <ul>
 <li><strong>Repetibilidade:</strong> o pipeline executa sempre as mesmas verificações; os humanos não.</li>
-<li><strong>A ansiedade de implantação chega a zero.</strong> Quando as implantações são um push e as reversões são um link simbólico,
+<li><strong>A ansiedade de deploy chega a zero.</strong> Quando os deploys são um push e as reversões são um link simbólico,
                 você envia pequenas alterações com frequência, em vez de lotes assustadores, raramente.</li>
 <li><strong>Avaliar aumentos de qualidade</strong> porque a CI já detectou os problemas mecânicos antes de um
                 aparência humana.</li>
@@ -338,7 +338,7 @@
 <li><strong>As filiais vivem dias, não semanas.</strong> <code>feature/checkout-vat</code>,
                 <code>fix/queue-timeout</code> - mesclar ou excluir.</li>
 <li><strong>Confirmações convencionais</strong> (<code>feat:</code>, <code>fix:</code>, <code>chore:</code>)
-                tornar o histórico escaneável e os registros de alterações automatizáveis.</li>
+                tornar o histórico escaneável e os logs de alterações automatizáveis.</li>
 <li><strong>Lançamentos de tags</strong> (<code>v2026.08.04</code> ou semver) para que você possa sempre responder "o que foi
                 ao vivo na terça-feira?".</li>
 <li><strong>PRs são a trilha de auditoria.</strong> Mesmo sozinho: uma autoavaliação de dois minutos com CI verde pega um
@@ -397,30 +397,30 @@ jobs:
 <li>Adicionar <code>npm ci &amp;&amp; npm run build</code> como um trabalho separado se a construção de seus ativos for
                 não trivial.</li>
 </ul>
-<h2 id="cd">Opções de implantação com tempo de inatividade zero</h2>
-<p>Tempo de inatividade zero significa: construir a nova versão ao lado da antiga, trocar atomicamente, reiniciar os trabalhadores. Três
+<h2 id="cd">Opções de deploy sem downtime</h2>
+<p>Tempo de inatividade zero significa: construir a nova versão ao lado da antiga, trocar atomicamente, reiniciar os workers. Três
             maneiras de obtê-lo:</p>
 <h3>1. Webhook push-to-deploy (padrão recomendado)</h3>
 <p>Seu host Git chama webhook no push; o servidor constrói uma nova versão em <code>releases/</code>, corre
             <code>composer install</code>, <code>migrate --force</code> e caches, troca o <code>current</code>
-            link simbólico e reinicia os trabalhadores da fila. Isso é exatamente o que <a class="inline" href="/">Cipi</a> configura
+            link simbólico e reinicia os workers da fila. Isso é exatamente o que <a class="inline" href="/">Cipi</a> configura
             automaticamente quando você conecta GitHub ou GitLab a um aplicativo – implantar chaves, webhook, versões e link simbólico
-            swap incluído, além de construções de ativos do Node em snapshots de banco de dados de implantação e pré-implantação em Cipi 5. Custo de configuração:
+            swap incluído, além de construções de ativos do Node em snapshots de banco de dados de deploy e pré-deploy em Cipi 5. Custo de configuração:
             um<code>cipi app create</code>.</p>
-<h3>2. Implantação orientada por CI (SSH de ações)</h3>
+<h3>2. Deploy orientada por CI (SSH de ações)</h3>
 <p>O pipeline cria artefatos e os envia por SSH (Deployer ou rsync + script). Mais controle, mais
             YAML de propriedade — vale a pena quando você precisa criar artefatos idênticos em todos os ambientes.</p>
 <h3>3. O híbrido</h3>
-<p>CI executa testes; em verde, atinge a implantação webhook. Você obtém implantações bloqueadas sem mover a implantação
+<p>CI executa testes; em verde, atinge o deploy webhook. Você obtém deploys bloqueadas sem mover o deploy
             lógica em CI. Com Cipi, isso é uma linha <code>curl</code> no final do fluxo de trabalho.</p>
-<h2 id="post">Após a implantação</h2>
+<h2 id="post">Após o deploy</h2>
 <ul>
 <li><strong>Verificações de saúde:</strong> verifique as respostas do aplicativo antes de comemorar - Cipi 5 envia a integridade do aplicativo
                 verificações para as quais você pode apontar monitores.</li>
 <li><strong>Teste de fumaça do caminho crítico:</strong> um <code>curl</code> para a página de login e um para um
                 endpoint autenticado captura a maioria dos estados "implantados, mas quebrados".</li>
 <li><strong>Observe as exceções por 15 minutos.</strong> Um rastreador self-hosted como
-                <a class="inline" href="https://boogle.web.ap.it" target="_blank">Google</a> faz o pós-implantação
+                <a class="inline" href="https://boogle.web.ap.it" target="_blank">Google</a> faz o pós-deploy
                 pico de erro visível imediatamente.</li>
 <li><strong>Notifique a equipe:</strong> implantar notificações no Slack ou Telegram fechar o loop (Cipi's
                 os documentos incluem exemplos de notificação de IC prontos).</li>
@@ -433,15 +433,15 @@ jobs:
                 os dados são verificados na produção.</li>
 <li><strong>A reversão do código é o link simbólico</strong> de volta à versão anterior; é por isso que os lançamentos
                 o padrão é importante.</li>
-<li><strong>A reversão de dados é um instantâneo.</strong> Cipi 5 tira um instantâneo do banco de dados pré-implantação
+<li><strong>A reversão de dados é um snapshot.</strong> Cipi 5 tira um snapshot do banco de dados pré-deploy
                 automaticamente, então o pior erro de migração tem um botão de desfazer.</li>
 </ul>
 <div class="cta-box">
 <h2>Coloque isso em prática com Cipi</h2>
 <p>Cipi é o open-source implantar CLI gratuito mencionado ao longo deste guia: um comando transforma um novo
-                Ubuntu VPS em um servidor de produção reforçado para Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
-                PostgreSQL, filas, agendador, SSL e implantações Git com tempo de inatividade zero incluídas.</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | festa</div>
+                VPS Ubuntu em um servidor de produção reforçado para Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
+                PostgreSQL, filas, agendador, SSL e deploys Git sem downtime incluídas.</p>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
 <a class="btn-primary" href="/pt/docs/getting-started">Comece gratuitamente</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Estrela em GitHub</a>
@@ -449,11 +449,11 @@ jobs:
 </div>
 </div>
 <h2 id="faq">Perguntas frequentes</h2>
-<div class="faq-item"><h3>Preciso de CI/CD como desenvolvedor solo de Laravel?</h3><p>Sim – provavelmente mais do que uma equipe faz, porque ninguém analisa seu trabalho. Um pipeline que executa auditorias Pint, Larastan, Pest e composer em cada push é um segundo par de olhos incansável, e implantações baseadas em webhook significam que o envio deixa de ser um ritual manual.</p></div>
-<div class="faq-item"><h3>Como obtenho implantações com tempo de inatividade zero para Laravel?</h3><p>Use o padrão de lançamentos: construa a nova versão em seu próprio diretório, execute migrações e caches, depois troque atomicamente um link simbólico e reinicie os trabalhadores da fila. Ferramentas como Cipi configuram isso automaticamente para pushes GitHub e GitLab, para que você obtenha implantações com tempo de inatividade zero sem escrever scripts de implantação.</p></div>
+<div class="faq-item"><h3>Preciso de CI/CD como desenvolvedor solo de Laravel?</h3><p>Sim – provavelmente mais do que uma equipe faz, porque ninguém analisa seu trabalho. Um pipeline que executa auditorias Pint, Larastan, Pest e composer em cada push é um segundo par de olhos incansável, e deploys baseadas em webhook significam que o envio deixa de ser um ritual manual.</p></div>
+<div class="faq-item"><h3>Como obtenho deploys sem downtime para Laravel?</h3><p>Use o padrão de lançamentos: construa a nova versão em seu próprio diretório, execute migrações e caches, depois troque atomicamente um link simbólico e reinicie os workers da fila. Ferramentas como Cipi configuram isso automaticamente para pushes GitHub e GitLab, para que você obtenha deploys sem downtime sem escrever scripts de deploy.</p></div>
 <div class="faq-item"><h3>Quanto tempo deve durar um pipeline de CI Laravel?</h3><p>Menos de cinco minutos para o caso comum, ou os desenvolvedores começarão a contorná-lo. Execute o Pest em paralelo, armazene em cache as dependências Composer e mova os testes lentos do navegador para um trabalho noturno em vez de bloquear todos os PR.</p></div>
-<div class="faq-item"><h3>As migrações de banco de dados são seguras com implantações sem tempo de inatividade?</h3><p>Sim, com o padrão de expansão/contração: faça alterações aditivas primeiro, implante código que funcione com ambos os esquemas e remova colunas antigas em uma versão posterior. Mantenha as alterações destrutivas em sua própria implantação e tire um instantâneo pré-implantação (automático em Cipi 5) para que os erros sejam reversíveis.</p></div>
-<div class="faq-item"><h3>É seguro implantar às sextas-feiras?</h3><p>Com pequenas diferenças, um pipeline verde, verificações de integridade e reversão com um comando – sim. O medo da sexta-feira é um sintoma de implantações manuais em grandes lotes; conserte o processo e o dia da semana deixa de importar.</p></div>
+<div class="faq-item"><h3>As migrações de banco de dados são seguras com deploys sem downtime?</h3><p>Sim, com o padrão de expansão/contração: faça alterações aditivas primeiro, implante código que funcione com ambos os esquemas e remova colunas antigas em uma versão posterior. Mantenha as alterações destrutivas em sua própria deploy e tire um snapshot pré-deploy (automático em Cipi 5) para que os erros sejam reversíveis.</p></div>
+<div class="faq-item"><h3>É seguro implantar às sextas-feiras?</h3><p>Com pequenas diferenças, um pipeline verde, verificações de integridade e reversão com um comando – sim. O medo da sexta-feira é um sintoma de deploys manuais em grandes lotes; conserte o processo e o dia da semana deixa de importar.</p></div>
 <h2>Continue lendo</h2>
 <div class="related">
 <a href="/pt/guides/deploy-laravel-em-vps-ubuntu">Implantar Laravel em Ubuntu</a>
@@ -467,35 +467,35 @@ jobs:
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Implantação gratuita de open-source Laravel CLI para Ubuntu VPS — Octane, Horizon, Reverb e implantações Git com tempo de inatividade zero.</p>
+<p>CLI open source e gratuita para fazer deploy de Laravel num VPS Ubuntu — Octane, Horizon, Reverb e deploys Git sem downtime.</p>
 <ul class="footer-brand-links">
-<li><a href="/pt/docs/getting-started">Comece</a></li>
-<li><a href="/pt/docs/">Documentos</a></li>
+<li><a href="/pt/docs/getting-started">Primeiros passos</a></li>
+<li><a href="/pt/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
 <nav aria-label="Compare Cipi com alternativas" class="footer-col footer-col--compare">
 <strong>Comparar Cipi</strong>
 <ul>
-<li><a href="/pt/alternative-to-laravel-forge">Laravel Forge alternativa</a></li>
-<li><a href="/pt/alternative-to-laravel-cloud">Laravel Alternativa de nuvem</a></li>
+<li><a href="/pt/alternative-to-laravel-forge">Alternativa ao Laravel Forge</a></li>
+<li><a href="/pt/alternative-to-laravel-cloud">Alternativa ao Laravel Cloud</a></li>
 <li><a href="/pt/alternative-to-ploi">Ploi alternativa</a></li>
 <li><a href="/pt/alternative-to-coolify">Coolify alternativa</a></li>
 <li><a href="/pt/alternative-to-runcloud">RunCloud alternativa</a></li>
 <li><a href="/pt/alternative-to-cloudpanel">CloudPanel alternativa</a></li>
 <li><a href="/pt/alternative-to-cpanel">cPanel alternativa</a></li>
 <li><a href="/pt/alternative-to-plesk">Alternativa Plesk</a></li>
-<li><a href="/pt/best-laravel-forge-alternatives">Melhores alternativas de Forge 2026</a></li>
+<li><a href="/pt/best-laravel-forge-alternatives">Melhores alternativas ao Forge em 2026</a></li>
 <li><a href="/pt/alternatives">Todas as comparações</a></li>
 </ul>
 </nav>
-<nav aria-label="Guias Laravel gratuitos" class="footer-col">
+<nav aria-label="Guias gratuitos de Laravel" class="footer-col">
 <strong>Guias gratuitos</strong>
 <ul>
 <li><a href="/pt/guides/gerenciar-apps-com-cipi-yml">Gerenciar apps com cipi.yml</a></li>
-<li><a href="/pt/guides/painel-ui-e-api">Painel UI e API</a></li>
+<li><a href="/pt/guides/painel-ui-e-api">Painel de controle e API</a></li>
 <li><a href="/pt/guides/usar-cipi-agent-no-laravel">cipi/agent e MCP do projeto</a></li>
-<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Implantar WordPress no Cipi</a></li>
+<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Deploy de WordPress no Cipi</a></li>
 <li><a href="/pt/guides/">Todos os guias</a></li>
                     </ul>
 </nav>

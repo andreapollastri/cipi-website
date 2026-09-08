@@ -1,0 +1,620 @@
+{
+ "es": {
+  "segments": [
+   [
+    "Cipi — Despliegues sencillas de Laravel",
+    "Cipi — Despliegues de Laravel sin complicaciones"
+   ],
+   [
+    "Implemente Laravel en cualquier VPS Ubuntu con un comando. Gratis open-source CLI: Octane, Horizon, Reverb, despliegues sin downtime, SSL. Self-hosted Forge alternativa.",
+    "Despliega Laravel en cualquier VPS Ubuntu con un solo comando. CLI open source y gratuita: Octane, Horizon, Reverb, despliegues sin downtime, SSL. La alternativa self-hosted a Forge."
+   ],
+   [
+    "Implemente Laravel en cualquier VPS Ubuntu con un comando. Gratis open-source CLI: Octane, Horizon, Reverb, despliegues sin downtime, SSL.",
+    "Despliega Laravel en cualquier VPS Ubuntu con un solo comando. CLI open source y gratuita: Octane, Horizon, Reverb, despliegues sin downtime, SSL."
+   ],
+   [
+    "Laravel despliegue, implementar Laravel en VPS, Laravel Forge alternativa, Laravel Octane, FrankenPHP, implementar CLI, Laravel VPS, open source implementar herramienta, Ubuntu servidor Laravel, Laravel DevOps, cipi, PHP despliegue",
+    "despliegue de Laravel, desplegar Laravel en VPS, alternativa a Laravel Forge, Laravel Octane, FrankenPHP, CLI de despliegue, Laravel VPS, herramienta de despliegue open source, servidor Ubuntu Laravel, Laravel DevOps, cipi, despliegue PHP"
+   ],
+   [
+    "Alternar tema",
+    "Cambiar tema"
+   ],
+   [
+    "Alternar menú",
+    "Abrir menú"
+   ],
+   [
+    "Instalar comando",
+    "Comando de instalación"
+   ],
+   [
+    "Guías Laravel gratuitas",
+    "Guías gratuitas de Laravel"
+   ],
+   [
+    "Nuevo lanzamiento",
+    "Nueva release"
+   ],
+   [
+    "esta aqui",
+    "ya está aquí"
+   ],
+   [
+    "Laravel Octane en FrankenPHP, Horizon y Reverb, PostgreSQL, Nodo se basa en la despliegue, el wildcard SSL y los controles de estado.",
+    "Laravel Octane en FrankenPHP, Horizon y Reverb, PostgreSQL, builds de Node en el despliegue, SSL wildcard y health checks."
+   ],
+   [
+    "ver que hay de nuevo",
+    "Ver novedades"
+   ],
+   [
+    "Laravel-first open-source CLI con IA y MCP - también sitios estáticos y PHP genéricos. Un comando instala el stack. Un comando crea una aplicación aislada con una base de datos, workers, SSL e despliegues sin downtime.",
+    "CLI open source pensada para Laravel, con IA y MCP — y también para sitios estáticos y PHP genérico. Un comando instala el stack. Un comando crea una app aislada con base de datos, workers, SSL y despliegues sin downtime."
+   ],
+   [
+    "lo que obtienes",
+    "Esto es lo que obtienes"
+   ],
+   [
+    "Cada aplicación se ejecuta bajo su propio usuario de Linux. Sistema de archivos aislado, PHP-FPM o Laravel Octane (FrankenPHP) y base de datos. Una aplicación comprometida no puede tocar a las demás.",
+    "Cada app corre bajo su propio usuario de Linux: sistema de archivos aislado, PHP-FPM o Laravel Octane (FrankenPHP) y base de datos propia. Una app comprometida no puede llegar a las demás."
+   ],
+   [
+    "Nginx proxy inverso",
+    "Proxy inverso Nginx"
+   ],
+   [
+    "Hosts virtuales por aplicación optimizados para Laravel.",
+    "Un vhost por app, optimizado para Laravel."
+   ],
+   [
+    "FPM clásico o FrankenPHP Octane por aplicación, uno al lado del otro VPS.",
+    "FPM clásico o FrankenPHP Octane por app, conviviendo en un mismo VPS."
+   ],
+   [
+    "Tiempo de ejecución",
+    "Runtime"
+   ],
+   [
+    "Sintonizado automáticamente a RAM. Base de datos dedicada y usuario por aplicación.",
+    "Ajuste automático según la RAM. Base de datos y usuario dedicados por app."
+   ],
+   [
+    "Supervisor workers, Laravel Horizon y Reverb WebSockets de el CLI.",
+    "Workers de Supervisor, Laravel Horizon y WebSockets de Reverb, directamente desde la CLI."
+   ],
+   [
+    "Lanzamientos sin downtime con reversión instantánea. Mantiene los últimos 5.",
+    "Releases sin downtime con rollback instantáneo. Conserva las 5 últimas."
+   ],
+   [
+    "Certificados automáticos vía Certbot con SAN para alias.",
+    "Certificados automáticos con Certbot y SAN para los alias."
+   ],
+   [
+    "Prohibición por fuerza bruta, firewall y prevención de escalada de privilegios.",
+    "Bloqueo de ataques de fuerza bruta, firewall y prevención de escalada de privilegios."
+   ],
+   [
+    "S3 copias de seguridad",
+    "Backups en S3"
+   ],
+   [
+    "Copias de seguridad automatizadas de base de datos y almacenamiento en almacenamiento compatible con S3.",
+    "Backups automáticos de la base de datos y de storage/ en almacenamiento compatible con S3."
+   ],
+   [
+    "Copia de seguridad",
+    "Backup"
+   ],
+   [
+    "Construido para",
+    "Pensado para"
+   ],
+   [
+    "Desde desarrolladores independientes hasta proveedores de alojamiento: cualquiera que envíe Laravel en un VPS.",
+    "Desde desarrolladores en solitario hasta proveedores de hosting: cualquiera que ponga Laravel en producción sobre un VPS."
+   ],
+   [
+    "Envíe sin el DevOps gastos generales. Un comando te da aislamiento, SSL, workers, e despliegues sin downtime.",
+    "Publica sin la carga de DevOps. Un comando te da aislamiento, SSL, workers y despliegues sin downtime."
+   ],
+   [
+    "Un VPS, muchos clientes: cada aplicación aislada con su propio usuario, base de datos, versión PHP, y desplegar la clave.",
+    "Un VPS, muchos clientes: cada app aislada con su usuario, su base de datos, su versión de PHP y su clave de despliegue."
+   ],
+   [
+    "Despliegues atómicas, reversiones instantáneas, webhook despliegue automática, S3 copias de seguridad. crecer sin cambiando el flujo de trabajo.",
+    "Despliegues atómicos, rollbacks instantáneos, auto-despliegue por webhook, backups en S3. Crece sin cambiar de workflow."
+   ],
+   [
+    "Cada comando es una simple llamada de shell: conexión a Ansible, scripts de aprovisionamiento o utillaje interno.",
+    "Cada comando es una simple llamada de shell: se integra con Ansible, con tus scripts de provisioning o con tu propio tooling."
+   ],
+   [
+    "Creado para Laravel desarrolladores que valoran la seguridad, la simplicidad y el control. CLI-first y sin sobrecarga: solo SSH y el",
+    "Hecho para desarrolladores de Laravel que valoran la seguridad, la simplicidad y el control. CLI-first y sin lastre: solo SSH y el comando"
+   ],
+   [
+    "Agente de IA listo",
+    "Listo para agentes de IA"
+   ],
+   [
+    "Servidor MCP integrado: implementar, revertir y realizar copias de seguridad mediante lenguaje natural en Cursor, VS Código, Claude.",
+    "Servidor MCP integrado: desplegar, revertir y hacer backups en lenguaje natural desde Cursor, VS Code o Claude."
+   ],
+   [
+    "Web opcional GUI",
+    "GUI web opcional"
+   ],
+   [
+    "Instale un panel self-hosted cuando desee un panel de navegador. Saltalo y quédate puro CLI.",
+    "Instala un panel self-hosted si quieres un dashboard en el navegador. O sáltatelo y quédate en CLI pura."
+   ],
+   [
+    "Bóveda AES-256 en reposo, archivos de sincronización cifrados, rotación de logs, completo por aplicación aislamiento.",
+    "Vault AES-256 en reposo, archivos de sincronización cifrados, rotación de logs y aislamiento completo por app."
+   ],
+   [
+    "S3 copias de seguridad automatizadas",
+    "Backups automáticos en S3"
+   ],
+   [
+    "Bases de datos y compartidas/a S3 o proveedores compatibles en un horario cron.",
+    "Bases de datos y shared/ hacia S3 o proveedores compatibles, según una programación cron."
+   ],
+   [
+    "Migre, replique o recupere aplicaciones entre Cipi servidores con cifrado archivos.",
+    "Migra, replica o recupera apps entre servidores Cipi mediante archivos cifrados."
+   ],
+   [
+    "El implementador clona, ​​construye, migra e intercambia el enlace simbólico de forma atómica. Instantáneo revertir.",
+    "Deployer clona, compila, migra e intercambia el symlink de forma atómica. Rollback instantáneo."
+   ],
+   [
+    "Webhook despliegue automática",
+    "Auto-despliegue por webhook"
+   ],
+   [
+    "GitHub/GitLab implementa claves y webhooks configurados automáticamente. HMAC verificado.",
+    "Claves de despliegue y webhooks de GitHub/GitLab configurados automáticamente. Verificados con HMAC."
+   ],
+   [
+    "FrankenPHP Octane, Horizon, Reverb, programador, compilaciones de nodos — herramientas Laravel de primera clase.",
+    "FrankenPHP Octane, Horizon, Reverb, scheduler, builds de Node: tooling de Laravel de primer nivel."
+   ],
+   [
+    "Administre aplicaciones, alias, SSL e despliegues con tokens de portador y granulares habilidades.",
+    "Gestiona apps, alias, SSL y despliegues con tokens Bearer y permisos granulares."
+   ],
+   [
+    "CLI cliente",
+    "Cliente CLI"
+   ],
+   [
+    "CLI Cliente",
+    "Cliente CLI"
+   ],
+   [
+    "Administre su servidor desde su computadora portátil: utilice binario para Linux y macOS.",
+    "Gestiona tu servidor desde el portátil: un binario Go para Linux y macOS."
+   ],
+   [
+    "módulo WHMCS",
+    "Módulo WHMCS"
+   ],
+   [
+    "Automatice el aprovisionamiento de alojamiento desde WHMCS: cree y finalice aplicaciones desde facturación.",
+    "Automatiza el provisioning de hosting desde WHMCS: crea y cancela apps directamente desde la facturación."
+   ],
+   [
+    "Múltiples dominios por aplicación. Un certificado SAN que los cubre a todos. Renovación automática.",
+    "Varios dominios por app. Un único certificado SAN que los cubre todos. Renovación automática."
+   ],
+   [
+    "Nativo de IA",
+    "Nativo de IA"
+   ],
+   [
+    "Cipi se envía con un incorporado",
+    "Cipi incluye un"
+   ],
+   [
+    "MCP servidor",
+    "servidor MCP"
+   ],
+   [
+    "MCP Servidor",
+    "Servidor MCP"
+   ],
+   [
+    "preparado para usar. Instale el",
+    "listo para usar. Instala el paquete"
+   ],
+   [
+    "paquete, apunta tu IA cliente al punto final, y su asistente puede implementar, revertir, leer logs y ejecutar Artisan comandos, en todo HTTPS, no se requiere SSH.",
+    ", apunta tu cliente de IA al endpoint y tu asistente podrá desplegar, revertir, leer logs y ejecutar comandos de Artisan: todo por HTTPS, sin SSH."
+   ],
+   [
+    "MCP Servidor incluido",
+    "Servidor MCP incluido"
+   ],
+   [
+    "Un paquete. Seis herramientas mecanografiadas. Configuración cero.",
+    "Un paquete. Seis herramientas tipadas. Cero configuración."
+   ],
+   [
+    "como MCP herramientas — listo para el cursor, Código VS y Claude Desktop.",
+    "como herramientas MCP: listas para Cursor, VS Code y Claude Desktop."
+   ],
+   [
+    "composer requiere cipi-sh/cipi-agente",
+    "composer require cipi-sh/cipi-agent"
+   ],
+   [
+    "Funciona sobre HTTPS con token de portador: no se necesitan claves SSH",
+    "Funciona por HTTPS con token Bearer: no hacen falta claves SSH"
+   ],
+   [
+    "Implementar, revertir y ejecutar migraciones mediante lenguaje natural",
+    "Desplegar, revertir y ejecutar migraciones en lenguaje natural"
+   ],
+   [
+    "Depure problemas de producción desde la comodidad de su asistente de IA",
+    "Depurar problemas de producción cómodamente desde tu asistente de IA"
+   ],
+   [
+    "Integre todos sus servidores con su canal de automatización de IA",
+    "Integrar todos tus servidores en tu pipeline de automatización con IA"
+   ],
+   [
+    "garra abierta",
+    "OpenClaw"
+   ],
+   [
+    "Claude — cipi MCP servidor",
+    "Claude — servidor MCP de cipi"
+   ],
+   [
+    "Ubuntu 24.04 o 26.04 LTS, acceso root, puertos 22/80/443 abiertos. eso es todo tu necesidad.",
+    "Ubuntu 24.04 o 26.04 LTS, acceso root y los puertos 22/80/443 abiertos. Nada más."
+   ],
+   [
+    "Océano Digital",
+    "DigitalOcean"
+   ],
+   [
+    "Nube de Google",
+    "Google Cloud"
+   ],
+   [
+    "Cipi permanece CLI-first de forma predeterminada, pero cuando desea automatizar, integrar o permita que los agentes de IA administren su servidor globalmente, habilite la capa API opcional con un solo comando. uso",
+    "Cipi sigue siendo CLI-first por defecto, pero en cuanto quieras automatizar, integrar o dejar que los agentes de IA gestionen tus servidores, activa la capa API opcional con un solo comando. Usa la"
+   ],
+   [
+    "para crear y gestionar múltiples aplicaciones en toda su infraestructura desde un único punto final. el",
+    "para crear y gestionar varias aplicaciones en toda tu infraestructura desde un único endpoint. El"
+   ],
+   [
+    ") trae el API completo a su terminal local: administre aplicaciones, bases de datos, SSL e implemente sin SSH. un",
+    ") lleva toda la API a tu terminal local: gestiona apps, bases de datos, SSL y despliegues sin SSH. Un"
+   ],
+   [
+    "servidor global MCP",
+    "servidor MCP global"
+   ],
+   [
+    "está disponible para le permite crear y administrar su infraestructura a través de sus agentes de IA y un oficial",
+    "te permite crear y gestionar tu infraestructura a través de tus agentes de IA, y un"
+   ],
+   [
+    "Módulo de aprovisionamiento WHMCS",
+    "módulo de provisioning de WHMCS"
+   ],
+   [
+    "permite paneles de facturación crear y finalizar aplicaciones automáticamente.",
+    "oficial crea y cancela apps automáticamente desde tu panel de facturación."
+   ],
+   [
+    "Más información sobre Cipi API",
+    "Más sobre la API de Cipi"
+   ],
+   [
+    "Docs interactivos",
+    "Docs interactivas"
+   ],
+   [
+    "Agentes de IA listos",
+    "Listo para agentes de IA"
+   ],
+   [
+    "Gestión Remota",
+    "Gestión remota"
+   ],
+   [
+    "Convierta su servidor Cipi en un negocio de hosting. El aprovisionamiento oficial de WHMCS El módulo conecta su panel de facturación al REST API de Cipi: cuando un cliente solicita un producto, la aplicación se crea automáticamente. Terminar, suspender, reactivar: todo fluye desde WHMCS a su servidor sin una sola sesión SSH.",
+    "Convierte tu servidor Cipi en un negocio de hosting. El módulo oficial de provisioning para WHMCS conecta tu panel de facturación con la API REST de Cipi: cuando un cliente contrata un producto, la app se crea automáticamente. Cancelar, suspender, reactivar: todo va de WHMCS a tu servidor sin una sola sesión SSH."
+   ],
+   [
+    "Aprovisionamiento totalmente automatizado: pedidos de clientes, la aplicación se activa",
+    "Provisioning totalmente automático: el cliente contrata y la app se pone en marcha"
+   ],
+   [
+    "Laravel y tipos de aplicaciones personalizadas con versión PHP por producto y configuración de Git",
+    "Tipos de app Laravel y personalizados, con versión de PHP y ajustes de Git por producto"
+   ],
+   [
+    "Manejo de trabajos asincrónicos con sondeo de estado: sin tiempos de espera HTTP",
+    "Gestión asíncrona de jobs con sondeo de estado: sin timeouts HTTP"
+   ],
+   [
+    "Autenticación de token de portador con permisos granulares por capacidad",
+    "Autenticación con token Bearer y permisos granulares por ability"
+   ],
+   [
+    "Conexión de prueba integrada: valide la accesibilidad de API desde el administrador de WHMCS",
+    "Test de conexión integrado: comprueba que la API responde desde el panel de administración de WHMCS"
+   ],
+   [
+    "Open source, con licencia del MIT: amplíelo o póngalo en marca blanca según lo necesite",
+    "Open source con licencia MIT: amplíalo o ponlo en marca blanca como necesites"
+   ],
+   [
+    "Lea los documentos",
+    "Ver la documentación"
+   ],
+   [
+    "Llamadas al módulo POST /api/apps",
+    "El módulo llama a POST /api/apps"
+   ],
+   [
+    "Crea usuario aislado, PHP-FPM o Octane, Nginx, base de datos: todo",
+    "Crea el usuario aislado, PHP-FPM u Octane, Nginx y la base de datos: todo"
+   ],
+   [
+    "La aplicación está activa.",
+    "La app ya está en producción"
+   ],
+   [
+    "El sitio del cliente está aprovisionado y listo para usar.",
+    "El sitio del cliente queda aprovisionado y listo para usar"
+   ],
+   [
+    "Suspender, reactivar y finalizar: todo desde el administrador de WHMCS",
+    "Suspender, reactivar y cancelar: todo desde el panel de WHMCS"
+   ],
+   [
+    "es un binario Go independiente que habla con Cipi REST API desde su máquina local. No se requiere SSH: administre aplicaciones, bases de datos, certificados SSL e despliegues desde cualquier terminal. Disponible para Linux y macOS.",
+    "es un binario Go independiente que se comunica con la API REST de Cipi desde tu máquina local. Sin SSH: gestiona apps, bases de datos, certificados SSL y despliegues desde cualquier terminal. Disponible para Linux y macOS."
+   ],
+   [
+    "Ciclo de vida completo de la aplicación: cree, edite, implemente y elimine de su máquina",
+    "Ciclo de vida completo de la app: crear, editar, desplegar y eliminar desde tu máquina"
+   ],
+   [
+    "Gestión de bases de datos: cree, haga copias de seguridad, restaure y rote contraseñas",
+    "Gestión de bases de datos: crear, hacer backup, restaurar y rotar contraseñas"
+   ],
+   [
+    "SSL aprovisionamiento: instale Let's Encrypt certificados con un solo comando",
+    "Provisioning de SSL: instala certificados Let's Encrypt con un solo comando"
+   ],
+   [
+    "Perfiles multiservidor: un perfil por servidor, cambiar con un prefijo",
+    "Perfiles multiservidor: un perfil por servidor, se cambia con un prefijo"
+   ],
+   [
+    "Descripción general del estado global: CPU, RAM, disco, aplicaciones y servicios en todos los servidores",
+    "Vista global del estado: CPU, RAM, disco, apps y servicios de todos los servidores"
+   ],
+   [
+    "Alias de dominio: agregue, enumere y elimine alias por aplicación",
+    "Alias de dominio: añadir, listar y eliminar alias por app"
+   ],
+   [
+    "Finalización del shell: instalación con un solo comando para zsh, bash y fish",
+    "Autocompletado de shell: instalación con un solo comando para zsh, bash y fish"
+   ],
+   [
+    "JSON salida - canalizar a",
+    "Salida JSON: canalizable a"
+   ],
+   [
+    "para secuencias de comandos y canalizaciones CI/CD",
+    "para scripts y pipelines de CI/CD"
+   ],
+   [
+    "Open source, con licencia MIT: binarios prediseñados y compilados desde el código fuente",
+    "Open source con licencia MIT: binarios precompilados o compilación desde el código fuente"
+   ],
+   [
+    "cipi-cli api token agregar producto",
+    "cipi-cli api token add prod"
+   ],
+   [
+    "Perfil de servidor \"prod\" guardado",
+    "Server profile \"prod\" saved"
+   ],
+   [
+    "cipi-cli estado",
+    "cipi-cli status"
+   ],
+   [
+    "NOMBRE IP CPU RAM APLICACIONES CIPI",
+    "NAME IP CPU RAM APPS CIPI"
+   ],
+   [
+    "puesta en escena 203.0.113.20 4% 31% 1 4.6.3",
+    "staging 203.0.113.20 4% 31% 1 4.6.3"
+   ],
+   [
+    "cipi-cli staging para implementar myapp",
+    "cipi-cli staging deploy myapp"
+   ],
+   [
+    "Implementando mi aplicación...",
+    "Deploying myapp..."
+   ],
+   [
+    "Implementado para la versión 14. Cero tiempo de inactividad.",
+    "Deployed to release #14. Zero downtime."
+   ],
+   [
+    "cipi-cli ssl instalar mi aplicación",
+    "cipi-cli ssl install myapp"
+   ],
+   [
+    "Certificado proporcionado para myapp.com",
+    "Certificate provisioned for myapp.com"
+   ],
+   [
+    "Aprovisionamiento de grupo PHP-FPM, Nginx vhost, programador…",
+    "Provisioning PHP-FPM pool, Nginx vhost, scheduler…"
+   ],
+   [
+    "Correo electrónico del administrador: ops@example.com",
+    "Admin email: ops@example.com"
+   ],
+   [
+    "Contraseña de administrador: ••••••••••••",
+    "Admin password: ••••••••••••"
+   ],
+   [
+    "Panel listo en http://panel.example.com",
+    "Panel ready at http://panel.example.com"
+   ],
+   [
+    "Certificado aprovisionado: https://panel.example.com",
+    "Certificate provisioned — https://panel.example.com"
+   ],
+   [
+    "Un comando para instalar:",
+    "Un solo comando para instalarlo:"
+   ],
+   [
+    "Administre aplicaciones, SSL, logs y bases de datos desde el navegador",
+    "Gestiona apps, SSL, logs y bases de datos desde el navegador"
+   ],
+   [
+    "Un panel, muchos servidores: una cabina liviana con múltiples servidores",
+    "Un panel, muchos servidores: un cockpit multiservidor ligero"
+   ],
+   [
+    "Inicio de sesión con autenticación de dos factores TOTP opcional",
+    "Login por sesión, con autenticación de dos factores TOTP opcional"
+   ],
+   [
+    "Self-hosted y open source — su panel, su servidor, sus datos",
+    "Self-hosted y open source: tu panel, tu servidor, tus datos"
+   ],
+   [
+    "Desinstalar en cualquier momento",
+    "Desinstálalo cuando quieras"
+   ],
+   [
+    "— volver a CLI puro",
+    "— y vuelves a la CLI pura"
+   ],
+   [
+    "Open source, con licencia MIT, gratis para siempre.",
+    "Open source, licencia MIT, gratis para siempre."
+   ],
+   [
+    "Instálelo en su VPS y comience a implementar en minutos.",
+    "Instálalo en tu VPS y empieza a desplegar en cuestión de minutos."
+   ],
+   [
+    "GitHub Repositorio",
+    "Repositorio de GitHub"
+   ],
+   [
+    "Cipi es una despliegue Laravel-first, open-source CLI que también admite sitios estáticos y aplicaciones PHP genéricas. Un solo comando instala un stack de producción completa (Nginx, PHP-FPM o Laravel Octane, MariaDB, Valkey, Supervisor) en cualquier VPS Ubuntu.",
+    "Cipi es una CLI de despliegue open source pensada primero para Laravel, que también admite sitios estáticos y aplicaciones PHP genéricas. Un solo comando instala un stack de producción completo (Nginx, PHP-FPM o Laravel Octane, MariaDB, Valkey, Supervisor) en cualquier VPS Ubuntu."
+   ],
+   [
+    "Sí. Cipi es 100% gratuito y open source está bajo la licencia MIT. Lo aloja usted mismo en su propio servidor sin suscripción ni tarifas por servidor.",
+    "Sí. Cipi es 100 % gratuito y open source bajo licencia MIT. Lo alojas tú mismo en tu propio servidor, sin suscripción ni cuotas por servidor."
+   ],
+   [
+    "Ejecute un solo comando en un VPS Ubuntu nuevo:",
+    "Ejecuta un solo comando en un VPS Ubuntu recién creado:"
+   ],
+   [
+    ". Instala y configura automáticamente el stack de producción LEMP completa.",
+    ". Instala y configura automáticamente todo el stack de producción LEMP."
+   ],
+   [
+    "Sí. Cipi es una alternativa gratuita, self-hosted, open-source a Laravel Forge y herramientas de despliegue similares, que le brinda control total sobre sus servidores sin costo recurrente. Ver el",
+    "Sí. Cipi es una alternativa gratuita, self-hosted y open source a Laravel Forge y a herramientas de despliegue similares: te da control total sobre tus servidores sin ningún coste recurrente. Consulta la"
+   ],
+   [
+    "Laravel Forge comparación",
+    "comparación con Laravel Forge"
+   ]
+  ],
+  "raw": [
+   [
+    "<h1>Fácil Laravel <em>despliegues</em>.</h1>",
+    "<h1>Desplegar Laravel, <em>sin fricción</em>.</h1>"
+   ],
+   [
+    "<h2 class=\"section-title\">Una sola VPS se convierte en una aplicación múltiple<br/>LEMP plataforma de alojamiento</h2>",
+    "<h2 class=\"section-title\">Un solo VPS se convierte en una plataforma<br/>de hosting LEMP multiaplicación</h2>"
+   ],
+   [
+    "<h2 class=\"section-title\">Todo lo que necesitas,<br/>nada que no hagas</h2>",
+    "<h2 class=\"section-title\">Todo lo que necesitas,<br/>nada que no necesites</h2>"
+   ],
+   [
+    "<h2 class=\"ai-headline\">Desde el mensaje<br/>a <em>producción.</em></h2>",
+    "<h2 class=\"ai-headline\">Del prompt<br/>a <em>producción.</em></h2>"
+   ],
+   [
+    "<h2 class=\"api-headline\">Conveniente REST API<br/>cuando lo necesites.</h2>",
+    "<h2 class=\"api-headline\">Una API REST cómoda,<br/>cuando la necesites.</h2>"
+   ],
+   [
+    "<h2 class=\"whmcs-headline\">Vender hosting con<br/><em>WHMCS</em>, impulsado por Cipi.</h2>",
+    "<h2 class=\"whmcs-headline\">Vende hosting con<br/><em>WHMCS</em>, con Cipi por debajo.</h2>"
+   ],
+   [
+    "<h2 class=\"cli-headline\">Su servidor,<br/>de <em>cualquier terminal</em>.</h2>",
+    "<h2 class=\"cli-headline\">Tu servidor,<br/>desde <em>cualquier terminal</em>.</h2>"
+   ],
+   [
+    "<h2 class=\"cli-headline\">Un GUI, sólo si<br/><em>quieres uno</em>.</h2>",
+    "<h2 class=\"cli-headline\">Una GUI, solo si<br/><em>la quieres</em>.</h2>"
+   ],
+   [
+    "<h2 class=\"section-title\">Implemente su aplicación Laravel <em style=\"font-family: var(--font-display); font-style: normal; font-weight: 600; color: var(--accent);\">hoy</em>",
+    "<h2 class=\"section-title\">Despliega tu app Laravel <em style=\"font-family: var(--font-display); font-style: normal; font-weight: 600; color: var(--accent);\">hoy</em>"
+   ],
+   [
+    "<h2 class=\"section-title\">Preguntas que la gente hace antes de <em>instalar</em></h2>",
+    "<h2 class=\"section-title\">Las preguntas de siempre antes de <em>instalar</em></h2>"
+   ],
+   [
+    "comando - con un <strong>opcional</strong> panel web el día que quieras uno.</p>",
+    "— con un panel web <strong>opcional</strong>, el día que quieras uno.</p>"
+   ],
+   [
+    "                        mejor para usted o sus clientes, un solo comando instala el <strong>opcional</strong> control web\n                        panel: una aplicación self-hosted Laravel que administra uno o varios servidores Cipi sobre el mismo REST API.",
+    "                        mejor, a ti o a tus clientes, un solo comando instala el <strong>panel de control web</strong>\n                        opcional: una app Laravel self-hosted que gestiona uno o varios servidores Cipi a través de la misma API REST."
+   ],
+   [
+    "<a class=\"btn btn-primary\" href=\"/es/docs/getting-started#installation\">empezar</a>",
+    "<a class=\"btn btn-primary\" href=\"/es/docs/getting-started#installation\">Empezar</a>"
+   ],
+   [
+    "<p class=\"section-label section-kicker\">Empezar</p>",
+    "<p class=\"section-label section-kicker\">Primeros pasos</p>"
+   ],
+   [
+    "<li><a href=\"/es/docs/getting-started\">empezar</a></li>",
+    "<li><a href=\"/es/docs/getting-started\">Primeros pasos</a></li>"
+   ]
+  ]
+ }
+}

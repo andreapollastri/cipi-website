@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Implantar WordPress em Cipi — Aplicativo personalizado e GitHub Implantação automática (2026)</title>
-<meta content="Guia passo a passo para hospedar WordPress em Cipi como um aplicativo personalizado: crie o site, MariaDB, SSL, mantenha uploads e wp-config seguros e, em seguida, implemente automaticamente a partir de GitHub Ações em cada push para main." name="description"/>
-<meta content="wordpress cipi, implantar wordpress ubuntu, cipi aplicativo personalizado, wordpress github ações, wordpress implantação automática, wordpress vps nginx, wordpress ci/cd" name="keywords"/>
+<title>Implantar WordPress em Cipi — Aplicativo personalizado e GitHub Deploy automática (2026)</title>
+<meta content="Guia passo a passo para hospedar WordPress em Cipi como um aplicativo personalizado: crie o site, MariaDB, SSL, mantenha uploads e wp-config seguros e, em seguida, implemente automaticamente a partir de GitHub Actions em cada push para main." name="description"/>
+<meta content="wordpress cipi, implantar wordpress ubuntu, cipi aplicativo personalizado, wordpress github ações, wordpress deploy automática, wordpress vps nginx, wordpress ci/cd" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/pt/guides/deploy-wordpress-app-personalizado" rel="canonical"/>
@@ -23,8 +23,8 @@
 <meta content="article" property="og:type"/>
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/pt/guides/deploy-wordpress-app-personalizado" property="og:url"/>
-<meta content="Implantar WordPress em Cipi — Aplicativo personalizado e GitHub Implantação automática (2026)" property="og:title"/>
-<meta content="Guia passo a passo para hospedar WordPress em Cipi como um aplicativo personalizado: crie o site, MariaDB, SSL, mantenha uploads e wp-config seguros e, em seguida, implemente automaticamente a partir de GitHub Ações em cada push para main." property="og:description"/>
+<meta content="Implantar WordPress em Cipi — Aplicativo personalizado e GitHub Deploy automática (2026)" property="og:title"/>
+<meta content="Guia passo a passo para hospedar WordPress em Cipi como um aplicativo personalizado: crie o site, MariaDB, SSL, mantenha uploads e wp-config seguros e, em seguida, implemente automaticamente a partir de GitHub Actions em cada push para main." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -39,17 +39,17 @@
 <meta content="https://web.ap.it" property="article:author"/>
 <meta content="Guides" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="Implantar WordPress em Cipi — Aplicativo personalizado e GitHub Implantação automática (2026)" name="twitter:title"/>
-<meta content="Guia passo a passo para hospedar WordPress em Cipi como um aplicativo personalizado: crie o site, MariaDB, SSL, mantenha uploads e wp-config seguros e, em seguida, implemente automaticamente a partir de GitHub Ações em cada push para main." name="twitter:description"/>
+<meta content="Implantar WordPress em Cipi — Aplicativo personalizado e GitHub Deploy automática (2026)" name="twitter:title"/>
+<meta content="Guia passo a passo para hospedar WordPress em Cipi como um aplicativo personalizado: crie o site, MariaDB, SSL, mantenha uploads e wp-config seguros e, em seguida, implemente automaticamente a partir de GitHub Actions em cada push para main." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Deploy WordPress on Cipi — Custom App & GitHub Auto-Deploy (2026)",
-  "name": "Deploy WordPress on Cipi — Custom App & GitHub Auto-Deploy (2026)",
+  "headline": "Implantar WordPress em Cipi — Aplicativo personalizado e GitHub Deploy automática (2026)",
+  "name": "Implantar WordPress em Cipi — Aplicativo personalizado e GitHub Deploy automática (2026)",
   "url": "https://cipi.sh/en/guides/deploy-wordpress-custom-app",
-  "description": "Step-by-step guide to hosting WordPress on Cipi as a custom app: create the site, MariaDB, SSL, keep uploads and wp-config safe, then auto-deploy from GitHub Actions on every push to main.",
+  "description": "Guia passo a passo para hospedar WordPress em Cipi como um aplicativo personalizado: crie o site, MariaDB, SSL, mantenha uploads e wp-config seguros e, em seguida, implemente automaticamente a partir de GitHub Actions em cada push para main.",
   "inLanguage": "pt",
   "image": "https://cipi.sh/og.png",
   "datePublished": "2026-08-22",
@@ -110,7 +110,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Deploy WordPress on Cipi",
+      "name": "Deploy de WordPress no Cipi",
       "item": "https://cipi.sh/en/guides/deploy-wordpress-custom-app"
     }
   ]
@@ -160,7 +160,7 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Should I create WordPress as a Laravel app or a custom app in Cipi?",
+      "name": "Devo criar WordPress como um aplicativo Laravel ou um aplicativo personalizado em Cipi?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Always as a custom app. Laravel apps expect artisan, composer, a .env file and the releases/current symlink layout. WordPress is a classic PHP site: cipi app create --custom deploys into htdocs with an Nginx vhost already set for index.php."
@@ -168,7 +168,7 @@
     },
     {
       "@type": "Question",
-      "name": "Does Cipi create a database for a WordPress custom app?",
+      "name": "Cipi cria um banco de dados para um aplicativo personalizado WordPress?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No. Custom apps ship without a database, .env, cron or queue workers. After the app exists, run cipi db create --name=<app> (MariaDB by default) and put those credentials in wp-config.php on the server."
@@ -176,7 +176,7 @@
     },
     {
       "@type": "Question",
-      "name": "Will a Git deploy wipe my WordPress uploads?",
+      "name": "Um deploy do Git apagará meus WordPress uploads?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Not if they are untracked. Custom apps pull into htdocs instead of swapping a releases symlink. Keep wp-content/uploads and wp-config.php out of Git so media and secrets survive every cipi deploy."
@@ -184,7 +184,7 @@
     },
     {
       "@type": "Question",
-      "name": "Can I use the Cipi Agent webhook for WordPress?",
+      "name": "Posso usar o Agente Cipi webhook para WordPress?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No. The /cipi/webhook route lives inside a Laravel app via the cipi/agent package. For WordPress, trigger deploys from GitHub Actions over SSH with sudo cipi deploy, or use Cipi Git auto-setup (deploy key plus provider webhook) when you do not need CI gates."
@@ -192,7 +192,7 @@
     },
     {
       "@type": "Question",
-      "name": "Is WordPress deploy on Cipi zero-downtime?",
+      "name": "O deploy de WordPress ocorre em Cipi sem downtime?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No. Custom apps use classic deploy into htdocs — there is no current/shared symlink swap. Keep theme and plugin diffs small, take a cipi db backup before risky releases, and use GitHub Actions so a failed check never reaches the server."
@@ -309,7 +309,7 @@
 
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">PT</summary><div class="lang-menu"><a href="/en/guides/deploy-wordpress-custom-app" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/wordpress-als-custom-app-deployen" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/deployer-wordpress-app-personnalisee" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/deploy-wordpress-app-custom-github" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/desplegar-wordpress-app-personalizada" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a class="active" href="/pt/guides/deploy-wordpress-app-personalizado" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Alternar tema" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Mudar tema" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -342,10 +342,10 @@
 <span class="sep">›</span>
 <span class="current">Implantar WordPress</span>
 </nav>
-<span class="cmp-eyebrow">WordPress · aplicativos personalizados · GitHub Ações</span>
-<h1>Implante WordPress em Cipi: <em>aplicativo personalizado</em> &amp; GitHub implantação automática</h1>
+<span class="cmp-eyebrow">WordPress · aplicativos personalizados · GitHub Actions</span>
+<h1>Implante WordPress em Cipi: <em>aplicativo personalizado</em> &amp; GitHub deploy automática</h1>
 <p class="cmp-updated">Por <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Última atualização: <time datetime="2026-08-22">22 de agosto de 2026</time> · grátis para ler, sem acesso pago</p>
-<p class="lead">Cipi é Laravel-primeiro, mas também hospeda WordPress como um <strong>aplicativo personalizado</strong>: usuário Linux isolado, pool PHP-FPM, Nginx vhost, Git pull into <code>htdocs</code>. Este guia caminha de um Ubuntu VPS vazio para um site que se implanta a cada push para <code>main</code>.</p>
+<p class="lead">Cipi é Laravel-first, mas também hospeda WordPress como um <strong>aplicativo personalizado</strong>: usuário Linux isolado, pool PHP-FPM, vhost Nginx, git pull em <code>htdocs</code>. Este guia caminha de um VPS Ubuntu vazio para um site que se implanta a cada push para <code>main</code>.</p>
 <div class="toc">
 <strong>Neste guia</strong>
 <ol>
@@ -361,19 +361,19 @@
 </ol>
 </div>
 <h2 id="why">Por que um aplicativo personalizado (não Laravel)</h2>
-<p><a class="inline" href="/">Cipi</a> suporta dois tipos de aplicativos. O padrão é Laravel: próprio usuário do sistema, PHP-FPM ou Octane, MariaDB, <code>.env</code>, Supervisor trabalhadores, crontab e <strong>tempo de inatividade zero</strong> Versões do implantador em <code>current</code>/<code>shared</code>. WordPress não é nada disso.</p>
+<p><a class="inline" href="/">Cipi</a> suporta dois tipos de aplicativos. O padrão é Laravel: próprio usuário do sistema, PHP-FPM ou Octane, MariaDB, <code>.env</code>, Supervisor workers, crontab e <strong>zero downtime</strong> Versões do Deployer em <code>current</code>/<code>shared</code>. WordPress não é nada disso.</p>
 <p>A <a class="inline" href="/pt/docs/apps#cli-app-custom">aplicativo personalizado</a> (<code>cipi app create --custom</code>) tem a forma correta:</p>
 <ul>
-<li><strong>Implantação clássica em <code>htdocs</code></strong> - não <code>current</code>/<code>shared</code> troca de link simbólico. <code>cipi deploy blog</code> puxa o repositório para <code>/home/blog/htdocs</code>.</li>
+<li><strong>Deploy clássica em <code>htdocs</code></strong> - não <code>current</code>/<code>shared</code> troca de link simbólico. <code>cipi deploy blog</code> puxa o repositório para <code>/home/blog/htdocs</code>.</li>
 <li><strong>Nginx já está WordPress pronto:</strong> <code>index index.html index.php</code> e <code>try_files $uri $uri/ /index.php?$args</code>.</li>
 <li><strong>Git é opcional.</strong> Ignore o repositório para uploads somente SFTP; anexe um mais tarde com <code>cipi app edit blog --repository=…</code>.</li>
 <li><strong>Sem banco de dados, não <code>.env</code>, sem cron, sem filas</strong> até você adicioná-los. WordPress precisa de um banco de dados — você o cria na próxima etapa.</li>
 </ul>
 <div class="note">
-<p>Implantações personalizadas são <strong>não</strong> tempo de inatividade zero. Mantenha as diferenças de tema e plugin pequenas, faça backup do banco de dados antes de lançamentos arriscados e deixe GitHub Ações ser a porta para que uma verificação vermelha nunca chegue à produção. Para padrões de tempo de inatividade zero Laravel, use o<a class="inline" href="/pt/guides/ci-cd-e-workflow-git-laravel">CI/CD para guia Laravel</a>.</p>
+<p>Deploys personalizadas são <strong>não</strong> zero downtime. Mantenha as diferenças de tema e plugin pequenas, faça backup do banco de dados antes de lançamentos arriscados e deixe GitHub Actions ser a porta para que uma verificação vermelha nunca chegue à produção. Para padrões sem downtime Laravel, use o<a class="inline" href="/pt/guides/ci-cd-e-workflow-git-laravel">CI/CD para guia Laravel</a>.</p>
 </div>
 <h2 id="repo">Como estruturar o repositório WordPress</h2>
-<p>Trate o Git como a fonte da verdade para <em>código</em>, não para segredos ou mídia. Um repositório que sobrevive à implantação automática é assim:</p>
+<p>Trate o Git como a fonte da verdade para <em>código</em>, não para segredos ou mídia. Um repositório que sobrevive ao deploy automática é assim:</p>
 <pre class="code-pre"><code>wordpress-site/
   .gitignore
   .github/workflows/deploy.yml
@@ -391,15 +391,15 @@ wp-content/cache/
 wp-content/upgrade/
 wp-content/backup-db/
 .htaccess</code></pre>
-<p>Como os aplicativos personalizados entram <code>htdocs</code> em vez de trocar um diretório de lançamento, <strong>arquivos não rastreados permanecem no disco</strong>. É assim que os uploads e <code>wp-config.php</code> sobreviver a cada implantação.</p>
+<p>Como os aplicativos personalizados entram <code>htdocs</code> em vez de trocar um diretório de lançamento, <strong>arquivos não rastreados permanecem no disco</strong>. É assim que os uploads e <code>wp-config.php</code> sobreviver a cada deploy.</p>
 <ul>
 <li><strong>Núcleo no Git</strong>é o fluxo de trabalho mais simples da agência: tema, plugins e o próprio WordPress versionados juntos.</li>
 <li><strong>Composer / Bedrock</strong> também funciona - definir <code>--docroot=web</code> (ou <code>public</code>) quando o controlador frontal não está na raiz do repositório.</li>
 <li><strong>Não cometa segredos de produção.</strong> Gere sais no servidor; nunca empurre uma live <code>wp-config.php</code>.</li>
 </ul>
 <h2 id="create">Crie o aplicativo personalizado</h2>
-<p>Cipi já deve estar instalado em um novo Ubuntu VPS:</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | festa</div>
+<p>Cipi já deve estar instalado em um novo VPS Ubuntu:</p>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <p>SSH em como <code>cipi</code>, então <code>sudo -s</code>. Crie o aplicativo WordPress de forma não interativa (PHP 8.3 é uma correspondência segura para o WordPress atual; troque a quente mais tarde com <code>cipi app edit</code>):</p>
 <pre class="code-pre"><code>$ cipi app create --custom --user=blog \
     --domain=blog.example.com \
@@ -410,10 +410,10 @@ wp-content/backup-db/
 <ul>
 <li>Usuário Linux <code>blog</code> e casa <code>/home/blog</code></li>
 <li>Pool de PHP-FPM em 8.3 e um vhost de Nginx para <code>blog.example.com</code></li>
-<li>Chave de implantação SSH para o repositório</li>
-<li>Configuração do implantador que entra <code>/home/blog/htdocs</code></li>
+<li>Chave de deploy SSH para o repositório</li>
+<li>Configuração do Deployer que entra <code>/home/blog/htdocs</code></li>
 </ul>
-<p>Se você salvou um token de acesso pessoal GitHub primeiro, Cipi também adiciona a chave de implantação e um provedor webhook automaticamente:</p>
+<p>Se você salvou um token de acesso pessoal GitHub primeiro, Cipi também adiciona a chave de deploy e um provedor webhook automaticamente:</p>
 <pre class="code-pre"><code>$ cipi git github-token ghp_xxxxxxxxxxxxxxxxxxxx
 $ cipi git status</code></pre>
 <p>Tokens refinados precisam <strong>Administração</strong> e <strong>Webhooks</strong> definido como <em>Ler e escrever</em> no repositório de destino; tokens clássicos precisam do <code>repo</code> escopo. Os detalhes estão no <a class="inline" href="/pt/docs/deploy#git-auto-setup">Configuração automática do Git</a> documentos.</p>
@@ -423,7 +423,7 @@ $ cipi git status</code></pre>
 <p>Os aplicativos personalizados não obtêm um banco de dados. Crie um depois que o aplicativo existir — MariaDB é o padrão e o que WordPress espera:</p>
 <pre class="code-pre"><code>$ cipi db create --name=blog</code></pre>
 <p>Cipi imprime o nome do banco de dados, usuário, senha e um <code>mariadb+ssh://</code> URL para TablePlus ou DBeaver. Copie esses valores; eles entram <code>wp-config.php</code> no servidor, não no Git.</p>
-<p>Ponto DNS <code>A</code> registros para <code>blog.example.com</code> e <code>www.blog.example.com</code> em VPS, então:</p>
+<p>Ponto DNS <code>A</code> logs para <code>blog.example.com</code> e <code>www.blog.example.com</code> em VPS, então:</p>
 <pre class="code-pre"><code>$ cipi alias add blog www.blog.example.com
 $ cipi www add blog
 $ cipi ssl install blog</code></pre>
@@ -451,10 +451,10 @@ define('WP_MEMORY_LIMIT', '256M');</code></pre>
 <p><code>wp-config.php</code> não está rastreado. Mais tarde <code>cipi deploy</code> não irá excluí-lo. Se você clonar novamente todo o diretório inicial, recrie o arquivo a partir das mesmas credenciais do banco de dados (<code>cipi db password blog</code> se você os perdeu).</p>
 </div>
 <h2 id="github">GitHub Pipeline de ações (recomendado)</h2>
-<p>O Agente Laravel webhook (<code>https://your-app.com/cipi/webhook</code>) é uma rota <em>dentro</em> um aplicativo Laravel. Não existe em WordPress. Para implantação automática, tenha GitHub SSH no servidor e execute <code>cipi deploy</code> - o mesmo <a class="inline" href="/pt/docs/deploy#ci-pipeline-ssh">implantação de SSH de pipeline</a> Cipi documentos para liberações Laravel fechadas.</p>
-<p><strong>Escolha um gatilho.</strong> Se a configuração automática do Git já criou um provedor webhook, desative-o (ou nunca crie um) antes de adicionar ações. Duas implantações no mesmo push lutam pelo arquivo de bloqueio.</p>
+<p>O Agente Laravel webhook (<code>https://your-app.com/cipi/webhook</code>) é uma rota <em>dentro</em> um aplicativo Laravel. Não existe em WordPress. Para deploy automática, tenha GitHub SSH no servidor e execute <code>cipi deploy</code> - o mesmo <a class="inline" href="/pt/docs/deploy#ci-pipeline-ssh">deploy de SSH de pipeline</a> Cipi documentos para liberações Laravel fechadas.</p>
+<p><strong>Escolha um gatilho.</strong> Se a configuração automática do Git já criou um provedor webhook, desative-o (ou nunca crie um) antes de adicionar ações. Duas deploys no mesmo push lutam pelo arquivo de bloqueio.</p>
 <h3>1. Chave SSH dedicada para CI</h3>
-<p>Gere uma chave ed25519 em seu laptop. Adicione o <strong>público</strong> chave para o servidor; armazenar o <strong>privado</strong> chave como um segredo GitHub. Não reutilize chaves de implantação do Git ou sua chave SSH pessoal.</p>
+<p>Gere uma chave ed25519 em seu laptop. Adicione o <strong>público</strong> chave para o servidor; armazenar o <strong>privado</strong> chave como um segredo GitHub. Não reutilize chaves de deploy do Git ou sua chave SSH pessoal.</p>
 <pre class="code-pre"><code># on your laptop
 $ ssh-keygen -t ed25519 -C "ci-deploy-blog" -f ~/.ssh/ci_deploy_blog -N ""
 $ ssh-copy-id -i ~/.ssh/ci_deploy_blog.pub cipi@your-server-ip
@@ -514,10 +514,10 @@ jobs:
 <li><strong>Repetição manual</strong> — <code>workflow_dispatch</code> reimplanta o mesmo commit sem outro push.</li>
 </ul>
 <p>Proteger <code>main</code>: sem push direto, verificações de status obrigatórias, ramificações de curta duração. Os mesmos hábitos baseados no tronco que os <a class="inline" href="/pt/guides/ci-cd-e-workflow-git-laravel">Laravel CI/CD guia</a>, sem fingir que WordPress tem Pest e Pint.</p>
-<p>Assista à implantação do servidor:</p>
+<p>Assista ao deploy do servidor:</p>
 <pre class="code-pre"><code>$ cipi app logs blog --type=deploy</code></pre>
 <h3>3. Opcional: backup antes do lançamento</h3>
-<p>WordPress alterações de esquema são muitas vezes irreversíveis. Instantâneo MariaDB primeiro e depois implante:</p>
+<p>WordPress alterações de esquema são muitas vezes irreversíveis. Snapshot MariaDB primeiro e depois implante:</p>
 <pre class="code-pre"><code>          script: |
             sudo cipi db backup blog
             sudo cipi deploy blog</code></pre>
@@ -527,12 +527,12 @@ jobs:
 <pre class="code-pre"><code>$ cipi git github-token ghp_xxxxxxxxxxxxxxxxxxxx
 $ cipi app create --custom --user=blog --domain=blog.example.com \
     --repository=git@github.com:you/wordpress-site.git --branch=main --php=8.3</code></pre>
-<p>Ligado <code>app create</code>, Cipi adiciona a chave de implantação SSH e um webhook no repositório. O resumo mostra <em>configurado automaticamente ✓</em>. Um empurrão para <code>main</code> então executa o mesmo <code>cipi deploy</code> pipeline sem um arquivo YAML.</p>
+<p>Ligado <code>app create</code>, Cipi adiciona a chave de deploy SSH e um webhook no repositório. O resumo mostra <em>configurado automaticamente ✓</em>. Um empurrão para <code>main</code> então executa o mesmo <code>cipi deploy</code> pipeline sem um arquivo YAML.</p>
 <p>Se você criou o aplicativo antes de salvar um token, imprima os valores e adicione-os manualmente:</p>
 <pre class="code-pre"><code>$ cipi deploy blog --key       # Settings → Deploy keys
 $ cipi deploy blog --webhook   # Settings → Webhooks</code></pre>
 <div class="note">
-<p>Não aponte um site WordPress para a URL do agente Laravel <code>/cipi/webhook</code>. Essa rota só existe depois de você <code>composer require cipi/agent</code> dentro de um aplicativo Laravel. WordPress usa o provedor webhook Cipi prints ou GitHub Actions over SSH — não ambos.</p>
+<p>Não aponte um site WordPress para a URL do agente Laravel <code>/cipi/webhook</code>. Essa rota só existe depois de você <code>composer require cipi/agent</code> dentro de uma app Laravel. O WordPress usa o webhook do provedor que o Cipi imprime, ou GitHub Actions via SSH — nunca os dois.</p>
 </div>
 <h2 id="ops">Cron, backups e operações diárias</h2>
 <h3>Substitua WP-Cron pelo sistema cron</h3>
@@ -563,7 +563,7 @@ blog@server:~$ crontab -e</code></pre>
 </tr>
 <tr>
 <td><code>cipi app logs blog --type=deploy</code></td>
-<td>Histórico de implantação</td>
+<td>Histórico de deploy</td>
 </tr>
 <tr>
 <td><code>cipi app logs blog --type=php</code></td>
@@ -575,7 +575,7 @@ blog@server:~$ crontab -e</code></pre>
 </tr>
 <tr>
 <td><code>cipi app edit blog --branch=staging</code></td>
-<td>Alterar o branch de implantação</td>
+<td>Alterar o branch de deploy</td>
 </tr>
 <tr>
 <td><code>cipi db backup blog</code></td>
@@ -590,24 +590,24 @@ blog@server:~$ crontab -e</code></pre>
 </div>
 <div class="cta-box">
 <h2>Coloque isso em prática com Cipi</h2>
-<p>Cipi é o open-source deploy CLI gratuito usado neste guia: um comando transforma um novo Ubuntu VPS em um servidor protegido para Laravel <em>e</em> aplicativos PHP personalizados, como WordPress — Nginx, PHP-FPM, MariaDB, SSL e implantações Git incluídas.</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | festa</div>
+<p>Cipi é o open-source deploy CLI gratuito usado neste guia: um comando transforma um novo VPS Ubuntu em um servidor protegido para Laravel <em>e</em> aplicativos PHP personalizados, como WordPress — Nginx, PHP-FPM, MariaDB, SSL e deploys Git incluídas.</p>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
-<a class="btn-primary" href="/pt/docs/apps#cli-app-custom">Documentos de aplicativos personalizados</a>
-<a class="btn-ghost" href="/pt/docs/deploy#ci-pipeline-ssh">Implantação de SSH de pipeline</a>
+<a class="btn-primary" href="/pt/docs/apps#cli-app-custom">Docs de aplicativos personalizados</a>
+<a class="btn-ghost" href="/pt/docs/deploy#ci-pipeline-ssh">Deploy de SSH de pipeline</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Estrela em GitHub</a>
 </div>
 </div>
 <h2 id="faq">Perguntas frequentes</h2>
 <div class="faq-item"><h3>Devo criar WordPress como um aplicativo Laravel ou um aplicativo personalizado em Cipi?</h3><p>Sempre como um aplicativo personalizado. Laravel aplicativos esperam artisan, Composer, um <code>.env</code> arquivo e o <code>releases</code>/<code>current</code> layout. WordPress é um site PHP clássico: <code>cipi app create --custom</code> implanta em <code>htdocs</code> com Nginx já definido para <code>index.php</code>.</p></div>
-<div class="faq-item"><h3>Cipi cria um banco de dados para um aplicativo personalizado WordPress?</h3><p>Não. Os aplicativos personalizados são fornecidos sem banco de dados. <code>.env</code>, cron ou trabalhadores da fila. Depois que o aplicativo existir, execute <code>cipi db create --name=&lt;app&gt;</code> (MariaDB por padrão) e coloque essas credenciais em <code>wp-config.php</code> no servidor.</p></div>
-<div class="faq-item"><h3>Uma implantação do Git apagará meus WordPress uploads?</h3><p>Não se eles não forem rastreados. Aplicativos personalizados são acessados <code>htdocs</code> em vez de trocar um link simbólico de lançamento. Mantenha <code>wp-content/uploads</code> e <code>wp-config.php</code> fora do Git para que a mídia e os segredos sobrevivam a cada <code>cipi deploy</code>.</p></div>
-<div class="faq-item"><h3>Posso usar o Agente Cipi webhook para WordPress?</h3><p>Não. O <code>/cipi/webhook</code> rota reside dentro de um aplicativo Laravel através do <code>cipi/agent</code> pacote. Para WordPress, o gatilho é implantado a partir de GitHub Ações por SSH com <code>sudo cipi deploy</code>, ou use Cipi configuração automática do Git (chave de implantação mais provedor webhook) quando você não precisar de portas CI.</p></div>
-<div class="faq-item"><h3>A implantação de WordPress ocorre em Cipi com tempo de inatividade zero?</h3><p>Não. Aplicativos personalizados usam implantação clássica em <code>htdocs</code> - não há <code>current</code>/<code>shared</code> troca de link simbólico. Mantenha as diferenças de tema e plugin pequenas, dê uma olhada <code>cipi db backup</code> antes de lançamentos arriscados e use GitHub Ações para que uma verificação com falha nunca chegue ao servidor.</p></div>
+<div class="faq-item"><h3>Cipi cria um banco de dados para um aplicativo personalizado WordPress?</h3><p>Não. Os aplicativos personalizados são fornecidos sem banco de dados. <code>.env</code>, cron ou workers da fila. Depois que o aplicativo existir, execute <code>cipi db create --name=&lt;app&gt;</code> (MariaDB por padrão) e coloque essas credenciais em <code>wp-config.php</code> no servidor.</p></div>
+<div class="faq-item"><h3>Um deploy do Git apagará meus WordPress uploads?</h3><p>Não se eles não forem rastreados. Aplicativos personalizados são acessados <code>htdocs</code> em vez de trocar um link simbólico de lançamento. Mantenha <code>wp-content/uploads</code> e <code>wp-config.php</code> fora do Git para que a mídia e os segredos sobrevivam a cada <code>cipi deploy</code>.</p></div>
+<div class="faq-item"><h3>Posso usar o Agente Cipi webhook para WordPress?</h3><p>Não. O <code>/cipi/webhook</code> rota reside dentro de um aplicativo Laravel através do <code>cipi/agent</code> pacote. Para WordPress, o gatilho é implantado a partir de GitHub Actions por SSH com <code>sudo cipi deploy</code>, ou use Cipi configuração automática do Git (chave de deploy mais provedor webhook) quando você não precisar de portas CI.</p></div>
+<div class="faq-item"><h3>O deploy de WordPress ocorre em Cipi sem downtime?</h3><p>Não. Aplicativos personalizados usam deploy clássica em <code>htdocs</code> - não há <code>current</code>/<code>shared</code> troca de link simbólico. Mantenha as diferenças de tema e plugin pequenas, dê uma olhada <code>cipi db backup</code> antes de lançamentos arriscados e use GitHub Actions para que uma verificação com falha nunca chegue ao servidor.</p></div>
 <h2>Continue lendo</h2>
 <div class="related">
-<a href="/pt/docs/apps#cli-app-custom">Documentos: aplicativos personalizados</a>
-<a href="/pt/docs/deploy#ci-pipeline-ssh">Documentos: implantação de SSH de pipeline</a>
+<a href="/pt/docs/apps#cli-app-custom">Docs: aplicativos personalizados</a>
+<a href="/pt/docs/deploy#ci-pipeline-ssh">Docs: deploy de SSH de pipeline</a>
 <a href="/pt/guides/ci-cd-e-workflow-git-laravel">CI/CD por Laravel</a>
 <a href="/pt/guides/deploy-laravel-em-vps-ubuntu">Implante Laravel em Ubuntu</a>
 <a href="/pt/guides/checklist-seguranca-laravel">Laravel lista de verificação de segurança</a>
@@ -618,17 +618,17 @@ blog@server:~$ crontab -e</code></pre>
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Implantação gratuita de open-source Laravel CLI para Ubuntu VPS — Octane, Horizon, Reverb e implantações Git com tempo de inatividade zero.</p>
+<p>CLI open source e gratuita para fazer deploy de Laravel num VPS Ubuntu — Octane, Horizon, Reverb e deploys Git sem downtime.</p>
 <ul class="footer-brand-links">
-<li><a href="/pt/docs/getting-started">Comece</a></li>
-<li><a href="/pt/docs/">Documentos</a></li>
+<li><a href="/pt/docs/getting-started">Primeiros passos</a></li>
+<li><a href="/pt/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
 <nav aria-label="Compare Cipi com alternativas" class="footer-col footer-col--compare">
 <strong>Comparar Cipi</strong>
 <ul>
-<li><a href="/pt/alternative-to-laravel-forge">Laravel Forge alternativa</a></li>
+<li><a href="/pt/alternative-to-laravel-forge">Alternativa ao Laravel Forge</a></li>
 <li><a href="/pt/alternative-to-laravel-cloud">Laravel Alternativa em nuvem</a></li>
 <li><a href="/pt/alternative-to-ploi">Ploi alternativa</a></li>
 <li><a href="/pt/alternative-to-coolify">Coolify alternativa</a></li>
@@ -640,13 +640,13 @@ blog@server:~$ crontab -e</code></pre>
 <li><a href="/pt/alternatives">Todas as comparações</a></li>
 </ul>
 </nav>
-<nav aria-label="Guias Laravel gratuitos" class="footer-col">
+<nav aria-label="Guias gratuitos de Laravel" class="footer-col">
 <strong>Guias gratuitos</strong>
 <ul>
 <li><a href="/pt/guides/gerenciar-apps-com-cipi-yml">Gerenciar apps com cipi.yml</a></li>
-<li><a href="/pt/guides/painel-ui-e-api">Painel UI e API</a></li>
+<li><a href="/pt/guides/painel-ui-e-api">Painel de controle e API</a></li>
 <li><a href="/pt/guides/usar-cipi-agent-no-laravel">cipi/agent e MCP do projeto</a></li>
-<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Implantar WordPress no Cipi</a></li>
+<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Deploy de WordPress no Cipi</a></li>
 <li><a href="/pt/guides/">Todos os guias</a></li>
                     </ul>
 </nav>

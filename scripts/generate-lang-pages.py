@@ -50,6 +50,15 @@ PROTECTED = re.compile(
 # Google Translate rewrites English words inside __KEEP_N__ (→ __GARDER_N__, etc.).
 BROKEN_PLACEHOLDER = re.compile(r"__\w+_\d+__")
 
+# JSON-LD repeats the page copy for search engines. It lives inside a <script>,
+# so the normal walk skips it — translate it explicitly or a localized page
+# hands Google English structured data.
+LD_JSON_RE = re.compile(
+    r'(<script[^>]*type\s*=\s*"application/ld\+json"[^>]*>)(.*?)(</script>)', re.DOTALL | re.IGNORECASE
+)
+LD_PROSE_KEYS = {"description", "text", "name", "headline", "articleBody",
+                 "alternateName", "about"}
+
 ALT_RE = re.compile(r"<!-- i18n:alternates -->.*?<!-- /i18n:alternates -->", re.DOTALL)
 SWITCH_RE = re.compile(r"<!-- i18n:switch -->.*?<!-- /i18n:switch -->", re.DOTALL)
 OG_LOCALE_RE = re.compile(
@@ -275,6 +284,71 @@ def apply_translations(html: str, lang: str, lookup: Lookup) -> str:
     return str(soup)
 
 
+def ld_prose(obj: object, out: list[str]) -> None:
+    if isinstance(obj, dict):
+        for key, value in obj.items():
+            if isinstance(value, str) and key in LD_PROSE_KEYS:
+                out.append(value)
+            else:
+                ld_prose(value, out)
+    elif isinstance(obj, list):
+        for value in obj:
+            ld_prose(value, out)
+
+
+def ld_lookup(lookup: Lookup, src: str) -> str | None:
+    """Translation for a JSON-LD string, tolerating trailing punctuation.
+
+    JSON-LD usually drops the full stop the visible heading or step carries, so
+    an exact lookup would miss translations the cache already holds.
+    """
+    got = lookup.cache.get(f"{lookup.lang}::{src}")
+    if got is not None:
+        return got
+    collapsed = " ".join(src.split())
+    got = lookup.cache.get(f"{lookup.lang}::{collapsed}")
+    if got is not None:
+        return " ".join(got.split())
+    bare = collapsed.rstrip(" .:;\u2014-")
+    tail = collapsed[len(bare):]
+    for candidate in (bare, bare + ".", bare + ":"):
+        got = lookup.cache.get(f"{lookup.lang}::{candidate}")
+        if got is not None:
+            return " ".join(got.split()).rstrip(" .:;\u2014-") + tail
+    return None
+
+
+def translate_jsonld(html: str, lookup: Lookup) -> str:
+    """Replace JSON-LD prose with cached translations, keeping the JSON valid."""
+
+    def one_block(m: re.Match[str]) -> str:
+        body = m.group(2)
+        try:
+            data = json.loads(body)
+        except json.JSONDecodeError:
+            return m.group(0)
+        found: list[str] = []
+        ld_prose(data, found)
+        new_body = body
+        for src in found:
+            if len(src.split()) < 4:
+                continue
+            dst = ld_lookup(lookup, src)
+            if not dst or dst == src:
+                continue
+            needle = json.dumps(src, ensure_ascii=False)[1:-1]
+            if needle not in new_body:
+                continue
+            new_body = new_body.replace(needle, json.dumps(dst, ensure_ascii=False)[1:-1])
+        try:
+            json.loads(new_body)
+        except json.JSONDecodeError:
+            return m.group(0)  # never write a block that stopped parsing
+        return m.group(1) + new_body + m.group(3)
+
+    return LD_JSON_RE.sub(one_block, html)
+
+
 def rewrite_links(soup: BeautifulSoup, lang: str) -> None:
     for tag in soup.find_all(["a", "link"]):
         attr = "href"
@@ -396,6 +470,7 @@ def main() -> None:
                 continue
             print(f"  write {dst.relative_to(ROOT)}")
             translated = apply_translations(html, lang, lookup)
+            translated = translate_jsonld(translated, lookup)
             translated = post_process(translated, lang, en_canon)
             dst.write_text(translated, encoding="utf-8")
 

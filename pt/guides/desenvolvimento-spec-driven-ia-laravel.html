@@ -268,7 +268,7 @@
 <a href="/pt/cipi-yml" class="nav-link">cipi.yml</a>
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">PT</summary><div class="lang-menu"><a href="/en/guides/spec-driven-development-ai-laravel" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/spezifikationsgetriebene-ki-entwicklung-laravel" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/developpement-spec-driven-ia-laravel" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/sviluppo-spec-driven-ai-laravel" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/desarrollo-spec-driven-ia-laravel" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a class="active" href="/pt/guides/desenvolvimento-spec-driven-ia-laravel" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Alternar tema" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Mudar tema" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -348,10 +348,10 @@
             ou plug-ins personalizados. Para uma equipe Laravel, os servidores MCP interessantes são aqueles que tocam seu
             pipeline de entrega:</p>
 <ul>
-<li><strong>Sua estrutura:</strong> introspecte rotas, esquemas e trabalhos para que o agente pare de adivinhar.</li>
+<li><strong>Sua framework:</strong> introspecte rotas, esquemas e trabalhos para que o agente pare de adivinhar.</li>
 <li><strong>Sua infraestrutura:</strong> é aqui que tudo se torna real -
                 <a class="inline" href="/">Cipi</a> envia um <strong>servidor duplo MCP</strong>(global e por aplicativo), então
-                um IDE ou agente compatível com MCP pode criar aplicativos, acionar implantações, gerenciar SSL e bancos de dados em seu
+                um IDE ou agente compatível com MCP pode criar aplicativos, acionar deploys, gerenciar SSL e bancos de dados em seu
                 VPS por meio de um API estruturado e autorizado em vez de SSH bruto. O
                 <a class="inline" href="/pt/docs/agent">Cipi Pacote de agente</a> adiciona um endpoint MCP no aplicativo em Laravel
                 lado.</li>
@@ -370,18 +370,18 @@
                 MCP/API de Cipi pode ser implantado - e nada mais.</li>
 <li><strong>Revisão humana para a diferença sensível:</strong>autenticação, pagamentos, migrações e qualquer coisa relacionada
                 PII recebe olhos humanos, sempre.</li>
-<li><strong>A reversão fica a um comando de distância</strong> — implantações de padrões de lançamento e instantâneos de pré-implantação
+<li><strong>A reversão fica a um comando de distância</strong> — deploys de padrões de lançamento e snapshots de pré-deploy
                 significa que um erro do agente é um incidente, não uma catástrofe.</li>
 </ul>
 <h2 id="workflow">Um ciclo concreto da especificação à produção</h2>
 <ol>
 <li><strong>Escreva a especificação</strong> (problema, restrições, critérios de aceitação) como um artefato de repositório -
-                Larapilot dá estrutura.</li>
+                Larapilot dá framework.</li>
 <li><strong>O agente implementa</strong> em uma ramificação de curta duração, usando ferramentas MCP para examinar o aplicativo
                 e execute testes localmente.</li>
 <li><strong>CI executa o portão completo</strong> — estilo, análise estática, testes, auditoria de segurança.</li>
 <li><strong>Um humano analisa de acordo com as especificações,</strong> não contra vibrações.</li>
-<li><strong>Mesclar com os gatilhos principais a implantação webhook</strong> (tempo de inatividade zero via Cipi), verificações de integridade
+<li><strong>Mesclar com os gatilhos principais o deploy webhook</strong> (zero downtime via Cipi), verificações de integridade
                 confirmar, as exceções são observadas nos primeiros minutos (<a class="inline" href="https://boogle.web.ap.it" target="_blank">Google</a> se você se auto-hospedar).</li>
 <li><strong>A especificação é atualizada</strong> com o que foi realmente decidido - fechando o ciclo de contexto para
                 na próxima sessão, humano ou agente.</li>
@@ -399,13 +399,13 @@
 </table>
 </div>
 <p>O padrão por trás de cada item durável: <strong>os agentes amplificam qualquer processo existente.</strong> Boas especificações,
-            testes e automação de implantação são amplificados em velocidade; sua ausência é amplificada em caos.</p>
+            testes e automação de deploy são amplificados em velocidade; sua ausência é amplificada em caos.</p>
 <div class="cta-box">
 <h2>Coloque isso em prática com Cipi</h2>
 <p>Cipi é o open-source implantar CLI gratuito mencionado ao longo deste guia: um comando transforma um novo
-                Ubuntu VPS em um servidor de produção reforçado para Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
-                PostgreSQL, filas, agendador, SSL e implantações Git com tempo de inatividade zero incluídas.</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | festa</div>
+                VPS Ubuntu em um servidor de produção reforçado para Laravel — Nginx, PHP-FPM ou Octane, MariaDB ou
+                PostgreSQL, filas, agendador, SSL e deploys Git sem downtime incluídas.</p>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
 <a class="btn-primary" href="/pt/docs/getting-started">Comece gratuitamente</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Estrela em GitHub</a>
@@ -414,9 +414,9 @@
 </div>
 <h2 id="faq">Perguntas frequentes</h2>
 <div class="faq-item"><h3>O que é desenvolvimento orientado por especificações em uma frase?</h3><p>Escrever especificações versionadas – problemas, restrições, critérios de aceitação – como artefatos de repositório que os agentes de IA implementam e os humanos revisam, para que a intenção sobreviva por mais tempo do que qualquer sessão de chat.</p></div>
-<div class="faq-item"><h3>O que é MCP (protocolo de contexto de modelo)?</h3><p>Um protocolo aberto que padroniza como os agentes de IA descobrem e chamam ferramentas externas — bancos de dados, navegadores, servidores, APIs — para que qualquer agente compatível com MCP possa usar qualquer servidor MCP sem integrações personalizadas. Cipi, por exemplo, expõe o gerenciamento de servidores (aplicativos, implantações, SSL, bancos de dados) como ferramentas MCP.</p></div>
+<div class="faq-item"><h3>O que é MCP (protocolo de contexto de modelo)?</h3><p>Um protocolo aberto que padroniza como os agentes de IA descobrem e chamam ferramentas externas — bancos de dados, navegadores, servidores, APIs — para que qualquer agente compatível com MCP possa usar qualquer servidor MCP sem integrações personalizadas. Cipi, por exemplo, expõe o gerenciamento de servidores (aplicativos, deploys, SSL, bancos de dados) como ferramentas MCP.</p></div>
 <div class="faq-item"><h3>Os agentes de IA substituirão os desenvolvedores Laravel?</h3><p>O trabalho está mudando em vez de desaparecer: menos digitação linha por linha, mais especificação, revisão e domínio da arquitetura e da produção. Os desenvolvedores que escrevem especificações claras e constroem proteções fortes são multiplicados por agentes; a parte do trabalho apenas com código é o que diminui.</p></div>
-<div class="faq-item"><h3>Como posso permitir que um agente de IA seja implantado com segurança?</h3><p>Nunca forneça aos agentes SSH bruto ou segredos de produção. Roteie seu acesso por meio de interfaces revogáveis ​​e com escopo definido — um servidor MCP ou REST API com permissões explícitas, como as de Cipi — e bloqueie todas as alterações por trás do CI e do padrão de lançamentos, para que qualquer implantação seja reversível em um comando.</p></div>
+<div class="faq-item"><h3>Como posso permitir que um agente de IA seja implantado com segurança?</h3><p>Nunca forneça aos agentes SSH bruto ou segredos de produção. Roteie seu acesso por meio de interfaces revogáveis ​​e com escopo definido — um servidor MCP ou REST API com permissões explícitas, como as de Cipi — e bloqueie todas as alterações por trás do CI e do padrão de lançamentos, para que qualquer deploy seja reversível em um comando.</p></div>
 <div class="faq-item"><h3>O desenvolvimento orientado por especificações funciona com bases de código legadas existentes?</h3><p>Sim – comece escrevendo especificações para a próxima mudança, não para todo o sistema. Cada especificação documenta uma parte do comportamento pretendido, e o arquivo se transforma em documentação viva exatamente onde os agentes e novos membros da equipe precisam dele.</p></div>
 <h2>Continue lendo</h2>
 <div class="related">
@@ -432,35 +432,35 @@
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Implantação gratuita de open-source Laravel CLI para Ubuntu VPS — Octane, Horizon, Reverb e implantações Git com tempo de inatividade zero.</p>
+<p>CLI open source e gratuita para fazer deploy de Laravel num VPS Ubuntu — Octane, Horizon, Reverb e deploys Git sem downtime.</p>
 <ul class="footer-brand-links">
-<li><a href="/pt/docs/getting-started">Comece</a></li>
-<li><a href="/pt/docs/">Documentos</a></li>
+<li><a href="/pt/docs/getting-started">Primeiros passos</a></li>
+<li><a href="/pt/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
 <nav aria-label="Compare Cipi com alternativas" class="footer-col footer-col--compare">
 <strong>Comparar Cipi</strong>
 <ul>
-<li><a href="/pt/alternative-to-laravel-forge">Laravel Forge alternativa</a></li>
-<li><a href="/pt/alternative-to-laravel-cloud">Laravel Alternativa de nuvem</a></li>
+<li><a href="/pt/alternative-to-laravel-forge">Alternativa ao Laravel Forge</a></li>
+<li><a href="/pt/alternative-to-laravel-cloud">Alternativa ao Laravel Cloud</a></li>
 <li><a href="/pt/alternative-to-ploi">Ploi alternativa</a></li>
 <li><a href="/pt/alternative-to-coolify">Coolify alternativa</a></li>
 <li><a href="/pt/alternative-to-runcloud">RunCloud alternativa</a></li>
 <li><a href="/pt/alternative-to-cloudpanel">CloudPanel alternativa</a></li>
 <li><a href="/pt/alternative-to-cpanel">cPanel alternativa</a></li>
 <li><a href="/pt/alternative-to-plesk">Alternativa Plesk</a></li>
-<li><a href="/pt/best-laravel-forge-alternatives">Melhores alternativas de Forge 2026</a></li>
+<li><a href="/pt/best-laravel-forge-alternatives">Melhores alternativas ao Forge em 2026</a></li>
 <li><a href="/pt/alternatives">Todas as comparações</a></li>
 </ul>
 </nav>
-<nav aria-label="Guias Laravel gratuitos" class="footer-col">
+<nav aria-label="Guias gratuitos de Laravel" class="footer-col">
 <strong>Guias gratuitos</strong>
 <ul>
 <li><a href="/pt/guides/gerenciar-apps-com-cipi-yml">Gerenciar apps com cipi.yml</a></li>
-<li><a href="/pt/guides/painel-ui-e-api">Painel UI e API</a></li>
+<li><a href="/pt/guides/painel-ui-e-api">Painel de controle e API</a></li>
 <li><a href="/pt/guides/usar-cipi-agent-no-laravel">cipi/agent e MCP do projeto</a></li>
-<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Implantar WordPress no Cipi</a></li>
+<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Deploy de WordPress no Cipi</a></li>
 <li><a href="/pt/guides/">Todos os guias</a></li>
                     </ul>
 </nav>

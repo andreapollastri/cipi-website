@@ -5,8 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Gerencie Laravel aplicativos com cipi.yml — configuração que acompanha o código</title>
-<meta content="Um guia prático para gerenciar Cipi aplicativos com cipi.yml: gere o arquivo a partir do servidor, revise o plano, aplique aliases, PHP, trabalhadores, Reverb, verificações de integridade e backups e, em seguida, ative-o para que cada implantação seja reconciliada." name="description"/>
-<meta content="cipi.yml, gerenciar laravel aplicativos, cipi yml apply, cipi plano yml, laravel configuração como código, trabalhadores de fila yaml, laravel reverb yaml, cipi perfis de backup" name="keywords"/>
+<meta content="Um guia prático para gerenciar Cipi aplicativos com cipi.yml: gere o arquivo a partir do servidor, revise o plano, aplique aliases, PHP, workers, Reverb, verificações de integridade e backups e, em seguida, ative-o para que cada deploy seja reconciliada." name="description"/>
+<meta content="cipi.yml, gerenciar laravel aplicativos, cipi yml apply, cipi plano yml, laravel configuração como código, workers de fila yaml, laravel reverb yaml, cipi perfis de backup" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/pt/guides/gerenciar-apps-com-cipi-yml" rel="canonical"/>
@@ -24,7 +24,7 @@
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/pt/guides/gerenciar-apps-com-cipi-yml" property="og:url"/>
 <meta content="Gerencie Laravel aplicativos com cipi.yml — configuração que acompanha o código" property="og:title"/>
-<meta content="Um guia prático para gerenciar Cipi aplicativos com cipi.yml: gere o arquivo a partir do servidor, revise o plano, aplique aliases, PHP, trabalhadores, Reverb, verificações de integridade e backups e, em seguida, ative-o para que cada implantação seja reconciliada." property="og:description"/>
+<meta content="Um guia prático para gerenciar Cipi aplicativos com cipi.yml: gere o arquivo a partir do servidor, revise o plano, aplique aliases, PHP, workers, Reverb, verificações de integridade e backups e, em seguida, ative-o para que cada deploy seja reconciliada." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -40,16 +40,16 @@
 <meta content="Guides" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Gerencie Laravel aplicativos com cipi.yml — configuração que acompanha o código" name="twitter:title"/>
-<meta content="Um guia prático para gerenciar Cipi aplicativos com cipi.yml: gere o arquivo a partir do servidor, revise o plano, aplique aliases, PHP, trabalhadores, Reverb, verificações de integridade e backups e, em seguida, ative-o para que cada implantação seja reconciliada." name="twitter:description"/>
+<meta content="Um guia prático para gerenciar Cipi aplicativos com cipi.yml: gere o arquivo a partir do servidor, revise o plano, aplique aliases, PHP, workers, Reverb, verificações de integridade e backups e, em seguida, ative-o para que cada deploy seja reconciliada." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Manage Laravel apps with cipi.yml — config that ships with the code",
-  "name": "Manage Laravel apps with cipi.yml — config that ships with the code",
+  "headline": "Gerencie Laravel aplicativos com cipi.yml — configuração que acompanha o código",
+  "name": "Gerencie Laravel aplicativos com cipi.yml — configuração que acompanha o código",
   "url": "https://cipi.sh/en/guides/manage-apps-with-cipi-yml",
-  "description": "A practical guide to managing Cipi apps with cipi.yml: generate the file from the server, review the plan, apply aliases, PHP, workers, Reverb, healthchecks and backups, then opt in so every deploy reconciles.",
+  "description": "Um guia prático para gerenciar Cipi aplicativos com cipi.yml: gere o arquivo a partir do servidor, revise o plano, aplique aliases, PHP, workers, Reverb, verificações de integridade e backups e, em seguida, ative-o para que cada deploy seja reconciliada.",
   "inLanguage": "pt",
   "image": "https://cipi.sh/og.png",
   "datePublished": "2026-09-07",
@@ -110,7 +110,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Manage apps with cipi.yml",
+      "name": "Gerenciar apps com cipi.yml",
       "item": "https://cipi.sh/en/guides/manage-apps-with-cipi-yml"
     }
   ]
@@ -123,7 +123,7 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Do I have to write cipi.yml by hand?",
+      "name": "Tenho que escrever cipi.yml à mão?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No. cipi yml generate prints the app's current server configuration as a ready-to-commit file. cipi yml example prints a blank commented template if you prefer to start from scratch."
@@ -131,7 +131,7 @@
     },
     {
       "@type": "Question",
-      "name": "Does a deploy apply cipi.yml automatically?",
+      "name": "Um deploy aplica o cipi.yml automaticamente?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Only after you opt in with cipi yml auto on. Until then deploys ignore the file and you reconcile manually with cipi yml plan and cipi yml apply."
@@ -139,7 +139,7 @@
     },
     {
       "@type": "Question",
-      "name": "What happens to things the file does not mention?",
+      "name": "O que acontece com as coisas que o arquivo não menciona?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "They are left alone. Only the sections you declare are reconciled, with one exception: the alias list is authoritative, so removing an alias from the file removes it from Nginx."
@@ -155,10 +155,10 @@
     },
     {
       "@type": "Question",
-      "name": "Does it work with the Git webhook?",
+      "name": "Funciona com o Git webhook?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. With cipi yml auto on, both cipi deploy and a webhook-triggered deploy reconcile after a successful release."
+        "text": "Sim. Com cipi yml auto em, ambos cipi deploy e uma reconciliação de deploy acionada por webhook após um lançamento bem-sucedido."
       }
     }
   ]
@@ -267,7 +267,7 @@
 <a class="nav-link" href="/pt/cipi-yml">cipi.yml</a>
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">PT</summary><div class="lang-menu"><a href="/en/guides/manage-apps-with-cipi-yml" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/apps-mit-cipi-yml-verwalten" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/gerer-apps-avec-cipi-yml" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/gestire-app-con-cipi-yml" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/gestionar-apps-con-cipi-yml" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a class="active" href="/pt/guides/gerenciar-apps-com-cipi-yml" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Alternar tema" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Mudar tema" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -303,7 +303,7 @@
 <span class="cmp-eyebrow">cipi.yml · config como código</span>
 <h1>Gerencie Laravel aplicativos com <em>cipi.yml</em></h1>
 <p class="cmp-updated">Por <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Última atualização: <time datetime="2026-09-07">7 de setembro de 2026</time> · grátis para ler, sem acesso pago</p>
-<p class="lead">O estado que um aplicativo espera no servidor – aliases, PHP, trabalhadores, saúde, backups – geralmente fica em um painel ou na cabeça de alguém. Desde Cipi 5.1 ele pode viver em um <code>cipi.yml</code> na raiz do repositório, revisado na mesma solicitação pull do código que dele depende. Este guia é o ciclo prático: gerar, planejar, aplicar e, em seguida, ativar para que cada implantação seja reconciliada.</p>
+<p class="lead">O estado que um aplicativo espera no servidor – aliases, PHP, workers, saúde, backups – geralmente fica em um painel ou na cabeça de alguém. Desde Cipi 5.1 ele pode viver em um <code>cipi.yml</code> na raiz do repositório, revisado na mesma solicitação pull do código que dele depende. Este guia é o ciclo prático: gerar, planejar, aplicar e, em seguida, ativar para que cada deploy seja reconciliada.</p>
 <div class="toc">
 <strong>Neste guia</strong>
 <ol>
@@ -314,20 +314,20 @@
 <li><a href="#example">Um arquivo completo</a></li>
 <li><a href="#plan">Planeje e depois aplique</a></li>
 <li><a href="#week">Uma semana de mudanças reais</a></li>
-<li><a href="#auto">Ative após cada implantação</a></li>
+<li><a href="#auto">Ative após cada deploy</a></li>
 <li><a href="#left-alone">O que o arquivo não tocará</a></li>
 <li><a href="#safety">É seguro aceitar em vez do Git</a></li>
 <li><a href="#faq">Perguntas frequentes</a></li>
 </ol>
 </div>
 <h2 id="why">Por que o arquivo pertence ao lado do código</h2>
-<p>Uma versão que adiciona um trabalho na fila sem um trabalhador é enviada pela metade. Uma reversão que sai da semana passada <code>upload_max_filesize</code>está meio revertido. O estado do servidor geralmente reside em outro lugar: um painel, uma página wiki ou a memória de quem configurou a caixa.</p>
+<p>Uma versão que adiciona um trabalho na fila sem um worker é enviada pela metade. Uma reversão que sai da semana passada <code>upload_max_filesize</code>está meio revertido. O estado do servidor geralmente reside em outro lugar: um painel, uma página wiki ou a memória de quem configurou a caixa.</p>
 <p>A <code>cipi.yml</code> confirmado próximo ao aplicativo Laravel torna esse estado parte da mesma solicitação pull que o código que depende dele. O arquivo é <strong>declarativo</strong>: descreve o estado final, não as etapas. Cipi lê o que o servidor tem, compara com o arquivo e mostra a diferença antes de mexer em qualquer coisa.</p>
 <div class="note">
-<p>A página do produto <a class="inline" href="/pt/cipi-yml">cipi.yml — configuração que acompanha o código</a> é a visão geral. O esquema completo reside em <a class="inline" href="/pt/docs/deploy#cli-yml">Documentos → Implantar → cipi.yml</a>. Este guia é o ciclo diário de um aplicativo.</p>
+<p>A página do produto <a class="inline" href="/pt/cipi-yml">cipi.yml — configuração que acompanha o código</a> é a visão geral. O esquema completo reside em <a class="inline" href="/pt/docs/deploy#cli-yml">Docs → Implantar → cipi.yml</a>. Este guia é o ciclo diário de um aplicativo.</p>
 </div>
 <h2 id="generate">Comece no servidor ativo</h2>
-<p>Você não precisa escrever o arquivo manualmente. Em uma caixa Cipi 5.1+, imprima a configuração atual do aplicativo — aliases, versão PHP e configurações por aplicativo, bancos de dados extras, trabalhadores da fila lidos de Supervisor, Horizon, Reverb, o agendador e os perfis de backup que o aplicativo possui — como um arquivo pronto para commit:</p>
+<p>Você não precisa escrever o arquivo manualmente. Em uma caixa Cipi 5.1+, imprima a configuração atual do aplicativo — aliases, versão PHP e configurações por aplicativo, bancos de dados extras, workers da fila lidos de Supervisor, Horizon, Reverb, o agendador e os perfis de backup que o aplicativo possui — como um arquivo pronto para commit:</p>
 <pre class="code-pre"><code>$ cipi yml generate myapp &gt; cipi.yml
 $ cipi yml plan myapp                  <span class="c"># reports nothing to do</span></code></pre>
 <p>Confirme esse arquivo na raiz do repositório. Cipi procura em <code>current/cipi.yml</code>, então <code>current/cipi.yaml</code>, então <code>shared/cipi.yml</code> - substituir por <code>--file=&lt;path&gt;</code> se você mantê-lo em outro lugar.</p>
@@ -356,7 +356,7 @@ $ cipi yml plan myapp                  <span class="c"># reports nothing to do</
 </tr>
 <tr>
 <td><code>cipi yml plan</code></td>
-<td>A diferença: cada alias, trabalhador, banco de dados, configuração e perfil que seria adicionado, alterado ou removido</td>
+<td>A diferença: cada alias, worker, banco de dados, configuração e perfil que seria adicionado, alterado ou removido</td>
 </tr>
 <tr>
 <td><code>cipi yml apply</code></td>
@@ -364,7 +364,7 @@ $ cipi yml plan myapp                  <span class="c"># reports nothing to do</
 </tr>
 <tr>
 <td><code>cipi yml auto</code></td>
-<td><code>on</code> / <code>off</code> / <code>status</code> — reconciliar após cada implantação bem-sucedida</td>
+<td><code>on</code> / <code>off</code> / <code>status</code> — reconciliar após cada deploy bem-sucedida</td>
 </tr>
 </tbody>
 </table>
@@ -381,10 +381,10 @@ $ cipi yml auto myapp on|off|status</code></pre>
 <li><strong>Aliases</strong> — a lista declarada substitui a atual. Um alias que você exclui do arquivo é removido de Nginx. Curingas como<code>*.myapp.com</code> são aceitos. O domínio primário nunca é gerenciado aqui.</li>
 <li><strong>PHP e php.ini</strong> — fixe o aplicativo em PHP 8.3, 8.4 ou 8.5 (já instalado no servidor) e defina substituições por aplicativo: <code>upload_max_filesize</code>, <code>post_max_size</code>, <code>memory_limit</code> e o resto. Os valores de todo o servidor permanecem com <code>cipi ini set</code>.</li>
 <li><strong>Bancos de dados extras</strong> — além daquele criado com o aplicativo, em MariaDB ou PostgreSQL. As credenciais chegam <code>shared/cipi-databases.env</code> e nunca são gravados de volta no repositório. Bancos de dados são criados, nunca descartados.</li>
-<li><strong>Fila de trabalhadores e Horizon</strong> — declara cada fila com contagem de processos, tentativas e tempo limite, e Supervisor é reconciliado para corresponder. Ou definir <code>horizon: true</code> e deixe Horizon ser o dono das filas. Desde <strong>5.1.2</strong>, <code>horizon: false</code> é realmente lido - anteriormente<code>false</code> foi tratado como uma chave perdida.</li>
+<li><strong>Fila de workers e Horizon</strong> — declara cada fila com contagem de processos, tentativas e tempo limite, e Supervisor é reconciliado para corresponder. Ou definir <code>horizon: true</code> e deixe Horizon ser o dono das filas. Desde <strong>5.1.2</strong>, <code>horizon: false</code> é realmente lido - anteriormente<code>false</code> foi tratado como uma chave perdida.</li>
 <li><strong>Laravel Reverb</strong> - desde <strong>5.1.2</strong>, <code>reverb: true</code> dá ao aplicativo uma porta localhost, um programa Supervisor, um proxy nginx para <code>/app/{key}</code> e <code>/apps/{id}/…</code> em seu próprio domínio e gerado <code>REVERB_*</code> credenciais. Laravel apenas aplicativos. Um aplicativo que já possui <code>/app</code> ou <code>/apps</code> não é possível compartilhar esse domínio com Reverb.</li>
 <li><strong>Agendador</strong> - uma volta booleana <code>* * * * * artisan schedule:run</code> ligado ou desligado. Nenhuma edição do crontab no próximo servidor.</li>
-<li><strong>Verificação de integridade</strong> — uma investigação HTTP em um dos domínios do próprio aplicativo, verificada a cada cinco minutos e novamente logo após cada implantação. Opcionalmente, reverta automaticamente uma versão com falha - apenas o link simbólico do código; as migrações não são desfeitas.</li>
+<li><strong>Verificação de integridade</strong> — uma investigação HTTP em um dos domínios do próprio aplicativo, verificada a cada cinco minutos e novamente logo após cada deploy. Opcionalmente, reverta automaticamente uma versão com falha - apenas o link simbólico do código; as migrações não são desfeitas.</li>
 <li><strong>Perfis de backup</strong> — perfis por aplicativo com escopo, programação, retenção, destinos e criptografia próprios. Os nomes devem ser <code>myapp</code> ou <code>myapp-*</code>.</li>
 </ul>
 <h2 id="example">Um arquivo completo</h2>
@@ -439,26 +439,26 @@ backup:
       destinations: [s3]
       encrypt: true</code></pre>
 <h2 id="plan">Planeje e depois aplique</h2>
-<p>Nada muda até você olhar para a diferença. <code>cipi yml plan myapp</code> lista cada alias, trabalhador, banco de dados, configuração e perfil que seriam adicionados, alterados ou removidos. Leia da mesma forma que você lê uma solicitação pull.</p>
+<p>Nada muda até você olhar para a diferença. <code>cipi yml plan myapp</code> lista cada alias, worker, banco de dados, configuração e perfil que seriam adicionados, alterados ou removidos. Leia da mesma forma que você lê uma solicitação pull.</p>
 <pre class="code-pre"><code>$ cipi yml validate myapp
 $ cipi yml plan myapp
 $ cipi yml apply myapp                 <span class="c"># asks for confirmation</span>
 $ cipi yml apply myapp --yes           <span class="c"># scripts and CI</span></code></pre>
-<p>Um arquivo que falha na validação é rejeitado como um todo e <strong>nunca aplicado parcialmente</strong>. Esse é o mesmo caminho de falha fechada que uma implantação usa quando <code>yml auto</code> está ativado: e-mail <code>yml_fail</code>, sem meio estado na caixa.</p>
+<p>Um arquivo que falha na validação é rejeitado como um todo e <strong>nunca aplicado parcialmente</strong>. Esse é o mesmo caminho de falha fechada que um deploy usa quando <code>yml auto</code> está ativado: e-mail <code>yml_fail</code>, sem meio estado na caixa.</p>
 <h2 id="week">Uma semana de mudanças reais</h2>
 <p>Trate o arquivo como código de aplicativo. Cada um deles é um commit de uma linha (ou um bloco), revisado e então aplicado — ou aplicado automaticamente após o lançamento, se <code>yml auto</code> já está ligado.</p>
 <ul>
 <li><strong>Segunda-feira - apelidos.</strong> Adicionar <code>www.myapp.com</code> e <code>*.myapp.com</code> para subdomínios multilocatários. Lembre-se: a lista é oficial. Eliminar um alias do arquivo o remove de Nginx.</li>
 <li><strong>Terça-feira — php.ini.</strong> Um formulário começa a aceitar uploads de 40 MB. Colisão <code>upload_max_filesize</code> e <code>post_max_size</code> em <code>app.ini</code>. Os padrões de todo o servidor permanecem com <code>cipi ini set</code>.</li>
-<li><strong>Quarta-feira – uma nova fila.</strong> O lançamento adiciona um <code>emails</code> fila. Adicione o trabalhador com <code>processes</code>, <code>tries</code> e <code>timeout</code>. Supervisor corresponde ao arquivo. Se você mudar o aplicativo para Horizon, defina <code>horizon: true</code> e elimine a lista de filas.</li>
+<li><strong>Quarta-feira – uma nova fila.</strong> O lançamento adiciona um <code>emails</code> fila. Adicione o worker com <code>processes</code>, <code>tries</code> e <code>timeout</code>. Supervisor corresponde ao arquivo. Se você mudar o aplicativo para Horizon, defina <code>horizon: true</code> e elimine a lista de filas.</li>
 <li><strong>Quinta-feira – um banco de dados extra.</strong> Os relatórios precisam de seu próprio MariaDB (ou <code>engine: pgsql</code>). Dê um nome <code>myapp_reporting</code>. As credenciais aparecem em <code>/home/myapp/shared/cipi-databases.env</code>- nunca no Git. Cipi cria bancos de dados; eles não serão descartados se você excluir a entrada posteriormente.</li>
 <li><strong>Sexta-feira – saúde e backups.</strong> Ponto <code>health.url</code> em <code>https://myapp.com/up</code> (deve ser um dos domínios próprios do aplicativo). Adicione um barato <code>myapp-db</code> perfil a cada 30 minutos e uma cópia noturna criptografada para S3.</li>
 </ul>
 <div class="note">
 <p>PHP 8.5 já deve estar instalado (<code>cipi php install 8.5</code>) antes de fixar <code>app.php</code> para isso. O arquivo não instalará um tempo de execução que não esteja na caixa.</p>
 </div>
-<h2 id="auto">Ative após cada implantação</h2>
-<p>As implantações ignoram o arquivo até que você diga o contrário. Isso é deliberado: um primeiro commit de<code>cipi.yml</code>não deve surpreender a produção.</p>
+<h2 id="auto">Ative após cada deploy</h2>
+<p>Os deploys ignoram o arquivo até que você diga o contrário. Isso é deliberado: um primeiro commit de<code>cipi.yml</code>não deve surpreender a produção.</p>
 <pre class="code-pre"><code>$ cipi yml auto myapp on       <span class="c"># reconcile after every successful deploy</span>
 $ cipi yml auto myapp status
 $ cipi yml auto myapp off      <span class="c"># back to manual apply</span></code></pre>
@@ -479,12 +479,12 @@ $ cipi yml auto myapp off      <span class="c"># back to manual apply</span></co
 <li>O analisador implementa um pequeno subconjunto YAML e recusa âncoras, aliases, tags, chaves de mesclagem, escalares de bloco e mapeamentos de fluxo de uma vez.</li>
 </ul>
 <div class="note">
-<p>Uma vez <code>yml auto</code> estiver ativado, qualquer pessoa que puder enviar para esse repositório poderá alterar os aliases, configurações PHP, trabalhadores, verificação de integridade e perfis de backup do aplicativo. Esse é o ponto da configuração como código – trate o acesso de gravação ao repositório de acordo.</p>
+<p>Uma vez <code>yml auto</code> estiver ativado, qualquer pessoa que puder enviar para esse repositório poderá alterar os aliases, configurações PHP, workers, verificação de integridade e perfis de backup do aplicativo. Esse é o ponto da configuração como código – trate o acesso de gravação ao repositório de acordo.</p>
 </div>
 <div class="cta-box">
 <h2>Envie o arquivo com a próxima versão</h2>
 <p>Gere o que o servidor já possui, faça commit, leia o plano e depois ligue <code>yml auto</code> ativado quando você confia no loop. A visão geral e o esquema completo estão a um clique de distância.</p>
-<div class="install-box">wget -O - https://cipi.sh/setup.sh | festa</div>
+<div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
 <a class="btn-primary" href="/pt/cipi-yml">Visão geral de cipi.yml</a>
 <a class="btn-ghost" href="/pt/docs/deploy#cli-yml">Referência completa</a>
@@ -493,14 +493,14 @@ $ cipi yml auto myapp off      <span class="c"># back to manual apply</span></co
 </div>
 <h2 id="faq">Perguntas frequentes</h2>
 <div class="faq-item"><h3>Tenho que escrever cipi.yml à mão?</h3><p>Não. <code>cipi yml generate &lt;app&gt;</code> imprime a configuração atual do servidor do aplicativo como um arquivo pronto para confirmação e <code>cipi yml example</code> imprime um modelo comentado em branco se você preferir começar do zero.</p></div>
-<div class="faq-item"><h3>Uma implantação aplica o arquivo automaticamente?</h3><p>Somente depois de você aceitar <code>cipi yml auto &lt;app&gt; on</code>. Até então o deploy ignora o arquivo e você reconcilia manualmente com <code>plan</code> e <code>apply</code>.</p></div>
+<div class="faq-item"><h3>Um deploy aplica o arquivo automaticamente?</h3><p>Somente depois de você aceitar <code>cipi yml auto &lt;app&gt; on</code>. Até então o deploy ignora o arquivo e você reconcilia manualmente com <code>plan</code> e <code>apply</code>.</p></div>
 <div class="faq-item"><h3>O que acontece com as coisas que o arquivo não menciona?</h3><p>Eles são deixados sozinhos. Somente as seções que você declara são reconciliadas — com uma exceção deliberada: a lista de alias é oficial, portanto, remover um alias do arquivo o remove do servidor.</p></div>
-<div class="faq-item"><h3>Um commit pode quebrar meu servidor?</h3><p>O esquema não carrega comandos shell nem caminhos de inclusão, um aplicativo só pode tocar em seus próprios bancos de dados e perfis de backup, e um arquivo que falha na validação é rejeitado como um todo, em vez de ser aplicado no meio do caminho. As implantações ignoram o arquivo completamente até você virar <code>yml auto</code> sobre.</p></div>
-<div class="faq-item"><h3>Funciona com o Git webhook?</h3><p>Sim. Com <code>cipi yml auto</code> em, ambos <code>cipi deploy</code> e uma reconciliação de implantação acionada por webhook após um lançamento bem-sucedido.</p></div>
+<div class="faq-item"><h3>Um commit pode quebrar meu servidor?</h3><p>O esquema não carrega comandos shell nem caminhos de inclusão, um aplicativo só pode tocar em seus próprios bancos de dados e perfis de backup, e um arquivo que falha na validação é rejeitado como um todo, em vez de ser aplicado no meio do caminho. Os deploys ignoram o arquivo completamente até você virar <code>yml auto</code> sobre.</p></div>
+<div class="faq-item"><h3>Funciona com o Git webhook?</h3><p>Sim. Com <code>cipi yml auto</code> em, ambos <code>cipi deploy</code> e uma reconciliação de deploy acionada por webhook após um lançamento bem-sucedido.</p></div>
 <h2>Continue lendo</h2>
 <div class="related">
 <a href="/pt/cipi-yml">Visão geral de cipi.yml</a>
-<a href="/pt/docs/deploy#cli-yml">Documentos: cipi.yml</a>
+<a href="/pt/docs/deploy#cli-yml">Docs: cipi.yml</a>
 <a href="/pt/guides/ci-cd-e-workflow-git-laravel">CI/CD por Laravel</a>
 <a href="/pt/guides/backup-vps-para-s3">VPS backups para S3</a>
 <a href="/pt/guides/deploy-laravel-em-vps-ubuntu">Implante Laravel em Ubuntu</a>
@@ -511,18 +511,18 @@ $ cipi yml auto myapp off      <span class="c"># back to manual apply</span></co
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Implantação gratuita de open-source Laravel CLI para Ubuntu VPS — Octane, Horizon, Reverb e implantações Git com tempo de inatividade zero.</p>
+<p>CLI open source e gratuita para fazer deploy de Laravel num VPS Ubuntu — Octane, Horizon, Reverb e deploys Git sem downtime.</p>
 <ul class="footer-brand-links">
-<li><a href="/pt/docs/getting-started">Comece</a></li>
-<li><a href="/pt/docs/">Documentos</a></li>
+<li><a href="/pt/docs/getting-started">Primeiros passos</a></li>
+<li><a href="/pt/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
 <nav aria-label="Compare Cipi com alternativas" class="footer-col footer-col--compare">
 <strong>Comparar Cipi</strong>
 <ul>
-<li><a href="/pt/alternative-to-laravel-forge">Laravel Forge alternativa</a></li>
-<li><a href="/pt/alternative-to-laravel-cloud">Laravel Alternativa de nuvem</a></li>
+<li><a href="/pt/alternative-to-laravel-forge">Alternativa ao Laravel Forge</a></li>
+<li><a href="/pt/alternative-to-laravel-cloud">Alternativa ao Laravel Cloud</a></li>
 <li><a href="/pt/alternative-to-ploi">Ploi alternativa</a></li>
 <li><a href="/pt/alternative-to-coolify">Coolify alternativa</a></li>
 <li><a href="/pt/alternative-to-runcloud">RunCloud alternativa</a></li>
@@ -533,13 +533,13 @@ $ cipi yml auto myapp off      <span class="c"># back to manual apply</span></co
 <li><a href="/pt/alternatives">Todas as comparações</a></li>
 </ul>
 </nav>
-<nav aria-label="Guias Laravel gratuitos" class="footer-col">
+<nav aria-label="Guias gratuitos de Laravel" class="footer-col">
 <strong>Guias gratuitos</strong>
 <ul>
 <li><a href="/pt/guides/gerenciar-apps-com-cipi-yml">Gerenciar apps com cipi.yml</a></li>
-<li><a href="/pt/guides/painel-ui-e-api">Painel UI e API</a></li>
+<li><a href="/pt/guides/painel-ui-e-api">Painel de controle e API</a></li>
 <li><a href="/pt/guides/usar-cipi-agent-no-laravel">cipi/agent e MCP do projeto</a></li>
-<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Implantar WordPress no Cipi</a></li>
+<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Deploy de WordPress no Cipi</a></li>
 <li><a href="/pt/guides/">Todos os guias</a></li>
 </ul>
 </nav>

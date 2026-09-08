@@ -317,7 +317,7 @@
 <a href="/pt/cipi-yml" class="nav-link">cipi.yml</a>
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">PT</summary><div class="lang-menu"><a href="/en/guides/cipi-agent-laravel-mcp" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/guides/cipi-agent-in-laravel-nutzen" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/utiliser-cipi-agent-laravel" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/usare-cipi-agent-in-laravel" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/usar-cipi-agent-en-laravel" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a class="active" href="/pt/guides/usar-cipi-agent-no-laravel" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Alternar tema" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Mudar tema" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -371,26 +371,26 @@
 </ol>
 </div>
 <h2 id="why">Por que um agente dentro do aplicativo</h2>
-<p><a class="inline" href="/">Cipi</a> já possui o servidor: Nginx, PHP, bancos de dados, SSL, implantações com tempo de inatividade zero. Isso é infraestrutura. Um aplicativo Laravel ainda tem seu próprio mundo — modelos Eloquent, seeders, filas Horizon, rotação diária de logs, o conjunto de migração atual. Uma IA que só vê as suposições do repositório. Uma IA que pode chamar ferramentas no<em>correndo</em> o aplicativo para de adivinhar.</p>
-<p>É para isso que serve o projeto MCP. Ele mora em <code>POST /cipi/mcp</code> no domínio do aplicativo, fala MCP 05/11/2024 em HTTPS e expõe seis ferramentas com escopo para <strong>isso</strong> aplicação. Sem SSH raiz. Nenhuma chave de implantação compartilhada no IDE. A assistente pede saúde, coroa <code>laravel.log</code>, corre <code>db:seed --class=RoleSeeder</code> na preparação e verifica a contagem de linhas com <code>db_query</code>.</p>
+<p><a class="inline" href="/">Cipi</a> já possui o servidor: Nginx, PHP, bancos de dados, SSL, deploys sem downtime. Isso é infraestrutura. Um aplicativo Laravel ainda tem seu próprio mundo — modelos Eloquent, seeders, filas Horizon, rotação diária de logs, o conjunto de migração atual. Uma IA que só vê as suposições do repositório. Uma IA que pode chamar ferramentas no<em>correndo</em> o aplicativo para de adivinhar.</p>
+<p>É para isso que serve o projeto MCP. Ele mora em <code>POST /cipi/mcp</code> no domínio do aplicativo, fala MCP 05/11/2024 em HTTPS e expõe seis ferramentas com escopo para <strong>isso</strong> aplicação. Sem SSH raiz. Nenhuma chave de deploy compartilhada no IDE. A assistente pede saúde, coroa <code>laravel.log</code>, corre <code>db:seed --class=RoleSeeder</code> na staging e verifica a contagem de linhas com <code>db_query</code>.</p>
 <div class="note">
-<p>Verificação de integridade e MCP funcionam em qualquer host Laravel 12+. Webhook implantações e o conjunto completo de logs (<code>nginx</code>, <code>php</code>, <code>worker</code>, <code>deploy</code>) espere um <a class="inline" href="/pt/docs/getting-started">Cipi gerenciado</a> ambiente. A referência mora no <a class="inline" href="/pt/docs/agent">Cipi Documentos do agente</a>.</p>
+<p>Verificação de integridade e MCP funcionam em qualquer host Laravel 12+. Webhook deploys e o conjunto completo de logs (<code>nginx</code>, <code>php</code>, <code>worker</code>, <code>deploy</code>) espere um <a class="inline" href="/pt/docs/getting-started">Cipi gerenciado</a> ambiente. A referência mora no <a class="inline" href="/pt/docs/agent">Cipi Docs do agente</a>.</p>
 </div>
 <h2 id="install">Instale cipi/agent</h2>
 <p>Requisitos: PHP 8.3+ e Laravel 12 ou 13. O provedor de serviços descobre automaticamente — deixe <code>config/app.php</code> sozinho.</p>
 <div class="code-pre"><code>$ composer require cipi/agent
 $ php artisan cipi:status   <span class="c"># config + live DB connectivity</span></code></div>
-<p>Em um Cipi VPS, <code>cipi app create</code> já injeta <code>CIPI_APP_USER</code>, <code>CIPI_WEBHOOK_TOKEN</code> e os caminhos de implantação. Você ativa apenas os serviços opcionais desejados. Desative Cipi, publique a configuração se precisar de padrões diferentes:</p>
+<p>Em um Cipi VPS, <code>cipi app create</code> já injeta <code>CIPI_APP_USER</code>, <code>CIPI_WEBHOOK_TOKEN</code> e os caminhos de deploy. Você ativa apenas os serviços opcionais desejados. Desative Cipi, publique a configuração se precisar de padrões diferentes:</p>
 <div class="code-pre"><code>$ php artisan vendor:publish --tag=cipi-config</code></div>
-<p>Comprometa-se e empurre. A próxima implantação pega o pacote. Nada mais para conectar na lateral do painel.</p>
+<p>Comprometa-se e empurre. A próxima deploy pega o pacote. Nada mais para conectar na lateral do painel.</p>
 <h2 id="features">O que o pacote realmente faz</h2>
 <div class="cmp-table-wrap">
 <table class="cmp-table">
 <thead><tr><th>Recurso</th><th>Ponto final</th><th>Quando você usa</th></tr></thead>
 <tbody>
-<tr><td>Webhook implantar</td><td><code>POST /cipi/webhook</code></td><td>GitHub / GitLab push escreve <code>.deploy-trigger</code>; O implantador é executado como usuário do aplicativo em um minuto</td></tr>
+<tr><td>Webhook implantar</td><td><code>POST /cipi/webhook</code></td><td>GitHub / GitLab push escreve <code>.deploy-trigger</code>; O Deployer é executado como usuário do aplicativo em um minuto</td></tr>
 <tr><td>Verificação de saúde</td><td><code>GET /cipi/health</code></td><td>UptimeRobot/Grafana: aplicativo, banco de dados, cache, backlog de fila, último commit</td></tr>
-<tr><td>Projeto MCP</td><td><code>POST /cipi/mcp</code></td><td>Cursor / VS Code / Claude: integridade, logs, SQL, Artisan, implantação — este guia</td></tr>
+<tr><td>Projeto MCP</td><td><code>POST /cipi/mcp</code></td><td>Cursor / VS Code / Claude: integridade, logs, SQL, Artisan, deploy — este guia</td></tr>
 <tr><td>Anonimizador de banco de dados</td><td><code>POST /cipi/db</code></td><td>Dumps seguros para GDPR para local/QA, transformações Faker, download assinado de 15 minutos</td></tr>
 </tbody>
 </table>
@@ -422,9 +422,9 @@ $ php artisan cipi:mcp</code></div>
 <h2 id="debug">Depurar sem SSH</h2>
 <p>Essa é a parte que muda o ritmo diário. Você permanece no IDE. O assistente fala com o aplicativo ao vivo.</p>
 <h3>saúde - está bom?</h3>
-<p>Mesma carga útil que <code>GET /cipi/health</code>: versão Laravel, <code>APP_DEBUG</code>, nome do banco de dados, cache, driver de fila, trabalhos pendentes, última confirmação de implantação. Pergunte: <em>“A produção está saudável? Algum atraso na fila?”</em> Se <code>checks.app.debug</code> é <code>true</code> em um host público, você acabou de encontrar um problema sem abrir <code>.env</code>.</p>
+<p>Mesma carga útil que <code>GET /cipi/health</code>: versão Laravel, <code>APP_DEBUG</code>, nome do banco de dados, cache, driver de fila, trabalhos pendentes, última confirmação de deploy. Pergunte: <em>“A produção está saudável? Algum atraso na fila?”</em> Se <code>checks.app.debug</code> é <code>true</code> em um host público, você acabou de encontrar um problema sem abrir <code>.env</code>.</p>
 <h3>logs – últimos erros, não o arquivo inteiro</h3>
-<p>O <code>logs</code> A ferramenta lê as últimas N linhas (padrão 50, máximo 500) e mantém os rastreamentos de pilha intactos. Filtros:</p>
+<p>O <code>logs</code> A ferramenta lê as últimas N linhas (padrão 50, máximo 500) e mantém os rastreamentos de stack intactos. Filtros:</p>
 <ul>
 <li><code>type</code> — <code>laravel</code>, <code>nginx</code>, <code>php</code>, <code>worker</code>, <code>deploy</code></li>
 <li><code>level</code> — <code>error</code>, <code>warning</code>, … (somente Laravel)</li>
@@ -445,11 +445,11 @@ SELECT COUNT(*) FROM users WHERE created_at &gt;= CURRENT_DATE;</code></div>
 <li><em>“Corra <code>migrate:status</code> na encenação.”</em></li>
 <li><em>“Apenas funções iniciais: <code>db:seed --class=RoleSeeder</code>.”</em></li>
 <li><em>“Carregar pedidos de demonstração com <code>DemoDataSeeder</code>, então <code>SELECT COUNT(*) FROM orders</code>.”</em></li>
-<li><em>“<code>queue:failed</code> — algum trabalho travado desde a última implantação?”</em></li>
+<li><em>“<code>queue:failed</code> — algum trabalho travado desde a última deploy?”</em></li>
 <li><em>“<code>cache:clear</code> e <code>optimize:clear</code> após a alteração da configuração.”</em></li>
 </ul>
 <div class="note">
-<p><strong>Não</strong> aponte isso para a produção e diga “execute o DatabaseSeeder”. <code>migrate:fresh --seed</code> é <em>não</em> na lista de bloqueados — o pacote irá executá-lo. Use seeders nomeados, na preparação, e confirme com <code>db_query</code>. Os dados de produção não são um playground só porque o transporte é MCP em vez de SSH.</p>
+<p><strong>Não</strong> aponte isso para a produção e diga “execute o DatabaseSeeder”. <code>migrate:fresh --seed</code> é <em>não</em> na lista de bloqueados — o pacote irá executá-lo. Use seeders nomeados, na staging, e confirme com <code>db_query</code>. Os dados de produção não são um playground só porque o transporte é MCP em vez de SSH.</p>
 </div>
 <p>Um padrão de teste seguro: uma classe seeder por fixture, idempotente onde possível, chamada pelo nome. O assistente dirige a aula, lê a tabela e só então você promove o mesmo seeder através do CI. Isso é o oposto de “despejar a produção e rezar”.</p>
 <p>Combine-o com o <a class="inline" href="/pt/docs/agent#agent-anonymizer">anonimizador</a> quando o local precisa de volume sem PII: torne anônimo um dump em formato de produção, carregue-o localmente, mantenha MCP seeders para as pequenas tabelas de referência (funções, planos, sinalizadores de recursos) que mudam a cada sprint.</p>
@@ -477,8 +477,8 @@ SELECT COUNT(*) FROM users WHERE created_at &gt;= CURRENT_DATE;</code></div>
 <thead><tr><th></th><th>Projeto MCP (<code>cipi/agent</code>)</th><th>Painel API MCP (<code>cipi/api</code>)</th></tr></thead>
 <tbody>
 <tr><td>Onde</td><td><code>POST /cipi/mcp</code> no <em>aplicativo</em> domínio</td><td><code>POST /mcp</code> no API vhost</td></tr>
-<tr><td>Escopo</td><td>Um aplicativo Laravel: seu banco de dados, logs, Artisan, sinalizador de implantação</td><td>Todo o servidor: aplicativos, SSL, bancos de dados, PHP, trabalhadores</td></tr>
-<tr><td>Ferramentas</td><td>6 — saúde, app_info, implantação, logs, db_query, artisan</td><td>Mais de 50 – crie aplicativos, emita certificados, edite <code>.env</code>, execute como usuário do aplicativo</td></tr>
+<tr><td>Escopo</td><td>Um aplicativo Laravel: seu banco de dados, logs, Artisan, sinalizador de deploy</td><td>Todo o servidor: aplicativos, SSL, bancos de dados, PHP, workers</td></tr>
+<tr><td>Ferramentas</td><td>6 — saúde, app_info, deploy, logs, db_query, artisan</td><td>Mais de 50 – crie aplicativos, emita certificados, edite <code>.env</code>, execute como usuário do aplicativo</td></tr>
 <tr><td>Use-o para</td><td>Depurar, seeders, migrar: status, espiar fila</td><td>Provisionar, SSL, listar todos os bancos de dados, cockpit do servidor</td></tr>
 </tbody>
 </table>
@@ -497,7 +497,7 @@ SELECT COUNT(*) FROM users WHERE created_at &gt;= CURRENT_DATE;</code></div>
 <p><code>cipi/agent</code> é o companheiro Laravel. Cipi é o open-source implantar CLI gratuito que injeta o env e executa o Deployer quando o webhook ou o MCP <code>deploy</code> ferramenta dispara.</p>
 <div class="install-box">composer require cipi/agent</div>
 <div class="cta-actions">
-<a class="btn-primary" href="/pt/docs/agent">Cipi Documentos do agente</a>
+<a class="btn-primary" href="/pt/docs/agent">Cipi Docs do agente</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/agent" target="_blank">Pacote em GitHub</a>
 <a class="btn-ghost" href="/pt/docs/getting-started">Instale Cipi</a>
 </div>
@@ -505,13 +505,13 @@ SELECT COUNT(*) FROM users WHERE created_at &gt;= CURRENT_DATE;</code></div>
 <h2 id="faq">Perguntas frequentes</h2>
 <div class="faq-item"><h3>Preciso de SSH para usar o projeto MCP?</h3><p>Não. Depois que o pacote for implantado e <code>CIPI_MCP</code> está ativado, o IDE conversa com <code>https://yourdomain.com/cipi/mcp</code> com o token do portador. Esse é o ponto para colegas de equipe que nunca devem fazer login como root.</p></div>
 <div class="faq-item"><h3>Qual é a diferença entre o agente MCP e o Cipi API MCP?</h3><p>O agente MCP está dentro de um aplicativo Laravel (seis ferramentas: health, logs, SQL, Artisan, deploy). O painel API MCP gerencia todo o VPS — criar aplicativos, SSL, bancos de dados, PHP. Use o agente para depuração e seeders; use o API para provisionar.</p></div>
-<div class="faq-item"><h3>Posso executar db:seed em produção através de MCP?</h3><p>Tecnicamente sim - <code>db:seed</code> não está bloqueado. Praticamente, execute apenas um seeder nomeado e revisado e nunca <code>migrate:fresh --seed</code> em dados ao vivo. Prefira a preparação e confirme com <code>db_query</code>.</p></div>
+<div class="faq-item"><h3>Posso executar db:seed em produção através de MCP?</h3><p>Tecnicamente sim - <code>db:seed</code> não está bloqueado. Praticamente, execute apenas um seeder nomeado e revisado e nunca <code>migrate:fresh --seed</code> em dados ao vivo. Prefira a staging e confirme com <code>db_query</code>.</p></div>
 <div class="faq-item"><h3>Quais comandos Artisan estão bloqueados?</h3><p><code>serve</code>, <code>tinker</code>, <code>queue:work</code>, <code>queue:listen</code>, <code>schedule:work</code>, <code>horizon</code>, <code>octane:start</code>, <code>reverb:start</code>. Processos interativos e de longa duração não pertencem a uma chamada de ferramenta HTTP.</p></div>
-<div class="faq-item"><h3>O cipi/agent funciona sem um servidor Cipi?</h3><p>Verificação de integridade e MCP sim, em qualquer host Laravel 12+. As implantações do Deployer acionadas por Webhook e os tipos de log extras esperam o layout Cipi em <code>/home/&lt;app&gt;/</code>.</p></div>
+<div class="faq-item"><h3>O cipi/agent funciona sem um servidor Cipi?</h3><p>Verificação de integridade e MCP sim, em qualquer host Laravel 12+. Os deploys do Deployer acionadas por Webhook e os tipos de log extras esperam o layout Cipi em <code>/home/&lt;app&gt;/</code>.</p></div>
 <div class="faq-item"><h3>Como faço para girar um token MCP vazado?</h3><p><code>php artisan cipi:generate-token mcp</code>, reinicie o aplicativo (ou recarregue PHP-FPM / Octane), atualize <code>~/.cursor/mcp.json</code>. O token antigo morre com o <code>.env</code> reescrever.</p></div>
 <h2>Continue lendo</h2>
 <div class="related">
-<a href="/pt/docs/agent">Documentos: Cipi Agente</a>
+<a href="/pt/docs/agent">Docs: Cipi Agente</a>
 <a href="/pt/guides/desenvolvimento-spec-driven-ia-laravel">Desenvolvimento de IA orientado por especificações</a>
 <a href="/pt/guides/ci-cd-e-workflow-git-laravel">CI/CD por Laravel</a>
 <a href="/pt/guides/deploy-laravel-em-vps-ubuntu">Implante Laravel em Ubuntu</a>
@@ -523,17 +523,17 @@ SELECT COUNT(*) FROM users WHERE created_at &gt;= CURRENT_DATE;</code></div>
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Implantação gratuita de open-source Laravel CLI para Ubuntu VPS — Octane, Horizon, Reverb e implantações Git com tempo de inatividade zero.</p>
+<p>CLI open source e gratuita para fazer deploy de Laravel num VPS Ubuntu — Octane, Horizon, Reverb e deploys Git sem downtime.</p>
 <ul class="footer-brand-links">
-<li><a href="/pt/docs/getting-started">Comece</a></li>
-<li><a href="/pt/docs/">Documentos</a></li>
+<li><a href="/pt/docs/getting-started">Primeiros passos</a></li>
+<li><a href="/pt/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
 <nav aria-label="Compare Cipi com alternativas" class="footer-col footer-col--compare">
 <strong>Comparar Cipi</strong>
 <ul>
-<li><a href="/pt/alternative-to-laravel-forge">Laravel Forge alternativa</a></li>
+<li><a href="/pt/alternative-to-laravel-forge">Alternativa ao Laravel Forge</a></li>
 <li><a href="/pt/alternative-to-laravel-cloud">Laravel Alternativa em nuvem</a></li>
 <li><a href="/pt/alternative-to-ploi">Ploi alternativa</a></li>
 <li><a href="/pt/alternative-to-coolify">Coolify alternativa</a></li>
@@ -545,13 +545,13 @@ SELECT COUNT(*) FROM users WHERE created_at &gt;= CURRENT_DATE;</code></div>
 <li><a href="/pt/alternatives">Todas as comparações</a></li>
 </ul>
 </nav>
-<nav aria-label="Guias Laravel gratuitos" class="footer-col">
+<nav aria-label="Guias gratuitos de Laravel" class="footer-col">
 <strong>Guias gratuitos</strong>
 <ul>
 <li><a href="/pt/guides/gerenciar-apps-com-cipi-yml">Gerenciar apps com cipi.yml</a></li>
-<li><a href="/pt/guides/painel-ui-e-api">Painel UI e API</a></li>
+<li><a href="/pt/guides/painel-ui-e-api">Painel de controle e API</a></li>
 <li><a href="/pt/guides/usar-cipi-agent-no-laravel">cipi/agent e MCP do projeto</a></li>
-<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Implantar WordPress no Cipi</a></li>
+<li><a href="/pt/guides/deploy-wordpress-app-personalizado">Deploy de WordPress no Cipi</a></li>
 <li><a href="/pt/guides/">Todos os guias</a></li>
                     </ul>
 </nav>

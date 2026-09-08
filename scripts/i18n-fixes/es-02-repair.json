@@ -1,0 +1,52 @@
+{
+ "es": [
+  [
+   "\\breversión snapshot\\b",
+   "reversión instantánea"
+  ],
+  [
+   "\\breversiones snapshots\\b",
+   "reversiones instantáneas"
+  ],
+  [
+   "\\bPuesta en escena snapshot\\b",
+   "Staging instantáneo"
+  ],
+  [
+   "\\brespuesta webhook es snapshot\\b",
+   "respuesta del webhook es instantánea"
+  ],
+  [
+   "\\bUna snapshot\\b",
+   "Un snapshot"
+  ],
+  [
+   "\\buna snapshot\\b",
+   "un snapshot"
+  ],
+  [
+   "\\bLa snapshot\\b",
+   "El snapshot"
+  ],
+  [
+   "\\bla snapshot\\b",
+   "el snapshot"
+  ],
+  [
+   "\\bLas snapshots\\b",
+   "Los snapshots"
+  ],
+  [
+   "\\blas snapshots\\b",
+   "los snapshots"
+  ],
+  [
+   "\\bmisma snapshot\\b",
+   "mismo snapshot"
+  ],
+  [
+   "Copia provisional snapshot de un\\s+aplicación de producción",
+   "Copia de staging instantánea de una app de producción"
+  ]
+ ]
+}

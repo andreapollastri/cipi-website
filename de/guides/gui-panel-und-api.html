@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Cipi Bedienfeld und API – was die beiden optionalen Erweiterungen freischalten</title>
+<title>Cipi Panel und API – was die beiden optionalen Erweiterungen freischalten</title>
 <meta content="Eine praktische Anleitung zu den beiden optionalen Erweiterungen von Cipi: dem REST API (cipi/api) und dem Web-Control-Panel (cipi/gui). REST, MCP, Swagger, Multi-Server-Dashboard, Server-Cockpit und Automatisierung – ohne den CLI hinter sich zu lassen." name="description"/>
-<meta content="cipi api, cipi gui, cipi Bedienfeld, laravel Ruhe api, cipi mcp, cipi Armaturenbrett, cipi-cli, laravel Serverpanel" name="keywords"/>
+<meta content="cipi api, cipi gui, cipi Panel, laravel Ruhe api, cipi mcp, cipi Armaturenbrett, cipi-cli, laravel Serverpanel" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/de/guides/gui-panel-und-api" rel="canonical"/>
@@ -23,7 +23,7 @@
 <meta content="article" property="og:type"/>
 <meta content="Cipi" property="og:site_name"/>
 <meta content="https://cipi.sh/de/guides/gui-panel-und-api" property="og:url"/>
-<meta content="Cipi Bedienfeld und API – was die beiden optionalen Erweiterungen freischalten" property="og:title"/>
+<meta content="Cipi Panel und API – was die beiden optionalen Erweiterungen freischalten" property="og:title"/>
 <meta content="Eine praktische Anleitung zu den beiden optionalen Erweiterungen von Cipi: dem REST API (cipi/api) und dem Web-Control-Panel (cipi/gui). REST, MCP, Swagger, Multi-Server-Dashboard, Server-Cockpit und Automatisierung – ohne den CLI hinter sich zu lassen." property="og:description"/>
 <meta content="https://cipi.sh/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
@@ -39,17 +39,17 @@
 <meta content="https://web.ap.it" property="article:author"/>
 <meta content="Guides" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="Cipi Bedienfeld und API – was die beiden optionalen Erweiterungen freischalten" name="twitter:title"/>
+<meta content="Cipi Panel und API – was die beiden optionalen Erweiterungen freischalten" name="twitter:title"/>
 <meta content="Eine praktische Anleitung zu den beiden optionalen Erweiterungen von Cipi: dem REST API (cipi/api) und dem Web-Control-Panel (cipi/gui). REST, MCP, Swagger, Multi-Server-Dashboard, Server-Cockpit und Automatisierung – ohne den CLI hinter sich zu lassen." name="twitter:description"/>
 <meta content="https://cipi.sh/og.png" name="twitter:image"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Cipi control panel and API — what the two optional extensions unlock",
-  "name": "Cipi control panel and API — what the two optional extensions unlock",
+  "headline": "Cipi Panel und API – was die beiden optionalen Erweiterungen freischalten",
+  "name": "Cipi Panel und API – was die beiden optionalen Erweiterungen freischalten",
   "url": "https://cipi.sh/en/guides/cipi-gui-and-api",
-  "description": "A practical guide to Cipi's two optional extensions: the REST API (cipi/api) and the web control panel (cipi/gui). REST, MCP, Swagger, multi-server dashboard, server cockpit and automation — without leaving the CLI behind.",
+  "description": "Eine praktische Anleitung zu den beiden optionalen Erweiterungen von Cipi: dem REST API (cipi/api) und dem Web-Control-Panel (cipi/gui). REST, MCP, Swagger, Multi-Server-Dashboard, Server-Cockpit und Automatisierung – ohne den CLI hinter sich zu lassen.",
   "inLanguage": "de",
   "image": "https://cipi.sh/og.png",
   "datePublished": "2026-08-22",
@@ -110,7 +110,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Control panel and API",
+      "name": "Control-Panel und API",
       "item": "https://cipi.sh/en/guides/cipi-gui-and-api"
     }
   ]
@@ -123,42 +123,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Do I need the UI panel to use Cipi?",
+      "name": "Benötige ich das UI-Panel, um Cipi zu verwenden?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Cipi is CLI-first. Without cipi api and without cipi gui the server still does the same work: apps, deploys, SSL, backups, firewall. Both packages are opt-in extensions since v4.7.0."
+        "text": "Nein. Cipi ist CLI-first. Ohne cipi api und ohne cipi gui Der Server erledigt immer noch die gleiche Arbeit: Apps, Deployments, SSL, Backups, Firewall. Bei beiden Paketen handelt es sich seit v4.7.0 um Opt-in-Erweiterungen."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I use the GUI without the API?",
+      "name": "Kann ich die GUI ohne die API nutzen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. The panel is an HTTP client of the REST API. Every managed server needs cipi api and a Bearer token with the abilities you want to expose. Without the API there is nothing to show."
+        "text": "Nein. Das Panel ist ein HTTP-Client der REST API. Jeder verwaltete Server braucht cipi api and a Bearer token with the abilities you want to expose. Without the API there is nothing to show."
       }
     },
     {
       "@type": "Question",
-      "name": "Does the GUI replace the CLI on the server?",
+      "name": "Ersetzt die GUI die CLI auf dem Server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Every browser action is the same cipi command executed via sudo by the panel API. You can keep working over SSH in parallel, with no split-brain state."
+        "text": "Nein. Jede Aktion im Browser ist derselbe cipi command executed via sudo by the panel API. You can keep working over SSH in parallel, with no split-brain state."
       }
     },
     {
       "@type": "Question",
-      "name": "What is the difference between REST, MCP and cipi-cli?",
+      "name": "Was ist der Unterschied zwischen REST, MCP und cipi-cli?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The same API, three clients. REST is for scripts, CI and WHMCS. MCP is for AI agents (Cursor, VS Code, Claude). cipi-cli is the laptop terminal. The GUI is the fourth client, built for humans."
+        "text": "Die gleichen API, drei Kunden. REST ist für Skripte, CI und WHMCS. MCP ist für KI-Agenten (Cursor, VS Code, Claude). cipi-cli ist das Laptop-Terminal. Der GUI ist der vierte Client, der für Menschen gebaut wurde."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I manage several servers from one panel?",
+      "name": "Kann ich mehrere Server von einem Panel aus verwalten?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Register endpoint and token for each box and switch between them with the same login. The panel is stateless relative to your infrastructure: it does not store server state, it reads it from the API."
+        "text": "Ja. Registrieren Sie Endpunkt und Token für jede Box und wechseln Sie mit demselben Login zwischen ihnen. Das Panel ist im Verhältnis zu Ihrer Infrastruktur zustandslos: Es speichert den Serverstatus nicht, sondern liest ihn vom API."
       }
     }
   ]
@@ -261,14 +261,14 @@
 </svg>
 <span>Ci<span style="color:var(--signal)">pi</span></span>
 </a>
-<span class="nav-badge">Führer</span>
+<span class="nav-badge">Guides</span>
 </div>
 <div class="nav-right">
 
 <a href="/de/cipi-yml" class="nav-link">cipi.yml</a>
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">DE</summary><div class="lang-menu"><a href="/en/guides/cipi-gui-and-api" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a class="active" href="/de/guides/gui-panel-und-api" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/guides/panneau-ui-et-api" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/guide/pannello-ui-e-api-cipi" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/guides/panel-ui-y-api" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/guides/painel-ui-e-api" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
-<button aria-label="Thema umschalten" class="theme-toggle" onclick="toggleTheme()">
+<button aria-label="Theme wechseln" class="theme-toggle" onclick="toggleTheme()">
 <svg class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
 </svg>
@@ -296,21 +296,21 @@
 <nav aria-label="Semmelbrösel" class="cmp-breadcrumb">
 <a href="/"><svg class="home-ico" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Zuhause</a>
 <span class="sep">›</span>
-<a href="/de/guides/">Führer</a>
+<a href="/de/guides/">Guides</a>
 <span class="sep">›</span>
-<span class="current">Bedienfeld und API</span>
+<span class="current">Panel und API</span>
 </nav>
 <span class="cmp-eyebrow">GUI · API · MCP</span>
-<h1>Cipi Bedienfeld und API: was die beiden <em>optionale Erweiterungen</em> entsperren</h1>
+<h1>Cipi Panel und API: was die beiden <em>optionale Erweiterungen</em> entsperren</h1>
 <p class="cmp-updated">Von <a href="https://web.ap.it" rel="author" target="_blank">Andrea Pollastri</a> · Letzte Aktualisierung: <time datetime="2026-08-22">22. August 2026</time> · Kostenlose Lektüre, keine Paywall</p>
-<p class="lead"><a class="inline" href="/">Cipi</a> ist und bleibt CLI-zuerst. Alles, was ein Server benötigt – Apps, Datenbanken, SSL, Bereitstellungen, Backups – ist eins <code>cipi</code> Befehl über SSH. Seit v4.7.0 können Sie zwei optionale Pakete hinzufügen: <strong>cipi/api</strong> und <strong>cipi/gui</strong>. Dieser Leitfaden erklärt, was sie gemeinsam freischalten — und warum keines von beiden Pflicht ist.</p>
+<p class="lead"><a class="inline" href="/">Cipi</a> ist und bleibt CLI-first. Alles, was ein Server benötigt – Apps, Datenbanken, SSL, Deployments, Backups – ist eins <code>cipi</code> Befehl über SSH. Seit v4.7.0 können Sie zwei optionale Pakete hinzufügen: <strong>cipi/api</strong> und <strong>cipi/gui</strong>. Dieser Leitfaden erklärt, was sie gemeinsam freischalten — und warum keines von beiden Pflicht ist.</p>
 <div class="toc">
 <strong>In diesem Ratgeber</strong>
 <ol>
 <li><a href="#two-extensions">Zwei Erweiterungen, kein Lock-in</a></li>
 <li><a href="#api-first">Der API ist das Rückgrat</a></li>
 <li><a href="#api-surface">Was Sie mit den API machen können</a></li>
-<li><a href="#tokens">Sanctum tokens and granular abilities</a></li>
+<li><a href="#tokens">Sanctum-Tokens und feingranulare Abilities</a></li>
 <li><a href="#jobs">Asynchrone Jobs und Abfragen</a></li>
 <li><a href="#mcp">MCP: Cipi innerhalb von Cursor, VS Code und Claude</a></li>
 <li><a href="#gui">Das UI-Panel als Multiserver-Cockpit</a></li>
@@ -319,7 +319,7 @@
 <li><a href="#install">So installieren Sie sie</a></li>
 <li><a href="#security">SSL, 2FA und IP-Whitelist</a></li>
 <li><a href="#use-cases">Anwendungsfälle: Teams, Agenturen, Hosting, KI</a></li>
-<li><a href="#clients">cipi-cli and WHMCS on the same wire</a></li>
+<li><a href="#clients">cipi-cli und WHMCS über dieselbe Leitung</a></li>
 <li><a href="#faq">FAQ</a></li>
 </ol>
 </div>
@@ -331,17 +331,17 @@
 </ul>
 <p>Alles, was Sie im Browser tun, können Sie über die Shell tun. Alles, was Sie über die Shell tun, können Sie über HTTP automatisieren. Bei beiden Paketen handelt es sich um Clients derselben Oberfläche, nicht um ein zweites Cipi.</p>
 <div class="note">
-<p>Die normative Quelle ist nach wie vor die <a class="inline" href="/de/docs/">Dokumentation</a>: <a class="inline" href="/de/docs/advanced#cipi-api">Erweitert → cipi api</a> und <a class="inline" href="/de/docs/gui">Bedienfeld (GUI)</a>. In diesem Leitfaden geht es um die Funktionen, nicht um jeden Endpunkt.</p>
+<p>Die normative Quelle ist nach wie vor die <a class="inline" href="/de/docs/">Dokumentation</a>: <a class="inline" href="/de/docs/advanced#cipi-api">Erweitert → cipi api</a> und <a class="inline" href="/de/docs/gui">Panel (GUI)</a>. In diesem Leitfaden geht es um die Funktionen, nicht um jeden Endpunkt.</p>
 </div>
 <h2 id="api-first">Der API ist das Rückgrat</h2>
-<p>Enable the API before you touch the GUI. One command provisions Laravel under <code>/opt/cipi/api</code>, der Nginx vhost, SSL, eine SQLite-Warteschlange und <code>cipi-queue.service</code>:</p>
+<p>Aktivieren Sie die API, bevor Sie die GUI anfassen. Ein Befehl provisioniert Laravel unter <code>/opt/cipi/api</code>, der Nginx vhost, SSL, eine SQLite-Queue und <code>cipi-queue.service</code>:</p>
 <pre class="code-pre"><code>$ cipi api api.example.com
 $ cipi api ssl
 $ cipi api token create</code></pre>
 <p>Das Paket ist <strong>Serverebene</strong> Automatisierung – anders als die <a class="inline" href="/de/docs/agent">Cipi Agent</a> (<code>cipi/agent</code> in jeder Laravel-App). Der Agent deckt Pro-App-Webhooks, Gesundheit und MCP ab. Der API deckt die ganze Box ab: Apps, Datenbanken, PHP, SSH, Dienste, SMTP, Healthchecks, IP-Whitelist.</p>
 <p>PHP-FPM läuft als <code>www-data</code> und führt Cipi Befehle über sudo gegen eine explizite Whitelist in aus <code>/etc/sudoers.d/cipi-api</code>. Vault- und MariaDB-Passwörter bleiben in Cipi, nicht in PHP. Nachher <code>cipi self-update</code>, wenn <code>/docs</code> oder <code>/mcp</code> Rückgabe HTTP 500, <code>cipi api fix-permissions</code> repariert Speicher und SQLite-Besitz.</p>
 <h2 id="api-surface">Was Sie mit den API machen können</h2>
-<p>Die OpenAPI-Oberfläche deckt den Lebenszyklus eines Cipi-Servers ab. Lesevorgänge erfolgen synchron; schreibt (erstellen, bearbeiten, löschen, bereitstellen, SSL, Aliase, www, Datenbanken) zurück <code>202 Accepted</code> mit einem <code>job_id</code>.</p>
+<p>Die OpenAPI-Oberfläche deckt den Lebenszyklus eines Cipi-Servers ab. Lesevorgänge erfolgen synchron; schreibt (erstellen, bearbeiten, löschen, deployen, SSL, Aliase, www, Datenbanken) zurück <code>202 Accepted</code> mit einem <code>job_id</code>.</p>
 <div class="cmp-table-wrap">
 <table class="cmp-table">
 <thead>
@@ -353,11 +353,11 @@ $ cipi api token create</code></pre>
 <tbody>
 <tr>
 <td>Apps</td>
-<td>Laravel und benutzerdefiniertes CRUD, Octane/FrankenPHP, DB-Engine zum Zeitpunkt der Erstellung, Suspend/Unsuspendieren (HTTP 503), Primärdomäne umbenennen, HTTP Basic Auth, paginierte Protokolle, <code>.env</code>, Composer <code>auth.json</code>, Artisan und auf die Whitelist gesetzt <code>app run</code>, Deploy-Config, Git-Webhooks neu erstellen</td>
+<td>Laravel und benutzerdefiniertes CRUD, Octane/FrankenPHP, DB-Engine zum Zeitpunkt der Erstellung, Suspend/Unsuspendieren (HTTP 503), Primärdomäne umbenennen, HTTP Basic Auth, paginierte Logs, <code>.env</code>, Composer <code>auth.json</code>, Artisan und auf die Whitelist gesetzt <code>app run</code>, Deploy-Config, Git-Webhooks neu erstellen</td>
 </tr>
 <tr>
-<td>Bereitstellen</td>
-<td>Bereitstellung, Rollback und Freigabe einer feststeckenden Version ohne Ausfallzeiten</td>
+<td>Deploy</td>
+<td>Deployment, Rollback und Freigabe einer feststeckenden Version ohne Ausfallzeiten</td>
 </tr>
 <tr>
 <td>Aliase und WWW</td>
@@ -365,7 +365,7 @@ $ cipi api token create</code></pre>
 </tr>
 <tr>
 <td>SSL</td>
-<td>Let's Encrypt (SAN on primary + aliases) and force HTTPS without re-issuing the certificate</td>
+<td>Let's Encrypt (SAN auf Primärdomain + Aliassen) und HTTPS erzwingen, ohne das Zertifikat neu auszustellen</td>
 </tr>
 <tr>
 <td>Datenbanken</td>
@@ -404,11 +404,11 @@ curl -sS "${CIPI_API_URL}/api/status" \
     "engine": "mariadb"
   }'</code></pre>
 <p>Swagger-Benutzeroberfläche unter <code>https://api.example.com/docs</code> ist der Spielplatz: Probieren Sie jede Operation mit demselben Token aus, überprüfen Sie die Anforderung/Antwort und die Jobtypen. Die Spezifikation lebt bei <code>public/api-docs/openapi.json</code>.</p>
-<h2 id="tokens">Sanctum tokens and granular abilities</h2>
-<p>Auth ist Laravel Sanctum. Jeder Token trägt einen oder mehrere <em>Fähigkeiten</em>: Ein CI-Token kann nur enthalten <code>deploy-manage</code> und <code>apps-view</code>; Ein Panel-Token benötigt den vollständigen Satz. <code>cipi api token create</code> liest die kanonische Liste aus dem Paket (dasselbe wie <code>php artisan cipi:token-abilities</code>).</p>
-<p>Die Fähigkeiten umfassen Apps (Anzeigen/Erstellen/Bearbeiten/Löschen/Suspendieren/Basicauth/env/auth/artisan/run/deploy-config), Aliase, www, bereitstellen, SSL, Datenbanken, Status, MCP und – seit API <strong>1.15+</strong> — PHP, SSH, Dienste, SMTP, Gesundheit und IP-Whitelist. Widerrufen mit <code>cipi api token revoke &lt;id&gt;</code>. Verwenden Sie ein Token mit voller Funktionalität nicht in einer öffentlichen Pipeline wieder.</p>
+<h2 id="tokens">Sanctum-Tokens und feingranulare Abilities</h2>
+<p>Auth ist Laravel Sanctum. Jeder Token trägt einen oder mehrere <em>Abilities</em>: Ein CI-Token kann nur enthalten <code>deploy-manage</code> und <code>apps-view</code>; Ein Panel-Token benötigt den vollständigen Satz. <code>cipi api token create</code> liest die kanonische Liste aus dem Paket (dasselbe wie <code>php artisan cipi:token-abilities</code>).</p>
+<p>Die Abilities umfassen Apps (Anzeigen/Erstellen/Bearbeiten/Löschen/Suspendieren/Basicauth/env/auth/artisan/run/deploy-config), Aliase, www, deployen, SSL, Datenbanken, Status, MCP und – seit API <strong>1.15+</strong> — PHP, SSH, Dienste, SMTP, Gesundheit und IP-Whitelist. Widerrufen mit <code>cipi api token revoke &lt;id&gt;</code>. Verwenden Sie ein Token mit voller Funktionalität nicht in einer öffentlichen Pipeline wieder.</p>
 <h2 id="jobs">Asynchrone Jobs und Abfragen</h2>
-<p>Ein Deploy bzw <code>db create</code> lebt nicht in der HTTP-Anfrage: Die API stellt die Arbeit in die Warteschlange und kehrt zurück <code>202</code> + <code>job_id</code>. Umfrage <code>GET /api/jobs/{id}</code> für Status, CLI <code>output</code> und <code>exit_code</code>. Das ist das gleiche Overlay, das GUI zeigt, und die gleiche Schleife wie <code>cipi-cli jobs wait</code>.</p>
+<p>Ein Deploy bzw <code>db create</code> lebt nicht in der HTTP-Anfrage: Die API stellt die Arbeit in die Queue und kehrt zurück <code>202</code> + <code>job_id</code>. Umfrage <code>GET /api/jobs/{id}</code> für Status, CLI <code>output</code> und <code>exit_code</code>. Das ist das gleiche Overlay, das GUI zeigt, und die gleiche Schleife wie <code>cipi-cli jobs wait</code>.</p>
 <pre class="code-pre"><code>curl -sS -X POST "${CIPI_API_URL}/api/apps/myapp/deploy" \
   -H "Authorization: Bearer ${CIPI_API_TOKEN}"
 
@@ -416,7 +416,7 @@ curl -sS "${CIPI_API_URL}/api/jobs/JOB_ID" \
   -H "Authorization: Bearer ${CIPI_API_TOKEN}"</code></pre>
 <p>Seit Cipi <strong>4.6.3</strong> Das API-Paket bietet jede Nacht um 04:30 Uhr Soft-Updates (<code>cipi api update</code>), sodass REST-Endpunkte und MCP-Tools ohne manuellen Schritt auf dem neuesten Stand bleiben.</p>
 <h2 id="mcp">MCP: Cipi innerhalb von Cursor, VS Code und Claude</h2>
-<p>Der MCP-Server bei <code>/mcp</code> (Streambar HTTP) wird angezeigt <strong>Über 50 Werkzeuge</strong>: apps, aliases, www, databases, deploy, SSL, Basic Auth, server cockpit, <code>.env</code> / <code>auth.json</code> / app-run / deploy-config, jobs, logs and <code>ServerStatus</code>. Ab API <strong>1.11.1+</strong> ein Token mit nur <code>mcp-access</code> reicht für jedes MCP-Tool – REST-Fähigkeiten pro Endpunkt werden nicht überprüft <code>/mcp</code>.</p>
+<p>Der MCP-Server bei <code>/mcp</code> (Streambar HTTP) wird angezeigt <strong>Über 50 Tools</strong>: Apps, Aliase, www, Datenbanken, Deploy, SSL, Basic Auth, Server-Cockpit, <code>.env</code> / <code>auth.json</code> / app-run / deploy-config, jobs, logs and <code>ServerStatus</code>. Ab API <strong>1.11.1+</strong> ein Token mit nur <code>mcp-access</code> reicht für jedes MCP-Tool – REST-Abilities pro Endpunkt werden nicht überprüft <code>/mcp</code>.</p>
 <p>Cursorkonfiguration in <code>~/.cursor/mcp.json</code>:</p>
 <pre class="code-pre"><code>{
   "mcpServers": {
@@ -429,20 +429,20 @@ curl -sS "${CIPI_API_URL}/api/jobs/JOB_ID" \
     }
   }
 }</code></pre>
-<p>VS Code (Copilot) verwendet den gleichen HTTP-Transport; Claude Code fügt den Server mit hinzu <code>claude mcp add --transport http</code>; Claude Desktop geht durch <code>mcp-remote</code>. Protokollierungstools schwärzen allgemeine Geheimnisse, bevor sie zurückkehren. Dasselbe Protokoll ist auf der App-Seite das, was die <a class="inline" href="/de/guides/spezifikationsgetriebene-ki-entwicklung-laravel">In-App-Agent MCP</a> belichtet – zwei Oberflächen, ein Standard.</p>
+<p>VS Code (Copilot) verwendet den gleichen HTTP-Transport; Claude Code fügt den Server mit hinzu <code>claude mcp add --transport http</code>; Claude Desktop geht durch <code>mcp-remote</code>. Protokollierungstools schwärzen allgemeine Secrets, bevor sie zurückkehren. Dasselbe Protokoll ist auf der App-Seite das, was die <a class="inline" href="/de/guides/spezifikationsgetriebene-ki-entwicklung-laravel">In-App-Agent MCP</a> belichtet – zwei Oberflächen, ein Standard.</p>
 <h2 id="gui">Das UI-Panel als Multiserver-Cockpit</h2>
-<p>Das GUI ist eine dünne visuelle Schicht über dem API. Es lebt darin <code>/opt/cipi/gui</code>, es ist Laravel 12, und es behält keine lokalen Warteschlangenarbeiter: Es authentifiziert sich beim API jedes Servers, verteilt Jobs und fragt deren Status ab. Zerlegen Sie das Panel und bauen Sie es an anderer Stelle wieder auf, ohne einen verwalteten Server zu berühren.</p>
+<p>Das GUI ist eine dünne visuelle Schicht über dem API. Es lebt darin <code>/opt/cipi/gui</code>, es ist Laravel 12, und es behält keine lokalen Queue-Worker: Es authentifiziert sich beim API jedes Servers, verteilt Jobs und fragt deren Status ab. Zerlegen Sie das Panel und bauen Sie es an anderer Stelle wieder auf, ohne einen verwalteten Server zu berühren.</p>
 <p>Ein Login, viele Server. Registrieren Sie Endpunkt + Token für Produktions-, Staging- und Client-Boxen und wechseln Sie dann zwischen ihnen. Es ist das Cockpit, das Sie benötigen, wenn Sie mehr als eine VPS haben und nicht zehn SSH-Sitzungen geöffnet haben möchten.</p>
 <div class="note">
 <p>Für das Panel muss API eingeschaltet sein <em>jeder</em> Server, den Sie verwalten möchten, mit einem Bearer-Token mit voller Funktionalität (einschließlich <code>www-manage</code>, <code>status-view</code> und für App-Tools: <code>apps-env</code>, <code>apps-auth</code>, <code>apps-artisan</code>, <code>apps-run</code>, <code>apps-deploy-config</code>). Ohne das API ist das GUI eine leere Hülle.</p>
 </div>
 <h2 id="browser">Was Sie im Browser tun können</h2>
 <ul>
-<li><strong>Laravel und benutzerdefinierte Apps</strong> – Erstellen, Bearbeiten, Bereitstellen, Rollback, Entsperren, Anhalten/Aufheben der Suspendierung, Löschen. Octane (FrankenPHP) zum Erstellungszeitpunkt ab API <strong>1.13+</strong>; Listen-/Detailansichten unterscheiden FPM von Octane.</li>
+<li><strong>Laravel und benutzerdefinierte Apps</strong> – Erstellen, Bearbeiten, Deploy, Rollback, Entsperren, Anhalten/Aufheben der Suspendierung, Löschen. Octane (FrankenPHP) zum Erstellungszeitpunkt ab API <strong>1.13+</strong>; Listen-/Detailansichten unterscheiden FPM von Octane.</li>
 <li><strong>Aliase, WWW, SSL, Basic Auth</strong> – der gleiche Ablauf wie CLI, plus Force HTTPS und Apex/www-Weiterleitungen.</li>
 <li><strong><code>.env</code>, <code>auth.json</code>, Artisan, App-Befehle</strong> — Editor- und Terminalausgabe mit Markdown-Kopie (API <strong>1.14+</strong> / Cipi <strong>5.0.3+</strong>).</li>
-<li><strong>Mehrmotorige Datenbanken</strong> — wähle zum Zeitpunkt der Erstellung MariaDB oder PostgreSQL; Sicherung, Wiederherstellung und Passwortrotation über den Browser (API<strong>1.12+</strong> / Cipi <strong>4.8+</strong>).</li>
-<li><strong>Protokolle</strong> — nginx, PHP-FPM, Laravel, worker, deploy: type filter, pagination, auto-refresh. Common secrets are redacted.</li>
+<li><strong>Mehrmotorige Datenbanken</strong> — wähle zum Zeitpunkt der Erstellung MariaDB oder PostgreSQL; Backup, Wiederherstellung und Passwortrotation über den Browser (API<strong>1.12+</strong> / Cipi <strong>4.8+</strong>).</li>
+<li><strong>Logs</strong> — nginx, PHP-FPM, Laravel, Worker, Deploy: Typfilter, Pagination, Auto-Refresh. Gängige Secrets werden maskiert.</li>
 <li><strong>Job-Overlay</strong> – Spinner und CLI-Ausgabe, während das Panel abfragt <code>GET /api/jobs/{id}</code>.</li>
 <li><strong>Live-Dashboard</strong> – CPU-, Speicher-, Festplatten-, Dienste- und App-Anzahl über <code>GET /api/status</code>.</li>
 </ul>
@@ -453,10 +453,10 @@ curl -sS "${CIPI_API_URL}/api/jobs/JOB_ID" \
 <li>SSH-Schlüssel hinzufügen, umbenennen und widerrufen <code>cipi</code> Benutzer.</li>
 <li>Systemdienste auflisten und neu starten.</li>
 <li>Konfigurieren, testen, aktivieren und deaktivieren Sie SMTP-Benachrichtigungen (das Passwort wird bei GET nie zurückgegeben).</li>
-<li>Gesundheitschecks pro App für HTTP – erstellen, ausführen, entfernen.</li>
+<li>Health-Checks pro App für HTTP – erstellen, ausführen, entfernen.</li>
 <li>IP-Whitelist für das Panel API / MCP: eine Adresse oder CIDR pro Zeile, oder <code>*</code> alles zulassen.</li>
 </ul>
-<p>That is the piece that makes the GUI a real alternative to a SaaS panel, without moving the source of truth off the server.</p>
+<p>Genau das macht die GUI zu einer echten Alternative zu einem SaaS-Panel – ohne die Source of Truth vom Server wegzuziehen.</p>
 <h2 id="install">So installieren Sie sie</h2>
 <p>Erforderliche Reihenfolge: API auf jedem verwalteten Server, dann GUI überall dort, wo Sie den Browser haben möchten. Der GUI kann auf derselben Box oder auf einer kleinen dedizierten Maschine leben – es ist nur ein HTTP-Client.</p>
 <pre class="code-pre"><code><span class="c"># on every server you will manage</span>
@@ -479,39 +479,39 @@ $ cipi api ip-whitelist show --json</code></pre>
 <h2 id="use-cases">Anwendungsfälle: Teams, Agenturen, Hosting, KI</h2>
 <ul>
 <li><strong>Freiberufler mit zwei VPS</strong> — API + <code>cipi-cli</code> vom Laptop. Der GUI ist optional; a <code>prod</code> und a <code>staging</code> Profil reichen aus.</li>
-<li><strong>Ein Team, das nicht in SSH lebt</strong> – ein Panel, 2FA, Live-Dashboard, Artisan und Protokolle, ohne dass jeder Root erhalten muss.</li>
+<li><strong>Ein Team, das nicht in SSH lebt</strong> – ein Panel, 2FA, Live-Dashboard, Artisan und Logs, ohne dass jeder Root erhalten muss.</li>
 <li><strong>Multi-Client-Agentur</strong> — ein Login, N Server. Jede Box hat ihren eigenen Token; Durch das Löschen eines Clients wird ein Token widerrufen, nicht die Deinstallation von Cipi.</li>
-<li><strong>Hosting mit Abrechnung</strong> – die <a class="inline" href="/de/docs/advanced#whmcs">WHMCS-Modul</a> spricht das gleiche REST API: erstellen, SSL, bereitstellen, löschen im Produktlebenszyklus.</li>
+<li><strong>Hosting mit Abrechnung</strong> – die <a class="inline" href="/de/docs/advanced#whmcs">WHMCS-Modul</a> spricht das gleiche REST API: erstellen, SSL, deployen, löschen im Produktlebenszyklus.</li>
 <li><strong>KI-Agenten</strong> — Server MCP für Infrastruktur; In-App-Agent MCP für die Codebasis. Spezifikationen und Leitplanken im <a class="inline" href="/de/guides/spezifikationsgetriebene-ki-entwicklung-laravel">spezifikationsgesteuerter Leitfaden</a>.</li>
 </ul>
-<h2 id="clients">cipi-cli and WHMCS on the same wire</h2>
-<p>Die <a class="inline" href="/de/docs/cli-client">CLI Kunde</a> ist eine Go-Binärdatei, die REST von Ihrem Laptop aus kommuniziert: Apps, Aliase, Bereitstellung, SSL, Datenbanken, globaler Status, Jobs. Gleiche Token, gleiche Multiserverprofile. Bevorzugen Sie das Terminal? Sie benötigen den GUI nicht. Bevorzugen Sie den Browser? Das brauchst du nicht <code>cipi-cli</code>. Benötigen Sie beides an verschiedenen Tagen? Gleiche API.</p>
+<h2 id="clients">cipi-cli und WHMCS über dieselbe Leitung</h2>
+<p>Die <a class="inline" href="/de/docs/cli-client">CLI-Client</a> ist eine Go-Binärdatei, die REST von Ihrem Laptop aus kommuniziert: Apps, Aliase, Deployment, SSL, Datenbanken, globaler Status, Jobs. Gleiche Token, gleiche Multiserverprofile. Bevorzugen Sie das Terminal? Sie benötigen den GUI nicht. Bevorzugen Sie den Browser? Das brauchst du nicht <code>cipi-cli</code>. Benötigen Sie beides an verschiedenen Tagen? Gleiche API.</p>
 <pre class="code-pre"><code>$ cipi-cli api token add prod
 $ cipi-cli prod apps list
 $ cipi-cli prod deploy myapp
 $ cipi-cli status</code></pre>
-<p>WHMCS ist der dritte offizielle Client: Hosting-Bereitstellung ohne Composer, Drop-in in den Modulordner. Keiner der drei ersetzt <code>cipi</code> auf dem Server – sie remoten es.</p>
+<p>WHMCS ist der dritte offizielle Client: Hosting-Deployment ohne Composer, Drop-in in den Modulordner. Keiner der drei ersetzt <code>cipi</code> auf dem Server – sie remoten es.</p>
 <div class="cta-box">
 <h2>Probieren Sie beide Erweiterungen auf einem Cipi VPS aus</h2>
 <p>Cipi bleibt kostenlos, open-source CLI. API und GUI sind Opt-in-Pakete: Installieren Sie sie, wenn Sie einen Browser, ein CI webhook oder einen KI-Agenten benötigen – und entfernen Sie sie, wenn Sie dies nicht benötigen.</p>
 <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
 <div class="cta-actions">
-<a class="btn-primary" href="/de/docs/gui">GUI Panel-Dokumente</a>
-<a class="btn-ghost" href="/de/docs/advanced#cipi-api">cipi api Dokumente</a>
+<a class="btn-primary" href="/de/docs/gui">GUI Panel-Docs</a>
+<a class="btn-ghost" href="/de/docs/advanced#cipi-api">cipi api Docs</a>
 <a class="btn-ghost" href="https://github.com/cipi-sh/cipi" target="_blank">Stern auf GitHub</a>
 </div>
 </div>
 <h2 id="faq">Häufig gestellte Fragen</h2>
-<div class="faq-item"><h3>Benötige ich das UI-Panel, um Cipi zu verwenden?</h3><p>Nein. Cipi ist CLI-zuerst. Ohne <code>cipi api</code> und ohne <code>cipi gui</code> Der Server erledigt immer noch die gleiche Arbeit: Apps, Bereitstellungen, SSL, Backups, Firewall. Bei beiden Paketen handelt es sich seit v4.7.0 um Opt-in-Erweiterungen.</p></div>
-<div class="faq-item"><h3>Can I use the GUI without the API?</h3><p>No. The panel is an HTTP client of the REST API. Every managed server needs <code>cipi api</code> und einen Trägermarker mit den Fähigkeiten, die du freilegen möchtest. Ohne die API gibt es nichts zu zeigen.</p></div>
-<div class="faq-item"><h3>Ersetzt die GUI die CLI auf dem Server?</h3><p>No. Every browser action is the same <code>cipi</code> Befehl, der über sudo vom Panel API ausgeführt wird. Sie können weiterhin parallel über SSH arbeiten, ohne Split-Brain-Zustand.</p></div>
+<div class="faq-item"><h3>Benötige ich das UI-Panel, um Cipi zu verwenden?</h3><p>Nein. Cipi ist CLI-first. Ohne <code>cipi api</code> und ohne <code>cipi gui</code> Der Server erledigt immer noch die gleiche Arbeit: Apps, Deployments, SSL, Backups, Firewall. Bei beiden Paketen handelt es sich seit v4.7.0 um Opt-in-Erweiterungen.</p></div>
+<div class="faq-item"><h3>Kann ich die GUI ohne die API nutzen?</h3><p>Nein. Das Panel ist ein HTTP-Client der REST API. Jeder verwaltete Server braucht <code>cipi api</code> und einen Trägermarker mit den Abilities, die du freilegen möchtest. Ohne die API gibt es nichts zu zeigen.</p></div>
+<div class="faq-item"><h3>Ersetzt die GUI die CLI auf dem Server?</h3><p>Nein. Jede Aktion im Browser ist derselbe <code>cipi</code> Befehl, der über sudo vom Panel API ausgeführt wird. Sie können weiterhin parallel über SSH arbeiten, ohne Split-Brain-Zustand.</p></div>
 <div class="faq-item"><h3>Was ist der Unterschied zwischen REST, MCP und cipi-cli?</h3><p>Die gleichen API, drei Kunden. REST ist für Skripte, CI und WHMCS. MCP ist für KI-Agenten (Cursor, VS Code, Claude). <code>cipi-cli</code> ist das Laptop-Terminal. Der GUI ist der vierte Client, der für Menschen gebaut wurde.</p></div>
 <div class="faq-item"><h3>Kann ich mehrere Server von einem Panel aus verwalten?</h3><p>Ja. Registrieren Sie Endpunkt und Token für jede Box und wechseln Sie mit demselben Login zwischen ihnen. Das Panel ist im Verhältnis zu Ihrer Infrastruktur zustandslos: Es speichert den Serverstatus nicht, sondern liest ihn vom API.</p></div>
 <h2>Lesen Sie weiter</h2>
 <div class="related">
-<a href="/de/docs/gui">Dokumente: Panel GUI</a>
-<a href="/de/docs/advanced#cipi-api">Dokumente: cipi api</a>
-<a href="/de/docs/cli-client">CLI Kunde</a>
+<a href="/de/docs/gui">Docs: Panel GUI</a>
+<a href="/de/docs/advanced#cipi-api">Docs: cipi api</a>
+<a href="/de/docs/cli-client">CLI-Client</a>
 <a href="/de/guides/spezifikationsgetriebene-ki-entwicklung-laravel">Spezifikationsgesteuerte KI-Entwicklung</a>
 <a href="/de/guides/laravel-auf-ubuntu-vps-deployen">Setze Laravel auf Ubuntu ein</a>
 </div>
@@ -521,43 +521,43 @@ $ cipi-cli status</code></pre>
 <div class="footer-grid">
 <div class="footer-brand">
 <a class="footer-logo" href="/">Cipi</a>
-<p>Kostenlose open-source Laravel Bereitstellung CLI für Ubuntu VPS – Octane, Horizon, Reverb und Git-Bereitstellungen ohne Ausfallzeiten.</p>
+<p>Kostenlose Open-Source-Deploy-CLI für Laravel auf Ubuntu VPS – Octane, Horizon, Reverb und Zero-Downtime-Git-Deploys.</p>
 <ul class="footer-brand-links">
-<li><a href="/de/docs/getting-started">Fangen Sie an</a></li>
-<li><a href="/de/docs/">Dokumente</a></li>
+<li><a href="/de/docs/getting-started">Jetzt starten</a></li>
+<li><a href="/de/docs/">Docs</a></li>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Vergleichen Sie Cipi mit Alternativen" class="footer-col footer-col--compare">
+<nav aria-label="Cipi mit Alternativen vergleichen" class="footer-col footer-col--compare">
 <strong>Vergleiche Cipi</strong>
 <ul>
 <li><a href="/de/alternative-to-laravel-forge">Laravel Forge alternativ</a></li>
-<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud-Alternative</a></li>
+<li><a href="/de/alternative-to-laravel-cloud">Laravel Cloud Alternative</a></li>
 <li><a href="/de/alternative-to-ploi">Ploi Alternative</a></li>
 <li><a href="/de/alternative-to-coolify">Coolify Alternative</a></li>
 <li><a href="/de/alternative-to-runcloud">RunCloud Alternative</a></li>
 <li><a href="/de/alternative-to-cloudpanel">CloudPanel Alternative</a></li>
 <li><a href="/de/alternative-to-cpanel">cPanel Alternative</a></li>
-<li><a href="/de/alternative-to-plesk">Plesk-Alternative</a></li>
+<li><a href="/de/alternative-to-plesk">Plesk Alternative</a></li>
 <li><a href="/de/best-laravel-forge-alternatives">Beste Forge Alternativen 2026</a></li>
 <li><a href="/de/alternatives">Alle Vergleiche</a></li>
 </ul>
 </nav>
-<nav aria-label="Kostenlose Reiseführer im Wert von Laravel" class="footer-col">
-<strong>Kostenlose Reiseführer</strong>
+<nav aria-label="Kostenlose Guides im Wert von Laravel" class="footer-col">
+<strong>Kostenlose Guides</strong>
 <ul>
 <li><a href="/de/guides/apps-mit-cipi-yml-verwalten">Apps mit cipi.yml verwalten</a></li>
-<li><a href="/de/guides/gui-panel-und-api">GUI-Panel und API</a></li>
+<li><a href="/de/guides/gui-panel-und-api">Control-Panel und API</a></li>
 <li><a href="/de/guides/cipi-agent-in-laravel-nutzen">cipi/agent und Projekt-MCP</a></li>
-<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi bereitstellen</a></li>
+<li><a href="/de/guides/wordpress-als-custom-app-deployen">WordPress auf Cipi deployen</a></li>
 <li><a href="/de/guides/">Alle Anleitungen</a></li>
                     </ul>
 </nav>
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Hergestellt mit ❤️ von <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
-<span class="footer-license"> · Open source, MIT-lizenziert</span>
+                    Mit ❤️ gebaut von <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+<span class="footer-license"> · Open Source, MIT-lizenziert</span>
 </div>
 <ul class="footer-links">
 <li><a href="https://conn.web.ap.it" rel="noopener" target="_blank">SSH-Verbindungsmanager</a></li>
