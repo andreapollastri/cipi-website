@@ -9,7 +9,7 @@
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/es/docs/apps" rel="canonical"/>
-        <!-- i18n:alternates -->
+    <!-- i18n:alternates -->
     <link rel="alternate" hreflang="en" href="https://cipi.sh/en/docs/apps">
     <link rel="alternate" hreflang="de" href="https://cipi.sh/de/docs/apps">
     <link rel="alternate" hreflang="fr" href="https://cipi.sh/fr/docs/apps">
@@ -28,7 +28,7 @@
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="Cipi Docs — Apps &amp; Sites" property="og:image:alt"/>
-        <meta property="og:locale" content="es_ES">
+    <meta property="og:locale" content="es_ES">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="de_DE">
     <meta property="og:locale:alternate" content="fr_FR">
@@ -43,10 +43,10 @@
       "@type": "TechArticle",
       "datePublished": "2026-06-03",
       "dateModified": "2026-08-04",
-      "headline": "Cipi Docs — Apps & Sites",
+      "headline": "Cipi Docs: aplicaciones y sitios",
       "name": "Apps & Sites",
       "url": "https://cipi.sh/en/docs/apps",
-      "description": "Create, manage, and configure Laravel apps and custom sites with Cipi: domains, SSL, PHP versions, workers, and deploys.",
+      "description": "Cree, administre y configure Laravel aplicaciones y sitios personalizados con Cipi: dominios, SSL, PHP versiones, workers e despliegues.",
       "inLanguage": "es",
       "image": "https://cipi.sh/og.png",
       "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/" },
@@ -108,12 +108,7 @@
 <span class="nav-badge">Docs</span>
 </div>
 <div class="nav-right">
-
-
-
-<a href="/es/cipi-yml" class="nav-link">cipi.yml</a>
-
-
+<a class="nav-link" href="/es/cipi-yml">cipi.yml</a>
 
 <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">ES</summary><div class="lang-menu"><a href="/en/docs/apps" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/docs/apps" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/docs/apps" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/docs/app" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a class="active" href="/es/docs/apps" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/docs/apps" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
 <button aria-label="Cambiar tema" class="theme-toggle" onclick="toggleTheme()">
@@ -153,7 +148,7 @@
 <a class="sidebar-link" href="/es/docs/getting-started#app-structure">estructura de la aplicación</a>
 </div>
 <div class="sidebar-group" data-chapter="agent">
-<a class="sidebar-group-label" href="/es/docs/agent">cipi agente</a>
+<a class="sidebar-group-label" href="/es/docs/agent">cipi agent</a>
 <a class="sidebar-link" href="/es/docs/agent#agent-install">instalación</a>
 <a class="sidebar-link" href="/es/docs/agent#agent-webhook">webhook</a>
 <a class="sidebar-link" href="/es/docs/agent#agent-health">chequeo de salud</a>
@@ -285,7 +280,7 @@
                     <strong>personalizado</strong> (<code>--custom</code>). Laravel aplicaciones obtienen un entorno completamente aislado:
                     Usuario de Linux, pool PHP-FPM <em>o</em> <strong>Laravel Octane (FrankenPHP)</strong> desde
                     <strong>v5.0</strong>, Nginx vhost, base de datos (MariaDB por defecto; opcional PostgreSQL ya que
-                    <strong>v4.8.0</strong>), Supervisor trabajador, entrada crontab, versiones de despliegue sin downtime, SSH
+                    <strong>v4.8.0</strong>), worker de Supervisor, entrada de crontab, versiones de despliegue sin downtime, SSH
                     implementar clave y compilarse automáticamente <code>.env</code>. Las aplicaciones personalizadas son más sencillas: consulte<a href="/es/docs/apps#cli-app-custom">aplicaciones personalizadas</a> para más detalles.
                 </p>
 <h3>Aplicación Laravel (predeterminada: PHP-FPM)</h3>
@@ -415,7 +410,7 @@
                     <code>error_page 404 /404.html</code> — no hay indicaciones para try_files o punto de entrada.
                 </p>
 <h3>Git opcional (solo SFTP)</h3>
-<p>El repositorio de Git es <strong>opcional</strong> para aplicaciones personalizadas.
+<p>El repositorio de Git es <strong>panel de control web</strong> para aplicaciones personalizadas.
                     <strong>Laravel</strong> Las aplicaciones aún requieren un repositorio. Si omite el repositorio para una costumbre
                     aplicación,
                     Cipi crea <code>/home/&lt;app&gt;/htdocs</code> con un marcador de posición <code>index.html</code> y
@@ -432,7 +427,7 @@
                     mostrado; para aplicaciones solo SFTP, se omiten. El resumen posterior a la creación enumera el acceso SSH y los siguientes
                     pasos en consecuencia.</p>
 <p>Si su aplicación personalizada necesita una base de datos (por ejemplo, WordPress, Drupal), cree una con
-                    <code>cipi db create --name=&lt;app&gt;</code> después del despliegue. Ver <a href="/es/docs/infrastructure#cli-db">cipi dB</a>
+                    <code>cipi db create --name=&lt;app&gt;</code> después del despliegue. Ver <a href="/es/docs/infrastructure#cli-db">cipi db</a>
                     para realizar copias de seguridad, restaurar y administrar contraseñas.
                 </p>
 <p>Con Git: ejemplo no interactivo:</p>
@@ -462,60 +457,60 @@
 </thead>
 <tbody>
 <tr>
-<td>cipi lista de aplicaciones</td>
+<td>cipi app list</td>
 <td>Enumere todas las aplicaciones con dominio, versión PHP y estado (<code>(suspended)</code> cuando
                                                     fuera de línea)</td>
 </tr>
 <tr>
-<td>cipi aplicación muestra &lt;aplicación&gt;</td>
+<td>cipi app show &lt;app&gt;</td>
 <td>Detalles completos: dominio, PHP, clave de despliegue, workers, webhook, estado de suspensión. Para aplicaciones personalizadas:
                                                     escriba "Personalizado", docroot; webhook (y la clave de despliegue) se omiten cuando solo se utiliza SFTP sin una
                                                     repositorio.
                                                 </td>
 </tr>
 <tr>
-<td>cipi aplicación editar &lt;aplicación&gt; --php=8.5</td>
+<td>cipi app edit &lt;app&gt; --php=8.5</td>
 <td>Versión PHP de intercambio en caliente. Actualizaciones grupo FPM, Nginx socket, Supervisor, crontab, Deployer
-                                                    configuración, y <code>.env</code> — cero tiempo de inactividad</td>
+                                                    configuración, y <code>.env</code> — cero downtime</td>
 </tr>
 <tr>
-<td>cipi edición de aplicación &lt;aplicación&gt; --branch=desarrollar</td>
+<td>cipi app edit &lt;app&gt; --branch=develop</td>
 <td>Cambiar la rama de despliegue</td>
 </tr>
 <tr>
-<td>cipi edición de aplicación &lt;aplicación&gt; --dominio=nuevo.ejemplo.com</td>
+<td>cipi app edit &lt;app&gt; --domain=new.example.com</td>
 <td>Cambie el nombre del dominio principal (ya que <strong>v4.6.2</strong>). Valida el formato y
                                                     unicidad, mueve el antiguo primario a alias, regenera el vhost Nginx, actualiza<code>APP_URL</code>, actualiza los webhooks de Git cuando se configuran automáticamente y los vuelve a publicar
                                                     Let's Encrypt cuando ya existía un certificado</td>
 </tr>
 <tr>
-<td>cipi aplicación editar &lt;aplicación&gt; --repository=&lt;SSH-URL&gt;</td>
+<td>cipi app edit &lt;app&gt; --repository=&lt;SSH-URL&gt;</td>
 <td>Adjunte o cambie el repositorio de Git (por ejemplo, habilite la despliegue en una aplicación personalizada solo SFTP)
                                                     creado sin<code>--repository</code>). Componible con <code>--branch</code>,
                                                     <code>--php</code>, y <code>--domain</code>
 </td>
 </tr>
 <tr>
-<td>cipi aplicación editar &lt;aplicación&gt; --node-build='npm ci &amp;&amp; npm ejecutar compilación'</td>
+<td>cipi app edit &lt;app&gt; --node-build='npm ci &amp;&amp; npm run build'</td>
 <td>Ejecute una compilación de nodo después de Composer proveedores en cada despliegue (desde
                                                     <strong>v5.0</strong>). El implementador se ejecuta
                                                     <code>.deployer/node-build.sh</code> (fallo cerrado; comando validado). Limpiar con
                                                     <code>--no-node-build</code></td>
 </tr>
 <tr>
-<td>cipi edición de aplicación &lt;aplicación&gt; --predeploy-snapshot</td>
+<td>cipi app edit &lt;app&gt; --predeploy-snapshot</td>
 <td>Habilite un volcado de base de datos antes de cada despliegue (desde
                                                     <strong>v5.0</strong>). Mismo comportamiento que pasar
                                                     <code>--snapshot</code> en cada uno <code>cipi deploy</code>. Ver
                                                     <a href="/es/docs/deploy#predeploy-snapshot">Snapshots de base de datos previas a la despliegue</a></td>
 </tr>
 <tr>
-<td>cipi aplicación convierte &lt;aplicación&gt; --to=octane|fpm</td>
+<td>cipi app convert &lt;app&gt; --to=octane|fpm</td>
 <td>Convertir entre PHP-FPM y <strong>Laravel Octane</strong> (desde
                                                     <strong>v5.0</strong>). Ver <a href="#cli-app-octane">Laravel Octane</a></td>
 </tr>
 <tr>
-<td>cipi entorno de aplicación &lt;aplicación&gt; [--show|--get|--set|--unset]</td>
+<td>cipi app env &lt;app&gt; [--show|--get|--set|--unset]</td>
 <td>Abra la aplicación <code>.env</code> en nano, o administrar claves
                                                     no interactivamente desde <strong>v5.0.3</strong>
                                                     (<code>--show</code>/<code>--get</code>/<code>--set</code>/<code>--unset</code>,
@@ -523,17 +518,17 @@
                                                     (sin .env).</td>
 </tr>
 <tr>
-<td>cipi aplicación ejecuta &lt;app&gt; &lt;cmd&gt; [args…]</td>
+<td>cipi app run &lt;app&gt; &lt;cmd&gt; [args…]</td>
 <td>Comando no interactivo incluido en la lista blanca como usuario de la aplicación (ya que
                                                     <strong>v5.0.3</strong>). Ver <a href="#cli-app-run"><code>app run</code></a></td>
 </tr>
 <tr>
-<td>cipi aplicación implementar-config &lt;aplicación&gt;</td>
+<td>cipi app deploy-config &lt;app&gt;</td>
 <td>Opciones de recetas de Structured Deployer (ya que <strong>v5.0.3</strong>).
                                                     Ver <a href="/es/docs/deploy#cli-deploy-config">configuración de despliegue</a></td>
 </tr>
 <tr>
-<td>cipi aplicación webhook recrear &lt;aplicación&gt; [--rotate-secret]</td>
+<td>cipi app webhook recreate &lt;app&gt; [--rotate-secret]</td>
 <td>Recrea el despliegue GitHub/GitLab webhook; rotación secreta opcional
                                                     actualizaciones <code>CIPI_WEBHOOK_TOKEN</code> (desde
                                                     <strong>v5.0.6</strong>). REST:
@@ -543,25 +538,25 @@
                                                     cuando la URL del repositorio realmente cambia.</td>
 </tr>
 <tr>
-<td>cipi restablecimiento de contraseña de aplicación &lt;aplicación&gt;</td>
+<td>cipi app reset-password &lt;app&gt;</td>
 <td>Vuelva a generar la contraseña SSH del usuario de Linux de la aplicación. La nueva contraseña se muestra en
                                                     pantalla: guárdalo inmediatamente</td>
 </tr>
 <tr>
-<td>cipi aplicación restablecer-db-contraseña &lt;aplicación&gt;</td>
+<td>cipi app reset-db-password &lt;app&gt;</td>
 <td>Regenerar la contraseña de la base de datos de la aplicación (MariaDB o PostgreSQL por aplicación
                                                     <code>engine</code>) y actualizar automáticamente <code>DB_PASSWORD</code>en la aplicación
                                                     <code>.env</code>. Sale con error para aplicaciones personalizadas (sin base de datos).
                                                 </td>
 </tr>
 <tr>
-<td>cipi aplicación eliminar &lt;aplicación&gt;</td>
+<td>cipi app delete &lt;app&gt;</td>
 <td>Elimine permanentemente la aplicación, el usuario, la base de datos (si es Laravel), Nginx vhost, el grupo FPM y
                                                     Supervisor workers. Para aplicaciones personalizadas, omite la eliminación de la base de datos (no se creó ninguna). pide
                                                     confirmación.</td>
 </tr>
 <tr>
-<td>cipi aplicación eliminar &lt;aplicación&gt; --force</td>
+<td>cipi app delete &lt;app&gt; --force</td>
 <td>Igual que eliminar, pero omite el mensaje de confirmación: para scripts, el panel API y
                                                     <code>cipi-cli</code>
 </td>
@@ -573,47 +568,240 @@
 <div class="doc-section" id="cli-app-reverb">
 <h2><code>cipi app reverb</code></h2>
 <p><strong>Laravel Reverb</strong> es el servidor WebSocket de primera parte de Laravel. Cipi lo gestiona desde
-                    <strong>v5.0</strong>; la <strong>v5.1.2</strong> es la release que lo deja usable en producción —
-                    credenciales generadas, esquema derivado del certificado, límites de conexión más altos y un proxy
-                    que ya no se traga tus propias rutas.</p>
-<p>Activarlo en una app Laravel cablea cuatro cosas: un puerto localhost <code>9000–9099</code>, el programa
-                    Supervisor <code>${app}-reverb</code>, un proxy nginx para <code>/app/{key}</code> y
-                    <code>/apps/{id}/…</code> en el dominio de la app, y las claves
-                    <code>REVERB_*</code> / <code>VITE_REVERB_*</code> en el <code>.env</code>.</p>
+                    <strong>v5.0</strong>; <strong>v5.1.2</strong> es el lanzamiento que lo hizo funcionar en producción.
+                    credenciales generadas, un esquema derivado del certificado, límites de conexión elevados y un proxy
+                    regla que ya no se traga tus propias rutas.</p>
+<p>Habilitar Reverb en una aplicación Laravel implica cuatro cosas:</p>
+<div class="options-list">
+<div class="option-item"><code>127.0.0.1:9000–9099</code><span>Un puerto localhost gratuito, asignado por
+                            aplicación y grabado en <code>apps.json</code>. Reverb nunca escucha en público
+                            interfaz.</span></div>
+<div class="option-item"><code>${app}-reverb</code><span>Un programa Supervisor ejecutándose
+                            <code>artisan reverb:start</code> como usuario de la aplicación, iniciando sesión en
+                            <code>/home/&lt;app&gt;/logs/reverb.log</code>.</span></div>
+<div class="option-item"><code>nginx</code><span>Un bloque de proxy en el propio dominio de la aplicación para
+                            <code>/app/{key}</code> (el protocolo de enlace WebSocket) y <code>/apps/{id}/…</code> (el HTTP
+                            API la aplicación transmite).</span></div>
+<div class="option-item"><code>.env</code><span><code>REVERB_*</code> y
+                            <code>VITE_REVERB_*</code>, generado en la primera habilitación y nunca rotado
+                            después.</span></div>
+</div>
 <div class="code-block">
 <div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copiar</button></div>
 <pre><span class="p">$</span> cipi app reverb enable myapp
-<span class="p">$</span> cipi app reverb enable myapp --restart-supervisor   <span class="c"># aplica ya el nuevo límite de archivos abiertos</span>
+<span class="p">$</span> cipi app reverb enable myapp --restart-supervisor   <span class="c"># also apply the new open-file limit now</span>
 <span class="p">$</span> cipi app reverb status myapp
 <span class="p">$</span> cipi app reverb disable myapp</pre>
 </div>
-<p>Reverb es <strong>solo Laravel</strong>. Volver a ejecutar <code>enable</code> es seguro: no reasigna el puerto
-                    ni toca las credenciales; recalcula host y esquema y rellena claves <code>.env</code> que falten.
-                    El build de Node debe ir <em>después</em> del <code>enable</code>. Ver
-                    <a href="/es/docs/deploy#cli-deploy-config"><code>node_build</code></a>.</p>
-<div class="callout warning">
-<svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-<path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path>
-<line x1="12" y1="9" x2="12" y2="13"></line>
-<line x1="12" y1="17" x2="12.01" y2="17"></line>
-</svg>
-<div><strong><code>/app</code> y <code>/apps</code> pertenecen al protocolo.</strong> Hasta
-                    <strong>5.1.1</strong> el proxy era <code>location /app</code> (prefijo nginx), así que
-                    <code>/appointments</code> y <code>/application/…</code> iban a Reverb. Desde
-                    <strong>5.1.2</strong> el bloque es <code>~ ^/apps?(/|$)</code>. Una app con su propia ruta
-                    <code>/app</code> necesita un subdominio dedicado.</div>
+<div class="options-list">
+<div class="option-item"><code>--restart-supervisor</code><span>Reinicie Supervisor como parte de
+                            <code>enable</code>, por lo que el límite elevado de descriptores de archivos se aplica inmediatamente. esto reinicia
+                            <strong>cada worker de cola en el servidor</strong>, razón por la cual Cipi nunca lo hace en su
+                            propio.</span></div>
 </div>
-<p><code>ws://</code> o <code>wss://</code> se deriva del certificado. Un wildcard se resuelve a un host concreto.
-                    <code>status</code> imprime la URL del cliente y avisa si falta una credencial, si hay certificado
-                    pero el esquema sigue en <code>http</code>, o si Supervisor aún tiene el límite antiguo.
-                    <code>--restart-supervisor</code> reinicia <strong>todos los queue workers del servidor</strong>.</p>
-<p><code>disable</code> restaura <code>BROADCAST_CONNECTION</code> (fallback <code>log</code>). Un clon obtiene
-                    puerto, credenciales y dominio propios. Se declara en
-                    <a href="/es/cipi-yml"><code>workers.reverb</code></a>. La <strong>migración 5.1.2</strong>
-                    reescribe los vhosts voraces (copia en <code>/var/lib/cipi/vhost-backup-5.1.2</code>) y rellena
-                    el <code>.env</code> sin sobrescribir — luego redeploy para el bundle Vite.</p>
-</div>
+<p>; la <strong>v5.1.2</strong> — <code>enable</code> rechaza un <code>--custom</code> aplicación.
+                    corriendo <code>enable</code> nuevamente en una aplicación que ya tiene Reverb es segura y útil: no
+                    reasigna el puerto o toca las credenciales, vuelve a derivar el host público y el esquema y completa
+                    cualquiera <code>.env</code> llave que se perdió.</p>
+<h3>Habilitándolo de extremo a extremo</h3>
+<div class="code-block">
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copiar</button></div>
+<pre><span class="c"># 1. In the project, on your machine — require the package and the client side,</span>
+<span class="c">#    then commit. `install:broadcasting` writes resources/js/echo.js and config/reverb.php.</span>
+<span class="p">$</span> composer require laravel/reverb
+<span class="p">$</span> php artisan install:broadcasting
 
+<span class="c"># 2. On the server — allocate the port, the Supervisor program and the nginx proxy.</span>
+<span class="p">$</span> cipi app reverb enable myapp
+
+<span class="c"># 3. A certificate, so clients get wss:// instead of ws:// (skip if the app already has one).</span>
+<span class="p">$</span> cipi ssl install myapp
+
+<span class="c"># 4. Deploy: composer install, the Node build, then Reverb starts on the new release.</span>
+<span class="p">$</span> cipi deploy myapp
+<span class="p">$</span> cipi app reverb status myapp</pre>
+</div>
+<p>El orden solo importa en el sentido de que la compilación del nodo debe ejecutarse <em>después</em> <code>reverb enable</code>: vita
+                    hornea <code>VITE_REVERB_*</code> en el paquete en el momento de la compilación. Cipi
+                    <a href="/es/docs/deploy#cli-deploy-config"><code>node_build</code></a> El paso se ejecuta después de que el implementador haya
+                    vinculado el compartido <code>.env</code>, por lo que una despliegue que sigue <code>enable</code> produce un
+                    interfaz que puede encontrar el socket. Cambie el dominio o instale un certificado más tarde y necesitará
+                    Otro despliegue para que el paquete se ponga al día.</p>
+<h3>Lo que escribe Cipi <code>.env</code></h3>
+<div class="code-block">
+<div class="code-block-header"><span class="code-block-lang">env</span></div>
+<pre><span class="c"># Laravel Reverb — managed by Cipi (cipi app reverb status myapp)</span>
+<span class="c"># Where the Supervisor program listens. Cipi owns this pair outright.</span>
+REVERB_SERVER_HOST=127.0.0.1
+REVERB_SERVER_PORT=9000
+
+BROADCAST_CONNECTION=reverb
+
+<span class="c"># Generated once on the first enable, then never touched again.</span>
+REVERB_APP_ID=482913
+REVERB_APP_KEY=3f9c1ab27de40518b6c4
+REVERB_APP_SECRET=a71f0e5c8d24b93a6f10c7e5482db9af
+
+<span class="c"># The public side — derived from what nginx actually serves.</span>
+REVERB_HOST=myapp.com
+REVERB_PORT=443
+REVERB_SCHEME=https
+
+<span class="c"># Read by Vite at build time and baked into the frontend bundle.</span>
+VITE_REVERB_APP_KEY=<span class="s">"${REVERB_APP_KEY}"</span>
+VITE_REVERB_HOST=<span class="s">"${REVERB_HOST}"</span>
+VITE_REVERB_PORT=<span class="s">"${REVERB_PORT}"</span>
+VITE_REVERB_SCHEME=<span class="s">"${REVERB_SCHEME}"</span></pre>
+</div>
+<p>antes <strong>5.1.2</strong> Las tres credenciales se dejaron en blanco para que usted las inventara, y un espacio vacío.
+                    <code>REVERB_APP_KEY</code> es exactamente lo que se detiene <code>reverb:start</code> desde el arranque. ellos son
+                    ahora generado en la primera <code>enable</code> y un valor existente no vacío siempre gana, por lo que un
+                    La aplicación que llegó con sus propias credenciales las conserva. Cipi nunca los rota: una nueva clave
+                    desconecte todos los clientes activos e invalide cualquier paquete de interfaz ya creado con el anterior
+                    uno.</p>
+<h3>Conexión desde la interfaz</h3>
+<p>la acción <code>resources/js/echo.js</code> de <code>install:broadcasting</code> ya lee
+                    escribe exactamente las variables Cipi, nada que cambiar:</p>
+<div class="code-block">
+<div class="code-block-header"><span class="code-block-lang">js</span><button class="code-copy-btn" onclick="copyCode(this)">Copiar</button></div>
+<pre>import Echo from <span class="s">'laravel-eco'</span>;
+import Pusher from <span class="s">'empujador-js'</span>;
+
+window.Pusher = Pusher;
+
+window.Echo = new Echo({
+    broadcaster: <span class="s">'reverb'</span>,
+    key: import.meta.env.VITE_REVERB_APP_KEY,
+    wsHost: import.meta.env.VITE_REVERB_HOST,
+    wsPort: import.meta.env.VITE_REVERB_PORT ?? 80,
+    wssPort: import.meta.env.VITE_REVERB_PORT ?? 443,
+    forceTLS: (import.meta.env.VITE_REVERB_SCHEME ?? <span class="s">'https'</span>) === <span class="s">'https'</span>,
+    enabledTransports: [<span class="s">'ws'</span>, <span class="s">'wss'</span>],
+});</pre>
+</div>
+<p>Debido a que nginx está frente a Reverb en el propio dominio y puerto de la aplicación, no hay ningún puerto adicional para abrir en el
+                    firewall y sin segundo certificado para administrar. <code>cipi app reverb status</code> imprime el exacto
+                    URL que un cliente termina marcando.</p>
+<div class="callout warning">
+<svg class="callout-icon" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
+<path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path>
+<line x1="12" x2="12" y1="9" y2="13"></line>
+<line x1="12" x2="12.01" y1="17" y2="17"></line>
+</svg>
+<div><strong><code>/app</code> y <code>/apps</code> pertenecen al protocolo.</strong> hasta
+                        <strong>5.1.1</strong> el proxy fue escrito como <code>location /app</code>, que en nginx es un<em>prefijo</em> coincidencia, no una ruta, por lo que en cada aplicación con Reverb habilitado,
+                        <code>/appointments</code>, <code>/apple</code> y <code>/application/…</code> fueron apoderados
+                        en Reverb en lugar de llegar a Laravel. desde<strong>5.1.2</strong> el bloque es la expresión regular
+                        <code>~ ^/apps?(/|$)</code>, que coincide sólo <code>/app/{key}</code> y
+                        <code>/apps/{id}/…</code>. Una aplicación que tiene la suya <code>/app</code> o <code>/apps</code>ruta
+                        Todavía no puedo usar Reverb detrás del mismo dominio; en su lugar, colóquelo en un subdominio dedicado.
+                    </div>
+</div>
+<h3><code>ws://</code> o <code>wss://</code></h3>
+<p>Cipi deriva el host público, el puerto y el esquema de lo que el servidor realmente sirve en lugar de
+                    suponiendo HTTPS:</p>
+<div class="options-list">
+<div class="option-item"><code>no certificate</code><span><code>http</code> en el puerto 80: la aplicación está
+                            servido por encima de HTTP, por lo que el enchufe está <code>ws://</code>.</span></div>
+<div class="option-item"><code>certificate present</code><span><code>https</code> en el puerto 443 -
+                            <code>wss://</code>.</span></div>
+<div class="option-item"><code>wildcard domain</code><span><code>*.example.com</code> resuelve a un
+                            anfitrión concreto (<code>www.example.com</code>), porque ningún navegador puede abrir un socket a un
+                            wildcard. Una interfaz multiinquilino tiene que elegir su propio host en tiempo de ejecución.</span></div>
+</div>
+<p>La instalación de un certificado más tarde (HTTP-01 o DNS-01) mueve la configuración Reverb de la aplicación a
+                    <code>wss://</code> en el acto, y un cambio de dominio también los vuelve a derivar. Antes de 5.1.2 estos valores
+                    fueron codificados para <code>https</code>/443 at enable time, which on an app without a certificate meant
+                    a browser silently refusing the connection as mixed content, with nothing in the Reverb log to
+                    explain it. <code>reverb status</code> ahora advierte cuando la aplicación tiene un certificado pero el
+                    <code>.env</code> todavía dice <code>ws://</code>.</p>
+<h3>Conexiones simultáneas y archivos abiertos</h3>
+<p>Cada WebSocket abierto cuesta un descriptor de archivo dentro de Reverb y dos conexiones dentro de nginx, y
+                    el límite flexible de acciones de 1024 detiene una aplicación en aproximadamente mil clientes simultáneos, sin nada en
+                    cualquier registro para decir por qué. desde <strong>5.1.2</strong> Cipi eleva ambos techos:</p>
+<div class="options-list">
+<div class="option-item"><code>Supervisor</code><span>Una caída de systemd en
+                            <code>/etc/systemd/system/supervisor.service.d/cipi-nofile.conf</code> ajuste
+                            <code>LimitNOFILE=65535</code>, heredado por cada programa Supervisor que se ejecuta.</span></div>
+<div class="option-item"><code>nginx</code><span><code>worker_rlimit_nofile 65535</code> y
+                            <code>worker_connections 8192</code> en <code>nginx.conf</code>, aplicado sobre un
+                            recargar.</span></div>
+</div>
+<p>nginx recoge sus nuevos límites en la recarga que realiza Cipi. Supervisor se recupera solo en un
+                    <strong>reiniciar</strong>, que también reinicia todos los workers de la cola en el servidor, por lo que Cipi configura
+                    el drop-in, le dice que está pendiente y le deja la decisión a usted:</p>
+<div class="code-block">
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copiar</button></div>
+<pre><span class="p">$</span> systemctl restart supervisor
+<span class="c"># or, in one go, at enable time:</span>
+<span class="p">$</span> cipi app reverb enable myapp --restart-supervisor</pre>
+</div>
+<p>El tiempo de espera de lectura del proxy era otro límite silencioso: solía ser exactamente el ping de 60 segundos de Reverb.
+                    intervalo, por lo que cada cliente inactivo era un lanzamiento de moneda entre el ping y el tiempo de espera. Ahora queda bien
+                    lejos de él, y el propio ciclo de ping/poda de Reverb es lo que cosecha conexiones muertas.</p>
+<h3><code>cipi app reverb status</code></h3>
+<p>Informa el puerto, qué está haciendo Supervisor con el proceso, la URL que debe marcar un cliente,
+                    y los tres modos de falla que no dejan nada en ningún registro:</p>
+<div class="code-block">
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copiar</button></div>
+<pre><span class="p">$</span> cipi app reverb status myapp
+  Reverb: enabled 127.0.0.1:9000
+myapp-reverb                     RUNNING   pid 21847, uptime 3 days, 4:12:07
+  Clients dial: wss://myapp.com:443/app/3f9c1ab27de40518b6c4
+  Open files: 65535 (supervisor)</pre>
+</div>
+<div class="options-list">
+<div class="option-item"><code>Missing in .env: …</code><span>Una credencial está ausente o vacía.
+                            <code>reverb:start</code> no arrancará. Volver a ejecutar <code>cipi app reverb enable</code>.</span>
+</div>
+<div class="option-item"><code>certificate but REVERB_SCHEME is 'http'</code><span>La aplicación ganó un
+                            certificado después de que se habilitó Reverb. Volver a ejecutar <code>enable</code> para moverlo a
+                            <code>wss://</code>, luego implemente para que el paquete se ponga al día.</span></div>
+<div class="option-item"><code>default open-file limit</code><span>La visita sin cita previa está en su lugar, pero
+                            Supervisor no se ha reiniciado, por lo que el proceso aún tiene un límite de cerca de mil
+                            clientes.</span></div>
+</div>
+<p>El registro del proceso es <code>/home/&lt;app&gt;/logs/reverb.log</code>, y
+                    <code>supervisorctl status myapp-reverb</code> / <code>restart myapp-reverb</code> controlar el
+                    programa directamente.</p>
+<h3>Deshabilitar</h3>
+<p><code>cipi app reverb disable</code> detiene y elimina el programa Supervisor, regenera el vhost
+                    sin el bloqueo de proxy, vuelve a aplicar SSL y, dado que<strong>5.1.2</strong> — puntos
+                    <code>BROADCAST_CONNECTION</code> volver a lo que sea que la aplicación estaba transmitiendo antes de las Reverb
+                    tomó el control, retrocediendo a <code>log</code>. Anteriormente se fue <code>BROADCAST_CONNECTION=reverb</code>
+                    detrás, por lo que cada transmisión falló en un servidor que ya no estaba en ejecución.</p>
+<p>Sólo <code>REVERB_SERVER_HOST</code> y <code>REVERB_SERVER_PORT</code> son eliminados de la
+                    <code>.env</code>. Las credenciales permanecen: son lo que se vuelve a habilitar, o ya es un paquete de interfaz
+                    construido contra ellos, depende de.</p>
+<h3>Clonación y <code>cipi.yml</code></h3>
+<p><a href="#cli-app-clone"><code>cipi app clone</code></a>Se utiliza para copiar la fuente.
+                    <code>REVERB_*</code> llaves en el clon <code>.env</code> es la release que lo deja usable en producción —
+                    credenciales generadas, esquema derivado del certificado, límites de conexión más altos y un proxy
+                    que ya no se traga tus propias rutas.<strong>5.1.2</strong>Activarlo en una app Laravel cablea cuatro cosas: un puerto localhost </p>
+<p>, el programa
+                    Supervisor <a href="/es/cipi-yml"><code>workers.reverb: true|false</code></a>, un proxy nginx para <code>cipi yml apply</code> y
+                    <code>cipi yml generate</code> en el dominio de la app, y las claves
+                    <code>--custom</code> en el </p>
+<div class="code-block">
+<div class="code-block-header"><span class="code-block-lang">yaml</span><button class="code-copy-btn" onclick="copyCode(this)">Copiar</button></div>
+<pre>workers:
+  horizon: false
+  reverb: true             <span class="c"># adds a Reverb WebSocket server to this app</span></pre>
+</div>
+<div class="callout info">
+<svg class="callout-icon" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="8" y2="12"></line>
+<line x1="12" x2="12.01" y1="16" y2="16"></line>
+</svg>
+<div><strong>solo Laravel</strong> <code>cipi self-update</code> corre
+                        <strong> pertenecen al protocolo.</strong> Hasta
+                    <code>/app</code> el proxy era <code>/var/lib/cipi/vhost-backup-5.1.2</code> (prefijo nginx), así que
+                    <code>nginx -t</code> y <code>.env</code> iban a Reverb. Desde
+                    <strong>sin sobrescribir nada que ya esté ahí</strong> el bloque es <code>VITE_REVERB_*</code>. Una app con su propia ruta
+                    </div>
+</div>
+</div>
 <div class="doc-section" id="cli-app-clone">
 <h2><code>cipi app clone</code></h2>
 <p>desde <strong>v5.0</strong>, clone una aplicación Laravel existente en una nueva aplicación de staging (o revisión) con
@@ -678,12 +866,12 @@
 </thead>
 <tbody>
 <tr>
-<td>cipi aplicación suspendida &lt;aplicación&gt;</td>
+<td>cipi app suspend &lt;app&gt;</td>
 <td>Conjuntos <code>suspended: true</code> en <code>apps.json</code>, reconstruye el vhost para
                                                     devuelve 503 para todas las solicitudes. Idempotente si ya está suspendido.</td>
 </tr>
 <tr>
-<td>cipi aplicación reactivada &lt;aplicación&gt;</td>
+<td>cipi app unsuspend &lt;app&gt;</td>
 <td>Borra la bandera, restaura el Laravel/vhost personalizado normal y vuelve a aplicar SSL bloques.
                                                     Idempotente si ya está en línea.</td>
 </tr>
@@ -709,7 +897,7 @@
 <line x1="12" x2="12.01" y1="16" y2="16"></line>
 </svg>
 <div><strong>Suspender vs autenticación básica:</strong> <a href="#cli-basicauth"><code>cipi basicauth</code></a>
-                        muestra un mensaje de Init de sesión pero aún ejecuta su aplicación. <code>app suspend</code> detiene PHP por completo y
+                        muestra un mensaje de inicio de sesión pero aún ejecuta su aplicación. <code>app suspend</code> detiene PHP por completo y
                         ofrece una página estática fuera de línea: los visitantes nunca llegan a Laravel. Utilice suspender para "sitio cerrado";
                         autenticación básica para “vista previa solo por invitación”.</div>
 </div>
@@ -733,16 +921,16 @@
 </thead>
 <tbody>
 <tr>
-<td>cipi basicauth enable &lt;aplicación&gt; [--usuario=NOMBRE] [--contraseña=PASS]</td>
+<td>cipi basicauth enable &lt;app&gt; [--user=NAME] [--password=PASS]</td>
 <td>Active la autenticación básica HTTP. Las credenciales se generan cuando se omiten y se muestran una vez
                                                     pantalla: guárdalos inmediatamente</td>
 </tr>
 <tr>
-<td>cipi basicauth deshabilita &lt;aplicación&gt;</td>
+<td>cipi basicauth disable &lt;app&gt;</td>
 <td>Elimine el mensaje y borre las credenciales almacenadas</td>
 </tr>
 <tr>
-<td>cipi estado de autenticación básica &lt;aplicación&gt;</td>
+<td>cipi basicauth status &lt;app&gt;</td>
 <td>Mostrar si la autenticación básica está habilitada y el usuario configurado</td>
 </tr>
 </tbody>
@@ -871,7 +1059,7 @@
 </tr>
 <tr>
 <td>REVERB_HOST / PORT / SCHEME</td>
-<td>Socket público derivado del certificado (<code>https</code>/443 o <code>http</code>/80).</td>
+<td>Socket público derivado del certificado (<code>https</code>/443 or <code>http</code>/80). A wildcard domain resolves to a concrete host.</td>
 <td>Cipi (v5.1.2+)</td>
 </tr>
 <tr>
@@ -978,7 +1166,7 @@ MAIL_HOST=smtp.mailgun.org</pre>
 <div class="options-list">
 <div class="option-item"><code>--type=nginx</code><span>Nginx logs de acceso y errores</span></div>
 <div class="option-item"><code>--type=php</code><span>Registro de errores PHP-FPM</span></div>
-<div class="option-item"><code>--type=worker</code><span>Supervisor / salida del trabajador de la cola</span>
+<div class="option-item"><code>--type=worker</code><span>Supervisor / salida del worker de cola</span>
 </div>
 <div class="option-item"><code>--type=deploy</code><span>Salida del implementador: historial completo de despliegue con
                             marcas de tiempo</span></div>

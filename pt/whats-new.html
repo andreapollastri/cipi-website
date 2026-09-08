@@ -1557,7 +1557,7 @@
 <div class="stage-inner">
 <div>
 <span class="eyebrow"><i></i> Cipi 5.2 · Já disponível</span>
-<h1>Your server just got<br/><em>a serious promotion.</em></h1>
+<h1>O seu servidor acabou de ficar<br/><em>a serious promotion.</em></h1>
 <p class="stage-lead">Laravel Octane em FrankenPHP. Horizon e Reverb numa linha. PostgreSQL ao lado do MariaDB. Perfis de backup, um cipi.yml por projeto e rollback pós-deploy. <b>A 5.2 acrescenta CrowdSec opcional com um bouncer de firewall a sério, um listener de resgate de emergência, uma verificação de integridade noturna e completação de shell.</b> O mesmo servidor num só comando. Tudo Cipi 5, marcado por versão.</p>
 <div class="stage-cta">
 <a class="btn-lime" href="#headlines">Veja tudo novo
@@ -1566,7 +1566,7 @@
 <polyline points="19 12 12 19 5 12"></polyline>
 </svg>
 </a>
-<a class="btn-wire" href="#upgrade">Upgrade in one line</a>
+<a class="btn-wire" href="#upgrade">Atualize com uma linha</a>
 </div>
 <ul class="facts">
 <li><b>14</b><span>Since 5.0</span></li>
@@ -1615,10 +1615,10 @@
 <div class="wrap">
 <div class="sec-head rise">
 <div>
-<span class="idx">01 — The headlines</span>
+<span class="idx">01 — Os destaques</span>
 <h2>Vinte e quatro razões para<br/><em>atualizar esta noite.</em></h2>
 </div>
-<p>Tudo o que Cipi 5 acrescenta, num piscar de olhos. Blocos marcados <em>since 5.0</em> shipped with Cipi 5; <em>since 5.2</em> é novo nesta versão. Toque em qualquer bloco para acessar os documentos.</p>
+<p>Tudo o que Cipi 5 acrescenta, num piscar de olhos. Blocos marcados <em>since 5.0</em> vieram com o Cipi 5; <em>since 5.2</em> é novo nesta versão. Toque em qualquer bloco para acessar os documentos.</p>
 </div>
 <div class="bento stagger rise">
 <a class="tile dark w2 h2" href="/pt/docs/apps#cli-app-octane">
@@ -1701,7 +1701,7 @@
 <a class="tile" href="/pt/docs/apps#cli-app-octane">
 <div>
 <div class="n">07 <span class="since">since 5.0</span></div>
-<h3>Convert FPM ⇄ Octane</h3>
+<h3>Converter FPM ⇄ Octane</h3>
 <p>Alterne o tempo de execução em um aplicativo ativo, nos dois sentidos.</p>
 </div>
 <div class="cmd">cipi app convert myapp --to=octane</div>
@@ -1840,7 +1840,7 @@
 <a class="tile" href="/pt/docs/infrastructure#cli-nginx">
 <div>
 <div class="n">18 <span class="since">since 5.1</span></div>
-<h3>Unknown Host → 444</h3>
+<h3>Host desconhecido → 444</h3>
 <p>Uma solicitação que não corresponde a nenhum aplicativo usado para chegar a um vhost aleatório. Agora <code>:80</code> e
                             <code>:443</code> encerre com uma resposta vazia.</p>
 </div>
@@ -1853,7 +1853,7 @@
 <a class="tile" href="/pt/docs/infrastructure#cli-health">
 <div>
 <div class="n">19 <span class="since">since 5.1</span></div>
-<h3>Post-deploy health, optional rollback</h3>
+<h3>Health check pós-deploy, rollback opcional</h3>
 <p>O lançamento que acabou de ir ao ar é investigado imediatamente - não depois de três minutos de cinco
                             falhas. Ative para reverter automaticamente. As migrações não são desfeitas; o e-mail diz
                             então.</p>
@@ -1949,8 +1949,8 @@
 <div class="wrap">
 <div class="sec-head rise">
 <div>
-<span class="idx">02 — The shift</span>
-<h2>O que antes dava trabalho,<br/><em>is now a flag.</em></h2>
+<span class="idx">02 — A virada</span>
+<h2>O que antes dava trabalho,<br/><em>agora é uma flag.</em></h2>
 </div>
 <p>O honesto antes e depois. À esquerda está o que custava administrar essas coisas. À direita é Cipi 5,
                     marcado por lançamento.
@@ -2003,7 +2003,7 @@
 <span class="ba-topic">Wildcards <span class="since">since 5.0</span></span>
 <span class="ba-before">Desafio DNS manual a cada renovação</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after">DNS-01 with Cloudflare, automated</span>
+<span class="ba-after">DNS-01 com Cloudflare, automatizado</span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">Monitoring <span class="since">since 5.0</span></span>
@@ -2019,7 +2019,7 @@
 </div>
 <div class="ba-row">
 <span class="ba-topic">Backups <span class="since">since 5.1</span></span>
-<span class="ba-before">One hardcoded nightly job</span>
+<span class="ba-before">Um único job noturno fixo no código</span>
 <span class="ba-arrow">→</span>
 <span class="ba-after">Perfis, lado do cliente AES-256, verificação, gerenciado cron</span>
 </div>
@@ -2039,7 +2039,7 @@
 <span class="ba-topic">Unknown Host <span class="since">since 5.1</span></span>
 <span class="ba-before">Caía num vhost aleatório</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after">Empty 444 default server</span>
+<span class="ba-after">Servidor padrão 444 vazio</span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">Broken deploy <span class="since">since 5.1</span></span>
@@ -2130,7 +2130,7 @@
                         alertas <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi api ip-whitelist show|add|set|allow-all</code><span>Restringir a API do painel / MCP por IP <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi app webhook recreate [--rotate-secret]</code><span>Recriar GitHub/GitLab implantar webhook<em class="since">since 5.0</em></span></div>
-<div class="cmd-row"><code>cipi smtp configure --host=… --port=…</code><span>Non-interactive SMTP for API/scripts <em class="since">since 5.0</em></span></div>
+<div class="cmd-row"><code>cipi smtp configure --host=… --port=…</code><span>SMTP não interativo para API/scripts <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi app env|run|deploy-config</code><span>Ferramentas de aplicativos não interativas para API/GUI<em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi backup profile add|edit|list</code><span>Estratégias de backup: o quê, com que frequência, onde, por quanto tempo <em class="since">since 5.1</em></span></div>
 <div class="cmd-row"><code>cipi backup verify|status|fetch --encrypt</code><span>Verificação de integridade, watchdog atrasado, lado do cliente AES-256 <em class="since">since 5.1</em></span></div>
@@ -2155,7 +2155,7 @@
 <div class="wrap">
 <div class="sec-head rise">
 <div>
-<span class="idx">04 — Since 5.0.6</span>
+<span class="idx">04 — Desde a 5.0.6</span>
 <h2>Panel API, GUI<br/><em>and automation.</em></h2>
 </div>
 <p>Gerenciamento de servidor a partir do REST API e web opcional GUI — além de sinalizadores não interativos para scripts.
@@ -2173,7 +2173,7 @@
 <span class="ba-topic">Chaves SSH</span>
 <span class="ba-before">Terminal-only key admin</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after">REST + GUI for <code>cipi</code> user keys</span>
+<span class="ba-after">REST + GUI para <code>cipi</code> user keys</span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">Serviços</span>
@@ -2191,13 +2191,13 @@
 <span class="ba-topic">Saúde</span>
 <span class="ba-before">CLI-only checks</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after">REST per app + <code>--json</code> on CLI</span>
+<span class="ba-after">REST por app + <code>--json</code> on CLI</span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">API access</span>
 <span class="ba-before">Qualquer IP com um token</span>
 <span class="ba-arrow">→</span>
-<span class="ba-after">Optional IP whitelist on <code>api/*</code> e <code>/mcp</code></span>
+<span class="ba-after">Lista de IPs permitidos opcional em <code>api/*</code> e <code>/mcp</code></span>
 </div>
 <div class="ba-row">
 <span class="ba-topic">Webhooks</span>
@@ -2225,7 +2225,7 @@
 <div class="wrap">
 <div class="finale-inner">
 <div class="rise">
-<h2>One line stands between<br/>você e tudo isso.</h2>
+<h2>Uma linha separa<br/>você e tudo isso.</h2>
 <p>Execute o atualizador e Cipi reconstrói vhosts, pools, modelos de Deployer e metadados de aplicativos no local —
                         sem tocar no seu código ou nos seus dados.</p>
 <ul class="finale-notes">
@@ -2258,7 +2258,7 @@
 <polyline points="12 5 19 12 12 19"></polyline>
 </svg>
 </a>
-<a class="btn-outline-ink" href="/pt/discovery">Take the full tour</a>
+<a class="btn-outline-ink" href="/pt/discovery">Faça o tour completo</a>
 </div>
 </div>
 <div class="run rise">

@@ -299,7 +299,7 @@
 <span class="sep">›</span>
 <a href="/es/guides/">Guides</a>
 <span class="sep">›</span>
-<span class="current">Control panel and API</span>
+<span class="current">Panel de control y API</span>
 </nav>
 <span class="cmp-eyebrow">GUI · API · MCP</span>
 <h1>Panel de control Cipi y API: lo que los dos <em>extensiones opcionales</em> desbloquean</h1>
@@ -327,12 +327,12 @@
 <h2 id="two-extensions">Dos extensiones, cero lock-in</h2>
 <p>Cipi no es un panel que oculta un CLI. Es un CLI que, si se quiere, deja al descubierto un API y un salpicadero. Omita ambos paquetes y el servidor se ejecutará exactamente como antes: sin demonios adicionales, sin superficie web, sin nada que escuche. Instala sólo lo que necesitas.</p>
 <ul>
-<li><strong><code>cipi/api</code></strong> — un paquete Laravel (versión actual <strong>1.20</strong>) que expone REST en <code>/api/*</code>, un servidor MCP en <code>/mcp</code> and Swagger UI at <code>/docs</code>.</li>
+<li><strong><code>cipi/api</code></strong> — un paquete Laravel (versión actual <strong>1.20</strong>) que expone REST en <code>/api/*</code>, un servidor MCP en <code>/mcp</code> y Swagger UI en <code>/docs</code>.</li>
 <li><strong><code>cipi/gui</code></strong> — un panel self-hosted Laravel 12 que se comunica con uno o más servidores <em>only</em> a través de ese REST API. No tiene un plano de control propietario y no almacena ningún estado de servidor administrado.</li>
 </ul>
 <p>Todo lo que hagas en el navegador, puedes hacerlo desde el shell. Cualquier cosa que hagas desde el shell, puedes automatizarla en más de HTTP. Ambos paquetes son clientes de la misma superficie, no un segundo Cipi.</p>
 <div class="note">
-<p>La fuente normativa sigue siendo la <a class="inline" href="/es/docs/">documentation</a>: <a class="inline" href="/es/docs/advanced#cipi-api">Advanced → cipi api</a> and <a class="inline" href="/es/docs/gui">Control panel (GUI)</a>. Esta guía es la historia de las capacidades, no de todos los puntos finales.</p>
+<p>La fuente normativa sigue siendo la <a class="inline" href="/es/docs/">documentation</a>: <a class="inline" href="/es/docs/advanced#cipi-api">Avanzado → cipi api</a> and <a class="inline" href="/es/docs/gui">Control panel (GUI)</a>. Esta guía es la historia de las capacidades, no de todos los puntos finales.</p>
 </div>
 <h2 id="api-first">La API es el eje</h2>
 <p>Habilite el API antes de tocar el GUI. Un comando dispone Laravel bajo <code>/opt/cipi/api</code>, el Nginx vhost, SSL, una cola SQLite y <code>cipi-queue.service</code>:</p>
@@ -354,7 +354,7 @@ $ cipi api token create</code></pre>
 <tbody>
 <tr>
 <td>Apps</td>
-<td>Laravel y CRUD personalizado, Octane/FrankenPHP, motor de base de datos en el momento de la creación, suspender/reactivar (HTTP 503), cambiar el nombre del dominio principal, HTTP autenticación básica, logs paginados, <code>.env</code>, Composer <code>auth.json</code>, Artisan and whitelisted <code>app run</code>, implementar-config, recrear webhooks de Git</td>
+<td>Laravel y CRUD personalizado, Octane/FrankenPHP, motor de base de datos en el momento de la creación, suspender/reactivar (HTTP 503), cambiar el nombre del dominio principal, HTTP autenticación básica, logs paginados, <code>.env</code>, Composer <code>auth.json</code>, Artisan y los comandos permitidos <code>app run</code>, implementar-config, recrear webhooks de Git</td>
 </tr>
 <tr>
 <td>Deploy</td>
@@ -417,7 +417,7 @@ curl -sS "${CIPI_API_URL}/api/jobs/JOB_ID" \
   -H "Authorization: Bearer ${CIPI_API_TOKEN}"</code></pre>
 <p>Since Cipi <strong>4.6.3</strong> el paquete API se actualiza todas las noches a las 04:30 (<code>cipi api update</code>), por lo que los puntos finales REST y las herramientas MCP se mantienen actualizados sin un paso manual.</p>
 <h2 id="mcp">MCP: Cipi dentro del Cursor, VS Code y Claude</h2>
-<p>The MCP server at <code>/mcp</code> (Streamable HTTP) exposes <strong>50+ tools</strong>: aplicaciones, alias, www, bases de datos, despliegue, SSL, autenticación básica, cabina del servidor, <code>.env</code> / <code>auth.json</code> / app-run / deploy-config, jobs, logs and <code>ServerStatus</code>. From API <strong>1.11.1+</strong> a token with only <code>mcp-access</code> es suficiente para cada herramienta MCP: las capacidades REST por punto final no se verifican en <code>/mcp</code>.</p>
+<p>El servidor MCP en <code>/mcp</code> (Streamable HTTP) exposes <strong>50+ tools</strong>: aplicaciones, alias, www, bases de datos, despliegue, SSL, autenticación básica, cabina del servidor, <code>.env</code> / <code>auth.json</code> / app-run / deploy-config, jobs, logs and <code>ServerStatus</code>. From API <strong>1.11.1+</strong> un token con solo <code>mcp-access</code> es suficiente para cada herramienta MCP: las capacidades REST por punto final no se verifican en <code>/mcp</code>.</p>
 <p>Cursor config in <code>~/.cursor/mcp.json</code>:</p>
 <pre class="code-pre"><code>{
   "mcpServers": {
@@ -435,13 +435,13 @@ curl -sS "${CIPI_API_URL}/api/jobs/JOB_ID" \
 <p>El GUI es una fina capa visual encima del API. vive en <code>/opt/cipi/gui</code>, es Laravel 12 y no mantiene workers de cola locales: se autentica en el API de cada servidor, distribuye trabajos y sondea su estado. Derribe el panel y reconstrúyalo en otro lugar sin tocar un servidor administrado.</p>
 <p>Un Init de sesión, muchos servidores. Registre el punto final + el token para las cajas de producción, staging y cliente, luego cambie entre ellas. Es la cabina que deseas cuando tienes más de un VPS y no quieres diez sesiones SSH abiertas.</p>
 <div class="note">
-<p>El panel necesita la API en <em>every</em> servidor que desea administrar, con un token de portador con capacidad total (incluye <code>www-manage</code>, <code>status-view</code> and, for app tooling, <code>apps-env</code>, <code>apps-auth</code>, <code>apps-artisan</code>, <code>apps-run</code>, <code>apps-deploy-config</code>). Sin el API, el GUI es un caparazón vacío.</p>
+<p>El panel necesita la API en <em>every</em> servidor que desea administrar, con un token de portador con capacidad total (incluye <code>www-manage</code>, <code>status-view</code> y, para el tooling de la app, <code>apps-env</code>, <code>apps-auth</code>, <code>apps-artisan</code>, <code>apps-run</code>, <code>apps-deploy-config</code>). Sin el API, el GUI es un caparazón vacío.</p>
 </div>
 <h2 id="browser">Qué puedes hacer en el navegador</h2>
 <ul>
-<li><strong>Laravel and custom apps</strong> — crear, editar, implementar, revertir, desbloquear, suspender/reactivar, eliminar. Octane (FrankenPHP) en el momento de la creación desde API <strong>1.13+</strong>; Las vistas de lista/detalle distinguen FPM de Octane.</li>
+<li><strong>Apps Laravel y personalizadas</strong> — crear, editar, implementar, revertir, desbloquear, suspender/reactivar, eliminar. Octane (FrankenPHP) en el momento de la creación desde API <strong>1.13+</strong>; Las vistas de lista/detalle distinguen FPM de Octane.</li>
 <li><strong>Alias, WWW, SSL, Basic Auth</strong> — el mismo flujo que el CLI, más la fuerza HTTPS y las redirecciones apex/www.</li>
-<li><strong><code>.env</code>, <code>auth.json</code>, Artisan, App commands</strong> — editor y salida de terminal con copia Markdown (API <strong>1.14+</strong> / Cipi <strong>5.0.3+</strong>).</li>
+<li><strong><code>.env</code>, <code>auth.json</code>, Artisan, comandos de App</strong> — editor y salida de terminal con copia Markdown (API <strong>1.14+</strong> / Cipi <strong>5.0.3+</strong>).</li>
 <li><strong>Multi-engine databases</strong> — elija MariaDB o PostgreSQL en el momento de la creación; copia de seguridad, restauración y rotación de contraseña desde el navegador (API <strong>1.12+</strong> / Cipi <strong>4.8+</strong>).</li>
 <li><strong>Logs</strong> — nginx, PHP-FPM, Laravel, trabajador, despliegue: filtro de tipo, paginación, actualización automática. Los secretos comunes están redactados.</li>
 <li><strong>Job overlay</strong> — ruleta y salida CLI mientras el panel sondea <code>GET /api/jobs/{id}</code>.</li>
@@ -469,7 +469,7 @@ $ cipi api token create
 $ cipi gui panel.example.com
 $ cipi gui ssl</code></pre>
 <p><code>cipi gui</code> solicita el primer correo electrónico y contraseña del administrador (mínimo 12 caracteres, superior, inferior, dígito, especial, no 4 caracteres idénticos seguidos). La configuración aterriza en <code>/etc/cipi/gui.json</code>. PHP-FPM, vhost y el programador provienen del instalador: no inicia Laravel manualmente.</p>
-<p>Updates: <code>cipi gui update</code> / <code>cipi api update</code> para el soft update diario; <code>upgrade</code> for a full rebuild. <code>cipi gui refresh-theme</code> recompiles the theme only. <code>cipi gui remove</code> desinstala vhost, pool y programador: los servidores administrados permanecen intactos. <code>cipi gui reset-user</code> es la ruta de recuperación si un administrador pierde 2FA.</p>
+<p>Updates: <code>cipi gui update</code> / <code>cipi api update</code> para el soft update diario; <code>upgrade</code> para reconstruirlo por completo. <code>cipi gui refresh-theme</code> recompila solo el tema. <code>cipi gui remove</code> desinstala vhost, pool y programador: los servidores administrados permanecen intactos. <code>cipi gui reset-user</code> es la ruta de recuperación si un administrador pierde 2FA.</p>
 <h2 id="security">SSL, 2FA y lista blanca de IP</h2>
 <p>El panel comienza en HTTP: emite Let's Encrypt inmediatamente con <code>cipi gui ssl</code> (renovación automática, mismo ACME que los dominios de aplicaciones). El Init de sesión se basa en sesiones; cada administrador puede habilitar <strong>TOTP 2FA</strong> (Google Authenticator, 1Password, Aegis) desde su perfil: participación voluntaria, no obligatoria.</p>
 <p>Restringir quién puede hablar con API y MCP:</p>
@@ -479,7 +479,7 @@ $ cipi api ip-whitelist show --json</code></pre>
 <p>Default file: <code>/etc/cipi/api-ip-whitelist</code> with <code>*</code> (permitir todo). Los clientes rechazados reciben <code>403</code>. Los equivalentes REST están en <code>/api/ip-whitelist</code>; a restricting <code>PUT</code> agrega la IP de la persona que llama automáticamente a menos que <code>ensure_client_ip: false</code>.</p>
 <h2 id="use-cases">Casos de uso: equipos, agencias, hosting, IA</h2>
 <ul>
-<li><strong>Freelancer with two VPS</strong> — API + <code>cipi-cli</code> desde la computadora portátil. El GUI es opcional; un <code>prod</code> and a <code>staging</code> profile are enough.</li>
+<li><strong>Freelance con dos VPS</strong> — API + <code>cipi-cli</code> desde la computadora portátil. El GUI es opcional; un <code>prod</code> and a <code>staging</code> profile are enough.</li>
 <li><strong>Un equipo que no vive en SSH</strong> — un panel, 2FA, panel en vivo, Artisan y logs sin entregar root a todos.</li>
 <li><strong>Multi-client agency</strong> — un Init de sesión, N servidores. Cada caja tiene su propia ficha; Dejar caer un cliente es revocar un token, no desinstalar Cipi.</li>
 <li><strong>Hosting with billing</strong> — the <a class="inline" href="/es/docs/advanced#whmcs">WHMCS module</a> Habla lo mismo REST API: crear, SSL, implementar, eliminar en el ciclo de vida del producto.</li>
@@ -514,7 +514,7 @@ $ cipi-cli status</code></pre>
 <a href="/es/docs/advanced#cipi-api">Docs: cipi api</a>
 <a href="/es/docs/cli-client">CLI client</a>
 <a href="/es/guides/desarrollo-spec-driven-ia-laravel">Spec-driven AI development</a>
-<a href="/es/guides/desplegar-laravel-en-vps-ubuntu">Deploy Laravel on Ubuntu</a>
+<a href="/es/guides/desplegar-laravel-en-vps-ubuntu">Desplegar Laravel en Ubuntu</a>
 </div>
 </main>
 <footer>
@@ -529,7 +529,7 @@ $ cipi-cli status</code></pre>
 <li><a href="https://github.com/cipi-sh/cipi" rel="noopener" target="_blank">GitHub</a></li>
 </ul>
 </div>
-<nav aria-label="Compare Cipi with alternatives" class="footer-col footer-col--compare">
+<nav aria-label="Comparar Cipi con las alternativas" class="footer-col footer-col--compare">
 <strong>Compare Cipi</strong>
 <ul>
 <li><a href="/es/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
@@ -540,7 +540,7 @@ $ cipi-cli status</code></pre>
 <li><a href="/es/alternative-to-cloudpanel">CloudPanel alternative</a></li>
 <li><a href="/es/alternative-to-cpanel">cPanel alternative</a></li>
 <li><a href="/es/alternative-to-plesk">Plesk alternative</a></li>
-<li><a href="/es/best-laravel-forge-alternatives">Best Forge alternatives 2026</a></li>
+<li><a href="/es/best-laravel-forge-alternatives">Mejores alternativas a Forge en 2026</a></li>
 <li><a href="/es/alternatives">All comparisons</a></li>
 </ul>
 </nav>
@@ -557,7 +557,7 @@ $ cipi-cli status</code></pre>
 </div>
 <div class="footer-content">
 <div class="footer-left">
-                    Made with ❤️ by <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
+                    Hecho con ❤️ por <a href="https://web.ap.it" rel="noopener" target="_blank">Andrea Pollastri</a>
 <span class="footer-license"> · Open source, licencia MIT</span>
 </div>
 <ul class="footer-links">

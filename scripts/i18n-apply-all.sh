@@ -46,5 +46,16 @@ sweep all-11-jsonld2
 segs  all-14-guides-brand
 segs  all-15-fragments
 
+segs  de-04-reverb
+
+sweep  all-17-cleanup2
+
+sweep  all-16-codelabels
+
+segs  all-18-leftovers
+
+echo "--- code-block language labels ---"
+python3 scripts/i18n-sync-code-labels.py 2>&1 | head -1
+
 echo "--- JSON-LD from the visible translations ---"
 python3 scripts/i18n-translate-jsonld.py --lang de --lang fr --lang es --lang pt 2>&1 | tail -4

@@ -377,7 +377,7 @@ cipi ssl install myapp</pre>
                     Init de sesión root deshabilitado, <code>cipi</code> sólo clave pública (grupo <code>cipi-ssh</code>), usuarios de aplicaciones
                     (grupo <code>cipi-apps</code>) puede conectarse con contraseña. Los intentos de Init de sesión están limitados a 3 con un
                     período de gracia de 20 segundos; El reenvío X11 está deshabilitado.</p>
-<p>El instalador también genera un <strong>contraseña raíz aleatoria de 40 caracteres</strong>, stores it in
+<p>El instalador también genera un <strong>contraseña raíz aleatoria de 40 caracteres</strong>, lo guarda en
                     <code>/etc/cipi/server.json</code>y lo muestra en el resumen de instalación. es <em>no</em>una contraseña SSH: el Init de sesión SSH raíz está deshabilitado. Es lo que escribe cuando ya ha iniciado sesión como<code>cipi</code> usuario con tu clave, corres <code>su root</code>. Guárdalo en una contraseña
                     gerente.</p>
 <h3>Instalación no interactiva</h3>

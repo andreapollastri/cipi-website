@@ -1,0 +1,278 @@
+{
+ "de": {
+  "segments": [
+   [
+    "no per-app FPM pool",
+    "kein FPM-Pool pro App"
+   ],
+   [
+    "to pull code into",
+    "um Code zu holen nach"
+   ],
+   [
+    "A free localhost port, allocated per app and recorded in",
+    "Ein freier localhost-Port, pro App zugewiesen und festgehalten in"
+   ],
+   [
+    ". Reverb never listens on a public interface.",
+    ". Reverb lauscht nie auf einem öffentlichen Interface."
+   ],
+   [
+    "A Supervisor program running",
+    "Ein Supervisor-Programm, das"
+   ],
+   [
+    "as the app user, logging to",
+    "als App-Benutzer ausführt und nach"
+   ],
+   [
+    "A proxy block on the app's own domain for",
+    "Ein Proxy-Block auf der eigenen Domain der App für"
+   ],
+   [
+    "(the WebSocket handshake) and",
+    "(den WebSocket-Handshake) und"
+   ],
+   [
+    "(the HTTP API the application broadcasts through).",
+    "(die HTTP-API, über die die Anwendung broadcastet)."
+   ],
+   [
+    ", generated on first enable and never rotated afterwards.",
+    ", beim ersten Aktivieren erzeugt und danach nie rotiert."
+   ],
+   [
+    "Restart Supervisor as part of",
+    "Supervisor neu starten im Rahmen von"
+   ],
+   [
+    ", so the raised file-descriptor limit applies immediately. This restarts",
+    ", damit das erhöhte File-Descriptor-Limit sofort greift. Dabei werden"
+   ],
+   [
+    "every queue worker on the server",
+    "alle Queue-Worker auf dem Server neu gestartet"
+   ],
+   [
+    ", which is why Cipi never does it on its own.",
+    ", weshalb Cipi das nie von sich aus tut."
+   ],
+   [
+    "again on an app that already has Reverb is safe and useful: it does not reallocate the port or touch the credentials, it re-derives the public host and scheme and fills in any",
+    "erneut auf einer App auszuführen, die Reverb schon hat, ist unbedenklich und sinnvoll: der Port wird nicht neu vergeben und die Credentials bleiben unangetastet, der öffentliche Host und das Schema werden neu abgeleitet und fehlende"
+   ],
+   [
+    "key that went missing.",
+    "Keys werden ergänzt."
+   ],
+   [
+    "Enabling it end to end",
+    "Aktivierung von Anfang bis Ende"
+   ],
+   [
+    "Order matters only in that the Node build has to run",
+    "Die Reihenfolge zählt nur insofern, als der Node-Build laufen muss"
+   ],
+   [
+    "What Cipi writes in",
+    "Was Cipi schreibt in"
+   ],
+   [
+    "the three credentials were left blank for you to invent — and an empty",
+    "blieben die drei Credentials leer und Sie mussten sie sich selbst ausdenken — und ein leerer"
+   ],
+   [
+    "is exactly what stops",
+    "ist genau das, was"
+   ],
+   [
+    "from booting. They are now generated on the first",
+    "am Starten hindert. Sie werden jetzt beim ersten"
+   ],
+   [
+    "and an existing non-empty value always wins, so an app that arrived with its own credentials keeps them. Cipi never rotates them: a new key would disconnect every live client and invalidate any frontend bundle already built against the old one.",
+    "erzeugt, und ein vorhandener, nicht leerer Wert gewinnt immer — eine App, die ihre eigenen Credentials mitbringt, behält sie also. Cipi rotiert sie nie: ein neuer Key würde jeden aktiven Client trennen und jedes Frontend-Bundle ungültig machen, das schon gegen den alten gebaut wurde."
+   ],
+   [
+    "Connecting from the frontend",
+    "Verbindung aus dem Frontend"
+   ],
+   [
+    "already reads exactly the variables Cipi writes — nothing to change:",
+    "liest genau die Variablen, die Cipi schreibt — hier ist nichts zu ändern:"
+   ],
+   [
+    "the proxy was written as",
+    "war der Proxy als"
+   ],
+   [
+    ", which in nginx is a",
+    "geschrieben, was in nginx ein"
+   ],
+   [
+    "route still cannot use Reverb behind the same domain — put it on a dedicated subdomain instead.",
+    "-Route kann Reverb weiterhin nicht hinter derselben Domain nutzen — legen Sie sie stattdessen auf eine eigene Subdomain."
+   ],
+   [
+    "Cipi derives the public host, port and scheme from what the server actually serves rather than assuming HTTPS:",
+    "Cipi leitet Host, Port und Schema daraus ab, was der Server tatsächlich ausliefert, statt HTTPS einfach anzunehmen:"
+   ],
+   [
+    "on port 80 — the app is served over HTTP, so the socket is",
+    "auf Port 80 — die App läuft über HTTP, also ist der Socket"
+   ],
+   [
+    "on port 443 —",
+    "auf Port 443 —"
+   ],
+   [
+    "resolves to a concrete host (",
+    "auf einen konkreten Host auflöst ("
+   ],
+   [
+    "), because no browser can open a socket to a wildcard. A multi-tenant frontend has to pick its own host at runtime.",
+    "), denn kein Browser kann einen Socket zu einer Wildcard öffnen. Ein Multi-Tenant-Frontend muss seinen Host zur Laufzeit selbst bestimmen."
+   ],
+   [
+    "Concurrent connections and open files",
+    "Gleichzeitige Verbindungen und offene Dateien"
+   ],
+   [
+    "Every open WebSocket costs one file descriptor inside Reverb and two connections inside nginx, and the stock soft limit of 1024 stops an app at roughly a thousand concurrent clients — with nothing in any log to say why. Since",
+    "Jeder offene WebSocket kostet einen File-Descriptor in Reverb und zwei Verbindungen in nginx, und das Standard-Soft-Limit von 1024 stoppt eine App bei rund tausend gleichzeitigen Clients — ohne dass irgendein Log sagt, warum. Seit"
+   ],
+   [
+    "Cipi raises both ceilings:",
+    "hebt Cipi beide Grenzen an:"
+   ],
+   [
+    "A systemd drop-in at",
+    "Ein systemd-Drop-in unter"
+   ],
+   [
+    ", inherited by every program Supervisor runs.",
+    ", das jedes von Supervisor gestartete Programm erbt."
+   ],
+   [
+    ", applied on a reload.",
+    ", wirksam mit einem Reload."
+   ],
+   [
+    "nginx picks its new limits up on the reload Cipi performs. Supervisor picks its own up only on a",
+    "nginx übernimmt seine neuen Limits mit dem Reload, den Cipi ausführt. Supervisor übernimmt seine erst bei einem"
+   ],
+   [
+    ", which also restarts every queue worker on the server — so Cipi configures the drop-in, tells you it is pending, and leaves the decision to you:",
+    ", wobei auch jeder Queue-Worker auf dem Server neu startet — Cipi legt das Drop-in also an, weist darauf hin, dass der Neustart aussteht, und überlässt die Entscheidung Ihnen:"
+   ],
+   [
+    "The proxy read timeout was another silent limit: it used to be exactly Reverb's 60-second ping interval, so every idle client was a coin flip between the ping and the timeout. It now sits well clear of it, and Reverb's own ping/prune cycle is what reaps dead connections.",
+    "Der Read-Timeout des Proxys war ein weiteres stilles Limit: er lag genau auf Reverbs 60-Sekunden-Ping-Intervall, sodass jeder untätige Client ein Münzwurf zwischen Ping und Timeout war. Jetzt liegt er deutlich darüber, und Reverbs eigener Ping-/Prune-Zyklus räumt tote Verbindungen auf."
+   ],
+   [
+    "Reports the port, what Supervisor is doing with the process, the URL a client should be dialling, and the three failure modes that leave nothing in any log:",
+    "Zeigt den Port, was Supervisor mit dem Prozess macht, die URL, die ein Client ansprechen sollte, und die drei Fehlerfälle, die kein Log hinterlassen:"
+   ],
+   [
+    "A credential is absent or empty —",
+    "Ein Credential fehlt oder ist leer —"
+   ],
+   [
+    "will not boot. Re-run",
+    "startet nicht. Führen Sie erneut aus:"
+   ],
+   [
+    "The app gained a certificate after Reverb was enabled. Re-run",
+    "Die App hat nach dem Aktivieren von Reverb ein Zertifikat erhalten. Führen Sie erneut aus:"
+   ],
+   [
+    "to move it to",
+    "um sie umzustellen auf"
+   ],
+   [
+    ", then deploy so the bundle catches up.",
+    ", und deployen Sie dann, damit das Bundle nachzieht."
+   ],
+   [
+    "The drop-in is in place but Supervisor has not been restarted, so the process is still capped near a thousand clients.",
+    "Das Drop-in liegt vor, aber Supervisor wurde nicht neu gestartet — der Prozess ist also weiterhin bei rund tausend Clients gedeckelt."
+   ],
+   [
+    "The process log is",
+    "Das Prozess-Log liegt unter"
+   ],
+   [
+    "control the program directly.",
+    "steuern das Programm direkt."
+   ],
+   [
+    "are removed from the",
+    "werden entfernt aus"
+   ],
+   [
+    ". The credentials stay: they are what a re-enable — or a frontend bundle already built against them — depends on.",
+    ". Die Credentials bleiben: sie sind genau das, worauf ein erneutes Aktivieren — oder ein bereits dagegen gebautes Frontend-Bundle — angewiesen ist."
+   ],
+   [
+    "used to copy the source's",
+    "kopierte früher die"
+   ],
+   [
+    "keys into the clone's",
+    "-Keys der Quelle in die des Klons"
+   ],
+   [
+    "— pointing a staging frontend at the production socket and handing it the production app secret — while never starting a Reverb for it. Since",
+    "— damit zeigte ein Staging-Frontend auf den Produktions-Socket und bekam das Produktions-App-Secret, während für den Klon nie ein Reverb gestartet wurde. Seit"
+   ],
+   [
+    "a cloned Reverb app gets its own port, its own credentials and its own domain, the way it already got its own Octane.",
+    "erhält eine geklonte Reverb-App ihren eigenen Port, ihre eigenen Credentials und ihre eigene Domain — so, wie sie schon ihr eigenes Octane bekam."
+   ],
+   [
+    "Reverb can also be declared in the project file with",
+    "Reverb lässt sich auch in der Projektdatei deklarieren mit"
+   ],
+   [
+    ", planned and applied by",
+    ", geplant und angewendet von"
+   ],
+   [
+    "like Horizon and the queue workers, and emitted by",
+    "wie Horizon und die Queue-Worker, und ausgegeben von"
+   ],
+   [
+    ". Declaring it on a",
+    ". Es auf einer"
+   ],
+   [
+    "app is refused up front.",
+    "-App zu deklarieren, wird von vornherein abgelehnt."
+   ],
+   [
+    "Upgrading from 5.0.x or 5.1.1?",
+    "Upgrade von 5.0.x oder 5.1.1?"
+   ],
+   [
+    ", which raises both limits (and reports whether Supervisor still needs a restart), rewrites the vhost of every app whose Reverb location is still the greedy",
+    ", das beide Limits anhebt (und meldet, ob Supervisor noch einen Neustart braucht), schreibt den vhost jeder App neu, deren Reverb-Location noch das gierige"
+   ],
+   [
+    "prefix — backed up to",
+    "-Prefix ist — mit Backup nach"
+   ],
+   [
+    ", SSL re-applied, and rolled back as a batch on failure — and fills in the missing",
+    ", erneut angewendetem SSL und Rollback als Batch im Fehlerfall — und ergänzt die fehlenden"
+   ],
+   [
+    "without overwriting anything already there",
+    "ohne etwas zu überschreiben, das schon vorhanden ist"
+   ],
+   [
+    ", so an app whose socket settings were tuned by hand keeps them. Re-deploy your Reverb apps afterwards so the frontend bundle picks up the",
+    ", eine App mit handgetunten Socket-Einstellungen behält sie also. Deployen Sie Ihre Reverb-Apps danach neu, damit das Frontend-Bundle die"
+   ]
+  ]
+ }
+}

@@ -311,7 +311,7 @@
 <span class="p">$</span> php artisan cipi:token-create</pre>
 </div>
 <p>Panel <code>.env</code> verwendet <code>CIPI_APPS_JSON=/etc/cipi/apps.json</code> (oder
-                    <code>apps-public.json</code> Projektion für nicht empfindliche Felder). Token-Abilities sind in definiert<code>config/cipi.php</code> — list them with <code>php artisan cipi:token-abilities</code> (gleich
+                    <code>apps-public.json</code> Projektion für nicht empfindliche Felder). Token-Abilities sind in definiert<code>config/cipi.php</code> — auflisten mit <code>php artisan cipi:token-abilities</code> (gleich
                     Liste als <code>cipi api token create</code> seit Cipi <strong>4.6.3</strong>).</p>
 <p>Quelle und Changelog:
                     <a href="https://github.com/cipi-sh/api" rel="noopener" target="_blank">github.com/cipi-sh/api</a>
@@ -1734,7 +1734,7 @@ curl -sS <span class="s">„${CIPI_API_URL}/api/jobs/JOB_ID“</span> \
                     bedeutet: Beim ersten Durchlauf werden alle Apps erstellt, bei nachfolgenden Durchläufen werden sie inkrementell aktualisiert. Das ist es, was macht
                     schieben
                     sicher, wiederholt über cron zu laufen.</p>
-<h4>SSH setup for push</h4>
+<h4>SSH-Setup für Push</h4>
 <p>Der Quellserver benötigt SSH-Zugriff auf das Ziel <code>cipi</code> Benutzer. Nutzen Sie die integrierte
                     Vertrauensmechanismus für passwortlose, schlüsselbasierte Authentifizierung zwischen Cipi Servern:</p>
 <div class="code-block">

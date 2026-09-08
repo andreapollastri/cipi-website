@@ -1,0 +1,234 @@
+{
+ "de": {
+  "segments": [
+   [
+    "SSH setup for push",
+    "SSH-Setup für Push"
+   ],
+   [
+    "Webhook — Automatic Deploys",
+    "Webhook — automatische Deploys"
+   ],
+   [
+    "Add a domain alias",
+    "Einen Domain-Alias hinzufügen"
+   ],
+   [
+    "— list them with",
+    "— auflisten mit"
+   ],
+   [
+    "work the same as",
+    "funktionieren genauso wie"
+   ],
+   [
+    "Cipi API backups (",
+    "Backups der Cipi API ("
+   ],
+   [
+    "Panel API MCP (",
+    "Panel-API-MCP ("
+   ],
+   [
+    "Docs → Deploy → cipi.yml",
+    "Docs → Deploy → cipi.yml"
+   ]
+  ]
+ },
+ "fr": {
+  "segments": [
+   [
+    "Cipi Docs — Cipi Agent",
+    "Cipi Docs — Cipi Agent"
+   ],
+   [
+    ", no cron, and no queue workers. When a repository is configured, a deploy key and (with Git auto-setup) webhook are shown; for SFTP-only apps, those are omitted. The post-creation summary lists SSH access and next steps accordingly.",
+    ", pas de cron et pas de workers de queue. Si un dépôt est configuré, la clé de déploiement et (avec l’auto-configuration Git) le webhook sont affichés ; pour les applications en SFTP seul, ils sont omis. Le récapitulatif de création liste l’accès SSH et les étapes suivantes en conséquence."
+   ],
+   [
+    "04 — Since 5.0.6",
+    "04 — Depuis la 5.0.6"
+   ],
+   [
+    "github.com/cipi-sh/cipi — 5.2.0 ↗",
+    "github.com/cipi-sh/cipi — 5.2.0 ↗"
+   ]
+  ]
+ },
+ "es": {
+  "segments": [
+   [
+    ", stores it in",
+    ", lo guarda en"
+   ],
+   [
+    "Compare Cipi with alternatives",
+    "Comparar Cipi con las alternativas"
+   ],
+   [
+    "Control panel and API",
+    "Panel de control y API"
+   ],
+   [
+    "and Swagger UI at",
+    "y Swagger UI en"
+   ],
+   [
+    "Advanced → cipi api",
+    "Avanzado → cipi api"
+   ],
+   [
+    ", Artisan and whitelisted",
+    ", Artisan y los comandos permitidos"
+   ],
+   [
+    "The MCP server at",
+    "El servidor MCP en"
+   ],
+   [
+    "a token with only",
+    "un token con solo"
+   ],
+   [
+    "and, for app tooling,",
+    "y, para el tooling de la app,"
+   ],
+   [
+    "Laravel and custom apps",
+    "Apps Laravel y personalizadas"
+   ],
+   [
+    ", Artisan, App commands",
+    ", Artisan, comandos de App"
+   ],
+   [
+    "for a full rebuild.",
+    "para reconstruirlo por completo."
+   ],
+   [
+    "recompiles the theme only.",
+    "recompila solo el tema."
+   ],
+   [
+    "Freelancer with two VPS",
+    "Freelance con dos VPS"
+   ],
+   [
+    "Deploy Laravel on Ubuntu",
+    "Desplegar Laravel en Ubuntu"
+   ],
+   [
+    "Best Forge alternatives 2026",
+    "Mejores alternativas a Forge en 2026"
+   ],
+   [
+    "Made with ❤️ by",
+    "Hecho con ❤️ por"
+   ],
+   [
+    "04 — Since 5.0.6",
+    "04 — Desde la 5.0.6"
+   ]
+  ]
+ },
+ "pt": {
+  "segments": [
+   [
+    "Your server just got",
+    "O seu servidor acabou de ficar"
+   ],
+   [
+    "Upgrade in one line",
+    "Atualize com uma linha"
+   ],
+   [
+    "01 — The headlines",
+    "01 — Os destaques"
+   ],
+   [
+    "shipped with Cipi 5;",
+    "vieram com o Cipi 5;"
+   ],
+   [
+    "Convert FPM ⇄ Octane",
+    "Converter FPM ⇄ Octane"
+   ],
+   [
+    "Post-deploy health, optional rollback",
+    "Health check pós-deploy, rollback opcional"
+   ],
+   [
+    "02 — The shift",
+    "02 — A virada"
+   ],
+   [
+    "is now a flag.",
+    "agora é uma flag."
+   ],
+   [
+    "DNS-01 with Cloudflare, automated",
+    "DNS-01 com Cloudflare, automatizado"
+   ],
+   [
+    "One hardcoded nightly job",
+    "Um único job noturno fixo no código"
+   ],
+   [
+    "Empty 444 default server",
+    "Servidor padrão 444 vazio"
+   ],
+   [
+    "Non-interactive SMTP for API/scripts",
+    "SMTP não interativo para API/scripts"
+   ],
+   [
+    "04 — Since 5.0.6",
+    "04 — Desde a 5.0.6"
+   ],
+   [
+    "REST + GUI for",
+    "REST + GUI para"
+   ],
+   [
+    "REST per app +",
+    "REST por app +"
+   ],
+   [
+    "Optional IP whitelist on",
+    "Lista de IPs permitidos opcional em"
+   ],
+   [
+    "One line stands between",
+    "Uma linha separa"
+   ],
+   [
+    "Take the full tour",
+    "Faça o tour completo"
+   ],
+   [
+    "Unknown Host → 444",
+    "Host desconhecido → 444"
+   ],
+   [
+    "25 DCs, 260+ PoPs",
+    "25 DCs, mais de 260 PoPs"
+   ],
+   [
+    "Cipi API backups (",
+    "Backups da Cipi API ("
+   ]
+  ]
+ },
+ "it": {
+  "segments": [
+   [
+    "Docs: pipeline SSH deploy",
+    "Docs: pipeline di deploy via SSH"
+   ],
+   [
+    "CI/CD · Git workflow",
+    "CI/CD · workflow Git"
+   ]
+  ]
+ }
+}

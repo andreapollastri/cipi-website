@@ -361,7 +361,7 @@
 </ol>
 </div>
 <h2 id="why">Pourquoi une application personnalisée (pas Laravel)</h2>
-<p><a class="inline" href="/">Cipi</a> prend en charge deux types d'applications. La valeur par défaut est Laravel : propre utilisateur du système, PHP-FPM ou Octane, MariaDB, <code>.env</code>, Supervisor workers, crontab et <strong>zéro temps d'arrêt</strong> Versions du Deployer sous <code>current</code>/<code>shared</code>. WordPress n’est rien de tout cela.</p>
+<p><a class="inline" href="/">Cipi</a> prend en charge deux types d'applications. La valeur par défaut est Laravel : propre utilisateur du système, PHP-FPM ou Octane, MariaDB, <code>.env</code>, Supervisor workers, crontab et <strong>zéro interruption</strong> Versions du Deployer sous <code>current</code>/<code>shared</code>. WordPress n’est rien de tout cela.</p>
 <p>A <a class="inline" href="/fr/docs/apps#cli-app-custom">application personnalisée</a> (<code>cipi app create --custom</code>) est la bonne forme :</p>
 <ul>
 <li><strong>Déploiement classique dans <code>htdocs</code></strong> — non <code>current</code>/<code>shared</code> échange de lien symbolique. <code>cipi deploy blog</code> extrait le dépôt dans <code>/home/blog/htdocs</code>.</li>
@@ -370,7 +370,7 @@
 <li><strong>Pas de base de données, non <code>.env</code>, pas de cron, pas de files d'attente</strong> jusqu'à ce que vous les ajoutiez. WordPress a besoin d'une base de données — vous la créez à l'étape suivante.</li>
 </ul>
 <div class="note">
-<p>Les déploiements personnalisés sont <strong>pas</strong> zéro temps d'arrêt. Gardez les différences de thèmes et de plugins petites, sauvegardez la base de données avant les versions à risque et laissez GitHub Actions être la porte d'entrée afin qu'un contrôle rouge n'atteigne jamais la production. Pour les modèles Laravel sans interruption, utilisez le<a class="inline" href="/fr/guides/ci-cd-et-workflow-git-laravel">CI/CD pour Laravel guide</a>.</p>
+<p>Les déploiements personnalisés sont <strong>pas</strong> zéro interruption. Gardez les différences de thèmes et de plugins petites, sauvegardez la base de données avant les versions à risque et laissez GitHub Actions être la porte d'entrée afin qu'un contrôle rouge n'atteigne jamais la production. Pour les modèles Laravel sans interruption, utilisez le<a class="inline" href="/fr/guides/ci-cd-et-workflow-git-laravel">CI/CD pour Laravel guide</a>.</p>
 </div>
 <h2 id="repo">Comment structurer le dépôt WordPress</h2>
 <p>Considérez Git comme la source de vérité pour <em>coder</em>, pas pour les secrets ou les médias. Un dépôt qui survit au déploiement automatique ressemble à ceci :</p>

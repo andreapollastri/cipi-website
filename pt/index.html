@@ -229,7 +229,7 @@
           "@type": "HowToStep",
           "position": 2,
           "name": "Run the installer",
-          "text": "wget -O - https://cipi.sh/setup.sh | festa"
+          "text": "wget -O - https://cipi.sh/setup.sh | bash"
         },
         {
           "@type": "HowToStep",
@@ -1282,7 +1282,7 @@
 <div class="coverage-row"><span class="n">04</span><span class="name">Horizon, filas e
                         Reverb</span><span class="desc">Workers do Supervisor, Laravel Horizon e WebSockets do Reverb, direto da CLI.</span><span class="tag">Filas</span>
 </div>
-<div class="coverage-row"><span class="n">05</span><span class="name">Deployer</span><span class="desc">Releases sem downtime e rollback instantâneo. Mantém as 5 últimas.</span><span class="tag">Implantar</span></div>
+<div class="coverage-row"><span class="n">05</span><span class="name">Deployer</span><span class="desc">Releases sem downtime e rollback snapshot. Mantém as 5 últimas.</span><span class="tag">Implantar</span></div>
 <div class="coverage-row"><span class="n">06</span><span class="name">Let's Encrypt SSL</span><span class="desc">Certificados automáticos via Certbot, com SAN para os aliases.</span><span class="tag">TLS</span></div>
 <div class="coverage-row"><span class="n">07</span><span class="name">Fail2ban +UFW</span><span class="desc">Bloqueio de ataques de força bruta, firewall e prevenção de escalonamento de privilégios.</span><span class="tag">Segurança</span></div>
 <div class="coverage-row"><span class="n">08</span><span class="name">S3 backups</span><span class="desc">Backups automáticos do banco de dados e de storage/ para armazenamento compatível com S3.</span><span class="tag">Backup</span></div>
@@ -1301,7 +1301,7 @@
 <div class="coverage-list fade-in">
 <div class="coverage-row"><span class="n">01</span><span class="name">Desenvolvedores</span><span class="desc">Publique sem o peso de DevOps. Um comando entrega isolamento, SSL, workers e deploys sem downtime.</span><span class="tag">Sozinho</span></div>
 <div class="coverage-row"><span class="n">02</span><span class="name">Agências</span><span class="desc">Um VPS, muitos clientes — cada app isolada com o seu usuário, o seu banco de dados, a sua versão de PHP e a sua deploy key.</span><span class="tag">Equipes</span></div>
-<div class="coverage-row"><span class="n">03</span><span class="name">Startups e SaaS</span><span class="desc">Deploys atômicos, rollbacks instantâneos, deploy automático por webhook, backups no S3. Cresça sem mudar de workflow.</span><span class="tag">Produto</span></div>
+<div class="coverage-row"><span class="n">03</span><span class="name">Startups e SaaS</span><span class="desc">Deploys atômicos, rollbacks snapshots, deploy automático por webhook, backups no S3. Cresça sem mudar de workflow.</span><span class="tag">Produto</span></div>
 <div class="coverage-row"><span class="n">04</span><span class="name">Infraestrutura</span><span class="desc">Cada comando é uma simples chamada de shell — integre com o Ansible, com os seus scripts de provisioning ou com o seu tooling interno.</span><span class="tag">Automação</span></div>
 </div>
 </div>
@@ -1321,7 +1321,7 @@
 <div class="coverage-row"><span class="n">03</span><span class="name">Criptografia e GDPR</span><span class="desc">Vault AES-256 em repouso, arquivos de sincronização criptografados, rotação de logs e isolamento completo por app.</span><span class="tag">Segurança</span></div>
 <div class="coverage-row"><span class="n">04</span><span class="name">Backups automáticos no S3</span><span class="desc">Bancos de dados e shared/ para o S3 ou provedores compatíveis, numa agenda cron.</span><span class="tag">Backup</span></div>
 <div class="coverage-row"><span class="n">05</span><span class="name">Sincronização entre servidores</span><span class="desc">Migre, replique ou recupere apps entre servidores Cipi usando arquivos criptografados.</span><span class="tag">Operações</span></div>
-<div class="coverage-row"><span class="n">06</span><span class="name">Deploys sem downtime</span><span class="desc">O Deployer clona, compila, migra e troca o symlink atomicamente. Rollback instantâneo.</span><span class="tag">CI/CD</span></div>
+<div class="coverage-row"><span class="n">06</span><span class="name">Deploys sem downtime</span><span class="desc">O Deployer clona, compila, migra e troca o symlink atomicamente. Rollback snapshot.</span><span class="tag">CI/CD</span></div>
 <div class="coverage-row"><span class="n">07</span><span class="name">Deploy automático por webhook</span><span class="desc">Deploy keys e webhooks do GitHub/GitLab configurados automaticamente. Verificados por HMAC.</span><span class="tag">Git</span></div>
 <div class="coverage-row"><span class="n">08</span><span class="name">Laravel Octane &amp;
                         ecossistema</span><span class="desc">FrankenPHP Octane, Horizon, Reverb, scheduler, builds de Node — tooling Laravel de primeira linha.</span><span class="tag">Laravel</span></div>

@@ -1,0 +1,38 @@
+{
+ "fr": [
+  [
+   "zéro temps d'arrêt",
+   "zéro interruption"
+  ],
+  [
+   "chaque travailleur de file d'attente sur le serveur",
+   "chaque worker de queue sur le serveur"
+  ],
+  [
+   "Supervisor / sortie du travailleur de file d'attente",
+   "Supervisor / sortie du worker de queue"
+  ]
+ ],
+ "es": [
+  [
+   "cero tiempo de inactividad",
+   "cero downtime"
+  ],
+  [
+   "cada trabajador de cola en el servidor",
+   "cada worker de cola en el servidor"
+  ],
+  [
+   "Supervisor / salida del trabajador de la cola",
+   "Supervisor / salida del worker de cola"
+  ],
+  [
+   "Supervisor trabajador, entrada crontab",
+   "worker de Supervisor, entrada de crontab"
+  ],
+  [
+   "\\besto se reinicia\\b",
+   "esto reinicia"
+  ]
+ ]
+}
