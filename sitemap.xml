@@ -12,7 +12,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -29,7 +29,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternatives"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternatives"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternatives"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -42,7 +42,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/best-laravel-forge-alternatives"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/best-laravel-forge-alternatives"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/best-laravel-forge-alternatives"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -55,7 +55,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -68,7 +68,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -81,22 +81,9 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/whats-new"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/whats-new"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/whats-new"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cipi.sh/en/404</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cipi.sh/en/404"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://cipi.sh/de/404"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://cipi.sh/fr/404"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://cipi.sh/it/404"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/404"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/404"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/404"/>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cipi.sh/en/alternative-to-20i</loc>
@@ -107,7 +94,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-20i"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-20i"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-20i"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -120,7 +107,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-cleavr"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-cleavr"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-cleavr"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -133,7 +120,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-cloudpanel"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-cloudpanel"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-cloudpanel"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -146,7 +133,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-coolify"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-coolify"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-coolify"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -159,7 +146,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-cpanel"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-cpanel"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-cpanel"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -172,7 +159,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-directadmin"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-directadmin"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-directadmin"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -185,7 +172,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-dokku"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-dokku"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-dokku"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -198,7 +185,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-easypanel"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-easypanel"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-easypanel"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -211,7 +198,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-fortrabbit"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-fortrabbit"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-fortrabbit"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -224,7 +211,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-kamal"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-kamal"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-kamal"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -237,7 +224,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-laravel-cloud"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-laravel-cloud"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-laravel-cloud"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -250,7 +237,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-laravel-forge"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-laravel-forge"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-laravel-forge"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -263,7 +250,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-moss"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-moss"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-moss"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -276,7 +263,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-plesk"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-plesk"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-plesk"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -289,7 +276,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-ploi"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-ploi"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-ploi"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -302,7 +289,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-ploi-cloud"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-ploi-cloud"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-ploi-cloud"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -315,7 +302,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-render"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-render"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-render"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -328,7 +315,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-runcloud"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-runcloud"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-runcloud"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -341,7 +328,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-serverpilot"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-serverpilot"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-serverpilot"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -354,7 +341,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-sevalla"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-sevalla"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-sevalla"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -367,7 +354,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/alternative-to-vito-deploy"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/alternative-to-vito-deploy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/alternative-to-vito-deploy"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -380,7 +367,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/cipi-yml"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/cipi-yml"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/cipi-yml"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -393,7 +380,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/discovery"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/discovery"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/discovery"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -406,7 +393,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/about"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/about"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/about"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -419,7 +406,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/advanced"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/advanced"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/advanced"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -432,7 +419,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/agent"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/agent"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/agent"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -445,7 +432,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/apps"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/apps"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/apps"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -458,7 +445,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/cli-client"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/cli-client"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/cli-client"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -471,7 +458,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/deploy"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/deploy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/deploy"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -484,7 +471,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/getting-started"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/getting-started"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/getting-started"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -497,7 +484,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/gui"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/gui"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/gui"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -510,7 +497,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/infrastructure"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/infrastructure"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/infrastructure"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -523,7 +510,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/copias-seguridad-vps-s3"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/backup-vps-para-s3"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/backup-vps-s3"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -536,7 +523,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/usar-cipi-agent-en-laravel"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/usar-cipi-agent-no-laravel"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/cipi-agent-laravel-mcp"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -549,7 +536,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/panel-ui-y-api"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/painel-ui-e-api"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/cipi-gui-and-api"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -562,7 +549,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/desplegar-laravel-en-vps-ubuntu"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/deploy-laravel-em-vps-ubuntu"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/deploy-laravel-ubuntu-vps"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -575,7 +562,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/desplegar-wordpress-app-personalizada"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/deploy-wordpress-app-personalizado"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/deploy-wordpress-custom-app"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -588,7 +575,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/ci-cd-flujo-git-laravel"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/ci-cd-e-workflow-git-laravel"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/laravel-ci-cd-git-workflow"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -601,7 +588,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/stack-desarrollador-self-hosted-2026"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/stack-desenvolvedor-self-hosted-2026"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/laravel-developer-stack-2026"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -614,7 +601,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/ecosistema-laravel-2026"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/ecossistema-laravel-2026"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/laravel-ecosystem-2026"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -627,7 +614,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/checklist-seguridad-laravel"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/checklist-seguranca-laravel"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/laravel-security-checklist"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -640,7 +627,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/gestionar-apps-con-cipi-yml"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/gerenciar-apps-com-cipi-yml"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/manage-apps-with-cipi-yml"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -653,7 +640,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://cipi.sh/es/guides/desarrollo-spec-driven-ia-laravel"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/guides/desenvolvimento-spec-driven-ia-laravel"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/guides/spec-driven-development-ai-laravel"/>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

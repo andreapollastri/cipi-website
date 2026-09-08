@@ -116,6 +116,7 @@ SLUGS_IT = {
     "/discovery": "/discovery",
     "/alternatives": "/alternative",
     "/best-laravel-forge-alternatives": "/migliori-alternative-a-laravel-forge",
+    "/alternative-to-20i": "/alternativa-a-20i",
     "/alternative-to-cleavr": "/alternativa-a-cleavr",
     "/alternative-to-cloudpanel": "/alternativa-a-cloudpanel",
     "/alternative-to-coolify": "/alternativa-a-coolify",
@@ -123,14 +124,18 @@ SLUGS_IT = {
     "/alternative-to-directadmin": "/alternativa-a-directadmin",
     "/alternative-to-dokku": "/alternativa-a-dokku",
     "/alternative-to-easypanel": "/alternativa-a-easypanel",
+    "/alternative-to-fortrabbit": "/alternativa-a-fortrabbit",
     "/alternative-to-kamal": "/alternativa-a-kamal",
     "/alternative-to-laravel-cloud": "/alternativa-a-laravel-cloud",
     "/alternative-to-laravel-forge": "/alternativa-a-laravel-forge",
     "/alternative-to-moss": "/alternativa-a-moss",
     "/alternative-to-plesk": "/alternativa-a-plesk",
     "/alternative-to-ploi": "/alternativa-a-ploi",
+    "/alternative-to-ploi-cloud": "/alternativa-a-ploi-cloud",
+    "/alternative-to-render": "/alternativa-a-render",
     "/alternative-to-runcloud": "/alternativa-a-runcloud",
     "/alternative-to-serverpilot": "/alternativa-a-serverpilot",
+    "/alternative-to-sevalla": "/alternativa-a-sevalla",
     "/alternative-to-vito-deploy": "/alternativa-a-vito-deploy",
     "/docs/": "/docs/",
     "/docs/getting-started": "/docs/primi-passi",
@@ -172,10 +177,18 @@ def to_en_canon(bare: str) -> str:
         return SLUGS_TO_EN[bare]
     if bare in SLUGS_EN:
         return SLUGS_EN[bare]
+    if bare == "/alternative":
+        return "/alternatives"
+    if bare == "/novita":
+        return "/whats-new"
+    if bare == "/migliori-alternative-a-laravel-forge":
+        return "/best-laravel-forge-alternatives"
+    if bare.startswith("/alternativa-a-"):
+        return "/alternative-to-" + bare[len("/alternativa-a-") :]
     if bare == "/guide/":
         return "/guides/"
     if bare.startswith("/guide/"):
-        return SLUGS_TO_EN.get(bare, "/guides/" + bare[len("/guide/"):])
+        return SLUGS_TO_EN.get(bare, "/guides/" + bare[len("/guide/") :])
     return bare
 
 
@@ -183,7 +196,12 @@ def localize_canon(en_canon: str, lang: str) -> str:
     en = to_en_canon(en_canon)
     if lang == "en":
         return en
-    return SLUGS_BY_LANG.get(lang, {}).get(en, en)
+    mapped = SLUGS_BY_LANG.get(lang, {}).get(en)
+    if mapped:
+        return mapped
+    if lang == "it" and en.startswith("/alternative-to-"):
+        return "/alternativa-a-" + en[len("/alternative-to-") :]
+    return en
 
 
 def localized_html_path(en_canon: str, lang: str) -> Path:

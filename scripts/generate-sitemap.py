@@ -69,6 +69,7 @@ def main() -> None:
             canons.add(c)
 
     canons.update(SLUGS_IT.keys())
+    canons.discard("/404")
 
     def sort_key(c: str):
         pri, _ = priority_for(c)

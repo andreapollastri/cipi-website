@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cipi Discovery — Full Tour of the Open-Source Laravel Deploy CLI</title>
     <meta name="description"
-        content="Everything Cipi does, on one page. Zero-downtime deploys, Laravel Octane, MCP for AI, REST API, S3 backups, hardened security — the full tour of the open-source Laravel deploy CLI.">
+        content="Everything Cipi does, on one page. Zero-downtime deploys, Laravel Octane, cipi.yml, MCP for AI, REST API, S3 backups, hardened security — the full tour of the open-source Laravel deploy CLI.">
     <meta name="keywords"
         content="Cipi features, Laravel deploy tour, cipi discovery, Laravel VPS features, PHP server platform">
     <meta name="author" content="Andrea Pollastri">
@@ -27,7 +27,7 @@
     <meta property="og:url" content="https://cipi.sh/en/discovery">
     <meta property="og:title" content="Cipi Discovery — Full Tour of the Open-Source Laravel Deploy CLI">
     <meta property="og:description"
-        content="Everything Cipi does, on one page. Zero-downtime deploys, Laravel Octane, MCP for AI, REST API, S3 backups, hardened security — the full tour.">
+        content="Everything Cipi does, on one page. Zero-downtime deploys, Laravel Octane, cipi.yml, MCP for AI, REST API, S3 backups, hardened security — the full tour.">
     <meta property="og:image" content="https://cipi.sh/og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -40,14 +40,14 @@
     <meta property="og:locale:alternate" content="pt_PT"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cipi Discovery — Full Tour of the Laravel Deploy CLI">
     <meta name="twitter:description"
-        content="Everything Cipi does, on one page. Zero-downtime deploys, Laravel Octane, MCP for AI, REST API, S3 backups, hardened security — the full tour.">
+        content="Everything Cipi does, on one page. Zero-downtime deploys, Laravel Octane, cipi.yml, MCP for AI, REST API, S3 backups, hardened security — the full tour.">
     <meta name="twitter:image" content="https://cipi.sh/og.png">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "datePublished": "2026-06-03",
-      "dateModified": "2026-08-04",
+      "dateModified": "2026-09-08",
       "name": "Cipi Discovery",
       "url": "https://cipi.sh/en/discovery",
       "description": "Everything Cipi does, on one page. The full feature tour of the open-source Laravel deploy CLI.",
@@ -1203,8 +1203,8 @@
             <span class="word" style="animation-delay:0.46s"><em>platform.</em></span>
         </h1>
         <p class="hero-sub">Nginx, Laravel Octane on FrankenPHP (or classic PHP-FPM), MariaDB or PostgreSQL, Valkey,
-            Horizon, Reverb, auto SSL, firewall, backups, a REST API — even an MCP server so your AI can talk to
-            production. Blazing fast, hardened from minute one, effortless to run. Live on any Ubuntu VPS in about ten
+            Horizon, Reverb, auto SSL, firewall, backups, cipi.yml, a REST API — even an MCP server so your AI can talk
+            to production. Blazing fast, hardened from minute one, effortless to run. Live on any Ubuntu VPS in about ten
             minutes. Free, open source, forever.</p>
         <div class="hero-actions">
             <a href="#fast" class="btn-hero btn-primary">Start the tour <svg width="16" height="16"
@@ -1240,9 +1240,10 @@
                 <span class="marquee-item">MCP for AI</span>
                 <span class="marquee-item ghost">Auto SSL</span>
                 <span class="marquee-item">S3 backups</span>
-                <span class="marquee-item ghost">REST API</span>
-                <span class="marquee-item">Valkey cache</span>
-                <span class="marquee-item ghost">Fail2ban</span>
+                <span class="marquee-item ghost">cipi.yml</span>
+                <span class="marquee-item">REST API</span>
+                <span class="marquee-item ghost">Valkey cache</span>
+                <span class="marquee-item">Fail2ban</span>
             </div>
             <div class="marquee-track">
                 <span class="marquee-item">Zero-downtime deploys</span>
@@ -1252,9 +1253,10 @@
                 <span class="marquee-item">MCP for AI</span>
                 <span class="marquee-item ghost">Auto SSL</span>
                 <span class="marquee-item">S3 backups</span>
-                <span class="marquee-item ghost">REST API</span>
-                <span class="marquee-item">Valkey cache</span>
-                <span class="marquee-item ghost">Fail2ban</span>
+                <span class="marquee-item ghost">cipi.yml</span>
+                <span class="marquee-item">REST API</span>
+                <span class="marquee-item ghost">Valkey cache</span>
+                <span class="marquee-item">Fail2ban</span>
             </div>
         </div>
         <div class="marquee reverse">
@@ -1299,7 +1301,7 @@
                 <div class="stat-label">To production</div>
             </div>
             <div class="stat">
-                <div class="stat-value"><span data-count="27">27</span><span class="accent">+</span></div>
+                <div class="stat-value"><span data-count="28">28</span><span class="accent">+</span></div>
                 <div class="stat-label">Features built in</div>
             </div>
             <div class="stat">
@@ -1353,7 +1355,7 @@
             <p>Connect GitHub or GitLab once and Cipi handles the rest: deploy keys generated and injected, webhooks
                 created, every app provisioned with its own Linux user, database, vhost, and PHP-FPM pool. Push to your
                 branch and a signature-verified, zero-downtime deploy runs in the background — with one-command
-                rollback if you ever need it. No CI/CD to maintain. No YAML to cry over.</p>
+                rollback if you ever need it. No CI/CD to maintain. No pipeline YAML to cry over.</p>
             <div class="chips">
                 <span class="chip">auto deploy keys</span>
                 <span class="chip">HMAC webhooks</span>
@@ -1361,6 +1363,32 @@
                 <span class="chip">instant rollback</span>
             </div>
             <a href="/en/docs/deploy#git-providers" class="deep-link">How deploys work <svg viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                </svg></a>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════ -->
+    <!-- STATEMENT — CIPI.YML                     -->
+    <!-- ════════════════════════════════════════ -->
+    <section class="statement" id="yml">
+        <div class="statement-watermark">YAML</div>
+        <div class="statement-inner reveal">
+            <div class="statement-kicker">cipi.yml</div>
+            <h2>Configuration that <em>travels with the code.</em></h2>
+            <p>Commit one file next to the app: domain aliases, PHP version and php.ini, extra databases, queue workers
+                or Horizon, Laravel Reverb, the scheduler, a healthcheck, and backup profiles. Generate it from the
+                server, inspect the plan, apply it — or opt in so every successful deploy reconciles. The schema
+                carries no shell commands; an invalid file is rejected as a whole, never applied halfway.</p>
+            <div class="chips">
+                <span class="chip">generate</span>
+                <span class="chip">plan</span>
+                <span class="chip">apply</span>
+                <span class="chip">auto on deploy</span>
+            </div>
+            <a href="/en/cipi-yml" class="deep-link">How cipi.yml works <svg viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
@@ -1570,6 +1598,16 @@
                     <h4>git push auto-deploy</h4>
                     <p>HMAC signature-verified webhooks trigger background deploys on every push. Branch filtering
                         included, CI/CD pipeline not required.</p>
+                    <span class="card-link">Deep dive <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg></span>
+                </a>
+                <a href="/en/cipi-yml" class="tour-card">
+                    <h4>cipi.yml</h4>
+                    <p>Configuration that ships with the code: aliases, PHP, databases, workers, Reverb, scheduler,
+                        healthcheck and backups — planned, applied, or reconciled on every deploy.</p>
                     <span class="card-link">Deep dive <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round">
                             <line x1="5" y1="12" x2="19" y2="12" />

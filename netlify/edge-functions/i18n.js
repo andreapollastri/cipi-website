@@ -107,6 +107,7 @@ export const SLUGS_IT = {
   '/discovery': '/discovery',
   '/alternatives': '/alternative',
   '/best-laravel-forge-alternatives': '/migliori-alternative-a-laravel-forge',
+  '/alternative-to-20i': '/alternativa-a-20i',
   '/alternative-to-cleavr': '/alternativa-a-cleavr',
   '/alternative-to-cloudpanel': '/alternativa-a-cloudpanel',
   '/alternative-to-coolify': '/alternativa-a-coolify',
@@ -114,14 +115,18 @@ export const SLUGS_IT = {
   '/alternative-to-directadmin': '/alternativa-a-directadmin',
   '/alternative-to-dokku': '/alternativa-a-dokku',
   '/alternative-to-easypanel': '/alternativa-a-easypanel',
+  '/alternative-to-fortrabbit': '/alternativa-a-fortrabbit',
   '/alternative-to-kamal': '/alternativa-a-kamal',
   '/alternative-to-laravel-cloud': '/alternativa-a-laravel-cloud',
   '/alternative-to-laravel-forge': '/alternativa-a-laravel-forge',
   '/alternative-to-moss': '/alternativa-a-moss',
   '/alternative-to-plesk': '/alternativa-a-plesk',
   '/alternative-to-ploi': '/alternativa-a-ploi',
+  '/alternative-to-ploi-cloud': '/alternativa-a-ploi-cloud',
+  '/alternative-to-render': '/alternativa-a-render',
   '/alternative-to-runcloud': '/alternativa-a-runcloud',
   '/alternative-to-serverpilot': '/alternativa-a-serverpilot',
+  '/alternative-to-sevalla': '/alternativa-a-sevalla',
   '/alternative-to-vito-deploy': '/alternativa-a-vito-deploy',
   '/docs/': '/docs/',
   '/docs/getting-started': '/docs/primi-passi',
@@ -214,6 +219,9 @@ export function localizeCanon(bare, lang) {
   if (lang === 'en') return en;
   const table = SLUGS_BY_LANG[lang];
   if (table && table[en]) return table[en];
+  if (lang === 'it' && en.startsWith('/alternative-to-')) {
+    return '/alternativa-a-' + en.slice('/alternative-to-'.length);
+  }
   return en;
 }
 

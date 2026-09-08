@@ -68,6 +68,7 @@
 /cipi-yml                          /en/cipi-yml  301
 /cipi-yml.html                     /en/cipi-yml  301
 
+/alternative-to-20i              /en/alternative-to-20i  301
 /alternative-to-cleavr           /en/alternative-to-cleavr  301
 /alternative-to-cloudpanel       /en/alternative-to-cloudpanel  301
 /alternative-to-coolify          /en/alternative-to-coolify  301
@@ -75,14 +76,18 @@
 /alternative-to-directadmin      /en/alternative-to-directadmin  301
 /alternative-to-dokku            /en/alternative-to-dokku  301
 /alternative-to-easypanel        /en/alternative-to-easypanel  301
+/alternative-to-fortrabbit       /en/alternative-to-fortrabbit  301
 /alternative-to-kamal            /en/alternative-to-kamal  301
 /alternative-to-laravel-cloud    /en/alternative-to-laravel-cloud  301
 /alternative-to-laravel-forge    /en/alternative-to-laravel-forge  301
 /alternative-to-moss             /en/alternative-to-moss  301
 /alternative-to-plesk            /en/alternative-to-plesk  301
 /alternative-to-ploi             /en/alternative-to-ploi  301
+/alternative-to-ploi-cloud       /en/alternative-to-ploi-cloud  301
+/alternative-to-render           /en/alternative-to-render  301
 /alternative-to-runcloud         /en/alternative-to-runcloud  301
 /alternative-to-serverpilot      /en/alternative-to-serverpilot  301
+/alternative-to-sevalla          /en/alternative-to-sevalla  301
 /alternative-to-vito-deploy      /en/alternative-to-vito-deploy  301
 
 # Legacy bare Italian slugs → /it/…
@@ -91,6 +96,7 @@
 /migliori-alternative-a-laravel-forge      /it/migliori-alternative-a-laravel-forge  301
 /guide                                     /it/guide/  301
 /guide/                                    /it/guide/  301
+/alternativa-a-20i                         /it/alternativa-a-20i  301
 /alternativa-a-cleavr                      /it/alternativa-a-cleavr  301
 /alternativa-a-cloudpanel                  /it/alternativa-a-cloudpanel  301
 /alternativa-a-coolify                     /it/alternativa-a-coolify  301
@@ -98,15 +104,64 @@
 /alternativa-a-directadmin                 /it/alternativa-a-directadmin  301
 /alternativa-a-dokku                       /it/alternativa-a-dokku  301
 /alternativa-a-easypanel                   /it/alternativa-a-easypanel  301
+/alternativa-a-fortrabbit                  /it/alternativa-a-fortrabbit  301
 /alternativa-a-kamal                       /it/alternativa-a-kamal  301
 /alternativa-a-laravel-cloud               /it/alternativa-a-laravel-cloud  301
 /alternativa-a-laravel-forge               /it/alternativa-a-laravel-forge  301
 /alternativa-a-moss                        /it/alternativa-a-moss  301
 /alternativa-a-plesk                       /it/alternativa-a-plesk  301
 /alternativa-a-ploi                        /it/alternativa-a-ploi  301
+/alternativa-a-ploi-cloud                  /it/alternativa-a-ploi-cloud  301
+/alternativa-a-render                      /it/alternativa-a-render  301
 /alternativa-a-runcloud                    /it/alternativa-a-runcloud  301
 /alternativa-a-serverpilot                 /it/alternativa-a-serverpilot  301
+/alternativa-a-sevalla                     /it/alternativa-a-sevalla  301
 /alternativa-a-vito-deploy                 /it/alternativa-a-vito-deploy  301
+
+# Crawlers often swap /en/… → /it/… without translating slugs
+/it/alternative-to-20i                     /it/alternativa-a-20i  301
+/it/alternative-to-cleavr                  /it/alternativa-a-cleavr  301
+/it/alternative-to-cloudpanel              /it/alternativa-a-cloudpanel  301
+/it/alternative-to-coolify                 /it/alternativa-a-coolify  301
+/it/alternative-to-cpanel                  /it/alternativa-a-cpanel  301
+/it/alternative-to-directadmin             /it/alternativa-a-directadmin  301
+/it/alternative-to-dokku                   /it/alternativa-a-dokku  301
+/it/alternative-to-easypanel               /it/alternativa-a-easypanel  301
+/it/alternative-to-fortrabbit              /it/alternativa-a-fortrabbit  301
+/it/alternative-to-kamal                   /it/alternativa-a-kamal  301
+/it/alternative-to-laravel-cloud           /it/alternativa-a-laravel-cloud  301
+/it/alternative-to-laravel-forge           /it/alternativa-a-laravel-forge  301
+/it/alternative-to-moss                    /it/alternativa-a-moss  301
+/it/alternative-to-plesk                   /it/alternativa-a-plesk  301
+/it/alternative-to-ploi                    /it/alternativa-a-ploi  301
+/it/alternative-to-ploi-cloud              /it/alternativa-a-ploi-cloud  301
+/it/alternative-to-render                  /it/alternativa-a-render  301
+/it/alternative-to-runcloud                /it/alternativa-a-runcloud  301
+/it/alternative-to-serverpilot             /it/alternativa-a-serverpilot  301
+/it/alternative-to-sevalla                 /it/alternativa-a-sevalla  301
+/it/alternative-to-vito-deploy             /it/alternativa-a-vito-deploy  301
+/it/alternatives                           /it/alternative  301
+/it/whats-new                              /it/novita  301
+/it/best-laravel-forge-alternatives        /it/migliori-alternative-a-laravel-forge  301
+/it/docs/getting-started                   /it/docs/primi-passi  301
+/it/docs/apps                              /it/docs/app  301
+/it/docs/infrastructure                    /it/docs/infrastruttura  301
+/it/docs/cli-client                        /it/docs/client-cli  301
+/it/docs/advanced                          /it/docs/avanzato  301
+/it/docs/about                             /it/docs/informazioni  301
+/it/guides                                 /it/guide/  301
+/it/guides/                                /it/guide/  301
+/it/guides/deploy-laravel-ubuntu-vps       /it/guide/deploy-laravel-su-ubuntu-vps  301
+/it/guides/laravel-security-checklist      /it/guide/checklist-sicurezza-laravel  301
+/it/guides/laravel-ecosystem-2026          /it/guide/ecosistema-laravel-2026  301
+/it/guides/laravel-ci-cd-git-workflow      /it/guide/ci-cd-workflow-git-laravel  301
+/it/guides/spec-driven-development-ai-laravel /it/guide/sviluppo-spec-driven-ai-laravel  301
+/it/guides/laravel-developer-stack-2026    /it/guide/stack-developer-self-hosted-2026  301
+/it/guides/backup-vps-s3                   /it/guide/backup-vps-s3-con-cipi  301
+/it/guides/deploy-wordpress-custom-app     /it/guide/deploy-wordpress-app-custom-github  301
+/it/guides/cipi-agent-laravel-mcp          /it/guide/usare-cipi-agent-in-laravel  301
+/it/guides/cipi-gui-and-api                /it/guide/pannello-ui-e-api-cipi  301
+/it/guides/manage-apps-with-cipi-yml       /it/guide/gestire-app-con-cipi-yml  301
 
 /docs/primi-passi                          /it/docs/primi-passi  301
 /docs/app                                  /it/docs/app  301

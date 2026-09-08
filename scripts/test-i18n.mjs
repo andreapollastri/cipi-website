@@ -2,7 +2,7 @@
 /**
  * Unit tests for netlify/edge-functions/i18n.js routing (no Netlify runtime).
  */
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import {
   decide,
@@ -82,6 +82,21 @@ assertRedirect('/guides', '/en/guides/');
 assertRedirect('/alternatives', '/en/alternatives');
 assertRedirect('/whats-new', '/en/whats-new');
 assertRedirect('/alternative-to-ploi', '/en/alternative-to-ploi');
+assertRedirect('/alternative-to-sevalla', '/en/alternative-to-sevalla');
+assertRedirect('/it/alternative-to-sevalla', '/it/alternativa-a-sevalla');
+assertRedirect('/it/alternative-to-20i', '/it/alternativa-a-20i');
+assertRedirect('/it/alternative-to-fortrabbit', '/it/alternativa-a-fortrabbit');
+assertRedirect('/it/alternative-to-render', '/it/alternativa-a-render');
+assertRedirect('/it/alternative-to-ploi-cloud', '/it/alternativa-a-ploi-cloud');
+assertPass('/it/alternativa-a-sevalla');
+assertPass('/it/alternativa-a-20i');
+assertPass('/it/alternativa-a-fortrabbit');
+assertPass('/it/alternativa-a-render');
+assertPass('/it/alternativa-a-ploi-cloud');
+assertRedirect('/it/alternatives', '/it/alternative');
+assertRedirect('/it/whats-new', '/it/novita');
+assertRedirect('/it/best-laravel-forge-alternatives', '/it/migliori-alternative-a-laravel-forge');
+assertRedirect('/en/alternativa-a-sevalla', '/en/alternative-to-sevalla');
 
 // Legacy bare Italian slugs → /it/… (slug language, not Accept-Language)
 assertRedirect('/novita', '/it/novita');
@@ -280,6 +295,135 @@ for (const lang of ['en', 'it', ...GENERATED_LANGS]) {
       html.includes("(document.documentElement.lang || 'en') + '/docs/search-index.js'"),
     );
   }
+}
+
+const ROOT = process.cwd();
+const ALL_LANGS = ['en', 'de', 'fr', 'it', 'es', 'pt'];
+
+// Every real Italian page must 200 — never 301 away to the English slug
+for (const file of walk(join(ROOT, 'it')).filter((f) => f.endsWith('.html'))) {
+  const rel = file.slice(join(ROOT, 'it').length).replace(/\\/g, '/');
+  if (rel === '/404.html') continue;
+  let path;
+  if (rel === '/index.html') path = '/it/';
+  else if (rel.endsWith('/index.html')) path = `/it${rel.slice(0, -'index.html'.length)}`;
+  else path = `/it${rel.slice(0, -'.html'.length)}`;
+  assertPass(path, 'IT page must not redirect away');
+}
+
+function htmlPathFor(lang, loc) {
+  if (loc === '/') return lang === 'en' ? join(ROOT, 'index.html') : join(ROOT, lang, 'index.html');
+  if (loc.endsWith('/')) return join(ROOT, lang, loc.replace(/^\//, ''), 'index.html');
+  return join(ROOT, lang, `${loc.replace(/^\//, '')}.html`);
+}
+
+function resolvePretty(pathname) {
+  let p = pathname.split('#')[0].split('?')[0];
+  if (!p || p === '/') return join(ROOT, 'index.html');
+  if (p.endsWith('/')) {
+    const indexed = join(ROOT, p.slice(1), 'index.html');
+    if (existsSync(indexed)) return indexed;
+  }
+  const exact = join(ROOT, p.replace(/^\//, ''));
+  if (existsSync(exact) && statSync(exact).isFile()) return exact;
+  const html = exact.endsWith('.html') ? exact : `${exact}.html`;
+  if (existsSync(html)) return html;
+  const indexed = join(exact, 'index.html');
+  if (existsSync(indexed)) return indexed;
+  return null;
+}
+
+function follow(path) {
+  let current = path;
+  for (let i = 0; i < 8; i += 1) {
+    const d = decide(url(current));
+    if (d.pass) return current;
+    current = d.redirect;
+  }
+  return current;
+}
+
+// Every English alternative page must 301 the English slug under /it/ to the Italian file
+for (const name of readdirSync(join(ROOT, 'en')).filter((f) => f.startsWith('alternative-to-') && f.endsWith('.html'))) {
+  const slug = `/${name.slice(0, -5)}`;
+  const itSlug = localizeCanon(slug, 'it');
+  assertRedirect(`/it${slug}`, `/it${itSlug}`);
+  assert(`IT HTML exists for ${slug}`, existsSync(htmlPathFor('it', itSlug)));
+}
+
+// Every localized HTML counterpart exists for every English page
+for (const file of walk(join(ROOT, 'en')).filter((f) => f.endsWith('.html'))) {
+  const rel = file.slice(join(ROOT, 'en').length).replace(/\\/g, '/');
+  if (rel === '/404.html') continue;
+  let canon;
+  if (rel === '/index.html') canon = '/';
+  else if (rel.endsWith('/index.html')) canon = rel.slice(0, -'index.html'.length);
+  else canon = rel.slice(0, -'.html'.length);
+  for (const lang of ALL_LANGS) {
+    const loc = localizeCanon(canon, lang);
+    const dest = htmlPathFor(lang, loc);
+    assert(`${lang} page exists for ${canon} → ${loc}`, existsSync(dest));
+  }
+}
+
+function extractInternalPaths(html) {
+  const paths = new Set();
+  const attrRe = /\b(?:href|src|action)=["']([^"']+)["']/gi;
+  let m;
+  while ((m = attrRe.exec(html))) paths.add(m[1]);
+  const absRe = /https:\/\/cipi\.sh(\/[^"'<\s]*)/gi;
+  while ((m = absRe.exec(html))) paths.add(m[1]);
+  return [...paths];
+}
+
+function shouldSkipHref(href) {
+  if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return true;
+  if (href.startsWith('javascript:') || href.startsWith('data:')) return true;
+  if (/^https?:\/\//i.test(href) && !href.startsWith('https://cipi.sh')) return true;
+  if (href.startsWith('//')) return true;
+  return false;
+}
+
+function toPath(href) {
+  if (href.startsWith('https://cipi.sh')) {
+    try {
+      return new URL(href).pathname;
+    } catch {
+      return null;
+    }
+  }
+  if (href.startsWith('/')) return href.split('#')[0].split('?')[0] || '/';
+  return null;
+}
+
+const broken = [];
+for (const lang of ALL_LANGS) {
+  for (const file of walk(join(ROOT, lang)).filter((f) => f.endsWith('.html'))) {
+    const html = readFileSync(file, 'utf8');
+    for (const href of extractInternalPaths(html)) {
+      if (shouldSkipHref(href)) continue;
+      const path = toPath(href);
+      if (path == null) continue;
+      if (path.includes('/this-page-does-not-exist')) continue;
+      const finalPath = follow(path);
+      const dest = resolvePretty(finalPath);
+      if (!dest) {
+        broken.push(`${file.replace(ROOT, '')}: ${href} → ${finalPath}`);
+      }
+    }
+  }
+}
+
+const sitemap = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
+for (const m of sitemap.matchAll(/https:\/\/cipi\.sh(\/[^<"]*)/g)) {
+  const finalPath = follow(m[1]);
+  if (!resolvePretty(finalPath)) broken.push(`sitemap.xml: ${m[1]} → ${finalPath}`);
+}
+
+assert(`no broken internal links (${broken.length})`, broken.length === 0);
+if (broken.length) {
+  for (const row of broken.slice(0, 40)) console.error('BROKEN', row);
+  if (broken.length > 40) console.error(`… ${broken.length - 40} more`);
 }
 
 console.log(`${passed} passed, ${failed} failed`);
