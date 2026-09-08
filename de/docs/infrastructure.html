@@ -213,6 +213,9 @@
 <a class="sidebar-link" href="/de/docs/infrastructure#cli-health"><code>health</code></a>
 <a class="sidebar-link" href="/de/docs/infrastructure#cli-firewall"><code>firewall</code></a>
 <a class="sidebar-link" href="/de/docs/infrastructure#cli-ban"><code>ban</code></a>
+<a class="sidebar-link" href="/de/docs/infrastructure#cli-crowdsec"><code>crowdsec</code></a>
+<a class="sidebar-link" href="/de/docs/infrastructure#cli-scan"><code>scan</code></a>
+<a class="sidebar-link" href="/de/docs/infrastructure#cli-completion"><code>completion</code></a>
 <a class="sidebar-link" href="/de/docs/infrastructure#cli-services"><code>service</code></a>
 <a class="sidebar-link" href="/de/docs/infrastructure#cli-ssh"><code>ssh</code></a>
 <a class="sidebar-link" href="/de/docs/infrastructure#cli-cipi"><code>cipi</code></a>
@@ -1125,6 +1128,8 @@ myapp@server:~$ crontab -e</pre>
 <h3><code>cipi ban unban &lt;IP&gt;</code></h3>
 <p>Entfernt die angegebene IP von <strong>alle</strong> Fail2ban-Gefängnisse auf einmal. Praktisch, wenn Sie ein legitimer Benutzer sind
                     oder der CI-Läufer wird versehentlich ausgesperrt.</p>
+<p>Seit <strong>v5.2.0</strong> decken beide Befehle auch <a href="/de/docs/infrastructure#cli-crowdsec">CrowdSec</a> ab, sobald dessen Engine läuft. <code>cipi ban list</code> liest <code>.decisions[]</code> aus <code>cscli decisions list -o json</code>, das <em>Alerts</em> zurückgibt: <code>.value</code> auf oberster Ebene zu lesen, druckte eine Anzahl von Decisions und danach überhaupt keine Adressen. Und <code>cipi ban unban</code> fragt jetzt nach, bevor es Erfolg meldet, denn <code>cscli decisions delete</code> endet mit 0, egal ob es etwas entfernt hat oder nichts.</p>
+
 <div class="callout info">
 <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18">
 <circle cx="12" cy="12" r="10"></circle>
@@ -1136,6 +1141,252 @@ myapp@server:~$ crontab -e</pre>
                     </div>
 </div>
 </div>
+            <div class="doc-section" id="cli-crowdsec">
+                <h2><code>cipi crowdsec</code></h2>
+                <p>Verfügbar ab <strong>v5.2.0</strong> und <strong>standardmäßig aus</strong>: Weder
+                    <code>setup.sh</code> noch <code>cipi self-update</code> installieren es. CrowdSec liest Ihre
+                    Nginx-Logs, entscheidet, welche IPs angreifen, und ein Firewall-Bouncer verwirft sie.
+                    <strong>Es ist keine WAF</strong> — keine Anfrage wird im Flug inspiziert oder umgeschrieben, und
+                    fail2ban bleibt genau dort, wo es ist.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Kopieren</button></div>
+                    <pre><span class="p">$</span> cipi crowdsec enable                <span class="c"># Engine + Firewall-Bouncer</span>
+<span class="p">$</span> cipi crowdsec status                <span class="c"># Engine / Bouncer / Rescue / Decisions</span>
+<span class="p">$</span> cipi crowdsec allow 203.0.113.42     <span class="c"># diese Adresse nie sperren</span>
+<span class="p">$</span> cipi crowdsec unallow 203.0.113.42   <span class="c"># einen zusätzlichen Allow entfernen</span>
+<span class="p">$</span> cipi crowdsec rescue token           <span class="c"># Break-Glass-curl ausgeben (auf dem Server)</span>
+<span class="p">$</span> cipi crowdsec rescue rotate          <span class="c"># neues Einmal-Token, per Mail</span>
+<span class="p">$</span> cipi crowdsec disable                <span class="c"># Regeln leeren, dann entfernen</span></pre>
+                </div>
+
+                <h3>Was <code>enable</code> tatsächlich installiert</h3>
+                <p>Die Engine <em>und</em> <code>crowdsec-firewall-bouncer-nftables</code> (oder die Variante
+                    <code>-iptables</code>), registriert per <code>cscli bouncers add</code>. Genau darum geht es:
+                    Decisions ohne Bouncer sperren überhaupt nichts. Unter Ubuntu 24.04 ist iptables intern nft, der
+                    Bouncer landet also auf derselben Ebene wie fail2bans
+                    <code>iptables-multiport</code>.</p>
+                <p>Die Acquisition liest <code>/home/*/logs/nginx-{access,error}.log</code> — dorthin schreibt jeder
+                    Cipi-vhost wirklich. <code>/var/log/nginx</code> allein enthält nur den Catch-all-Serverblock, die
+                    nginx-Szenarien würden also keine einzige Zeile Anwendungs-Traffic sehen.</p>
+
+                <h3>Wann <code>enable</code> ablehnt</h3>
+                <ul>
+                    <li><strong>Unter 512 MB freiem RAM.</strong> Engine plus Bouncer brauchen Luft, die Sie nicht
+                        haben.</li>
+                    <li><strong>Nginx sieht aus, als stünde es hinter einem Reverse Proxy</strong> — ohne
+                        <code>set_real_ip_from</code> und <code>real_ip_header</code>. Jede Logzeile trüge die Adresse
+                        Ihres CDN, CrowdSec würde also Cloudflare sperren und den Angreifer in Ruhe lassen.
+                        <code>--force</code> setzt sich darüber hinweg, wenn Sie es besser wissen.</li>
+                </ul>
+                <p>Bevor überhaupt etwas sperren kann, nimmt <code>enable</code> <strong>die SSH-Sitzung, aus der Sie
+                        gerade tippen, in die Allowlist</strong>. Und <code>cipi crowdsec disable</code> <strong>leert
+                        zuerst die CrowdSec-Chains und -Tables und purged dann</strong>: Die Pakete zu entfernen,
+                    während DROP-Regeln noch geladen sind, hinterließe Sperren, die <code>cscli</code> überleben — und
+                    nichts mehr, womit man sie aufhebt.</p>
+
+                <h3>Rescue-TLS-Listener</h3>
+                <p>Automatisches Sperren und Fernadministration sind eine falsche Entscheidung voneinander entfernt,
+                    deshalb startet <code>enable</code> zusätzlich einen TLS-Server auf einem hohen Port. Ein
+                    <code>GET</code> mit einem Einmal-Token nimmt den <strong>TCP-Peer</strong> in die Allowlist —
+                    niemals <code>X-Forwarded-For</code> —, hebt die Sperre dieser Adresse in CrowdSec <em>und</em>
+                    fail2ban auf, mailt Ihnen ein neues Token, und dann stirbt das Token. Es ist kein Login und kein
+                    SSH-Key: Es kauft Ihnen die Möglichkeit zurück, sich zu verbinden, mehr nicht.</p>
+                <p>UFW öffnet den Port, und ein <code>ACCEPT</code> wird an den Kopf der CrowdSec-Chain gesetzt — und
+                    bei jedem Bouncer-Neustart erneut —, damit eine DROP-all-Sperre Ihnen nicht die Tür hinter Ihnen
+                    zuzieht.</p>
+                <p>Der TLS-Handshake läuft im eigenen Thread der Verbindung mit einer Deadline, nie innerhalb von
+                    <code>accept()</code>: Den Listening-Socket zu umhüllen, ließe einen einzigen Peer, der sich
+                    verbindet und dann schweigt, den Notausgang beliebig lange blockieren. Gleichzeitige Verbindungen
+                    sind unterhalb des <code>TasksMax</code> der Unit gedeckelt.</p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div><code>cipi crowdsec status</code> zeigt Port und Zertifikat-Fingerprint — nie das Token. Die
+                        Drosselung gilt <strong>nur für falsche Token</strong>: Ein korrektes Token wird immer
+                        akzeptiert, egal was der Peer vorher getippt hat.</div>
+                </div>
+
+                <h3>Allowlists</h3>
+                <p>Mitgeliefert, damit Ihre eigene Infrastruktur sich nie selbst sperrt:</p>
+                <ul>
+                    <li>Localhost, RFC1918-Bereiche und die HTTP-01-Validierung von Let's Encrypt.</li>
+                    <li><strong>GitHub-Webhook-CIDRs</strong>, aus dem Schlüssel <code>.hooks</code> von
+                        <code>api.github.com/meta</code>. Der Abruf ist fail-open: Stirbt er, bleibt die vorherige
+                        Datei bestehen.</li>
+                    <li><strong>GitLab.com-Egress-CIDRs</strong>, hartkodiert und auf <strong>2026-09-07</strong>
+                        datiert. Sie sind als verderblich dokumentiert, weil sie es sein werden.</li>
+                    <li>Alles, was Sie selbst mit <code>cipi crowdsec allow &lt;ip|cidr&gt;</code> hinzufügen.</li>
+                </ul>
+                <p><code>cipi ban list</code> und <code>cipi ban unban</code> beziehen jetzt CrowdSec mit ein, sobald
+                    die Engine läuft — ein Ort zum Nachsehen, ein Ort zum Aufheben.</p>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>Einmal aktiviert, läuft CrowdSec <strong>rund um die Uhr</strong> — anders als
+                        <code>cipi scan</code>, der nächtliche Job. <code>cipi status</code> listet Engine, Bouncer und
+                        Rescue-Listener nur auf, wenn diese Units existieren: Ein gestoppter Rescue-Listener ist genau
+                        das, was Sie bemerken wollen, <em>bevor</em> Sie ihn brauchen.</div>
+                </div>
+
+                <h3>Härtung der Rescue-Unit</h3>
+                <p>Der Listener läuft als root — das Einlösen eines Tokens braucht das —, aber mit
+                    <code>NoNewPrivileges</code>, <code>ProtectHome=read-only</code>, <code>PrivateTmp</code> und einem
+                    <code>MemoryHigh</code>-Limit. <code>ProtectSystem</code> und <code>SystemCallFilter</code> bleiben
+                    bewusst aus: Härtung, die den Notausgang zerstören kann, ist schlimmer als die Angriffsfläche, die
+                    sie entfernt.</p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div><strong>Migration 5.2.0</strong> installiert <code>cipi-scan-manifest</code> und die beiden
+                        Rescue-Helfer, legt den Manifest-Store an, gewährt jeder bestehenden App ihren
+                        Manifest-sudo-Eintrag und ergänzt <code>SSH_CLIENT</code> / <code>SSH_CONNECTION</code> in
+                        <code>env_keep</code> in <code>/etc/sudoers.d/cipi-sudo</code>. Letzteres ist wichtig:
+                        <code>setup.sh</code> setzt <code>PermitRootLogin no</code>, der normale Weg ist also
+                        <code>sudo cipi</code> — und sudos <code>env_reset</code> verwarf genau die Variablen, die die
+                        IP des Bedieners tragen. Die Kandidatendatei wird mit <code>visudo -c</code> geprüft, bevor sie
+                        die aktive ersetzt. Sonst wird nichts migriert: CrowdSec und der Scan bleiben aus.</div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="cli-scan">
+                <h2><code>cipi scan</code></h2>
+                <p>Verfügbar ab <strong>v5.2.0</strong> und <strong>standardmäßig aus</strong>. Er beantwortet eine
+                    einzige Frage: <em>Hat sich in dieser App etwas verändert, das kein Deploy dorthin gebracht
+                        hat?</em> Ein nächtlicher Lauf um <strong>04:40</strong> prüft zuerst die Integrität und
+                    übergibt dann die Upload-Verzeichnisse an ClamAV.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Kopieren</button></div>
+                    <pre><span class="p">$</span> cipi scan enable            <span class="c"># nächtliche Integrität + ClamAV auf Uploads</span>
+<span class="p">$</span> cipi scan                   <span class="c"># jetzt ausführen, alle Apps</span>
+<span class="p">$</span> cipi scan myapp             <span class="c"># jetzt, nur eine App</span>
+<span class="p">$</span> cipi scan status            <span class="c"># aktiv? Signaturen?</span>
+<span class="p">$</span> cipi scan report            <span class="c"># der letzte Bericht</span>
+<span class="p">$</span> cipi scan manifest myapp    <span class="c"># Integritäts-Manifest neu schreiben</span>
+<span class="p">$</span> cipi scan disable           <span class="c"># Scanner und Cron entfernen</span></pre>
+                </div>
+
+                <h3>Erst Integrität, dann Virenscan</h3>
+                <p>Der Integritätslauf vergleicht <code>current/</code> (oder <code>htdocs/</code> bei Custom-Apps) mit
+                    einem <strong>sha256-Manifest, das bei jedem erfolgreichen Deploy <em>und</em> jedem Rollback
+                        geschrieben wird</strong>. Danach läuft <strong>ein</strong> ClamAV-Prozess über
+                    <strong>ausschließlich die Upload-Verzeichnisse</strong>, ergänzt um die rfxn-Signaturen für
+                    PHP-Webshells. Jede Nacht einen ganzen Release-Baum zu scannen bringt Rauschen, keine Sicherheit —
+                    das Manifest deckt bereits alles ab, was ein Deploy dorthin gebracht hat.</p>
+
+                <h3>Wo die Manifeste liegen — und warum</h3>
+                <p>In <code>/var/lib/cipi/manifests</code>, <strong><code>root:root</code> 0600</strong> — nie im
+                    App-Home. <code>open_basedir</code> gibt PHP ganz <code>/home/&lt;app&gt;/</code>, ein dort
+                    abgelegtes Manifest wäre also genau von der Webshell editierbar, die die Prüfung fangen soll.</p>
+                <p>Der Webhook-Deploy läuft als App-Benutzer und erreicht den Manifest-Writer daher über <strong>einen
+                        einzigen sudo-Eintrag, der auf den eigenen App-Namen festgenagelt ist</strong>. Jede neue
+                    Baseline wird in <code>events.log</code> geschrieben: Eine Manifest-Neuschreibung ohne Deploy
+                    daneben ist genau das, wonach Sie suchen.</p>
+
+                <h3>Dateinamen, die früher eine Webshell versteckten</h3>
+                <p>Der Vergleich schneidet <code>sha256sum</code>-Datensätze <strong>nach Offset</strong> statt an
+                    Leerzeichen zu trennen. Namen mit Leerzeichen wurden im Bericht abgeschnitten, und die GNU
+                    coreutils escapen jeden Datensatz mit Backslash oder Newline — was ein am Hash verankerter Filter
+                    komplett verwarf. Eine Webshell namens <code>sh\ell.php</code> war unsichtbar.</p>
+
+                <h3>Was in Ihrem Postfach landet</h3>
+                <ul>
+                    <li><code>scan_integrity</code> — zusätzliche oder geänderte Dateien. FPM-<code>open_basedir</code>
+                        und Pool-Benutzer-Drift stehen in derselben Mail.</li>
+                    <li><code>scan_incomplete</code> — Timeouts, fehlgeschlagene Signatur-Updates oder ein Release, das
+                        sich nicht vollständig hashen ließ. Bewusst <em>nicht</em> „sauber“ genannt: Eine Prüfung, die
+                        nicht zu Ende lief, hat Ihnen nichts gesagt.</li>
+                </ul>
+
+                <h3>Speicher-Untergrenze</h3>
+                <p><code>cipi scan enable</code> lehnt unter <strong>2 GB freiem RAM</strong> oder 3 GB frei auf
+                    <code>/var</code> ab (<code>--force</code> setzt sich darüber hinweg). <code>clamscan</code> lädt
+                    bei jedem Lauf den kompletten Signatursatz, und ein OOM-Kill um 04:40 kann MariaDB mitnehmen.</p>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>Lesen Sie die Grenzen ehrlich. Die Prüfung sagt Ihnen, dass sich ein Baum zwischen zwei
+                        Deploys verändert hat. Ein Angreifer, dem der App-Benutzer gehört, kann über den sudo-Eintrag
+                        weiterhin eine neue Baseline setzen — darum wird jede neue Baseline protokolliert, und darum
+                        lesen Sie <code>events.log</code> neben dem Alarm. Unix-Benutzer pro App und
+                        <code>open_basedir</code> waren bereits Cipis Isolationsmodell; dies prüft nur, dass es noch da
+                        ist. Ein Checkpoint vor dem Symlink und inotify auf Uploads sind <em>nicht</em> Teil dieses
+                        Releases.</div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="cli-completion">
+                <h2><code>cipi completion</code></h2>
+                <p>Seit <strong>v5.2.0</strong> wird die Tab-Vervollständigung für bash und zsh <strong>für Sie</strong>
+                    installiert. <code>setup.sh</code> und jedes <code>cipi self-update</code> schreiben sie, und
+                    <code>setup.sh</code> installiert zusätzlich das Paket <code>bash-completion</code>. Niemand
+                    bearbeitet eine Dotfile — eine neue Login-Shell hat sie einfach.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Kopieren</button></div>
+                    <pre><span class="p">$</span> cipi app &lt;TAB&gt;               <span class="c"># create  list  show  edit  clone  limits  …</span>
+<span class="p">$</span> cipi deploy my&lt;TAB&gt;          <span class="c"># App-Namen, aus /etc/cipi/apps-public.json</span>
+<span class="p">$</span> cipi help &lt;TAB&gt;              <span class="c"># Hilfe-Themen</span>
+
+<span class="c"># nur nötig für eine Nicht-Login-Shell oder eine eigene rc-Datei</span>
+<span class="p">$</span> cipi completion bash
+<span class="p">$</span> cipi completion zsh --print  <span class="c"># Skript nach stdout schreiben, nichts ändern</span></pre>
+                </div>
+
+                <p>Drei Dateien werden geschrieben: <code>/etc/bash_completion.d/cipi</code>,
+                    <code>/usr/share/zsh/vendor-completions/_cipi</code> (sofern dieses Verzeichnis existiert) und ein
+                    Loader <code>/etc/profile.d/cipi-completion.sh</code>, der bei jeder interaktiven bash- und
+                    zsh-Shell greift — mit oder ohne das Paket <code>bash-completion</code>.</p>
+                <p>Vervollständigt werden die Verben der obersten Ebene, die Unterbefehle und Flags jedes Verbs sowie
+                    <code>cipi help &lt;topic&gt;</code>. <strong>App-Namen</strong> stammen aus
+                    <code>/etc/cipi/apps-public.json</code>, sofern der Shell-Benutzer sie lesen darf — eine
+                    root-Sitzung oder ein Mitglied der Gruppe <code>cipi-api</code>; alles Übrige ist eine statische
+                    Wortliste, die für jeden Benutzer funktioniert. <code>sudo cipi &lt;TAB&gt;</code> läuft über die
+                    normale sudo-Vervollständigung.</p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>Die Vervollständigung ist handgeschrieben, nicht von einem Framework generiert:
+                        <code>tests/verify-5.2.0.sh</code> schlägt fehl, wenn die Verbliste von der Dispatch-Tabelle in
+                        <code>cipi</code> abweicht.</div>
+                </div>
+            </div>
+
+
+
 <div class="doc-section" id="cli-services">
 <h2><code>cipi service</code></h2>
 <p>Überprüfen und steuern Sie die Systemdienste, die Cipi direkt vom CLI aus versorgen. Nginx verwendet eine anmutige

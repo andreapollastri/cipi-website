@@ -5,8 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Was ist neu in Cipi 5</title>
-<meta content="Cipi 5.1 ist da: Backup-Profile, cipi.yml, geführte php.ini, Post-Deploy-Rollback – plus Laravel Octane auf FrankenPHP, Horizon, Reverb, PostgreSQL, Knoten-Builds, Snapshots, Platzhalter SSL und Gesundheitschecks ab 5.0." name="description"/>
-<meta content="Cipi 5.1, Cipi 5, Cipi Release, Backup-Profile, cipi.yml, Laravel Octane FrankenPHP, Laravel Horizon, PostgreSQL Laravel bereitstellen, Cipi Was ist neu?" name="keywords"/>
+<meta content="Cipi 5.2 ist da: optionales CrowdSec mit registriertem Firewall-Bouncer, ein Notausgangs-Rescue-Listener, nächtliche Integritätsprüfung mit ClamAV und Shell-Tab-Vervollständigung, die für Sie installiert wird — zusätzlich zu allem, was Cipi 5.0 und 5.1 gebracht haben." name="description"/>
+<meta content="Cipi 5.2, CrowdSec, cipi scan, Cipi 5.1, Cipi 5, Cipi Release, Backup-Profile, cipi.yml, Laravel Octane FrankenPHP, Laravel Horizon, PostgreSQL Laravel bereitstellen, Cipi Was ist neu?" name="keywords"/>
 <meta content="Andrea Pollastri" name="author"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://cipi.sh/de/whats-new" rel="canonical"/>
@@ -43,13 +43,13 @@
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "datePublished": "2026-07-01",
-      "dateModified": "2026-09-07",
+      "dateModified": "2026-09-08",
       "name": "What's New in Cipi 5",
       "url": "https://cipi.sh/en/whats-new",
-      "description": "Everything new in Cipi 5: 5.0 Octane, Horizon, Reverb, PostgreSQL; 5.1 backup profiles, cipi.yml, php.ini, post-deploy rollback, nginx default-server. 5.1.3 hotfixes cipi ini list.",
+      "description": "Alles Neue in Cipi 5: 5.0 Octane, Horizon, Reverb, PostgreSQL; 5.1 Backup-Profile, cipi.yml, php.ini, Post-Deploy-Rollback, nginx default-server. 5.2 bringt optionales CrowdSec mit registriertem Firewall-Bouncer, einen Notausgangs-Rescue-Listener, nächtliche Integritätsprüfung und Shell-Tab-Vervollständigung.",
       "inLanguage": "de",
       "image": "https://cipi.sh/og.png",
-      "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/", "softwareVersion": "5.1.3" },
+      "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/", "softwareVersion": "5.2.0" },
       "author": { "@type": "Person", "name": "Andrea Pollastri", "url": "https://github.com/andreapollastri" },
       "publisher": { "@type": "Organization", "name": "Cipi", "url": "https://cipi.sh/" }
     }
@@ -1520,7 +1520,7 @@
 <circle cx="25.5497" cy="16.5888" fill="currentColor" r="0.75"></circle>
 </svg>
 <b>Ci<span class="pi">pi</span></b>
-<span class="ver-pill">v5.1.3</span>
+<span class="ver-pill">v5.2.0</span>
 </a>
 <nav class="topnav">
                 <a href="/de/cipi-yml" class="hide-sm">cipi.yml</a>
@@ -1556,11 +1556,9 @@
 <section class="stage" id="top">
 <div class="stage-inner">
 <div>
-<span class="eyebrow"><i></i> Cipi 5.1 · Jetzt verfügbar</span>
+<span class="eyebrow"><i></i> Cipi 5.2 · Jetzt verfügbar</span>
 <h1>Ihr Server ist gerade angekommen<br/><em>eine ernsthafte Beförderung.</em></h1>
-<p class="stage-lead">Laravel Octane auf FrankenPHP. Horizon und Reverb in einer Zeile. PostgreSQL daneben
-                    MariaDB. <b>5.1 fügt Sicherungsprofile, eine cipi.yml pro Projekt, eine geführte php.ini und eine Post-Bereitstellung hinzu
-                        Rollback.</b> Derselbe Ein-Befehl-Server. Alles Cipi 5, getaggt nach Release.</p>
+<p class="stage-lead">Laravel Octane auf FrankenPHP. Horizon und Reverb in einer Zeile. PostgreSQL neben MariaDB. Backup-Profile, eine cipi.yml pro Projekt und Rollback nach dem Deploy. <b>5.2 bringt optionales CrowdSec mit echtem Firewall-Bouncer, einen Notausgangs-Rescue-Listener, eine nächtliche Integritätsprüfung und Shell-Tab-Vervollständigung.</b> Derselbe Server in einem Befehl. Alles Cipi 5, nach Release getaggt.</p>
 <div class="stage-cta">
 <a class="btn-lime" href="#headlines">Sehen Sie alles neu
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
@@ -1573,6 +1571,7 @@
 <ul class="facts">
 <li><b>14</b><span>Since 5.0</span></li>
 <li><b>6</b><span>Since 5.1</span></li>
+<li><b>4</b><span>Since 5.2</span></li>
 <li><b>2</b><span>Datenbank-Engines</span></li>
 <li><b>$0</b><span>Für immer, MIT</span></li>
 </ul>
@@ -1617,9 +1616,9 @@
 <div class="sec-head rise">
 <div>
 <span class="idx">01 — Die Schlagzeilen</span>
-<h2>Zwanzig Gründe dafür<br/><em>Update heute Abend.</em></h2>
+<h2>Vierundzwanzig Gründe,<br/><em>heute Abend zu aktualisieren.</em></h2>
 </div>
-<p>Alles Cipi 5 addiert auf einen Blick. Kacheln getaggt <em>since 5.0</em> versandt mit Cipi 5; <em>since 5.1</em> ist neu in dieser Version. Tippen Sie auf eine beliebige Kachel, um zu den Dokumenten zu springen.</p>
+<p>Alles Cipi 5 addiert auf einen Blick. Kacheln getaggt <em>since 5.0</em> versandt mit Cipi 5; <em>since 5.2</em> ist neu in dieser Version. Tippen Sie auf eine beliebige Kachel, um zu den Dokumenten zu springen.</p>
 </div>
 <div class="bento stagger rise">
 <a class="tile dark w2 h2" href="/de/docs/apps#cli-app-octane">
@@ -1799,7 +1798,7 @@
 </a>
 <a class="tile lime w2" href="/de/docs/infrastructure#cli-backup">
 <div>
-<div class="n">15 <span class="since since-new">since 5.1</span></div>
+<div class="n">15 <span class="since">since 5.1</span></div>
 <h3>Sicherungsprofile, kein fest codierter Auftrag</h3>
 <p>Umfang, Zeitplan, Ziel und Aufbewahrung pro Profil. Als nächstes folgt eine 30-minütige Kopie der lokalen Datenbank
                             zu einer verschlüsselten nächtlichen Vollkopie am S3. Getrennt gespeicherte Dateien und Datenbanken; Mieter
@@ -1813,7 +1812,7 @@
 </a>
 <a class="tile" href="/de/docs/infrastructure#cli-ini">
 <div>
-<div class="n">16 <span class="since since-new">since 5.1</span></div>
+<div class="n">16 <span class="since">since 5.1</span></div>
 <h3>Geführte php.ini</h3>
 <p>Sehen Sie sich jedes abstimmbare Element an und erfahren Sie, welche Ebene es festgelegt hat. Schreibt FPM und CLI zusammen, serverweit oder
                             <code>--app=</code>. Nur Whitelist.</p>
@@ -1826,7 +1825,7 @@
 </a>
 <a class="tile w2" href="/de/docs/deploy#cli-yml">
 <div>
-<div class="n">17 <span class="since since-new">since 5.1</span></div>
+<div class="n">17 <span class="since">since 5.1</span></div>
 <h3>cipi.yml reist mit dem Code</h3>
 <p>Aliase, PHP, zusätzliche Datenbanken, Worker, Healthcheck und Backups – im Repo.
                             <code>plan</code>, <code>apply</code>, <code>auto</code> nach jedem Einsatz. Fail-Closed:
@@ -1840,7 +1839,7 @@
 </a>
 <a class="tile" href="/de/docs/infrastructure#cli-nginx">
 <div>
-<div class="n">18 <span class="since since-new">since 5.1</span></div>
+<div class="n">18 <span class="since">since 5.1</span></div>
 <h3>Unbekannter Host → 444</h3>
 <p>Eine Anfrage, die keiner App entspricht, landete auf einem zufälligen Vhost. Jetzt <code>:80</code> und
                             <code>:443</code> Schließen Sie es mit einer leeren Antwort.</p>
@@ -1853,7 +1852,7 @@
 </a>
 <a class="tile" href="/de/docs/infrastructure#cli-health">
 <div>
-<div class="n">19 <span class="since since-new">since 5.1</span></div>
+<div class="n">19 <span class="since">since 5.1</span></div>
 <h3>Zustand nach der Bereitstellung, optionales Rollback</h3>
 <p>Die Veröffentlichung, die gerade online gegangen ist, wird sofort geprüft – nicht nach drei fünf Minuten
                             Misserfolge. Aktivieren Sie die automatische Wiederherstellung. Migrationen werden nicht rückgängig gemacht; heißt es in der E-Mail
@@ -1867,7 +1866,7 @@
 </a>
 <a class="tile" href="/de/docs/infrastructure#cli-aliases">
 <div>
-<div class="n">20 <span class="since since-new">since 5.1</span></div>
+<div class="n">20 <span class="since">since 5.1</span></div>
 <h3>Platzhalter-Aliase</h3>
 <p>Mandantenfähige Apps benötigen <code>*.example.com</code>. Nginx konnte schon; Cipi akzeptiert jetzt
                             es.</p>
@@ -1878,12 +1877,70 @@
 <polyline points="7 7 17 7 17 17"></polyline>
 </svg></span>
 </a>
-<a class="tile plain w3" href="https://github.com/cipi-sh/cipi/releases/tag/5.1.0" rel="noopener" target="_blank">
-<div>
-<h3>Jeder 5.1-Fix ist in den Versionshinweisen enthalten</h3>
-<div class="cmd">github.com/cipi-sh/cipi — 5.1.0 ↗</div>
-</div>
-</a>
+                <a href="/de/docs/infrastructure#cli-crowdsec" class="tile dark w2">
+                    <div>
+                        <span class="badge">Sicherheits-Release</span>
+                        <div class="n">21 <span class="since since-new">since 5.2</span></div>
+                        <h3>CrowdSec, Engine<br>und Bouncer.</h3>
+                        <p>Optionale IP-Reputation, die die Logs liest, die Ihre vhosts wirklich schreiben. Die Engine kommt mit einem <em>registrierten</em> Firewall-Bouncer — Decisions ohne Bouncer sperren nämlich gar nichts. Sie verweigert den Start hinter einem unkonfigurierten Reverse Proxy und nimmt die SSH-Sitzung, aus der Sie sie aktivieren, in die Allowlist. Es gibt keine WAF.</p>
+                    </div>
+                    <div class="cmd">cipi crowdsec enable</div>
+                    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round">
+                            <line x1="7" y1="17" x2="17" y2="7" />
+                            <polyline points="7 7 17 7 17 17" />
+                        </svg></span>
+                </a>
+
+                <a href="/de/docs/infrastructure#cli-crowdsec" class="tile">
+                    <div>
+                        <div class="n">22 <span class="since since-new">since 5.2</span></div>
+                        <h3>Ein Weg zurück hinein</h3>
+                        <p>Ein TLS-Listener auf hohem Port und ein Einmal-Token. Ein GET nimmt Ihre IP in die Allowlist und entsperrt sie in CrowdSec und fail2ban. Kein Login, kein SSH-Key.</p>
+                    </div>
+                    <div class="cmd">cipi crowdsec rescue rotate</div>
+                    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round">
+                            <line x1="7" y1="17" x2="17" y2="7" />
+                            <polyline points="7 7 17 7 17 17" />
+                        </svg></span>
+                </a>
+
+                <a href="/de/docs/infrastructure#cli-scan" class="tile">
+                    <div>
+                        <div class="n">23 <span class="since since-new">since 5.2</span></div>
+                        <h3>Nächtliche Integritätsprüfung</h3>
+                        <p>sha256 des laufenden Release gegen das beim Deploy geschriebene Manifest, danach ClamAV ausschließlich über die Upload-Verzeichnisse. Um 04:40, jede Nacht.</p>
+                    </div>
+                    <div class="cmd">cipi scan enable</div>
+                    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round">
+                            <line x1="7" y1="17" x2="17" y2="7" />
+                            <polyline points="7 7 17 7 17 17" />
+                        </svg></span>
+                </a>
+
+                <a href="/de/docs/infrastructure#cli-completion" class="tile">
+                    <div>
+                        <div class="n">24 <span class="since since-new">since 5.2</span></div>
+                        <h3>Tab-Vervollständigung, für Sie installiert</h3>
+                        <p>bash und zsh, geschrieben von <code>setup.sh</code> und jedem self-update. Verben, Unterbefehle, Flags und Ihre App-Namen. Keine Dotfile zu bearbeiten.</p>
+                    </div>
+                    <div class="cmd">cipi app &lt;TAB&gt;</div>
+                    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round">
+                            <line x1="7" y1="17" x2="17" y2="7" />
+                            <polyline points="7 7 17 7 17 17" />
+                        </svg></span>
+                </a>
+
+                <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.0" target="_blank" rel="noopener"
+                    class="tile plain w3">
+                    <div>
+                        <h3>Jede 5.2-Änderung steht in den Versionshinweisen</h3>
+                        <div class="cmd">github.com/cipi-sh/cipi — 5.2.0 ↗</div>
+                    </div>
+                </a>
 </div>
 </div>
 </section>
@@ -1961,40 +2018,64 @@
 <span class="ba-after">Harte Obergrenzen für Arbeiter, Kinder und Erinnerung</span>
 </div>
 <div class="ba-row">
-<span class="ba-topic">Backups <span class="since since-new">since 5.1</span></span>
+<span class="ba-topic">Backups <span class="since">since 5.1</span></span>
 <span class="ba-before">Ein fest programmierter nächtlicher Job</span>
 <span class="ba-arrow">→</span>
 <span class="ba-after">Profile, clientseitig AES-256, verifizieren, verwaltet cron</span>
 </div>
 <div class="ba-row">
-<span class="ba-topic">php.ini <span class="since since-new">since 5.1</span></span>
+<span class="ba-topic">php.ini <span class="since">since 5.1</span></span>
 <span class="ba-before">FPM-Dateien von Hand bearbeiten; CLI ignoriert</span>
 <span class="ba-arrow">→</span>
 <span class="ba-after"><code>cipi ini</code> für beide SAPIs, serverweit oder pro App</span>
 </div>
 <div class="ba-row">
-<span class="ba-topic">App-Konfiguration <span class="since since-new">since 5.1</span></span>
+<span class="ba-topic">App-Konfiguration <span class="since">since 5.1</span></span>
 <span class="ba-before">Per SSH auf jedem Server neu erstellen</span>
 <span class="ba-arrow">→</span>
 <span class="ba-after"><code>cipi.yml</code> in Git, bei der Bereitstellung angewendet</span>
 </div>
 <div class="ba-row">
-<span class="ba-topic">Unbekannter Host <span class="since since-new">since 5.1</span></span>
+<span class="ba-topic">Unbekannter Host <span class="since">since 5.1</span></span>
 <span class="ba-before">Auf einem zufälligen Vhost gelandet</span>
 <span class="ba-arrow">→</span>
 <span class="ba-after">Leerer 444-Standardserver</span>
 </div>
 <div class="ba-row">
-<span class="ba-topic">Defekte Bereitstellung <span class="since since-new">since 5.1</span></span>
+<span class="ba-topic">Defekte Bereitstellung <span class="since">since 5.1</span></span>
 <span class="ba-before">Warten Sie fünfzehn Minuten auf eine Gesundheits-E-Mail</span>
 <span class="ba-arrow">→</span>
 <span class="ba-after">Sofortige Prüfung nach der Bereitstellung, optionales Rollback</span>
 </div>
 <div class="ba-row">
-<span class="ba-topic">Aliase <span class="since since-new">since 5.1</span></span>
+<span class="ba-topic">Aliase <span class="since">since 5.1</span></span>
 <span class="ba-before">Nur genaue Namen</span>
 <span class="ba-arrow">→</span>
 <span class="ba-after"><code>*.example.com</code> Platzhalter</span>
+</div>
+<div class="ba-row">
+    <span class="ba-topic">Angreifer <span class="since since-new">since 5.2</span></span>
+    <span class="ba-before">fail2ban, und erst im Nachhinein</span>
+    <span class="ba-arrow">→</span>
+    <span class="ba-after">CrowdSec-Decisions, von einem registrierten Bouncer verworfen</span>
+</div>
+<div class="ba-row">
+    <span class="ba-topic">Ausgesperrt <span class="since since-new">since 5.2</span></span>
+    <span class="ba-before">Die Rescue-Konsole des Anbieters</span>
+    <span class="ba-arrow">→</span>
+    <span class="ba-after">Einmal-Token auf einem Rescue-TLS-Port</span>
+</div>
+<div class="ba-row">
+    <span class="ba-topic">Manipulation <span class="since since-new">since 5.2</span></span>
+    <span class="ba-before">Auffallen, wenn etwas komisch aussieht</span>
+    <span class="ba-arrow">→</span>
+    <span class="ba-after">Nächtliches sha256 gegen das Deploy-Manifest</span>
+</div>
+<div class="ba-row">
+    <span class="ba-topic">Die CLI <span class="since since-new">since 5.2</span></span>
+    <span class="ba-before">Jedes Verb auswendig</span>
+    <span class="ba-arrow">→</span>
+    <span class="ba-after">TAB vervollständigt Verben, Flags und App-Namen</span>
 </div>
 </div>
 </div>
@@ -2008,7 +2089,7 @@
 <h2>Jeder neue Befehl<br/>Du <em>nicht gehabt</em> vor.</h2>
 </div>
 <p>Die komplette Cipi 5 Ergänzung zum CLI. Dieselbe Syntax, die Sie bereits kennen, dieselbe Binärdatei. Markiert
-                    <em>since 5.0</em> oder <em>since 5.1</em>.</p>
+                    <em>since 5.0</em>, <em>since 5.1</em> oder <em>since 5.2</em>.</p>
 </div>
 <div class="cmds stagger rise">
 <div class="cmd-row"><code>cipi app create --octane</code><span>Erstellen Sie eine Laravel-App, die von Octane bereitgestellt wird
@@ -2051,15 +2132,21 @@
 <div class="cmd-row"><code>cipi app webhook recreate [--rotate-secret]</code><span>Erstellen Sie GitHub/GitLab neu und stellen Sie webhook bereit <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi smtp configure --host=… --port=…</code><span>Nicht interaktives SMTP für API/Skripte <em class="since">since 5.0</em></span></div>
 <div class="cmd-row"><code>cipi app env|run|deploy-config</code><span>Nicht interaktive App-Tools für API/GUI <em class="since">since 5.0</em></span></div>
-<div class="cmd-row"><code>cipi backup profile add|edit|list</code><span>Backup-Strategien: Was, wie oft, wo, wie lange <em class="since since-new">since 5.1</em></span></div>
-<div class="cmd-row"><code>cipi backup verify|status|fetch --encrypt</code><span>Integritätsprüfung, überfälliger Watchdog, clientseitig AES-256 <em class="since since-new">since 5.1</em></span></div>
-<div class="cmd-row"><code>cipi ini list|set|unset</code><span>php.ini für FPM und CLI, serverweit oder pro App <em class="since since-new">since 5.1</em></span></div>
-<div class="cmd-row"><code>cipi yml generate|plan|apply|auto</code><span>Pro Projekt cipi.yml, das mit dem Code übertragen wird <em class="since since-new">since 5.1</em></span></div>
-<div class="cmd-row"><code>cipi nginx default-server on|off</code><span>Schließen Sie nicht übereinstimmende Host-Anfragen mit 444 <em class="since since-new">since 5.1</em></span></div>
-<div class="cmd-row"><code>cipi health set --rollback-on-unhealthy</code><span>Machen Sie eine Version rückgängig, deren Prüfung nach der Bereitstellung fehlschlägt <em class="since since-new">since 5.1</em></span></div>
-<div class="cmd-row"><code>cipi health postdeploy &lt;app&gt;</code><span>Führen Sie den Post-Deployment-Test bei Bedarf aus <em class="since since-new">since 5.1</em></span></div>
-<div class="cmd-row"><code>cipi deploy --log[=N]</code><span>Zeigen Sie das Bereitstellungsprotokoll mit Zeitstempel an <em class="since since-new">since 5.1</em></span></div>
-<div class="cmd-row"><code>cipi alias add &lt;app&gt; '*.example.com'</code><span>Platzhalter-Domain-Aliase <em class="since since-new">since 5.1</em></span></div>
+<div class="cmd-row"><code>cipi backup profile add|edit|list</code><span>Backup-Strategien: Was, wie oft, wo, wie lange <em class="since">since 5.1</em></span></div>
+<div class="cmd-row"><code>cipi backup verify|status|fetch --encrypt</code><span>Integritätsprüfung, überfälliger Watchdog, clientseitig AES-256 <em class="since">since 5.1</em></span></div>
+<div class="cmd-row"><code>cipi ini list|set|unset</code><span>php.ini für FPM und CLI, serverweit oder pro App <em class="since">since 5.1</em></span></div>
+<div class="cmd-row"><code>cipi yml generate|plan|apply|auto</code><span>Pro Projekt cipi.yml, das mit dem Code übertragen wird <em class="since">since 5.1</em></span></div>
+<div class="cmd-row"><code>cipi nginx default-server on|off</code><span>Schließen Sie nicht übereinstimmende Host-Anfragen mit 444 <em class="since">since 5.1</em></span></div>
+<div class="cmd-row"><code>cipi health set --rollback-on-unhealthy</code><span>Machen Sie eine Version rückgängig, deren Prüfung nach der Bereitstellung fehlschlägt <em class="since">since 5.1</em></span></div>
+<div class="cmd-row"><code>cipi health postdeploy &lt;app&gt;</code><span>Führen Sie den Post-Deployment-Test bei Bedarf aus <em class="since">since 5.1</em></span></div>
+<div class="cmd-row"><code>cipi deploy --log[=N]</code><span>Zeigen Sie das Bereitstellungsprotokoll mit Zeitstempel an <em class="since">since 5.1</em></span></div>
+<div class="cmd-row"><code>cipi alias add &lt;app&gt; '*.example.com'</code><span>Platzhalter-Domain-Aliase <em class="since">since 5.1</em></span></div>
+<div class="cmd-row"><code>cipi crowdsec enable|disable|status</code><span>Optionale IP-Reputation: Engine plus registrierter Firewall-Bouncer <em class="since since-new">since 5.2</em></span></div>
+<div class="cmd-row"><code>cipi crowdsec allow|unallow &lt;ip|cidr&gt;</code><span>Eine Adresse nie sperren, oder einen Extra-Allow entfernen <em class="since since-new">since 5.2</em></span></div>
+<div class="cmd-row"><code>cipi crowdsec rescue token|rotate</code><span>Notausgangs-TLS-Listener und sein Einmal-Token <em class="since since-new">since 5.2</em></span></div>
+<div class="cmd-row"><code>cipi scan enable|disable|status</code><span>Nächtliche Integritätsprüfung plus ClamAV auf Upload-Verzeichnissen <em class="since since-new">since 5.2</em></span></div>
+<div class="cmd-row"><code>cipi scan [&lt;app&gt;] | report | manifest</code><span>Jetzt ausführen, letzten Bericht lesen, Manifest neu setzen <em class="since since-new">since 5.2</em></span></div>
+<div class="cmd-row"><code>cipi completion bash|zsh [--print]</code><span>Shell-Tab-Vervollständigung — bereits für Sie installiert <em class="since since-new">since 5.2</em></span></div>
 </div>
 </div>
 </section>
@@ -2147,7 +2234,7 @@
 <polyline points="20 6 9 17 4 12"></polyline>
 </svg>
 <span>Alles Neue ist Opt-in – Octane, Horizon, Reverb, PostgreSQL, Snapshots, Gesundheit
-                                Überprüfungen, Backup-Profile, <code>cipi.yml auto</code> und Rollback nach der Bereitstellung bleiben ausgeschaltet
+                                Überprüfungen, Backup-Profile, <code>cipi.yml auto</code> und Rollback nach dem Deploy, CrowdSec und der nächtliche Scan bleiben ausgeschaltet
                                 bis du fragst.</span>
 </li>
 <li>

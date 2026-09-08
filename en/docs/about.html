@@ -242,6 +242,9 @@
                 <a href="/en/docs/infrastructure#cli-health" class="sidebar-link"><code>health</code></a>
                 <a href="/en/docs/infrastructure#cli-firewall" class="sidebar-link"><code>firewall</code></a>
                 <a href="/en/docs/infrastructure#cli-ban" class="sidebar-link"><code>ban</code></a>
+                <a href="/en/docs/infrastructure#cli-crowdsec" class="sidebar-link"><code>crowdsec</code></a>
+                <a href="/en/docs/infrastructure#cli-scan" class="sidebar-link"><code>scan</code></a>
+                <a href="/en/docs/infrastructure#cli-completion" class="sidebar-link"><code>completion</code></a>
                 <a href="/en/docs/infrastructure#cli-services" class="sidebar-link"><code>service</code></a>
                 <a href="/en/docs/infrastructure#cli-ssh" class="sidebar-link"><code>ssh</code></a>
                 <a href="/en/docs/infrastructure#cli-cipi" class="sidebar-link"><code>cipi</code></a>
@@ -605,7 +608,7 @@
                         </div>
                     </div>
 
-                    <div class="timeline-item timeline-item--current">
+                    <div class="timeline-item">
                         <div class="timeline-marker"></div>
                         <div class="timeline-body">
                             <span class="timeline-version">v5.1</span>
@@ -631,7 +634,7 @@
                                     <line x1="12" y1="8" x2="12" y2="12" />
                                     <line x1="12" y1="16" x2="12.01" y2="16" />
                                 </svg>
-                                <div>Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.1.3" target="_blank" rel="noopener">5.1.3</a> — a hotfix for <code>cipi ini list</code>: the table header printed, then the command died on the first setting. No migration: the next <code>cipi self-update</code> copies the new <code>lib/ini.sh</code>. Previous: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.1.2" target="_blank" rel="noopener">5.1.2</a> — WebSockets, done properly. Reverb now generates credentials, derives <code>ws://</code> vs <code>wss://</code> from the certificate, raises connection limits, and proxies only <code>/app/{key}</code> and <code>/apps/{id}/…</code> instead of swallowing every URL beginning with <code>/app</code>. <code>workers.reverb</code> lands in <code>cipi.yml</code>, clones get their own Reverb, and <code>cipi app reverb disable</code> restores the previous broadcast driver. <strong>Migration 5.1.2</strong> rewrites greedy vhosts (backed up to <code>/var/lib/cipi/vhost-backup-5.1.2</code>) and fills missing <code>.env</code> keys without overwriting. <a href="https://github.com/cipi-sh/cipi/releases/tag/5.1.1" target="_blank" rel="noopener">5.1.1</a> was a hotfix over <a href="https://github.com/cipi-sh/cipi/releases/tag/5.1.0" target="_blank" rel="noopener">5.1.0</a>: <strong>migration 5.1.1</strong> rebuilds the FPM pools an unterminated heredoc could leave empty and regenerates the vhosts that drifted from <code>apps.json</code>, and wildcard domains (<code>*.example.com</code>) now work end to end — primary domain, webhook URLs and DNS-01 SSL. 5.1.0 brought backup profiles, client-side encryption, <code>cipi backup verify</code>,
+                                <div>In 5.1: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.1.3" target="_blank" rel="noopener">5.1.3</a> — a hotfix for <code>cipi ini list</code>: the table header printed, then the command died on the first setting. No migration: the next <code>cipi self-update</code> copies the new <code>lib/ini.sh</code>. Previous: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.1.2" target="_blank" rel="noopener">5.1.2</a> — WebSockets, done properly. Reverb now generates credentials, derives <code>ws://</code> vs <code>wss://</code> from the certificate, raises connection limits, and proxies only <code>/app/{key}</code> and <code>/apps/{id}/…</code> instead of swallowing every URL beginning with <code>/app</code>. <code>workers.reverb</code> lands in <code>cipi.yml</code>, clones get their own Reverb, and <code>cipi app reverb disable</code> restores the previous broadcast driver. <strong>Migration 5.1.2</strong> rewrites greedy vhosts (backed up to <code>/var/lib/cipi/vhost-backup-5.1.2</code>) and fills missing <code>.env</code> keys without overwriting. <a href="https://github.com/cipi-sh/cipi/releases/tag/5.1.1" target="_blank" rel="noopener">5.1.1</a> was a hotfix over <a href="https://github.com/cipi-sh/cipi/releases/tag/5.1.0" target="_blank" rel="noopener">5.1.0</a>: <strong>migration 5.1.1</strong> rebuilds the FPM pools an unterminated heredoc could leave empty and regenerates the vhosts that drifted from <code>apps.json</code>, and wildcard domains (<code>*.example.com</code>) now work end to end — primary domain, webhook URLs and DNS-01 SSL. 5.1.0 brought backup profiles, client-side encryption, <code>cipi backup verify</code>,
                                     <code>cipi.yml</code> (generate / plan / apply / auto), <code>cipi ini</code> for
                                     FPM <em>and</em> CLI, post-deploy healthchecks with optional auto-rollback,
                                     <code>cipi nginx default-server</code>, wildcard aliases, and the reliability fixes
@@ -646,6 +649,28 @@
                                     <a href="https://github.com/cipi-sh/cipi/blob/latest/CHANGELOG.md"
                                         target="_blank" rel="noopener">CHANGELOG.md</a>.
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item timeline-item--current">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-body">
+                            <span class="timeline-version">v5.2</span>
+                            <span class="timeline-date">September 2026</span>
+                            <h3 class="timeline-title">CrowdSec, nightly integrity, and a shell that completes itself</h3>
+                            <p>v5.2 is the security release, and it is deliberately opt-in: neither <code>setup.sh</code> nor <code>cipi self-update</code> installs any of it. <code>cipi crowdsec enable</code> brings up the engine <em>and</em> a registered firewall bouncer — decisions without a bouncer ban nothing — reads the logs every vhost actually writes, allowlists your SSH session along with GitHub's webhook CIDRs and Let's Encrypt, and starts a break-glass TLS listener so an automatic ban cannot lock you out of your own server. <code>cipi scan</code> checks nightly that a release still matches the sha256 manifest written at its deploy, then runs one ClamAV pass over the upload directories only. There is no WAF. And tab-completion for bash and zsh is now installed for you. See
+                                <a href="/en/docs/infrastructure#cli-crowdsec"><code>cipi crowdsec</code></a>,
+                                <a href="/en/docs/infrastructure#cli-scan"><code>cipi scan</code></a>, and
+                                <a href="/en/docs/infrastructure#cli-completion"><code>cipi completion</code></a>.</p>
+                            <div class="callout info" style="margin-top:16px;">
+                                <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="8" x2="12" y2="12" />
+                                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                                </svg>
+                                <div>Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.0" target="_blank" rel="noopener">5.2.0</a> — opt-in CrowdSec (engine <strong>and</strong> a registered firewall bouncer) and a nightly integrity check. <strong>Migration 5.2.0</strong> installs <code>cipi-scan-manifest</code> and the two rescue helpers, creates the manifest store, grants each existing app its manifest sudo entry, and adds <code>SSH_CLIENT</code> / <code>SSH_CONNECTION</code> to <code>env_keep</code> in <code>/etc/sudoers.d/cipi-sudo</code> — the candidate file validated with <code>visudo -c</code> before it replaces the live one. The migration turns nothing on: CrowdSec and the scan stay off until you enable them. Panel API <a href="https://github.com/cipi-sh/api/releases/tag/1.20" target="_blank" rel="noopener">1.20</a> and the <a href="/en/docs/gui">web GUI</a> are unchanged. Full changelog: <a href="https://github.com/cipi-sh/cipi/blob/latest/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG.md</a>.</div>
                             </div>
                         </div>
                     </div>

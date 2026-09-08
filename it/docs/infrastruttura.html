@@ -178,7 +178,7 @@
             </div>
 
             <div class="sidebar-group" data-chapter="infrastruttura">
-                <a href="/it/docs/infrastruttura" class="sidebar-group-label">infrastruttura</a> <a href="/it/docs/infrastruttura#cli-php" class="sidebar-link"><code>php</code></a> <a href="/it/docs/infrastruttura#cli-ini" class="sidebar-link"><code>ini</code> (php.ini)</a> <a href="/it/docs/infrastruttura#cli-db" class="sidebar-link"><code>db</code></a> <a href="/it/docs/infrastruttura#cli-aliases" class="sidebar-link"><code>alias</code></a> <a href="/it/docs/infrastruttura#cli-www" class="sidebar-link"><code>www</code></a> <a href="/it/docs/infrastruttura#cli-domains" class="sidebar-link"><code>domains</code></a> <a href="/it/docs/infrastruttura#cli-ssl" class="sidebar-link"><code>ssl</code></a> <a href="/it/docs/infrastruttura#cli-nginx" class="sidebar-link"><code>nginx default-server</code></a> <a href="/it/docs/infrastruttura#cli-backup" class="sidebar-link"><code>backup</code></a> <a href="/it/docs/infrastruttura#cli-app-cron" class="sidebar-link">crontab utente</a> <a href="/it/docs/infrastruttura#cli-schedule" class="sidebar-link"><code>schedule</code></a> <a href="/it/docs/infrastruttura#cli-workers" class="sidebar-link"><code>worker</code> / Horizon</a> <a href="/it/docs/infrastruttura#cli-health" class="sidebar-link"><code>health</code></a> <a href="/it/docs/infrastruttura#cli-firewall" class="sidebar-link"><code>firewall</code></a> <a href="/it/docs/infrastruttura#cli-ban" class="sidebar-link"><code>ban</code></a> <a href="/it/docs/infrastruttura#cli-services" class="sidebar-link"><code>service</code></a> <a href="/it/docs/infrastruttura#cli-ssh" class="sidebar-link"><code>ssh</code></a> <a href="/it/docs/infrastruttura#cli-cipi" class="sidebar-link"><code>cipi</code></a>
+                <a href="/it/docs/infrastruttura" class="sidebar-group-label">infrastruttura</a> <a href="/it/docs/infrastruttura#cli-php" class="sidebar-link"><code>php</code></a> <a href="/it/docs/infrastruttura#cli-ini" class="sidebar-link"><code>ini</code> (php.ini)</a> <a href="/it/docs/infrastruttura#cli-db" class="sidebar-link"><code>db</code></a> <a href="/it/docs/infrastruttura#cli-aliases" class="sidebar-link"><code>alias</code></a> <a href="/it/docs/infrastruttura#cli-www" class="sidebar-link"><code>www</code></a> <a href="/it/docs/infrastruttura#cli-domains" class="sidebar-link"><code>domains</code></a> <a href="/it/docs/infrastruttura#cli-ssl" class="sidebar-link"><code>ssl</code></a> <a href="/it/docs/infrastruttura#cli-nginx" class="sidebar-link"><code>nginx default-server</code></a> <a href="/it/docs/infrastruttura#cli-backup" class="sidebar-link"><code>backup</code></a> <a href="/it/docs/infrastruttura#cli-app-cron" class="sidebar-link">crontab utente</a> <a href="/it/docs/infrastruttura#cli-schedule" class="sidebar-link"><code>schedule</code></a> <a href="/it/docs/infrastruttura#cli-workers" class="sidebar-link"><code>worker</code> / Horizon</a> <a href="/it/docs/infrastruttura#cli-health" class="sidebar-link"><code>health</code></a> <a href="/it/docs/infrastruttura#cli-firewall" class="sidebar-link"><code>firewall</code></a> <a href="/it/docs/infrastruttura#cli-ban" class="sidebar-link"><code>ban</code></a> <a href="/it/docs/infrastruttura#cli-crowdsec" class="sidebar-link"><code>crowdsec</code></a> <a href="/it/docs/infrastruttura#cli-scan" class="sidebar-link"><code>scan</code></a> <a href="/it/docs/infrastruttura#cli-completion" class="sidebar-link"><code>completion</code></a> <a href="/it/docs/infrastruttura#cli-services" class="sidebar-link"><code>service</code></a> <a href="/it/docs/infrastruttura#cli-ssh" class="sidebar-link"><code>ssh</code></a> <a href="/it/docs/infrastruttura#cli-cipi" class="sidebar-link"><code>cipi</code></a>
             </div>
 
             <div class="sidebar-group" data-chapter="client-cli">
@@ -944,6 +944,8 @@ myapp@server:~$ crontab -e</pre>
                 <h3><code>cipi ban unban &lt;IP&gt;</code></h3>
                 <p>Rimuove l'IP indicato da <strong>tutte</strong> le jail Fail2ban in un colpo solo. Comodo quando un utente legittimo o un runner CI viene bloccato per errore.</p>
 
+                <p>Dalla <strong>v5.2.0</strong> entrambi i comandi coprono anche <a href="/it/docs/infrastruttura#cli-crowdsec">CrowdSec</a> quando il suo engine è in esecuzione. <code>cipi ban list</code> legge <code>.decisions[]</code> da <code>cscli decisions list -o json</code>, che restituisce <em>alert</em>: leggere <code>.value</code> al primo livello stampava un conteggio di decisioni e poi nessun indirizzo. E <code>cipi ban unban</code> ora chiede conferma prima di dichiarare successo, perché <code>cscli decisions delete</code> esce 0 sia che abbia rimosso qualcosa sia che non abbia rimosso nulla.</p>
+
                 <div class="callout info">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10" />
@@ -952,6 +954,252 @@ myapp@server:~$ crontab -e</pre>
                     </svg>
                     <div>Le installazioni esistenti vengono aggiornate automaticamente dallo script di migrazione 4.3.0 quando esegui <code>cipi self-update</code>. Non serve configurazione manuale.
                     </div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="cli-crowdsec">
+                <h2><code>cipi crowdsec</code></h2>
+                <p>Disponibile dalla <strong>v5.2.0</strong>, e <strong>disattivato di default</strong>: non lo
+                    installano né <code>setup.sh</code> né <code>cipi self-update</code>. CrowdSec legge i log Nginx,
+                    decide quali IP stanno attaccando, e un bouncer firewall li scarta. <strong>Non è un
+                        WAF</strong> — nessuna richiesta viene ispezionata o riscritta al volo, e fail2ban resta
+                    esattamente dov'è.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copia</button></div>
+                    <pre><span class="p">$</span> cipi crowdsec enable                <span class="c"># engine + bouncer firewall</span>
+<span class="p">$</span> cipi crowdsec status                <span class="c"># engine / bouncer / rescue / decisioni</span>
+<span class="p">$</span> cipi crowdsec allow 203.0.113.42     <span class="c"># non bannare mai questo indirizzo</span>
+<span class="p">$</span> cipi crowdsec unallow 203.0.113.42   <span class="c"># rimuovi un allow aggiuntivo</span>
+<span class="p">$</span> cipi crowdsec rescue token           <span class="c"># stampa la curl break-glass (da server)</span>
+<span class="p">$</span> cipi crowdsec rescue rotate          <span class="c"># nuovo token monouso, spedito via email</span>
+<span class="p">$</span> cipi crowdsec disable                <span class="c"># flush delle regole, poi rimozione</span></pre>
+                </div>
+
+                <h3>Cosa installa davvero <code>enable</code></h3>
+                <p>L'engine <em>e</em> <code>crowdsec-firewall-bouncer-nftables</code> (o la variante
+                    <code>-iptables</code>), registrato con <code>cscli bouncers add</code>. È tutto lì il punto: le
+                    decisioni senza un bouncer non bannano niente. Su Ubuntu 24.04 iptables è nft sotto il cofano, così
+                    il bouncer finisce sullo stesso piano dell'<code>iptables-multiport</code> di fail2ban.</p>
+                <p>L'acquisition legge <code>/home/*/logs/nginx-{access,error}.log</code>, che è dove scrive davvero
+                    ogni vhost Cipi. <code>/var/log/nginx</code> da solo contiene solo il server block catch-all,
+                    quindi gli scenari nginx non vedrebbero una singola riga di traffico applicativo.</p>
+
+                <h3>Quando <code>enable</code> si rifiuta</h3>
+                <ul>
+                    <li><strong>Sotto i 512MB di RAM disponibile.</strong> L'engine più il bouncer vogliono margine che
+                        non hai.</li>
+                    <li><strong>Nginx sembra stare dietro un reverse proxy</strong> senza
+                        <code>set_real_ip_from</code> e <code>real_ip_header</code>. Ogni riga di log porterebbe
+                        l'indirizzo della tua CDN, quindi CrowdSec bannerebbe Cloudflare lasciando in pace
+                        l'attaccante. <code>--force</code> forza la mano se sai quello che fai.</li>
+                </ul>
+                <p>Prima che qualcosa possa iniziare a bannare, <code>enable</code> <strong>mette in allowlist la
+                        sessione SSH da cui stai scrivendo</strong>. E <code>cipi crowdsec disable</code> <strong>fa
+                        prima il flush di chain e tabelle CrowdSec, poi purga</strong>: rimuovere i pacchetti con le
+                    regole DROP ancora caricate lascerebbe ban che sopravvivono a <code>cscli</code> — e niente con cui
+                    toglierli.</p>
+
+                <h3>Listener TLS di rescue</h3>
+                <p>Ban automatico e amministrazione remota distano una decisione sbagliata l'uno dall'altra, quindi
+                    <code>enable</code> avvia anche un server TLS su una porta alta. Una <code>GET</code> con un token
+                    monouso mette in allowlist il <strong>peer TCP</strong> — mai <code>X-Forwarded-For</code> —
+                    sbanna quell'indirizzo in CrowdSec <em>e</em> in fail2ban, ti spedisce un token nuovo, e poi il
+                    token muore. Non è un login e non è una chiave SSH: ti ricompra la possibilità di connetterti,
+                    nient'altro.</p>
+                <p>UFW apre la porta, e un <code>ACCEPT</code> viene inserito in testa alla chain CrowdSec — e
+                    reinserito a ogni restart del bouncer — così un ban DROP-all non può chiuderti la porta alle
+                    spalle.</p>
+                <p>L'handshake TLS gira nel thread della singola connessione con una deadline, mai dentro
+                    <code>accept()</code>: avvolgere il socket in ascolto permetterebbe a un solo peer che si connette
+                    e poi tace di tenere chiusa la via d'emergenza per tutto il tempo che vuole. Le connessioni
+                    concorrenti sono limitate sotto il <code>TasksMax</code> dell'unit.</p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div><code>cipi crowdsec status</code> mostra la porta e il fingerprint del certificato — mai il
+                        token. Il throttle vale <strong>solo per i token sbagliati</strong>: un token corretto viene
+                        sempre onorato, qualunque cosa il peer abbia digitato prima.</div>
+                </div>
+
+                <h3>Allowlist</h3>
+                <p>Preconfigurate, così la tua stessa infrastruttura non si autobanna:</p>
+                <ul>
+                    <li>Localhost, range RFC1918 e la validazione HTTP-01 di Let's Encrypt.</li>
+                    <li><strong>CIDR dei webhook GitHub</strong>, presi dalla chiave <code>.hooks</code> di
+                        <code>api.github.com/meta</code>. Il fetch è fail-open: se muore, resta il file precedente.
+                    </li>
+                    <li><strong>CIDR di egress di GitLab.com</strong>, hardcoded e datati
+                        <strong>2026-09-07</strong>. Sono documentati come deperibili, perché lo saranno.</li>
+                    <li>Tutto quello che aggiungi tu con <code>cipi crowdsec allow &lt;ip|cidr&gt;</code>.</li>
+                </ul>
+                <p><code>cipi ban list</code> e <code>cipi ban unban</code> ora includono CrowdSec quando l'engine è
+                    su: un posto solo dove guardare, e un posto solo dove togliere un ban.</p>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>Una volta abilitato, CrowdSec gira <strong>24/7</strong> — a differenza di
+                        <code>cipi scan</code>, che è il job notturno. <code>cipi status</code> elenca engine, bouncer
+                        e listener di rescue solo quando quelle unit esistono: un listener di rescue fermo è
+                        esattamente la cosa che vuoi notare <em>prima</em> di averne bisogno.</div>
+                </div>
+
+                <h3>Hardening dell'unit di rescue</h3>
+                <p>Il listener gira come root — riscattare un token lo richiede — ma con
+                    <code>NoNewPrivileges</code>, <code>ProtectHome=read-only</code>, <code>PrivateTmp</code> e un cap
+                    <code>MemoryHigh</code>. <code>ProtectSystem</code> e <code>SystemCallFilter</code> sono lasciati
+                    fuori di proposito: un hardening che può rompere la via d'emergenza è peggio della superficie che
+                    toglie.</p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>La <strong>migration 5.2.0</strong> installa <code>cipi-scan-manifest</code> e i due helper di
+                        rescue, crea lo store dei manifest, concede a ogni app esistente la sua voce sudo per il
+                        manifest, e aggiunge <code>SSH_CLIENT</code> / <code>SSH_CONNECTION</code> a
+                        <code>env_keep</code> in <code>/etc/sudoers.d/cipi-sudo</code>. Quest'ultimo punto conta:
+                        <code>setup.sh</code> imposta <code>PermitRootLogin no</code>, quindi la strada normale è
+                        <code>sudo cipi</code>, e l'<code>env_reset</code> di sudo stava buttando via le uniche
+                        variabili che portano l'IP dell'operatore. Il file candidato viene validato con
+                        <code>visudo -c</code> prima di sostituire quello live. Nient'altro viene migrato: CrowdSec e
+                        lo scan restano spenti.</div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="cli-scan">
+                <h2><code>cipi scan</code></h2>
+                <p>Disponibile dalla <strong>v5.2.0</strong>, e <strong>disattivato di default</strong>. Risponde a una
+                    domanda sola: <em>è cambiato qualcosa in questa app che nessun deploy ci ha messo?</em> Una run
+                    notturna alle <strong>04:40</strong> controlla prima l'integrità, poi passa le directory di upload
+                    a ClamAV.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copia</button></div>
+                    <pre><span class="p">$</span> cipi scan enable            <span class="c"># integrità notturna + ClamAV sugli upload</span>
+<span class="p">$</span> cipi scan                   <span class="c"># esegui ora, tutte le app</span>
+<span class="p">$</span> cipi scan myapp             <span class="c"># una sola app, ora</span>
+<span class="p">$</span> cipi scan status            <span class="c"># abilitato? firme aggiornate?</span>
+<span class="p">$</span> cipi scan report            <span class="c"># l'ultimo report</span>
+<span class="p">$</span> cipi scan manifest myapp    <span class="c"># riscrive il manifest di integrità</span>
+<span class="p">$</span> cipi scan disable           <span class="c"># rimuove scanner e cron</span></pre>
+                </div>
+
+                <h3>Prima l'integrità, poi l'antivirus</h3>
+                <p>Il passaggio di integrità confronta <code>current/</code> (o <code>htdocs/</code> per le app custom)
+                    con un <strong>manifest sha256 scritto a ogni deploy riuscito <em>e</em> a ogni rollback</strong>.
+                    Poi <strong>un solo</strong> processo ClamAV gira sulle <strong>sole directory di upload</strong>,
+                    con in più le firme rfxn per le webshell PHP. Scansionare ogni notte un intero release tree compra
+                    rumore, non sicurezza — il manifest copre già tutto ciò che ci ha messo un deploy.</p>
+
+                <h3>Dove vivono i manifest, e perché</h3>
+                <p>In <code>/var/lib/cipi/manifests</code>, <strong><code>root:root</code> 0600</strong> — mai nella
+                    home dell'app. <code>open_basedir</code> dà a PHP tutta <code>/home/&lt;app&gt;/</code>, quindi un
+                    manifest tenuto lì sarebbe modificabile proprio dalla webshell che il controllo esiste per
+                    beccare.</p>
+                <p>Il deploy da webhook gira come utente dell'app, quindi raggiunge lo scrittore del manifest
+                    attraverso <strong>una sola voce sudo vincolata al nome della sua app</strong>. Ogni ri-baseline
+                    viene scritta in <code>events.log</code>: una riscrittura di manifest senza un deploy accanto è
+                    esattamente la cosa da cercare.</p>
+
+                <h3>I nomi di file che nascondevano una webshell</h3>
+                <p>Il confronto affetta i record di <code>sha256sum</code> <strong>per offset</strong> invece di
+                    splittare sugli spazi. I nomi con spazi venivano troncati nel report, e le coreutils GNU fanno
+                    l'escape di qualsiasi record che contenga un backslash o un newline — record che un filtro
+                    ancorato all'hash scartava del tutto. Una webshell chiamata <code>sh\ell.php</code> era
+                    invisibile.</p>
+
+                <h3>Cosa ti arriva in casella</h3>
+                <ul>
+                    <li><code>scan_integrity</code> — file in più o modificati. Nella stessa mail finiscono anche i
+                        drift di <code>open_basedir</code> e dell'utente del pool FPM.</li>
+                    <li><code>scan_incomplete</code> — timeout, aggiornamento firme fallito, o una release che non si è
+                        riusciti a hashare per intero. Di proposito <em>non</em> si chiama “pulito”: un controllo che
+                        non è arrivato in fondo non ti ha detto niente.</li>
+                </ul>
+
+                <h3>Soglia di memoria</h3>
+                <p><code>cipi scan enable</code> si rifiuta sotto i <strong>2GB di RAM disponibile</strong> o 3GB
+                    liberi su <code>/var</code> (<code>--force</code> forza). <code>clamscan</code> carica l'intero set
+                    di firme a ogni run, e un OOM kill alle 04:40 può portarsi via anche MariaDB.</p>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>Leggi i limiti onestamente. Il controllo ti dice che un tree è cambiato tra due deploy. Un
+                        attaccante che possiede l'utente dell'app può comunque rifare la baseline attraverso la voce
+                        sudo — ed è per questo che ogni ri-baseline viene loggata, ed è per questo che leggi
+                        <code>events.log</code> accanto all'alert. Utenti Unix per app e <code>open_basedir</code> erano
+                        già il modello di isolamento di Cipi; questo verifica solo che ci sia ancora. Un checkpoint
+                        pre-symlink e inotify sugli upload <em>non</em> sono in questa release.</div>
+                </div>
+            </div>
+
+
+
+            <div class="doc-section" id="cli-completion">
+                <h2><code>cipi completion</code></h2>
+                <p>Dalla <strong>v5.2.0</strong> il completamento con TAB per bash e zsh è installato <strong>al posto
+                        tuo</strong>. Lo scrivono <code>setup.sh</code> e ogni <code>cipi self-update</code>, e
+                    <code>setup.sh</code> installa anche il pacchetto <code>bash-completion</code>. Nessuno tocca un
+                    dotfile: una nuova login shell ce l'ha e basta.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copia</button></div>
+                    <pre><span class="p">$</span> cipi app &lt;TAB&gt;               <span class="c"># create  list  show  edit  clone  limits  …</span>
+<span class="p">$</span> cipi deploy my&lt;TAB&gt;          <span class="c"># nomi app, da /etc/cipi/apps-public.json</span>
+<span class="p">$</span> cipi help &lt;TAB&gt;              <span class="c"># argomenti dell'help</span>
+
+<span class="c"># serve solo per una shell non-login o un rc file custom</span>
+<span class="p">$</span> cipi completion bash
+<span class="p">$</span> cipi completion zsh --print  <span class="c"># scrive lo script su stdout e non cambia nulla</span></pre>
+                </div>
+
+                <p>I file scritti sono tre: <code>/etc/bash_completion.d/cipi</code>,
+                    <code>/usr/share/zsh/vendor-completions/_cipi</code> (quando quella directory esiste) e un loader
+                    <code>/etc/profile.d/cipi-completion.sh</code> che parte per ogni shell bash e zsh interattiva —
+                    con o senza il pacchetto <code>bash-completion</code>.</p>
+                <p>Completa i verbi di primo livello, i sotto-comandi e i flag di ciascun verbo, e
+                    <code>cipi help &lt;topic&gt;</code>. I <strong>nomi delle app</strong> arrivano da
+                    <code>/etc/cipi/apps-public.json</code> quando l'utente della shell può leggerlo — una sessione
+                    root, o un membro del gruppo <code>cipi-api</code>; tutto il resto è una word list statica che
+                    funziona per qualsiasi utente. <code>sudo cipi &lt;TAB&gt;</code> si risolve attraverso il
+                    completamento standard di sudo.</p>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>Il completamento è scritto a mano, non generato da un framework:
+                        <code>tests/verify-5.2.0.sh</code> fallisce se la lista dei verbi si scosta dalla tabella di
+                        dispatch dentro <code>cipi</code>.</div>
                 </div>
             </div>
 
