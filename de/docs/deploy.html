@@ -773,6 +773,10 @@ backup:
                                                     webhook ID)</td>
 </tr>
 <tr>
+<td><code>cipi git refresh [app]</code></td>
+<td>SSH-Deploy-Key und Deploy-Webhook auf GitHub/GitLab neu registrieren (seit <strong>v5.2.1</strong>). Eine benannte App oder jede GitHub/GitLab-App. Custom/SFTP-Apps erhalten nur den Key. Flags: <code>--rotate-keys</code>, <code>--rotate-secret</code>, <code>--force</code></td>
+</tr>
+<tr>
 <td><code>cipi git github-token &lt;token&gt;</code></td>
 <td>Speichern Sie einen persönlichen Zugangstoken im Wert von GitHub</td>
 </tr>
@@ -795,6 +799,26 @@ backup:
 </tbody>
 </table>
 </div>
+<h3><code>cipi git refresh</code></h3>
+<p>Deploy-Keys und Webhooks auf GitHub/GitLab verschwinden nicht, wenn ein PAT abläuft — sie werden nur per API unmanagebar. Refresh ist für den Fall, dass sie gelöscht wurden, die IDs in <code>apps.json</code> veraltet sind oder Sie gerade ein neues Token gespeichert haben und jede App wieder anbinden wollen. Ein fehlendes oder abgelehntes PAT wird pro App gemeldet: zuerst <code>cipi git github-token</code> / <code>gitlab-token</code>.</p>
+<div class="code-block">
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Kopieren</button></div>
+<pre><span class="c"># jede GitHub/GitLab-App auf diesem Server</span>
+<span class="p">$</span> cipi git refresh
+
+<span class="c"># eine benannte App</span>
+<span class="p">$</span> cipi git refresh myapp
+
+<span class="c"># neuen ed25519-Schlüssel erzeugen und in authorized_keys tauschen</span>
+<span class="p">$</span> cipi git refresh --rotate-keys
+
+<span class="c"># neues CIPI_WEBHOOK_TOKEN in apps.json und shared/.env</span>
+<span class="p">$</span> cipi git refresh --rotate-secret
+
+<span class="c"># Bestätigung überspringen, wenn jede App rotiert wird</span>
+<span class="p">$</span> cipi git refresh --rotate-keys --force</pre>
+</div>
+<p>Remote-Reste mit dem Titel <code>cipi:&lt;app&gt;</code> oder die auf die Webhook-URL dieser App zeigen, werden zuerst entfernt, damit keine Duplikate zurückbleiben. Wenn GitHub den bestehenden Pubkey ablehnt, weil er bereits Deploy-Key eines anderen Repos ist, erzeugt Refresh einen neuen Schlüssel für diese App und macht weiter. Beide Rotate-Flags fragen nach, bevor sie jede App anfassen, außer bei <code>--force</code>.</p>
 <h3>Manuelle Einrichtung (Fallback)</h3>
 <p>Die automatische Einrichtung wird übersprungen, wenn kein Token konfiguriert ist, wenn der API-Aufruf fehlschlägt (falsche Berechtigungen,
                     Repository nicht gefunden, Ratenbegrenzung) oder wenn das Repository bei einem anderen Anbieter als gehostet wird

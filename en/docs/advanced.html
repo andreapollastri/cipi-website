@@ -47,7 +47,7 @@
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "datePublished": "2026-06-03",
-      "dateModified": "2026-08-04",
+      "dateModified": "2026-09-09",
       "headline": "Cipi Docs — Advanced",
       "name": "Advanced",
       "url": "https://cipi.sh/en/docs/advanced",
@@ -2438,7 +2438,11 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     real error is printed, the likely cause is named, and the command to reproduce it by hand is shown.
                     The clone also runs under a 180-second timeout instead of being able to hang indefinitely, and a
                     missing <code>git</code> is reported as such. An unattended nightly update now also sends the
-                    <code>self_update</code> notification, so it no longer lands without a word.</p>
+                    <code>self_update</code> notification, so it no longer lands without a word. Since
+                    <strong>v5.2.1</strong> that mail is decided from a snapshot taken before
+                    <code>/etc/cipi/version</code> is rewritten, and is sent only when that snapshot differs from the
+                    downloaded version. A nightly refresh that stays on the same release is silent. 5.2.1 itself has
+                    no migration: <code>self-update</code> copies the libs and refreshes shell completion.</p>
 
                 <p>For example, the <strong>4.5.5 migration</strong> retro-fits existing apps with the new
                     <code>ll='ls -al'</code> shell alias: it appends the alias to each app's <code>~/.bashrc</code>

@@ -772,6 +772,10 @@ backup:
                                                     webhook ID)</td>
 </tr>
 <tr>
+<td><code>cipi git refresh [app]</code></td>
+<td>Réenregistrer la clé SSH de déploiement et le webhook sur GitHub/GitLab (depuis la <strong>v5.2.1</strong>). Une app nommée, ou chaque app GitHub/GitLab. Les apps custom/SFTP n'obtiennent que la clé. Flags : <code>--rotate-keys</code>, <code>--rotate-secret</code>, <code>--force</code></td>
+</tr>
+<tr>
 <td><code>cipi git github-token &lt;token&gt;</code></td>
 <td>Enregistrez un jeton d'accès personnel GitHub</td>
 </tr>
@@ -794,6 +798,26 @@ backup:
 </tbody>
 </table>
 </div>
+<h3><code>cipi git refresh</code></h3>
+<p>Les clés de déploiement et webhooks sur GitHub/GitLab ne disparaissent pas quand un PAT expire — ils deviennent seulement ingérables via l'API. Refresh sert quand ils ont été supprimés, que les IDs dans <code>apps.json</code> ont dérivé, ou que vous venez d'installer un nouveau jeton et voulez rattacher chaque app. Un PAT manquant ou rejeté est signalé par app : lancez d'abord <code>cipi git github-token</code> / <code>gitlab-token</code>.</p>
+<div class="code-block">
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copier</button></div>
+<pre><span class="c"># chaque app GitHub/GitLab sur ce serveur</span>
+<span class="p">$</span> cipi git refresh
+
+<span class="c"># une app nommée</span>
+<span class="p">$</span> cipi git refresh myapp
+
+<span class="c"># générer une nouvelle clé ed25519 et la remplacer dans authorized_keys</span>
+<span class="p">$</span> cipi git refresh --rotate-keys
+
+<span class="c"># générer un nouveau CIPI_WEBHOOK_TOKEN dans apps.json et shared/.env</span>
+<span class="p">$</span> cipi git refresh --rotate-secret
+
+<span class="c"># sauter la confirmation en rotant chaque app</span>
+<span class="p">$</span> cipi git refresh --rotate-keys --force</pre>
+</div>
+<p>Les restes distants intitulés <code>cipi:&lt;app&gt;</code> ou pointant vers l'URL webhook de cette app sont d'abord retirés pour ne pas laisser de doublons. Si GitHub refuse la pubkey existante parce qu'elle est déjà une clé de déploiement sur un autre dépôt, refresh génère une nouvelle clé pour cette app et continue. Les deux flags de rotation demandent confirmation avant de toucher chaque app, sauf avec <code>--force</code>.</p>
 <h3>Configuration manuelle (repli)</h3>
 <p>La configuration automatique est ignorée lorsqu'aucun jeton n'est configuré, lorsque l'appel API échoue (autorisations incorrectes,
                     référentiel introuvable, limite de débit), ou lorsque le référentiel est hébergé chez un fournisseur autre que

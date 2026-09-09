@@ -541,6 +541,10 @@
                                                     quando a URL do repositório realmente muda.</td>
 </tr>
 <tr>
+<td>cipi app fix-permissions [app]</td>
+<td>Reaplicar o layout de permissões com que o Cipi criou o home (desde a <strong>v5.2.1</strong>). Uma app nomeada, ou cada app. Ver <a href="#cli-app-fix-permissions"><code>app fix-permissions</code></a></td>
+</tr>
+<tr>
 <td>cipi app reset-password &lt;app&gt;</td>
 <td>Gere novamente a senha SSH do usuário Linux do aplicativo. A nova senha é exibida em
                                                     tela – salve-a imediatamente</td>
@@ -567,6 +571,16 @@
 </tbody>
 </table>
 </div>
+</div>
+<div class="doc-section" id="cli-app-fix-permissions">
+<h2><code>cipi app fix-permissions</code></h2>
+<p>O painel já tinha <code>cipi api fix-permissions</code> e <code>cipi gui fix-permissions</code>; as apps não. Um <code>chown -R app:app /home/&lt;app&gt;</code> está errado: o nginx escreve os logs do vhost como <code>www-data</code> em <code>logs/</code> (<code>2775</code> setgid), o home deve ficar <strong>750</strong> para que o <code>www-data</code> (no grupo da app) possa ler o docroot, o <code>.ssh</code> deve ser <strong>700</strong> senão o OpenSSH StrictModes recusa a deploy key, e o <code>shared/.env</code> é <strong>640</strong>. Este comando reaplica esse layout — ownership da árvore excepto <code>logs/</code>, depois o helper log/ACL, directórios storage <strong>775</strong>, Composer <code>auth.json</code> <strong>640</strong>, <code>cipi-databases.env</code> <strong>600</strong>. Uma app nomeada, ou cada app.</p>
+<div class="code-block">
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copiar</button></div>
+<pre><span class="p">$</span> cipi app fix-permissions myapp
+<span class="p">$</span> cipi app fix-permissions          <span class="c"># cada app neste servidor</span></pre>
+</div>
+<p>O <code>cipi deploy</code> já corre o helper log-ACL antes do Deployer. O <code>fix-permissions</code> é o home completo, a pedido, depois de alguém descompactar um zip como root ou pôr o <code>.ssh</code> a 775. Disponível desde a <strong>v5.2.1</strong>. Sem migração: o <code>cipi self-update</code> copia as libs e actualiza a completação da shell.</p>
 </div>
 <div class="doc-section" id="cli-app-reverb">
 <h2><code>cipi app reverb</code></h2>

@@ -44,7 +44,7 @@
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "datePublished": "2026-06-03",
-      "dateModified": "2026-08-04",
+      "dateModified": "2026-09-09",
       "headline": "Cipi Docs — Getting Started",
       "name": "Getting Started",
       "url": "https://cipi.sh/en/docs/getting-started",
@@ -824,6 +824,12 @@ MariaDB:      database '<span class="tree-accent">myapp</span>', user '<span cla
                     and <code>APP_KEY</code>. You never have to touch it manually, but you can always edit it with
                     <code>cipi app env myapp</code>.
                 </p>
+                <p>If someone unpacks a zip as root or chmods <code>.ssh</code> to 775,
+                    <code>cipi app fix-permissions</code> (since <strong>v5.2.1</strong>) restores this layout. A blunt
+                    <code>chown -R app:app</code> is wrong: nginx writes vhost logs as <code>www-data</code> into
+                    <code>logs/</code> (<code>2775</code> setgid), the home must stay <code>750</code> so
+                    <code>www-data</code> (in the app group) can read the docroot, and <code>.ssh</code> must be
+                    <code>700</code> or OpenSSH StrictModes refuses the deploy key.</p>
             </div>
 
             <div class="page-nav">

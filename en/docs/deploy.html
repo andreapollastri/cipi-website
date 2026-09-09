@@ -44,7 +44,7 @@
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "datePublished": "2026-06-03",
-      "dateModified": "2026-08-04",
+      "dateModified": "2026-09-09",
       "headline": "Cipi Docs — Deploy & CI/CD",
       "name": "Deploy & CI/CD",
       "url": "https://cipi.sh/en/docs/deploy",
@@ -885,6 +885,14 @@ backup:
                                                     webhook ID)</td>
                                             </tr>
                                             <tr>
+                                                <td><code>cipi git refresh [app]</code></td>
+                                                <td>Re-register the SSH deploy key and deploy webhook on GitHub/GitLab (since
+                                                    <strong>v5.2.1</strong>). One named app, or every GitHub/GitLab app.
+                                                    Custom/SFTP apps get the key only. Flags:
+                                                    <code>--rotate-keys</code>, <code>--rotate-secret</code>,
+                                                    <code>--force</code></td>
+                                            </tr>
+                                            <tr>
                                                 <td><code>cipi git github-token &lt;token&gt;</code></td>
                                                 <td>Save a GitHub Personal Access Token</td>
                                             </tr>
@@ -907,6 +915,38 @@ backup:
                                         </tbody>
                                     </table>
                 </div>
+
+                <h3><code>cipi git refresh</code></h3>
+                <p>Deploy keys and webhooks on GitHub/GitLab do not vanish when a PAT expires — they only become
+                    unmanageable via API. Refresh is for the case where they were deleted, the stored IDs in
+                    <code>apps.json</code> drifted, or you just installed a new token and want every app re-attached.
+                    A missing or rejected PAT is reported per app: run <code>cipi git github-token</code> /
+                    <code>gitlab-token</code> first.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="c"># every GitHub/GitLab app on this server</span>
+<span class="p">$</span> cipi git refresh
+
+<span class="c"># one named app</span>
+<span class="p">$</span> cipi git refresh myapp
+
+<span class="c"># mint a new ed25519 key and swap it in authorized_keys</span>
+<span class="p">$</span> cipi git refresh --rotate-keys
+
+<span class="c"># mint a new CIPI_WEBHOOK_TOKEN in apps.json and shared/.env</span>
+<span class="p">$</span> cipi git refresh --rotate-secret
+
+<span class="c"># skip the confirmation when rotating every app</span>
+<span class="p">$</span> cipi git refresh --rotate-keys --force</pre>
+                </div>
+
+                <p>Remote leftovers titled <code>cipi:&lt;app&gt;</code> or pointing at this app's webhook URL are
+                    removed first so duplicates are not left behind. If GitHub refuses the existing pubkey because it
+                    is already a deploy key on another repo, refresh generates a new key for that app and continues.
+                    Both rotate flags ask before touching every app unless <code>--force</code>. Deployer still SSHs
+                    to localhost with the app's deploy key after a rotation.</p>
 
                 <h3>Manual setup (fallback)</h3>
                 <p>Auto-setup is skipped when no token is configured, when the API call fails (wrong permissions,

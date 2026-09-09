@@ -2242,7 +2242,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     l'erreur réelle est imprimée, la cause probable est nommée et la commande permettant de la reproduire à la main est affichée.
                     Le clone s'exécute également sous un délai d'attente de 180 secondes au lieu de pouvoir se bloquer indéfiniment, et un
                     manquant <code>git</code> est signalé comme tel. Une mise à jour nocturne sans surveillance envoie désormais également le
-                    <code>self_update</code> notification, donc il n'atteint plus sans un mot.</p>
+                    <code>self_update</code> notification, donc il n'atteint plus sans un mot. Depuis la <strong>v5.2.1</strong>, ce mail est décidé à partir d'un snapshot pris avant que <code>/etc/cipi/version</code> ne soit réécrit, et n'est envoyé que si ce snapshot diffère de la version téléchargée. Un rafraîchissement nocturne qui reste sur la même version est silencieux. La 5.2.1 elle-même n'a pas de migration : <code>self-update</code> copie les libs et rafraîchit la complétion shell.</p>
 <p>Par exemple, le <strong>4.5.5 migration</strong> modernise les applications existantes avec la nouvelle
                     <code>ll='ls -al'</code> Alias du shell : il ajoute l'alias à l'alias de chaque application <code>~/.bashrc</code>
                     une fois (uniquement en cas d'absence, en préservant la propriété), afin que les applications créées avant la version 4.5.5 l'obtiennent au prochain

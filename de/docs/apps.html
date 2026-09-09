@@ -541,6 +541,10 @@
                                                     wenn sich die Repository-URL tatsächlich ändert.</td>
 </tr>
 <tr>
+<td>cipi app fix-permissions [app]</td>
+<td>Das Berechtigungslayout, mit dem Cipi das Home angelegt hat, erneut anwenden (seit <strong>v5.2.1</strong>). Eine benannte App oder jede App. Siehe <a href="#cli-app-fix-permissions"><code>app fix-permissions</code></a></td>
+</tr>
+<tr>
 <td>cipi app reset-password &lt;app&gt;</td>
 <td>Generieren Sie das SSH-Passwort des Linux-Benutzers der App neu. Das neue Passwort wird angezeigt
                                                     Bildschirm – speichern Sie es sofort</td>
@@ -567,6 +571,16 @@
 </tbody>
 </table>
 </div>
+</div>
+<div class="doc-section" id="cli-app-fix-permissions">
+<h2><code>cipi app fix-permissions</code></h2>
+<p>Das Panel hatte bereits <code>cipi api fix-permissions</code> und <code>cipi gui fix-permissions</code>; Apps nicht. Ein pauschales <code>chown -R app:app /home/&lt;app&gt;</code> ist falsch: nginx schreibt Vhost-Logs als <code>www-data</code> nach <code>logs/</code> (<code>2775</code> setgid), das Home muss <strong>750</strong> bleiben, damit <code>www-data</code> (in der App-Gruppe) das Docroot lesen kann, <code>.ssh</code> muss <strong>700</strong> sein, sonst lehnt OpenSSH StrictModes den Deploy-Key ab, und <code>shared/.env</code> ist <strong>640</strong>. Dieser Befehl wendet dieses Layout erneut an — Ownership des Baums außer <code>logs/</code>, dann der Log/ACL-Helfer, Storage-Verzeichnisse <strong>775</strong>, Composer <code>auth.json</code> <strong>640</strong>, <code>cipi-databases.env</code> <strong>600</strong>. Eine benannte App oder jede App.</p>
+<div class="code-block">
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Kopieren</button></div>
+<pre><span class="p">$</span> cipi app fix-permissions myapp
+<span class="p">$</span> cipi app fix-permissions          <span class="c"># jede App auf diesem Server</span></pre>
+</div>
+<p><code>cipi deploy</code> führt den Log-ACL-Helfer bereits vor Deployer aus. <code>fix-permissions</code> ist das volle Home, auf Abruf, nachdem jemand ein Zip als root entpackt oder <code>.ssh</code> auf 775 gesetzt hat. Verfügbar seit <strong>v5.2.1</strong>. Keine Migration: <code>cipi self-update</code> kopiert die Libs und aktualisiert die Shell-Vervollständigung.</p>
 </div>
 <div class="doc-section" id="cli-app-reverb">
 <h2><code>cipi app reverb</code></h2>

@@ -776,6 +776,10 @@ backup:
                                                     webhook ID)</td>
 </tr>
 <tr>
+<td><code>cipi git refresh [app]</code></td>
+<td>Voltar a registar a chave SSH de deploy e o webhook no GitHub/GitLab (desde a <strong>v5.2.1</strong>). Uma app nomeada, ou cada app GitHub/GitLab. Apps custom/SFTP recebem só a chave. Flags: <code>--rotate-keys</code>, <code>--rotate-secret</code>, <code>--force</code></td>
+</tr>
+<tr>
 <td><code>cipi git github-token &lt;token&gt;</code></td>
 <td>Salve um token de acesso pessoal GitHub</td>
 </tr>
@@ -798,6 +802,26 @@ backup:
 </tbody>
 </table>
 </div>
+<h3><code>cipi git refresh</code></h3>
+<p>As deploy keys e os webhooks no GitHub/GitLab não desaparecem quando um PAT expira — apenas deixam de ser geríveis via API. O refresh serve quando foram apagados, os IDs em <code>apps.json</code> derivaram, ou acabaste de instalar um token novo e queres voltar a ligar cada app. Um PAT em falta ou recusado é reportado por app: corre primeiro <code>cipi git github-token</code> / <code>gitlab-token</code>.</p>
+<div class="code-block">
+<div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copiar</button></div>
+<pre><span class="c"># cada app GitHub/GitLab neste servidor</span>
+<span class="p">$</span> cipi git refresh
+
+<span class="c"># uma app nomeada</span>
+<span class="p">$</span> cipi git refresh myapp
+
+<span class="c"># gerar uma nova chave ed25519 e trocá-la em authorized_keys</span>
+<span class="p">$</span> cipi git refresh --rotate-keys
+
+<span class="c"># gerar um novo CIPI_WEBHOOK_TOKEN em apps.json e shared/.env</span>
+<span class="p">$</span> cipi git refresh --rotate-secret
+
+<span class="c"># saltar a confirmação ao rodar cada app</span>
+<span class="p">$</span> cipi git refresh --rotate-keys --force</pre>
+</div>
+<p>Os restos remotos intitulados <code>cipi:&lt;app&gt;</code> ou que apontam para o URL do webhook desta app são removidos primeiro para não deixar duplicados. Se o GitHub recusar a pubkey existente porque já é deploy key noutro repo, o refresh gera uma chave nova para essa app e continua. Ambos os flags de rotação perguntam antes de tocar em cada app, salvo com <code>--force</code>.</p>
 <h3>Configuração manual (substituição)</h3>
 <p>A configuração automática é ignorada quando nenhum token é configurado, quando a chamada API falha (permissões erradas,
                     repositório não encontrado, limite de taxa) ou quando o repositório está hospedado em um provedor diferente

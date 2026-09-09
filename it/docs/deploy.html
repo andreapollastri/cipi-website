@@ -685,6 +685,10 @@ backup:
                                                 <td>Mostra stato connessione provider e dettagli integrazione per app (ID chiave deploy, ID webhook)</td>
                                             </tr>
                                             <tr>
+                                                <td><code>cipi git refresh [app]</code></td>
+                                                <td>Ri-registra la chiave SSH di deploy e il webhook su GitHub/GitLab (dalla <strong>v5.2.1</strong>). Un'app nominata, o ogni app GitHub/GitLab. Le app custom/SFTP ricevono solo la chiave. Flag: <code>--rotate-keys</code>, <code>--rotate-secret</code>, <code>--force</code></td>
+                                            </tr>
+                                            <tr>
                                                 <td><code>cipi git github-token &lt;token&gt;</code></td>
                                                 <td>Salva un Personal Access Token GitHub</td>
                                             </tr>
@@ -707,6 +711,30 @@ backup:
                                         </tbody>
                                     </table>
                 </div>
+
+                <h3><code>cipi git refresh</code></h3>
+                <p>Le deploy key e i webhook su GitHub/GitLab non spariscono quando un PAT scade — diventano solo ingestibili via API. Refresh serve quando sono stati cancellati, gli ID in <code>apps.json</code> sono driftati, o hai appena installato un token nuovo e vuoi riattaccare ogni app. Un PAT mancante o rifiutato viene segnalato per app: esegui prima <code>cipi git github-token</code> / <code>gitlab-token</code>.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copia</button></div>
+                    <pre><span class="c"># ogni app GitHub/GitLab su questo server</span>
+<span class="p">$</span> cipi git refresh
+
+<span class="c"># una sola app</span>
+<span class="p">$</span> cipi git refresh myapp
+
+<span class="c"># genera una nuova chiave ed25519 e la scambia in authorized_keys</span>
+<span class="p">$</span> cipi git refresh --rotate-keys
+
+<span class="c"># genera un nuovo CIPI_WEBHOOK_TOKEN in apps.json e shared/.env</span>
+<span class="p">$</span> cipi git refresh --rotate-secret
+
+<span class="c"># salta la conferma quando ruoti ogni app</span>
+<span class="p">$</span> cipi git refresh --rotate-keys --force</pre>
+                </div>
+
+                <p>I residui remoti intitolati <code>cipi:&lt;app&gt;</code> o che puntano all'URL webhook di questa app vengono rimossi prima, così non restano duplicati. Se GitHub rifiuta la pubkey esistente perché è già una deploy key su un altro repo, refresh genera una nuova chiave per quell'app e continua. Entrambi i flag di rotazione chiedono conferma prima di toccare ogni app, a meno di <code>--force</code>. Dopo una rotazione Deployer continua a fare SSH verso localhost con la deploy key dell'app.</p>
 
                 <h3>Setup manuale (fallback)</h3>
                 <p>L'auto-setup viene saltato quando nessun token è configurato, quando la chiamata API fallisce (permessi errati, repository non trovato, rate limit) o quando il repository è ospitato su un provider diverso da GitHub o GitLab (es. Gitea, Forgejo, Bitbucket). In tutti questi casi Cipi ricade sul workflow manuale e la creazione dell'app procede normalmente.</p>

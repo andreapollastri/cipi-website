@@ -615,6 +615,7 @@ MariaDB:      database '<span class="tree-accent">myapp</span>', user '<span cla
 
                 <p>Il <code>.env</code> è compilato automaticamente con tutte le credenziali — nome database, password, token webhook e <code>APP_KEY</code>. Non devi mai toccarlo manualmente, ma puoi sempre modificarlo con <code>cipi app env myapp</code>.
                 </p>
+                <p>Se qualcuno scompatta uno zip come root o mette <code>.ssh</code> a 775, <code>cipi app fix-permissions</code> (dalla <strong>v5.2.1</strong>) ripristina questo layout. Un <code>chown -R app:app</code> è sbagliato: nginx scrive i log del vhost come <code>www-data</code> in <code>logs/</code> (<code>2775</code> setgid), la home deve restare <code>750</code> così <code>www-data</code> (nel gruppo dell'app) può leggere il docroot, e <code>.ssh</code> deve essere <code>700</code> o OpenSSH StrictModes rifiuta la deploy key.</p>
             </div>
 
             <div class="page-nav">

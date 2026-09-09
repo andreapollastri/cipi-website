@@ -417,6 +417,10 @@
                                                 <td>Ricrea il webhook deploy GitHub/GitLab; rotazione opzionale del secret aggiorna <code>CIPI_WEBHOOK_TOKEN</code> (da <strong>v5.0.6</strong>). REST: <code>POST /api/apps/{name}/webhook/recreate</code> (API <strong>1.15.0+</strong>). Da <strong>5.0.6</strong>, <code>app edit --repository=</code> ricrea webhook/deploy key solo quando l'URL del repository cambia effettivamente.</td>
                                             </tr>
                                             <tr>
+                                                <td>cipi app fix-permissions [app]</td>
+                                                <td>Riapplica il layout di permessi con cui Cipi ha creato la home (dalla <strong>v5.2.1</strong>). Un'app nominata, o ogni app. Vedi <a href="#cli-app-fix-permissions"><code>app fix-permissions</code></a></td>
+                                            </tr>
+                                            <tr>
                                                 <td>cipi app reset-password &lt;app&gt;</td>
                                                 <td>Rigenera la password SSH dell'utente Linux dell'app. La nuova password viene mostrata a schermo — salvala subito</td>
                                             </tr>
@@ -437,6 +441,22 @@
                                         </tbody>
                                     </table>
                 </div>
+            </div>
+
+
+
+            <div class="doc-section" id="cli-app-fix-permissions">
+                <h2><code>cipi app fix-permissions</code></h2>
+                <p>Il pannello aveva già <code>cipi api fix-permissions</code> e <code>cipi gui fix-permissions</code>; le app no. Un <code>chown -R app:app /home/&lt;app&gt;</code> è sbagliato: nginx scrive i log del vhost come <code>www-data</code> in <code>logs/</code> (<code>2775</code> setgid), la home deve restare <strong>750</strong> così <code>www-data</code> (nel gruppo dell'app) può leggere il docroot, <code>.ssh</code> deve essere <strong>700</strong> o OpenSSH StrictModes rifiuta la deploy key, e <code>shared/.env</code> è <strong>640</strong>. Questo comando riapplica quel layout — ownership dell'albero tranne <code>logs/</code>, poi l'helper log/ACL, directory storage <strong>775</strong>, Composer <code>auth.json</code> <strong>640</strong>, <code>cipi-databases.env</code> <strong>600</strong>. Un'app nominata, o ogni app.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copia</button></div>
+                    <pre><span class="p">$</span> cipi app fix-permissions myapp
+<span class="p">$</span> cipi app fix-permissions          <span class="c"># ogni app su questo server</span></pre>
+                </div>
+
+                <p><code>cipi deploy</code> esegue già l'helper log-ACL prima di Deployer. <code>fix-permissions</code> è l'intera home, a richiesta, dopo che qualcuno ha scompattato uno zip come root o ha messo <code>.ssh</code> a 775. Disponibile dalla <strong>v5.2.1</strong>. Nessuna migration: <code>cipi self-update</code> copia le lib e aggiorna il completamento della shell. Il file sudoers del pannello elenca il nuovo comando così una futura GUI può invocarlo; i server esistenti prendono quella riga al prossimo rewrite dei sudoers (la CLI gira come root e non ne ha bisogno).</p>
             </div>
 
 

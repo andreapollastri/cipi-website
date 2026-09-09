@@ -2235,7 +2235,7 @@ vault_get &lt;file&gt; &lt;jq_query&gt;  <span class="c"># Shortcut: vault_read 
                     Der tatsächliche Fehler wird ausgedruckt, die wahrscheinliche Ursache wird benannt und der Befehl zum manuellen Reproduzieren wird angezeigt.
                     Der Klon läuft auch mit einem Timeout von 180 Sekunden, anstatt auf unbestimmte Zeit hängen zu können, und a
                     fehlt <code>git</code> wird als solches gemeldet. Ein unbeaufsichtigtes nächtliches Update sendet jetzt auch das
-                    <code>self_update</code> Benachrichtigung, so dass es nicht mehr wortlos landet.</p>
+                    <code>self_update</code> Benachrichtigung, so dass es nicht mehr wortlos landet. Seit <strong>v5.2.1</strong> wird diese Mail anhand eines Snapshots entschieden, der vor dem Überschreiben von <code>/etc/cipi/version</code> genommen wird, und nur gesendet, wenn sich dieser Snapshot von der heruntergeladenen Version unterscheidet. Ein nächtlicher Refresh, der auf derselben Version bleibt, ist still. 5.2.1 selbst hat keine Migration: <code>self-update</code> kopiert die Libs und aktualisiert die Shell-Vervollständigung.</p>
 <p>Zum Beispiel die <strong>4.5.5 Migration</strong> rüstet vorhandene Apps mit den neuen nach
                     <code>ll='ls -al'</code> Shell-Alias: Der Alias wird an jede App angehängt <code>~/.bashrc</code>
                     einmal (nur wenn es fehlt, der Besitz bleibt erhalten), sodass Apps, die vor 4.5.5 erstellt wurden, es beim nächsten Mal erhalten

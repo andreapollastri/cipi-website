@@ -44,7 +44,7 @@
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "datePublished": "2026-06-03",
-      "dateModified": "2026-08-04",
+      "dateModified": "2026-09-09",
       "headline": "Cipi Docs — Apps & Sites",
       "name": "Apps & Sites",
       "url": "https://cipi.sh/en/docs/apps",
@@ -605,6 +605,12 @@
                                                     when the repository URL actually changes.</td>
                                             </tr>
                                             <tr>
+                                                <td>cipi app fix-permissions [app]</td>
+                                                <td>Reapply the permission layout Cipi created the home with (since
+                                                    <strong>v5.2.1</strong>). One named app, or every app. See
+                                                    <a href="#cli-app-fix-permissions"><code>app fix-permissions</code></a></td>
+                                            </tr>
+                                            <tr>
                                                 <td>cipi app reset-password &lt;app&gt;</td>
                                                 <td>Regenerate the app's Linux user SSH password. The new password is displayed on
                                                     screen — save it immediately</td>
@@ -631,6 +637,36 @@
                                         </tbody>
                                     </table>
                 </div>
+            </div>
+
+
+
+            <div class="doc-section" id="cli-app-fix-permissions">
+                <h2><code>cipi app fix-permissions</code></h2>
+                <p>The panel already had <code>cipi api fix-permissions</code> and
+                    <code>cipi gui fix-permissions</code>; apps did not. A blunt
+                    <code>chown -R app:app /home/&lt;app&gt;</code> is wrong: nginx writes vhost logs as
+                    <code>www-data</code> into <code>logs/</code> (<code>2775</code> setgid), the home must stay
+                    <strong>750</strong> so <code>www-data</code> (in the app group) can read the docroot,
+                    <code>.ssh</code> must be <strong>700</strong> or OpenSSH StrictModes refuses the deploy key, and
+                    <code>shared/.env</code> is <strong>640</strong>. This command reapplies that layout — ownership of
+                    the tree except <code>logs/</code>, then the log/ACL helper, storage dirs <strong>775</strong>,
+                    Composer <code>auth.json</code> <strong>640</strong>, <code>cipi-databases.env</code>
+                    <strong>600</strong>. One named app, or every app.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi app fix-permissions myapp
+<span class="p">$</span> cipi app fix-permissions          <span class="c"># every app on this server</span></pre>
+                </div>
+
+                <p><code>cipi deploy</code> already runs the log-ACL helper before Deployer.
+                    <code>fix-permissions</code> is the full home, on demand, after someone unpacked a zip as root or
+                    chmod'd <code>.ssh</code> to 775. Available since <strong>v5.2.1</strong>. No migration:
+                    <code>cipi self-update</code> copies the libs and refreshes shell completion. The panel sudoers
+                    file lists the new command so a future GUI can call it; existing servers pick that line up the next
+                    time sudoers is rewritten (the CLI runs as root and does not need it).</p>
             </div>
 
 

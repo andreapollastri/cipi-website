@@ -742,6 +742,7 @@ MariaDB:      database '<span class="tree-accent">meineapp</span>', user '<span 
                     und <code>APP_KEY</code>. Sie müssen es nie manuell anfassen, können es aber jederzeit mit bearbeiten
                     <code>cipi app env myapp</code>.
                 </p>
+<p>Wenn jemand ein Zip als root entpackt oder <code>.ssh</code> auf 775 setzt, stellt <code>cipi app fix-permissions</code> (seit <strong>v5.2.1</strong>) dieses Layout wieder her. Ein pauschales <code>chown -R app:app</code> ist falsch: nginx schreibt Vhost-Logs als <code>www-data</code> nach <code>logs/</code>.</p>
 </div>
 <div class="page-nav">
 <a class="page-nav-link page-nav-link--next" href="/de/docs/agent">

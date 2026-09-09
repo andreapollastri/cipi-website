@@ -46,7 +46,7 @@
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "datePublished": "2026-06-03",
-      "dateModified": "2026-08-04",
+      "dateModified": "2026-09-09",
       "headline": "Cipi Docs — About Cipi",
       "name": "About Cipi",
       "url": "https://cipi.sh/en/docs/about",
@@ -670,7 +670,7 @@
                                     <line x1="12" y1="8" x2="12" y2="12" />
                                     <line x1="12" y1="16" x2="12.01" y2="16" />
                                 </svg>
-                                <div>Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.0" target="_blank" rel="noopener">5.2.0</a> — opt-in CrowdSec (engine <strong>and</strong> a registered firewall bouncer) and a nightly integrity check. <strong>Migration 5.2.0</strong> installs <code>cipi-scan-manifest</code> and the two rescue helpers, creates the manifest store, grants each existing app its manifest sudo entry, and adds <code>SSH_CLIENT</code> / <code>SSH_CONNECTION</code> to <code>env_keep</code> in <code>/etc/sudoers.d/cipi-sudo</code> — the candidate file validated with <code>visudo -c</code> before it replaces the live one. The migration turns nothing on: CrowdSec and the scan stay off until you enable them. Panel API <a href="https://github.com/cipi-sh/api/releases/tag/1.20" target="_blank" rel="noopener">1.20</a> and the <a href="/en/docs/gui">web GUI</a> are unchanged. Full changelog: <a href="https://github.com/cipi-sh/cipi/blob/latest/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG.md</a>.</div>
+                                <div>Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.1" target="_blank" rel="noopener">5.2.1</a> — recovery commands: re-sync GitHub/GitLab deploy keys and webhooks, and restore an app home to the permission model Cipi created it with. <code>cipi git refresh [app]</code> walks every GitHub/GitLab app (or one named app) and re-registers the local SSH deploy key plus the deploy webhook. <code>--rotate-keys</code> mints a new ed25519 key; <code>--rotate-secret</code> mints a new <code>CIPI_WEBHOOK_TOKEN</code>. <code>cipi app fix-permissions [app]</code> reapplies the layout Cipi created — home <code>750</code>, <code>.ssh</code> <code>700</code>, <code>logs/</code> <code>2775</code> setgid (nginx writes as <code>www-data</code>), <code>shared/.env</code> <code>640</code>. No migration: <code>self-update</code> copies the libs and refreshes shell completion. The nightly <code>self_update</code> mail is now sent only when the version actually moved. Previous: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.0" target="_blank" rel="noopener">5.2.0</a> — opt-in CrowdSec (engine <strong>and</strong> a registered firewall bouncer) and a nightly integrity check. <strong>Migration 5.2.0</strong> installs <code>cipi-scan-manifest</code> and the two rescue helpers, creates the manifest store, grants each existing app its manifest sudo entry, and adds <code>SSH_CLIENT</code> / <code>SSH_CONNECTION</code> to <code>env_keep</code> in <code>/etc/sudoers.d/cipi-sudo</code> — the candidate file validated with <code>visudo -c</code> before it replaces the live one. The migration turns nothing on: CrowdSec and the scan stay off until you enable them. Panel API <a href="https://github.com/cipi-sh/api/releases/tag/1.20" target="_blank" rel="noopener">1.20</a> and the <a href="/en/docs/gui">web GUI</a> are unchanged. Full changelog: <a href="https://github.com/cipi-sh/cipi/blob/latest/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG.md</a>.</div>
                             </div>
                         </div>
                     </div>
@@ -753,7 +753,12 @@
 
                 <h3>User isolation</h3>
                 <p>Each app runs under its own Linux user with <code>chmod 750</code> on the home directory. No app can
-                    read another app's files. PHP-FPM runs each app's pool as the app user with its own Unix socket.</p>
+                    read another app's files. PHP-FPM runs each app's pool as the app user with its own Unix socket.
+                    <code>cipi app fix-permissions</code> (since <strong>v5.2.1</strong>) restores that layout after a
+                    zip unpacked as root or a too-open <code>.ssh</code>: nginx writes vhost logs as
+                    <code>www-data</code> into <code>logs/</code> (<code>2775</code> setgid), the home must stay
+                    <code>750</code> so <code>www-data</code> (in the app group) can read the docroot, and
+                    <code>.ssh</code> must be <code>700</code> or OpenSSH StrictModes refuses the deploy key.</p>
 
                 <h3>PHP open_basedir</h3>
                 <p><code>open_basedir</code> is configured per FPM pool to restrict PHP to the app's home directory.

@@ -48,13 +48,13 @@
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "datePublished": "2026-07-01",
-      "dateModified": "2026-09-08",
+      "dateModified": "2026-09-09",
       "name": "Novità in Cipi 5",
       "url": "https://cipi.sh/it/novita",
       "description": "Tutte le novità in Cipi 5: 5.0 Octane, Horizon, Reverb, PostgreSQL; 5.1 profili di backup, cipi.yml, php.ini, rollback post-deploy, nginx default-server. La 5.2 aggiunge CrowdSec opt-in con bouncer firewall registrato, un listener di rescue d'emergenza, la scansione di integrità notturna e il completamento shell.",
       "inLanguage": "it",
       "image": "https://cipi.sh/og.png",
-      "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/it/", "softwareVersion": "5.2.0" },
+      "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/it/", "softwareVersion": "5.2.1" },
       "author": { "@type": "Person", "name": "Andrea Pollastri", "url": "https://github.com/andreapollastri" },
       "publisher": { "@type": "Organization", "name": "Cipi", "url": "https://cipi.sh/it/" }
     }
@@ -1534,7 +1534,7 @@
                         d="M22.7012,41.4815a6.8371,6.8371,0,0,0,2.6076,0" />
                     <circle fill="currentColor" cx="22.1579" cy="16.5888" r="0.75" />
                     <circle fill="currentColor" cx="25.5497" cy="16.5888" r="0.75" />
-                </svg> <b>Ci<span class="pi">pi</span></b> <span class="ver-pill">v5.2.0</span> </a>
+                </svg> <b>Ci<span class="pi">pi</span></b> <span class="ver-pill">v5.2.1</span> </a>
             <nav class="topnav">
                 <a href="/it/cipi-yml" class="hide-sm">cipi.yml</a>
                 <div class="nav-actions">
@@ -1972,11 +1972,11 @@
                         </svg></span>
                 </a>
 
-                <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.0" target="_blank" rel="noopener"
+                <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.1" target="_blank" rel="noopener"
                     class="tile plain w3">
                     <div>
                         <h3>Ogni novità della 5.2 è nelle note di rilascio</h3>
-                        <div class="cmd">github.com/cipi-sh/cipi — 5.2.0 ↗</div>
+                        <div class="cmd">github.com/cipi-sh/cipi — 5.2.1 ↗</div>
                     </div>
                 </a>
             </div>
@@ -2121,6 +2121,8 @@
             <div class="cmd-row"><code>cipi scan enable|disable|status</code><span>Controllo di integrità notturno più ClamAV sulle directory di upload <em class="since since-new">since 5.2</em></span></div>
             <div class="cmd-row"><code>cipi scan [&lt;app&gt;] | report | manifest</code><span>Esegui ora, leggi l'ultimo report, rifai la baseline di un manifest <em class="since since-new">since 5.2</em></span></div>
             <div class="cmd-row"><code>cipi completion bash|zsh [--print]</code><span>Completamento shell — già installato per te <em class="since since-new">since 5.2</em></span></div>
+            <div class="cmd-row"><code>cipi git refresh [app]</code><span>Ri-sincronizza deploy key e webhook GitHub/GitLab <em class="since since-new">since 5.2.1</em></span></div>
+            <div class="cmd-row"><code>cipi app fix-permissions [app]</code><span>Ripristina la home di un'app al modello di permessi con cui Cipi l'ha creata <em class="since since-new">since 5.2.1</em></span></div>
             </div>
         </div>
     </section>
