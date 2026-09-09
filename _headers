@@ -4,23 +4,10 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
-
-# English homepage (and remaining /en/… tree)
-/
   Content-Language: en
-/en/*
-  Content-Language: en
-
-# Italian tree
-/it/*
-  Content-Language: it
 
 # Error pages must never enter the index
 /404.html
-  X-Robots-Tag: noindex, nofollow
-/en/404.html
-  X-Robots-Tag: noindex, nofollow
-/it/404.html
   X-Robots-Tag: noindex, nofollow
 
 # Serve .sh files as plain text for piping to bash

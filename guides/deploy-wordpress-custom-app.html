@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy WordPress on Cipi — Custom App &amp; GitHub Auto-Deploy (2026)</title>
+    <meta name="description" content="Step-by-step guide to hosting WordPress on Cipi as a custom app: create the site, MariaDB, SSL, keep uploads and wp-config safe, then auto-deploy from GitHub Actions on every push to main.">
+    <meta name="keywords" content="wordpress cipi, deploy wordpress ubuntu, cipi custom app, wordpress github actions, wordpress auto deploy, wordpress vps nginx, wordpress ci/cd">
+    <meta name="author" content="Andrea Pollastri">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://cipi.sh/guides/deploy-wordpress-custom-app">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Cipi">
+    <meta property="og:url" content="https://cipi.sh/guides/deploy-wordpress-custom-app">
+    <meta property="og:title" content="Deploy WordPress on Cipi — Custom App &amp; GitHub Auto-Deploy (2026)">
+    <meta property="og:description" content="Step-by-step guide to hosting WordPress on Cipi as a custom app: create the site, MariaDB, SSL, keep uploads and wp-config safe, then auto-deploy from GitHub Actions on every push to main.">
+    <meta property="og:image" content="https://cipi.sh/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Deploy WordPress on Cipi — Custom App &amp; GitHub Auto-Deploy (2026)">
+            <meta property="og:locale" content="en_US">
+    <meta property="article:published_time" content="2026-08-22T10:00:00+02:00">
+    <meta property="article:modified_time" content="2026-08-22T10:00:00+02:00">
+    <meta property="article:author" content="https://web.ap.it">
+    <meta property="article:section" content="Guides">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Deploy WordPress on Cipi — Custom App &amp; GitHub Auto-Deploy (2026)">
+    <meta name="twitter:description" content="Step-by-step guide to hosting WordPress on Cipi as a custom app: create the site, MariaDB, SSL, keep uploads and wp-config safe, then auto-deploy from GitHub Actions on every push to main.">
+    <meta name="twitter:image" content="https://cipi.sh/og.png">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Deploy WordPress on Cipi — Custom App & GitHub Auto-Deploy (2026)",
+  "name": "Deploy WordPress on Cipi — Custom App & GitHub Auto-Deploy (2026)",
+  "url": "https://cipi.sh/guides/deploy-wordpress-custom-app",
+  "description": "Step-by-step guide to hosting WordPress on Cipi as a custom app: create the site, MariaDB, SSL, keep uploads and wp-config safe, then auto-deploy from GitHub Actions on every push to main.",
+  "inLanguage": "en",
+  "image": "https://cipi.sh/og.png",
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "author": {
+    "@type": "Person",
+    "name": "Andrea Pollastri",
+    "url": "https://web.ap.it",
+    "sameAs": [
+      "https://github.com/andreapollastri",
+      "https://www.linkedin.com/in/andrea-pollastri"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cipi",
+    "url": "https://cipi.sh/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cipi.sh/favicon-light-192.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cipi.sh/guides/deploy-wordpress-custom-app"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Cipi",
+    "url": "https://cipi.sh/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Ubuntu"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Cipi",
+    "url": "https://cipi.sh/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://cipi.sh/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://cipi.sh/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Deploy WordPress on Cipi",
+      "item": "https://cipi.sh/guides/deploy-wordpress-custom-app"
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Deploy WordPress on Cipi with a GitHub Actions pipeline",
+  "description": "Create a Cipi custom app for WordPress, provision MariaDB and SSL, then auto-deploy from GitHub on every push to main.",
+  "inLanguage": "en",
+  "totalTime": "PT45M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Prepare the WordPress Git repository",
+      "text": "Keep wp-config.php and wp-content/uploads out of Git so deploys do not overwrite secrets or media."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Create a Cipi custom app",
+      "text": "Run cipi app create --custom with a Linux user, domain, GitHub repository, branch and PHP version."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Create the database and issue SSL",
+      "text": "Run cipi db create --name=<app>, add the www alias, then cipi ssl install."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Write wp-config.php on the server",
+      "text": "Create wp-config.php inside htdocs from the MariaDB credentials Cipi printed. It stays untracked."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Add a GitHub Actions deploy workflow",
+      "text": "SSH from Actions with a dedicated key and run sudo cipi deploy <app> after checks pass."
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should I create WordPress as a Laravel app or a custom app in Cipi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Always as a custom app. Laravel apps expect artisan, composer, a .env file and the releases/current symlink layout. WordPress is a classic PHP site: cipi app create --custom deploys into htdocs with an Nginx vhost already set for index.php."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Cipi create a database for a WordPress custom app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Custom apps ship without a database, .env, cron or queue workers. After the app exists, run cipi db create --name=<app> (MariaDB by default) and put those credentials in wp-config.php on the server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will a Git deploy wipe my WordPress uploads?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not if they are untracked. Custom apps pull into htdocs instead of swapping a releases symlink. Keep wp-content/uploads and wp-config.php out of Git so media and secrets survive every cipi deploy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the Cipi Agent webhook for WordPress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The /cipi/webhook route lives inside a Laravel app via the cipi/agent package. For WordPress, trigger deploys from GitHub Actions over SSH with sudo cipi deploy, or use Cipi Git auto-setup (deploy key plus provider webhook) when you do not need CI gates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is WordPress deploy on Cipi zero-downtime?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Custom apps use classic deploy into htdocs — there is no current/shared symlink swap. Keep theme and plugin diffs small, take a cipi db backup before risky releases, and use GitHub Actions so a failed check never reaches the server."
+      }
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" id="favicon" type="image/png" sizes="48x48" href="/favicon-light.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-light-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-light-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-light-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/docs/style.css">
+    <style>
+        .cmp { max-width: 880px; margin: 0 auto; padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem; }
+        .cmp-breadcrumb { display:inline-flex; align-items:center; flex-wrap:wrap; gap:.15rem; font-size:.82rem; margin-bottom:1.6rem; padding:.35rem .6rem; border:1px solid var(--border); border-radius:0; background:var(--bg-card); box-shadow:var(--shadow-sm); }
+        .cmp-breadcrumb a { display:inline-flex; align-items:center; color:var(--text-secondary); text-decoration:none; padding:.2rem .55rem; transition:color .15s, background .15s; }
+        .cmp-breadcrumb a:hover { color:var(--accent); background:var(--tag-bg); }
+        .cmp-breadcrumb .sep { color:var(--text-muted); opacity:.5; font-size:1rem; line-height:1; }
+        .cmp-breadcrumb .current { color:var(--text); font-weight:600; padding:.2rem .55rem; }
+        .cmp-breadcrumb .home-ico { width:13px; height:13px; margin-right:.35rem; }
+        .cmp-eyebrow { display:inline-block; font-family:var(--font-mono); font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); background:var(--tag-bg); padding:.3rem .7rem; margin-bottom:1.1rem; }
+        .cmp h1 { font-family:var(--font-display); font-size:clamp(1.9rem, 4.6vw, 2.9rem); line-height:1.1; letter-spacing:-.02em; margin-bottom:1rem; }
+        .cmp h1 em { color:var(--accent); font-style:normal; }
+        .cmp-updated { font-family:var(--font-mono); font-size:.78rem; color:var(--text-muted); margin:0 0 1.2rem; }
+        .cmp-updated a { color:var(--text-muted); }
+        .cmp .lead { font-size:1.15rem; color:var(--text-secondary); max-width:46rem; margin-bottom:1.2rem; }
+        .cmp h2 { font-family:var(--font-display); font-size:1.65rem; margin:3rem 0 1rem; letter-spacing:-.01em; }
+        .cmp h3 { font-family:var(--font-display); font-size:1.18rem; margin:2rem 0 .6rem; }
+        .cmp p { color:var(--text-secondary); margin-bottom:1rem; line-height:1.75; }
+        .cmp ul, .cmp ol { margin:0 0 1.2rem 1.35rem; color:var(--text-secondary); line-height:1.7; }
+        .cmp li { margin-bottom:.5rem; padding-left:.25rem; }
+        .cmp li strong, .cmp p strong { color:var(--text); }
+        .cmp a.inline { color:var(--accent); text-decoration:none; }
+        .cmp a.inline:hover { text-decoration:underline; }
+        .cmp code { font-family:var(--font-mono); font-size:.85em; background:var(--tag-bg); padding:.1rem .35rem; }
+        .code-pre { background:var(--code-bg); color:var(--code-text); padding:1.1rem 1.3rem; overflow-x:auto; font-family:var(--font-mono); font-size:.84rem; line-height:1.65; margin:1rem 0 1.4rem; white-space:pre; }
+        .code-pre code { background:none; padding:0; font-size:1em; color:inherit; }
+        .install-box { background:var(--code-bg); color:var(--code-text); padding:1.1rem 1.4rem; font-family:var(--font-mono); font-size:.9rem; overflow-x:auto; margin:1rem 0; }
+        .install-box .c, .code-pre .c { color:var(--code-comment); font-style:italic; }
+        .cmp-table-wrap { overflow-x:auto; margin:1.4rem 0; }
+        .cmp-table { width:100%; border-collapse:collapse; font-size:.92rem; border:1px solid var(--border); min-width:560px; }
+        .cmp-table th, .cmp-table td { padding:.7rem .9rem; text-align:left; border-bottom:1px solid var(--border); }
+        .cmp-table thead th { background:var(--bg-warm); font-family:var(--font-display); font-weight:600; }
+        .cmp-table tr:last-child td { border-bottom:none; }
+        .note { border-left:3px solid var(--accent); padding:.9rem 1.1rem; background:var(--tag-bg); margin:1.5rem 0; }
+        .note p { margin:0; }
+        .toc { border:1px solid var(--border); background:var(--bg-card); padding:1.1rem 1.3rem; margin:1.6rem 0 2rem; box-shadow:var(--shadow-sm); }
+        .toc strong { font-family:var(--font-display); display:block; margin-bottom:.5rem; }
+        .toc ol { margin:0 0 0 1.3rem; }
+        .toc li { margin-bottom:.3rem; }
+        .toc a { color:var(--text-secondary); text-decoration:none; }
+        .toc a:hover { color:var(--accent); }
+        .cta-box { border:1px solid var(--accent); background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, var(--bg-card)), var(--bg-card)); padding:1.6rem 1.7rem; margin:2.6rem 0; }
+        .cta-box h2 { margin:0 0 .6rem; font-size:1.3rem; }
+        .cta-box p { margin-bottom:.9rem; }
+        .cta-actions { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1rem; }
+        .btn-primary { display:inline-flex; align-items:center; gap:.5rem; background:var(--accent); color:#0A0A0A; font-weight:600; padding:.7rem 1.3rem; border-radius:var(--radius-sm); text-decoration:none; font-family:var(--font-display); transition:transform .15s, box-shadow .15s; }
+        .btn-primary:hover { transform:translateY(-1px); box-shadow:var(--shadow-md); }
+        .btn-ghost { display:inline-flex; align-items:center; gap:.5rem; border:1px solid var(--border); color:var(--text); padding:.7rem 1.3rem; border-radius:var(--radius-sm); text-decoration:none; font-weight:500; transition:border-color .15s,color .15s; }
+        .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+        .faq-item { border-bottom:1px solid var(--border); padding:1.2rem 0; }
+        .faq-item:last-child { border-bottom:none; }
+        .faq-item h3 { font-family:var(--font-display); font-size:1.08rem; margin:0 0 .45rem; }
+        .faq-item p { margin:0; }
+        .related { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+        .related a { font-size:.9rem; border:1px solid var(--border); padding:.4rem .9rem; text-decoration:none; color:var(--text-secondary); }
+        .related a:hover { border-color:var(--accent); color:var(--accent); }
+        .guide-grid { display:grid; gap:1rem; grid-template-columns:1fr; margin:1.6rem 0; }
+        @media(min-width:680px){ .guide-grid{ grid-template-columns:1fr 1fr; } }
+        .guide-card { display:block; border:1px solid var(--border); padding:1.4rem 1.5rem; background:var(--bg-card); box-shadow:var(--shadow-sm); text-decoration:none; transition:transform .15s, border-color .15s, box-shadow .15s; }
+        .guide-card:hover { transform:translateY(-2px); border-color:var(--accent); box-shadow:var(--shadow-md); }
+        .guide-card h2 { font-family:var(--font-display); font-size:1.15rem; margin:0 0 .4rem; }
+        .guide-card h2 span { color:var(--accent); }
+        .guide-card p { font-size:.92rem; margin:0 0 .7rem; color:var(--text-secondary); }
+        .guide-card .go { font-size:.85rem; font-weight:600; color:var(--accent); font-family:var(--font-display); }
+        .guide-tag { display:inline-block; font-size:.72rem; font-family:var(--font-mono); color:var(--text-muted); border:1px solid var(--border); padding:.15rem .55rem; margin-bottom:.8rem; }
+    </style>
+    <meta name="theme-color" content="#65A30D" id="themeColor">
+</head>
+
+<body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-left">
+                <a href="/" class="nav-logo">
+                    <svg class="tux-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M16.2182,35.9c-3.1368,0-6.8982,1.496-7.2988,5.6766a.916.916,0,0,0,.9061,1.0025h11.97A.9.9,0,0,0,22.7,41.643C22.6175,39.8048,21.7865,35.9,16.2182,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M18.0508,20.564c-1.35,1.0368-7.3687,7.51-4.3595,15.6667" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M31.7818,35.9c3.1368,0,6.8982,1.496,7.2988,5.6766a.916.916,0,0,1-.9061,1.0025h-11.97A.9.9,0,0,1,25.3,41.643C25.3825,39.8048,26.2135,35.9,31.7818,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M35.0148,36.4556c3.1848-2.8438,2.7468-7.5246,2.7468-8.7785,2.8935.82,5.0306,2.9709,5.5941,2.17,1.3744-1.9531-7.5193-7.5461-7.6918-10.8989C35.4951,15.6692,35.1706,5.4214,24,5.4214S12.5049,15.6692,12.3361,18.9484c-.1725,3.3528-9.0662,8.9458-7.6918,10.8989.5635.8007,2.7006-1.35,5.5941-2.17,0,1.2539-.438,5.9347,2.7468,8.7785" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M29.2763,19.8324c1.9318,1.5032,8.0416,8.242,5.0324,16.3983" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M24,24.8431l3.9479-4.2791c-.3858-1.0127-1.712-1.929-3.9479-1.929s-3.5621.9163-3.9479,1.929Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M20.0521,20.564c-3.424.5063-3.9062-2.7247-3.9062-4.7019,0-2.7006,1.4467-4.4367,3.9062-4.4367S23.79,14.7529,23.79,16.3443A3.8486,3.8486,0,0,1,23.181,18.68" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M27.7205,20.1334c.6751.0482,3.9538-.3892,3.9538-3.331s-1.76-3.7615-4.1232-3.7615a3.7861,3.7861,0,0,0-3.8164,2.6682" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M22.7012,41.4815a6.8371,6.8371,0,0,0,2.6076,0" />
+                        <circle fill="currentColor" cx="22.1579" cy="16.5888" r="0.75" />
+                        <circle fill="currentColor" cx="25.5497" cy="16.5888" r="0.75" />
+                    </svg>
+                    <span>Ci<span style="color:var(--signal)">pi</span></span>
+                </a>
+                <span class="nav-badge">Guides</span>
+            </div>
+            <div class="nav-right">
+                
+                
+                
+                <a href="/cipi-yml" class="nav-link">cipi.yml</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                </button>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-nav-sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="cmp">
+        <nav class="cmp-breadcrumb" aria-label="Breadcrumb">
+            <a href="/"><svg class="home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a>
+            <span class="sep">&rsaquo;</span>
+            <a href="/guides/">Guides</a>
+            <span class="sep">&rsaquo;</span>
+            <span class="current">Deploy WordPress</span>
+        </nav>
+
+        <span class="cmp-eyebrow">WordPress · custom apps · GitHub Actions</span>
+        <h1>Deploy WordPress on Cipi: <em>custom app</em> &amp; GitHub auto-deploy</h1>
+        <p class="cmp-updated">By <a href="https://web.ap.it" target="_blank" rel="author">Andrea Pollastri</a> · Last updated: <time datetime="2026-08-22">August 22, 2026</time> · free to read, no paywall</p>
+        <p class="lead">Cipi is Laravel-first, but it also hosts WordPress as a <strong>custom app</strong>: isolated Linux user, PHP-FPM pool, Nginx vhost, Git pull into <code>htdocs</code>. This guide walks from an empty Ubuntu VPS to a site that deploys itself on every push to <code>main</code>.</p>
+
+        <div class="toc">
+            <strong>In this guide</strong>
+            <ol>
+                <li><a href="#why">Why a custom app (not Laravel)</a></li>
+                <li><a href="#repo">How to structure the WordPress repo</a></li>
+                <li><a href="#create">Create the custom app</a></li>
+                <li><a href="#db-ssl">Database, DNS and SSL</a></li>
+                <li><a href="#wp-config">First deploy and wp-config.php</a></li>
+                <li><a href="#github">GitHub Actions pipeline (recommended)</a></li>
+                <li><a href="#webhook">Simpler path: Git auto-setup</a></li>
+                <li><a href="#ops">Cron, backups and everyday ops</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ol>
+        </div>
+
+        <h2 id="why">Why a custom app (not Laravel)</h2>
+        <p><a class="inline" href="/">Cipi</a> supports two app types. The default is Laravel: own system user, PHP-FPM or Octane, MariaDB, <code>.env</code>, Supervisor workers, crontab and <strong>zero-downtime</strong> Deployer releases under <code>current</code>/<code>shared</code>. WordPress is none of that.</p>
+        <p>A <a class="inline" href="/docs/apps#cli-app-custom">custom app</a> (<code>cipi app create --custom</code>) is the right shape:</p>
+        <ul>
+            <li><strong>Classic deploy into <code>htdocs</code></strong> — no <code>current</code>/<code>shared</code> symlink swap. <code>cipi deploy blog</code> pulls the repo into <code>/home/blog/htdocs</code>.</li>
+            <li><strong>Nginx is already WordPress-ready:</strong> <code>index index.html index.php</code> and <code>try_files $uri $uri/ /index.php?$args</code>.</li>
+            <li><strong>Git is optional.</strong> Skip the repository for SFTP-only uploads; attach one later with <code>cipi app edit blog --repository=…</code>.</li>
+            <li><strong>No database, no <code>.env</code>, no cron, no queues</strong> until you add them. WordPress needs a database — you create it in the next step.</li>
+        </ul>
+        <div class="note">
+            <p>Custom deploys are <strong>not</strong> zero-downtime. Keep theme and plugin diffs small, backup the database before risky releases, and let GitHub Actions be the gate so a red check never reaches production. For Laravel zero-downtime patterns, use the <a class="inline" href="/guides/laravel-ci-cd-git-workflow">CI/CD for Laravel guide</a>.</p>
+        </div>
+
+        <h2 id="repo">How to structure the WordPress repo</h2>
+        <p>Treat Git as the source of truth for <em>code</em>, not for secrets or media. A repo that survives auto-deploy looks like this:</p>
+        <pre class="code-pre"><code>wordpress-site/
+  .gitignore
+  .github/workflows/deploy.yml
+  wp-admin/
+  wp-includes/
+  wp-content/themes/your-theme/
+  wp-content/plugins/your-plugin/
+  wp-config-sample.php
+  index.php
+  …</code></pre>
+        <p>Put this in <code>.gitignore</code> so a pull never overwrites the live site’s state:</p>
+        <pre class="code-pre"><code>wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backup-db/
+.htaccess</code></pre>
+        <p>Because custom apps pull into <code>htdocs</code> instead of swapping a release directory, <strong>untracked files stay on disk</strong>. That is how uploads and <code>wp-config.php</code> survive every deploy.</p>
+        <ul>
+            <li><strong>Core in Git</strong> is the simplest agency workflow: theme, plugins and WordPress itself versioned together.</li>
+            <li><strong>Composer / Bedrock</strong> also works — set <code>--docroot=web</code> (or <code>public</code>) when the front controller is not at the repo root.</li>
+            <li><strong>Do not commit production secrets.</strong> Generate salts on the server; never push a live <code>wp-config.php</code>.</li>
+        </ul>
+
+        <h2 id="create">Create the custom app</h2>
+        <p>Cipi must already be installed on a fresh Ubuntu VPS:</p>
+        <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
+        <p>SSH in as <code>cipi</code>, then <code>sudo -s</code>. Create the WordPress app non-interactively (PHP 8.3 is a safe match for current WordPress; hot-swap later with <code>cipi app edit</code>):</p>
+        <pre class="code-pre"><code>$ cipi app create --custom --user=blog \
+    --domain=blog.example.com \
+    --repository=git@github.com:you/wordpress-site.git \
+    --branch=main \
+    --php=8.3</code></pre>
+        <p>That provisions:</p>
+        <ul>
+            <li>Linux user <code>blog</code> and home <code>/home/blog</code></li>
+            <li>PHP-FPM pool on 8.3 and an Nginx vhost for <code>blog.example.com</code></li>
+            <li>SSH deploy key for the repository</li>
+            <li>Deployer config that pulls into <code>/home/blog/htdocs</code></li>
+        </ul>
+        <p>If you saved a GitHub Personal Access Token first, Cipi also adds the deploy key and a provider webhook automatically:</p>
+        <pre class="code-pre"><code>$ cipi git github-token ghp_xxxxxxxxxxxxxxxxxxxx
+$ cipi git status</code></pre>
+        <p>Fine-grained tokens need <strong>Administration</strong> and <strong>Webhooks</strong> set to <em>Read and write</em> on the target repo; classic tokens need the <code>repo</code> scope. Details are in the <a class="inline" href="/docs/deploy#git-auto-setup">Git auto-setup</a> docs.</p>
+        <p>SFTP-only (no Git yet) — omit the repository and upload into <code>~/htdocs</code> as the app user:</p>
+        <pre class="code-pre"><code>$ cipi app create --custom --user=blog --domain=blog.example.com --php=8.3</code></pre>
+
+        <h2 id="db-ssl">Database, DNS and SSL</h2>
+        <p>Custom apps do not get a database. Create one after the app exists — MariaDB is the default and what WordPress expects:</p>
+        <pre class="code-pre"><code>$ cipi db create --name=blog</code></pre>
+        <p>Cipi prints the database name, user, password and a <code>mariadb+ssh://</code> URL for TablePlus or DBeaver. Copy those values; they go into <code>wp-config.php</code> on the server, not into Git.</p>
+        <p>Point DNS <code>A</code> records for <code>blog.example.com</code> and <code>www.blog.example.com</code> at the VPS, then:</p>
+        <pre class="code-pre"><code>$ cipi alias add blog www.blog.example.com
+$ cipi www add blog
+$ cipi ssl install blog</code></pre>
+        <p><code>cipi ssl install</code> issues a Let’s Encrypt certificate that covers every alias (SAN) and turns on HTTPS redirect. <code>cipi www</code> keeps apex and www canonical. See <a class="inline" href="/docs/infrastructure#cli-ssl">SSL</a> and <a class="inline" href="/docs/infrastructure#cli-www">www redirects</a>.</p>
+
+        <h2 id="wp-config">First deploy and wp-config.php</h2>
+        <p>Pull the repository once, then write the config as the app user so file ownership stays correct:</p>
+        <pre class="code-pre"><code>$ cipi deploy blog
+$ su - blog
+blog@server:~$ cd ~/htdocs
+blog@server:~/htdocs$ cp wp-config-sample.php wp-config.php
+blog@server:~/htdocs$ nano wp-config.php</code></pre>
+        <p>Minimum production values (use the credentials from <code>cipi db create</code>):</p>
+        <pre class="code-pre"><code>define('DB_NAME', 'blog');
+define('DB_USER', 'blog');
+define('DB_PASSWORD', 'the-password-cipi-printed');
+define('DB_HOST', '127.0.0.1');
+define('DB_CHARSET', 'utf8mb4');
+define('DB_COLLATE', '');
+
+define('DISALLOW_FILE_EDIT', true);
+define('DISABLE_WP_CRON', true);
+define('WP_MEMORY_LIMIT', '256M');</code></pre>
+        <p>Generate new salts from <a class="inline" href="https://api.wordpress.org/secret-key/1.1/salt/" target="_blank" rel="noopener">api.wordpress.org/secret-key</a> and paste them in place of the placeholders. Open <code>https://blog.example.com</code> and finish the WordPress installer in the browser.</p>
+        <div class="note">
+            <p><code>wp-config.php</code> is untracked. A later <code>cipi deploy</code> will not delete it. If you ever re-clone the whole home directory, recreate the file from the same database credentials (<code>cipi db password blog</code> if you lost them).</p>
+        </div>
+
+        <h2 id="github">GitHub Actions pipeline (recommended)</h2>
+        <p>The Laravel Agent webhook (<code>https://your-app.com/cipi/webhook</code>) is a route <em>inside</em> a Laravel app. It does not exist on WordPress. For auto-deploy, have GitHub SSH into the server and run <code>cipi deploy</code> — the same <a class="inline" href="/docs/deploy#ci-pipeline-ssh">pipeline SSH deploy</a> Cipi documents for gated Laravel releases.</p>
+        <p><strong>Pick one trigger.</strong> If Git auto-setup already created a provider webhook, disable it (or never create one) before you add Actions. Two deploys on the same push fight over the lock file.</p>
+
+        <h3>1. Dedicated SSH key for CI</h3>
+        <p>Generate an ed25519 key on your laptop. Add the <strong>public</strong> key to the server; store the <strong>private</strong> key as a GitHub secret. Do not reuse Git deploy keys or your personal SSH key.</p>
+        <pre class="code-pre"><code># on your laptop
+$ ssh-keygen -t ed25519 -C "ci-deploy-blog" -f ~/.ssh/ci_deploy_blog -N ""
+$ ssh-copy-id -i ~/.ssh/ci_deploy_blog.pub cipi@your-server-ip
+$ cat ~/.ssh/ci_deploy_blog</code></pre>
+        <p>In the GitHub repository: <em>Settings → Secrets and variables → Actions</em>. Create:</p>
+        <ul>
+            <li><code>SERVER_HOST</code> — VPS IP or hostname</li>
+            <li><code>SERVER_SSH_KEY</code> — full contents of the private key</li>
+        </ul>
+
+        <h3>2. Workflow file</h3>
+        <p>Drop this in <code>.github/workflows/deploy.yml</code>:</p>
+        <pre class="code-pre"><code>name: Deploy WordPress
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Guard tracked secrets
+        run: |
+          if git ls-files --error-unmatch wp-config.php >/dev/null 2>&amp;1; then
+            echo "wp-config.php must not be committed"
+            exit 1
+          fi
+
+      - name: PHP syntax
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+      - name: Lint theme and plugins
+        run: |
+          find wp-content/themes wp-content/plugins -name '*.php' -print0 \
+            | xargs -0 -n1 php -l
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - name: Deploy via Cipi
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: cipi
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: sudo cipi deploy blog</code></pre>
+        <p>What this buys you:</p>
+        <ul>
+            <li><strong>A quality gate</strong> — a committed <code>wp-config.php</code> or a PHP parse error never reaches the VPS.</li>
+            <li><strong>One command on the server</strong> — Cipi pulls <code>main</code> into <code>htdocs</code> with the app’s PHP binary.</li>
+            <li><strong>Manual replay</strong> — <code>workflow_dispatch</code> redeploys the same commit without another push.</li>
+        </ul>
+        <p>Protect <code>main</code>: no direct pushes, required status checks, short-lived branches. The same trunk-based habits as the <a class="inline" href="/guides/laravel-ci-cd-git-workflow">Laravel CI/CD guide</a>, without pretending WordPress has Pest and Pint.</p>
+        <p>Watch the deploy from the server:</p>
+        <pre class="code-pre"><code>$ cipi app logs blog --type=deploy</code></pre>
+
+        <h3>3. Optional: backup before release</h3>
+        <p>WordPress schema changes are often irreversible. Snapshot MariaDB first, then deploy:</p>
+        <pre class="code-pre"><code>          script: |
+            sudo cipi db backup blog
+            sudo cipi deploy blog</code></pre>
+        <p>Restore with <code>cipi db restore blog backup.sql.gz</code> if a release goes bad. Custom apps have no release symlink to roll back to — the database dump is your undo button. See <a class="inline" href="/docs/infrastructure#cli-db">cipi db</a>.</p>
+
+        <h2 id="webhook">Simpler path: Git auto-setup</h2>
+        <p>If you do not need CI gates (solo site, trusted commits), skip Actions and let Cipi wire GitHub for you:</p>
+        <pre class="code-pre"><code>$ cipi git github-token ghp_xxxxxxxxxxxxxxxxxxxx
+$ cipi app create --custom --user=blog --domain=blog.example.com \
+    --repository=git@github.com:you/wordpress-site.git --branch=main --php=8.3</code></pre>
+        <p>On <code>app create</code>, Cipi adds the SSH deploy key and a webhook on the repository. The summary shows <em>auto-configured ✓</em>. A push to <code>main</code> then runs the same <code>cipi deploy</code> pipeline without a YAML file.</p>
+        <p>If you created the app before saving a token, print the values and add them by hand:</p>
+        <pre class="code-pre"><code>$ cipi deploy blog --key       # Settings → Deploy keys
+$ cipi deploy blog --webhook   # Settings → Webhooks</code></pre>
+        <div class="note">
+            <p>Do not point a WordPress site at the Laravel Agent URL <code>/cipi/webhook</code>. That route exists only after you <code>composer require cipi/agent</code> inside a Laravel app. WordPress uses the provider webhook Cipi prints, or GitHub Actions over SSH — not both.</p>
+        </div>
+
+        <h2 id="ops">Cron, backups and everyday ops</h2>
+        <h3>Replace WP-Cron with system cron</h3>
+        <p>Custom apps do not get a crontab. With <code>DISABLE_WP_CRON</code> set, hit <code>wp-cron.php</code> from the app user’s crontab:</p>
+        <pre class="code-pre"><code>$ su - blog
+blog@server:~$ crontab -e</code></pre>
+        <pre class="code-pre"><code>*/5 * * * * /usr/bin/php8.3 /home/blog/htdocs/wp-cron.php >/dev/null 2>&amp;1</code></pre>
+        <p>Match the PHP binary to the version you passed to <code>app create</code>. After <code>cipi app edit blog --php=8.4</code>, update the crontab path.</p>
+
+        <h3>Backups</h3>
+        <ul>
+            <li><code>cipi db backup blog</code> — dump MariaDB (schedule it nightly in root’s crontab or call it from Actions).</li>
+            <li>Keep <code>wp-content/uploads</code> on the server (and in off-site backups). It is not in Git.</li>
+            <li>S3-compatible off-site backups: <a class="inline" href="/docs/infrastructure#cli-backup"><code>cipi backup</code></a>.</li>
+        </ul>
+
+        <h3>Useful commands</h3>
+        <div class="cmp-table-wrap">
+            <table class="cmp-table">
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>What it does</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>cipi deploy blog</code></td>
+                        <td>Pull <code>main</code> into <code>htdocs</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi app logs blog --type=deploy</code></td>
+                        <td>Deploy history</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi app logs blog --type=php</code></td>
+                        <td>PHP-FPM errors</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi app edit blog --php=8.4</code></td>
+                        <td>Hot-swap PHP</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi app edit blog --branch=staging</code></td>
+                        <td>Change the deploy branch</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi db backup blog</code></td>
+                        <td>Dump MariaDB</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi ssl install blog</code></td>
+                        <td>Renew Let’s Encrypt (SAN)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="cta-box">
+            <h2>Put this into practice with Cipi</h2>
+            <p>Cipi is the free, open-source deploy CLI used in this guide: one command turns a fresh Ubuntu VPS into a hardened server for Laravel <em>and</em> custom PHP apps such as WordPress — Nginx, PHP-FPM, MariaDB, SSL and Git deploys included.</p>
+            <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
+            <div class="cta-actions">
+                <a href="/docs/apps#cli-app-custom" class="btn-primary">Custom apps docs</a>
+                <a href="/docs/deploy#ci-pipeline-ssh" class="btn-ghost">Pipeline SSH deploy</a>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-ghost">Star on GitHub</a>
+            </div>
+        </div>
+
+        <h2 id="faq">Frequently asked questions</h2>
+        <div class="faq-item"><h3>Should I create WordPress as a Laravel app or a custom app in Cipi?</h3><p>Always as a custom app. Laravel apps expect artisan, Composer, a <code>.env</code> file and the <code>releases</code>/<code>current</code> layout. WordPress is a classic PHP site: <code>cipi app create --custom</code> deploys into <code>htdocs</code> with Nginx already set for <code>index.php</code>.</p></div>
+        <div class="faq-item"><h3>Does Cipi create a database for a WordPress custom app?</h3><p>No. Custom apps ship without a database, <code>.env</code>, cron or queue workers. After the app exists, run <code>cipi db create --name=&lt;app&gt;</code> (MariaDB by default) and put those credentials in <code>wp-config.php</code> on the server.</p></div>
+        <div class="faq-item"><h3>Will a Git deploy wipe my WordPress uploads?</h3><p>Not if they are untracked. Custom apps pull into <code>htdocs</code> instead of swapping a releases symlink. Keep <code>wp-content/uploads</code> and <code>wp-config.php</code> out of Git so media and secrets survive every <code>cipi deploy</code>.</p></div>
+        <div class="faq-item"><h3>Can I use the Cipi Agent webhook for WordPress?</h3><p>No. The <code>/cipi/webhook</code> route lives inside a Laravel app via the <code>cipi/agent</code> package. For WordPress, trigger deploys from GitHub Actions over SSH with <code>sudo cipi deploy</code>, or use Cipi Git auto-setup (deploy key plus provider webhook) when you do not need CI gates.</p></div>
+        <div class="faq-item"><h3>Is WordPress deploy on Cipi zero-downtime?</h3><p>No. Custom apps use classic deploy into <code>htdocs</code> — there is no <code>current</code>/<code>shared</code> symlink swap. Keep theme and plugin diffs small, take a <code>cipi db backup</code> before risky releases, and use GitHub Actions so a failed check never reaches the server.</p></div>
+
+        <h2>Keep reading</h2>
+        <div class="related">
+            <a href="/docs/apps#cli-app-custom">Docs: custom apps</a>
+            <a href="/docs/deploy#ci-pipeline-ssh">Docs: pipeline SSH deploy</a>
+            <a href="/guides/laravel-ci-cd-git-workflow">CI/CD for Laravel</a>
+            <a href="/guides/deploy-laravel-ubuntu-vps">Deploy Laravel on Ubuntu</a>
+            <a href="/guides/laravel-security-checklist">Laravel security checklist</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-shell">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">Cipi</a>
+                    <p>Free open-source Laravel deploy CLI for Ubuntu VPS — Octane, Horizon, Reverb and zero-downtime Git deploys.</p>
+                    <ul class="footer-brand-links">
+                        <li><a href="/docs/getting-started">Get started</a></li>
+                    <li><a href="/docs/">Docs</a></li>
+                    <li><a href="https://github.com/cipi-sh/cipi" target="_blank" rel="noopener">GitHub</a></li>
+                    </ul>
+                </div>
+                <nav class="footer-col footer-col--compare" aria-label="Compare Cipi with alternatives">
+                    <strong>Compare Cipi</strong>
+                    <ul>
+                        <li><a href="/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
+                    <li><a href="/alternative-to-laravel-cloud">Laravel Cloud alternative</a></li>
+                    <li><a href="/alternative-to-ploi">Ploi alternative</a></li>
+                    <li><a href="/alternative-to-coolify">Coolify alternative</a></li>
+                    <li><a href="/alternative-to-runcloud">RunCloud alternative</a></li>
+                    <li><a href="/alternative-to-cloudpanel">CloudPanel alternative</a></li>
+                    <li><a href="/alternative-to-cpanel">cPanel alternative</a></li>
+                    <li><a href="/alternative-to-plesk">Plesk alternative</a></li>
+                    <li><a href="/best-laravel-forge-alternatives">Best Forge alternatives 2026</a></li>
+                    <li><a href="/alternatives">All comparisons</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Free Laravel guides">
+                    <strong>Free guides</strong>
+                    <ul>
+                        <li><a href="/guides/manage-apps-with-cipi-yml">Manage apps with cipi.yml</a></li>
+                    <li><a href="/guides/cipi-gui-and-api">Control panel and API</a></li>
+                    <li><a href="/guides/cipi-agent-laravel-mcp">cipi/agent and project MCP</a></li>
+                    <li><a href="/guides/deploy-wordpress-custom-app">Deploy WordPress on Cipi</a></li>
+                    <li><a href="/guides/">All guides</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-content">
+                <div class="footer-left">
+                    Made with ❤️ by <a href="https://web.ap.it" target="_blank" rel="noopener">Andrea Pollastri</a>
+                    <span class="footer-license"> · Open source, MIT Licensed</span>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="https://conn.web.ap.it" target="_blank" rel="noopener">SSH Connection Manager</a></li>
+                    <li><a href="/discovery">Discovery</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateFavicon(theme) {
+            const variant = theme === 'dark' ? 'dark' : 'light';
+            document.getElementById('favicon').href = `/favicon-${variant}.png`;
+        }
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            var tc=document.getElementById('themeColor'); if(tc) tc.content=(html.getAttribute('data-theme')==='dark')?'#A3E635':'#65A30D';
+            localStorage.setItem('cipi-theme', next);
+            updateFavicon(next);
+        }
+        (function () {
+            const saved = localStorage.getItem('cipi-theme');
+            if (saved) { document.documentElement.setAttribute('data-theme', saved); updateFavicon(saved); }
+            else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark'); updateFavicon('dark');
+            }
+        })();
+    </script>
+
+    <script async src="https://stats.misterdev.it/i/12f27ee0-8603-466d-8b1a-f719f7ecc6d7.js"></script>
+    <noscript><img src="https://stats.misterdev.it/collect/pixel.gif?k=12f27ee0-8603-466d-8b1a-f719f7ecc6d7&p=/" width="1" height="1" /></noscript>
+</body>
+
+</html>

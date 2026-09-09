@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate sitemap.xml from English HTML pages."""
+"""Generate sitemap.xml from English HTML pages at the site root."""
 from __future__ import annotations
 
 from datetime import date
@@ -8,28 +8,29 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://cipi.sh"
 TODAY = date.today().isoformat()
+SKIP_DIRS = {".git", "scripts", "netlify", "css"}
 
 
 def file_to_canon(path: Path) -> str | None:
-    rel = path.relative_to(ROOT).as_posix()
-    if rel.endswith("404.html"):
+    rel = path.relative_to(ROOT)
+    if any(part in SKIP_DIRS or part.startswith(".") for part in rel.parts):
         return None
-    if rel == "index.html":
-        return "/"
-    if not rel.startswith("en/"):
+    name = rel.as_posix()
+    if name.endswith("404.html"):
         return None
-    rest = rel[len("en/") :]
-    if rest.endswith("/index.html"):
-        return "/" + rest[: -len("index.html")]
-    if rest == "index.html":
+    if name == "index.html":
         return "/"
-    return "/" + rest[: -len(".html")]
+    if name.endswith("/index.html"):
+        return "/" + name[: -len("index.html")]
+    if name.endswith(".html"):
+        return "/" + name[: -len(".html")]
+    return None
 
 
 def href(canon: str) -> str:
     if canon == "/":
         return f"{BASE}/"
-    return f"{BASE}/en{canon}"
+    return f"{BASE}{canon}"
 
 
 def priority_for(canon: str) -> tuple[str, str]:

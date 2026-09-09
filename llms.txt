@@ -6,7 +6,7 @@ Full plain-text site content for LLM ingestion: https://cipi.sh/llms-full.txt
 
 ## Site
 
-English only. Homepage: `https://cipi.sh/`. Pages: `https://cipi.sh/en/…`. `/en/` 301s to `/`. Former language trees (`/de`, `/fr`, `/it`, `/es`, `/pt`) and localized slugs 301 to the English equivalent. There is no Accept-Language or cookie redirect.
+English only. Public URLs have no language prefix: homepage `https://cipi.sh/`, docs `https://cipi.sh/docs/`, and so on. `/en/…` 301s to the same path without `/en`. Former language trees (`/de`, `/fr`, `/it`, `/es`, `/pt`) and localized slugs 301 to the English equivalent. There is no Accept-Language or cookie redirect.
 
 Key facts:
 
@@ -37,71 +37,71 @@ Key facts:
 
 ## Docs
 
-- [Documentation Index](https://cipi.sh/en/docs/): Full technical documentation hub
-- [Getting Started](https://cipi.sh/en/docs/getting-started): Installation, requirements, quick start, tech stack, app structure
-- [Cipi Agent](https://cipi.sh/en/docs/agent): Laravel package `cipi/agent` — webhooks, health check, in-app MCP, database anonymizer ([GitHub](https://github.com/cipi-sh/agent))
-- [Apps](https://cipi.sh/en/docs/apps): Create, manage, and configure Laravel and custom applications
-- [Deploy & CI/CD](https://cipi.sh/en/docs/deploy): Zero-downtime deployments, Git integration, CI/CD pipelines, notifications
-- [Infrastructure](https://cipi.sh/en/docs/infrastructure): PHP, databases, SSL, backups, workers, firewall, Meilisearch, host packages, server management
-- [CLI Client](https://cipi.sh/en/docs/cli-client): Remote `cipi-cli` — manage servers from the terminal via the REST API
-- [Control Panel (GUI)](https://cipi.sh/en/docs/gui): Optional self-hosted web control panel — apps (incl. Octane / engine), databases, SSL, www, deploys, 2FA/TOTP, multi-server ([GitHub](https://github.com/cipi-sh/gui))
-- [Advanced](https://cipi.sh/en/docs/advanced): REST API (1.20), server sync, vault encryption, SMTP, IP whitelist, log retention, advanced config
-- [About Cipi](https://cipi.sh/en/docs/about): History, security model, design decisions, comparisons
-- [cipi.yml](https://cipi.sh/en/cipi-yml): The per-app configuration file committed with the code — aliases, PHP and php.ini, extra databases, queue workers or Horizon, Laravel Reverb (5.1.2+), scheduler, healthcheck and backup profiles, reconciled with `cipi yml plan` / `cipi yml apply`
+- [Documentation Index](https://cipi.sh/docs/): Full technical documentation hub
+- [Getting Started](https://cipi.sh/docs/getting-started): Installation, requirements, quick start, tech stack, app structure
+- [Cipi Agent](https://cipi.sh/docs/agent): Laravel package `cipi/agent` — webhooks, health check, in-app MCP, database anonymizer ([GitHub](https://github.com/cipi-sh/agent))
+- [Apps](https://cipi.sh/docs/apps): Create, manage, and configure Laravel and custom applications
+- [Deploy & CI/CD](https://cipi.sh/docs/deploy): Zero-downtime deployments, Git integration, CI/CD pipelines, notifications
+- [Infrastructure](https://cipi.sh/docs/infrastructure): PHP, databases, SSL, backups, workers, firewall, Meilisearch, host packages, server management
+- [CLI Client](https://cipi.sh/docs/cli-client): Remote `cipi-cli` — manage servers from the terminal via the REST API
+- [Control Panel (GUI)](https://cipi.sh/docs/gui): Optional self-hosted web control panel — apps (incl. Octane / engine), databases, SSL, www, deploys, 2FA/TOTP, multi-server ([GitHub](https://github.com/cipi-sh/gui))
+- [Advanced](https://cipi.sh/docs/advanced): REST API (1.20), server sync, vault encryption, SMTP, IP whitelist, log retention, advanced config
+- [About Cipi](https://cipi.sh/docs/about): History, security model, design decisions, comparisons
+- [cipi.yml](https://cipi.sh/cipi-yml): The per-app configuration file committed with the code — aliases, PHP and php.ini, extra databases, queue workers or Horizon, Laravel Reverb (5.1.2+), scheduler, healthcheck and backup profiles, reconciled with `cipi yml plan` / `cipi yml apply`
 
 ## API & CLI
 
-- [Installation & Quick Start](https://cipi.sh/en/docs/getting-started#installation): Server requirements, setup script, post-install access
-- [Cipi API](https://cipi.sh/en/docs/advanced#cipi-api): Server REST API + MCP + Swagger — current package **1.20** (`cipi/api`, [release 1.20](https://github.com/cipi-sh/api/releases/tag/1.20), [GitHub](https://github.com/cipi-sh/api))
-- [CLI Client](https://cipi.sh/en/docs/cli-client): Remote terminal client for apps, databases, SSL, deploys
-- [WHMCS Module](https://cipi.sh/en/docs/advanced#whmcs): WHMCS provisioning module for billing automation
-- [Agent — MCP Server](https://cipi.sh/en/docs/agent#agent-mcp): Model Context Protocol server for AI agents
+- [Installation & Quick Start](https://cipi.sh/docs/getting-started#installation): Server requirements, setup script, post-install access
+- [Cipi API](https://cipi.sh/docs/advanced#cipi-api): Server REST API + MCP + Swagger — current package **1.20** (`cipi/api`, [release 1.20](https://github.com/cipi-sh/api/releases/tag/1.20), [GitHub](https://github.com/cipi-sh/api))
+- [CLI Client](https://cipi.sh/docs/cli-client): Remote terminal client for apps, databases, SSL, deploys
+- [WHMCS Module](https://cipi.sh/docs/advanced#whmcs): WHMCS provisioning module for billing automation
+- [Agent — MCP Server](https://cipi.sh/docs/agent#agent-mcp): Model Context Protocol server for AI agents
 
 ## Guides
 
-- [Guides Index](https://cipi.sh/en/guides/): Free, practical guides on Laravel deployment, security, CI/CD, ecosystem, AI development and tooling
-- [Deploy Laravel on an Ubuntu VPS](https://cipi.sh/en/guides/deploy-laravel-ubuntu-vps): Full production stack, manual steps vs one-command setup, hardening and operations
-- [Laravel Security Checklist](https://cipi.sh/en/guides/laravel-security-checklist): Server + app hardening, dependency scanning, secrets, monitoring and incident response
-- [The Laravel Ecosystem in 2026](https://cipi.sh/en/guides/laravel-ecosystem-2026): Octane, Horizon, Reverb, Livewire, Inertia, Filament, Pest — with adoption advice
-- [CI/CD for Laravel](https://cipi.sh/en/guides/laravel-ci-cd-git-workflow): Git workflow, copy-paste GitHub Actions pipeline, zero-downtime deploys, safe migrations
-- [Spec-Driven Development with AI Agents](https://cipi.sh/en/guides/spec-driven-development-ai-laravel): Specs over vibes, MCP, guardrails and a spec-to-production loop
-- [The Self-Hosted Laravel Developer Stack](https://cipi.sh/en/guides/laravel-developer-stack-2026): Own deploys, error tracking, analytics, storage and more for the price of a VPS
-- [Back Up a VPS to an S3 Bucket](https://cipi.sh/en/guides/backup-vps-s3): Off-site S3 backups with Cipi — configure, schedule, prune and restore
-- [Deploy WordPress on Cipi](https://cipi.sh/en/guides/deploy-wordpress-custom-app): Custom app, MariaDB, SSL, safe uploads/wp-config, GitHub Actions auto-deploy on push to main
-- [Use cipi/agent in Laravel](https://cipi.sh/en/guides/cipi-agent-laravel-mcp): Laravel package `cipi/agent` — project MCP for debug, named seeders, logs and `db_query` from Cursor without SSH
-- [Cipi Control Panel and API](https://cipi.sh/en/guides/cipi-gui-and-api): Optional cipi/api + cipi/gui extensions — REST, MCP, Swagger, multi-server dashboard, server cockpit, cipi-cli and WHMCS on the same API
-- [Manage Laravel apps with cipi.yml](https://cipi.sh/en/guides/manage-apps-with-cipi-yml): Generate, plan and apply aliases, PHP, workers, Reverb, healthchecks and backups from a committed `cipi.yml`, then opt in so every deploy reconciles
+- [Guides Index](https://cipi.sh/guides/): Free, practical guides on Laravel deployment, security, CI/CD, ecosystem, AI development and tooling
+- [Deploy Laravel on an Ubuntu VPS](https://cipi.sh/guides/deploy-laravel-ubuntu-vps): Full production stack, manual steps vs one-command setup, hardening and operations
+- [Laravel Security Checklist](https://cipi.sh/guides/laravel-security-checklist): Server + app hardening, dependency scanning, secrets, monitoring and incident response
+- [The Laravel Ecosystem in 2026](https://cipi.sh/guides/laravel-ecosystem-2026): Octane, Horizon, Reverb, Livewire, Inertia, Filament, Pest — with adoption advice
+- [CI/CD for Laravel](https://cipi.sh/guides/laravel-ci-cd-git-workflow): Git workflow, copy-paste GitHub Actions pipeline, zero-downtime deploys, safe migrations
+- [Spec-Driven Development with AI Agents](https://cipi.sh/guides/spec-driven-development-ai-laravel): Specs over vibes, MCP, guardrails and a spec-to-production loop
+- [The Self-Hosted Laravel Developer Stack](https://cipi.sh/guides/laravel-developer-stack-2026): Own deploys, error tracking, analytics, storage and more for the price of a VPS
+- [Back Up a VPS to an S3 Bucket](https://cipi.sh/guides/backup-vps-s3): Off-site S3 backups with Cipi — configure, schedule, prune and restore
+- [Deploy WordPress on Cipi](https://cipi.sh/guides/deploy-wordpress-custom-app): Custom app, MariaDB, SSL, safe uploads/wp-config, GitHub Actions auto-deploy on push to main
+- [Use cipi/agent in Laravel](https://cipi.sh/guides/cipi-agent-laravel-mcp): Laravel package `cipi/agent` — project MCP for debug, named seeders, logs and `db_query` from Cursor without SSH
+- [Cipi Control Panel and API](https://cipi.sh/guides/cipi-gui-and-api): Optional cipi/api + cipi/gui extensions — REST, MCP, Swagger, multi-server dashboard, server cockpit, cipi-cli and WHMCS on the same API
+- [Manage Laravel apps with cipi.yml](https://cipi.sh/guides/manage-apps-with-cipi-yml): Generate, plan and apply aliases, PHP, workers, Reverb, healthchecks and backups from a committed `cipi.yml`, then opt in so every deploy reconciles
 
 ## Comparisons
 
-- [Cipi Alternatives](https://cipi.sh/en/alternatives): Overview of how Cipi compares to popular Laravel deployment tools and server panels
-- [Best Laravel Forge Alternatives 2026](https://cipi.sh/en/best-laravel-forge-alternatives): Buyer's guide — Cipi, Ploi, Coolify, Vito Deploy, Cleavr, RunCloud and Laravel Cloud compared
-- [Laravel Forge Alternative](https://cipi.sh/en/alternative-to-laravel-forge): Free, open-source, self-hosted alternative to Laravel Forge
-- [Laravel Cloud Alternative](https://cipi.sh/en/alternative-to-laravel-cloud): Self-hosted, fixed-cost alternative to the Laravel Cloud PaaS
-- [fortrabbit Alternative](https://cipi.sh/en/alternative-to-fortrabbit): Self-hosted, Laravel-first alternative to the fortrabbit PHP PaaS
-- [Render Alternative](https://cipi.sh/en/alternative-to-render): Self-hosted, fixed-cost alternative to Render for Laravel teams
-- [20i Alternative](https://cipi.sh/en/alternative-to-20i): Laravel deploy CLI alternative to 20i managed hosting
-- [Sevalla Alternative](https://cipi.sh/en/alternative-to-sevalla): Self-hosted alternative to Sevalla (Kinsta) for Laravel
-- [Ploi Cloud Alternative](https://cipi.sh/en/alternative-to-ploi-cloud): Self-hosted alternative to Ploi Cloud (ploi.cloud), distinct from Ploi.io
-- [Ploi Alternative](https://cipi.sh/en/alternative-to-ploi): Free, open-source alternative to Ploi.io with no deploy limits
-- [Cleavr Alternative](https://cipi.sh/en/alternative-to-cleavr): Free, self-hosted alternative to Cleavr for Laravel teams
-- [moss.sh Alternative](https://cipi.sh/en/alternative-to-moss): Free, unlimited-deploy alternative to moss.sh
-- [Kamal Alternative](https://cipi.sh/en/alternative-to-kamal): Full server panel alternative to Kamal — native LEMP, not just Docker deploys
-- [RunCloud Alternative](https://cipi.sh/en/alternative-to-runcloud): Laravel-native, free alternative to RunCloud
-- [ServerPilot Alternative](https://cipi.sh/en/alternative-to-serverpilot): Laravel-native, free alternative to ServerPilot
-- [CloudPanel Alternative](https://cipi.sh/en/alternative-to-cloudpanel): Laravel-first, CLI-driven alternative to CloudPanel
-- [Coolify Alternative](https://cipi.sh/en/alternative-to-coolify): Laravel-native, CLI-first alternative to Coolify for teams that prefer a native LEMP stack over Docker
-- [Dokku Alternative](https://cipi.sh/en/alternative-to-dokku): Laravel-first alternative to Dokku with full server provisioning
-- [Easypanel Alternative](https://cipi.sh/en/alternative-to-easypanel): Laravel-native alternative to Easypanel without Docker overhead
-- [Vito Deploy Alternative](https://cipi.sh/en/alternative-to-vito-deploy): CLI-first, single-binary alternative to Vito Deploy
-- [cPanel Alternative](https://cipi.sh/en/alternative-to-cpanel): Lightweight, Laravel-native alternative to cPanel
-- [DirectAdmin Alternative](https://cipi.sh/en/alternative-to-directadmin): Free, Laravel-native alternative to DirectAdmin for dedicated VPS deploys
-- [Plesk Alternative](https://cipi.sh/en/alternative-to-plesk): Lightweight, Laravel-native alternative to Plesk
+- [Cipi Alternatives](https://cipi.sh/alternatives): Overview of how Cipi compares to popular Laravel deployment tools and server panels
+- [Best Laravel Forge Alternatives 2026](https://cipi.sh/best-laravel-forge-alternatives): Buyer's guide — Cipi, Ploi, Coolify, Vito Deploy, Cleavr, RunCloud and Laravel Cloud compared
+- [Laravel Forge Alternative](https://cipi.sh/alternative-to-laravel-forge): Free, open-source, self-hosted alternative to Laravel Forge
+- [Laravel Cloud Alternative](https://cipi.sh/alternative-to-laravel-cloud): Self-hosted, fixed-cost alternative to the Laravel Cloud PaaS
+- [fortrabbit Alternative](https://cipi.sh/alternative-to-fortrabbit): Self-hosted, Laravel-first alternative to the fortrabbit PHP PaaS
+- [Render Alternative](https://cipi.sh/alternative-to-render): Self-hosted, fixed-cost alternative to Render for Laravel teams
+- [20i Alternative](https://cipi.sh/alternative-to-20i): Laravel deploy CLI alternative to 20i managed hosting
+- [Sevalla Alternative](https://cipi.sh/alternative-to-sevalla): Self-hosted alternative to Sevalla (Kinsta) for Laravel
+- [Ploi Cloud Alternative](https://cipi.sh/alternative-to-ploi-cloud): Self-hosted alternative to Ploi Cloud (ploi.cloud), distinct from Ploi.io
+- [Ploi Alternative](https://cipi.sh/alternative-to-ploi): Free, open-source alternative to Ploi.io with no deploy limits
+- [Cleavr Alternative](https://cipi.sh/alternative-to-cleavr): Free, self-hosted alternative to Cleavr for Laravel teams
+- [moss.sh Alternative](https://cipi.sh/alternative-to-moss): Free, unlimited-deploy alternative to moss.sh
+- [Kamal Alternative](https://cipi.sh/alternative-to-kamal): Full server panel alternative to Kamal — native LEMP, not just Docker deploys
+- [RunCloud Alternative](https://cipi.sh/alternative-to-runcloud): Laravel-native, free alternative to RunCloud
+- [ServerPilot Alternative](https://cipi.sh/alternative-to-serverpilot): Laravel-native, free alternative to ServerPilot
+- [CloudPanel Alternative](https://cipi.sh/alternative-to-cloudpanel): Laravel-first, CLI-driven alternative to CloudPanel
+- [Coolify Alternative](https://cipi.sh/alternative-to-coolify): Laravel-native, CLI-first alternative to Coolify for teams that prefer a native LEMP stack over Docker
+- [Dokku Alternative](https://cipi.sh/alternative-to-dokku): Laravel-first alternative to Dokku with full server provisioning
+- [Easypanel Alternative](https://cipi.sh/alternative-to-easypanel): Laravel-native alternative to Easypanel without Docker overhead
+- [Vito Deploy Alternative](https://cipi.sh/alternative-to-vito-deploy): CLI-first, single-binary alternative to Vito Deploy
+- [cPanel Alternative](https://cipi.sh/alternative-to-cpanel): Lightweight, Laravel-native alternative to cPanel
+- [DirectAdmin Alternative](https://cipi.sh/alternative-to-directadmin): Free, Laravel-native alternative to DirectAdmin for dedicated VPS deploys
+- [Plesk Alternative](https://cipi.sh/alternative-to-plesk): Lightweight, Laravel-native alternative to Plesk
 
 ## Optional
 
-- [What's New in Cipi 5](https://cipi.sh/en/whats-new): Everything new in Cipi 5 — Laravel Octane on FrankenPHP, Horizon, Reverb, PostgreSQL, CrowdSec, Meilisearch, allowlisted host packages
-- [Cipi Discovery](https://cipi.sh/en/discovery): Interactive showcase and quick start guide
+- [What's New in Cipi 5](https://cipi.sh/whats-new): Everything new in Cipi 5 — Laravel Octane on FrankenPHP, Horizon, Reverb, PostgreSQL, CrowdSec, Meilisearch, allowlisted host packages
+- [Cipi Discovery](https://cipi.sh/discovery): Interactive showcase and quick start guide
 - [Cipi on GitHub](https://github.com/cipi-sh/cipi): Source code, issues, releases
 - [Cipi Releases](https://github.com/cipi-sh/cipi/releases): Changelog and version history
 - [WHMCS Module on GitHub](https://github.com/cipi-sh/whmcs): WHMCS provisioning module source code

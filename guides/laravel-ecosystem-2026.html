@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Laravel Ecosystem in 2026 — Octane, Horizon, Reverb & Beyond</title>
+    <meta name="description" content="A field guide to the Laravel ecosystem in 2026: runtime (Octane, Horizon, Reverb), UI stacks (Livewire, Inertia, Filament), testing and quality tools, observability, and how to host it all — with honest adoption advice.">
+    <meta name="keywords" content="laravel ecosystem, laravel tools 2026, laravel octane, laravel horizon, laravel reverb, filament laravel, livewire vs inertia, laravel packages">
+    <meta name="author" content="Andrea Pollastri">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://cipi.sh/guides/laravel-ecosystem-2026">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Cipi">
+    <meta property="og:url" content="https://cipi.sh/guides/laravel-ecosystem-2026">
+    <meta property="og:title" content="The Laravel Ecosystem in 2026 — Octane, Horizon, Reverb & Beyond">
+    <meta property="og:description" content="A field guide to the Laravel ecosystem in 2026: runtime (Octane, Horizon, Reverb), UI stacks (Livewire, Inertia, Filament), testing and quality tools, observability, and how to host it all — with honest adoption advice.">
+    <meta property="og:image" content="https://cipi.sh/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="The Laravel Ecosystem in 2026 — Octane, Horizon, Reverb & Beyond">
+            <meta property="og:locale" content="en_US">
+    <meta property="article:published_time" content="2026-08-04T08:00:00+02:00">
+    <meta property="article:modified_time" content="2026-08-04T08:00:00+02:00">
+    <meta property="article:author" content="https://web.ap.it">
+    <meta property="article:section" content="Guides">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Laravel Ecosystem in 2026 — Octane, Horizon, Reverb & Beyond">
+    <meta name="twitter:description" content="A field guide to the Laravel ecosystem in 2026: runtime (Octane, Horizon, Reverb), UI stacks (Livewire, Inertia, Filament), testing and quality tools, observability, and how to host it all — with honest adoption advice.">
+    <meta name="twitter:image" content="https://cipi.sh/og.png">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "The Laravel Ecosystem in 2026 — Octane, Horizon, Reverb & Beyond",
+  "name": "The Laravel Ecosystem in 2026 — Octane, Horizon, Reverb & Beyond",
+  "url": "https://cipi.sh/guides/laravel-ecosystem-2026",
+  "description": "A field guide to the Laravel ecosystem in 2026: runtime (Octane, Horizon, Reverb), UI stacks (Livewire, Inertia, Filament), testing and quality tools, observability, and how to host it all — with honest adoption advice.",
+  "inLanguage": "en",
+  "image": "https://cipi.sh/og.png",
+  "datePublished": "2026-08-04",
+  "dateModified": "2026-08-04",
+  "author": {
+    "@type": "Person",
+    "name": "Andrea Pollastri",
+    "url": "https://web.ap.it",
+    "sameAs": [
+      "https://github.com/andreapollastri",
+      "https://www.linkedin.com/in/andrea-pollastri"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cipi",
+    "url": "https://cipi.sh/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cipi.sh/favicon-light-192.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cipi.sh/guides/laravel-ecosystem-2026"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Cipi",
+    "url": "https://cipi.sh/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Ubuntu"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Cipi",
+    "url": "https://cipi.sh/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://cipi.sh/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://cipi.sh/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Laravel Ecosystem 2026",
+      "item": "https://cipi.sh/guides/laravel-ecosystem-2026"
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Laravel still a good choice in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The ecosystem is arguably its strongest asset: first-party solutions for queues (Horizon), WebSockets (Reverb), high-performance runtime (Octane on FrankenPHP), admin panels (Filament) and testing (Pest), plus a mature hosting spectrum from managed PaaS to free self-hosted tools like Cipi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use Laravel Octane or stick with PHP-FPM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stick with PHP-FPM until throughput or latency is a measured problem. Octane keeps the app booted and can multiply requests per second, but adds state-leak considerations. With Cipi both run side by side, so you can convert a single app with cipi app convert --to=octane when the numbers justify it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Livewire or Inertia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Livewire if your team wants to stay in PHP and the app is dashboard-like; Inertia if you want a real Vue or React SPA with Laravel routing and no separate API. Both are first-class in 2026 — team skills should decide, not benchmarks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Filament good enough to replace a custom admin panel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For internal tools and back-offices, almost always yes: forms, tables, filters and permissions arrive in hours instead of weeks. Public-facing or highly custom UIs still deserve a dedicated frontend."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the cheapest way to run the full Laravel stack (Octane, Horizon, Reverb)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A single Ubuntu VPS managed by a free deploy tool. Cipi installs and manages the entire stack — including Octane on FrankenPHP, Horizon and Reverb — for $0 in tooling; you pay only the VPS bill."
+      }
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" id="favicon" type="image/png" sizes="48x48" href="/favicon-light.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-light-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-light-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-light-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/docs/style.css">
+    <style>
+        .cmp { max-width: 880px; margin: 0 auto; padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem; }
+        .cmp-breadcrumb { display:inline-flex; align-items:center; flex-wrap:wrap; gap:.15rem; font-size:.82rem; margin-bottom:1.6rem; padding:.35rem .6rem; border:1px solid var(--border); border-radius:0; background:var(--bg-card); box-shadow:var(--shadow-sm); }
+        .cmp-breadcrumb a { display:inline-flex; align-items:center; color:var(--text-secondary); text-decoration:none; padding:.2rem .55rem; transition:color .15s, background .15s; }
+        .cmp-breadcrumb a:hover { color:var(--accent); background:var(--tag-bg); }
+        .cmp-breadcrumb .sep { color:var(--text-muted); opacity:.5; font-size:1rem; line-height:1; }
+        .cmp-breadcrumb .current { color:var(--text); font-weight:600; padding:.2rem .55rem; }
+        .cmp-breadcrumb .home-ico { width:13px; height:13px; margin-right:.35rem; }
+        .cmp-eyebrow { display:inline-block; font-family:var(--font-mono); font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); background:var(--tag-bg); padding:.3rem .7rem; margin-bottom:1.1rem; }
+        .cmp h1 { font-family:var(--font-display); font-size:clamp(1.9rem, 4.6vw, 2.9rem); line-height:1.1; letter-spacing:-.02em; margin-bottom:1rem; }
+        .cmp h1 em { color:var(--accent); font-style:normal; }
+        .cmp-updated { font-family:var(--font-mono); font-size:.78rem; color:var(--text-muted); margin:0 0 1.2rem; }
+        .cmp-updated a { color:var(--text-muted); }
+        .cmp .lead { font-size:1.15rem; color:var(--text-secondary); max-width:46rem; margin-bottom:1.2rem; }
+        .cmp h2 { font-family:var(--font-display); font-size:1.65rem; margin:3rem 0 1rem; letter-spacing:-.01em; }
+        .cmp h3 { font-family:var(--font-display); font-size:1.18rem; margin:2rem 0 .6rem; }
+        .cmp p { color:var(--text-secondary); margin-bottom:1rem; line-height:1.75; }
+        .cmp ul, .cmp ol { margin:0 0 1.2rem 1.35rem; color:var(--text-secondary); line-height:1.7; }
+        .cmp li { margin-bottom:.5rem; padding-left:.25rem; }
+        .cmp li strong, .cmp p strong { color:var(--text); }
+        .cmp a.inline { color:var(--accent); text-decoration:none; }
+        .cmp a.inline:hover { text-decoration:underline; }
+        .cmp code { font-family:var(--font-mono); font-size:.85em; background:var(--tag-bg); padding:.1rem .35rem; }
+        .code-pre { background:var(--code-bg); color:var(--code-text); padding:1.1rem 1.3rem; overflow-x:auto; font-family:var(--font-mono); font-size:.84rem; line-height:1.65; margin:1rem 0 1.4rem; white-space:pre; }
+        .code-pre code { background:none; padding:0; font-size:1em; color:inherit; }
+        .install-box { background:var(--code-bg); color:var(--code-text); padding:1.1rem 1.4rem; font-family:var(--font-mono); font-size:.9rem; overflow-x:auto; margin:1rem 0; }
+        .install-box .c, .code-pre .c { color:var(--code-comment); font-style:italic; }
+        .cmp-table-wrap { overflow-x:auto; margin:1.4rem 0; }
+        .cmp-table { width:100%; border-collapse:collapse; font-size:.92rem; border:1px solid var(--border); min-width:560px; }
+        .cmp-table th, .cmp-table td { padding:.7rem .9rem; text-align:left; border-bottom:1px solid var(--border); }
+        .cmp-table thead th { background:var(--bg-warm); font-family:var(--font-display); font-weight:600; }
+        .cmp-table tr:last-child td { border-bottom:none; }
+        .note { border-left:3px solid var(--accent); padding:.9rem 1.1rem; background:var(--tag-bg); margin:1.5rem 0; }
+        .note p { margin:0; }
+        .toc { border:1px solid var(--border); background:var(--bg-card); padding:1.1rem 1.3rem; margin:1.6rem 0 2rem; box-shadow:var(--shadow-sm); }
+        .toc strong { font-family:var(--font-display); display:block; margin-bottom:.5rem; }
+        .toc ol { margin:0 0 0 1.3rem; }
+        .toc li { margin-bottom:.3rem; }
+        .toc a { color:var(--text-secondary); text-decoration:none; }
+        .toc a:hover { color:var(--accent); }
+        .cta-box { border:1px solid var(--accent); background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, var(--bg-card)), var(--bg-card)); padding:1.6rem 1.7rem; margin:2.6rem 0; }
+        .cta-box h2 { margin:0 0 .6rem; font-size:1.3rem; }
+        .cta-box p { margin-bottom:.9rem; }
+        .cta-actions { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1rem; }
+        .btn-primary { display:inline-flex; align-items:center; gap:.5rem; background:var(--accent); color:#0A0A0A; font-weight:600; padding:.7rem 1.3rem; border-radius:var(--radius-sm); text-decoration:none; font-family:var(--font-display); transition:transform .15s, box-shadow .15s; }
+        .btn-primary:hover { transform:translateY(-1px); box-shadow:var(--shadow-md); }
+        .btn-ghost { display:inline-flex; align-items:center; gap:.5rem; border:1px solid var(--border); color:var(--text); padding:.7rem 1.3rem; border-radius:var(--radius-sm); text-decoration:none; font-weight:500; transition:border-color .15s,color .15s; }
+        .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+        .faq-item { border-bottom:1px solid var(--border); padding:1.2rem 0; }
+        .faq-item:last-child { border-bottom:none; }
+        .faq-item h3 { font-family:var(--font-display); font-size:1.08rem; margin:0 0 .45rem; }
+        .faq-item p { margin:0; }
+        .related { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+        .related a { font-size:.9rem; border:1px solid var(--border); padding:.4rem .9rem; text-decoration:none; color:var(--text-secondary); }
+        .related a:hover { border-color:var(--accent); color:var(--accent); }
+        .guide-grid { display:grid; gap:1rem; grid-template-columns:1fr; margin:1.6rem 0; }
+        @media(min-width:680px){ .guide-grid{ grid-template-columns:1fr 1fr; } }
+        .guide-card { display:block; border:1px solid var(--border); padding:1.4rem 1.5rem; background:var(--bg-card); box-shadow:var(--shadow-sm); text-decoration:none; transition:transform .15s, border-color .15s, box-shadow .15s; }
+        .guide-card:hover { transform:translateY(-2px); border-color:var(--accent); box-shadow:var(--shadow-md); }
+        .guide-card h2 { font-family:var(--font-display); font-size:1.15rem; margin:0 0 .4rem; }
+        .guide-card h2 span { color:var(--accent); }
+        .guide-card p { font-size:.92rem; margin:0 0 .7rem; color:var(--text-secondary); }
+        .guide-card .go { font-size:.85rem; font-weight:600; color:var(--accent); font-family:var(--font-display); }
+        .guide-tag { display:inline-block; font-size:.72rem; font-family:var(--font-mono); color:var(--text-muted); border:1px solid var(--border); padding:.15rem .55rem; margin-bottom:.8rem; }
+    </style>
+    <meta name="theme-color" content="#65A30D" id="themeColor">
+</head>
+
+<body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-left">
+                <a href="/" class="nav-logo">
+                    <svg class="tux-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M16.2182,35.9c-3.1368,0-6.8982,1.496-7.2988,5.6766a.916.916,0,0,0,.9061,1.0025h11.97A.9.9,0,0,0,22.7,41.643C22.6175,39.8048,21.7865,35.9,16.2182,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M18.0508,20.564c-1.35,1.0368-7.3687,7.51-4.3595,15.6667" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M31.7818,35.9c3.1368,0,6.8982,1.496,7.2988,5.6766a.916.916,0,0,1-.9061,1.0025h-11.97A.9.9,0,0,1,25.3,41.643C25.3825,39.8048,26.2135,35.9,31.7818,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M35.0148,36.4556c3.1848-2.8438,2.7468-7.5246,2.7468-8.7785,2.8935.82,5.0306,2.9709,5.5941,2.17,1.3744-1.9531-7.5193-7.5461-7.6918-10.8989C35.4951,15.6692,35.1706,5.4214,24,5.4214S12.5049,15.6692,12.3361,18.9484c-.1725,3.3528-9.0662,8.9458-7.6918,10.8989.5635.8007,2.7006-1.35,5.5941-2.17,0,1.2539-.438,5.9347,2.7468,8.7785" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M29.2763,19.8324c1.9318,1.5032,8.0416,8.242,5.0324,16.3983" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M24,24.8431l3.9479-4.2791c-.3858-1.0127-1.712-1.929-3.9479-1.929s-3.5621.9163-3.9479,1.929Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M20.0521,20.564c-3.424.5063-3.9062-2.7247-3.9062-4.7019,0-2.7006,1.4467-4.4367,3.9062-4.4367S23.79,14.7529,23.79,16.3443A3.8486,3.8486,0,0,1,23.181,18.68" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M27.7205,20.1334c.6751.0482,3.9538-.3892,3.9538-3.331s-1.76-3.7615-4.1232-3.7615a3.7861,3.7861,0,0,0-3.8164,2.6682" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M22.7012,41.4815a6.8371,6.8371,0,0,0,2.6076,0" />
+                        <circle fill="currentColor" cx="22.1579" cy="16.5888" r="0.75" />
+                        <circle fill="currentColor" cx="25.5497" cy="16.5888" r="0.75" />
+                    </svg>
+                    <span>Ci<span style="color:var(--signal)">pi</span></span>
+                </a>
+                <span class="nav-badge">Guides</span>
+            </div>
+            <div class="nav-right">
+                
+                
+                
+                <a href="/cipi-yml" class="nav-link">cipi.yml</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                </button>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-nav-sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="cmp">
+        <nav class="cmp-breadcrumb" aria-label="Breadcrumb">
+            <a href="/"><svg class="home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a>
+            <span class="sep">&rsaquo;</span>
+            <a href="/guides/">Guides</a>
+            <span class="sep">&rsaquo;</span>
+            <span class="current">Laravel Ecosystem 2026</span>
+        </nav>
+
+        <span class="cmp-eyebrow">Laravel · ecosystem field guide</span>
+        <h1>The <em>Laravel ecosystem</em> in 2026: a field guide</h1>
+        <p class="cmp-updated">By <a href="https://web.ap.it" target="_blank" rel="author">Andrea Pollastri</a> · Last updated: <time datetime="2026-08-04">August 4, 2026</time> · free to read, no paywall</p>
+        <p class="lead">Laravel long ago stopped being just a framework — it's a stack of first-party runtime services, UI paradigms, quality tooling and hosting options. This guide maps the pieces that matter in 2026 and, more importantly, when each one is actually worth adopting.</p>
+
+        <div class="toc">
+            <strong>In this guide</strong>
+            <ol>
+                <li><a href="#framework">The framework & its rhythm</a></li>
+                    <li><a href="#runtime">The runtime layer</a></li>
+                    <li><a href="#ui">The UI layer</a></li>
+                    <li><a href="#quality">Testing & code quality</a></li>
+                    <li><a href="#observability">Observability</a></li>
+                    <li><a href="#hosting">Hosting & deployment</a></li>
+                    <li><a href="#starting">Starting new projects right</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+            </ol>
+        </div>
+
+        <h2 id="framework">The framework & its rhythm</h2>
+        <p>Laravel ships a major release yearly with a predictable support window, and the PHP 8.x line underneath
+            keeps delivering real performance gains. The practical takeaway: <strong>stay at most one major behind</strong>,
+            automate dependency bumps, and treat the annual upgrade as routine maintenance, not a project. Tools like
+            Rector and Laravel Shift make the mechanical part cheap.</p>
+
+        <h2 id="runtime">The runtime layer</h2>
+        <ul>
+            <li><strong>Octane</strong> keeps the framework booted between requests on FrankenPHP, Swoole or
+                RoadRunner. Adopt when request throughput or p95 latency is a real constraint — not by default.
+                (If you self-host, <a class="inline" href="/">Cipi</a> runs Octane on FrankenPHP with a single flag:
+                <code>cipi app create --octane</code>.)</li>
+                    <li><strong>Queues + Horizon.</strong> Anything slower than ~200ms that isn't the core response belongs in
+                a job. Horizon adds the dashboard, metrics and retry ergonomics that raw <code>queue:work</code>
+                lacks. This is usually the first "scale" investment worth making.</li>
+                    <li><strong>Reverb</strong> brought WebSockets first-party: presence, broadcasting and real-time UI
+                without a third-party pusher service — a natural fit for self-hosted stacks.</li>
+                    <li><strong>Scheduler</strong> replaced crontab sprawl years ago; one cron entry, all scheduling in
+                code.</li>
+                    <li><strong>Cache/sessions on Valkey</strong> (the open-source Redis-compatible fork) is the boring,
+                correct default.</li>
+        </ul>
+
+        <h2 id="ui">The UI layer</h2>
+        <ul>
+            <li><strong>Blade</strong> remains the zero-JavaScript baseline — underrated for content sites and admin
+                CRUD.</li>
+                    <li><strong>Livewire</strong> gives you reactive UIs while staying in PHP. Best for teams without a
+                dedicated frontend and for dashboard-style apps.</li>
+                    <li><strong>Inertia</strong> (Vue/React) is the bridge for teams that want a real SPA frontend with
+                Laravel routing and auth — no separate API layer to maintain.</li>
+                    <li><strong>Filament</strong> became the de-facto admin panel: forms, tables, and full CRUD scaffolding on
+                Livewire. For most internal tools it replaces weeks of hand-built UI. If you start greenfield projects
+                often, <a class="inline" href="https://init.web.ap.it" target="_blank">Init</a> spins up a
+                containerized Laravel + Filament environment on your Mac in one command — day zero, done.</li>
+        </ul>
+
+        <h2 id="quality">Testing & code quality</h2>
+        <ul>
+            <li><strong>Pest</strong> is the community default for new test suites — expressive syntax on the PHPUnit
+                engine, with parallel execution built in.</li>
+                    <li><strong>Larastan</strong> (PHPStan for Laravel) catches type-level bugs statically; run it at a level
+                that hurts a little.</li>
+                    <li><strong>Pint</strong> ends formatting debates with zero config.</li>
+                    <li><strong>Rector</strong> automates upgrades and refactors across the codebase.</li>
+        </ul>
+        <p>The pattern that works: all four in CI, failing the build — see our
+            <a class="inline" href="/guides/laravel-ci-cd-git-workflow">CI/CD for Laravel guide</a> for a
+            copy-paste pipeline.</p>
+
+        <h2 id="observability">Observability</h2>
+        <ul>
+            <li><strong>Telescope</strong> for local/dev request introspection; <strong>Pulse</strong> for lightweight
+                first-party production metrics.</li>
+                    <li><strong>Exception tracking</strong> is the non-negotiable one. If you prefer your error data
+                self-hosted (it often contains user data),
+                <a class="inline" href="https://boogle.web.ap.it" target="_blank">Boogle</a> is a self-hosted
+                exception tracker built for exactly that.</li>
+                    <li><strong>Product analytics:</strong>
+                <a class="inline" href="https://indiestats.web.ap.it" target="_blank">Indiestats</a> is a self-hosted
+                alternative to mainstream analytics — one more piece of the stack you can own instead of rent.</li>
+        </ul>
+
+        <h2 id="hosting">Hosting & deployment</h2>
+        <p>The 2026 spectrum, from most managed to most owned:</p>
+        <div class="cmp-table-wrap">
+            <table class="cmp-table">
+                <thead><tr><th>Option</th><th>Model</th><th>Pick when</th></tr></thead>
+                <tbody>
+                    <tr><td>Laravel Cloud / Vapor</td><td>Managed PaaS / serverless</td><td>Zero ops appetite, usage-based billing is acceptable</td></tr>
+                    <tr><td>Forge, Ploi, Cleavr</td><td>SaaS panel managing your VPS</td><td>You want a dashboard and accept a subscription + third-party dependency</td></tr>
+                    <tr><td>Cipi</td><td>Free, open-source CLI on your VPS</td><td>You want the Forge workflow — Octane, Horizon, Reverb, zero-downtime deploys — self-hosted at $0</td></tr>
+                    <tr><td>Hand-rolled</td><td>DIY scripts</td><td>Learning, or genuinely exotic requirements</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>We maintain honest head-to-head comparisons for all of these — start with
+            <a class="inline" href="/best-laravel-forge-alternatives">the best Forge alternatives in 2026</a> or the
+            full <a class="inline" href="/alternatives">comparison hub</a>.</p>
+
+        <h2 id="starting">Starting new projects right</h2>
+        <p>The ecosystem now covers the whole lifecycle, and the biggest gains are at the start: scaffold with a
+            starter kit or <a class="inline" href="https://init.web.ap.it" target="_blank">Init</a> (Laravel +
+            Filament, containerized, reproducible), define the product as living specs before prompting any AI agent —
+            <a class="inline" href="https://larapilot.web.ap.it" target="_blank">Larapilot</a> brings spec-driven
+            product workflow directly into Laravel projects — and wire deployment on day one, not at the end
+            (<code>cipi app create</code> and your Git pushes deploy themselves). More on the AI side in our
+            <a class="inline" href="/guides/spec-driven-development-ai-laravel">spec-driven development guide</a>.</p>
+
+        <div class="cta-box">
+            <h2>Put this into practice with Cipi</h2>
+            <p>Cipi is the free, open-source deploy CLI referenced throughout this guide: one command turns a fresh
+                Ubuntu VPS into a hardened production server for Laravel — Nginx, PHP-FPM or Octane, MariaDB or
+                PostgreSQL, queues, scheduler, SSL and zero-downtime Git deploys included.</p>
+            <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
+            <div class="cta-actions">
+                <a href="/docs/getting-started" class="btn-primary">Get started free</a>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-ghost">Star on GitHub</a>
+                <a href="/alternatives" class="btn-ghost">Compare with other tools</a>
+            </div>
+        </div>
+
+        <h2 id="faq">Frequently asked questions</h2>
+        <div class="faq-item"><h3>Is Laravel still a good choice in 2026?</h3><p>Yes. The ecosystem is arguably its strongest asset: first-party solutions for queues (Horizon), WebSockets (Reverb), high-performance runtime (Octane on FrankenPHP), admin panels (Filament) and testing (Pest), plus a mature hosting spectrum from managed PaaS to free self-hosted tools like Cipi.</p></div>
+        <div class="faq-item"><h3>Should I use Laravel Octane or stick with PHP-FPM?</h3><p>Stick with PHP-FPM until throughput or latency is a measured problem. Octane keeps the app booted and can multiply requests per second, but adds state-leak considerations. With Cipi both run side by side, so you can convert a single app with cipi app convert --to=octane when the numbers justify it.</p></div>
+        <div class="faq-item"><h3>Livewire or Inertia?</h3><p>Livewire if your team wants to stay in PHP and the app is dashboard-like; Inertia if you want a real Vue or React SPA with Laravel routing and no separate API. Both are first-class in 2026 — team skills should decide, not benchmarks.</p></div>
+        <div class="faq-item"><h3>Is Filament good enough to replace a custom admin panel?</h3><p>For internal tools and back-offices, almost always yes: forms, tables, filters and permissions arrive in hours instead of weeks. Public-facing or highly custom UIs still deserve a dedicated frontend.</p></div>
+        <div class="faq-item"><h3>What is the cheapest way to run the full Laravel stack (Octane, Horizon, Reverb)?</h3><p>A single Ubuntu VPS managed by a free deploy tool. Cipi installs and manages the entire stack — including Octane on FrankenPHP, Horizon and Reverb — for $0 in tooling; you pay only the VPS bill.</p></div>
+
+        <h2>Keep reading</h2>
+        <div class="related">
+            <a href="/guides/laravel-ci-cd-git-workflow">CI/CD for Laravel</a>
+            <a href="/guides/spec-driven-development-ai-laravel">Spec-driven development with AI</a>
+            <a href="/guides/laravel-developer-stack-2026">The self-hosted developer stack</a>
+            <a href="/best-laravel-forge-alternatives">Best Forge alternatives 2026</a>
+            <a href="/whats-new">What's new in Cipi 5</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-shell">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">Cipi</a>
+                    <p>Free open-source Laravel deploy CLI for Ubuntu VPS — Octane, Horizon, Reverb and zero-downtime Git deploys.</p>
+                    <ul class="footer-brand-links">
+                        <li><a href="/docs/getting-started">Get started</a></li>
+                    <li><a href="/docs/">Docs</a></li>
+                    <li><a href="https://github.com/cipi-sh/cipi" target="_blank" rel="noopener">GitHub</a></li>
+                    </ul>
+                </div>
+                <nav class="footer-col footer-col--compare" aria-label="Compare Cipi with alternatives">
+                    <strong>Compare Cipi</strong>
+                    <ul>
+                        <li><a href="/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
+                    <li><a href="/alternative-to-laravel-cloud">Laravel Cloud alternative</a></li>
+                    <li><a href="/alternative-to-ploi">Ploi alternative</a></li>
+                    <li><a href="/alternative-to-coolify">Coolify alternative</a></li>
+                    <li><a href="/alternative-to-runcloud">RunCloud alternative</a></li>
+                    <li><a href="/alternative-to-cloudpanel">CloudPanel alternative</a></li>
+                    <li><a href="/alternative-to-cpanel">cPanel alternative</a></li>
+                    <li><a href="/alternative-to-plesk">Plesk alternative</a></li>
+                    <li><a href="/best-laravel-forge-alternatives">Best Forge alternatives 2026</a></li>
+                    <li><a href="/alternatives">All comparisons</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Free Laravel guides">
+                    <strong>Free guides</strong>
+                    <ul>
+                        <li><a href="/guides/manage-apps-with-cipi-yml">Manage apps with cipi.yml</a></li>
+                    <li><a href="/guides/cipi-gui-and-api">Control panel and API</a></li>
+                    <li><a href="/guides/cipi-agent-laravel-mcp">cipi/agent and project MCP</a></li>
+                    <li><a href="/guides/deploy-wordpress-custom-app">Deploy WordPress on Cipi</a></li>
+                    <li><a href="/guides/">All guides</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-content">
+                <div class="footer-left">
+                    Made with ❤️ by <a href="https://web.ap.it" target="_blank" rel="noopener">Andrea Pollastri</a>
+                    <span class="footer-license"> · Open source, MIT Licensed</span>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="https://conn.web.ap.it" target="_blank" rel="noopener">SSH Connection Manager</a></li>
+                    <li><a href="/discovery">Discovery</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateFavicon(theme) {
+            const variant = theme === 'dark' ? 'dark' : 'light';
+            document.getElementById('favicon').href = `/favicon-${variant}.png`;
+        }
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            var tc=document.getElementById('themeColor'); if(tc) tc.content=(html.getAttribute('data-theme')==='dark')?'#A3E635':'#65A30D';
+            localStorage.setItem('cipi-theme', next);
+            updateFavicon(next);
+        }
+        (function () {
+            const saved = localStorage.getItem('cipi-theme');
+            if (saved) { document.documentElement.setAttribute('data-theme', saved); updateFavicon(saved); }
+            else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark'); updateFavicon('dark');
+            }
+        })();
+    </script>
+
+    <script async src="https://stats.misterdev.it/i/12f27ee0-8603-466d-8b1a-f719f7ecc6d7.js"></script>
+    <noscript><img src="https://stats.misterdev.it/collect/pixel.gif?k=12f27ee0-8603-466d-8b1a-f719f7ecc6d7&p=/" width="1" height="1" /></noscript>
+</body>
+
+</html>

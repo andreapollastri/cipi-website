@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cipi.yml — Server Configuration That Ships With Your Laravel Code | Cipi</title>
+    <meta name="description" content="cipi.yml is a file you commit next to your Laravel app: domain aliases, PHP version and php.ini, extra databases, queue workers or Horizon, Laravel Reverb, the scheduler, healthcheck and backup profiles — reconciled with cipi yml plan and cipi yml apply.">
+    <meta name="keywords" content="cipi.yml, Laravel configuration as code, server config in repository, cipi yml apply, cipi yml plan, Laravel deploy configuration file, queue workers YAML, Laravel Reverb YAML, backup profiles YAML">
+    <meta name="author" content="Andrea Pollastri">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://cipi.sh/cipi-yml">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cipi">
+    <meta property="og:url" content="https://cipi.sh/cipi-yml">
+    <meta property="og:title" content="cipi.yml — configuration that travels with the code">
+    <meta property="og:description" content="One committed file describes what an app expects from the server: aliases, PHP, databases, workers, Reverb, scheduler, health and backups. Plan it, apply it, or reconcile on every deploy.">
+    <meta property="og:image" content="https://cipi.sh/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="cipi.yml — Cipi configuration file">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="cipi.yml — configuration that travels with the code">
+    <meta name="twitter:description" content="One committed file describes what an app expects from the server: aliases, PHP, databases, workers, Reverb, scheduler, health and backups. Plan it, apply it, or reconcile on every deploy.">
+    <meta name="twitter:image" content="https://cipi.sh/og.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "name": "cipi.yml",
+      "headline": "cipi.yml — configuration that travels with the code",
+      "url": "https://cipi.sh/cipi-yml",
+      "description": "How the cipi.yml file works: the sections it can configure, the plan/apply workflow, automatic reconciliation on deploy and the rules that keep it safe to accept over Git.",
+      "inLanguage": "en",
+      "image": "https://cipi.sh/og.png",
+      "datePublished": "2026-09-02",
+      "dateModified": "2026-09-03",
+      "author": { "@type": "Person", "name": "Andrea Pollastri", "url": "https://github.com/andreapollastri" },
+      "about": { "@type": "SoftwareApplication", "name": "Cipi", "applicationCategory": "DeveloperApplication", "operatingSystem": "Ubuntu", "url": "https://cipi.sh/", "softwareVersion": "5.2.2" },
+      "publisher": { "@type": "Organization", "name": "Cipi", "url": "https://cipi.sh/" },
+      "isPartOf": { "@type": "WebSite", "name": "Cipi", "url": "https://cipi.sh/" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I have to write cipi.yml by hand?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. cipi yml generate <app> prints the app's current server configuration as a ready-to-commit cipi.yml, and cipi yml example prints a blank commented template if you prefer to start from scratch." }
+        },
+        {
+          "@type": "Question",
+          "name": "What can cipi.yml configure?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Domain aliases, the PHP version and per-app php.ini overrides, extra MariaDB or PostgreSQL databases, queue workers or Horizon, Laravel Reverb for WebSockets, the Laravel scheduler, an HTTP healthcheck with optional rollback, and the app's backup profiles." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a deploy apply cipi.yml automatically?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Only if you opt in with cipi yml auto <app> on. Until then deploys ignore the file and you reconcile manually with cipi yml plan and cipi yml apply." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it safe to accept configuration from a Git repository?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The schema carries no shell commands or include paths, an app can only touch databases named after itself and its own backup profiles, the healthcheck URL must be one of its own domains, unknown keys are errors and an invalid file is rejected as a whole rather than applied halfway." }
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cipi.sh/" },
+        { "@type": "ListItem", "position": 2, "name": "cipi.yml", "item": "https://cipi.sh/cipi-yml" }
+      ]
+    }
+    </script>
+
+    <link rel="icon" id="favicon" type="image/png" sizes="48x48" href="/favicon-light.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-light-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-light-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-light-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/docs/style.css">
+    <style>
+        .cmp { max-width: 940px; margin: 0 auto; padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem; }
+        .cmp-breadcrumb { display:inline-flex; align-items:center; flex-wrap:wrap; gap:.15rem; font-size:.82rem; margin-bottom:1.6rem; padding:.35rem .6rem; border:1px solid var(--border); border-radius: 0; background:var(--bg-card); }
+        .cmp-breadcrumb a { display:inline-flex; align-items:center; color: var(--text-secondary); text-decoration: none; padding:.2rem .55rem; border-radius: 0; transition:color .15s, background .15s; }
+        .cmp-breadcrumb a:hover { color: var(--accent); background:var(--tag-bg); }
+        .cmp-breadcrumb .sep { color: var(--text-muted); opacity:.5; font-size:1rem; line-height:1; }
+        .cmp-breadcrumb .current { color: var(--text); font-weight:600; padding:.2rem .55rem; }
+        .cmp-breadcrumb .home-ico { width:13px; height:13px; margin-right:.35rem; }
+        .cmp-eyebrow { display:inline-block; font-family:var(--font-mono); font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); background:var(--tag-bg); padding:.32rem .65rem; border-radius: 0; margin-bottom:1rem; }
+        .cmp h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.08; letter-spacing: -.02em; margin-bottom: 1.1rem; }
+        .cmp h1 em { color: var(--accent); font-style: normal; }
+        .cmp .lead { font-size: 1.18rem; color: var(--text-secondary); max-width: 44rem; }
+        .cmp-cta { display:flex; flex-wrap:wrap; gap:.75rem; margin:2rem 0 .5rem; }
+        .btn-primary { display:inline-flex; align-items:center; gap:.5rem; background:var(--accent); color:#0A0A0A; font-weight:600; padding:.75rem 1.4rem; border-radius:var(--radius-sm); text-decoration:none; box-shadow:var(--shadow-sm); transition:transform .15s, box-shadow .15s; }
+        .btn-primary:hover { transform:translateY(-1px); box-shadow: var(--shadow-md); }
+        .btn-ghost { display:inline-flex; align-items:center; gap:.5rem; border:1px solid var(--border); color:var(--text); padding:.75rem 1.4rem; border-radius:var(--radius-sm); text-decoration:none; transition:border-color .15s, color .15s; }
+        .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+        .cmp h2 { font-family: var(--font-display); font-size:1.7rem; margin:3.2rem 0 1rem; letter-spacing:-.01em; }
+        .cmp p { color: var(--text-secondary); margin-bottom:1rem; }
+        .cmp a.inline { color: var(--accent); text-decoration:none; }
+        .cmp a.inline:hover { text-decoration:underline; }
+        .alt-grid { display:grid; gap:1rem; grid-template-columns:1fr; margin:1.5rem 0; }
+        @media(min-width:680px){ .alt-grid{ grid-template-columns:1fr 1fr; } }
+        .alt-card { display:block; border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem 1.5rem; background:var(--bg-card); box-shadow:var(--shadow-sm); text-decoration:none; transition:transform .15s, border-color .15s, box-shadow .15s; }
+        .alt-card:hover { transform:translateY(-2px); border-color:var(--accent); box-shadow:var(--shadow-md); }
+        .alt-card h3 { font-family:var(--font-display); font-size:1.2rem; margin-bottom:.35rem; }
+        .alt-card h3 span { color:var(--accent); }
+        .alt-card p { font-size:.92rem; margin:0 0 .7rem; color:var(--text-secondary); }
+        .alt-card .go { font-size:.85rem; font-weight:600; color:var(--accent); font-family:var(--font-display); }
+        .alt-tag { display:inline-block; font-size:.72rem; font-family:var(--font-mono); color:var(--text-muted); border:1px solid var(--border); border-radius: 0; padding:.15rem .55rem; margin-bottom:.8rem; }
+        .hero-header { position:relative; overflow:hidden; padding:2.6rem 2rem; margin:0 0 2.2rem; border:1px solid var(--border); border-radius:calc(var(--radius) + 4px); background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 10%, var(--bg-card)) 0%, var(--bg-card) 45%, color-mix(in srgb, var(--accent) 4%, transparent) 100%); box-shadow:var(--shadow-md); }
+        .hero-header::before { content:""; position:absolute; inset:auto -80px -120px auto; width:260px; height:260px; background:radial-gradient(circle, color-mix(in srgb, var(--accent) 18%, transparent) 0%, transparent 70%); pointer-events:none; }
+        .hero-header::after { content:""; position:absolute; inset:-120px auto auto -100px; width:220px; height:220px; background:radial-gradient(circle, color-mix(in srgb, var(--accent) 12%, transparent) 0%, transparent 72%); pointer-events:none; }
+        .hero-header-inner { position:relative; z-index:1; display:grid; gap:1.5rem; }
+        .hero-kicker { display:inline-flex; align-items:center; gap:.5rem; width:max-content; font-family:var(--font-mono); font-size:.76rem; letter-spacing:.05em; text-transform:uppercase; color:var(--accent); background:color-mix(in srgb, var(--accent) 12%, transparent); border:1px solid color-mix(in srgb, var(--accent) 22%, var(--border)); padding:.42rem .75rem; border-radius: 0; }
+        .hero-title { max-width: 13ch; margin:0; font-family:var(--font-display); font-size:clamp(2.4rem, 6vw, 4.4rem); line-height:.98; letter-spacing:-.04em; }
+        .hero-title .accent { color:var(--accent); }
+        .hero-copy { max-width: 43rem; margin:0; font-size:1.06rem; line-height:1.75; color:var(--text-secondary); }
+        .hero-metrics { display:grid; gap:.85rem; grid-template-columns:repeat(3, minmax(0, 1fr)); }
+        .hero-metric { padding:1rem 1rem 1.05rem; border:1px solid var(--border); border-radius: 0; background:color-mix(in srgb, var(--bg-card) 92%, white 8%); backdrop-filter:blur(6px); }
+        .hero-metric strong { display:block; font-family:var(--font-display); font-size:1.2rem; margin-bottom:.2rem; }
+        .hero-metric span { display:block; font-size:.82rem; line-height:1.5; color:var(--text-muted); }
+        @media(max-width:700px){ .hero-header { padding:2rem 1.25rem; } .hero-metrics { grid-template-columns:1fr; } .hero-title { max-width:none; } }
+        .cmp-h2-lg { font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.2rem) !important; margin: 2.4rem 0 1rem !important; letter-spacing: -.02em; }
+        .alt-card.featured { border-color: var(--accent); background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, var(--bg-card)), var(--bg-card)); }
+        .faq-item { border-bottom:1px solid var(--border); padding:1.2rem 0; }
+        .faq-item:last-child { border-bottom:none; }
+        .faq-item h3 { font-family:var(--font-display); font-size:1.08rem; margin-bottom:.45rem; }
+        .faq-item p { margin:0; }
+    </style>
+    <meta name="theme-color" content="#65A30D" id="themeColor">
+</head>
+
+<body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-left">
+                <a href="/" class="nav-logo">
+                    <svg class="tux-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M16.2182,35.9c-3.1368,0-6.8982,1.496-7.2988,5.6766a.916.916,0,0,0,.9061,1.0025h11.97A.9.9,0,0,0,22.7,41.643C22.6175,39.8048,21.7865,35.9,16.2182,35.9Z" />
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M18.0508,20.564c-1.35,1.0368-7.3687,7.51-4.3595,15.6667" />
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M31.7818,35.9c3.1368,0,6.8982,1.496,7.2988,5.6766a.916.916,0,0,1-.9061,1.0025h-11.97A.9.9,0,0,1,25.3,41.643C25.3825,39.8048,26.2135,35.9,31.7818,35.9Z" />
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M35.0148,36.4556c3.1848-2.8438,2.7468-7.5246,2.7468-8.7785,2.8935.82,5.0306,2.9709,5.5941,2.17,1.3744-1.9531-7.5193-7.5461-7.6918-10.8989C35.4951,15.6692,35.1706,5.4214,24,5.4214S12.5049,15.6692,12.3361,18.9484c-.1725,3.3528-9.0662,8.9458-7.6918,10.8989.5635.8007,2.7006-1.35,5.5941-2.17,0,1.2539-.438,5.9347,2.7468,8.7785" />
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M29.2763,19.8324c1.9318,1.5032,8.0416,8.242,5.0324,16.3983" />
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M24,24.8431l3.9479-4.2791c-.3858-1.0127-1.712-1.929-3.9479-1.929s-3.5621.9163-3.9479,1.929Z" />
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M20.0521,20.564c-3.424.5063-3.9062-2.7247-3.9062-4.7019,0-2.7006,1.4467-4.4367,3.9062-4.4367S23.79,14.7529,23.79,16.3443A3.8486,3.8486,0,0,1,23.181,18.68" />
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M27.7205,20.1334c.6751.0482,3.9538-.3892,3.9538-3.331s-1.76-3.7615-4.1232-3.7615a3.7861,3.7861,0,0,0-3.8164,2.6682" />
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M22.7012,41.4815a6.8371,6.8371,0,0,0,2.6076,0" />
+                    <circle fill="currentColor" cx="22.1579" cy="16.5888" r="0.75" />
+                    <circle fill="currentColor" cx="25.5497" cy="16.5888" r="0.75" />
+                </svg>
+                    <span>Ci<span style="color:var(--signal)">pi</span></span>
+                </a>
+                <span class="nav-badge">cipi.yml</span>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                </button>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-nav-sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.2-1.695-.39-.21-.945-.735-.015-.75.885-.015 1.515.81 1.725 1.14 1.005 1.695 2.61 1.215 3.255.93.105-.72.39-1.215.705-1.5-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.21.69.825.57C20.565 21.795 24 17.31 24 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="cmp">
+        <nav class="cmp-breadcrumb" aria-label="Breadcrumb">
+            <a href="/"><svg class="home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+            <span class="sep">&rsaquo;</span>
+            <span class="current">cipi.yml</span>
+        </nav>
+
+        <section class="hero-header" aria-labelledby="cipi-yml-title">
+            <div class="hero-header-inner">
+                <span class="hero-kicker">Since Cipi 5.1</span>
+                <h1 id="cipi-yml-title" class="hero-title"><span class="accent">cipi.yml</span> — config that ships with the code.</h1>
+                <p class="hero-copy">One file at the root of your repository describes the state an app expects on the
+                    server: domain aliases, PHP version and per-app settings, extra databases, queue workers, the
+                    scheduler, its healthcheck and its backup profiles. Review it in a pull request, ship it with the
+                    release, and let <code>cipi yml apply</code> reconcile the server with it.</p>
+                <div class="hero-metrics" aria-label="Highlights">
+                    <div class="hero-metric"><strong>7 areas</strong><span>Aliases, PHP, php.ini, databases, workers, scheduler, health and backups.</span></div>
+                    <div class="hero-metric"><strong>plan → apply</strong><span>Nothing changes until you look at the diff and say yes.</span></div>
+                    <div class="hero-metric"><strong>Fail-closed</strong><span>Scoped to one app, no shell commands anywhere in the schema.</span></div>
+                </div>
+                <div class="cmp-cta">
+                    <a class="btn-primary" href="/docs/deploy#cli-yml">Full reference in the docs</a>
+                    <a class="btn-ghost" href="/whats-new">What's new in 5.1</a>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="cmp-h2-lg" id="what-it-is">Server configuration, reviewed like code</h2>
+        <p>Server state usually lives somewhere else: a panel, a wiki page, or the memory of whoever set the box up.
+            A <code>cipi.yml</code> committed next to your Laravel application makes that state part of the same pull
+            request as the code that depends on it. A release that adds a queue also adds its worker. A release that
+            needs a bigger <code>upload_max_filesize</code> carries it. Roll the code back, and the configuration rolls
+            back with it.</p>
+        <p>The file is <strong>declarative</strong>: it describes the end state, not the steps. Cipi reads what the
+            server has, compares it with the file and shows you the difference before touching anything.</p>
+
+        <h2 class="cmp-h2-lg" id="commands">The commands</h2>
+        <div class="code-block">
+            <div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+            <pre><span class="p">$</span> cipi yml generate myapp          <span class="c"># this app's current config, as a cipi.yml</span>
+<span class="p">$</span> cipi yml example myapp           <span class="c"># blank commented template, in myapp's namespace</span>
+<span class="p">$</span> cipi yml validate myapp          <span class="c"># parse and check, change nothing</span>
+<span class="p">$</span> cipi yml plan myapp              <span class="c"># show exactly what would change</span>
+<span class="p">$</span> cipi yml apply myapp [--yes]     <span class="c"># apply it</span>
+<span class="p">$</span> cipi yml auto myapp on|off|status  <span class="c"># apply after every successful deploy</span></pre>
+        </div>
+        <div class="table-scroll">
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>What it does</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>cipi yml generate</code></td>
+                        <td>Prints the app's configuration <em>as it stands on the server</em> — aliases, PHP version
+                            and per-app settings, extra databases, queue workers read back out of Supervisor, the
+                            scheduler and the backup profiles the app owns — as a ready-to-commit file.</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi yml example</code></td>
+                        <td>A blank, fully commented template. Pass an app name and the placeholder databases and
+                            profiles land inside that app's namespace, so the template validates as-is.</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi yml validate</code></td>
+                        <td>Parses the file and checks every value against the schema. Changes nothing.</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi yml plan</code></td>
+                        <td>The diff: every alias, worker, database, setting and profile that would be added, changed
+                            or removed. Read this before you apply.</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi yml apply</code></td>
+                        <td>Applies the plan. Add <code>--yes</code> for scripts and CI.</td>
+                    </tr>
+                    <tr>
+                        <td><code>cipi yml auto</code></td>
+                        <td>Opt in — or out — of reconciling automatically after every successful deploy.
+                            <code>status</code> reports the current setting.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>The file is looked up in <code>current/cipi.yml</code>, then <code>current/cipi.yaml</code>, then
+            <code>shared/cipi.yml</code> — override with <code>--file=&lt;path&gt;</code>.</p>
+
+        <h2 class="cmp-h2-lg" id="what-it-configures">What the file can configure</h2>
+        <div class="alt-grid">
+            <a class="alt-card" href="/docs/infrastructure#cli-aliases">
+                <span class="alt-tag">app.aliases</span>
+                <h3>Domain <span>aliases</span></h3>
+                <p>The declared list replaces the current one — an alias you delete from the file is removed from
+                    Nginx. Wildcards such as <code>*.myapp.com</code> are accepted, for multi-tenant subdomains. The
+                    primary domain is never managed here.</p>
+                <span class="go">Aliases in the docs →</span>
+            </a>
+            <a class="alt-card" href="/docs/infrastructure#cli-ini">
+                <span class="alt-tag">app.php · app.ini</span>
+                <h3>PHP version and <span>php.ini</span></h3>
+                <p>Pin the app to PHP 8.3, 8.4 or 8.5 (already installed on the server) and set per-app overrides —
+                    <code>upload_max_filesize</code>, <code>post_max_size</code>, <code>memory_limit</code> and the
+                    rest. Server-wide values stay with <code>cipi ini set</code>.</p>
+                <span class="go">php.ini in the docs →</span>
+            </a>
+            <a class="alt-card" href="/docs/infrastructure#cli-db">
+                <span class="alt-tag">databases</span>
+                <h3>Extra <span>databases</span></h3>
+                <p>Beyond the one created with the app: reporting, analytics, whatever the release needs, on MariaDB or
+                    PostgreSQL. Credentials land in <code>shared/cipi-databases.env</code> and are never written back
+                    to the repository. Databases are created, never dropped.</p>
+                <span class="go">Databases in the docs →</span>
+            </a>
+            <a class="alt-card" href="/docs/infrastructure#cli-workers">
+                <span class="alt-tag">workers</span>
+                <h3>Queue workers and <span>Horizon</span></h3>
+                <p>Declare each queue with its process count, tries and timeout, and Supervisor is reconciled to
+                    match. Or set <code>horizon: true</code> and let Horizon own the queues instead. Since
+                    <strong>5.1.2</strong>, <code>horizon: false</code> and <code>reverb: false</code> are actually
+                    read — previously <code>false</code> was treated like a missing key, so declaring
+                    <code>horizon: false</code> on an app running Horizon did nothing.</p>
+                <span class="go">Workers in the docs →</span>
+            </a>
+            <a class="alt-card" href="/docs/apps#cli-app-reverb">
+                <span class="alt-tag">workers.reverb</span>
+                <h3>WebSockets with <span>Reverb</span></h3>
+                <p>Since <strong>5.1.2</strong>, <code>reverb: true</code> gives the app a Laravel Reverb server — a
+                    localhost port, a Supervisor program, an nginx proxy for <code>/app</code> and <code>/apps</code> on
+                    its own domain, and generated <code>REVERB_*</code> credentials. Laravel apps only.</p>
+                <span class="go">Reverb in the docs →</span>
+            </a>
+            <a class="alt-card" href="/docs/infrastructure#cli-schedule">
+                <span class="alt-tag">schedule</span>
+                <h3>The Laravel <span>scheduler</span></h3>
+                <p>One boolean turns <code>* * * * * artisan schedule:run</code> on or off for the app. No crontab
+                    editing, no forgotten entry on the next server.</p>
+                <span class="go">Scheduler in the docs →</span>
+            </a>
+            <a class="alt-card" href="/docs/infrastructure#cli-health">
+                <span class="alt-tag">health</span>
+                <h3>Healthcheck and <span>rollback</span></h3>
+                <p>An HTTP probe on one of the app's own domains, checked every five minutes and again right after
+                    every deploy. Optionally roll a failing release back automatically — the code symlink only,
+                    migrations are not undone.</p>
+                <span class="go">Health checks in the docs →</span>
+            </a>
+            <a class="alt-card" href="/docs/infrastructure#cli-backup">
+                <span class="alt-tag">backup.profiles</span>
+                <h3>Backup <span>profiles</span></h3>
+                <p>Per-app profiles with their own scope, schedule, retention, destinations and encryption — a cheap
+                    database run every 30 minutes, a complete encrypted copy to S3 at night. Profile names are scoped
+                    to the app.</p>
+                <span class="go">Backups in the docs →</span>
+            </a>
+            <a class="alt-card featured" href="/docs/deploy#cli-yml">
+                <span class="alt-tag">reference</span>
+                <h3>Every key, <span>documented</span></h3>
+                <p>The full schema, the lookup order, the validation rules and the notification hooks live in the
+                    deploy chapter of the documentation.</p>
+                <span class="go">Read the reference →</span>
+            </a>
+        </div>
+
+        <h2 class="cmp-h2-lg" id="example">A complete file</h2>
+        <p>You do not have to write it by hand. <code>cipi yml generate &lt;app&gt;</code> prints what the server
+            already has; commit that and <code>cipi yml plan</code> reports nothing to do.</p>
+        <div class="code-block">
+            <div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+            <pre><span class="p">$</span> cipi yml generate myapp &gt; cipi.yml   <span class="c"># then commit it</span>
+<span class="p">$</span> cipi yml plan myapp                  <span class="c"># reports nothing to do</span></pre>
+        </div>
+        <div class="code-block">
+            <div class="code-block-header"><span class="code-block-lang">yaml</span><button class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+            <pre>version: 1
+
+app:
+  <span class="c"># 8.3, 8.4 or 8.5 — must already be installed (cipi php install 8.5)</span>
+  php: <span class="s">"8.5"</span>
+
+  <span class="c"># The declared list replaces the current aliases: one you remove here is
+  # removed from the server. The primary domain is not managed here.</span>
+  aliases:
+    - <span class="s">"www.myapp.com"</span>
+    - <span class="s">"*.myapp.com"</span>      <span class="c"># wildcard, for multi-tenant subdomains</span>
+
+  <span class="c"># Per-app php.ini overrides. Server-wide values stay with `cipi ini set`.</span>
+  ini:
+    upload_max_filesize: 50M
+    post_max_size: 60M
+    memory_limit: 512M
+
+<span class="c"># Extra databases beyond the one created with the app. Credentials land in
+# /home/myapp/shared/cipi-databases.env — never written back to the repo.</span>
+databases:
+  - name: myapp_reporting
+  - name: myapp_analytics
+    engine: pgsql          <span class="c"># mariadb (default) or pgsql</span>
+
+workers:
+  horizon: false           <span class="c"># true replaces the queue workers below</span>
+
+  <span class="c"># Laravel Reverb (5.1.2+). Cipi gives it a localhost port, a Supervisor program
+  # and an nginx proxy for /app/{key} and /apps/{id}/… on this app's own domain, and
+  # generates REVERB_APP_ID/KEY/SECRET (plus the VITE_ copies) in the .env the first
+  # time it is enabled. An app with its own /app or /apps route cannot use it behind
+  # the same domain — those paths belong to the Pusher protocol.</span>
+  reverb: false
+
+  queues:
+    - queue: default
+      processes: 2
+    - queue: emails
+      processes: 1
+      tries: 5
+      timeout: 300
+
+<span class="c"># Laravel scheduler (* * * * * artisan schedule:run)</span>
+schedule: true
+
+<span class="c"># HTTP healthcheck. Probed every 5 minutes and right after every deploy.
+# The URL must be one of this app's own domains.</span>
+health:
+  url: <span class="s">"https://myapp.com/up"</span>
+  expect: 200
+  <span class="c"># grace: 8                      # seconds before the first probe after a deploy
+  # postdeploy: false             # skip the check right after a deploy
+  # rollback_on_unhealthy: true   # undo a release that fails the check
+  #                               # (the code symlink only — migrations are NOT undone)</span>
+
+<span class="c"># Backup strategy for this app. Profile names must be myapp or myapp-*.</span>
+backup:
+  profiles:
+    <span class="c"># Frequent and cheap: databases only, without the noisy tables.</span>
+    - name: myapp-db
+      scope: db
+      databases: [<span class="s">"myapp"</span>, <span class="s">"myapp_*"</span>, <span class="s">"tenant_*"</span>]
+      exclude_tables: [<span class="s">"*.jobs"</span>, <span class="s">"*.telescope_*"</span>]
+      every: 30m           <span class="c"># 5m/10m/15m/20m/30m, 1h..12h, 1d..28d</span>
+      keep: 48             <span class="c"># keep the last 48 runs</span>
+      destinations: [local]
+
+    <span class="c"># Slower, complete, off-site and encrypted.</span>
+    - name: myapp-nightly
+      scope: all           <span class="c"># all | files | db</span>
+      cron: <span class="s">"0 2 * * *"</span>
+      keep_days: 14
+      destinations: [s3]
+      encrypt: true</pre>
+        </div>
+
+        <h2 class="cmp-h2-lg" id="auto">Deploys ignore the file until you opt in</h2>
+        <p>Nothing happens on deploy until you run <code>cipi yml auto &lt;app&gt; on</code>. With that opt-in given,
+            every <strong>successful</strong> deploy reconciles — from both <code>cipi deploy</code> and the Git
+            webhook. A release that carries no <code>cipi.yml</code> is a quiet no-op, and a file that fails validation
+            is reported by email (<code>yml_fail</code>) and <strong>never partially applied</strong>. A successful
+            reconcile fires <code>yml_apply</code>.</p>
+        <div class="code-block">
+            <div class="code-block-header"><span class="code-block-lang">bash</span><button class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+            <pre><span class="p">$</span> cipi yml auto myapp on       <span class="c"># reconcile after every successful deploy</span>
+<span class="p">$</span> cipi yml auto myapp status   <span class="c"># is it on?</span>
+<span class="p">$</span> cipi yml auto myapp off      <span class="c"># back to manual apply</span></pre>
+        </div>
+
+        <h2 class="cmp-h2-lg" id="safety">Why it is safe to accept over Git</h2>
+        <p>The file arrives from a repository, so anyone who can commit controls its contents. It is fail-closed
+            throughout:</p>
+        <ul>
+            <li>It can only <strong>configure</strong> an app that already exists — never create, rename or delete
+                one.</li>
+            <li>Its databases must be named <code>&lt;app&gt;</code> or <code>&lt;app&gt;_*</code>, and its backup
+                profiles <code>&lt;app&gt;</code> or <code>&lt;app&gt;-*</code>.</li>
+            <li>Its healthcheck URL must resolve to one of the app's own domains — otherwise a commit could aim the
+                server's prober at an internal address and read the answer back out of the alert emails.</li>
+            <li>Unknown keys are errors, and no field carries a shell command or a path to include.</li>
+            <li>The parser implements a deliberately small YAML subset and refuses anchors, aliases, tags, merge keys,
+                block scalars and flow mappings outright.</li>
+        </ul>
+        <div class="callout warning">
+            <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            <div>Once <code>yml auto</code> is on, anyone who can push to that repository can change the app's aliases,
+                PHP settings, workers, healthcheck and backup profiles. That is the point of configuration-as-code —
+                treat write access to the repo accordingly.</div>
+        </div>
+
+        <h2 class="cmp-h2-lg" id="faq">Questions</h2>
+        <div class="faq-item">
+            <h3>Do I have to write the file by hand?</h3>
+            <p>No. <code>cipi yml generate &lt;app&gt;</code> prints the app's current server configuration as a
+                ready-to-commit <code>cipi.yml</code>, and <code>cipi yml example</code> prints a blank commented
+                template if you would rather start from scratch.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Can a commit break my server?</h3>
+            <p>The schema carries no shell commands and no include paths, an app can only touch its own databases and
+                backup profiles, and a file that fails validation is rejected as a whole rather than applied halfway.
+                Deploys ignore the file entirely until you turn <code>cipi yml auto</code> on.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What happens to things the file does not mention?</h3>
+            <p>They are left alone. Only the sections you declare are reconciled — with one deliberate exception:
+                the alias list is authoritative, so removing an alias from the file removes it from the server.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Does it work with the Git webhook?</h3>
+            <p>Yes. With <code>cipi yml auto</code> on, both <code>cipi deploy</code> and a webhook-triggered deploy
+                reconcile after a successful release.</p>
+        </div>
+
+        <div class="cmp-cta">
+            <a class="btn-primary" href="/docs/deploy#cli-yml">Full cipi.yml reference</a>
+            <a class="btn-ghost" href="/guides/manage-apps-with-cipi-yml">Practical guide</a>
+            <a class="btn-ghost" href="/docs/getting-started">Install Cipi</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-shell">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">Cipi</a>
+                    <p>Free open-source Laravel deploy CLI for Ubuntu VPS — Octane, Horizon, Reverb and zero-downtime Git deploys.</p>
+                    <ul class="footer-brand-links">
+                        <li><a href="/docs/getting-started">Get started</a></li>
+                    <li><a href="/docs/">Docs</a></li>
+                    <li><a href="https://github.com/cipi-sh/cipi" target="_blank" rel="noopener">GitHub</a></li>
+                    </ul>
+                </div>
+                <nav class="footer-col footer-col--compare" aria-label="Compare Cipi with alternatives">
+                    <strong>Compare Cipi</strong>
+                    <ul>
+                        <li><a href="/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
+                    <li><a href="/alternative-to-laravel-cloud">Laravel Cloud alternative</a></li>
+                    <li><a href="/alternative-to-ploi">Ploi alternative</a></li>
+                    <li><a href="/alternative-to-coolify">Coolify alternative</a></li>
+                    <li><a href="/alternative-to-runcloud">RunCloud alternative</a></li>
+                    <li><a href="/alternative-to-cloudpanel">CloudPanel alternative</a></li>
+                    <li><a href="/alternative-to-cpanel">cPanel alternative</a></li>
+                    <li><a href="/alternative-to-plesk">Plesk alternative</a></li>
+                    <li><a href="/best-laravel-forge-alternatives">Best Forge alternatives 2026</a></li>
+                    <li><a href="/alternatives">All comparisons</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Free Laravel guides">
+                    <strong>Free guides</strong>
+                    <ul>
+                        <li><a href="/guides/manage-apps-with-cipi-yml">Manage apps with cipi.yml</a></li>
+                    <li><a href="/guides/cipi-gui-and-api">Control panel and API</a></li>
+                    <li><a href="/guides/cipi-agent-laravel-mcp">cipi/agent and project MCP</a></li>
+                    <li><a href="/guides/deploy-wordpress-custom-app">Deploy WordPress on Cipi</a></li>
+                    <li><a href="/guides/">All guides</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-content">
+                <div class="footer-left">
+                    Made with ❤️ by <a href="https://web.ap.it" target="_blank" rel="noopener">Andrea Pollastri</a>
+                    <span class="footer-license"> · Open source, MIT Licensed</span>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="https://conn.web.ap.it" target="_blank" rel="noopener">SSH Connection Manager</a></li>
+                    <li><a href="/discovery">Discovery</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateFavicon(theme) {
+            const variant = theme === 'dark' ? 'dark' : 'light';
+            document.getElementById('favicon').href = `/favicon-${variant}.png`;
+        }
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            var tc=document.getElementById('themeColor'); if(tc) tc.content=(html.getAttribute('data-theme')==='dark')?'#A3E635':'#65A30D';
+            localStorage.setItem('cipi-theme', next);
+            updateFavicon(next);
+        }
+        (function () {
+            const saved = localStorage.getItem('cipi-theme');
+            if (saved) { document.documentElement.setAttribute('data-theme', saved); updateFavicon(saved); }
+            else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark'); updateFavicon('dark');
+            }
+        })();
+        function copyCode(btn) {
+            const pre = btn.closest('.code-block').querySelector('pre');
+            navigator.clipboard.writeText(pre.innerText).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+
+    <script async src="https://stats.misterdev.it/i/12f27ee0-8603-466d-8b1a-f719f7ecc6d7.js"></script>
+    <noscript><img src="https://stats.misterdev.it/collect/pixel.gif?k=12f27ee0-8603-466d-8b1a-f719f7ecc6d7&p=/" width="1" height="1" /></noscript>
+</body>
+
+</html>

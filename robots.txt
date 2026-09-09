@@ -1,5 +1,5 @@
 # Cipi — https://cipi.sh
-# Homepage is `/` (English). Former language trees 301 to `/en/…`.
+# Homepage is `/` (English). `/en/…` and former language trees 301 to the unprefixed URL.
 # LLM-friendly summaries: https://cipi.sh/llms.txt and https://cipi.sh/llms-full.txt
 
 User-agent: *

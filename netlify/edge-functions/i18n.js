@@ -2,10 +2,11 @@
  * Canonical host + English-only URL graph for Netlify Edge.
  *
  * - `/` is the English homepage and must return 200 (never language-redirect it).
- * - `/en` and `/en/` 301 to `/` so there is one English home URL.
+ * - Public pages live at the site root (`/docs/`, `/whats-new`, …). `/en/…` 301s
+ *   to the same path without the prefix.
  * - Former language trees (`/de`, `/fr`, `/it`, `/es`, `/pt`) 301 to the English
  *   equivalent. Localized slugs (Italian `/novita`, German guide paths, …) map
- *   through the tables below, then land on `/en/…`.
+ *   through the tables below, then land on the unprefixed English URL.
  * - Accept-Language and the cipi-lang cookie are never used for redirects.
  * - Unknown paths are not rewritten (real 404 — no redirect-to-404).
  */
@@ -224,9 +225,9 @@ export function localizeCanon(bare, lang) {
 }
 
 export function langHref(lang, canon) {
-  // Public site is English-only. `lang` is ignored; kept for call-site compatibility.
+  // Public site is unprefixed English. `lang` is ignored; kept for call-site compatibility.
   if (canon === '/') return '/';
-  return `/en${canon}`;
+  return canon;
 }
 
 export function languageForBarePath(bare) {
@@ -246,33 +247,30 @@ export function isAssetPath(path) {
   return ASSET_EXT_RE.test(last) || last.includes('.');
 }
 
-export function isKnownLegacyPath(path) {
+export function isTranslatedSlug(path) {
   const bare = normalizeBarePath(path);
   if (bare === '/') return false;
-  if (Object.prototype.hasOwnProperty.call(SLUGS_IT, bare)) return true;
-  if (Object.prototype.hasOwnProperty.call(SLUGS_EN, bare) && bare !== '/') return true;
-  if (Object.prototype.hasOwnProperty.call(SLUGS_TO_EN, bare)) return true;
-  if (bare.startsWith('/alternativa-a-') || bare.startsWith('/alternative-to-')) return true;
-  if (bare.startsWith('/docs/') || bare.startsWith('/guides/') || bare.startsWith('/guide/')) {
-    return true;
+  if (SLUGS_TO_EN[bare] || SLUG_LANG[bare]) return true;
+  if (IT_ONLY_EXACT.has(bare)) return true;
+  for (const prefix of IT_ONLY_PREFIXES) {
+    if (bare.startsWith(prefix)) return true;
   }
+  if (bare.startsWith('/alternativa-a-')) return true;
   return false;
 }
 
-/**
- * Pure routing decision. `pass` means serve the origin file (or a real 404).
- * `redirect` is a pathname on the same origin.
- */
-export function decide(url, { isPreview = false } = {}) {
-  if (!isPreview && (url.protocol === 'http:' || url.hostname === `www.${CANONICAL_HOST}`)) {
-    const next = new URL(url.toString());
-    next.protocol = 'https:';
-    next.hostname = CANONICAL_HOST;
-    return { redirect: next.pathname + next.search, status: 301, absolute: next.toString() };
-  }
+export function isKnownLegacyPath(path) {
+  return isTranslatedSlug(path);
+}
 
-  const path = url.pathname;
+function isUglyPath(path, pretty) {
+  if (path === pretty) return false;
+  if (path.endsWith('.html') || path.endsWith('/index.html') || path === '/index.html') return true;
+  const strip = (p) => (p.length > 1 && p.endsWith('/') ? p.slice(0, -1) : p);
+  return strip(path) === strip(pretty);
+}
 
+function decidePath(path) {
   if (isAssetPath(path) && !path.endsWith('.html')) {
     return { pass: true };
   }
@@ -281,11 +279,9 @@ export function decide(url, { isPreview = false } = {}) {
     return { redirect: '/', status: 301 };
   }
 
-  const langMatch = path.match(LANG_PREFIX_RE);
-  if (langMatch) {
+  if (LANG_PREFIX_RE.test(path)) {
     const rest = path.replace(/^\/(en|de|fr|it|es|pt)/, '') || '/';
-    const canon = toEnglishCanon(normalizeBarePath(rest));
-    const expected = langHref('en', canon);
+    const expected = langHref('en', toEnglishCanon(normalizeBarePath(rest)));
     if (path !== expected) {
       return { redirect: expected, status: 301 };
     }
@@ -296,12 +292,34 @@ export function decide(url, { isPreview = false } = {}) {
     return { pass: true };
   }
 
-  if (isKnownLegacyPath(path)) {
-    const canon = toEnglishCanon(normalizeBarePath(path));
-    return { redirect: langHref('en', canon), status: 301 };
+  const expected = langHref('en', toEnglishCanon(normalizeBarePath(path)));
+  if (path !== expected && (isTranslatedSlug(path) || isUglyPath(path, expected))) {
+    return { redirect: expected, status: 301 };
   }
 
   return { pass: true };
+}
+
+/**
+ * Pure routing decision. `pass` means serve the origin file (or a real 404).
+ * `redirect` is a pathname on the same origin.
+ */
+export function decide(url, { isPreview = false } = {}) {
+  const hostNeedsCanon =
+    !isPreview && (url.protocol === 'http:' || url.hostname === `www.${CANONICAL_HOST}`);
+  const pathDecision = decidePath(url.pathname);
+
+  if (hostNeedsCanon) {
+    const next = new URL(url.toString());
+    next.protocol = 'https:';
+    next.hostname = CANONICAL_HOST;
+    if (pathDecision.redirect) {
+      next.pathname = pathDecision.redirect;
+    }
+    return { redirect: next.pathname + next.search, status: 301, absolute: next.toString() };
+  }
+
+  return pathDecision;
 }
 
 function redirectTo(request, pathname, status = 301, absolute) {

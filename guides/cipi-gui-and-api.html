@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipi control panel and API — what the two optional extensions unlock</title>
+    <meta name="description" content="A practical guide to Cipi's two optional extensions: the REST API (cipi/api) and the web control panel (cipi/gui). REST, MCP, Swagger, multi-server dashboard, server cockpit and automation — without leaving the CLI behind.">
+    <meta name="keywords" content="cipi api, cipi gui, cipi control panel, laravel rest api, cipi mcp, cipi dashboard, cipi-cli, laravel server panel">
+    <meta name="author" content="Andrea Pollastri">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://cipi.sh/guides/cipi-gui-and-api">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Cipi">
+    <meta property="og:url" content="https://cipi.sh/guides/cipi-gui-and-api">
+    <meta property="og:title" content="Cipi control panel and API — what the two optional extensions unlock">
+    <meta property="og:description" content="A practical guide to Cipi's two optional extensions: the REST API (cipi/api) and the web control panel (cipi/gui). REST, MCP, Swagger, multi-server dashboard, server cockpit and automation — without leaving the CLI behind.">
+    <meta property="og:image" content="https://cipi.sh/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Cipi control panel and API">
+            <meta property="og:locale" content="en_US">
+    <meta property="article:published_time" content="2026-08-22T08:00:00+02:00">
+    <meta property="article:modified_time" content="2026-08-22T08:00:00+02:00">
+    <meta property="article:author" content="https://web.ap.it">
+    <meta property="article:section" content="Guides">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cipi control panel and API — what the two optional extensions unlock">
+    <meta name="twitter:description" content="A practical guide to Cipi's two optional extensions: the REST API (cipi/api) and the web control panel (cipi/gui). REST, MCP, Swagger, multi-server dashboard, server cockpit and automation — without leaving the CLI behind.">
+    <meta name="twitter:image" content="https://cipi.sh/og.png">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Cipi control panel and API — what the two optional extensions unlock",
+  "name": "Cipi control panel and API — what the two optional extensions unlock",
+  "url": "https://cipi.sh/guides/cipi-gui-and-api",
+  "description": "A practical guide to Cipi's two optional extensions: the REST API (cipi/api) and the web control panel (cipi/gui). REST, MCP, Swagger, multi-server dashboard, server cockpit and automation — without leaving the CLI behind.",
+  "inLanguage": "en",
+  "image": "https://cipi.sh/og.png",
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "author": {
+    "@type": "Person",
+    "name": "Andrea Pollastri",
+    "url": "https://web.ap.it",
+    "sameAs": [
+      "https://github.com/andreapollastri",
+      "https://www.linkedin.com/in/andrea-pollastri"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cipi",
+    "url": "https://cipi.sh/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cipi.sh/favicon-light-192.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cipi.sh/guides/cipi-gui-and-api"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Cipi",
+    "url": "https://cipi.sh/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Ubuntu"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Cipi",
+    "url": "https://cipi.sh/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://cipi.sh/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://cipi.sh/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Control panel and API",
+      "item": "https://cipi.sh/guides/cipi-gui-and-api"
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need the UI panel to use Cipi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Cipi is CLI-first. Without cipi api and without cipi gui the server still does the same work: apps, deploys, SSL, backups, firewall. Both packages are opt-in extensions since v4.7.0."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the GUI without the API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The panel is an HTTP client of the REST API. Every managed server needs cipi api and a Bearer token with the abilities you want to expose. Without the API there is nothing to show."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the GUI replace the CLI on the server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Every browser action is the same cipi command executed via sudo by the panel API. You can keep working over SSH in parallel, with no split-brain state."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between REST, MCP and cipi-cli?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The same API, three clients. REST is for scripts, CI and WHMCS. MCP is for AI agents (Cursor, VS Code, Claude). cipi-cli is the laptop terminal. The GUI is the fourth client, built for humans."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I manage several servers from one panel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Register endpoint and token for each box and switch between them with the same login. The panel is stateless relative to your infrastructure: it does not store server state, it reads it from the API."
+      }
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" id="favicon" type="image/png" sizes="48x48" href="/favicon-light.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-light-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-light-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-light-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/docs/style.css">
+    <style>
+        .cmp { max-width: 880px; margin: 0 auto; padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem; }
+        .cmp-breadcrumb { display:inline-flex; align-items:center; flex-wrap:wrap; gap:.15rem; font-size:.82rem; margin-bottom:1.6rem; padding:.35rem .6rem; border:1px solid var(--border); border-radius:0; background:var(--bg-card); box-shadow:var(--shadow-sm); }
+        .cmp-breadcrumb a { display:inline-flex; align-items:center; color:var(--text-secondary); text-decoration:none; padding:.2rem .55rem; transition:color .15s, background .15s; }
+        .cmp-breadcrumb a:hover { color:var(--accent); background:var(--tag-bg); }
+        .cmp-breadcrumb .sep { color:var(--text-muted); opacity:.5; font-size:1rem; line-height:1; }
+        .cmp-breadcrumb .current { color:var(--text); font-weight:600; padding:.2rem .55rem; }
+        .cmp-breadcrumb .home-ico { width:13px; height:13px; margin-right:.35rem; }
+        .cmp-eyebrow { display:inline-block; font-family:var(--font-mono); font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); background:var(--tag-bg); padding:.3rem .7rem; margin-bottom:1.1rem; }
+        .cmp h1 { font-family:var(--font-display); font-size:clamp(1.9rem, 4.6vw, 2.9rem); line-height:1.1; letter-spacing:-.02em; margin-bottom:1rem; }
+        .cmp h1 em { color:var(--accent); font-style:normal; }
+        .cmp-updated { font-family:var(--font-mono); font-size:.78rem; color:var(--text-muted); margin:0 0 1.2rem; }
+        .cmp-updated a { color:var(--text-muted); }
+        .cmp .lead { font-size:1.15rem; color:var(--text-secondary); max-width:46rem; margin-bottom:1.2rem; }
+        .cmp h2 { font-family:var(--font-display); font-size:1.65rem; margin:3rem 0 1rem; letter-spacing:-.01em; }
+        .cmp h3 { font-family:var(--font-display); font-size:1.18rem; margin:2rem 0 .6rem; }
+        .cmp p { color:var(--text-secondary); margin-bottom:1rem; line-height:1.75; }
+        .cmp ul, .cmp ol { margin:0 0 1.2rem 1.35rem; color:var(--text-secondary); line-height:1.7; }
+        .cmp li { margin-bottom:.5rem; padding-left:.25rem; }
+        .cmp li strong, .cmp p strong { color:var(--text); }
+        .cmp a.inline { color:var(--accent); text-decoration:none; }
+        .cmp a.inline:hover { text-decoration:underline; }
+        .cmp code { font-family:var(--font-mono); font-size:.85em; background:var(--tag-bg); padding:.1rem .35rem; }
+        .code-pre { background:var(--code-bg); color:var(--code-text); padding:1.1rem 1.3rem; overflow-x:auto; font-family:var(--font-mono); font-size:.84rem; line-height:1.65; margin:1rem 0 1.4rem; white-space:pre; }
+        .code-pre code { background:none; padding:0; font-size:1em; color:inherit; }
+        .install-box { background:var(--code-bg); color:var(--code-text); padding:1.1rem 1.4rem; font-family:var(--font-mono); font-size:.9rem; overflow-x:auto; margin:1rem 0; }
+        .install-box .c, .code-pre .c { color:var(--code-comment); font-style:italic; }
+        .cmp-table-wrap { overflow-x:auto; margin:1.4rem 0; }
+        .cmp-table { width:100%; border-collapse:collapse; font-size:.92rem; border:1px solid var(--border); min-width:560px; }
+        .cmp-table th, .cmp-table td { padding:.7rem .9rem; text-align:left; border-bottom:1px solid var(--border); }
+        .cmp-table thead th { background:var(--bg-warm); font-family:var(--font-display); font-weight:600; }
+        .cmp-table tr:last-child td { border-bottom:none; }
+        .note { border-left:3px solid var(--accent); padding:.9rem 1.1rem; background:var(--tag-bg); margin:1.5rem 0; }
+        .note p { margin:0; }
+        .toc { border:1px solid var(--border); background:var(--bg-card); padding:1.1rem 1.3rem; margin:1.6rem 0 2rem; box-shadow:var(--shadow-sm); }
+        .toc strong { font-family:var(--font-display); display:block; margin-bottom:.5rem; }
+        .toc ol { margin:0 0 0 1.3rem; }
+        .toc li { margin-bottom:.3rem; }
+        .toc a { color:var(--text-secondary); text-decoration:none; }
+        .toc a:hover { color:var(--accent); }
+        .cta-box { border:1px solid var(--accent); background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, var(--bg-card)), var(--bg-card)); padding:1.6rem 1.7rem; margin:2.6rem 0; }
+        .cta-box h2 { margin:0 0 .6rem; font-size:1.3rem; }
+        .cta-box p { margin-bottom:.9rem; }
+        .cta-actions { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1rem; }
+        .btn-primary { display:inline-flex; align-items:center; gap:.5rem; background:var(--accent); color:#0A0A0A; font-weight:600; padding:.7rem 1.3rem; border-radius:var(--radius-sm); text-decoration:none; font-family:var(--font-display); transition:transform .15s, box-shadow .15s; }
+        .btn-primary:hover { transform:translateY(-1px); box-shadow:var(--shadow-md); }
+        .btn-ghost { display:inline-flex; align-items:center; gap:.5rem; border:1px solid var(--border); color:var(--text); padding:.7rem 1.3rem; border-radius:var(--radius-sm); text-decoration:none; font-weight:500; transition:border-color .15s,color .15s; }
+        .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+        .faq-item { border-bottom:1px solid var(--border); padding:1.2rem 0; }
+        .faq-item:last-child { border-bottom:none; }
+        .faq-item h3 { font-family:var(--font-display); font-size:1.08rem; margin:0 0 .45rem; }
+        .faq-item p { margin:0; }
+        .related { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+        .related a { font-size:.9rem; border:1px solid var(--border); padding:.4rem .9rem; text-decoration:none; color:var(--text-secondary); }
+        .related a:hover { border-color:var(--accent); color:var(--accent); }
+        .guide-grid { display:grid; gap:1rem; grid-template-columns:1fr; margin:1.6rem 0; }
+        @media(min-width:680px){ .guide-grid{ grid-template-columns:1fr 1fr; } }
+        .guide-card { display:block; border:1px solid var(--border); padding:1.4rem 1.5rem; background:var(--bg-card); box-shadow:var(--shadow-sm); text-decoration:none; transition:transform .15s, border-color .15s, box-shadow .15s; }
+        .guide-card:hover { transform:translateY(-2px); border-color:var(--accent); box-shadow:var(--shadow-md); }
+        .guide-card h2 { font-family:var(--font-display); font-size:1.15rem; margin:0 0 .4rem; }
+        .guide-card h2 span { color:var(--accent); }
+        .guide-card p { font-size:.92rem; margin:0 0 .7rem; color:var(--text-secondary); }
+        .guide-card .go { font-size:.85rem; font-weight:600; color:var(--accent); font-family:var(--font-display); }
+        .guide-tag { display:inline-block; font-size:.72rem; font-family:var(--font-mono); color:var(--text-muted); border:1px solid var(--border); padding:.15rem .55rem; margin-bottom:.8rem; }
+    </style>
+    <meta name="theme-color" content="#65A30D" id="themeColor">
+</head>
+
+<body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-left">
+                <a href="/" class="nav-logo">
+                    <svg class="tux-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M16.2182,35.9c-3.1368,0-6.8982,1.496-7.2988,5.6766a.916.916,0,0,0,.9061,1.0025h11.97A.9.9,0,0,0,22.7,41.643C22.6175,39.8048,21.7865,35.9,16.2182,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M18.0508,20.564c-1.35,1.0368-7.3687,7.51-4.3595,15.6667" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M31.7818,35.9c3.1368,0,6.8982,1.496,7.2988,5.6766a.916.916,0,0,1-.9061,1.0025h-11.97A.9.9,0,0,1,25.3,41.643C25.3825,39.8048,26.2135,35.9,31.7818,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M35.0148,36.4556c3.1848-2.8438,2.7468-7.5246,2.7468-8.7785,2.8935.82,5.0306,2.9709,5.5941,2.17,1.3744-1.9531-7.5193-7.5461-7.6918-10.8989C35.4951,15.6692,35.1706,5.4214,24,5.4214S12.5049,15.6692,12.3361,18.9484c-.1725,3.3528-9.0662,8.9458-7.6918,10.8989.5635.8007,2.7006-1.35,5.5941-2.17,0,1.2539-.438,5.9347,2.7468,8.7785" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M29.2763,19.8324c1.9318,1.5032,8.0416,8.242,5.0324,16.3983" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M24,24.8431l3.9479-4.2791c-.3858-1.0127-1.712-1.929-3.9479-1.929s-3.5621.9163-3.9479,1.929Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M20.0521,20.564c-3.424.5063-3.9062-2.7247-3.9062-4.7019,0-2.7006,1.4467-4.4367,3.9062-4.4367S23.79,14.7529,23.79,16.3443A3.8486,3.8486,0,0,1,23.181,18.68" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M27.7205,20.1334c.6751.0482,3.9538-.3892,3.9538-3.331s-1.76-3.7615-4.1232-3.7615a3.7861,3.7861,0,0,0-3.8164,2.6682" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M22.7012,41.4815a6.8371,6.8371,0,0,0,2.6076,0" />
+                        <circle fill="currentColor" cx="22.1579" cy="16.5888" r="0.75" />
+                        <circle fill="currentColor" cx="25.5497" cy="16.5888" r="0.75" />
+                    </svg>
+                    <span>Ci<span style="color:var(--signal)">pi</span></span>
+                </a>
+                <span class="nav-badge">Guides</span>
+            </div>
+            <div class="nav-right">
+                
+                
+                
+                <a href="/cipi-yml" class="nav-link">cipi.yml</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                </button>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-nav-sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="cmp">
+        <nav class="cmp-breadcrumb" aria-label="Breadcrumb">
+            <a href="/"><svg class="home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a>
+            <span class="sep">&rsaquo;</span>
+            <a href="/guides/">Guides</a>
+            <span class="sep">&rsaquo;</span>
+            <span class="current">Control panel and API</span>
+        </nav>
+
+        <span class="cmp-eyebrow">GUI · API · MCP</span>
+        <h1>Cipi control panel and API: what the two <em>optional extensions</em> unlock</h1>
+        <p class="cmp-updated">By <a href="https://web.ap.it" target="_blank" rel="author">Andrea Pollastri</a> · Last updated: <time datetime="2026-08-22">August 22, 2026</time> · free to read, no paywall</p>
+        <p class="lead"><a class="inline" href="/">Cipi</a> is, and stays, CLI-first. Everything a server needs — apps, databases, SSL, deploys, backups — is one <code>cipi</code> command over SSH. Since v4.7.0 you can add two optional packages: <strong>cipi/api</strong> and <strong>cipi/gui</strong>. This guide is about what they unlock together, and why neither is required.</p>
+
+        <div class="toc">
+            <strong>In this guide</strong>
+            <ol>
+                <li><a href="#two-extensions">Two extensions, zero lock-in</a></li>
+                <li><a href="#api-first">The API is the backbone</a></li>
+                <li><a href="#api-surface">What you can do with the API</a></li>
+                <li><a href="#tokens">Sanctum tokens and granular abilities</a></li>
+                <li><a href="#jobs">Async jobs and polling</a></li>
+                <li><a href="#mcp">MCP: Cipi inside Cursor, VS Code and Claude</a></li>
+                <li><a href="#gui">The UI panel as a multi-server cockpit</a></li>
+                <li><a href="#browser">What you can do in the browser</a></li>
+                <li><a href="#cockpit">Server cockpit</a></li>
+                <li><a href="#install">How to install them</a></li>
+                <li><a href="#security">SSL, 2FA and IP whitelist</a></li>
+                <li><a href="#use-cases">Use cases: teams, agencies, hosting, AI</a></li>
+                <li><a href="#clients">cipi-cli and WHMCS on the same wire</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ol>
+        </div>
+
+        <h2 id="two-extensions">Two extensions, zero lock-in</h2>
+        <p>Cipi is not a panel that hides a CLI. It is a CLI that, if you want, exposes an API and a dashboard. Skip both packages and the server runs exactly as before — no extra daemon, no web surface, nothing listening. Install only what you need.</p>
+        <ul>
+            <li><strong><code>cipi/api</code></strong> — a Laravel package (current release <strong>1.20</strong>) that exposes REST at <code>/api/*</code>, an MCP server at <code>/mcp</code> and Swagger UI at <code>/docs</code>.</li>
+            <li><strong><code>cipi/gui</code></strong> — a self-hosted Laravel 12 dashboard that talks to one or more servers <em>only</em> through that REST API. It has no proprietary control plane and stores no managed-server state.</li>
+        </ul>
+        <p>Anything you do in the browser, you can do from the shell. Anything you do from the shell, you can automate over HTTP. Both packages are clients of the same surface, not a second Cipi.</p>
+        <div class="note">
+            <p>The normative source is still the <a class="inline" href="/docs/">documentation</a>: <a class="inline" href="/docs/advanced#cipi-api">Advanced → cipi api</a> and <a class="inline" href="/docs/gui">Control panel (GUI)</a>. This guide is the story of the capabilities, not every endpoint.</p>
+        </div>
+
+        <h2 id="api-first">The API is the backbone</h2>
+        <p>Enable the API before you touch the GUI. One command provisions Laravel under <code>/opt/cipi/api</code>, the Nginx vhost, SSL, an SQLite queue and <code>cipi-queue.service</code>:</p>
+        <pre class="code-pre"><code>$ cipi api api.example.com
+$ cipi api ssl
+$ cipi api token create</code></pre>
+        <p>The package is <strong>server-level</strong> automation — distinct from the <a class="inline" href="/docs/agent">Cipi Agent</a> (<code>cipi/agent</code> inside each Laravel app). The Agent covers per-app webhooks, health and MCP. The API covers the whole box: apps, databases, PHP, SSH, services, SMTP, healthchecks, IP whitelist.</p>
+        <p>PHP-FPM runs as <code>www-data</code> and executes Cipi commands via sudo against an explicit whitelist in <code>/etc/sudoers.d/cipi-api</code>. Vault and MariaDB passwords stay inside Cipi, not in PHP. After <code>cipi self-update</code>, if <code>/docs</code> or <code>/mcp</code> return HTTP 500, <code>cipi api fix-permissions</code> repairs storage and SQLite ownership.</p>
+
+        <h2 id="api-surface">What you can do with the API</h2>
+        <p>The OpenAPI surface covers a Cipi server's lifecycle. Reads are synchronous; writes (create, edit, delete, deploy, SSL, aliases, www, databases) return <code>202 Accepted</code> with a <code>job_id</code>.</p>
+        <div class="cmp-table-wrap">
+            <table class="cmp-table">
+                <thead>
+                    <tr>
+                        <th>Area</th>
+                        <th>What it unlocks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Apps</td>
+                        <td>Laravel and custom CRUD, Octane/FrankenPHP, DB engine at create time, suspend/unsuspend (HTTP 503), rename primary domain, HTTP Basic Auth, paginated logs, <code>.env</code>, Composer <code>auth.json</code>, Artisan and whitelisted <code>app run</code>, deploy-config, recreate Git webhooks</td>
+                    </tr>
+                    <tr>
+                        <td>Deploy</td>
+                        <td>Zero-downtime deploy, rollback, unlock a stuck release</td>
+                    </tr>
+                    <tr>
+                        <td>Aliases and WWW</td>
+                        <td>Aliases, apex/www counterpart, force-to-root / force-from-root, clear redirects</td>
+                    </tr>
+                    <tr>
+                        <td>SSL</td>
+                        <td>Let's Encrypt (SAN on primary + aliases) and force HTTPS without re-issuing the certificate</td>
+                    </tr>
+                    <tr>
+                        <td>Databases</td>
+                        <td>MariaDB and PostgreSQL: list/engines, create, delete, backup, restore, password, install engine and system default</td>
+                    </tr>
+                    <tr>
+                        <td>Server</td>
+                        <td><code>GET /api/status</code> (CPU, RAM, disk, services, PHP pools, app count) — the same snapshot as <code>cipi status</code></td>
+                    </tr>
+                    <tr>
+                        <td>Cockpit</td>
+                        <td>PHP 8.3/8.4/8.5 (install, remove, default), SSH keys, service restarts, SMTP, HTTP healthchecks, IP whitelist on <code>/api/*</code> and <code>/mcp</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Minimal example — list apps and read server status:</p>
+        <pre class="code-pre"><code>export CIPI_API_URL="https://api.example.com"
+export CIPI_API_TOKEN="1|your-sanctum-token"
+
+curl -sS "${CIPI_API_URL}/api/apps" \
+  -H "Authorization: Bearer ${CIPI_API_TOKEN}" \
+  -H "Accept: application/json"
+
+curl -sS "${CIPI_API_URL}/api/status" \
+  -H "Authorization: Bearer ${CIPI_API_TOKEN}"</code></pre>
+        <p>Create a Laravel Octane app (async, API <strong>1.13+</strong> / Cipi <strong>5.0+</strong>):</p>
+        <pre class="code-pre"><code>curl -sS -X POST "${CIPI_API_URL}/api/apps" \
+  -H "Authorization: Bearer ${CIPI_API_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "shop.example.com",
+    "repository": "git@github.com:you/shop.git",
+    "branch": "main",
+    "octane": true,
+    "engine": "mariadb"
+  }'</code></pre>
+        <p>Swagger UI at <code>https://api.example.com/docs</code> is the playground: try every operation with the same token, inspect request/response and job types. The spec lives at <code>public/api-docs/openapi.json</code>.</p>
+
+        <h2 id="tokens">Sanctum tokens and granular abilities</h2>
+        <p>Auth is Laravel Sanctum. Each token carries one or more <em>abilities</em>: a CI token can hold only <code>deploy-manage</code> and <code>apps-view</code>; a panel token needs the full set. <code>cipi api token create</code> reads the canonical list from the package (same as <code>php artisan cipi:token-abilities</code>).</p>
+        <p>Abilities cover apps (view/create/edit/delete/suspend/basicauth/env/auth/artisan/run/deploy-config), aliases, www, deploy, SSL, databases, status, MCP and — since API <strong>1.15+</strong> — PHP, SSH, services, SMTP, health and IP whitelist. Revoke with <code>cipi api token revoke &lt;id&gt;</code>. Do not reuse a full-ability token in a public pipeline.</p>
+
+        <h2 id="jobs">Async jobs and polling</h2>
+        <p>A deploy or <code>db create</code> does not live in the HTTP request: the API queues the work and returns <code>202</code> + <code>job_id</code>. Poll <code>GET /api/jobs/{id}</code> for status, CLI <code>output</code> and <code>exit_code</code>. That is the same overlay the GUI shows and the same loop as <code>cipi-cli jobs wait</code>.</p>
+        <pre class="code-pre"><code>curl -sS -X POST "${CIPI_API_URL}/api/apps/myapp/deploy" \
+  -H "Authorization: Bearer ${CIPI_API_TOKEN}"
+
+curl -sS "${CIPI_API_URL}/api/jobs/JOB_ID" \
+  -H "Authorization: Bearer ${CIPI_API_TOKEN}"</code></pre>
+        <p>Since Cipi <strong>4.6.3</strong> the API package soft-updates every night at 04:30 (<code>cipi api update</code>), so REST endpoints and MCP tools stay current without a manual step.</p>
+
+        <h2 id="mcp">MCP: Cipi inside Cursor, VS Code and Claude</h2>
+        <p>The MCP server at <code>/mcp</code> (Streamable HTTP) exposes <strong>50+ tools</strong>: apps, aliases, www, databases, deploy, SSL, Basic Auth, server cockpit, <code>.env</code> / <code>auth.json</code> / app-run / deploy-config, jobs, logs and <code>ServerStatus</code>. From API <strong>1.11.1+</strong> a token with only <code>mcp-access</code> is enough for every MCP tool — per-endpoint REST abilities are not checked on <code>/mcp</code>.</p>
+        <p>Cursor config in <code>~/.cursor/mcp.json</code>:</p>
+        <pre class="code-pre"><code>{
+  "mcpServers": {
+    "cipi-api": {
+      "type": "http",
+      "url": "https://api.example.com/mcp",
+      "headers": {
+        "Authorization": "Bearer 1|your-token"
+      }
+    }
+  }
+}</code></pre>
+        <p>VS Code (Copilot) uses the same HTTP transport; Claude Code adds the server with <code>claude mcp add --transport http</code>; Claude Desktop goes through <code>mcp-remote</code>. Log tools redact common secrets before they return. The same protocol, on the app side, is what the <a class="inline" href="/guides/spec-driven-development-ai-laravel">in-app Agent MCP</a> exposes — two surfaces, one standard.</p>
+
+        <h2 id="gui">The UI panel as a multi-server cockpit</h2>
+        <p>The GUI is a thin visual layer on top of the API. It lives in <code>/opt/cipi/gui</code>, it is Laravel 12, and it keeps no local queue workers: it authenticates to each server's API, dispatches jobs and polls their status. Tear the panel down and rebuild it elsewhere without touching a managed server.</p>
+        <p>One login, many servers. Register endpoint + token for production, staging and client boxes, then switch between them. It is the cockpit you want when you have more than one VPS and you do not want ten SSH sessions open.</p>
+        <div class="note">
+            <p>The panel needs the API on <em>every</em> server you want to manage, with a full-ability Bearer token (include <code>www-manage</code>, <code>status-view</code> and, for app tooling, <code>apps-env</code>, <code>apps-auth</code>, <code>apps-artisan</code>, <code>apps-run</code>, <code>apps-deploy-config</code>). Without the API, the GUI is an empty shell.</p>
+        </div>
+
+        <h2 id="browser">What you can do in the browser</h2>
+        <ul>
+            <li><strong>Laravel and custom apps</strong> — create, edit, deploy, rollback, unlock, suspend/unsuspend, delete. Octane (FrankenPHP) at create time from API <strong>1.13+</strong>; list/detail views distinguish FPM from Octane.</li>
+            <li><strong>Aliases, WWW, SSL, Basic Auth</strong> — the same flow as the CLI, plus force HTTPS and apex/www redirects.</li>
+            <li><strong><code>.env</code>, <code>auth.json</code>, Artisan, App commands</strong> — editor and terminal output with Markdown copy (API <strong>1.14+</strong> / Cipi <strong>5.0.3+</strong>).</li>
+            <li><strong>Multi-engine databases</strong> — pick MariaDB or PostgreSQL at create time; backup, restore and password rotation from the browser (API <strong>1.12+</strong> / Cipi <strong>4.8+</strong>).</li>
+            <li><strong>Logs</strong> — nginx, PHP-FPM, Laravel, worker, deploy: type filter, pagination, auto-refresh. Common secrets are redacted.</li>
+            <li><strong>Job overlay</strong> — spinner and CLI output while the panel polls <code>GET /api/jobs/{id}</code>.</li>
+            <li><strong>Live dashboard</strong> — CPU, memory, disk, services and app count via <code>GET /api/status</code>.</li>
+        </ul>
+
+        <h2 id="cockpit">Server cockpit</h2>
+        <p>From API <strong>1.15+</strong> / Cipi <strong>5.0.6+</strong> the panel does not only manage apps: it manages the box.</p>
+        <ul>
+            <li>Install, remove and set the system default PHP (8.3, 8.4, 8.5).</li>
+            <li>Add, rename and revoke SSH keys on the <code>cipi</code> user.</li>
+            <li>List and restart system services.</li>
+            <li>Configure, test, enable and disable SMTP notifications (the password is never returned on GET).</li>
+            <li>Per-app HTTP healthchecks — create, run, remove.</li>
+            <li>IP whitelist for the panel API / MCP: one address or CIDR per line, or <code>*</code> to allow all.</li>
+        </ul>
+        <p>That is the piece that makes the GUI a real alternative to a SaaS panel, without moving the source of truth off the server.</p>
+
+        <h2 id="install">How to install them</h2>
+        <p>Required order: API on every managed server, then the GUI wherever you want the browser. The GUI can live on the same box or on a small dedicated machine — it is just an HTTP client.</p>
+        <pre class="code-pre"><code><span class="c"># on every server you will manage</span>
+$ cipi api api.example.com
+$ cipi api ssl
+$ cipi api token create
+
+<span class="c"># on the panel box (can be the same machine)</span>
+$ cipi gui panel.example.com
+$ cipi gui ssl</code></pre>
+        <p><code>cipi gui</code> asks for the first admin email and password (minimum 12 characters, upper, lower, digit, special, no 4 identical characters in a row). Config lands in <code>/etc/cipi/gui.json</code>. PHP-FPM, vhost and scheduler come from the installer: you do not bootstrap Laravel by hand.</p>
+        <p>Updates: <code>cipi gui update</code> / <code>cipi api update</code> for the daily soft update; <code>upgrade</code> for a full rebuild. <code>cipi gui refresh-theme</code> recompiles the theme only. <code>cipi gui remove</code> uninstalls vhost, pool and scheduler — managed servers stay intact. <code>cipi gui reset-user</code> is the recovery path if an admin loses 2FA.</p>
+
+        <h2 id="security">SSL, 2FA and IP whitelist</h2>
+        <p>The panel starts on HTTP: issue Let's Encrypt immediately with <code>cipi gui ssl</code> (automatic renewal, same ACME as app domains). Login is session-based; each administrator can enable <strong>TOTP 2FA</strong> (Google Authenticator, 1Password, Aegis) from their profile — opt-in, not mandatory.</p>
+        <p>Restrict who can talk to the API and MCP:</p>
+        <pre class="code-pre"><code>$ cipi api ip-whitelist add 203.0.113.10
+$ cipi api ip-whitelist set --ips=203.0.113.0/24,2001:db8::/32
+$ cipi api ip-whitelist show --json</code></pre>
+        <p>Default file: <code>/etc/cipi/api-ip-whitelist</code> with <code>*</code> (allow all). Rejected clients get <code>403</code>. REST equivalents live under <code>/api/ip-whitelist</code>; a restricting <code>PUT</code> adds the caller IP automatically unless <code>ensure_client_ip: false</code>.</p>
+
+        <h2 id="use-cases">Use cases: teams, agencies, hosting, AI</h2>
+        <ul>
+            <li><strong>Freelancer with two VPS</strong> — API + <code>cipi-cli</code> from the laptop. The GUI is optional; a <code>prod</code> and a <code>staging</code> profile are enough.</li>
+            <li><strong>A team that does not live in SSH</strong> — one panel, 2FA, live dashboard, Artisan and logs without handing root to everyone.</li>
+            <li><strong>Multi-client agency</strong> — one login, N servers. Each box has its own token; dropping a client is revoking a token, not uninstalling Cipi.</li>
+            <li><strong>Hosting with billing</strong> — the <a class="inline" href="/docs/advanced#whmcs">WHMCS module</a> speaks the same REST API: create, SSL, deploy, delete on the product lifecycle.</li>
+            <li><strong>AI agents</strong> — server MCP for infrastructure; in-app Agent MCP for the codebase. Specs and guardrails in the <a class="inline" href="/guides/spec-driven-development-ai-laravel">spec-driven guide</a>.</li>
+        </ul>
+
+        <h2 id="clients">cipi-cli and WHMCS on the same wire</h2>
+        <p>The <a class="inline" href="/docs/cli-client">CLI client</a> is a Go binary that talks REST from your laptop: apps, aliases, deploy, SSL, databases, global status, jobs. Same tokens, same multi-server profiles. Prefer the terminal? You do not need the GUI. Prefer the browser? You do not need <code>cipi-cli</code>. Need both on different days? Same API.</p>
+        <pre class="code-pre"><code>$ cipi-cli api token add prod
+$ cipi-cli prod apps list
+$ cipi-cli prod deploy myapp
+$ cipi-cli status</code></pre>
+        <p>WHMCS is the third official client: hosting provisioning with no Composer, drop-in to the modules folder. None of the three replaces <code>cipi</code> on the server — they remote it.</p>
+
+        <div class="cta-box">
+            <h2>Try both extensions on a Cipi VPS</h2>
+            <p>Cipi stays a free, open-source CLI. API and GUI are opt-in packages: install them when you need a browser, a CI webhook or an AI agent — and remove them when you do not.</p>
+            <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
+            <div class="cta-actions">
+                <a href="/docs/gui" class="btn-primary">GUI panel docs</a>
+                <a href="/docs/advanced#cipi-api" class="btn-ghost">cipi api docs</a>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-ghost">Star on GitHub</a>
+            </div>
+        </div>
+
+        <h2 id="faq">Frequently asked questions</h2>
+        <div class="faq-item"><h3>Do I need the UI panel to use Cipi?</h3><p>No. Cipi is CLI-first. Without <code>cipi api</code> and without <code>cipi gui</code> the server still does the same work: apps, deploys, SSL, backups, firewall. Both packages are opt-in extensions since v4.7.0.</p></div>
+        <div class="faq-item"><h3>Can I use the GUI without the API?</h3><p>No. The panel is an HTTP client of the REST API. Every managed server needs <code>cipi api</code> and a Bearer token with the abilities you want to expose. Without the API there is nothing to show.</p></div>
+        <div class="faq-item"><h3>Does the GUI replace the CLI on the server?</h3><p>No. Every browser action is the same <code>cipi</code> command executed via sudo by the panel API. You can keep working over SSH in parallel, with no split-brain state.</p></div>
+        <div class="faq-item"><h3>What is the difference between REST, MCP and cipi-cli?</h3><p>The same API, three clients. REST is for scripts, CI and WHMCS. MCP is for AI agents (Cursor, VS Code, Claude). <code>cipi-cli</code> is the laptop terminal. The GUI is the fourth client, built for humans.</p></div>
+        <div class="faq-item"><h3>Can I manage several servers from one panel?</h3><p>Yes. Register endpoint and token for each box and switch between them with the same login. The panel is stateless relative to your infrastructure: it does not store server state, it reads it from the API.</p></div>
+
+        <h2>Keep reading</h2>
+        <div class="related">
+            <a href="/docs/gui">Docs: GUI panel</a>
+            <a href="/docs/advanced#cipi-api">Docs: cipi api</a>
+            <a href="/docs/cli-client">CLI client</a>
+            <a href="/guides/spec-driven-development-ai-laravel">Spec-driven AI development</a>
+            <a href="/guides/deploy-laravel-ubuntu-vps">Deploy Laravel on Ubuntu</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-shell">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">Cipi</a>
+                    <p>Free open-source Laravel deploy CLI for Ubuntu VPS — Octane, Horizon, Reverb and zero-downtime Git deploys.</p>
+                    <ul class="footer-brand-links">
+                        <li><a href="/docs/getting-started">Get started</a></li>
+                    <li><a href="/docs/">Docs</a></li>
+                    <li><a href="https://github.com/cipi-sh/cipi" target="_blank" rel="noopener">GitHub</a></li>
+                    </ul>
+                </div>
+                <nav class="footer-col footer-col--compare" aria-label="Compare Cipi with alternatives">
+                    <strong>Compare Cipi</strong>
+                    <ul>
+                        <li><a href="/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
+                    <li><a href="/alternative-to-laravel-cloud">Laravel Cloud alternative</a></li>
+                    <li><a href="/alternative-to-ploi">Ploi alternative</a></li>
+                    <li><a href="/alternative-to-coolify">Coolify alternative</a></li>
+                    <li><a href="/alternative-to-runcloud">RunCloud alternative</a></li>
+                    <li><a href="/alternative-to-cloudpanel">CloudPanel alternative</a></li>
+                    <li><a href="/alternative-to-cpanel">cPanel alternative</a></li>
+                    <li><a href="/alternative-to-plesk">Plesk alternative</a></li>
+                    <li><a href="/best-laravel-forge-alternatives">Best Forge alternatives 2026</a></li>
+                    <li><a href="/alternatives">All comparisons</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Free Laravel guides">
+                    <strong>Free guides</strong>
+                    <ul>
+                        <li><a href="/guides/manage-apps-with-cipi-yml">Manage apps with cipi.yml</a></li>
+                    <li><a href="/guides/cipi-gui-and-api">Control panel and API</a></li>
+                    <li><a href="/guides/cipi-agent-laravel-mcp">cipi/agent and project MCP</a></li>
+                    <li><a href="/guides/deploy-wordpress-custom-app">Deploy WordPress on Cipi</a></li>
+                    <li><a href="/guides/">All guides</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-content">
+                <div class="footer-left">
+                    Made with ❤️ by <a href="https://web.ap.it" target="_blank" rel="noopener">Andrea Pollastri</a>
+                    <span class="footer-license"> · Open source, MIT Licensed</span>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="https://conn.web.ap.it" target="_blank" rel="noopener">SSH Connection Manager</a></li>
+                    <li><a href="/discovery">Discovery</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateFavicon(theme) {
+            const variant = theme === 'dark' ? 'dark' : 'light';
+            document.getElementById('favicon').href = `/favicon-${variant}.png`;
+        }
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            var tc=document.getElementById('themeColor'); if(tc) tc.content=(html.getAttribute('data-theme')==='dark')?'#A3E635':'#65A30D';
+            localStorage.setItem('cipi-theme', next);
+            updateFavicon(next);
+        }
+        (function () {
+            const saved = localStorage.getItem('cipi-theme');
+            if (saved) { document.documentElement.setAttribute('data-theme', saved); updateFavicon(saved); }
+            else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark'); updateFavicon('dark');
+            }
+        })();
+    </script>
+
+    <script async src="https://stats.misterdev.it/i/12f27ee0-8603-466d-8b1a-f719f7ecc6d7.js"></script>
+    <noscript><img src="https://stats.misterdev.it/collect/pixel.gif?k=12f27ee0-8603-466d-8b1a-f719f7ecc6d7&p=/" width="1" height="1" /></noscript>
+</body>
+
+</html>

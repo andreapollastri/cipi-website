@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide</title>
+    <meta name="description" content="Set up off-site VPS backups to Amazon S3 or any S3-compatible bucket with Cipi: credentials, first run, cron schedule, retention and a restore drill you can actually trust.">
+    <meta name="keywords" content="cipi backup s3, vps backup s3, laravel backup s3, hetzner object storage backup, digitalocean spaces backup, s3 compatible backup ubuntu">
+    <meta name="author" content="Andrea Pollastri">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://cipi.sh/guides/backup-vps-s3">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Cipi">
+    <meta property="og:url" content="https://cipi.sh/guides/backup-vps-s3">
+    <meta property="og:title" content="How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide">
+    <meta property="og:description" content="Set up off-site VPS backups to Amazon S3 or any S3-compatible bucket with Cipi: credentials, first run, cron schedule, retention and a restore drill you can actually trust.">
+    <meta property="og:image" content="https://cipi.sh/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="How to back up a VPS to an S3 bucket with Cipi">
+            <meta property="og:locale" content="en_US">
+    <meta property="article:published_time" content="2026-08-22T08:00:00+02:00">
+    <meta property="article:modified_time" content="2026-08-22T08:00:00+02:00">
+    <meta property="article:author" content="https://web.ap.it">
+    <meta property="article:section" content="Guides">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide">
+    <meta name="twitter:description" content="Set up off-site VPS backups to Amazon S3 or any S3-compatible bucket with Cipi: credentials, first run, cron schedule, retention and a restore drill you can actually trust.">
+    <meta name="twitter:image" content="https://cipi.sh/og.png">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide",
+  "name": "How to Back Up a VPS to an S3 Bucket with Cipi — 2026 Guide",
+  "url": "https://cipi.sh/guides/backup-vps-s3",
+  "description": "Set up off-site VPS backups to Amazon S3 or any S3-compatible bucket with Cipi: credentials, first run, cron schedule, retention and a restore drill you can actually trust.",
+  "inLanguage": "en",
+  "image": "https://cipi.sh/og.png",
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "author": {
+    "@type": "Person",
+    "name": "Andrea Pollastri",
+    "url": "https://web.ap.it",
+    "sameAs": [
+      "https://github.com/andreapollastri",
+      "https://www.linkedin.com/in/andrea-pollastri"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cipi",
+    "url": "https://cipi.sh/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cipi.sh/favicon-light-192.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cipi.sh/guides/backup-vps-s3"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Cipi",
+    "url": "https://cipi.sh/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Ubuntu"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Cipi",
+    "url": "https://cipi.sh/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://cipi.sh/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://cipi.sh/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "VPS backups to S3",
+      "item": "https://cipi.sh/guides/backup-vps-s3"
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Cipi work only with Amazon S3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. cipi backup configure accepts any S3-compatible endpoint: Hetzner Object Storage, DigitalOcean Spaces, Backblaze B2, MinIO, or a self-hosted store such as Johnny. Leave the endpoint empty for AWS; fill it for every other provider."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between cipi db backup and cipi backup run?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "cipi db backup writes a compressed SQL dump on the same VPS under /var/log/cipi/backups/. It is always available and needs no configuration. cipi backup run dumps the database and the app shared/ folder, then uploads both archives to your S3 bucket. Use the local dump for a fast rollback; use the S3 copy for a real off-site restore."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I back up a Laravel VPS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Daily is the sensible default for production. Add cipi backup run to the root crontab at a quiet hour, then prune older than four weeks. If the database changes constantly, run it twice a day. Always run a backup before a risky migration or a production deploy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I restore a Cipi S3 backup onto a new VPS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — that is the point of an off-site copy. Install Cipi on a fresh Ubuntu VPS, recreate the app, download db.sql.gz and shared.tar.gz from the bucket, restore the database with cipi db restore, and extract shared/ into /home/<app>/."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does Cipi store S3 credentials?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "cipi backup configure writes them to /etc/cipi/backup.conf. Keep that file root-only. The same credentials are used by cipi backup run, list and prune. Staging of large archives defaults to /var/tmp so a small RAM-backed /tmp does not abort the job."
+      }
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" id="favicon" type="image/png" sizes="48x48" href="/favicon-light.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-light-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-light-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-light-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/docs/style.css">
+    <style>
+        .cmp { max-width: 880px; margin: 0 auto; padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem; }
+        .cmp-breadcrumb { display:inline-flex; align-items:center; flex-wrap:wrap; gap:.15rem; font-size:.82rem; margin-bottom:1.6rem; padding:.35rem .6rem; border:1px solid var(--border); border-radius:0; background:var(--bg-card); box-shadow:var(--shadow-sm); }
+        .cmp-breadcrumb a { display:inline-flex; align-items:center; color:var(--text-secondary); text-decoration:none; padding:.2rem .55rem; transition:color .15s, background .15s; }
+        .cmp-breadcrumb a:hover { color:var(--accent); background:var(--tag-bg); }
+        .cmp-breadcrumb .sep { color:var(--text-muted); opacity:.5; font-size:1rem; line-height:1; }
+        .cmp-breadcrumb .current { color:var(--text); font-weight:600; padding:.2rem .55rem; }
+        .cmp-breadcrumb .home-ico { width:13px; height:13px; margin-right:.35rem; }
+        .cmp-eyebrow { display:inline-block; font-family:var(--font-mono); font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); background:var(--tag-bg); padding:.3rem .7rem; margin-bottom:1.1rem; }
+        .cmp h1 { font-family:var(--font-display); font-size:clamp(1.9rem, 4.6vw, 2.9rem); line-height:1.1; letter-spacing:-.02em; margin-bottom:1rem; }
+        .cmp h1 em { color:var(--accent); font-style:normal; }
+        .cmp-updated { font-family:var(--font-mono); font-size:.78rem; color:var(--text-muted); margin:0 0 1.2rem; }
+        .cmp-updated a { color:var(--text-muted); }
+        .cmp .lead { font-size:1.15rem; color:var(--text-secondary); max-width:46rem; margin-bottom:1.2rem; }
+        .cmp h2 { font-family:var(--font-display); font-size:1.65rem; margin:3rem 0 1rem; letter-spacing:-.01em; }
+        .cmp h3 { font-family:var(--font-display); font-size:1.18rem; margin:2rem 0 .6rem; }
+        .cmp p { color:var(--text-secondary); margin-bottom:1rem; line-height:1.75; }
+        .cmp ul, .cmp ol { margin:0 0 1.2rem 1.35rem; color:var(--text-secondary); line-height:1.7; }
+        .cmp li { margin-bottom:.5rem; padding-left:.25rem; }
+        .cmp li strong, .cmp p strong { color:var(--text); }
+        .cmp a.inline { color:var(--accent); text-decoration:none; }
+        .cmp a.inline:hover { text-decoration:underline; }
+        .cmp code { font-family:var(--font-mono); font-size:.85em; background:var(--tag-bg); padding:.1rem .35rem; }
+        .code-pre { background:var(--code-bg); color:var(--code-text); padding:1.1rem 1.3rem; overflow-x:auto; font-family:var(--font-mono); font-size:.84rem; line-height:1.65; margin:1rem 0 1.4rem; white-space:pre; }
+        .code-pre code { background:none; padding:0; font-size:1em; color:inherit; }
+        .install-box { background:var(--code-bg); color:var(--code-text); padding:1.1rem 1.4rem; font-family:var(--font-mono); font-size:.9rem; overflow-x:auto; margin:1rem 0; }
+        .install-box .c, .code-pre .c { color:var(--code-comment); font-style:italic; }
+        .cmp-table-wrap { overflow-x:auto; margin:1.4rem 0; }
+        .cmp-table { width:100%; border-collapse:collapse; font-size:.92rem; border:1px solid var(--border); min-width:560px; }
+        .cmp-table th, .cmp-table td { padding:.7rem .9rem; text-align:left; border-bottom:1px solid var(--border); }
+        .cmp-table thead th { background:var(--bg-warm); font-family:var(--font-display); font-weight:600; }
+        .cmp-table tr:last-child td { border-bottom:none; }
+        .note { border-left:3px solid var(--accent); padding:.9rem 1.1rem; background:var(--tag-bg); margin:1.5rem 0; }
+        .note p { margin:0; }
+        .toc { border:1px solid var(--border); background:var(--bg-card); padding:1.1rem 1.3rem; margin:1.6rem 0 2rem; box-shadow:var(--shadow-sm); }
+        .toc strong { font-family:var(--font-display); display:block; margin-bottom:.5rem; }
+        .toc ol { margin:0 0 0 1.3rem; }
+        .toc li { margin-bottom:.3rem; }
+        .toc a { color:var(--text-secondary); text-decoration:none; }
+        .toc a:hover { color:var(--accent); }
+        .cta-box { border:1px solid var(--accent); background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, var(--bg-card)), var(--bg-card)); padding:1.6rem 1.7rem; margin:2.6rem 0; }
+        .cta-box h2 { margin:0 0 .6rem; font-size:1.3rem; }
+        .cta-box p { margin-bottom:.9rem; }
+        .cta-actions { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1rem; }
+        .btn-primary { display:inline-flex; align-items:center; gap:.5rem; background:var(--accent); color:#0A0A0A; font-weight:600; padding:.7rem 1.3rem; border-radius:var(--radius-sm); text-decoration:none; font-family:var(--font-display); transition:transform .15s, box-shadow .15s; }
+        .btn-primary:hover { transform:translateY(-1px); box-shadow:var(--shadow-md); }
+        .btn-ghost { display:inline-flex; align-items:center; gap:.5rem; border:1px solid var(--border); color:var(--text); padding:.7rem 1.3rem; border-radius:var(--radius-sm); text-decoration:none; font-weight:500; transition:border-color .15s,color .15s; }
+        .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+        .faq-item { border-bottom:1px solid var(--border); padding:1.2rem 0; }
+        .faq-item:last-child { border-bottom:none; }
+        .faq-item h3 { font-family:var(--font-display); font-size:1.08rem; margin:0 0 .45rem; }
+        .faq-item p { margin:0; }
+        .related { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+        .related a { font-size:.9rem; border:1px solid var(--border); padding:.4rem .9rem; text-decoration:none; color:var(--text-secondary); }
+        .related a:hover { border-color:var(--accent); color:var(--accent); }
+        .guide-grid { display:grid; gap:1rem; grid-template-columns:1fr; margin:1.6rem 0; }
+        @media(min-width:680px){ .guide-grid{ grid-template-columns:1fr 1fr; } }
+        .guide-card { display:block; border:1px solid var(--border); padding:1.4rem 1.5rem; background:var(--bg-card); box-shadow:var(--shadow-sm); text-decoration:none; transition:transform .15s, border-color .15s, box-shadow .15s; }
+        .guide-card:hover { transform:translateY(-2px); border-color:var(--accent); box-shadow:var(--shadow-md); }
+        .guide-card h2 { font-family:var(--font-display); font-size:1.15rem; margin:0 0 .4rem; }
+        .guide-card h2 span { color:var(--accent); }
+        .guide-card p { font-size:.92rem; margin:0 0 .7rem; color:var(--text-secondary); }
+        .guide-card .go { font-size:.85rem; font-weight:600; color:var(--accent); font-family:var(--font-display); }
+        .guide-tag { display:inline-block; font-size:.72rem; font-family:var(--font-mono); color:var(--text-muted); border:1px solid var(--border); padding:.15rem .55rem; margin-bottom:.8rem; }
+    </style>
+    <meta name="theme-color" content="#65A30D" id="themeColor">
+</head>
+
+<body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-left">
+                <a href="/" class="nav-logo">
+                    <svg class="tux-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M16.2182,35.9c-3.1368,0-6.8982,1.496-7.2988,5.6766a.916.916,0,0,0,.9061,1.0025h11.97A.9.9,0,0,0,22.7,41.643C22.6175,39.8048,21.7865,35.9,16.2182,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M18.0508,20.564c-1.35,1.0368-7.3687,7.51-4.3595,15.6667" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M31.7818,35.9c3.1368,0,6.8982,1.496,7.2988,5.6766a.916.916,0,0,1-.9061,1.0025h-11.97A.9.9,0,0,1,25.3,41.643C25.3825,39.8048,26.2135,35.9,31.7818,35.9Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M35.0148,36.4556c3.1848-2.8438,2.7468-7.5246,2.7468-8.7785,2.8935.82,5.0306,2.9709,5.5941,2.17,1.3744-1.9531-7.5193-7.5461-7.6918-10.8989C35.4951,15.6692,35.1706,5.4214,24,5.4214S12.5049,15.6692,12.3361,18.9484c-.1725,3.3528-9.0662,8.9458-7.6918,10.8989.5635.8007,2.7006-1.35,5.5941-2.17,0,1.2539-.438,5.9347,2.7468,8.7785" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M29.2763,19.8324c1.9318,1.5032,8.0416,8.242,5.0324,16.3983" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M24,24.8431l3.9479-4.2791c-.3858-1.0127-1.712-1.929-3.9479-1.929s-3.5621.9163-3.9479,1.929Z" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M20.0521,20.564c-3.424.5063-3.9062-2.7247-3.9062-4.7019,0-2.7006,1.4467-4.4367,3.9062-4.4367S23.79,14.7529,23.79,16.3443A3.8486,3.8486,0,0,1,23.181,18.68" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M27.7205,20.1334c.6751.0482,3.9538-.3892,3.9538-3.331s-1.76-3.7615-4.1232-3.7615a3.7861,3.7861,0,0,0-3.8164,2.6682" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M22.7012,41.4815a6.8371,6.8371,0,0,0,2.6076,0" />
+                        <circle fill="currentColor" cx="22.1579" cy="16.5888" r="0.75" />
+                        <circle fill="currentColor" cx="25.5497" cy="16.5888" r="0.75" />
+                    </svg>
+                    <span>Ci<span style="color:var(--signal)">pi</span></span>
+                </a>
+                <span class="nav-badge">Guides</span>
+            </div>
+            <div class="nav-right">
+                
+                
+                
+                <a href="/cipi-yml" class="nav-link">cipi.yml</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                </button>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-nav-sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="cmp">
+        <nav class="cmp-breadcrumb" aria-label="Breadcrumb">
+            <a href="/"><svg class="home-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a>
+            <span class="sep">&rsaquo;</span>
+            <a href="/guides/">Guides</a>
+            <span class="sep">&rsaquo;</span>
+            <span class="current">VPS backups to S3</span>
+        </nav>
+
+        <span class="cmp-eyebrow">Backups · S3 · VPS</span>
+        <h1>How to back up a VPS to an <em>S3 bucket</em> with Cipi</h1>
+        <p class="cmp-updated">By <a href="https://web.ap.it" target="_blank" rel="author">Andrea Pollastri</a> · Last updated: <time datetime="2026-08-22">August 22, 2026</time> · free to read, no paywall</p>
+        <p class="lead">A dump that lives on the same disk as the app is a snapshot, not a backup. This guide walks through the whole off-site loop with <a class="inline" href="/">Cipi</a>: create a bucket, store credentials once, run the first upload, schedule it, prune the old ones, and restore onto a clean VPS so you know the plan works.</p>
+
+        <div class="toc">
+            <strong>In this guide</strong>
+            <ol>
+                <li><a href="#why-offsite">Why the same-disk dump is not a backup</a></li>
+                <li><a href="#what">What Cipi actually uploads</a></li>
+                <li><a href="#prereqs">What you need</a></li>
+                <li><a href="#bucket">Create the bucket</a></li>
+                <li><a href="#configure">Configure Cipi once</a></li>
+                <li><a href="#first-run">First backup and verify</a></li>
+                <li><a href="#schedule">Cron, retention and prune</a></li>
+                <li><a href="#restore">Restore drill</a></li>
+                <li><a href="#before-deploy">Backup before every release</a></li>
+                <li><a href="#mistakes">Mistakes that make backups useless</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ol>
+        </div>
+
+        <h2 id="why-offsite">Why the same-disk dump is not a backup</h2>
+        <p>Provider snapshots, a <code>.sql.gz</code> in <code>/var/log</code>, a tarball next to <code>storage/</code> — they all die with the machine. Disk full, ransomware, a fat-fingered <code>rm -rf</code>, a region outage, a stolen VPS: the copy you need is the one that was already somewhere else.</p>
+        <p>The rule that still holds is <strong>3-2-1</strong>: three copies, two media, one off-site. Cipi covers the last hop. <code>cipi db backup</code> gives you a fast local rollback; <code>cipi backup run</code> ships the database and the <code>shared/</code> folder to Amazon S3 or any S3-compatible bucket. That is the copy you restore from when the VPS is gone.</p>
+        <div class="note">
+            <p>A backup you have never restored is a hope, not a plan. Budget 20 minutes after the first successful upload and do the drill in <a href="#restore">Restore</a>. Repeat it every quarter.</p>
+        </div>
+
+        <h2 id="what">What Cipi actually uploads</h2>
+        <p>Each run creates a timestamped prefix on the bucket:</p>
+        <div class="install-box">s3://your-bucket/cipi/myapp/2026-08-22_020015/</div>
+        <p>Inside that folder you get two archives:</p>
+        <ul>
+            <li><strong><code>db.sql.gz</code></strong> — a compressed dump of the app database (<code>mariadb-dump --single-transaction</code>, or the PostgreSQL equivalent if the app uses that engine).</li>
+            <li><strong><code>shared.tar.gz</code></strong> — the entire <code>/home/&lt;app&gt;/shared/</code> directory: <code>.env</code>, <code>storage/</code>, uploaded files, and anything else that survives a Deployer release swap.</li>
+        </ul>
+        <p>Code is not in the archive. Releases live in Git; if you need the last good tree, clone the repo. What you cannot clone is the database and the files users uploaded after go-live — those two files are the restore point.</p>
+        <p>Since <strong>v4.7.14</strong> staging happens on disk in <code>/var/tmp</code>, not in a RAM-backed <code>/tmp</code>. Large apps no longer die halfway through because tmpfs filled up. Override with <code>tmpdir</code> in <code>backup.json</code> or the <code>CIPI_BACKUP_TMPDIR</code> environment variable.</p>
+
+        <h2 id="prereqs">What you need</h2>
+        <ul>
+            <li>A VPS already managed by Cipi. If you are starting from zero, run <code>wget -O - https://cipi.sh/setup.sh | bash</code> on a fresh Ubuntu 24.04/26.04 box, then <code>cipi app create</code>. The <a class="inline" href="/docs/getting-started">getting started guide</a> covers the install.</li>
+            <li>At least one app on that server. <code>cipi backup run</code> without a name backs up every app; <code>cipi backup run myapp</code> targets one.</li>
+            <li>An S3 or S3-compatible bucket and an access key that can write to it. Create a dedicated IAM user — do not reuse your root cloud credentials.</li>
+        </ul>
+
+        <h2 id="bucket">Create the bucket</h2>
+        <p>Pick a provider, create a private bucket in a region that is <em>not</em> the same datacenter as the VPS, and mint a key pair scoped to that bucket only. Enable server-side encryption if the provider offers it. Versioning is optional but cheap insurance against an accidental overwrite.</p>
+        <p>Minimum IAM actions on that bucket: <code>s3:PutObject</code>, <code>s3:GetObject</code>, <code>s3:ListBucket</code>, <code>s3:DeleteObject</code>. The last one is only required if you want <code>cipi backup prune</code> to clean old prefixes.</p>
+        <div class="cmp-table-wrap">
+            <table class="cmp-table">
+                <thead><tr><th>Provider</th><th>Endpoint URL</th></tr></thead>
+                <tbody>
+                    <tr><td>AWS S3</td><td><em>leave empty</em></td></tr>
+                    <tr><td>Hetzner Object Storage</td><td><code>https://&lt;datacenter&gt;.your-objectstorage.com</code></td></tr>
+                    <tr><td>DigitalOcean Spaces</td><td><code>https://&lt;region&gt;.digitaloceanspaces.com</code></td></tr>
+                    <tr><td>Backblaze B2</td><td><code>https://s3.&lt;region&gt;.backblazeb2.com</code></td></tr>
+                    <tr><td>MinIO</td><td><code>https://your-minio-host</code></td></tr>
+                    <tr><td><a class="inline" href="https://johnny.web.ap.it" target="_blank" rel="noopener">Johnny</a> (self-hosted S3)</td><td>your Johnny public URL</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Any S3-compatible store works. If you want the off-site copy on a second VPS you own — not another SaaS invoice — <a class="inline" href="https://johnny.web.ap.it" target="_blank" rel="noopener">Johnny</a> is the open-source option already mentioned in the <a class="inline" href="/guides/laravel-developer-stack-2026">self-hosted developer stack</a>.</p>
+
+        <h2 id="configure">Configure Cipi once</h2>
+        <p>SSH in as the admin user, become root, and run the wizard. It writes <code>/etc/cipi/backup.conf</code> and you should not have to touch it again unless the key or the bucket changes.</p>
+        <div class="code-pre"><code><span class="c"># as root on the VPS</span>
+$ cipi backup configure
+<span class="c"># → AWS Access Key ID</span>
+<span class="c"># → AWS Secret Access Key</span>
+<span class="c"># → Bucket name</span>
+<span class="c"># → Region</span>
+<span class="c"># → Endpoint URL (empty for AWS; required for everyone else)</span></code></div>
+        <p>Keep <code>/etc/cipi/backup.conf</code> mode <code>600</code> and owned by root. Those keys open every backup you will ever take. If a key leaks, rotate it at the provider and run <code>cipi backup configure</code> again — old objects stay in the bucket; only new uploads use the new key.</p>
+        <div class="note">
+            <p><code>cipi db backup</code> works with no configuration. <code>cipi backup run</code> does not. If the S3 command fails with a credentials error, you skipped this step.</p>
+        </div>
+
+        <h2 id="first-run">First backup and verify</h2>
+        <p>Do not put anything in cron until a manual run has landed in the bucket. Start with a single app:</p>
+        <div class="code-pre"><code>$ cipi backup run myapp
+<span class="c"># → s3://your-bucket/cipi/myapp/2026-08-22_143015/db.sql.gz</span>
+<span class="c"># → s3://your-bucket/cipi/myapp/2026-08-22_143015/shared.tar.gz</span>
+
+$ cipi backup list myapp
+$ cipi backup run
+<span class="c"># no app name = every app on the server</span></code></div>
+        <p>Then confirm from the provider console — or with the AWS CLI, which also talks to compatible endpoints if you pass <code>--endpoint-url</code>:</p>
+        <div class="code-pre"><code>$ aws s3 ls s3://your-bucket/cipi/myapp/
+$ aws s3 ls s3://your-bucket/cipi/myapp/2026-08-22_143015/</code></div>
+        <p>You should see both objects, with sizes that match a compressed dump plus the <code>shared/</code> tree. A 200-byte object usually means an empty dump or a failed upload — fix that before you schedule anything.</p>
+
+        <h2 id="schedule">Cron, retention and prune</h2>
+        <p>Daily at 02:00 is the boring default. Prune at 03:00 so yesterday's run is never deleted by a race. Four weeks of history is enough for most Laravel apps; drop to two if the bucket bill hurts, raise to eight if you need to unwind a slow-burn data bug.</p>
+        <div class="code-pre"><code><span class="c"># crontab -e as root</span>
+0 2 * * * /usr/local/bin/cipi backup run myapp >> /var/log/cipi/backup.log 2>&amp;1
+0 3 * * * /usr/local/bin/cipi backup prune myapp --weeks=4 >> /var/log/cipi/backup-prune.log 2>&amp;1</code></div>
+        <p>To back up every app on the box, drop the app name from both commands. <code>cipi backup prune</code> reads the same <code>/etc/cipi/backup.conf</code> and works with any compatible provider.</p>
+        <div class="code-pre"><code>$ cipi backup prune myapp --weeks=4
+$ cipi backup prune myapp --weeks=2</code></div>
+        <p>Watch <code>/var/log/cipi/backup.log</code> for a week. A silent cron that failed on day one is how people discover they have no backups the morning after a disk death.</p>
+
+        <h2 id="restore">Restore drill</h2>
+        <p>Do this on a staging app, or on a spare VPS, not on live traffic the first time. The happy path from an S3 prefix back to a running app:</p>
+        <div class="code-pre"><code>$ cipi backup list myapp
+
+$ aws s3 cp s3://your-bucket/cipi/myapp/2026-08-22_143015/db.sql.gz /tmp/db.sql.gz
+$ cipi db restore myapp /tmp/db.sql.gz
+
+$ aws s3 cp s3://your-bucket/cipi/myapp/2026-08-22_143015/shared.tar.gz /tmp/shared.tar.gz
+$ tar -xzf /tmp/shared.tar.gz -C /home/myapp/</code></div>
+        <p>If the VPS itself is gone, the sequence is: install Cipi on a new Ubuntu box, <code>cipi app create</code> with the same Git remote, then the two restores above, then <code>cipi ssl install</code> and a DNS cut. The <a class="inline" href="/docs/infrastructure#cli-backup">infrastructure docs</a> list the same commands; this drill is the part most people skip.</p>
+        <p>For a same-server rollback — bad migration, bad deploy — the local dump is faster:</p>
+        <div class="code-pre"><code>$ ls -lh /var/log/cipi/backups/myapp_*.sql.gz
+$ cipi db restore myapp /var/log/cipi/backups/myapp_20260822_143012.sql.gz
+$ cipi deploy myapp --rollback</code></div>
+        <div class="note">
+            <p>Local dumps in <code>/var/log/cipi/backups/</code> are never deleted automatically. On a busy deploy schedule they fill the disk. Keep the last five and drop the rest: <code>ls -t /var/log/cipi/backups/myapp_*.sql.gz | tail -n +6 | xargs rm -f</code>.</p>
+        </div>
+
+        <h2 id="before-deploy">Backup before every release</h2>
+        <p>Webhook auto-deploy cannot pause for a backup — the push fires <code>cipi deploy</code> immediately. For production, put a backup stage in CI so a failed dump blocks the release. The full GitHub Actions and GitLab examples live in <a class="inline" href="/docs/deploy#safe-deploy">Safe deploy — backup before release</a>. The two commands you need in that stage:</p>
+        <div class="code-pre"><code>$ cipi db backup myapp
+<span class="c"># fast local rollback</span>
+$ cipi backup run myapp
+<span class="c"># off-site copy of DB + shared/</span></code></div>
+        <p>Used together you get a same-box restore that takes seconds and an S3 prefix you can still open if the box is gone. If either command fails, do not deploy.</p>
+
+        <h2 id="mistakes">Mistakes that make backups useless</h2>
+        <ul>
+            <li><strong>Same region as the VPS, same provider account, no second copy.</strong> A suspended account or a regional outage takes both. Put the bucket in another region, or on another vendor.</li>
+            <li><strong>Root cloud keys on the server.</strong> A dedicated IAM user with four S3 actions on one bucket is enough. If the VPS is compromised, the blast radius stays that bucket.</li>
+            <li><strong>Never testing restore.</strong> Compression flags, empty dumps, a <code>shared/</code> extract that overwrites the wrong tree — you only meet those bugs during an incident unless you drill.</li>
+            <li><strong>No prune, then a surprise bill.</strong> Daily 2 GB dumps become 60 GB a month. Set <code>--weeks</code> the same day you set cron.</li>
+            <li><strong>Trusting provider snapshots alone.</strong> They are convenient. They are also on the same account, often the same region, and they do not give you a portable <code>db.sql.gz</code>.</li>
+            <li><strong>Skipping <code>shared/</code>.</strong> A database without uploaded files is half an app. <code>cipi backup run</code> already packs both; do not invent a dump-only cron "to keep it simple".</li>
+        </ul>
+
+        <div class="cta-box">
+            <h2>Run it on a Cipi VPS</h2>
+            <p>Cipi is the free, open-source Laravel deploy CLI used throughout this guide. One command turns a fresh Ubuntu VPS into a hardened production server — and <code>cipi backup configure</code> is the step that makes the server survivable.</p>
+            <div class="install-box">wget -O - https://cipi.sh/setup.sh | bash</div>
+            <div class="cta-actions">
+                <a href="/docs/getting-started" class="btn-primary">Get started free</a>
+                <a href="/docs/infrastructure#cli-backup" class="btn-ghost">Backup CLI reference</a>
+                <a href="https://github.com/cipi-sh/cipi" target="_blank" class="btn-ghost">Star on GitHub</a>
+            </div>
+        </div>
+
+        <h2 id="faq">Frequently asked questions</h2>
+        <div class="faq-item"><h3>Does Cipi work only with Amazon S3?</h3><p>No. <code>cipi backup configure</code> accepts any S3-compatible endpoint: Hetzner Object Storage, DigitalOcean Spaces, Backblaze B2, MinIO, or a self-hosted store such as <a class="inline" href="https://johnny.web.ap.it" target="_blank" rel="noopener">Johnny</a>. Leave the endpoint empty for AWS; fill it for every other provider.</p></div>
+        <div class="faq-item"><h3>What is the difference between <code>cipi db backup</code> and <code>cipi backup run</code>?</h3><p><code>cipi db backup</code> writes a compressed SQL dump on the same VPS under <code>/var/log/cipi/backups/</code>. It is always available and needs no configuration. <code>cipi backup run</code> dumps the database and the app <code>shared/</code> folder, then uploads both archives to your S3 bucket. Use the local dump for a fast rollback; use the S3 copy for a real off-site restore.</p></div>
+        <div class="faq-item"><h3>How often should I back up a Laravel VPS?</h3><p>Daily is the sensible default for production. Add <code>cipi backup run</code> to the root crontab at a quiet hour, then prune older than four weeks. If the database changes constantly, run it twice a day. Always run a backup before a risky migration or a production deploy.</p></div>
+        <div class="faq-item"><h3>Can I restore a Cipi S3 backup onto a new VPS?</h3><p>Yes — that is the point of an off-site copy. Install Cipi on a fresh Ubuntu VPS, recreate the app, download <code>db.sql.gz</code> and <code>shared.tar.gz</code> from the bucket, restore the database with <code>cipi db restore</code>, and extract <code>shared/</code> into <code>/home/&lt;app&gt;/</code>.</p></div>
+        <div class="faq-item"><h3>Where does Cipi store S3 credentials?</h3><p><code>cipi backup configure</code> writes them to <code>/etc/cipi/backup.conf</code>. Keep that file root-only. The same credentials are used by <code>cipi backup run</code>, <code>list</code> and <code>prune</code>. Staging of large archives defaults to <code>/var/tmp</code> so a small RAM-backed <code>/tmp</code> does not abort the job.</p></div>
+
+        <h2>Keep reading</h2>
+        <div class="related">
+            <a href="/guides/deploy-laravel-ubuntu-vps">Deploy Laravel on Ubuntu</a>
+            <a href="/guides/laravel-security-checklist">Laravel security checklist</a>
+            <a href="/guides/laravel-ci-cd-git-workflow">CI/CD for Laravel</a>
+            <a href="/docs/infrastructure#cli-backup">Docs: cipi backup</a>
+            <a href="/docs/deploy#safe-deploy">Safe deploy with backup</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-shell">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">Cipi</a>
+                    <p>Free open-source Laravel deploy CLI for Ubuntu VPS — Octane, Horizon, Reverb and zero-downtime Git deploys.</p>
+                    <ul class="footer-brand-links">
+                        <li><a href="/docs/getting-started">Get started</a></li>
+                    <li><a href="/docs/">Docs</a></li>
+                    <li><a href="https://github.com/cipi-sh/cipi" target="_blank" rel="noopener">GitHub</a></li>
+                    </ul>
+                </div>
+                <nav class="footer-col footer-col--compare" aria-label="Compare Cipi with alternatives">
+                    <strong>Compare Cipi</strong>
+                    <ul>
+                        <li><a href="/alternative-to-laravel-forge">Laravel Forge alternative</a></li>
+                    <li><a href="/alternative-to-laravel-cloud">Laravel Cloud alternative</a></li>
+                    <li><a href="/alternative-to-ploi">Ploi alternative</a></li>
+                    <li><a href="/alternative-to-coolify">Coolify alternative</a></li>
+                    <li><a href="/alternative-to-runcloud">RunCloud alternative</a></li>
+                    <li><a href="/alternative-to-cloudpanel">CloudPanel alternative</a></li>
+                    <li><a href="/alternative-to-cpanel">cPanel alternative</a></li>
+                    <li><a href="/alternative-to-plesk">Plesk alternative</a></li>
+                    <li><a href="/best-laravel-forge-alternatives">Best Forge alternatives 2026</a></li>
+                    <li><a href="/alternatives">All comparisons</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Free Laravel guides">
+                    <strong>Free guides</strong>
+                    <ul>
+                        <li><a href="/guides/manage-apps-with-cipi-yml">Manage apps with cipi.yml</a></li>
+                    <li><a href="/guides/cipi-gui-and-api">Control panel and API</a></li>
+                    <li><a href="/guides/cipi-agent-laravel-mcp">cipi/agent and project MCP</a></li>
+                    <li><a href="/guides/deploy-wordpress-custom-app">Deploy WordPress on Cipi</a></li>
+                    <li><a href="/guides/">All guides</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-content">
+                <div class="footer-left">
+                    Made with ❤️ by <a href="https://web.ap.it" target="_blank" rel="noopener">Andrea Pollastri</a>
+                    <span class="footer-license"> · Open source, MIT Licensed</span>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="https://conn.web.ap.it" target="_blank" rel="noopener">SSH Connection Manager</a></li>
+                    <li><a href="/discovery">Discovery</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateFavicon(theme) {
+            const variant = theme === 'dark' ? 'dark' : 'light';
+            document.getElementById('favicon').href = `/favicon-${variant}.png`;
+        }
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            var tc=document.getElementById('themeColor'); if(tc) tc.content=(html.getAttribute('data-theme')==='dark')?'#A3E635':'#65A30D';
+            localStorage.setItem('cipi-theme', next);
+            updateFavicon(next);
+        }
+        (function () {
+            const saved = localStorage.getItem('cipi-theme');
+            if (saved) { document.documentElement.setAttribute('data-theme', saved); updateFavicon(saved); }
+            else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark'); updateFavicon('dark');
+            }
+        })();
+    </script>
+
+    <script async src="https://stats.misterdev.it/i/12f27ee0-8603-466d-8b1a-f719f7ecc6d7.js"></script>
+    <noscript><img src="https://stats.misterdev.it/collect/pixel.gif?k=12f27ee0-8603-466d-8b1a-f719f7ecc6d7&p=/" width="1" height="1" /></noscript>
+</body>
+
+</html>

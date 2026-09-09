@@ -45,7 +45,7 @@
           <tbody>
             <xsl:for-each select="sm:urlset/sm:url">
               <tr>
-                <xsl:if test="sm:loc='https://cipi.sh/en/' or sm:loc='https://cipi.sh/it/' or sm:loc='https://cipi.sh/'">
+                <xsl:if test="sm:loc='https://cipi.sh/' or sm:loc='https://cipi.sh/it/' or sm:loc='https://cipi.sh/'">
                   <xsl:attribute name="class">home</xsl:attribute>
                 </xsl:if>
                 <td class="meta"><xsl:value-of select="position()"/></td>

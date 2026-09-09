@@ -2,13 +2,11 @@
 """Regenerate docs/search-index.js from HTML doc sections.
 
 Usage:
-  python3 docs/build-search-index.py           # legacy: docs/*.html -> docs/search-index.js
-  python3 docs/build-search-index.py en       # en/docs -> en/docs/search-index.js
+  python3 docs/build-search-index.py           # docs/*.html -> docs/search-index.js
 """
 
 from __future__ import annotations
 
-import argparse
 import glob
 import html
 import json
@@ -90,20 +88,13 @@ def extract_entries(docs_dir: str, titles: dict[str, str]) -> list[dict[str, str
     return entries
 
 
-def write_index(lang: str | None) -> None:
-    if lang is None:
-        docs_dir = os.path.join(ROOT, "docs")
-        out = os.path.join(docs_dir, "search-index.js")
-        titles = PAGE_TITLES_EN
-    else:
-        docs_dir = os.path.join(ROOT, lang, "docs")
-        out = os.path.join(docs_dir, "search-index.js")
-        titles = PAGE_TITLES_EN
-
+def write_index() -> None:
+    docs_dir = os.path.join(ROOT, "docs")
+    out = os.path.join(docs_dir, "search-index.js")
     if not os.path.isdir(docs_dir):
         sys.exit(f"docs dir missing: {docs_dir}")
 
-    entries = extract_entries(docs_dir, titles)
+    entries = extract_entries(docs_dir, PAGE_TITLES_EN)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as handle:
         handle.write("window.CIPI_DOCS = ")
@@ -113,10 +104,7 @@ def write_index(lang: str | None) -> None:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("lang", nargs="?", choices=["en"], default="en")
-    args = ap.parse_args()
-    write_index(args.lang)
+    write_index()
 
 
 if __name__ == "__main__":
