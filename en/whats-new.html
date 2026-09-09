@@ -6,21 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What's New in Cipi 5</title>
     <meta name="description"
-        content="Cipi 5.2 is here: opt-in CrowdSec with a registered firewall bouncer, a break-glass rescue listener, nightly integrity scanning with ClamAV, and shell tab-completion installed for you — on top of everything Cipi 5.0 and 5.1 added.">
+        content="Cipi 5.2.2 is here: Meilisearch for Laravel Scout and an allowlisted cipi package for host binaries, on top of CrowdSec, nightly integrity scanning, and everything Cipi 5.0 and 5.1 added.">
     <meta name="keywords"
-        content="Cipi 5.2, CrowdSec, cipi scan, Cipi 5.1, Cipi 5, Cipi release, backup profiles, cipi.yml, Laravel Octane FrankenPHP, Laravel Horizon, PostgreSQL Laravel deploy, Cipi what's new">
+        content="Cipi 5.2.2, Meilisearch, Laravel Scout, cipi search, cipi package, CrowdSec, cipi scan, Cipi 5.2, Cipi 5.1, Cipi 5, Cipi release, backup profiles, cipi.yml, Laravel Octane FrankenPHP, Laravel Horizon, PostgreSQL Laravel deploy, Cipi what's new">
     <meta name="author" content="Andrea Pollastri">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://cipi.sh/en/whats-new">
-                <!-- i18n:alternates -->
-    <link rel="alternate" hreflang="en" href="https://cipi.sh/en/whats-new">
-    <link rel="alternate" hreflang="de" href="https://cipi.sh/de/whats-new">
-    <link rel="alternate" hreflang="fr" href="https://cipi.sh/fr/whats-new">
-    <link rel="alternate" hreflang="it" href="https://cipi.sh/it/novita">
-    <link rel="alternate" hreflang="es" href="https://cipi.sh/es/whats-new">
-    <link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/whats-new">
-    <link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/whats-new">
-    <!-- /i18n:alternates -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Cipi">
@@ -33,11 +24,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="What's New in Cipi 5">
             <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="de_DE">
-    <meta property="og:locale:alternate" content="fr_FR">
-    <meta property="og:locale:alternate" content="it_IT">
-    <meta property="og:locale:alternate" content="es_ES">
-    <meta property="og:locale:alternate" content="pt_PT"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="What's New in Cipi 5.1">
     <meta name="twitter:description"
         content="Cipi 5.1: backup profiles, cipi.yml, guided php.ini and post-deploy rollback. Plus everything from 5.0 — Octane, Horizon, Reverb, PostgreSQL.">
@@ -50,10 +37,10 @@
       "dateModified": "2026-09-09",
       "name": "What's New in Cipi 5",
       "url": "https://cipi.sh/en/whats-new",
-      "description": "Everything new in Cipi 5: 5.0 Octane, Horizon, Reverb, PostgreSQL; 5.1 backup profiles, cipi.yml, php.ini, post-deploy rollback, nginx default-server. 5.2 adds opt-in CrowdSec with a registered firewall bouncer, a break-glass rescue listener, nightly integrity scanning and shell tab-completion.",
+      "description": "Everything new in Cipi 5: 5.0 Octane, Horizon, Reverb, PostgreSQL; 5.1 backup profiles, cipi.yml, php.ini, post-deploy rollback, nginx default-server. 5.2 adds opt-in CrowdSec, nightly integrity scanning and shell tab-completion. 5.2.2 adds Meilisearch for Laravel Scout and an allowlisted cipi package.",
       "inLanguage": "en",
       "image": "https://cipi.sh/og.png",
-      "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/", "softwareVersion": "5.2.1" },
+      "about": { "@type": "SoftwareApplication", "name": "Cipi", "url": "https://cipi.sh/", "softwareVersion": "5.2.2" },
       "author": { "@type": "Person", "name": "Andrea Pollastri", "url": "https://github.com/andreapollastri" },
       "publisher": { "@type": "Organization", "name": "Cipi", "url": "https://cipi.sh/" }
     }
@@ -375,7 +362,6 @@
             opacity: 0.85;
             color: var(--paper);
         }
-
 
         /* ══════════════ HERO / STAGE ══════════════ */
         .stage {
@@ -1536,15 +1522,11 @@
                     <circle fill="currentColor" cx="25.5497" cy="16.5888" r="0.75" />
                 </svg>
                 <b>Ci<span class="pi">pi</span></b>
-                <span class="ver-pill">v5.2.1</span>
+                <span class="ver-pill">v5.2.2</span>
             </a>
             <nav class="topnav">
                 <a href="/en/cipi-yml" class="hide-sm">cipi.yml</a>
                 <div class="nav-actions">
-                    
-                    
-                    
-                    <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">EN</summary><div class="lang-menu"><a class="active" href="/en/whats-new" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/whats-new" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/whats-new" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/novita" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/whats-new" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/whats-new" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
                     <button type="button" class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -1578,9 +1560,9 @@
     <section class="stage" id="top">
         <div class="stage-inner">
             <div>
-                <span class="eyebrow"><i></i> Cipi 5.2 · Now available</span>
+                <span class="eyebrow"><i></i> Cipi 5.2.2 · Now available</span>
                 <h1>Your server just got<br><em>a serious promotion.</em></h1>
-                <p class="stage-lead">Laravel Octane on FrankenPHP. Horizon and Reverb in one line. PostgreSQL next to MariaDB. Backup profiles, a per-project cipi.yml and post-deploy rollback. <b>5.2 adds opt-in CrowdSec with a real firewall bouncer, a break-glass rescue listener, a nightly integrity check and shell tab-completion.</b> Same one-command server. Everything Cipi 5, tagged by release.</p>
+                <p class="stage-lead">Laravel Octane on FrankenPHP. Horizon and Reverb in one line. PostgreSQL next to MariaDB. Backup profiles, a per-project cipi.yml and post-deploy rollback. <b>5.2 adds opt-in CrowdSec, a nightly integrity check and shell tab-completion. 5.2.2 adds Meilisearch for Laravel Scout and an allowlisted <code>cipi package</code> for the host binaries a project sometimes needs.</b> Same one-command server. Everything Cipi 5, tagged by release.</p>
                 <div class="stage-cta">
                     <a href="#headlines" class="btn-lime">See everything new
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
@@ -1594,7 +1576,7 @@
                 <ul class="facts">
                     <li><b>14</b><span>Since 5.0</span></li>
                     <li><b>6</b><span>Since 5.1</span></li>
-                    <li><b>4</b><span>Since 5.2</span></li>
+                    <li><b>6</b><span>Since 5.2</span></li>
                     <li><b>2</b><span>Database engines</span></li>
                     <li><b>$0</b><span>Forever, MIT</span></li>
                 </ul>
@@ -1643,9 +1625,9 @@
             <div class="sec-head rise">
                 <div>
                     <span class="idx">01 — The headlines</span>
-                    <h2>Twenty-four reasons to<br><em>update tonight.</em></h2>
+                    <h2>Twenty-six reasons to<br><em>update tonight.</em></h2>
                 </div>
-                <p>Everything Cipi 5 adds, at a glance. Tiles tagged <em>since 5.0</em> shipped with Cipi 5; <em>since 5.2</em> is new in this release. Tap any tile to jump into the docs.</p>
+                <p>Everything Cipi 5 adds, at a glance. Tiles tagged <em>since 5.0</em> shipped with Cipi 5; <em>since 5.2</em> is new in this line. Tap any tile to jump into the docs.</p>
             </div>
 
             <div class="bento stagger rise">
@@ -2003,11 +1985,40 @@
                         </svg></span>
                 </a>
 
-                <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.1" target="_blank" rel="noopener"
+                <a href="/en/docs/infrastructure#cli-search" class="tile dark w2">
+                    <div>
+                        <span class="badge">Scout, on the box</span>
+                        <div class="n">25 <span class="since since-new">since 5.2.2</span></div>
+                        <h3>Meilisearch for<br>Laravel Scout.</h3>
+                        <p>A single Rust binary next to Nginx — not a container. Listens on 127.0.0.1. Cipi writes the index prefix so two apps cannot share a key. Opt-in: nothing installs until you ask.</p>
+                    </div>
+                    <div class="cmd">cipi search enable myapp</div>
+                    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round">
+                            <line x1="7" y1="17" x2="17" y2="7" />
+                            <polyline points="7 7 17 7 17 17" />
+                        </svg></span>
+                </a>
+
+                <a href="/en/docs/infrastructure#cli-package" class="tile w2">
+                    <div>
+                        <div class="n">26 <span class="since since-new">since 5.2.2</span></div>
+                        <h3>An allowlisted apt</h3>
+                        <p>Image optimisers, ffmpeg, <code>convert</code>, <code>pdftotext</code> — from Ubuntu's repos, and only those. The allowlist is the feature. Chromium is refused on purpose.</p>
+                    </div>
+                    <div class="cmd">cipi package install imagemagick</div>
+                    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round">
+                            <line x1="7" y1="17" x2="17" y2="7" />
+                            <polyline points="7 7 17 7 17 17" />
+                        </svg></span>
+                </a>
+
+                <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.2" target="_blank" rel="noopener"
                     class="tile plain w3">
                     <div>
                         <h3>Every 5.2 change lives in the release notes</h3>
-                        <div class="cmd">github.com/cipi-sh/cipi — 5.2.1 ↗</div>
+                        <div class="cmd">github.com/cipi-sh/cipi — 5.2.2 ↗</div>
                     </div>
                 </a>
             </div>
@@ -2148,6 +2159,18 @@
                 <span class="ba-arrow">→</span>
                 <span class="ba-after">TAB completes verbs, flags and app names</span>
             </div>
+            <div class="ba-row">
+                <span class="ba-topic">Search <span class="since since-new">since 5.2.2</span></span>
+                <span class="ba-before">An Algolia account, or Scout's database driver</span>
+                <span class="ba-arrow">→</span>
+                <span class="ba-after">Meilisearch on 127.0.0.1, prefix written by Cipi</span>
+            </div>
+            <div class="ba-row">
+                <span class="ba-topic">Host binaries <span class="since since-new">since 5.2.2</span></span>
+                <span class="ba-before">apt as root, and hope php-imagick pulled <code>convert</code></span>
+                <span class="ba-arrow">→</span>
+                <span class="ba-after">An allowlisted <code>cipi package</code> — Chromium refused</span>
+            </div>
             </div>
         </div>
     </section>
@@ -2222,6 +2245,10 @@
             <div class="cmd-row"><code>cipi completion bash|zsh [--print]</code><span>Shell tab-completion — already installed for you <em class="since since-new">since 5.2</em></span></div>
             <div class="cmd-row"><code>cipi git refresh [app]</code><span>Re-sync GitHub/GitLab deploy keys and webhooks <em class="since since-new">since 5.2.1</em></span></div>
             <div class="cmd-row"><code>cipi app fix-permissions [app]</code><span>Restore an app home to the permission model Cipi created it with <em class="since since-new">since 5.2.1</em></span></div>
+            <div class="cmd-row"><code>cipi search install|enable|disable|status</code><span>Meilisearch for Laravel Scout — native binary, 127.0.0.1 only <em class="since since-new">since 5.2.2</em></span></div>
+            <div class="cmd-row"><code>cipi search key show|rotate</code><span>App key or master key; rotating the master rewrites every .env <em class="since since-new">since 5.2.2</em></span></div>
+            <div class="cmd-row"><code>cipi search upgrade|remove</code><span>In-place store upgrade, or put the old binary back <em class="since since-new">since 5.2.2</em></span></div>
+            <div class="cmd-row"><code>cipi package list|install|remove</code><span>Allowlisted host binaries from Ubuntu's repos <em class="since since-new">since 5.2.2</em></span></div>
             </div>
         </div>
     </section>

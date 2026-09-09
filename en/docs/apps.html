@@ -9,15 +9,6 @@
     <meta name="author" content="Andrea Pollastri">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://cipi.sh/en/docs/apps">
-                <!-- i18n:alternates -->
-    <link rel="alternate" hreflang="en" href="https://cipi.sh/en/docs/apps">
-    <link rel="alternate" hreflang="de" href="https://cipi.sh/de/docs/apps">
-    <link rel="alternate" hreflang="fr" href="https://cipi.sh/fr/docs/apps">
-    <link rel="alternate" hreflang="it" href="https://cipi.sh/it/docs/app">
-    <link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/apps">
-    <link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/apps">
-    <link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/apps">
-    <!-- /i18n:alternates -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="website">
@@ -30,11 +21,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Cipi Docs — Apps & Sites">
             <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="de_DE">
-    <meta property="og:locale:alternate" content="fr_FR">
-    <meta property="og:locale:alternate" content="it_IT">
-    <meta property="og:locale:alternate" content="es_ES">
-    <meta property="og:locale:alternate" content="pt_PT"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cipi Docs — Apps & Sites">
     <meta name="twitter:description" content="Create, manage, and configure Laravel apps and custom sites with Cipi: domains, SSL, PHP versions, workers, and deploys.">
     <meta name="twitter:image" content="https://cipi.sh/og.png">
@@ -128,10 +115,6 @@
                 
                 
                 <a href="/en/cipi-yml" class="nav-link">cipi.yml</a>
-                
-                
-                
-                <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">EN</summary><div class="lang-menu"><a class="active" href="/en/docs/apps" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/docs/apps" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/docs/apps" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/docs/app" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/docs/apps" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/docs/apps" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -242,6 +225,8 @@
                 <a href="/en/docs/infrastructure#cli-ban" class="sidebar-link"><code>ban</code></a>
                 <a href="/en/docs/infrastructure#cli-crowdsec" class="sidebar-link"><code>crowdsec</code></a>
                 <a href="/en/docs/infrastructure#cli-scan" class="sidebar-link"><code>scan</code></a>
+                <a href="/en/docs/infrastructure#cli-search" class="sidebar-link"><code>search</code></a>
+                <a href="/en/docs/infrastructure#cli-package" class="sidebar-link"><code>package</code></a>
                 <a href="/en/docs/infrastructure#cli-completion" class="sidebar-link"><code>completion</code></a>
                 <a href="/en/docs/infrastructure#cli-services" class="sidebar-link"><code>service</code></a>
                 <a href="/en/docs/infrastructure#cli-ssh" class="sidebar-link"><code>ssh</code></a>
@@ -307,7 +292,6 @@
                 <a href="/en/docs/about#why-cipi" class="sidebar-link">why "Ci-Pi"?</a>
                 <a href="/en/docs/about#vs-alternatives" class="sidebar-link">Cipi vs alternatives</a>
             </div>
-
 
         </aside>
 
@@ -625,8 +609,10 @@
                                             <tr>
                                                 <td>cipi app delete &lt;app&gt;</td>
                                                 <td>Permanently remove the app, user, database (if Laravel), Nginx vhost, FPM pool, and
-                                                    Supervisor workers. For custom apps, skips database drop (none was created). Asks for
-                                                    confirmation.</td>
+                                                    Supervisor workers. For custom apps, skips database drop (none was created). Since
+                                                    <strong>v5.2.2</strong>, also revokes the app's Meilisearch key and drops its
+                                                    indexes — see <a href="/en/docs/infrastructure#cli-search"><code>cipi search</code></a>.
+                                                    Asks for confirmation.</td>
                                             </tr>
                                             <tr>
                                                 <td>cipi app delete &lt;app&gt; --force</td>
@@ -638,8 +624,6 @@
                                     </table>
                 </div>
             </div>
-
-
 
             <div class="doc-section" id="cli-app-fix-permissions">
                 <h2><code>cipi app fix-permissions</code></h2>
@@ -668,8 +652,6 @@
                     file lists the new command so a future GUI can call it; existing servers pick that line up the next
                     time sudoers is rewritten (the CLI runs as root and does not need it).</p>
             </div>
-
-
 
             <div class="doc-section" id="cli-app-reverb">
                 <h2><code>cipi app reverb</code></h2>
@@ -939,7 +921,11 @@ myapp-reverb                     RUNNING   pid 21847, uptime 3 days, 4:12:07
                     its own domain. Sets <code>cloned_from</code> in <code>apps.json</code>; does <strong>not</strong>
                     copy webhook or git IDs. If the source has Reverb, the clone gets its own port, credentials and
                     public host (since <strong>v5.1.2</strong>) — it no longer inherits the production socket. See
-                    <a href="#cli-app-reverb"><code>cipi app reverb</code></a>.</p>
+                    <a href="#cli-app-reverb"><code>cipi app reverb</code></a>. Since <strong>v5.2.2</strong>, a
+                    cloned Scout app gets its own Meilisearch key and <code>SCOUT_PREFIX</code>; the source's
+                    <code>MEILISEARCH_*</code> keys are excluded from the copied <code>.env</code>, because a
+                    clone that inherited them would reindex into production. See
+                    <a href="/en/docs/infrastructure#cli-search"><code>cipi search</code></a>.</p>
                 <div class="code-block">
                     <div class="code-block-header"><span class="code-block-lang">bash</span><button
                             class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
@@ -1051,8 +1037,6 @@ myapp-reverb                     RUNNING   pid 21847, uptime 3 days, 4:12:07
                     Unsuspend buttons). Requires token ability <code>apps-suspend</code> for API access.</p>
             </div>
 
-
-
             <div class="doc-section" id="cli-basicauth">
                 <h2><code>cipi basicauth</code></h2>
                 <p>Available since <strong>v4.5.2</strong>. Protect any app — Laravel or custom — behind an Nginx
@@ -1104,8 +1088,6 @@ myapp-reverb                     RUNNING   pid 21847, uptime 3 days, 4:12:07
                         <code>auth.json</code> for private package repositories.</div>
                 </div>
             </div>
-
-
 
             <div class="doc-section" id="cli-app-env">
                 <h2>Managing ENV variables</h2>
@@ -1281,8 +1263,6 @@ MAIL_HOST=smtp.mailgun.org</pre>
                 </div>
             </div>
 
-
-
             <div class="doc-section" id="cli-app-run">
                 <h2><code>cipi app run</code></h2>
                 <p>Since <strong>v5.0.3</strong>, run a <strong>whitelisted non-interactive</strong> command as the app
@@ -1350,8 +1330,6 @@ MAIL_HOST=smtp.mailgun.org</pre>
                 </div>
             </div>
 
-
-
             <div class="doc-section" id="cli-app-artisan">
                 <h2><code>app artisan</code> &amp; <code>app tinker</code></h2>
                 <p>Run Artisan commands and Tinker as the app user with the correct PHP version and
@@ -1368,8 +1346,6 @@ MAIL_HOST=smtp.mailgun.org</pre>
 <span class="p">$</span> cipi app tinker myapp</pre>
                 </div>
             </div>
-
-
 
             <div class="doc-section" id="cli-app-ssh">
                 <h2>SSH as the app user</h2>
@@ -1511,8 +1487,6 @@ myapp@server:~$ ll ~/releases/</pre>
 
         sidebarToggle.addEventListener('click', () => docsSidebar.classList.contains('open') ? closeSidebar() : openSidebar());
         sidebarOverlay.addEventListener('click', closeSidebar);
-
-
 
         // Scrollspy — scoped to the current chapter so duplicate hashes
         // (e.g. #cli-deploy on deploy vs cli-client) highlight the right link.

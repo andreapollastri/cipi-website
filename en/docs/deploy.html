@@ -9,15 +9,6 @@
     <meta name="author" content="Andrea Pollastri">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://cipi.sh/en/docs/deploy">
-                <!-- i18n:alternates -->
-    <link rel="alternate" hreflang="en" href="https://cipi.sh/en/docs/deploy">
-    <link rel="alternate" hreflang="de" href="https://cipi.sh/de/docs/deploy">
-    <link rel="alternate" hreflang="fr" href="https://cipi.sh/fr/docs/deploy">
-    <link rel="alternate" hreflang="it" href="https://cipi.sh/it/docs/deploy">
-    <link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/deploy">
-    <link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/deploy">
-    <link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/deploy">
-    <!-- /i18n:alternates -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="website">
@@ -30,11 +21,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Cipi Docs — Deploy & CI/CD">
             <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="de_DE">
-    <meta property="og:locale:alternate" content="fr_FR">
-    <meta property="og:locale:alternate" content="it_IT">
-    <meta property="og:locale:alternate" content="es_ES">
-    <meta property="og:locale:alternate" content="pt_PT"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cipi Docs — Deploy & CI/CD">
     <meta name="twitter:description" content="Zero-downtime deployments, Git integration, CI/CD pipelines, notifications, and preview environments.">
     <meta name="twitter:image" content="https://cipi.sh/og.png">
@@ -128,10 +115,6 @@
                 
                 
                 <a href="/en/cipi-yml" class="nav-link">cipi.yml</a>
-                
-                
-                
-                <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">EN</summary><div class="lang-menu"><a class="active" href="/en/docs/deploy" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/docs/deploy" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/docs/deploy" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/docs/deploy" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/docs/deploy" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/docs/deploy" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -242,6 +225,8 @@
                 <a href="/en/docs/infrastructure#cli-ban" class="sidebar-link"><code>ban</code></a>
                 <a href="/en/docs/infrastructure#cli-crowdsec" class="sidebar-link"><code>crowdsec</code></a>
                 <a href="/en/docs/infrastructure#cli-scan" class="sidebar-link"><code>scan</code></a>
+                <a href="/en/docs/infrastructure#cli-search" class="sidebar-link"><code>search</code></a>
+                <a href="/en/docs/infrastructure#cli-package" class="sidebar-link"><code>package</code></a>
                 <a href="/en/docs/infrastructure#cli-completion" class="sidebar-link"><code>completion</code></a>
                 <a href="/en/docs/infrastructure#cli-services" class="sidebar-link"><code>service</code></a>
                 <a href="/en/docs/infrastructure#cli-ssh" class="sidebar-link"><code>ssh</code></a>
@@ -307,7 +292,6 @@
                 <a href="/en/docs/about#why-cipi" class="sidebar-link">why "Ci-Pi"?</a>
                 <a href="/en/docs/about#vs-alternatives" class="sidebar-link">Cipi vs alternatives</a>
             </div>
-
 
         </aside>
 
@@ -422,8 +406,6 @@
                 </div>
             </div>
 
-
-
             <div class="doc-section" id="predeploy-snapshot">
                 <h2>Pre-deploy DB snapshots</h2>
                 <p>Since <strong>v5.0</strong>, <code>cipi deploy &lt;app&gt;</code> can dump the database
@@ -475,8 +457,6 @@
                     <a href="#safe-deploy">Safe deploy — backup before release</a>.</p>
             </div>
 
-
-
             <div class="doc-section" id="cli-deploy-config">
                 <h2><code>cipi app deploy-config</code></h2>
                 <p>Since <strong>v5.0.3</strong>, manage durable Deployer recipe options stored in
@@ -498,7 +478,6 @@
                     <code>apps-deploy-config</code>, API <strong>1.14+</strong> / Cipi <strong>5.0.3+</strong>).
                     MCP: <code>AppDeployConfigShow</code>, <code>AppDeployConfigUpdate</code>.</p>
             </div>
-
 
             <div class="doc-section" id="cli-yml">
                 <h2><code>cipi.yml</code> — configuration that travels with the code</h2>
@@ -675,7 +654,6 @@ backup:
                 </div>
             </div>
 
-
             <div class="doc-section" id="cli-auth">
                 <h2><code>auth.json</code></h2>
                 <p>Manage the <code>auth.json</code> file for an app. This file lives at
@@ -767,8 +745,6 @@ backup:
                 </div>
             </div>
 
-
-
             <div class="doc-section" id="git-providers">
                 <h2>Git providers</h2>
                 <p>Cipi is ready to work with <strong>GitHub</strong> and <strong>GitLab</strong> but it supports any
@@ -805,8 +781,6 @@ backup:
                     </div>
                 </div>
             </div>
-
-
 
             <div class="doc-section" id="git-auto-setup">
                 <h2>Git auto-setup</h2>
@@ -989,8 +963,6 @@ backup:
                         shown and you will need to remove them manually from the provider's repository settings.</div>
                 </div>
             </div>
-
-
 
             <div class="doc-section" id="cli-deploy-script">
                 <h2>Customising the deploy script</h2>
@@ -1193,8 +1165,6 @@ task('deploy', [
                 </div>
             </div>
 
-
-
             <div class="doc-section" id="ci-overview">
                 <h2>Deploy &amp; CI/CD — Overview</h2>
                 <p>With Cipi, <strong>CI</strong> (build and test) and <strong>CD</strong> (release to production) can
@@ -1311,8 +1281,6 @@ task('deploy', [
                     </div>
                 </div>
             </div>
-
-
 
             <div class="doc-section" id="ci-webhook">
                 <h2>Automatic deploys — Cipi Agent &amp; webhook</h2>
@@ -1537,8 +1505,6 @@ task('deploy', [
                 </div>
             </div>
 
-
-
             <div class="doc-section" id="ci-pipeline-ssh">
                 <h2>CI/CD pipelines — SSH deploy</h2>
                 <p>When the webhook model is not enough, run <strong>GitHub Actions</strong> or <strong>GitLab
@@ -1734,8 +1700,6 @@ deploy:
                     its own trigger — they never conflict because they target different Cipi app users.</p>
             </div>
 
-
-
             <div class="doc-section" id="deploy-notifications">
                 <h2>Deploy notifications</h2>
                 <p><strong>Pipeline use case:</strong> the webhook path deploys silently — Git returns 200 and the team
@@ -1919,8 +1883,6 @@ deploy:
                     </div>
                 </div>
             </div>
-
-
 
             <div class="doc-section" id="safe-deploy">
                 <h2>Safe deploy — backup before release</h2>
@@ -2159,8 +2121,6 @@ deploy:
                     </div>
                 </div>
             </div>
-
-
 
             <div class="doc-section" id="preview-environments">
                 <h2>Preview environments (per-branch deploy)</h2>
@@ -2542,8 +2502,6 @@ cleanup-preview:
 
         sidebarToggle.addEventListener('click', () => docsSidebar.classList.contains('open') ? closeSidebar() : openSidebar());
         sidebarOverlay.addEventListener('click', closeSidebar);
-
-
 
         // Scrollspy — scoped to the current chapter so duplicate hashes
         // (e.g. #cli-deploy on deploy vs cli-client) highlight the right link.

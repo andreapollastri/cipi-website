@@ -4,8 +4,6 @@
 Usage:
   python3 docs/build-search-index.py           # legacy: docs/*.html -> docs/search-index.js
   python3 docs/build-search-index.py en       # en/docs -> en/docs/search-index.js
-  python3 docs/build-search-index.py it       # it/docs -> it/docs/search-index.js
-  python3 docs/build-search-index.py --all    # rebuild every language tree
 """
 
 from __future__ import annotations
@@ -32,20 +30,6 @@ PAGE_TITLES_EN = {
     "advanced": "Advanced",
     "about": "About Cipi",
 }
-
-PAGE_TITLES_IT = {
-    "index": "Docs",
-    "primi-passi": "Primi passi",
-    "agent": "Cipi Agent",
-    "app": "App",
-    "deploy": "Deploy e CI/CD",
-    "infrastruttura": "Infrastruttura",
-    "client-cli": "Client CLI",
-    "gui": "Pannello di controllo (GUI)",
-    "avanzato": "Avanzato",
-    "informazioni": "Informazioni su Cipi",
-}
-
 
 def strip_tags(s: str) -> str:
     s = re.sub(r"<script[^>]*>.*?</script>", " ", s, flags=re.DOTALL | re.IGNORECASE)
@@ -114,7 +98,7 @@ def write_index(lang: str | None) -> None:
     else:
         docs_dir = os.path.join(ROOT, lang, "docs")
         out = os.path.join(docs_dir, "search-index.js")
-        titles = PAGE_TITLES_IT if lang == "it" else PAGE_TITLES_EN
+        titles = PAGE_TITLES_EN
 
     if not os.path.isdir(docs_dir):
         sys.exit(f"docs dir missing: {docs_dir}")
@@ -130,15 +114,8 @@ def write_index(lang: str | None) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("lang", nargs="?", choices=["en", "it", "de", "fr", "es", "pt"], default=None)
-    ap.add_argument("--all", action="store_true", help="Rebuild en, it, de, fr, es, and pt indexes")
+    ap.add_argument("lang", nargs="?", choices=["en"], default="en")
     args = ap.parse_args()
-
-    if args.all:
-        for lang in ("en", "it", "de", "fr", "es", "pt"):
-            write_index(lang)
-        return
-
     write_index(args.lang)
 
 

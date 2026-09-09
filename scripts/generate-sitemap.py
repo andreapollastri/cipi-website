@@ -1,24 +1,35 @@
 #!/usr/bin/env python3
-"""Generate sitemap.xml from multilingual HTML pages + hreflang slug map."""
+"""Generate sitemap.xml from English HTML pages."""
 from __future__ import annotations
 
-import sys
 from datetime import date
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from i18n_lib import (  # noqa: E402
-    BASE,
-    LANG_CODES,
-    LANGUAGES,
-    ROOT,
-    SLUGS_IT,
-    abs_href,
-    file_to_en_canon,
-    localize_canon,
-)
-
+ROOT = Path(__file__).resolve().parents[1]
+BASE = "https://cipi.sh"
 TODAY = date.today().isoformat()
+
+
+def file_to_canon(path: Path) -> str | None:
+    rel = path.relative_to(ROOT).as_posix()
+    if rel.endswith("404.html"):
+        return None
+    if rel == "index.html":
+        return "/"
+    if not rel.startswith("en/"):
+        return None
+    rest = rel[len("en/") :]
+    if rest.endswith("/index.html"):
+        return "/" + rest[: -len("index.html")]
+    if rest == "index.html":
+        return "/"
+    return "/" + rest[: -len(".html")]
+
+
+def href(canon: str) -> str:
+    if canon == "/":
+        return f"{BASE}/"
+    return f"{BASE}/en{canon}"
 
 
 def priority_for(canon: str) -> tuple[str, str]:
@@ -35,17 +46,11 @@ def priority_for(canon: str) -> tuple[str, str]:
     return "0.8", "monthly"
 
 
-def url_entry(en_canon: str, priority: str, freq: str, image: bool = False) -> str:
+def url_entry(canon: str, priority: str, freq: str, image: bool = False) -> str:
+    loc = href(canon)
     lines = [
         "  <url>",
-        f"    <loc>{abs_href('en', en_canon)}</loc>",
-    ]
-    for code, _, _ in LANGUAGES:
-        lines.append(
-            f'    <xhtml:link rel="alternate" hreflang="{code}" href="{abs_href(code, en_canon)}"/>'
-        )
-    lines.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{abs_href("en", en_canon)}"/>')
-    lines += [
+        f"    <loc>{loc}</loc>",
         f"    <lastmod>{TODAY}</lastmod>",
         f"    <changefreq>{freq}</changefreq>",
         f"    <priority>{priority}</priority>",
@@ -64,37 +69,29 @@ def url_entry(en_canon: str, priority: str, freq: str, image: bool = False) -> s
 def main() -> None:
     canons: set[str] = set()
     for path in sorted(ROOT.rglob("*.html")):
-        c = file_to_en_canon(path)
-        if c is not None and c != "/404":
+        c = file_to_canon(path)
+        if c is not None:
             canons.add(c)
-
-    canons.update(SLUGS_IT.keys())
-    canons.discard("/404")
 
     def sort_key(c: str):
         pri, _ = priority_for(c)
         return (0 if c == "/" else 1, -float(pri), c)
 
     ordered = sorted(canons, key=sort_key)
-
     chunks = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
-        '        xmlns:xhtml="http://www.w3.org/1999/xhtml"',
         '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
     ]
-
     for canon in ordered:
         pri, freq = priority_for(canon)
         chunks.append(url_entry(canon, pri, freq, image=(canon == "/")))
-
     chunks.append("</urlset>")
     chunks.append("")
-
     out = ROOT / "sitemap.xml"
     out.write_text("\n".join(chunks), encoding="utf-8")
-    print(f"Wrote {out} ({len(ordered)} URL groups × {len(LANG_CODES)} hreflang)")
+    print(f"Wrote {out} ({len(ordered)} URLs)")
 
 
 if __name__ == "__main__":

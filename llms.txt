@@ -4,23 +4,16 @@
 
 Full plain-text site content for LLM ingestion: https://cipi.sh/llms-full.txt
 
-## Languages
+## Site
 
-Site is bilingual. Canonical trees:
-
-- English homepage: `https://cipi.sh/` (`hreflang=en` and `x-default`)
-- English pages: `https://cipi.sh/en/…` (English slugs)
-- Italian homepage: `https://cipi.sh/it/`
-- Italian pages: `https://cipi.sh/it/…` (Italian slugs)
-
-`/en/` 301s to `/`. Legacy bare paths (e.g. `/docs/…`, `/guides/…`, `/novita`) 301 to the language implied by the slug. There is no Accept-Language or cookie redirect — crawlers always see one stable URL graph.
+English only. Homepage: `https://cipi.sh/`. Pages: `https://cipi.sh/en/…`. `/en/` 301s to `/`. Former language trees (`/de`, `/fr`, `/it`, `/es`, `/pt`) and localized slugs 301 to the English equivalent. There is no Accept-Language or cookie redirect.
 
 Key facts:
 
 - Install: `wget -O - https://cipi.sh/setup.sh | bash`
 - Admin access: SSH as `cipi` user, then `sudo -s` to run `cipi` commands
 - Optional web GUI: `cipi gui <domain>` installs an opt-in Laravel control panel to manage one or more servers from the browser; Cipi stays fully usable CLI-only without it. GUI supports .env / auth.json / Artisan / App commands (API 1.14+ / Cipi 5.0.3+), server cockpit — PHP, SSH, services, SMTP, health, IP whitelist (API 1.15+ / Cipi 5.0.6+), Octane create (API 1.13+ / Cipi 5.0+), and multi-engine MariaDB/PostgreSQL (API 1.12+ / Cipi 4.8+)
-- Current release: Cipi **5.2.0**, panel API **1.20** (`cipi self-update` applies migrations through 5.2.0). 5.2.0 adds **opt-in CrowdSec** and a **nightly integrity scan** — neither is installed by `setup.sh` or `cipi self-update`, and there is no WAF. `cipi crowdsec enable` installs the engine **and** a registered firewall bouncer (`crowdsec-firewall-bouncer-nftables|-iptables` via `cscli bouncers add`), reads `/home/*/logs/nginx-{access,error}.log`, refuses below 512MB MemAvailable or behind a reverse proxy without `set_real_ip_from`/`real_ip_header` (`--force` overrides), allowlists the current SSH session, and starts a rescue TLS listener whose one-shot token allowlists the TCP peer and unbans it in CrowdSec and fail2ban (`cipi crowdsec rescue token|rotate`, `allow|unallow`). `disable` flushes the CrowdSec chains before purging. Allowlists cover localhost, RFC1918, Let's Encrypt, GitHub webhook CIDRs from `api.github.com/meta` `.hooks` (fail-open) and hardcoded GitLab.com CIDRs dated 2026-09-07. `cipi ban list|unban` includes CrowdSec when the engine is up. `cipi scan` runs nightly at 04:40: sha256 integrity of `current/` (or `htdocs/`) against a manifest written at every deploy and rollback in `/var/lib/cipi/manifests` (root:root 0600), then one ClamAV pass over upload dirs only with rfxn PHP-webshell signatures; mails `scan_integrity` or `scan_incomplete` — never a false "clean". `enable` refuses below 2GB MemAvailable or 3GB free on `/var`. Bash and zsh tab-completion is installed automatically by `setup.sh` and every `self-update` (`cipi completion bash|zsh [--print]`). Migration 5.2.0 installs `cipi-scan-manifest` and the rescue helpers, creates the manifest store, grants per-app manifest sudo entries, and adds `SSH_CLIENT`/`SSH_CONNECTION` to `env_keep` in `/etc/sudoers.d/cipi-sudo` (validated with `visudo -c`); it enables nothing. 5.1.3 fixed `cipi ini list`; 5.1.2 made Laravel Reverb production-ready (generated credentials, `ws://`/`wss://` from the certificate, a proxy matching only `/app/{key}` and `/apps/{id}/…`, `workers.reverb` in `cipi.yml`); 5.1.1 repaired FPM pools and wildcard domains end to end
+- Current release: Cipi **5.2.2**, panel API **1.20**. 5.2.2 adds two more opt-in commands, neither installed by `setup.sh` or `cipi self-update`: **`cipi search`** (Meilisearch as a native binary for Laravel Scout — 127.0.0.1 only, Cipi-written `SCOUT_PREFIX`, app delete revokes the key, clone mints a new one) and **`cipi package`** (allowlisted apt for host binaries: image-optimizers, ffmpeg, imagemagick, poppler-utils; Chromium is refused because it would pull snapd). 5.2.0 adds **opt-in CrowdSec** and a **nightly integrity scan** — neither is installed by `setup.sh` or `cipi self-update`, and there is no WAF. `cipi crowdsec enable` installs the engine **and** a registered firewall bouncer (`crowdsec-firewall-bouncer-nftables|-iptables` via `cscli bouncers add`), reads `/home/*/logs/nginx-{access,error}.log`, refuses below 512MB MemAvailable or behind a reverse proxy without `set_real_ip_from`/`real_ip_header` (`--force` overrides), allowlists the current SSH session, and starts a rescue TLS listener whose one-shot token allowlists the TCP peer and unbans it in CrowdSec and fail2ban (`cipi crowdsec rescue token|rotate`, `allow|unallow`). `disable` flushes the CrowdSec chains before purging. Allowlists cover localhost, RFC1918, Let's Encrypt, GitHub webhook CIDRs from `api.github.com/meta` `.hooks` (fail-open) and hardcoded GitLab.com CIDRs dated 2026-09-07. `cipi ban list|unban` includes CrowdSec when the engine is up. `cipi scan` runs nightly at 04:40: sha256 integrity of `current/` (or `htdocs/`) against a manifest written at every deploy and rollback in `/var/lib/cipi/manifests` (root:root 0600), then one ClamAV pass over upload dirs only with rfxn PHP-webshell signatures; mails `scan_integrity` or `scan_incomplete` — never a false "clean". `enable` refuses below 2GB MemAvailable or 3GB free on `/var`. Bash and zsh tab-completion is installed automatically by `setup.sh` and every `self-update` (`cipi completion bash|zsh [--print]`). Migration 5.2.0 installs `cipi-scan-manifest` and the rescue helpers, creates the manifest store, grants per-app manifest sudo entries, and adds `SSH_CLIENT`/`SSH_CONNECTION` to `env_keep` in `/etc/sudoers.d/cipi-sudo` (validated with `visudo -c`); it enables nothing. 5.2.1 added `cipi git refresh` and `cipi app fix-permissions`. 5.1.3 fixed `cipi ini list`; 5.1.2 made Laravel Reverb production-ready (generated credentials, `ws://`/`wss://` from the certificate, a proxy matching only `/app/{key}` and `/apps/{id}/…`, `workers.reverb` in `cipi.yml`); 5.1.1 repaired FPM pools and wildcard domains end to end
 - Stack: Nginx, PHP 8.x, MariaDB (default), optional PostgreSQL, Valkey, Supervisor; optional Laravel Octane (FrankenPHP) beside FPM (v5.0+)
 - Databases (v4.8.0+): MariaDB on 3306 + optional PostgreSQL on 5432; `cipi db install|uninstall|default|engines`; `--engine=mariadb|pgsql` on db/app commands
 - www redirects (v4.8.0+): `cipi www add|force-to-root|force-from-root|clear|status`; `cipi ssl force` re-applies HTTPS redirect
@@ -32,6 +25,8 @@ Key facts:
 - CrowdSec (v5.2.0+, opt-in): `cipi crowdsec enable|disable|status|allow|unallow|rescue`; engine plus a registered firewall bouncer; rescue TLS listener with a one-shot break-glass token; not a WAF
 - Integrity + malware scan (v5.2.0+, opt-in): `cipi scan enable|disable|status|report|manifest|<app>`; nightly 04:40; sha256 vs the deploy manifest, then ClamAV on upload dirs only
 - Shell completion (v5.2.0+): bash and zsh completion installed by `setup.sh` and every `self-update`; `cipi completion bash|zsh [--print]` for non-login shells
+- Search (v5.2.2+, opt-in): `cipi search install|enable|disable|list|status|key|upgrade|remove` — native Meilisearch for Laravel Scout; 127.0.0.1 only; Cipi writes `SCOUT_PREFIX`; not in `cipi backup`
+- Host packages (v5.2.2+, opt-in): `cipi package list|install|remove` — allowlisted Ubuntu binaries (image-optimizers, ffmpeg, imagemagick, poppler-utils); Chromium refused
 - Panel API (`cipi/api` 1.20): REST + 50+ MCP tools; app `.env` / `auth.json` / Artisan / app-run / deploy-config (Cipi 5.0.3+); server cockpit — PHP install/default, SSH keys, services, SMTP, healthchecks, IP whitelist (Cipi 5.0.6+ / API 1.15+); `POST /api/apps` accepts `octane` and `engine`; list/show expose `octane`/`octane_port`; www + multi-engine DB endpoints (1.12+)
 - PHP security patches: managed by Cipi (`cipi php upgrade`), not unattended-upgrades; weekly check Sunday 03:30 (v4.7.13+)
 - S3 backups: staging dir defaults to /var/tmp, not /tmp (v4.7.14+); override via backup.json tmpdir or CIPI_BACKUP_TMPDIR
@@ -40,14 +35,14 @@ Key facts:
 - Panel API on Ubuntu 25.10+/26.04: sudo-rs sudoers, read-only /etc/cipi guards, open_basedir for log helpers, empty DBs in `cipi db list` (v4.7.18 / migrations 4.7.15–4.7.18)
 - Integrations: GitHub/GitLab (auto webhook + deploy keys), custom Git via SSH, webhooks, MCP server for AI agents, deploy notifications (Slack, Telegram via CI examples)
 
-## Docs (English)
+## Docs
 
 - [Documentation Index](https://cipi.sh/en/docs/): Full technical documentation hub
 - [Getting Started](https://cipi.sh/en/docs/getting-started): Installation, requirements, quick start, tech stack, app structure
 - [Cipi Agent](https://cipi.sh/en/docs/agent): Laravel package `cipi/agent` — webhooks, health check, in-app MCP, database anonymizer ([GitHub](https://github.com/cipi-sh/agent))
 - [Apps](https://cipi.sh/en/docs/apps): Create, manage, and configure Laravel and custom applications
 - [Deploy & CI/CD](https://cipi.sh/en/docs/deploy): Zero-downtime deployments, Git integration, CI/CD pipelines, notifications
-- [Infrastructure](https://cipi.sh/en/docs/infrastructure): PHP, databases, SSL, backups, workers, firewall, server management
+- [Infrastructure](https://cipi.sh/en/docs/infrastructure): PHP, databases, SSL, backups, workers, firewall, Meilisearch, host packages, server management
 - [CLI Client](https://cipi.sh/en/docs/cli-client): Remote `cipi-cli` — manage servers from the terminal via the REST API
 - [Control Panel (GUI)](https://cipi.sh/en/docs/gui): Optional self-hosted web control panel — apps (incl. Octane / engine), databases, SSL, www, deploys, 2FA/TOTP, multi-server ([GitHub](https://github.com/cipi-sh/gui))
 - [Advanced](https://cipi.sh/en/docs/advanced): REST API (1.20), server sync, vault encryption, SMTP, IP whitelist, log retention, advanced config
@@ -62,7 +57,7 @@ Key facts:
 - [WHMCS Module](https://cipi.sh/en/docs/advanced#whmcs): WHMCS provisioning module for billing automation
 - [Agent — MCP Server](https://cipi.sh/en/docs/agent#agent-mcp): Model Context Protocol server for AI agents
 
-## Guides (English)
+## Guides
 
 - [Guides Index](https://cipi.sh/en/guides/): Free, practical guides on Laravel deployment, security, CI/CD, ecosystem, AI development and tooling
 - [Deploy Laravel on an Ubuntu VPS](https://cipi.sh/en/guides/deploy-laravel-ubuntu-vps): Full production stack, manual steps vs one-command setup, hardening and operations
@@ -77,7 +72,7 @@ Key facts:
 - [Cipi Control Panel and API](https://cipi.sh/en/guides/cipi-gui-and-api): Optional cipi/api + cipi/gui extensions — REST, MCP, Swagger, multi-server dashboard, server cockpit, cipi-cli and WHMCS on the same API
 - [Manage Laravel apps with cipi.yml](https://cipi.sh/en/guides/manage-apps-with-cipi-yml): Generate, plan and apply aliases, PHP, workers, Reverb, healthchecks and backups from a committed `cipi.yml`, then opt in so every deploy reconciles
 
-## Comparisons (English)
+## Comparisons
 
 - [Cipi Alternatives](https://cipi.sh/en/alternatives): Overview of how Cipi compares to popular Laravel deployment tools and server panels
 - [Best Laravel Forge Alternatives 2026](https://cipi.sh/en/best-laravel-forge-alternatives): Buyer's guide — Cipi, Ploi, Coolify, Vito Deploy, Cleavr, RunCloud and Laravel Cloud compared
@@ -103,67 +98,10 @@ Key facts:
 - [DirectAdmin Alternative](https://cipi.sh/en/alternative-to-directadmin): Free, Laravel-native alternative to DirectAdmin for dedicated VPS deploys
 - [Plesk Alternative](https://cipi.sh/en/alternative-to-plesk): Lightweight, Laravel-native alternative to Plesk
 
-## Optional (English)
+## Optional
 
-- [What's New in Cipi 5](https://cipi.sh/en/whats-new): Everything new in Cipi 5 — Laravel Octane on FrankenPHP, Horizon, Reverb, PostgreSQL, Node build on deploy, pre-deploy snapshots, wildcard SSL via DNS-01, health checks, staging clones, resource limits
+- [What's New in Cipi 5](https://cipi.sh/en/whats-new): Everything new in Cipi 5 — Laravel Octane on FrankenPHP, Horizon, Reverb, PostgreSQL, CrowdSec, Meilisearch, allowlisted host packages
 - [Cipi Discovery](https://cipi.sh/en/discovery): Interactive showcase and quick start guide
 - [Cipi on GitHub](https://github.com/cipi-sh/cipi): Source code, issues, releases
 - [Cipi Releases](https://github.com/cipi-sh/cipi/releases): Changelog and version history
 - [WHMCS Module on GitHub](https://github.com/cipi-sh/whmcs): WHMCS provisioning module source code
-
-## Italiano — Documentazione
-
-- [Indice documentazione](https://cipi.sh/it/docs/)
-- [Primi passi](https://cipi.sh/it/docs/primi-passi)
-- [Cipi Agent](https://cipi.sh/it/docs/agent)
-- [App](https://cipi.sh/it/docs/app)
-- [Deploy](https://cipi.sh/it/docs/deploy)
-- [Infrastruttura](https://cipi.sh/it/docs/infrastruttura)
-- [Client CLI](https://cipi.sh/it/docs/client-cli)
-- [Pannello di controllo (GUI)](https://cipi.sh/it/docs/gui)
-- [Avanzato](https://cipi.sh/it/docs/avanzato)
-- [Informazioni](https://cipi.sh/it/docs/informazioni)
-- [cipi.yml](https://cipi.sh/it/cipi-yml): il file di configurazione per-app committato con il codice
-
-## Italiano — Guide
-
-- [Indice guide](https://cipi.sh/it/guide/)
-- [Deploy Laravel su Ubuntu VPS](https://cipi.sh/it/guide/deploy-laravel-su-ubuntu-vps)
-- [Checklist sicurezza Laravel](https://cipi.sh/it/guide/checklist-sicurezza-laravel)
-- [Ecosistema Laravel 2026](https://cipi.sh/it/guide/ecosistema-laravel-2026)
-- [CI/CD e workflow Git per Laravel](https://cipi.sh/it/guide/ci-cd-workflow-git-laravel)
-- [Sviluppo spec-driven con AI](https://cipi.sh/it/guide/sviluppo-spec-driven-ai-laravel)
-- [Stack developer self-hosted 2026](https://cipi.sh/it/guide/stack-developer-self-hosted-2026)
-- [Backup VPS su bucket S3 con Cipi](https://cipi.sh/it/guide/backup-vps-s3-con-cipi)
-- [Deploy WordPress con Cipi](https://cipi.sh/it/guide/deploy-wordpress-app-custom-github)
-- [Usare cipi/agent in Laravel](https://cipi.sh/it/guide/usare-cipi-agent-in-laravel)
-- [Pannello UI e API di Cipi](https://cipi.sh/it/guide/pannello-ui-e-api-cipi)
-- [Gestire le app con cipi.yml](https://cipi.sh/it/guide/gestire-app-con-cipi-yml)
-
-## Italiano — Confronti e pagine
-
-- [Alternative a Cipi](https://cipi.sh/it/alternative)
-- [Migliori alternative a Laravel Forge 2026](https://cipi.sh/it/migliori-alternative-a-laravel-forge)
-- [Alternativa a Laravel Forge](https://cipi.sh/it/alternativa-a-laravel-forge)
-- [Alternativa a Laravel Cloud](https://cipi.sh/it/alternativa-a-laravel-cloud)
-- [Alternativa a fortrabbit](https://cipi.sh/it/alternativa-a-fortrabbit)
-- [Alternativa a Render](https://cipi.sh/it/alternativa-a-render)
-- [Alternativa a 20i](https://cipi.sh/it/alternativa-a-20i)
-- [Alternativa a Sevalla](https://cipi.sh/it/alternativa-a-sevalla)
-- [Alternativa a Ploi Cloud](https://cipi.sh/it/alternativa-a-ploi-cloud)
-- [Alternativa a Ploi](https://cipi.sh/it/alternativa-a-ploi)
-- [Alternativa a Cleavr](https://cipi.sh/it/alternativa-a-cleavr)
-- [Alternativa a moss.sh](https://cipi.sh/it/alternativa-a-moss)
-- [Alternativa a Kamal](https://cipi.sh/it/alternativa-a-kamal)
-- [Alternativa a RunCloud](https://cipi.sh/it/alternativa-a-runcloud)
-- [Alternativa a ServerPilot](https://cipi.sh/it/alternativa-a-serverpilot)
-- [Alternativa a CloudPanel](https://cipi.sh/it/alternativa-a-cloudpanel)
-- [Alternativa a Coolify](https://cipi.sh/it/alternativa-a-coolify)
-- [Alternativa a Dokku](https://cipi.sh/it/alternativa-a-dokku)
-- [Alternativa a Easypanel](https://cipi.sh/it/alternativa-a-easypanel)
-- [Alternativa a Vito Deploy](https://cipi.sh/it/alternativa-a-vito-deploy)
-- [Alternativa a cPanel](https://cipi.sh/it/alternativa-a-cpanel)
-- [Alternativa a DirectAdmin](https://cipi.sh/it/alternativa-a-directadmin)
-- [Alternativa a Plesk](https://cipi.sh/it/alternativa-a-plesk)
-- [Novità in Cipi 5](https://cipi.sh/it/novita)
-- [Cipi Discovery](https://cipi.sh/it/discovery)

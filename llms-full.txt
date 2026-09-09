@@ -1,19 +1,12 @@
 # Cipi — Full Site Content for LLMs
 
-> Last updated: 2026-09-03. Canonical site: https://cipi.sh — index of pages: https://cipi.sh/llms.txt
+> Last updated: 2026-09-09. Canonical site: https://cipi.sh — index of pages: https://cipi.sh/llms.txt
 
-## Languages & URL structure
+## URL structure
 
-The marketing site is bilingual:
+English only. Homepage: `https://cipi.sh/`. Pages: `https://cipi.sh/en/…`. `/en/` 301s to `/`. Former language trees and localized slugs 301 to the English equivalent. There is no Accept-Language or cookie redirect.
 
-- English homepage: `https://cipi.sh/` (`hreflang=en` and `x-default`)
-- English pages: `https://cipi.sh/en/…` with English slugs
-- Italian homepage: `https://cipi.sh/it/`
-- Italian pages: `https://cipi.sh/it/…` with localized Italian slugs (e.g. `/en/docs/getting-started` ↔ `/it/docs/primi-passi`, `/en/guides/…` ↔ `/it/guide/…`, `/en/whats-new` ↔ `/it/novita`)
-
-`/en/` 301s to `/`. Legacy bare paths 301 to the language implied by the slug. There is no Accept-Language or cookie redirect. Sitemap includes hreflang alternates for every page pair.
-
-URLs below use the English tree unless noted.
+URLs below use the English tree.
 
 ## What is Cipi
 
@@ -23,7 +16,7 @@ Cipi is a free, open-source (MIT), Laravel-first deploy CLI for Ubuntu VPS. One 
 - Admin access: SSH as `cipi` user, then `sudo -s` to run `cipi` commands
 - License: MIT, source at https://github.com/cipi-sh/cipi
 - Author: Andrea Pollastri (https://github.com/andreapollastri)
-- Current major version: Cipi 5.2.0 (5.2.0: opt-in CrowdSec — engine plus a registered firewall bouncer, a rescue TLS listener with a one-shot break-glass token, and no WAF — plus a nightly 04:40 integrity scan of the live release against the sha256 manifest written at each deploy, ClamAV on upload dirs only, and bash/zsh tab-completion installed automatically; nothing is enabled by setup.sh or self-update. 5.1.3 hotfix: `cipi ini list` no longer dies on the first setting after printing the header; 5.1.2 Reverb production-ready: generated credentials, ws/wss from the certificate, proxy limited to /app/{key} and /apps/{id}/…, raised connection limits, workers.reverb in cipi.yml; 5.1.1 hotfix: FPM pool repair and wildcard domains end to end; 5.1.0: backup profiles, cipi.yml, cipi ini, post-deploy healthchecks, nginx default-server, wildcard aliases; plus Laravel Octane on FrankenPHP, Horizon, PostgreSQL, Node build on deploy, pre-deploy snapshots, wildcard SSL via DNS-01, staging clones)
+- Current major version: Cipi 5.2.2 (5.2.2: opt-in Meilisearch for Laravel Scout via `cipi search` and an allowlisted `cipi package` for host binaries; 5.2.0: opt-in CrowdSec — engine plus a registered firewall bouncer, a rescue TLS listener with a one-shot break-glass token, and no WAF — plus a nightly 04:40 integrity scan of the live release against the sha256 manifest written at each deploy, ClamAV on upload dirs only, and bash/zsh tab-completion installed automatically; nothing is enabled by setup.sh or self-update. 5.1.3 hotfix: `cipi ini list` no longer dies on the first setting after printing the header; 5.1.2 Reverb production-ready: generated credentials, ws/wss from the certificate, proxy limited to /app/{key} and /apps/{id}/…, raised connection limits, workers.reverb in cipi.yml; 5.1.1 hotfix: FPM pool repair and wildcard domains end to end; 5.1.0: backup profiles, cipi.yml, cipi ini, post-deploy healthchecks, nginx default-server, wildcard aliases; plus Laravel Octane on FrankenPHP, Horizon, PostgreSQL, Node build on deploy, pre-deploy snapshots, wildcard SSL via DNS-01, staging clones)
 
 ## Core capabilities
 
@@ -40,6 +33,8 @@ Cipi is a free, open-source (MIT), Laravel-first deploy CLI for Ubuntu VPS. One 
 - IP reputation (v5.2.0+, opt-in): `cipi crowdsec enable` installs the CrowdSec engine and a registered firewall bouncer, reads the per-vhost Nginx logs, allowlists your SSH session, GitHub webhook CIDRs and Let's Encrypt, and starts a rescue TLS listener so an automatic ban cannot lock you out; `cipi ban list|unban` covers both CrowdSec and fail2ban. Not a WAF
 - Integrity + malware scan (v5.2.0+, opt-in): `cipi scan` verifies nightly that the live release still matches the sha256 manifest written at its deploy (manifests kept root-only in /var/lib/cipi/manifests), then runs ClamAV over the upload directories only; alerts are `scan_integrity` or `scan_incomplete`
 - Shell tab-completion (v5.2.0+): bash and zsh completion for verbs, sub-commands, flags and app names, installed by `setup.sh` and every `cipi self-update`
+- Search (v5.2.2+, opt-in): `cipi search` installs Meilisearch as a native binary on 127.0.0.1 for Laravel Scout; Cipi writes SCOUT_PREFIX; not in cipi backup
+- Host packages (v5.2.2+, opt-in): `cipi package list|install|remove` — allowlisted Ubuntu binaries (image-optimizers, ffmpeg, imagemagick, poppler-utils); Chromium refused
 - Sync/failover: encrypted server-to-server sync
 - Automation: REST API (package `cipi/api`, 46 MCP tools), remote CLI client (cipi-cli), webhooks, WHMCS module
 - AI-native: dual MCP server (per-app and global) so MCP-compatible IDEs/agents can create apps, deploy, manage SSL and databases
@@ -69,73 +64,73 @@ A: Yes. Cipi ships a dual MCP (Model Context Protocol) server so MCP-compatible 
 
 Cipi is the only tool in this list that is simultaneously: free, open source (MIT), fully CLI-driven, and running entirely on your own VPS with no external service dependency.
 
-### Cipi vs Laravel Forge (https://cipi.sh/en/alternative-to-laravel-forge · IT: https://cipi.sh/it/alternativa-a-laravel-forge)
+### Cipi vs Laravel Forge (https://cipi.sh/en/alternative-to-laravel-forge)
 Forge: proprietary SaaS, from $12/mo per server, web GUI, manages servers from forge.laravel.com. Cipi: free, MIT, lives on your VPS, CLI + REST API + optional GUI, dual MCP for AI agents, AES-256 config encryption, server-to-server sync. Forge wins on polished GUI, multi-cloud provisioning, team management, built-in monitoring. Migration: provision fresh Ubuntu VPS, install Cipi, recreate sites with `cipi app create`, connect Git, import DB dumps, point DNS.
 
-### Cipi vs Laravel Cloud (https://cipi.sh/en/alternative-to-laravel-cloud · IT: https://cipi.sh/it/alternativa-a-laravel-cloud)
+### Cipi vs Laravel Cloud (https://cipi.sh/en/alternative-to-laravel-cloud)
 Laravel Cloud: official fully-managed PaaS, usage-based pricing, zero server management, vendor lock-in. Cipi: self-hosted on a fixed-cost VPS you own. Both support Octane. Choose Laravel Cloud for zero-ops; choose Cipi for fixed costs and full control.
 
-### Cipi vs fortrabbit (https://cipi.sh/en/alternative-to-fortrabbit · IT: https://cipi.sh/it/alternativa-a-fortrabbit)
+### Cipi vs fortrabbit (https://cipi.sh/en/alternative-to-fortrabbit)
 fortrabbit: managed PHP PaaS (Ireland/Virginia) from €4.50/mo, Git deploys, SSH/SFTP, MCP, CLI, teams/clients. Cipi: free, self-hosted, Laravel-first (Octane/Horizon/Reverb), full root, fixed VPS cost. fortrabbit wins on managed PHP hosting and collaboration without sysadmin work.
 
-### Cipi vs Render (https://cipi.sh/en/alternative-to-render · IT: https://cipi.sh/it/alternativa-a-render)
+### Cipi vs Render (https://cipi.sh/en/alternative-to-render)
 Render: usage-based multi-stack PaaS (autoscaling, PR previews, managed Postgres/Redis, Docker, MCP). Cipi: Laravel-native on a native LEMP/Octane stack you own. Render wins for mixed stacks and zero-ops scale.
 
-### Cipi vs 20i (https://cipi.sh/en/alternative-to-20i · IT: https://cipi.sh/it/alternativa-a-20i)
+### Cipi vs 20i (https://cipi.sh/en/alternative-to-20i)
 20i: hosting company (reseller, WordPress, managed cloud, VPS, domains, My20i, 24×7 support). Cipi: Laravel deploy CLI on your own VPS, not a hosting catalog. 20i wins for agencies that need mail, CDN, reseller branding and human support.
 
-### Cipi vs Sevalla (https://cipi.sh/en/alternative-to-sevalla · IT: https://cipi.sh/it/alternativa-a-sevalla)
+### Cipi vs Sevalla (https://cipi.sh/en/alternative-to-sevalla)
 Sevalla (Kinsta): resource-based app platform — apps, databases, object storage, static sites, MCP, 25 regions. Cipi: self-hosted Laravel on a portable VPS stack. Sevalla wins if you want to drop DIY cloud entirely.
 
-### Cipi vs Ploi Cloud (https://cipi.sh/en/alternative-to-ploi-cloud · IT: https://cipi.sh/it/alternativa-a-ploi-cloud)
+### Cipi vs Ploi Cloud (https://cipi.sh/en/alternative-to-ploi-cloud)
 Ploi Cloud (ploi.cloud): European Laravel/PHP/Node PaaS, €13.88/GB RAM, Amsterdam/London/Chicago — not the same product as Ploi.io. Cipi: self-hosted, fixed VPS cost, full root. See also Cipi vs Ploi.io for the server-panel comparison.
 
-### Cipi vs Ploi (https://cipi.sh/en/alternative-to-ploi · IT: https://cipi.sh/it/alternativa-a-ploi)
+### Cipi vs Ploi (https://cipi.sh/en/alternative-to-ploi)
 Ploi: polished EU-based SaaS panel, €8–30/mo. Cipi: free, self-hosted, CLI-first, no deploy limits. Ploi wins for teams that want a managed GUI.
 
-### Cipi vs Cleavr (https://cipi.sh/en/alternative-to-cleavr · IT: https://cipi.sh/it/alternativa-a-cleavr)
+### Cipi vs Cleavr (https://cipi.sh/en/alternative-to-cleavr)
 Cleavr: Laravel-friendly SaaS panel (~$8+/mo) with zero-downtime deploys and multi-provider provisioning. Cipi: free, self-hosted, CLI-first with dual MCP and server sync.
 
-### Cipi vs moss.sh (https://cipi.sh/en/alternative-to-moss · IT: https://cipi.sh/it/alternativa-a-moss)
+### Cipi vs moss.sh (https://cipi.sh/en/alternative-to-moss)
 moss.sh: agency-oriented SaaS "virtual sysadmin" with capped free tier ($9–49/mo paid). Cipi: no deploy limits, runs entirely on your VPS.
 
-### Cipi vs Kamal (https://cipi.sh/en/alternative-to-kamal · IT: https://cipi.sh/it/alternativa-a-kamal)
+### Cipi vs Kamal (https://cipi.sh/en/alternative-to-kamal)
 Kamal (37signals): free Docker deploy CLI for polyglot containerized apps; needs Dockerfile, registry, deploy.yml. Cipi: no Docker — native LEMP stack, full server provisioning, Laravel-native (Octane, Horizon, queues, scheduler). Kamal wins for non-PHP container workloads.
 
-### Cipi vs Dokku (https://cipi.sh/en/alternative-to-dokku · IT: https://cipi.sh/it/alternativa-a-dokku)
+### Cipi vs Dokku (https://cipi.sh/en/alternative-to-dokku)
 Dokku: free self-hosted "mini-Heroku" with git-push deploys and buildpacks/containers. Cipi: Laravel-first on a native stack with full server provisioning; push-to-deploy via GitHub/GitLab webhooks.
 
-### Cipi vs Easypanel (https://cipi.sh/en/alternative-to-easypanel · IT: https://cipi.sh/it/alternativa-a-easypanel)
+### Cipi vs Easypanel (https://cipi.sh/en/alternative-to-easypanel)
 Easypanel: free self-hosted Docker PaaS with web dashboard. Cipi: no containers, Laravel-native automation, CLI-first with optional GUI.
 
-### Cipi vs Coolify (https://cipi.sh/en/alternative-to-coolify · IT: https://cipi.sh/it/alternativa-a-coolify)
+### Cipi vs Coolify (https://cipi.sh/en/alternative-to-coolify)
 Coolify: popular open-source self-hosted Docker PaaS with web GUI (Cloud from ~$5/mo). Great Heroku replacement, not Laravel-specific; Octane needs a custom image. Cipi: Laravel-native on native LEMP, no Docker overhead, Octane one flag away.
 
-### Cipi vs RunCloud (https://cipi.sh/en/alternative-to-runcloud · IT: https://cipi.sh/it/alternativa-a-runcloud)
+### Cipi vs RunCloud (https://cipi.sh/en/alternative-to-runcloud)
 RunCloud: mature PHP/WordPress SaaS panel, $12–18/mo, not Laravel-native (Deployer/queues/Octane need manual wiring). Cipi: free, Laravel-native, no subscription.
 
-### Cipi vs ServerPilot (https://cipi.sh/en/alternative-to-serverpilot · IT: https://cipi.sh/it/alternativa-a-serverpilot)
+### Cipi vs ServerPilot (https://cipi.sh/en/alternative-to-serverpilot)
 ServerPilot: SaaS that automates Nginx/PHP-FPM, WordPress-focused, $12–49/mo. Cipi: free with a full app CLI and zero-downtime Laravel deploys.
 
-### Cipi vs CloudPanel (https://cipi.sh/en/alternative-to-cloudpanel · IT: https://cipi.sh/it/alternativa-a-cloudpanel)
+### Cipi vs CloudPanel (https://cipi.sh/en/alternative-to-cloudpanel)
 CloudPanel: free open-source multi-stack web panel. Cipi: deeper Laravel automation, CLI-first, REST API + MCP; optional GUI manages multiple servers.
 
-### Cipi vs Vito Deploy (https://cipi.sh/en/alternative-to-vito-deploy · IT: https://cipi.sh/it/alternativa-a-vito-deploy)
+### Cipi vs Vito Deploy (https://cipi.sh/en/alternative-to-vito-deploy)
 Vito Deploy: open-source Forge-style web GUI you host separately. Cipi: single CLI on the app server itself; optional GUI, no separate management server required.
 
-### Cipi vs cPanel (https://cipi.sh/en/alternative-to-cpanel · IT: https://cipi.sh/it/alternativa-a-cpanel)
+### Cipi vs cPanel (https://cipi.sh/en/alternative-to-cpanel)
 cPanel: classic shared-hosting panel, $20+/mo licenses, heavy daemons, built for resellers. Cipi: free, lightweight (no always-on panel daemons), Laravel-native deploys.
 
-### Cipi vs DirectAdmin (https://cipi.sh/en/alternative-to-directadmin · IT: https://cipi.sh/it/alternativa-a-directadmin)
+### Cipi vs DirectAdmin (https://cipi.sh/en/alternative-to-directadmin)
 DirectAdmin: lighter commercial hosting panel ($2–29/mo). Cipi: free, Laravel-native, no license, optional GUI never forced.
 
-### Cipi vs Plesk (https://cipi.sh/en/alternative-to-plesk · IT: https://cipi.sh/it/alternativa-a-plesk)
+### Cipi vs Plesk (https://cipi.sh/en/alternative-to-plesk)
 Plesk: polished Linux/Windows hosting panel ($10+/mo), multi-site oriented. Cipi: lean, free, Laravel-native, CLI-first.
 
-### Best Laravel Forge alternatives in 2026 (https://cipi.sh/en/best-laravel-forge-alternatives · IT: https://cipi.sh/it/migliori-alternative-a-laravel-forge)
+### Best Laravel Forge alternatives in 2026 (https://cipi.sh/en/best-laravel-forge-alternatives)
 Shortlist: 1) Cipi — best free, self-hosted, CLI-first; 2) Ploi — best managed SaaS replacement; 3) Coolify — best open-source Docker PaaS; 4) Vito Deploy — best open-source web GUI; 5) Cleavr — Laravel-friendly SaaS; 6) RunCloud — best for mixed PHP/WordPress fleets; 7) Laravel Cloud — best fully-managed zero-ops option.
 
-Overview of alternatives: https://cipi.sh/en/alternatives · IT: https://cipi.sh/it/alternative
+Overview of alternatives: https://cipi.sh/en/alternatives
 
 ## How to migrate to Cipi (from Forge, Ploi, RunCloud, cPanel, etc.)
 
@@ -148,20 +143,20 @@ No changes to the Laravel codebase are required: Cipi uses standard Nginx, PHP-F
 
 ## Free guides
 
-Index: https://cipi.sh/en/guides/ · IT: https://cipi.sh/it/guide/
+Index: https://cipi.sh/en/guides/
 
 Practical, vendor-honest tutorials written by Cipi's author, Andrea Pollastri (https://web.ap.it):
 
-- Deploy Laravel on an Ubuntu VPS (https://cipi.sh/en/guides/deploy-laravel-ubuntu-vps · IT: https://cipi.sh/it/guide/deploy-laravel-su-ubuntu-vps): the full production stack (Nginx, PHP-FPM/Octane, MariaDB/PostgreSQL, Valkey, Supervisor), every manual setup step, the one-command Cipi alternative, backups, monitoring and common mistakes.
-- Laravel Security Checklist (https://cipi.sh/en/guides/laravel-security-checklist · IT: https://cipi.sh/it/guide/checklist-sicurezza-laravel): what actually gets Laravel apps hacked; server hardening (SSH, firewall, TLS, patching), app hardening (debug, validation, mass assignment, rate limiting), dependency scanning (composer audit, Checkpoint, Hackly), secrets and incident response.
-- The Laravel Ecosystem in 2026 (https://cipi.sh/en/guides/laravel-ecosystem-2026 · IT: https://cipi.sh/it/guide/ecosistema-laravel-2026): Octane, Horizon, Reverb, Livewire vs Inertia, Filament, Pest/Larastan/Pint, observability, and the hosting spectrum from Laravel Cloud to self-hosted Cipi.
-- CI/CD for Laravel (https://cipi.sh/en/guides/laravel-ci-cd-git-workflow · IT: https://cipi.sh/it/guide/ci-cd-workflow-git-laravel): trunk-based Git workflow, a complete GitHub Actions pipeline (Pint, Larastan, Pest, composer audit), zero-downtime deploy options (webhook push-to-deploy, CI-driven, hybrid) and expand/contract migrations.
-- Spec-Driven Development with AI Agents (https://cipi.sh/en/guides/spec-driven-development-ai-laravel · IT: https://cipi.sh/it/guide/sviluppo-spec-driven-ai-laravel): specs as repo artifacts, MCP (Model Context Protocol), guardrails for agent-written code, and a spec-to-production loop using Cipi's MCP/API for safe agent deploys.
-- The Self-Hosted Laravel Developer Stack (https://cipi.sh/en/guides/laravel-developer-stack-2026 · IT: https://cipi.sh/it/guide/stack-developer-self-hosted-2026): a full stack you own — Cipi (deploys), Boogle (exception tracking), Indiestats (analytics), Johnny (S3-compatible storage), Newsletter, Checkpoint + Hackly (security), Init, Conn, Mister Dev, 127001.it — for roughly the price of one VPS.
-- Back Up a VPS to an S3 Bucket (https://cipi.sh/en/guides/backup-vps-s3 · IT: https://cipi.sh/it/guide/backup-vps-s3-con-cipi): why same-disk dumps are not backups; what Cipi uploads (`db.sql.gz` + `shared.tar.gz`); `cipi backup configure` for AWS/Hetzner/Spaces/B2/MinIO/Johnny; cron + prune; restore drill onto a new VPS.
-- Deploy WordPress on Cipi (https://cipi.sh/en/guides/deploy-wordpress-custom-app · IT: https://cipi.sh/it/guide/deploy-wordpress-app-custom-github): host WordPress as a Cipi custom app (`cipi app create --custom`) with MariaDB (`cipi db create`), SSL and a GitHub Actions pipeline that SSHs in and runs `sudo cipi deploy`. Keep wp-config.php and wp-content/uploads out of Git. The Laravel Agent webhook is not used.
-- Use cipi/agent in Laravel (https://cipi.sh/en/guides/cipi-agent-laravel-mcp · IT: https://cipi.sh/it/guide/usare-cipi-agent-in-laravel): install `composer require cipi/agent`, enable the in-app MCP (`php artisan cipi:service mcp --enable`), connect Cursor/VS Code/Claude to `POST /cipi/mcp`. Six tools: health, app_info, deploy, logs, db_query, artisan. Use named seeders on staging (`db:seed --class=RoleSeeder`), never `migrate:fresh` on production. Distinct from the panel API MCP (50+ server tools).
-- Cipi Control Panel and API (https://cipi.sh/en/guides/cipi-gui-and-api · IT: https://cipi.sh/it/guide/pannello-ui-e-api-cipi): optional `cipi/api` (REST + 50+ MCP tools + Swagger) and `cipi/gui` (Laravel 12 multi-server dashboard). Same API powers cipi-cli and WHMCS. CLI-first: both packages are opt-in; remove them and Cipi is a CLI again.
+- Deploy Laravel on an Ubuntu VPS (https://cipi.sh/en/guides/deploy-laravel-ubuntu-vps): the full production stack (Nginx, PHP-FPM/Octane, MariaDB/PostgreSQL, Valkey, Supervisor), every manual setup step, the one-command Cipi alternative, backups, monitoring and common mistakes.
+- Laravel Security Checklist (https://cipi.sh/en/guides/laravel-security-checklist): what actually gets Laravel apps hacked; server hardening (SSH, firewall, TLS, patching), app hardening (debug, validation, mass assignment, rate limiting), dependency scanning (composer audit, Checkpoint, Hackly), secrets and incident response.
+- The Laravel Ecosystem in 2026 (https://cipi.sh/en/guides/laravel-ecosystem-2026): Octane, Horizon, Reverb, Livewire vs Inertia, Filament, Pest/Larastan/Pint, observability, and the hosting spectrum from Laravel Cloud to self-hosted Cipi.
+- CI/CD for Laravel (https://cipi.sh/en/guides/laravel-ci-cd-git-workflow): trunk-based Git workflow, a complete GitHub Actions pipeline (Pint, Larastan, Pest, composer audit), zero-downtime deploy options (webhook push-to-deploy, CI-driven, hybrid) and expand/contract migrations.
+- Spec-Driven Development with AI Agents (https://cipi.sh/en/guides/spec-driven-development-ai-laravel): specs as repo artifacts, MCP (Model Context Protocol), guardrails for agent-written code, and a spec-to-production loop using Cipi's MCP/API for safe agent deploys.
+- The Self-Hosted Laravel Developer Stack (https://cipi.sh/en/guides/laravel-developer-stack-2026): a full stack you own — Cipi (deploys), Boogle (exception tracking), Indiestats (analytics), Johnny (S3-compatible storage), Newsletter, Checkpoint + Hackly (security), Init, Conn, Mister Dev, 127001.it — for roughly the price of one VPS.
+- Back Up a VPS to an S3 Bucket (https://cipi.sh/en/guides/backup-vps-s3): why same-disk dumps are not backups; what Cipi uploads (`db.sql.gz` + `shared.tar.gz`); `cipi backup configure` for AWS/Hetzner/Spaces/B2/MinIO/Johnny; cron + prune; restore drill onto a new VPS.
+- Deploy WordPress on Cipi (https://cipi.sh/en/guides/deploy-wordpress-custom-app): host WordPress as a Cipi custom app (`cipi app create --custom`) with MariaDB (`cipi db create`), SSL and a GitHub Actions pipeline that SSHs in and runs `sudo cipi deploy`. Keep wp-config.php and wp-content/uploads out of Git. The Laravel Agent webhook is not used.
+- Use cipi/agent in Laravel (https://cipi.sh/en/guides/cipi-agent-laravel-mcp): install `composer require cipi/agent`, enable the in-app MCP (`php artisan cipi:service mcp --enable`), connect Cursor/VS Code/Claude to `POST /cipi/mcp`. Six tools: health, app_info, deploy, logs, db_query, artisan. Use named seeders on staging (`db:seed --class=RoleSeeder`), never `migrate:fresh` on production. Distinct from the panel API MCP (50+ server tools).
+- Cipi Control Panel and API (https://cipi.sh/en/guides/cipi-gui-and-api): optional `cipi/api` (REST + 50+ MCP tools + Swagger) and `cipi/gui` (Laravel 12 multi-server dashboard). Same API powers cipi-cli and WHMCS. CLI-first: both packages are opt-in; remove them and Cipi is a CLI again.
 
 ## Pricing summary
 
@@ -170,19 +165,19 @@ Practical, vendor-honest tutorials written by Cipi's author, Andrea Pollastri (h
 
 ## Key docs
 
-English tree (`/en/…`) · Italian tree in parentheses (`/it/…`):
+English tree (`/en/…`):
 
-- Home: https://cipi.sh/en/ · (https://cipi.sh/it/)
-- Getting started: https://cipi.sh/en/docs/getting-started · (https://cipi.sh/it/docs/primi-passi)
-- Apps: https://cipi.sh/en/docs/apps · (https://cipi.sh/it/docs/app)
-- Deploy & CI/CD: https://cipi.sh/en/docs/deploy · (https://cipi.sh/it/docs/deploy)
-- Infrastructure (PHP, DB, SSL, backups, workers, firewall): https://cipi.sh/en/docs/infrastructure · (https://cipi.sh/it/docs/infrastruttura)
-- CLI Client (cipi-cli): https://cipi.sh/en/docs/cli-client · (https://cipi.sh/it/docs/client-cli)
-- Control panel (GUI): https://cipi.sh/en/docs/gui · (https://cipi.sh/it/docs/gui)
-- Advanced (REST API 1.14.0 — .env/auth/artisan/run/deploy-config, sync, vault, SMTP): https://cipi.sh/en/docs/advanced · (https://cipi.sh/it/docs/avanzato)
-- Cipi Agent (Laravel package: webhooks, health check, MCP, anonymizer): https://cipi.sh/en/docs/agent · (https://cipi.sh/it/docs/agent)
-- About & design decisions: https://cipi.sh/en/docs/about · (https://cipi.sh/it/docs/informazioni)
-- cipi.yml (per-app config file in the repository: aliases, PHP/php.ini, databases, workers, scheduler, health, backups): https://cipi.sh/en/cipi-yml · (https://cipi.sh/it/cipi-yml)
-- What's new in Cipi 5: https://cipi.sh/en/whats-new · (https://cipi.sh/it/novita)
-- Discovery: https://cipi.sh/en/discovery · (https://cipi.sh/it/discovery)
+- Home: https://cipi.sh/
+- Getting started: https://cipi.sh/en/docs/getting-started
+- Apps: https://cipi.sh/en/docs/apps
+- Deploy & CI/CD: https://cipi.sh/en/docs/deploy
+- Infrastructure (PHP, DB, SSL, backups, workers, firewall): https://cipi.sh/en/docs/infrastructure
+- CLI Client (cipi-cli): https://cipi.sh/en/docs/cli-client
+- Control panel (GUI): https://cipi.sh/en/docs/gui
+- Advanced (REST API 1.14.0 — .env/auth/artisan/run/deploy-config, sync, vault, SMTP): https://cipi.sh/en/docs/advanced
+- Cipi Agent (Laravel package: webhooks, health check, MCP, anonymizer): https://cipi.sh/en/docs/agent
+- About & design decisions: https://cipi.sh/en/docs/about
+- cipi.yml (per-app config file in the repository: aliases, PHP/php.ini, databases, workers, scheduler, health, backups): https://cipi.sh/en/cipi-yml
+- What's new in Cipi 5: https://cipi.sh/en/whats-new
+- Discovery: https://cipi.sh/en/discovery
 - GitHub: https://github.com/cipi-sh/cipi

@@ -9,15 +9,6 @@
     <meta name="author" content="Andrea Pollastri">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://cipi.sh/en/docs/about">
-                <!-- i18n:alternates -->
-    <link rel="alternate" hreflang="en" href="https://cipi.sh/en/docs/about">
-    <link rel="alternate" hreflang="de" href="https://cipi.sh/de/docs/about">
-    <link rel="alternate" hreflang="fr" href="https://cipi.sh/fr/docs/about">
-    <link rel="alternate" hreflang="it" href="https://cipi.sh/it/docs/informazioni">
-    <link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/about">
-    <link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/about">
-    <link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/about">
-    <!-- /i18n:alternates -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="website">
@@ -31,11 +22,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Cipi Docs — About Cipi">
             <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="de_DE">
-    <meta property="og:locale:alternate" content="fr_FR">
-    <meta property="og:locale:alternate" content="it_IT">
-    <meta property="og:locale:alternate" content="es_ES">
-    <meta property="og:locale:alternate" content="pt_PT"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cipi Docs — About Cipi">
     <meta name="twitter:description"
         content="History, security model, design decisions, and comparison with alternatives.">
@@ -130,10 +117,6 @@
                 
                 
                 <a href="/en/cipi-yml" class="nav-link">cipi.yml</a>
-                
-                
-                
-                <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">EN</summary><div class="lang-menu"><a class="active" href="/en/docs/about" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/docs/about" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/docs/about" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/docs/informazioni" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/docs/about" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/docs/about" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -244,6 +227,8 @@
                 <a href="/en/docs/infrastructure#cli-ban" class="sidebar-link"><code>ban</code></a>
                 <a href="/en/docs/infrastructure#cli-crowdsec" class="sidebar-link"><code>crowdsec</code></a>
                 <a href="/en/docs/infrastructure#cli-scan" class="sidebar-link"><code>scan</code></a>
+                <a href="/en/docs/infrastructure#cli-search" class="sidebar-link"><code>search</code></a>
+                <a href="/en/docs/infrastructure#cli-package" class="sidebar-link"><code>package</code></a>
                 <a href="/en/docs/infrastructure#cli-completion" class="sidebar-link"><code>completion</code></a>
                 <a href="/en/docs/infrastructure#cli-services" class="sidebar-link"><code>service</code></a>
                 <a href="/en/docs/infrastructure#cli-ssh" class="sidebar-link"><code>ssh</code></a>
@@ -309,7 +294,6 @@
                 <a href="/en/docs/about#why-cipi" class="sidebar-link">why "Ci-Pi"?</a>
                 <a href="/en/docs/about#vs-alternatives" class="sidebar-link">Cipi vs alternatives</a>
             </div>
-
 
         </aside>
 
@@ -658,10 +642,12 @@
                         <div class="timeline-body">
                             <span class="timeline-version">v5.2</span>
                             <span class="timeline-date">September 2026</span>
-                            <h3 class="timeline-title">CrowdSec, nightly integrity, and a shell that completes itself</h3>
-                            <p>v5.2 is the security release, and it is deliberately opt-in: neither <code>setup.sh</code> nor <code>cipi self-update</code> installs any of it. <code>cipi crowdsec enable</code> brings up the engine <em>and</em> a registered firewall bouncer — decisions without a bouncer ban nothing — reads the logs every vhost actually writes, allowlists your SSH session along with GitHub's webhook CIDRs and Let's Encrypt, and starts a break-glass TLS listener so an automatic ban cannot lock you out of your own server. <code>cipi scan</code> checks nightly that a release still matches the sha256 manifest written at its deploy, then runs one ClamAV pass over the upload directories only. There is no WAF. And tab-completion for bash and zsh is now installed for you. See
+                            <h3 class="timeline-title">CrowdSec, nightly integrity, Meilisearch, and a shell that completes itself</h3>
+                            <p>v5.2 is the security release, and it is deliberately opt-in: neither <code>setup.sh</code> nor <code>cipi self-update</code> installs any of it. <code>cipi crowdsec enable</code> brings up the engine <em>and</em> a registered firewall bouncer — decisions without a bouncer ban nothing — reads the logs every vhost actually writes, allowlists your SSH session along with GitHub's webhook CIDRs and Let's Encrypt, and starts a break-glass TLS listener so an automatic ban cannot lock you out of your own server. <code>cipi scan</code> checks nightly that a release still matches the sha256 manifest written at its deploy, then runs one ClamAV pass over the upload directories only. There is no WAF. And tab-completion for bash and zsh is now installed for you. Since <strong>5.2.2</strong>, the same opt-in rule covers <a href="/en/docs/infrastructure#cli-search"><code>cipi search</code></a> — Meilisearch as a native binary for Laravel Scout — and <a href="/en/docs/infrastructure#cli-package"><code>cipi package</code></a>, an allowlisted apt for the host binaries a project sometimes needs. See
                                 <a href="/en/docs/infrastructure#cli-crowdsec"><code>cipi crowdsec</code></a>,
-                                <a href="/en/docs/infrastructure#cli-scan"><code>cipi scan</code></a>, and
+                                <a href="/en/docs/infrastructure#cli-scan"><code>cipi scan</code></a>,
+                                <a href="/en/docs/infrastructure#cli-search"><code>cipi search</code></a>,
+                                <a href="/en/docs/infrastructure#cli-package"><code>cipi package</code></a>, and
                                 <a href="/en/docs/infrastructure#cli-completion"><code>cipi completion</code></a>.</p>
                             <div class="callout info" style="margin-top:16px;">
                                 <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -670,14 +656,13 @@
                                     <line x1="12" y1="8" x2="12" y2="12" />
                                     <line x1="12" y1="16" x2="12.01" y2="16" />
                                 </svg>
-                                <div>Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.1" target="_blank" rel="noopener">5.2.1</a> — recovery commands: re-sync GitHub/GitLab deploy keys and webhooks, and restore an app home to the permission model Cipi created it with. <code>cipi git refresh [app]</code> walks every GitHub/GitLab app (or one named app) and re-registers the local SSH deploy key plus the deploy webhook. <code>--rotate-keys</code> mints a new ed25519 key; <code>--rotate-secret</code> mints a new <code>CIPI_WEBHOOK_TOKEN</code>. <code>cipi app fix-permissions [app]</code> reapplies the layout Cipi created — home <code>750</code>, <code>.ssh</code> <code>700</code>, <code>logs/</code> <code>2775</code> setgid (nginx writes as <code>www-data</code>), <code>shared/.env</code> <code>640</code>. No migration: <code>self-update</code> copies the libs and refreshes shell completion. The nightly <code>self_update</code> mail is now sent only when the version actually moved. Previous: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.0" target="_blank" rel="noopener">5.2.0</a> — opt-in CrowdSec (engine <strong>and</strong> a registered firewall bouncer) and a nightly integrity check. <strong>Migration 5.2.0</strong> installs <code>cipi-scan-manifest</code> and the two rescue helpers, creates the manifest store, grants each existing app its manifest sudo entry, and adds <code>SSH_CLIENT</code> / <code>SSH_CONNECTION</code> to <code>env_keep</code> in <code>/etc/sudoers.d/cipi-sudo</code> — the candidate file validated with <code>visudo -c</code> before it replaces the live one. The migration turns nothing on: CrowdSec and the scan stay off until you enable them. Panel API <a href="https://github.com/cipi-sh/api/releases/tag/1.20" target="_blank" rel="noopener">1.20</a> and the <a href="/en/docs/gui">web GUI</a> are unchanged. Full changelog: <a href="https://github.com/cipi-sh/cipi/blob/latest/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG.md</a>.</div>
+                                <div>Latest: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.2" target="_blank" rel="noopener">5.2.2</a> — two more opt-in additions, neither installed by <code>setup.sh</code> or <code>cipi self-update</code>. <code>cipi search</code> is Meilisearch as a native binary for Laravel Scout: listen on 127.0.0.1, mint a key scoped to <code>&lt;app&gt;-*</code>, write <code>SCOUT_PREFIX</code> yourself so two apps cannot share an index. <code>cipi app delete</code> revokes the key; <code>cipi app clone</code> mints a new one instead of inheriting production's. <code>cipi package</code> is an allowlisted apt for host binaries a Laravel project may need — image optimisers, ffmpeg, the ImageMagick CLI, <code>pdftotext</code> — and the allowlist is the feature. Chromium is refused on purpose (it would pull snapd). Previous: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.1" target="_blank" rel="noopener">5.2.1</a> — <code>cipi git refresh [app]</code> and <code>cipi app fix-permissions [app]</code>. Previous: <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.0" target="_blank" rel="noopener">5.2.0</a> — opt-in CrowdSec (engine <strong>and</strong> a registered firewall bouncer) and a nightly integrity check. Panel API <a href="https://github.com/cipi-sh/api/releases/tag/1.20" target="_blank" rel="noopener">1.20</a> and the <a href="/en/docs/gui">web GUI</a> are unchanged. Full changelog: <a href="https://github.com/cipi-sh/cipi/blob/latest/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG.md</a>.</div>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-
 
             <div class="doc-section" id="security-model">
                 <h2>Security Model</h2>
@@ -871,8 +856,6 @@
                 </div>
             </div>
 
-
-
             <div class="doc-section" id="why-not-local">
                 <h2>Why not local?</h2>
                 <p>Cipi is a <strong>production server provisioner</strong>. It is designed to turn a fresh Ubuntu VPS
@@ -933,8 +916,6 @@
                     production environment.</p>
             </div>
 
-
-
             <div class="doc-section" id="why-mariadb">
                 <h2>Why MariaDB?</h2>
                 <p>MariaDB is the <strong>default</strong> database engine on every Cipi server (port
@@ -992,8 +973,6 @@
                         applications, docs, and hiring familiarity — with an engine that stays community-first.</li>
                 </ul>
             </div>
-
-
 
             <div class="doc-section" id="why-postgresql">
                 <h2>Why PostgreSQL?</h2>
@@ -1072,8 +1051,6 @@
                     backup, restore, and password rotation.</p>
             </div>
 
-
-
             <div class="doc-section" id="why-valkey">
                 <h2>Why Valkey?</h2>
                 <p>Cipi uses Valkey instead of Redis for several reasons:</p>
@@ -1092,8 +1069,6 @@
                     </li>
                 </ul>
             </div>
-
-
 
             <div class="doc-section" id="why-laravel">
                 <h2>Why Laravel?</h2>
@@ -2694,8 +2669,6 @@
 
         sidebarToggle.addEventListener('click', () => docsSidebar.classList.contains('open') ? closeSidebar() : openSidebar());
         sidebarOverlay.addEventListener('click', closeSidebar);
-
-
 
         // Scrollspy — scoped to the current chapter so duplicate hashes
         // (e.g. #cli-deploy on deploy vs cli-client) highlight the right link.

@@ -9,15 +9,6 @@
     <meta name="author" content="Andrea Pollastri">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://cipi.sh/en/docs/cli-client">
-                <!-- i18n:alternates -->
-    <link rel="alternate" hreflang="en" href="https://cipi.sh/en/docs/cli-client">
-    <link rel="alternate" hreflang="de" href="https://cipi.sh/de/docs/cli-client">
-    <link rel="alternate" hreflang="fr" href="https://cipi.sh/fr/docs/cli-client">
-    <link rel="alternate" hreflang="it" href="https://cipi.sh/it/docs/client-cli">
-    <link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/cli-client">
-    <link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/cli-client">
-    <link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/cli-client">
-    <!-- /i18n:alternates -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="website">
@@ -30,11 +21,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Cipi Docs — CLI Client">
             <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="de_DE">
-    <meta property="og:locale:alternate" content="fr_FR">
-    <meta property="og:locale:alternate" content="it_IT">
-    <meta property="og:locale:alternate" content="es_ES">
-    <meta property="og:locale:alternate" content="pt_PT"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cipi Docs — CLI Client">
     <meta name="twitter:description" content="cipi-cli — manage your Cipi servers remotely from the terminal. Apps, databases, SSL, deploys, and more via the REST API.">
     <meta name="twitter:image" content="https://cipi.sh/og.png">
@@ -128,10 +115,6 @@
                 
                 
                 <a href="/en/cipi-yml" class="nav-link">cipi.yml</a>
-                
-                
-                
-                <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">EN</summary><div class="lang-menu"><a class="active" href="/en/docs/cli-client" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/docs/cli-client" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/docs/cli-client" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/docs/client-cli" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/docs/cli-client" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/docs/cli-client" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -242,6 +225,8 @@
                 <a href="/en/docs/infrastructure#cli-ban" class="sidebar-link"><code>ban</code></a>
                 <a href="/en/docs/infrastructure#cli-crowdsec" class="sidebar-link"><code>crowdsec</code></a>
                 <a href="/en/docs/infrastructure#cli-scan" class="sidebar-link"><code>scan</code></a>
+                <a href="/en/docs/infrastructure#cli-search" class="sidebar-link"><code>search</code></a>
+                <a href="/en/docs/infrastructure#cli-package" class="sidebar-link"><code>package</code></a>
                 <a href="/en/docs/infrastructure#cli-completion" class="sidebar-link"><code>completion</code></a>
                 <a href="/en/docs/infrastructure#cli-services" class="sidebar-link"><code>service</code></a>
                 <a href="/en/docs/infrastructure#cli-ssh" class="sidebar-link"><code>ssh</code></a>
@@ -307,7 +292,6 @@
                 <a href="/en/docs/about#why-cipi" class="sidebar-link">why "Ci-Pi"?</a>
                 <a href="/en/docs/about#vs-alternatives" class="sidebar-link">Cipi vs alternatives</a>
             </div>
-
 
         </aside>
 
@@ -1325,8 +1309,6 @@ sudo make install</pre>
 
         sidebarToggle.addEventListener('click', () => docsSidebar.classList.contains('open') ? closeSidebar() : openSidebar());
         sidebarOverlay.addEventListener('click', closeSidebar);
-
-
 
         // Scrollspy — scoped to the current chapter so duplicate hashes
         // (e.g. #cli-deploy on deploy vs cli-client) highlight the right link.

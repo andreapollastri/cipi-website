@@ -1,6 +1,6 @@
 # Netlify — https://cipi.sh
-# `/` is the English homepage (200). Edge i18n lives in netlify/edge-functions/i18n.js
-# Do not language-redirect `/` — Google will not index a homepage that 302s.
+# `/` is the English homepage (200). Edge routing lives in netlify/edge-functions/i18n.js
+# Former language trees 301 to English. Do not language-redirect `/`.
 
 [build]
   publish = "."

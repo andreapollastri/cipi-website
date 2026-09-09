@@ -5,19 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cipi Docs — Infrastructure</title>
-    <meta name="description" content="PHP, databases, SSL, backups, workers, firewall, and server management with Cipi CLI.">
+    <meta name="description" content="PHP, databases, SSL, backups, workers, firewall, Meilisearch, host packages, and server management with Cipi CLI.">
     <meta name="author" content="Andrea Pollastri">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://cipi.sh/en/docs/infrastructure">
-                <!-- i18n:alternates -->
-    <link rel="alternate" hreflang="en" href="https://cipi.sh/en/docs/infrastructure">
-    <link rel="alternate" hreflang="de" href="https://cipi.sh/de/docs/infrastructure">
-    <link rel="alternate" hreflang="fr" href="https://cipi.sh/fr/docs/infrastructure">
-    <link rel="alternate" hreflang="it" href="https://cipi.sh/it/docs/infrastruttura">
-    <link rel="alternate" hreflang="es" href="https://cipi.sh/es/docs/infrastructure">
-    <link rel="alternate" hreflang="pt" href="https://cipi.sh/pt/docs/infrastructure">
-    <link rel="alternate" hreflang="x-default" href="https://cipi.sh/en/docs/infrastructure">
-    <!-- /i18n:alternates -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="website">
@@ -30,11 +21,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Cipi Docs — Infrastructure">
             <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="de_DE">
-    <meta property="og:locale:alternate" content="fr_FR">
-    <meta property="og:locale:alternate" content="it_IT">
-    <meta property="og:locale:alternate" content="es_ES">
-    <meta property="og:locale:alternate" content="pt_PT"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cipi Docs — Infrastructure">
     <meta name="twitter:description" content="PHP, databases, SSL, backups, workers, firewall, and server management with Cipi CLI.">
     <meta name="twitter:image" content="https://cipi.sh/og.png">
@@ -44,7 +31,7 @@
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "datePublished": "2026-06-03",
-      "dateModified": "2026-08-04",
+      "dateModified": "2026-09-09",
       "headline": "Cipi Docs — Infrastructure",
       "name": "Infrastructure",
       "url": "https://cipi.sh/en/docs/infrastructure",
@@ -128,10 +115,6 @@
                 
                 
                 <a href="/en/cipi-yml" class="nav-link">cipi.yml</a>
-                
-                
-                
-                <!-- i18n:switch --><details class="lang-switch" ontoggle="if(this.open){const s=this;const c=e=>{if(!s.contains(e.target)){s.removeAttribute('open');document.removeEventListener('pointerdown',c)}};setTimeout(()=>document.addEventListener('pointerdown',c),0)}"><summary aria-label="Language">EN</summary><div class="lang-menu"><a class="active" href="/en/docs/infrastructure" hreflang="en" lang="en" onclick="document.cookie='cipi-lang=en;path=/;max-age=31536000;SameSite=Lax'">English</a><a href="/de/docs/infrastructure" hreflang="de" lang="de" onclick="document.cookie='cipi-lang=de;path=/;max-age=31536000;SameSite=Lax'">Deutsch</a><a href="/fr/docs/infrastructure" hreflang="fr" lang="fr" onclick="document.cookie='cipi-lang=fr;path=/;max-age=31536000;SameSite=Lax'">Français</a><a href="/it/docs/infrastruttura" hreflang="it" lang="it" onclick="document.cookie='cipi-lang=it;path=/;max-age=31536000;SameSite=Lax'">Italiano</a><a href="/es/docs/infrastructure" hreflang="es" lang="es" onclick="document.cookie='cipi-lang=es;path=/;max-age=31536000;SameSite=Lax'">Español</a><a href="/pt/docs/infrastructure" hreflang="pt" lang="pt" onclick="document.cookie='cipi-lang=pt;path=/;max-age=31536000;SameSite=Lax'">Português</a></div></details><!-- /i18n:switch -->
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -242,6 +225,8 @@
                 <a href="/en/docs/infrastructure#cli-ban" class="sidebar-link"><code>ban</code></a>
                 <a href="/en/docs/infrastructure#cli-crowdsec" class="sidebar-link"><code>crowdsec</code></a>
                 <a href="/en/docs/infrastructure#cli-scan" class="sidebar-link"><code>scan</code></a>
+                <a href="/en/docs/infrastructure#cli-search" class="sidebar-link"><code>search</code></a>
+                <a href="/en/docs/infrastructure#cli-package" class="sidebar-link"><code>package</code></a>
                 <a href="/en/docs/infrastructure#cli-completion" class="sidebar-link"><code>completion</code></a>
                 <a href="/en/docs/infrastructure#cli-services" class="sidebar-link"><code>service</code></a>
                 <a href="/en/docs/infrastructure#cli-ssh" class="sidebar-link"><code>ssh</code></a>
@@ -307,7 +292,6 @@
                 <a href="/en/docs/about#why-cipi" class="sidebar-link">why "Ci-Pi"?</a>
                 <a href="/en/docs/about#vs-alternatives" class="sidebar-link">Cipi vs alternatives</a>
             </div>
-
 
         </aside>
 
@@ -389,8 +373,6 @@
                     workers, crontab, Deployer config, and <code>.env</code> in one atomic operation.</p>
             </div>
 
-
-
             <div class="doc-section" id="cli-ini">
                 <h2><code>cipi ini</code></h2>
                 <p>Available since <strong>v5.1.0</strong>. A guided way to change PHP settings without hunting for the
@@ -450,7 +432,6 @@
                 </div>
             </div>
 
-
             <div class="doc-section" id="cli-db">
                 <h2><code>cipi db</code></h2>
                 <p>Cipi creates a dedicated database for each <strong>Laravel</strong> app automatically during
@@ -493,8 +474,6 @@
                     <code>cipi reset db-password [--engine=]</code>.
                 </p>
             </div>
-
-
 
             <div class="doc-section" id="cli-aliases">
                 <h2><code>cipi alias</code></h2>
@@ -673,7 +652,6 @@
                 </div>
             </div>
 
-
             <div class="doc-section" id="cli-nginx">
                 <h2><code>cipi nginx default-server</code></h2>
                 <p>Available since <strong>v5.1.0</strong>. Claims whichever of <code>:80</code> / <code>:443</code>
@@ -696,9 +674,6 @@
                     where nothing else already does. If another vhost legitimately owns the default server, the command
                     says so and changes nothing.</p>
             </div>
-
-
-
 
             <div class="doc-section" id="cli-backup">
                 <h2><code>cipi backup</code></h2>
@@ -955,14 +930,25 @@
                         <line x1="12" y1="8" x2="12" y2="12" />
                         <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
+                    <div>Meilisearch is <strong>not</strong> in <code>cipi backup</code>, and that is deliberate. A
+                        Scout index is derived data; <code>scout:import</code> rebuilds it from the database that
+                        <em>is</em> backed up. Adding the store to S3 would mean paying to keep a rebuildable artifact
+                        whose format is pinned to an engine version. See
+                        <a href="#cli-search"><code>cipi search</code></a>.</div>
+                </div>
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
                     <div>An app can declare its own backup profiles in its repository — see
                         <a href="/en/docs/deploy#cli-yml"><code>cipi.yml</code></a>. Profiles owned by an app must be
                         named <code>&lt;app&gt;</code> or <code>&lt;app&gt;-*</code>; server-wide profiles stay under
                         your control only.</div>
                 </div>
             </div>
-
-
 
             <div class="doc-section" id="cli-app-cron">
                 <h2>User crontab</h2>
@@ -1053,8 +1039,6 @@ myapp@server:~$ crontab -e</pre>
 <span class="p">$</span> cipi app artisan myapp schedule:list</pre>
                 </div>
             </div>
-
-
 
             <div class="doc-section" id="cli-schedule">
                 <h2><code>cipi schedule</code></h2>
@@ -1278,8 +1262,6 @@ myapp@server:~$ crontab -e</pre>
                 </div>
             </div>
 
-
-
             <div class="doc-section" id="cli-ban">
                 <h2><code>cipi ban</code></h2>
                 <p>Inspect and manage Fail2ban bans directly from the CLI. Cipi configures Fail2ban with progressive
@@ -1316,8 +1298,6 @@ myapp@server:~$ crontab -e</pre>
                     </div>
                 </div>
             </div>
-
-
 
             <div class="doc-section" id="cli-crowdsec">
                 <h2><code>cipi crowdsec</code></h2>
@@ -1439,8 +1419,6 @@ myapp@server:~$ crontab -e</pre>
                 </div>
             </div>
 
-
-
             <div class="doc-section" id="cli-scan">
                 <h2><code>cipi scan</code></h2>
                 <p>Available since <strong>v5.2.0</strong>, and <strong>off by default</strong>. It answers one
@@ -1511,7 +1489,229 @@ myapp@server:~$ crontab -e</pre>
                 </div>
             </div>
 
+            <div class="doc-section" id="cli-search">
+                <h2><code>cipi search</code></h2>
+                <p>Available since <strong>v5.2.2</strong>, and <strong>off by default</strong>: neither
+                    <code>setup.sh</code> nor <code>cipi self-update</code> installs it. A self-hosted search engine
+                    for Laravel Scout, wired the way the rest of Cipi is: <strong>native, not a container</strong>.
+                    Meilisearch is a single static Rust binary with no runtime dependencies, so it installs as a
+                    binary, a config file and a systemd unit alongside Nginx, PHP-FPM, MariaDB and Valkey. Engines
+                    that need a runtime around them (Elasticsearch, Typesense, Qdrant) belong in the container
+                    branch; this one does not, and that is the line. For a Laravel app it is
+                    <code>cipi search enable &lt;app&gt;</code> plus a <code>scout:import</code> — no Algolia
+                    account, no per-record billing.</p>
+                <p>You may not need it. For a small dataset Scout's <code>database</code> driver — or Postgres
+                    full-text, already in the stack since 5.0 — needs no extra service, no extra memory and no
+                    upgrade path. <code>cipi search status</code> says so on a server where it is not installed.</p>
 
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi search install [--version=] [--port=] [--force]
+<span class="p">$</span> cipi search enable &lt;app&gt;
+<span class="p">$</span> cipi search disable &lt;app&gt; [--purge-indexes]
+<span class="p">$</span> cipi search list
+<span class="p">$</span> cipi search status [--check] [--json]
+<span class="p">$</span> cipi search key show &lt;app&gt;
+<span class="p">$</span> cipi search key rotate &lt;app&gt;
+<span class="p">$</span> cipi search key rotate --master
+<span class="p">$</span> cipi search upgrade [--version=] [--reset-data] [--yes]
+<span class="p">$</span> cipi search remove [--keep-data]</pre>
+                </div>
+
+                <h3>What <code>install</code> actually does</h3>
+                <p>Downloads the release binary for this architecture from GitHub (amd64/aarch64), creates the
+                    <code>meilisearch</code> system user, <code>/var/lib/meilisearch</code> (0750),
+                    <code>/etc/meilisearch.toml</code> and a hardened unit, then waits on
+                    <code>GET /health</code> before claiming success. It listens on <strong>127.0.0.1</strong>
+                    only — never a public address, so there is no firewall hole to open and no TLS to terminate.
+                    Meilisearch publishes no checksum beside its binaries, so the download is verified the only
+                    way available: it is executed and asked for its version before it is allowed to replace
+                    anything.</p>
+                <p><code>install</code> refuses below <strong>512MB</strong> MemAvailable
+                    (<code>--force</code> overrides) and warns below 1GB. Meilisearch memory-maps its LMDB store,
+                    so its RSS understates what it asks the kernel for; on a 1GB VPS already running MariaDB
+                    tuned to that RAM, an OOM kill is a real outcome and the kernel does not always pick
+                    Meilisearch.</p>
+
+                <h3>Isolation is the design</h3>
+                <p>Meilisearch has no databases and no per-tenant separation, so one shared instance needs an
+                    explicit boundary. Cipi's is the index prefix, and <strong>Cipi writes it — the operator
+                    does not choose it</strong>: two apps that pick the same index name are not separated by a
+                    key pattern. It holds because a Cipi app username is
+                    <code>^[a-z][a-z0-9]{2,31}$</code> with <strong>no hyphens</strong>, so
+                    <code>blog-</code> can never be a prefix of <code>blogs-</code> or the reverse, and every
+                    index name belongs to exactly one app. An app that ignores <code>SCOUT_PREFIX</code> does
+                    not collide with its neighbour — it gets a 403. <code>enable</code> still asserts the
+                    non-overlap before minting a key.</p>
+
+                <h3>What <code>enable</code> writes</h3>
+                <p>Mints an API key scoped to the index pattern <code>&lt;app&gt;-*</code> with exactly the
+                    actions Scout calls (<code>search</code>, <code>documents.*</code>, <code>indexes.*</code>,
+                    <code>settings.get</code>, <code>settings.update</code>, <code>tasks.get</code>,
+                    <code>stats.get</code> — <strong>not</strong> <code>keys.*</code>), then writes
+                    <code>SCOUT_DRIVER</code>, <code>SCOUT_PREFIX=&lt;app&gt;-</code>,
+                    <code>MEILISEARCH_HOST</code> and <code>MEILISEARCH_KEY</code> into
+                    <code>shared/.env</code>. The previous <code>SCOUT_DRIVER</code> is recorded so
+                    <code>disable</code> can put it back.</p>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>The master key never reaches an app, an argument list, or a config file. It lives in
+                        the vault (<code>/etc/cipi/search.json</code>) and in
+                        <code>/etc/cipi/meilisearch.env</code>, mode <strong>0600 root:root</strong>, read by
+                        systemd as root <em>before</em> the unit drops to the <code>meilisearch</code> user.
+                        <code>--master-key</code> on an <code>ExecStart</code> line would put it in
+                        <code>/proc/&lt;pid&gt;/cmdline</code>, which every app user on the box can read — the
+                        same reason <code>cipi search</code>'s own HTTP calls pass the
+                        <code>Authorization</code> header to curl through a stdin config file instead of
+                        <code>-H</code>.</div>
+                </div>
+
+                <h3>Apps, clones, and the master key</h3>
+                <p><code>cipi app delete</code> revokes the app's key and drops its indexes. The engine knows
+                    nothing about <code>apps.json</code>: without this, deleting an app left a live, working API
+                    key behind for a Unix user and a home that no longer exist.</p>
+                <p><code>cipi app clone</code> gives the clone its own key and prefix. The source's
+                    <code>MEILISEARCH_*</code> and <code>SCOUT_PREFIX</code> are excluded from the copied
+                    <code>.env</code> for a sharper reason than the Reverb exclusion next to it: the source's
+                    key is valid for the <em>source's</em> prefix, so a clone that inherited it would not fail —
+                    it would reindex straight into production's indexes.</p>
+                <p>Rotating the master key regenerates every API key on the server. Meilisearch derives a key's
+                    value from its uid and the master key, so the uids survive and the values do not.
+                    <code>key rotate --master</code> therefore rewrites every enabled app's <code>.env</code>
+                    in the same run — otherwise the whole server loses search at once, silently, at the next
+                    master key change. It says which apps it is about to touch before it starts.</p>
+
+                <h3>Upgrades are the real cost</h3>
+                <p>A Meilisearch store is readable only by the version that wrote it.
+                    <code>cipi search upgrade</code> asks the new binary which in-place upgrade flag it
+                    supports (<code>--upgrade-db</code> on current releases,
+                    <code>--experimental-dumpless-upgrade</code> on older ones) rather than guessing from a
+                    version number, applies it through a one-shot systemd drop-in, and then restarts
+                    <strong>without</strong> it to prove the unit still comes up on its own. If the engine
+                    refuses the store, the old binary is put back and the service restarted — nothing is
+                    dropped without an explicit answer. Only if you say so does it delete
+                    <code>data.ms</code>, reissue every app key (a wiped store has no keys, so every
+                    <code>.env</code> would otherwise be dead) and print the <code>scout:import</code>
+                    commands.</p>
+
+                <p>Meilisearch appears in <code>cipi status</code>,
+                    <code>cipi service list|start|stop|restart</code> (<code>meilisearch</code>, or
+                    <code>search</code>) and shell completion, but only where the unit exists. Six notification
+                    triggers sit under a new <strong>Search</strong> category:
+                    <code>search_install</code>, <code>search_enable</code>, <code>search_disable</code>,
+                    <code>search_key_rotate</code>, <code>search_upgrade</code>,
+                    <code>search_remove</code>.</p>
+                <p>The panel sudoers file allows <code>search status|list|enable|disable</code>.
+                    <code>install</code>, <code>upgrade</code>, <code>key rotate</code> and
+                    <code>remove</code> are deliberately <strong>not</strong> in it: they change or destroy
+                    server state and stay with the operator on the CLI.</p>
+            </div>
+
+            <div class="doc-section" id="cli-package">
+                <h2><code>cipi package</code></h2>
+                <p>Available since <strong>v5.2.2</strong>, and <strong>off by default</strong>: neither
+                    <code>setup.sh</code> nor <code>cipi self-update</code> installs any of it. Installs host
+                    tools a Laravel project may need — image optimisers, ffmpeg, the ImageMagick CLI,
+                    <code>pdftotext</code> — from Ubuntu's own repositories. <strong>The allowlist is the
+                    feature</strong>: without it the command is a root apt shell with extra steps. The catalog
+                    is closed and every entry has to earn its place — a <em>stateless binary from an Ubuntu
+                    repo</em> (no daemon, no port, no credentials, no state outliving the process) with a real
+                    Laravel package behind it. Anything failing that is not a package but a service, and
+                    belongs to <a href="#cli-search"><code>cipi search</code></a>,
+                    <a href="#cli-db"><code>cipi db install</code></a> or the container branch. This is the
+                    same rule that put Meilisearch on the other side of the line, written down once.</p>
+
+                <div class="code-block">
+                    <div class="code-block-header"><span class="code-block-lang">bash</span><button
+                            class="code-copy-btn" onclick="copyCode(this)">Copy</button></div>
+                    <pre><span class="p">$</span> cipi package list
+<span class="p">$</span> cipi package install image-optimizers
+<span class="p">$</span> cipi package install ffmpeg
+<span class="p">$</span> cipi package install imagemagick
+<span class="p">$</span> cipi package install poppler-utils
+<span class="p">$</span> cipi package install webp          <span class="c"># a single binary inside a group is a name of its own</span>
+<span class="p">$</span> cipi package remove ffmpeg</pre>
+                </div>
+
+                <h3>The catalog</h3>
+                <ul>
+                    <li><code>image-optimizers</code> → <code>jpegoptim optipng pngquant gifsicle webp</code>,
+                        exactly the set <code>spatie/laravel-image-optimizer</code> documents.</li>
+                    <li><code>ffmpeg</code> → <code>pbmedia/laravel-ffmpeg</code>. The install prints the
+                        warning that matters: run it from a queue worker, never from a web request — the FPM
+                        pool is <code>request_terminate_timeout = 300</code> and one ffmpeg will take every
+                        core on a box shared with MariaDB.</li>
+                    <li><code>imagemagick</code> → the <code>convert</code>/<code>magick</code> CLI.
+                        <strong>This is genuinely missing today:</strong> <code>php8.5-imagick</code> depends
+                        on <code>libmagickcore</code>/<code>libmagickwand</code> and, through them, on
+                        <code>imagemagick-6-common</code> (config files only). The binaries live in
+                        <code>imagemagick-6.q16</code>, which nothing in the chain pulls — so PHP-side Imagick
+                        works while <code>exec('convert …')</code> does not.</li>
+                    <li><code>poppler-utils</code> → <code>pdftotext</code>, for
+                        <code>spatie/pdf-to-text</code> and for feeding PDF content to the Scout indexes
+                        above.</li>
+                </ul>
+                <p>A single package inside a group is accepted as a name of its own, so
+                    <code>cipi package install webp</code> works alongside
+                    <code>install image-optimizers</code>.</p>
+
+                <h3>Install and remove ask first</h3>
+                <p><code>install</code> shows what apt intends to do before doing it — package count and disk
+                    delta, read from <code>apt-get install -s</code> on the machine rather than from a number
+                    hardcoded here — then asks. Afterwards it verifies each expected binary is on
+                    <code>PATH</code> and names any that is not, instead of letting the application discover
+                    it.</p>
+                <p><code>remove</code> purges only the packages actually present (naming an absent one turns a
+                    no-op into an apt failure), then previews the orphaned dependencies
+                    <code>autoremove</code> would take and asks before running it — server-wide autoremove on
+                    a box that also runs MariaDB and PHP is not something to do silently.</p>
+
+                <div class="callout warning">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div>Chromium is deliberately not in the allowlist, and the refusal says why. On Ubuntu
+                        24.04 there is no <code>chromium</code> deb at all, and <code>chromium-browser</code>
+                        is a 48 kB transitional package whose dependencies are <code>debconf</code> and
+                        <strong><code>snapd</code></strong>. Installing it would add a daemon and a snap that
+                        updates itself outside apt's control, which is precisely what this command exists not
+                        to do. For <code>spatie/browsershot</code>, use Puppeteer's own Chromium (Node 20 is
+                        already installed) or Google's apt repository — both deliberate choices, not a side
+                        effect of an allowlist entry.</div>
+                </div>
+
+                <div class="callout info">
+                    <svg class="callout-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <div>Ghostscript and <code>fonts-dejavu-core</code> are already installed and are not in
+                        the list: they arrive as <em>Recommends</em> of <code>php-imagick</code>, and
+                        <code>setup.sh</code> passes no <code>--no-install-recommends</code>. PDF through
+                        ImageMagick will still fail after installing it, and not for a missing package:
+                        <code>imagemagick-6-common</code> ships <code>/etc/ImageMagick-6/policy.xml</code>
+                        with the PDF/PS/EPS coders disabled (the Ghostscript CVEs). That file exists on every
+                        Cipi server. <code>pdftotext</code> is not affected by the policy, which is part of
+                        why <code>poppler-utils</code> earned a place.</div>
+                </div>
+
+                <p>Two notification triggers sit under a new <strong>Packages</strong> category:
+                    <code>package_install</code>, <code>package_remove</code>. The panel sudoers file allows
+                    <code>package list</code> only: installing packages as root stays with the operator on
+                    the CLI.</p>
+            </div>
 
             <div class="doc-section" id="cli-completion">
                 <h2><code>cipi completion</code></h2>
@@ -1555,8 +1755,6 @@ myapp@server:~$ crontab -e</pre>
                 </div>
             </div>
 
-
-
             <div class="doc-section" id="cli-services">
                 <h2><code>cipi service</code></h2>
                 <p>Check and control the system services that power Cipi directly from the CLI. Nginx uses a graceful
@@ -1587,7 +1785,9 @@ myapp@server:~$ crontab -e</pre>
                     <code>php8.5-fpm</code>). The keyword
                     <code>php</code> targets all installed PHP-FPM versions at once. For the cache backend,
                     <code>redis-server</code>, <code>redis</code>, and <code>valkey</code> are accepted as aliases of
-                    <code>valkey-server</code>.
+                    <code>valkey-server</code>. Since <strong>v5.2.2</strong>,
+                    <code>meilisearch</code> (alias <code>search</code>) appears only when
+                    <a href="#cli-search"><code>cipi search</code></a> has installed the unit.
                 </p>
                 <p>Valkey — the BSD-licensed, Redis-compatible fork — is included in the default stack and replaces
                     <code>redis-server</code> since Cipi 4.5.6. It is installed with a password, bound to
@@ -1598,8 +1798,6 @@ myapp@server:~$ crontab -e</pre>
                     and the automatic Redis → Valkey migration.
                 </p>
             </div>
-
-
 
             <div class="doc-section" id="cli-ssh">
                 <h2><code>cipi ssh</code> — SSH Key Management</h2>
@@ -1650,8 +1848,6 @@ myapp@server:~$ crontab -e</pre>
                     The notification includes the server hostname, IP address, key fingerprint, key comment, timestamp,
                     and remaining key count. Rename notifications also include the old and new key name.</p>
             </div>
-
-
 
             <div class="doc-section" id="cli-cipi">
                 <h2><code>cipi</code> — Server &amp; Self-Update</h2>
@@ -1752,8 +1948,6 @@ myapp@server:~$ crontab -e</pre>
 
         sidebarToggle.addEventListener('click', () => docsSidebar.classList.contains('open') ? closeSidebar() : openSidebar());
         sidebarOverlay.addEventListener('click', closeSidebar);
-
-
 
         // Scrollspy — scoped to the current chapter so duplicate hashes
         // (e.g. #cli-deploy on deploy vs cli-client) highlight the right link.

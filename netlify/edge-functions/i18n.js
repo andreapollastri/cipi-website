@@ -1,15 +1,13 @@
 /**
- * Canonical host + language trees for Netlify Edge.
+ * Canonical host + English-only URL graph for Netlify Edge.
  *
- * Google multilingual rules we follow:
  * - `/` is the English homepage and must return 200 (never language-redirect it).
  * - `/en` and `/en/` 301 to `/` so there is one English home URL.
- * - `/it/` is the Italian homepage.
+ * - Former language trees (`/de`, `/fr`, `/it`, `/es`, `/pt`) 301 to the English
+ *   equivalent. Localized slugs (Italian `/novita`, German guide paths, …) map
+ *   through the tables below, then land on `/en/…`.
  * - Accept-Language and the cipi-lang cookie are never used for redirects.
- *   Crawlers must see one stable URL graph (Google: don't geo/language-redirect).
- * - Known legacy bare paths 301 to the language implied by the slug.
  * - Unknown paths are not rewritten (real 404 — no redirect-to-404).
- * - In-tree slug mismatches 301 to the localized slug.
  */
 export const CANONICAL_HOST = 'cipi.sh';
 
@@ -226,8 +224,9 @@ export function localizeCanon(bare, lang) {
 }
 
 export function langHref(lang, canon) {
-  if (canon === '/') return lang === 'en' ? '/' : `/${lang}/`;
-  return `/${lang}${canon}`;
+  // Public site is English-only. `lang` is ignored; kept for call-site compatibility.
+  if (canon === '/') return '/';
+  return `/en${canon}`;
 }
 
 export function languageForBarePath(bare) {
@@ -284,10 +283,9 @@ export function decide(url, { isPreview = false } = {}) {
 
   const langMatch = path.match(LANG_PREFIX_RE);
   if (langMatch) {
-    const lang = langMatch[1];
     const rest = path.replace(/^\/(en|de|fr|it|es|pt)/, '') || '/';
-    const canon = localizeCanon(normalizeBarePath(rest), lang);
-    const expected = langHref(lang, canon);
+    const canon = toEnglishCanon(normalizeBarePath(rest));
+    const expected = langHref('en', canon);
     if (path !== expected) {
       return { redirect: expected, status: 301 };
     }
@@ -300,8 +298,7 @@ export function decide(url, { isPreview = false } = {}) {
 
   if (isKnownLegacyPath(path)) {
     const canon = toEnglishCanon(normalizeBarePath(path));
-    const lang = languageForBarePath(normalizeBarePath(path));
-    return { redirect: langHref(lang, localizeCanon(canon, lang)), status: 301 };
+    return { redirect: langHref('en', canon), status: 301 };
   }
 
   return { pass: true };

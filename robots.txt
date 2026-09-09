@@ -1,5 +1,5 @@
 # Cipi — https://cipi.sh
-# Homepage is `/` (English, x-default). Italian is `/it/`.
+# Homepage is `/` (English). Former language trees 301 to `/en/…`.
 # LLM-friendly summaries: https://cipi.sh/llms.txt and https://cipi.sh/llms-full.txt
 
 User-agent: *
