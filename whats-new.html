@@ -525,37 +525,6 @@
             height: 15px;
         }
 
-        .facts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0 2.6rem;
-            list-style: none;
-            border-top: 1px solid var(--stage-line);
-            padding-top: 1.4rem;
-        }
-
-        .facts li {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .facts b {
-            font-family: var(--display);
-            font-size: 1.85rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            color: var(--lime);
-        }
-
-        .facts span {
-            font-family: var(--mono);
-            font-size: 0.64rem;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-            color: var(--stage-mute);
-        }
-
         /* ── Hero terminal ── */
         .term {
             background: rgba(255, 255, 255, 0.035);
@@ -1489,10 +1458,6 @@
                 font-size: 1.6rem;
             }
 
-            .facts {
-                gap: 1.2rem 2rem;
-            }
-
             .stage-cta .btn-lime,
             .stage-cta .btn-wire {
                 flex: 1 1 100%;
@@ -1584,9 +1549,9 @@
             <div>
                 <span class="eyebrow"><i></i> Cipi 5.2.2 · Now available</span>
                 <h1>Your server just got<br><em>a serious promotion.</em></h1>
-                <p class="stage-lead">Laravel Octane on FrankenPHP. Horizon and Reverb in one line. PostgreSQL next to MariaDB. Backup profiles, a per-project cipi.yml and post-deploy rollback. <b>5.2 adds opt-in CrowdSec and a nightly integrity check — the security release. 5.2.2 adds Meilisearch for Laravel Scout, hosted on the box, not billed per record.</b> Same one-command server. Everything Cipi 5, tagged by release.</p>
+                <p class="stage-lead"><b>Laravel Octane on FrankenPHP</b> — the framework stays in memory, next to classic FPM apps. <b>Reverb</b> for WebSockets. <b>PostgreSQL</b> beside MariaDB, chosen per app. <b>5.2</b> adds opt-in CrowdSec: engine and a registered firewall bouncer, no WAF. <b>5.2.2</b> adds Meilisearch for Laravel Scout, hosted on the box, not billed per record. Same one-command server. Everything Cipi 5, tagged by release.</p>
                 <div class="stage-cta">
-                    <a href="#now" class="btn-lime">See everything new
+                    <a href="#headlines" class="btn-lime">See everything new
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                             stroke-linecap="round" stroke-linejoin="round">
                             <line x1="12" y1="5" x2="12" y2="19" />
@@ -1595,13 +1560,6 @@
                     </a>
                     <a href="#upgrade" class="btn-wire">Upgrade in one line</a>
                 </div>
-                <ul class="facts">
-                    <li><b>14</b><span>Since 5.0</span></li>
-                    <li><b>6</b><span>Since 5.1</span></li>
-                    <li><b>6</b><span>Since 5.2</span></li>
-                    <li><b>2</b><span>Database engines</span></li>
-                    <li><b>$0</b><span>Forever, MIT</span></li>
-                </ul>
             </div>
 
             <div class="term" aria-label="Terminal transcript of a Cipi 5 upgrade">
@@ -1616,21 +1574,20 @@
                     <div class="tl" style="animation-delay:1.45s"><span class="ok">✓</span> vhosts, pools &amp;
                         templates regenerated</div>
                     <div class="tl blank" style="animation-delay:1.6s"></div>
-                    <div class="tl" style="animation-delay:1.8s"><span class="p">$</span> cipi search enable myapp</div>
-                    <div class="tl" style="animation-delay:2.15s"><span class="ok">✓</span> Meilisearch · 127.0.0.1 ·
-                        prefix myapp-</div>
-                    <div class="tl" style="animation-delay:2.5s"><span class="p">$</span> cipi crowdsec enable</div>
-                    <div class="tl" style="animation-delay:2.85s"><span class="ok">✓</span> engine + firewall bouncer ·
-                        this SSH session allowlisted</div>
-                    <div class="tl blank" style="animation-delay:3.05s"></div>
-                    <div class="tl" style="animation-delay:3.25s"><span class="c"># opt-in. nothing runs until you ask</span></div>
-                    <div class="tl" style="animation-delay:3.5s"><span class="p">$</span> <span
+                    <div class="tl" style="animation-delay:1.8s"><span class="p">$</span> cipi app create myapp
+                        --domain=myapp.com <span class="hl">--octane</span></div>
+                    <div class="tl" style="animation-delay:2.2s"><span class="ok">✓</span> FrankenPHP · Octane
+                        port 8100</div>
+                    <div class="tl" style="animation-delay:2.5s"><span class="ok">✓</span> PostgreSQL · Reverb</div>
+                    <div class="tl blank" style="animation-delay:2.7s"></div>
+                    <div class="tl" style="animation-delay:2.9s"><span class="c"># CrowdSec and Meilisearch when you ask</span></div>
+                    <div class="tl" style="animation-delay:3.4s"><span class="p">$</span> <span
                             class="caret"></span></div>
                 </div>
             </div>
         </div>
-        <a href="#now" class="scrollcue">
-            <span>The 5.2 line</span>
+        <a href="#headlines" class="scrollcue">
+            <span>The headlines</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
                 <polyline points="6 9 12 15 18 9" />
@@ -1638,72 +1595,12 @@
         </a>
     </section>
 
-    <!-- ══════════ THE 5.2 LINE ══════════ -->
-    <section class="sec" id="now">
-        <div class="wrap">
-            <div class="sec-head rise">
-                <div>
-                    <span class="idx">01 — The 5.2 line</span>
-                    <h2>Search you host yourself.<br>Security that <em>stays off</em> until you ask.</h2>
-                </div>
-                <p>The flagship additions since 5.2. Meilisearch for Scout in <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.2">5.2.2</a>. CrowdSec and the nightly integrity check in <a href="https://github.com/cipi-sh/cipi/releases/tag/5.2.0">5.2.0</a>. None of them is in <code>setup.sh</code> or <code>cipi self-update</code>.</p>
-            </div>
-
-            <div class="bento stagger rise">
-                <a href="/docs/infrastructure#cli-search" class="tile dark w2 h2">
-                    <div>
-                        <span class="badge">Since 5.2.2</span>
-                        <div class="n">Meilisearch</div>
-                        <h3>Laravel Scout,<br>on the box.</h3>
-                        <p>A native Rust binary next to Nginx — not a container, not an Algolia invoice. Listens on <code>127.0.0.1</code> only, so there is no firewall hole and no TLS to terminate. Cipi writes <code>SCOUT_PREFIX</code>; the operator does not choose it, because two apps that pick the same index name are not separated by a key pattern. Delete the app and the key dies with it. Clone it and the clone gets its own — inheriting production's key would reindex straight into production. The store is not in <code>cipi backup</code>: <code>scout:import</code> rebuilds it from the database that is.</p>
-                    </div>
-                    <div class="cmd">cipi search enable myapp</div>
-                    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round">
-                            <line x1="7" y1="17" x2="17" y2="7" />
-                            <polyline points="7 7 17 7 17 17" />
-                        </svg></span>
-                </a>
-
-                <a href="/docs/infrastructure#cli-crowdsec" class="tile lime w2">
-                    <div>
-                        <span class="badge">Since 5.2</span>
-                        <div class="n">CrowdSec</div>
-                        <h3>Engine and a registered bouncer.</h3>
-                        <p>Opt-in IP reputation that reads <code>/home/*/logs</code> — the files your vhosts actually write. The engine ships with a <em>registered</em> firewall bouncer, because decisions without one ban nothing. It refuses to start behind an unconfigured reverse proxy, and it allowlists the SSH session you enable it from. There is no WAF.</p>
-                    </div>
-                    <div class="cmd">cipi crowdsec enable</div>
-                    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round">
-                            <line x1="7" y1="17" x2="17" y2="7" />
-                            <polyline points="7 7 17 7 17 17" />
-                        </svg></span>
-                </a>
-
-                <a href="/docs/infrastructure#cli-scan" class="tile w2">
-                    <div>
-                        <span class="badge">Since 5.2</span>
-                        <div class="n">Integrity + malware</div>
-                        <h3>A nightly check that never says "clean" when it isn't sure.</h3>
-                        <p>04:40: sha256 of <code>current/</code> against the manifest written at every deploy and rollback, then one ClamAV pass over upload dirs only. Manifests live as <code>root:root 0600</code> outside the app home — <code>open_basedir</code> would let a webshell rewrite them. Timeouts and failed signature updates mail <code>scan_incomplete</code>, never a false all-clear.</p>
-                    </div>
-                    <div class="cmd">cipi scan enable</div>
-                    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round">
-                            <line x1="7" y1="17" x2="17" y2="7" />
-                            <polyline points="7 7 17 7 17 17" />
-                        </svg></span>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- ══════════ BENTO ══════════ -->
     <section class="sec" id="headlines">
         <div class="wrap">
             <div class="sec-head rise">
                 <div>
-                    <span class="idx">02 — The headlines</span>
+                    <span class="idx">01 — The headlines</span>
                     <h2>Twenty-six reasons to<br><em>update tonight.</em></h2>
                 </div>
                 <p>Everything Cipi 5 adds, at a glance. Tiles tagged <em>since 5.0</em> shipped with Cipi 5; <em>since 5.2</em> is new in this line. Tap any tile to jump into the docs.</p>
@@ -2109,7 +2006,7 @@
         <div class="wrap">
             <div class="sec-head rise">
                 <div>
-                    <span class="idx">03 — The shift</span>
+                    <span class="idx">02 — The shift</span>
                     <h2>What used to be work,<br><em>is now a flag.</em></h2>
                 </div>
                 <p>The honest before-and-after. Left is what running these things used to cost you. Right is Cipi 5,
@@ -2259,7 +2156,7 @@
         <div class="wrap">
             <div class="sec-head rise">
                 <div>
-                    <span class="idx">04 — The new vocabulary</span>
+                    <span class="idx">03 — The new vocabulary</span>
                     <h2>Every new command<br>you <em>didn't have</em> before.</h2>
                 </div>
                 <p>The complete Cipi 5 addition to the CLI. Same syntax you already know, same one binary. Tagged
@@ -2337,7 +2234,7 @@
         <div class="wrap">
             <div class="sec-head rise">
                 <div>
-                    <span class="idx">05 — Since 5.0.6</span>
+                    <span class="idx">04 — Since 5.0.6</span>
                     <h2>Panel API, GUI<br><em>and automation.</em></h2>
                 </div>
                 <p>Server management from the REST API and optional web GUI — plus non-interactive flags for scripts.
